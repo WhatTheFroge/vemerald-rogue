@@ -1138,10 +1138,10 @@ u16 Rogue_GetPrice(u16 itemId)
     // Range edits
     if(itemId >= ITEM_HP_UP && itemId <= ITEM_PP_MAX)
     {
-        price = 4000;
+        price = 10000; // nerf from 4000
     }
 
-    if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+    if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)	// to-do: calculate each TM price individually; there's not that many in Gen 3.
     {
         u16 move = ItemIdToBattleMoveId(itemId);
         price = Rogue_CalculateMovePrice(move);
@@ -1188,78 +1188,7 @@ u16 Rogue_GetPrice(u16 itemId)
         applyDefaultHubIncrease = FALSE;
     }
 
-#ifdef ROGUE_EXPANSION
-    if(itemId >= ITEM_LEVEL_BALL && itemId <= ITEM_CHERISH_BALL)
-    {
-        price = 2500;
-    }
-
-    if(itemId >= ITEM_RED_NECTAR && itemId <= ITEM_PURPLE_NECTAR)
-    {
-        price = 2100;
-    }
-
-    if(itemId >= ITEM_RED_ORB && itemId <= ITEM_DIANCITE)
-    {
-        // Expect price from above
-        price = HELD_ITEM_HIGH_PRICE;
-        applyDefaultHubIncrease = TRUE;
-    }
-
-    if(itemId >= ITEM_NORMALIUM_Z && itemId <= ITEM_ULTRANECROZIUM_Z)
-    {
-        // Expect price from above
-        price = HELD_ITEM_MID_PRICE;
-        applyDefaultHubIncrease = TRUE;
-    }
-
-    if(itemId >= ITEM_ROTOM_CATALOG && itemId <= ITEM_REINS_OF_UNITY)
-    {
-        price = 0;
-    }
-
-    if(itemId >= ITEM_LONELY_MINT && itemId <= ITEM_SERIOUS_MINT)
-    {
-        price = 1500;
-    }
-
-    // Plates
-    if(itemId >= ITEM_FLAME_PLATE && itemId <= ITEM_PIXIE_PLATE)
-    {
-        applyDefaultHubIncrease = TRUE;
-        price = HELD_ITEM_MID_PRICE;
-    }
-
-    if(itemId >= ITEM_DOUSE_DRIVE && itemId <= ITEM_CHILL_DRIVE)
-    {
-        applyDefaultHubIncrease = TRUE;
-        price = HELD_ITEM_MID_PRICE;
-    }
-
-    if(itemId >= ITEM_FIRE_MEMORY && itemId <= ITEM_FAIRY_MEMORY)
-    {
-        applyDefaultHubIncrease = TRUE;
-        price = HELD_ITEM_MID_PRICE;
-    }
-
-    if(itemId >= ITEM_ADAMANT_CRYSTAL && itemId <= ITEM_LUSTROUS_GLOBE)
-    {
-        applyDefaultHubIncrease = TRUE;
-        price = HELD_ITEM_HIGH_PRICE;
-    }
-
-    if(itemId >= ITEM_CORNERSTONE_MASK && itemId <= ITEM_HEARTHFLAME_MASK)
-    {
-        applyDefaultHubIncrease = TRUE;
-        price = HELD_ITEM_HIGH_PRICE;
-    }
-    
-    if((itemId >= ITEM_BUG_TERA_SHARD && itemId <= ITEM_WATER_TERA_SHARD) || itemId == ITEM_STELLAR_TERA_SHARD)
-    {
-        price = HELD_ITEM_MID_PRICE + 1000;
-    }
-
-#endif
+#endif // deleted expansion-specific data
 
     // Individual items
     switch(itemId)
@@ -1309,64 +1238,134 @@ u16 Rogue_GetPrice(u16 itemId)
     
         case ITEM_SOUL_DEW:
             applyDefaultHubIncrease = TRUE;
-            price = HELD_ITEM_MID_PRICE;
-            break;
+            price = HELD_ITEM_MID_PRICE;	
+	    break;
 
-#ifdef ROGUE_EXPANSION
-        case ITEM_ABILITY_CAPSULE:
-            price = 6000;
-            break;
-
-        case ITEM_ABILITY_PATCH:
-            price = 7000;
-            break;
-
-        // Weaker versions
-        case ITEM_ADAMANT_ORB:
-        case ITEM_LUSTROUS_ORB:
-        case ITEM_GRISEOUS_ORB:
-            applyDefaultHubIncrease = TRUE;
-            price = HELD_ITEM_MID_PRICE;
-            break;
-
-        case ITEM_RUSTED_SWORD:
-        case ITEM_RUSTED_SHIELD:
-            applyDefaultHubIncrease = TRUE;
-            price = HELD_ITEM_HIGH_PRICE;
-            break;
-
-        case ITEM_MAX_MUSHROOMS:
-            //applyDefaultHubIncrease = TRUE;
-            price = HELD_ITEM_HIGH_PRICE;
-            break;
-
-        case ITEM_DUSK_BALL:
-        case ITEM_TIMER_BALL:
-        case ITEM_QUICK_BALL:
-        case ITEM_BEAST_BALL:
-            price = 2500;
-            break;
-
-        case ITEM_REPEAT_BALL:
-        case ITEM_LEVEL_BALL:
-        case ITEM_CHERISH_BALL:
-            price = 2000;
-            break;
-
-        case ITEM_LURE_BALL:
-        case ITEM_MOON_BALL:
-        case ITEM_FRIEND_BALL:
-        case ITEM_LOVE_BALL:
-        case ITEM_FAST_BALL:
-        case ITEM_HEAVY_BALL:
-        case ITEM_DREAM_BALL:
-            price = 1500;
-            break;
-    
-        case ITEM_BERSERK_GENE:
-            price = 10000;
-            break;
-#endif
+		case ITEM_LUM_BERRY:
+			price = 2000;
+			break;
+		case ITEM_SALAC_BERRY: 
+			price = 1500;
+			break;
+		case ITEM_SITRUS_BERRY:
+			price = 1500;
+			break;
+		case ITEM_ASPEAR_BERRY:
+			price = 500;
+			break;
+		case ITEM_RAWST_BERRY:
+			price = 500;
+			break;
+			
+			
+		case ITEM_LEFTOVERS:
+			price = 20000;
+			break;
+		case ITEM_AMULET_COIN:
+			price = 8000;
+			break;
+		case ITEM_CHOICE_BAND:
+			price = 4000;
+			break;
+			
+			
+		case ITEM_CLEANSE_TAG:
+			price = 1000;
+			break;
+		case ITEM_MACHO_BRACE:
+			price = 2000;
+			break;
+		case ITEM_SMOKE_BALL:
+			price = 2000;
+			break;
+		
+		case ITEM_LUCKY_PUNCH:		// to remove
+			price = 100;
+			break;
+		case ITEM_METAL_POWDER:		// to remove
+			price = 100;
+			break;
+		case ITEM_STICK:
+			price = 1000;
+			break;
+		case ITEM_LIGHT_BALL:
+			price = 1000;
+			break;
+		case ITEM_THICK_CLUB:
+			price = 1000;
+			break;
+		
+		case ITEM_SOFT_SAND:
+			price = 1500;
+			break;
+		case ITEM_SILK_SCARF:
+			price = 1400;
+			break;
+		case ITEM_HARD_STONE:
+			price = 1300;
+			break;
+		case ITEM_BLACK_BELT:
+			price = 1200;
+			break;
+		case ITEM_SHARP_BEAK:
+			price = 1100;
+			break;
+		case ITEM_SPELL_TAG:
+			price = 1000;
+			break;
+		case ITEM_SILVER_POWDER:
+			price = 800;
+			break;
+		case ITEM_POISON_BARB:
+			price = 700;
+			break;
+		case ITEM_MYSTIC_WATER:
+			price = 1500;
+			break;
+		case ITEM_SEA_INCENSE:		// bonus is only 5% rather than 10% 
+			price = 1000;
+			break;
+		case ITEM_CHARCOAL:
+			price = 1400;
+			break;
+		case ITEM_NEVER_MELT_ICE:
+			price = 1300;
+			break;
+		case ITEM_TWISTED_SPOON:
+			price = 1200;
+			break;
+		case ITEM_BLACK_GLASSES:
+			price = 1100;
+			break;
+		case ITEM_DRAGON_FANG:
+			price = 1000;
+			break;
+		case ITEM_MAGNET:
+			price = 900;
+			break;
+		case ITEM_MIRACLE_SEED:
+			price = 800;
+			break;
+		
+		case ITEM_QUICK_CLAW:
+			price = 2500;
+			break;
+		case ITEM_BRIGHT_POWDER:
+			price = 2000;
+			break;
+		case ITEM_LAX_INCENSE:	// bonus is only 5% rather than 10% 
+			price = 1500;
+			break;
+		case ITEM_FOCUS_BAND:
+			price = 2000;
+			break;
+		
+		case ITEM_MENTAL_HERB:
+			price = 500;
+			break;
+		case ITEM_WHITE_HERB:
+			price = 1000;
+			break;
 
         case ITEM_RARE_CANDY:
             price = 1000;
@@ -1720,7 +1719,6 @@ u32 Rogue_CalculateMovePrice(u16 move)
 
     return cost;
 }
-#endif
 
 #ifndef ROGUE_BAKE_VALID
 static bool8 IsEvolutionItemInternal(u16 itemId)

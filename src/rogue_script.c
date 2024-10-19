@@ -144,7 +144,13 @@ void Rogue_RandomisePartyMon(void)
 
     if(Rogue_GetCurrentDifficulty() < ROGUE_GYM_MID_DIFFICULTY)
         RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);
-
+	
+	if(Rogue_GetCurrentDifficulty() < ROGUE_GYM_START_DIFFICULTY +1)
+	{	
+		// RogueMonQuery_IsRare(QUERY_FUNC_EXCLUDE);
+		// RogueMonQuery_IsUncommon(QUERY_FUNC_EXCLUDE);
+	}
+	
     RogueMonQuery_TransformIntoEggSpecies();
     RogueMonQuery_TransformIntoEvos(targetlevel, TRUE, TRUE);
 
@@ -174,6 +180,7 @@ void Rogue_RandomisePartyMon(void)
                 IncrementGameStat(GAME_STAT_RANDO_TRADE_TOTAL_PKMN);
 
                 targetlevel = Calc_RandomTradeLevel(&gPlayerParty[i]);
+                targetlevel = min(max(1, targetlevel), MAX_LEVEL);
                 temp = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
 
                 species = RogueWeightQuery_SelectRandomFromWeightsWithUpdate(Random(), 1);
@@ -197,6 +204,7 @@ void Rogue_RandomisePartyMon(void)
             IncrementGameStat(GAME_STAT_RANDO_TRADE_TOTAL_PKMN);
 
             targetlevel = Calc_RandomTradeLevel(&gPlayerParty[monIdx]);
+            targetlevel = min(max(1, targetlevel), MAX_LEVEL);
             temp = GetMonData(&gPlayerParty[monIdx], MON_DATA_HELD_ITEM);
 
             species = RogueWeightQuery_SelectRandomFromWeightsWithUpdate(Random(), 1);
@@ -1971,7 +1979,7 @@ void Rogue_BufferSafariMonInfo()
     u8 safariIndex = gSpecialVar_0x8008;
     u8 const* speciesName = RoguePokedex_GetSpeciesName(gRogueSaveBlock->safariMons[safariIndex].species);
 
-    StringCopyN(gStringVar1, gRogueSaveBlock->safariMons[safariIndex].nickname, POKEMON_NAME_LENGTH);
+    StringCopy_Nickname(gStringVar1, gRogueSaveBlock->safariMons[safariIndex].nickname);
 
     if(gRogueSaveBlock->safariMons[safariIndex].shinyFlag || StringCompareN(gStringVar1, speciesName, POKEMON_NAME_LENGTH) != 0)
     {

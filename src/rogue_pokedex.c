@@ -4348,6 +4348,50 @@ bool8 RoguePokedex_IsSpeciesValidRoamerLegendary(u16 species)
     return FALSE;
 }
 
+bool8 RoguePokedex_IsSpeciesRare(u16 species)
+{
+	switch(species)
+	{
+		case SPECIES_SNORLAX:
+		case SPECIES_LAPRAS:
+		case SPECIES_AERODACTYL:
+		case SPECIES_PINSIR:
+		case SPECIES_HERACROSS:
+		case SPECIES_SCYTHER:
+		case SPECIES_SCIZOR:
+		case SPECIES_SHUCKLE:
+		case SPECIES_KANGASKHAN:
+		case SPECIES_TAUROS:
+		case SPECIES_MILTANK:
+		case SPECIES_RELICANTH:
+		case SPECIES_SKARMORY:
+		case SPECIES_TORKOAL:
+	}
+}
+
+bool8 RoguePokedex_IsSpeciesUncommon(u16 species)
+{
+	switch(species)
+	{
+		case SPECIES_STANTLER:
+		case SPECIES_ABSOL:
+		case SPECIES_MR_MIME:	
+		case SPECIES_TROPIUS:
+		case SPECIES_ZANGOOSE:
+		case SPECIES_SEVIPER:
+		case SPECIES_GIRAFARIG:
+		case SPECIES_LUNATONE:
+		case SPECIES_SOLROCK:
+		case SPECIES_KECLEON:
+		case SPECIES_TANGELA:
+		case SPECIES_MISDREAVUS:
+		case SPECIES_GLIGAR:
+		case SPECIES_QWILFISH:
+		case SPECIES_SNEASEL:
+		case SPECIES_CHIMECHO:
+	}
+}	
+
 u8 const* RoguePokedex_GetSpeciesName(u16 species)
 {
 #ifdef ROGUE_EXPANSION

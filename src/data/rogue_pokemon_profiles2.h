@@ -505,7 +505,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_IVYSAUR[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_OVERGROW,
 		.hiddenPowerType=TYPE_FIRE,
 		.teraType=TYPE_NONE,
@@ -519,7 +519,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_IVYSAUR[
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_OVERGROW,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -529,7 +529,6 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_IVYSAUR[
 			MOVE_SLEEP_POWDER,
 			MOVE_RAZOR_LEAF,
 			MOVE_SLUDGE_BOMB,
-			MOVE_CURSE,
 		},
 	},
 };
@@ -826,7 +825,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHARMELE
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_BLAZE,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
@@ -834,13 +833,13 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHARMELE
 		.moves=
 		{
 			MOVE_FLAMETHROWER,
-			MOVE_RAGE,
+			MOVE_SLASH,
 			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_BLAZE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -848,9 +847,8 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHARMELE
 		.moves=
 		{
 			MOVE_FLAMETHROWER,
-			MOVE_RAGE,
+			MOVE_SLASH,
 			MOVE_SUBSTITUTE,
-			MOVE_DRAGON_DANCE,
 		},
 	},
 };
@@ -1223,30 +1221,28 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WARTORTL
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_TORRENT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
-		.nature=NATURE_RELAXED,
+		.nature=NATURE_BOLD,
 		.moves=
 		{
 			MOVE_BITE,
-			MOVE_WITHDRAW,
+			MOVE_RAIN_DANCE,
 			MOVE_SURF,
-			MOVE_BRICK_BREAK,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_TORRENT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_CALM,
 		.moves=
 		{
-			MOVE_BITE,
-			MOVE_DIVE,
+			MOVE_HYDRO_PUMP,
 			MOVE_PROTECT,
 			MOVE_TOXIC,
 		},
@@ -1905,7 +1901,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PIDGEOTT
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_KEEN_EYE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -1915,7 +1911,6 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PIDGEOTT
 			MOVE_WING_ATTACK,
 			MOVE_QUICK_ATTACK,
 			MOVE_RETURN,
-			MOVE_STEEL_WING,
 		},
 	},
 	{
@@ -2112,36 +2107,6 @@ static u16 const sTutorMoves_SPECIES_RATTATA[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RATTATA[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_GUTS,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_HYPER_FANG,
-			MOVE_QUICK_ATTACK,
-			MOVE_FLAME_WHEEL,
-			MOVE_SUBSTITUTE,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_GUTS,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_HYPER_FANG,
-			MOVE_QUICK_ATTACK,
-			MOVE_REVERSAL,
-			MOVE_THUNDER_WAVE,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_RATICATE
@@ -2325,36 +2290,6 @@ static u16 const sTutorMoves_SPECIES_SPEAROW[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SPEAROW[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_KEEN_EYE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_FURY_ATTACK,
-			MOVE_PECK,
-			MOVE_FAINT_ATTACK,
-			MOVE_BATON_PASS,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_KEEN_EYE,
-		.hiddenPowerType=TYPE_FIGHTING,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_FURY_ATTACK,
-			MOVE_PECK,
-			MOVE_HIDDEN_POWER,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_FEAROW
@@ -2514,36 +2449,6 @@ static u16 const sTutorMoves_SPECIES_EKANS[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EKANS[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_INTIMIDATE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_POISON_STING,
-			MOVE_BITE,
-			MOVE_GIGA_DRAIN,
-			MOVE_DIG,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_INTIMIDATE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_LEER,
-			MOVE_BITE,
-			MOVE_POISON_FANG,
-			MOVE_BODY_SLAM,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_ARBOK
@@ -2739,7 +2644,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PIKACHU[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_STATIC,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -2747,14 +2652,13 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PIKACHU[
 		.moves=
 		{
 			MOVE_THUNDERBOLT,
-			MOVE_THUNDER_WAVE,
 			MOVE_SURF,
-			MOVE_ENCORE, 
+			MOVE_THUNDER_WAVE,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_STATIC,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
@@ -2991,36 +2895,6 @@ static u16 const sTutorMoves_SPECIES_SANDSHREW[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SANDSHREW[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SAND_VEIL,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_SCRATCH,
-			MOVE_SAND_ATTACK,
-			MOVE_DIG,
-			MOVE_ROCK_SLIDE,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SAND_VEIL,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_SCRATCH,
-			MOVE_SAND_ATTACK,
-			MOVE_SWORDS_DANCE,
-			MOVE_TOXIC,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_SANDSLASH
@@ -3305,32 +3179,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NIDORINA
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_POISON_POINT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BRAVE,
 		.moves=
 		{
-			MOVE_BITE,
+			MOVE_CRUNCH,
 			MOVE_DOUBLE_KICK,
 			MOVE_SLUDGE_BOMB,
-			MOVE_DIG,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_POISON_POINT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_RELAXED,
 		.moves=
 		{
-			MOVE_BITE,
+			MOVE_CRUNCH,
 			MOVE_DOUBLE_KICK,
 			MOVE_ICE_BEAM,
-			MOVE_THUNDERBOLT,
 		},
 	},
 };
@@ -3617,32 +3489,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NIDORINO
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_POISON_POINT,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_FIGHTING,
 		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
+		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_HORN_ATTACK,
+			MOVE_HORN_DRILL,
 			MOVE_DOUBLE_KICK,
 			MOVE_SLUDGE_BOMB,
-			MOVE_DIG,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_POISON_POINT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_NAIVE,
 		.moves=
 		{
-			MOVE_HORN_ATTACK,
+			MOVE_HORN_DRILL,
 			MOVE_DOUBLE_KICK,
 			MOVE_ICE_BEAM,
-			MOVE_THUNDERBOLT,
 		},
 	},
 };
@@ -3910,8 +3780,8 @@ static u16 const sTutorMoves_SPECIES_CLEFAIRY[] = // Amnesia	Belly Drum	Metronom
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFAIRY[] = 
 {
 	{
-		.flags= (0),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -3921,12 +3791,11 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFAIRY
 			MOVE_COSMIC_POWER,
 			MOVE_MOONLIGHT,
 			MOVE_RETURN,
-			MOVE_WISH,
 		},
 	},
 	{
-		.flags= (0),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -3936,15 +3805,14 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFAIRY
 			MOVE_MINIMIZE,
 			MOVE_MOONLIGHT,
 			MOVE_THUNDER_WAVE,
-			MOVE_SEISMIC_TOSS,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_CLEFABLE
-#define MON_FLAGS_SPECIES_CLEFABLE (APPEND_MON_FLAGS_SPECIES_CLEFABLE | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_CLEFABLE (APPEND_MON_FLAGS_SPECIES_CLEFABLE | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU)
 #else
-#define MON_FLAGS_SPECIES_CLEFABLE (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_CLEFABLE (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_CLEFABLE[] = 
@@ -4033,7 +3901,7 @@ static u16 const sTutorMoves_SPECIES_CLEFABLE[] = // Amnesia	Belly Drum	Metronom
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE[] = 
 {
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
@@ -4048,7 +3916,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
@@ -4063,7 +3931,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
@@ -4078,7 +3946,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
@@ -4093,7 +3961,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
@@ -4108,7 +3976,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
@@ -4123,7 +3991,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
 		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
@@ -4138,7 +4006,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
@@ -4178,6 +4046,21 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE
 		{
 			MOVE_SOFT_BOILED,
 			MOVE_SEISMIC_TOSS,
+			MOVE_THUNDER_WAVE,
+			MOVE_SING,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3DOUBLESOU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_CUTE_CHARM,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_BOLD,
+		.moves=
+		{
+			MOVE_FOLLOW_ME,
+			MOVE_PROTECT,
 			MOVE_THUNDER_WAVE,
 			MOVE_SING,
 		},
@@ -4250,8 +4133,8 @@ static u16 const sTutorMoves_SPECIES_VULPIX[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VULPIX[] = 
 {
 	{
-		.flags= (0),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_FLASH_FIRE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -4261,12 +4144,11 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VULPIX[]
 			MOVE_FLAMETHROWER,
 			MOVE_WILL_O_WISP,
 			MOVE_CHARM,
-			MOVE_DIG,
 		},
 	},
 	{
-		.flags= (0),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_FLASH_FIRE,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
@@ -4281,9 +4163,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VULPIX[]
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_NINETALES
-#define MON_FLAGS_SPECIES_NINETALES (APPEND_MON_FLAGS_SPECIES_NINETALES | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_NINETALES (APPEND_MON_FLAGS_SPECIES_NINETALES | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_NINETALES (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_NINETALES (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_NINETALES[] = 
@@ -4465,32 +4347,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_JIGGLYPU
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_SASSY,
 		.moves=
 		{
-			MOVE_BODY_SLAM,
-			MOVE_REST,
+			MOVE_HYPER_VOICE,
 			MOVE_WISH,
-			MOVE_PERISH_SONG,
+			MOVE_REST,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CUTE_CHARM,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_RELAXED,
 		.moves=
 		{
-			MOVE_BODY_SLAM,
+			MOVE_HYPER_VOICE,
 			MOVE_CHARM,
 			MOVE_THUNDER_WAVE,
-			MOVE_ICE_BEAM,
 		},
 	},
 
@@ -4788,7 +4668,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GOLBAT[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INNER_FOCUS,
 		.hiddenPowerType=TYPE_GROUND,
 		.teraType=TYPE_NONE,
@@ -4796,13 +4676,13 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GOLBAT[]
 		.moves=
 		{
 			MOVE_WING_ATTACK,
-			MOVE_BITE,
+			MOVE_POISON_FANG,
 			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INNER_FOCUS,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -4810,9 +4690,8 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GOLBAT[]
 		.moves=
 		{
 			MOVE_WING_ATTACK,
-			MOVE_BITE,
 			MOVE_SLUDGE_BOMB,
-			MOVE_TOXIC,
+			MOVE_BITE,
 		},
 	},
 };
@@ -4932,7 +4811,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GLOOM[] 
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CHLOROPHYLL,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -4940,14 +4819,13 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GLOOM[] 
 		.moves=
 		{
 			MOVE_SLEEP_POWDER,
-			MOVE_MOONLIGHT,
+			MOVE_PETAL_DANCE,
 			MOVE_SLUDGE_BOMB,
-			MOVE_GIGA_DRAIN,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CHLOROPHYLL,
 		.hiddenPowerType=TYPE_FIRE,
 		.teraType=TYPE_NONE,
@@ -5148,35 +5026,6 @@ static u16 const sTutorMoves_SPECIES_PARAS[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PARAS[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_EFFECT_SPORE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_STUN_SPORE,
-			MOVE_LEECH_LIFE,
-			MOVE_SWORDS_DANCE,
-			MOVE_DIG,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_EFFECT_SPORE,
-		.hiddenPowerType=TYPE_BUG,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_STUN_SPORE,
-			MOVE_LEECH_LIFE,
-			MOVE_HIDDEN_POWER,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_PARASECT
@@ -5355,30 +5204,29 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VENONAT[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_COMPOUND_EYES,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_HASTY,
 		.moves=
 		{
-			MOVE_POISON_POWDER,
-			MOVE_CONFUSION,
+			MOVE_SLEEP_POWDER,
+			MOVE_PSYCHIC,
 			MOVE_SLUDGE_BOMB,
-			MOVE_GIGA_DRAIN,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_COMPOUND_EYES,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_POISON_POWDER,
-			MOVE_CONFUSION,
+			MOVE_SLEEP_POWDER,
+			MOVE_PSYCHIC,
 			MOVE_HIDDEN_POWER,
 		},
 	},
@@ -5546,38 +5394,38 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DIGLETT[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_ARENA_TRAP,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_MAGNITUDE,
-			MOVE_FURY_SWIPES,
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
 			MOVE_SLASH,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_ARENA_TRAP,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_MAGNITUDE,
-			MOVE_FURY_SWIPES,
+			MOVE_EARTHQUAKE,
+			MOVE_SLASH,
 			MOVE_AERIAL_ACE,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_DUGTRIO
-#define MON_FLAGS_SPECIES_DUGTRIO (APPEND_MON_FLAGS_SPECIES_DUGTRIO | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_DUGTRIO (APPEND_MON_FLAGS_SPECIES_DUGTRIO | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU)
 #else
-#define MON_FLAGS_SPECIES_DUGTRIO (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_DUGTRIO (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_DUGTRIO[] = 
@@ -5750,30 +5598,29 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEOWTH[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PICKUP,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_PAY_DAY,
-			MOVE_FAINT_ATTACK,
-			MOVE_HYPNOSIS,
-			MOVE_SHADOW_BALL,
+			MOVE_FAKE_OUT,
+			MOVE_SLASH,
+			MOVE_SING,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PICKUP,
 		.hiddenPowerType=TYPE_FIGHTING,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_PAY_DAY,
-			MOVE_FAINT_ATTACK,
+			MOVE_FAKE_OUT,
+			MOVE_SLASH,
 			MOVE_HIDDEN_POWER,
 		},
 	},
@@ -5986,29 +5833,28 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PSYDUCK[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CLOUD_NINE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_SCRATCH,
-			MOVE_CONFUSION,
+			MOVE_HYDRO_PUMP,
+			MOVE_FURY_SWIPES,
 			MOVE_CALM_MIND,
-			MOVE_WATER_PULSE,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CLOUD_NINE,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MILD,
 		.moves=
 		{
-			MOVE_SCRATCH,
+			MOVE_HYDRO_PUMP,
 			MOVE_CONFUSION,
 			MOVE_HIDDEN_POWER,
 		},
@@ -6016,9 +5862,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PSYDUCK[
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_GOLDUCK
-#define MON_FLAGS_SPECIES_GOLDUCK (APPEND_MON_FLAGS_SPECIES_GOLDUCK | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_GOLDUCK (APPEND_MON_FLAGS_SPECIES_GOLDUCK | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_GOLDUCK (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_GOLDUCK (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_GOLDUCK[] = 
@@ -6231,30 +6077,29 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MANKEY[]
 {
 	{
 		.flags=(0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_VITAL_SPIRIT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_KARATE_CHOP,
-			MOVE_LOW_KICK,
+			MOVE_CROSS_CHOP,
+			MOVE_SEISMIC_TOSS,
 			MOVE_ROCK_SLIDE,
-			MOVE_BULK_UP,
 		},
 	},
 	{
 		.flags=(0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_VITAL_SPIRIT,
 		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_KARATE_CHOP,
-			MOVE_LOW_KICK,
+			MOVE_CROSS_CHOP,
+			MOVE_SEISMIC_TOSS,
 			MOVE_HIDDEN_POWER,
 		},
 	},
@@ -6475,31 +6320,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GROWLITH
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INTIMIDATE,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_EMBER,
-			MOVE_TAKE_DOWN,
+			MOVE_FLAME_WHEEL,
+			MOVE_BITE,
 			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INTIMIDATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_SASSY,
 		.moves=
 		{
-			MOVE_EMBER,
+			MOVE_FLAMETHROWER,
 			MOVE_BITE,
 			MOVE_TOXIC,
-			MOVE_DIG,
 		},
 	},
 };
@@ -6785,7 +6629,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLIWAG[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_DAMP,
 		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
@@ -6878,7 +6722,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLIWHIR
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WATER_ABSORB,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -6886,22 +6730,21 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLIWHIR
 		.moves=
 		{
 			MOVE_WATER_GUN,
-			MOVE_DOUBLE_SLAP,
-			MOVE_DIG,
-			MOVE_PSYCHIC,
+			MOVE_BODY_SLAM,
+			MOVE_EARTHQUAKE,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WATER_ABSORB,
-		.hiddenPowerType=TYPE_GRASS,
+		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
-		.nature=NATURE_BOLD,
+		.nature=NATURE_ADAMANT,
 		.moves=
 		{
 			MOVE_WATER_GUN,
-			MOVE_DOUBLE_SLAP,
+			MOVE_BODY_SLAM,
 			MOVE_HIDDEN_POWER,
 		},
 	},
@@ -7133,6 +6976,66 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ABRA[] =
 			MOVE_SUBSTITUTE,
 		},
 	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_SALAC_BERRY,
+		.ability=ABILITY_SYNCHRONIZE,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_PSYCHIC,
+			MOVE_FIRE_PUNCH,
+			MOVE_THUNDER_PUNCH,
+			MOVE_ICE_PUNCH,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_PETAYA_BERRY,
+		.ability=ABILITY_SYNCHRONIZE,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_SUBSTITUTE,
+			MOVE_PSYCHIC,
+			MOVE_THUNDER_PUNCH,
+			MOVE_FIRE_PUNCH,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_LUM_BERRY,
+		.ability=ABILITY_SYNCHRONIZE,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_PSYCHIC,
+			MOVE_KNOCK_OFF,
+			MOVE_THUNDER_WAVE,
+			MOVE_SUBSTITUTE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC | MON_FLAGS_GEN3LC | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_SYNCHRONIZE,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_PSYCHIC,
+			MOVE_SUBSTITUTE,
+			MOVE_THIEF,
+			MOVE_CALM_MIND,
+		},
+	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_KADABRA
@@ -7217,7 +7120,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KADABRA[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SYNCHRONIZE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -7226,12 +7129,12 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KADABRA[
 		{
 			MOVE_PSYBEAM,
 			MOVE_RECOVER,
-			MOVE_ICE_PUNCH,
+			MOVE_FIRE_PUNCH,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SYNCHRONIZE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -7513,7 +7416,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MACHOP[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_GUTS,
 		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
@@ -7528,7 +7431,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MACHOP[]
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_GUTS,
 		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
@@ -7622,29 +7525,28 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MACHOKE[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_GUTS,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_REVENGE,
+			MOVE_SUBMISSION,
 			MOVE_SEISMIC_TOSS,
 			MOVE_ROCK_SLIDE,
-			MOVE_BULK_UP,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_GUTS,
 		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_REVENGE,
+			MOVE_SUBMISSION,
 			MOVE_SEISMIC_TOSS,
 			MOVE_HIDDEN_POWER,
 		},
@@ -7932,7 +7834,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WEEPINBE
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CHLOROPHYLL,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -7940,14 +7842,13 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WEEPINBE
 		.moves=
 		{
 			MOVE_SLEEP_POWDER,
-			MOVE_VINE_WHIP,
+			MOVE_RAZOR_LEAF,
 			MOVE_SLUDGE_BOMB,
-			MOVE_SWORDS_DANCE,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CHLOROPHYLL,
 		.hiddenPowerType=TYPE_FIRE,
 		.teraType=TYPE_NONE,
@@ -8149,7 +8050,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TENTACOO
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LIQUID_OOZE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -8157,14 +8058,13 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TENTACOO
 		.moves=
 		{
 			MOVE_BUBBLE_BEAM,
-			MOVE_ACID,
+			MOVE_BARRIER,
 			MOVE_TOXIC,
-			MOVE_GIGA_DRAIN,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LIQUID_OOZE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -8172,9 +8072,8 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TENTACOO
 		.moves=
 		{
 			MOVE_BUBBLE_BEAM,
-			MOVE_ACID,
-			MOVE_SWORDS_DANCE,
-			MOVE_SUBSTITUTE,
+			MOVE_BARRIER,
+			MOVE_SLUDGE_BOMB,
 		},
 	},
 };
@@ -8467,40 +8366,38 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GRAVELER
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_ROCK_HEAD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_MAGNITUDE,
-			MOVE_ROCK_THROW,
+			MOVE_ROCK_SLIDE,
+			MOVE_EARTHQUAKE,
 			MOVE_TOXIC,
-			MOVE_PROTECT,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_ROCK_HEAD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_MAGNITUDE,
-			MOVE_ROCK_THROW,
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
 			MOVE_SUBSTITUTE,
-			MOVE_FOCUS_PUNCH,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_GOLEM
-#define MON_FLAGS_SPECIES_GOLEM (APPEND_MON_FLAGS_SPECIES_GOLEM | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_GOLEM (APPEND_MON_FLAGS_SPECIES_GOLEM | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_GOLEM (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_GOLEM (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_GOLEM[] = 
@@ -8682,7 +8579,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PONYTA[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_FLASH_FIRE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -8690,23 +8587,22 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PONYTA[]
 		.moves=
 		{
 			MOVE_EMBER,
-			MOVE_STOMP,
+			MOVE_TAKE_DOWN,
 			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_FLASH_FIRE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_EMBER,
-			MOVE_QUICK_ATTACK,	
 			MOVE_SUNNY_DAY,
-			MOVE_SOLAR_BEAM,
+			MOVE_FIRE_BLAST,
+			MOVE_QUICK_ATTACK,
 		},
 	},
 };
@@ -8900,22 +8796,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SLOWPOKE
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_OWN_TEMPO,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_CONFUSION,
-			MOVE_THUNDER_WAVE,
-			MOVE_FLAMETHROWER,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_OWN_TEMPO,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -8923,18 +8804,31 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SLOWPOKE
 		.moves=
 		{
 			MOVE_WATER_GUN,
-			MOVE_CONFUSION,
+			MOVE_PSYCHIC,
+			MOVE_THUNDER_WAVE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3OU),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_OWN_TEMPO,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_BOLD,
+		.moves=
+		{
+			MOVE_WATER_GUN,
+			MOVE_PSYCHIC,
 			MOVE_CALM_MIND,
-			MOVE_REST,
 		},
 	},
 
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_SLOWBRO
-#define MON_FLAGS_SPECIES_SLOWBRO (APPEND_MON_FLAGS_SPECIES_SLOWBRO | MON_FLAGS_GEN31V1)
+#define MON_FLAGS_SPECIES_SLOWBRO (APPEND_MON_FLAGS_SPECIES_SLOWBRO | MON_FLAGS_GEN3OU | MON_FLAGS_GEN31V1)
 #else
-#define MON_FLAGS_SPECIES_SLOWBRO (0 | MON_FLAGS_GEN31V1)
+#define MON_FLAGS_SPECIES_SLOWBRO (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN31V1)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_SLOWBRO[] = 
@@ -9140,39 +9034,55 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGNEMIT
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_MAGNET_PULL,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BOLD,
 		.moves=
 		{
 			MOVE_THUNDER_WAVE,
-			MOVE_THUNDER_SHOCK,
-			MOVE_TOXIC,
-			MOVE_PROTECT,
+			MOVE_THUNDERBOLT,
+			MOVE_HIDDEN_POWER,
+			MOVE_SUBSTITUTE,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_STURDY,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_THUNDER_WAVE,
-			MOVE_THUNDER_SHOCK,
+			MOVE_THUNDERBOLT,
 			MOVE_HIDDEN_POWER,
+			MOVE_THUNDER_WAVE,
+			MOVE_SUBSTITUTE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_MAGNET_PULL,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_THUNDERBOLT,
+			MOVE_THUNDER_WAVE,
+			MOVE_HIDDEN_POWER,
+			MOVE_METAL_SOUND,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MAGNETON
-#define MON_FLAGS_SPECIES_MAGNETON (APPEND_MON_FLAGS_SPECIES_MAGNETON | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_MAGNETON (APPEND_MON_FLAGS_SPECIES_MAGNETON | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU)
 #else
-#define MON_FLAGS_SPECIES_MAGNETON (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_MAGNETON (0 | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_MAGNETON[] = 
@@ -9226,7 +9136,7 @@ static u16 const sTutorMoves_SPECIES_MAGNETON[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGNETON[] = 
 {
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3UBERS),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_MAGNET_PULL,
 		.hiddenPowerType=TYPE_FIRE,
@@ -9241,7 +9151,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGNETON
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_MAGNET,
 		.ability=ABILITY_MAGNET_PULL,
 		.hiddenPowerType=TYPE_FIRE,
@@ -9256,7 +9166,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGNETON
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_MAGNET,
 		.ability=ABILITY_MAGNET_PULL,
 		.hiddenPowerType=TYPE_FIRE,
@@ -9461,39 +9371,55 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DODUO[] 
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_EARLY_BIRD,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_PECK,
-			MOVE_TRI_ATTACK,
-			MOVE_QUICK_ATTACK,
-			MOVE_STEEL_WING,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_EARLY_BIRD,
-		.hiddenPowerType=TYPE_FIGHTING,
+		.hiddenPowerType=TYPE_GROUND,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_PECK,
-			MOVE_TRI_ATTACK,
+			MOVE_DOUBLE_EDGE,
+			MOVE_QUICK_ATTACK,
+			MOVE_DRILL_PECK,
+			MOVE_HIDDEN_POWER,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_CHOICE_BAND,
+		.ability=ABILITY_EARLY_BIRD,
+		.hiddenPowerType=TYPE_GROUND,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_JOLLY,
+		.moves=
+		{
+			MOVE_DOUBLE_EDGE,
+			MOVE_DRILL_PECK,
+			MOVE_QUICK_ATTACK,
+			MOVE_HIDDEN_POWER,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_CHOICE_BAND,
+		.ability=ABILITY_EARLY_BIRD,
+		.hiddenPowerType=TYPE_GROUND,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_JOLLY,
+		.moves=
+		{
+			MOVE_DRILL_PECK,
+			MOVE_QUICK_ATTACK,
+			MOVE_DOUBLE_EDGE,
 			MOVE_HIDDEN_POWER,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_DODRIO
-#define MON_FLAGS_SPECIES_DODRIO (APPEND_MON_FLAGS_SPECIES_DODRIO | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_DODRIO (APPEND_MON_FLAGS_SPECIES_DODRIO | MON_FLAGS_GEN3OU)
 #else
-#define MON_FLAGS_SPECIES_DODRIO (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_DODRIO (0 | MON_FLAGS_GEN3OU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_DODRIO[] = 
@@ -9554,7 +9480,7 @@ static u16 const sTutorMoves_SPECIES_DODRIO[] = // Endeavor	Feint	Flail	Haze	Qui
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DODRIO[] = 
 {
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_EARLY_BIRD,
 		.hiddenPowerType=TYPE_GROUND,
@@ -9569,7 +9495,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DODRIO[]
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_LIECHI_BERRY,
 		.ability=ABILITY_EARLY_BIRD,
 		.hiddenPowerType=TYPE_GHOST,
@@ -9650,7 +9576,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SEEL[] =
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_THICK_FAT,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
@@ -9658,23 +9584,22 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SEEL[] =
 		.moves=
 		{
 			MOVE_ICY_WIND,
-			MOVE_HEADBUTT,
+			MOVE_REST,
 			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_THICK_FAT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_CALM,
 		.moves=
 		{
-			MOVE_ICY_WIND,
-			MOVE_HEADBUTT,
+			MOVE_ICE_BEAM,
 			MOVE_SURF,
-			MOVE_ENCORE,
+			MOVE_REST,
 		},
 	},
 
@@ -9867,40 +9792,38 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GRIMER[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_STICKY_HOLD,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_CAREFUL,
-		.moves=
-		{
-			MOVE_SLUDGE,
-			MOVE_MINIMIZE,
-			MOVE_SUBSTITUTE,
-			MOVE_TOXIC,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_STICKY_HOLD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BRAVE,
 		.moves=
 		{
-			MOVE_SLUDGE,
+			MOVE_SLUDGE_BOMB,
+			MOVE_MINIMIZE,
+			MOVE_SUBSTITUTE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_STICKY_HOLD,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_CAREFUL,
+		.moves=
+		{
+			MOVE_SLUDGE_BOMB,
 			MOVE_ACID_ARMOR,
-			MOVE_FLAMETHROWER,
-			MOVE_SHADOW_PUNCH,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MUK
-#define MON_FLAGS_SPECIES_MUK (APPEND_MON_FLAGS_SPECIES_MUK | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_MUK (APPEND_MON_FLAGS_SPECIES_MUK | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_MUK (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_MUK (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_MUK[] = 
@@ -9975,7 +9898,7 @@ static u16 const sTutorMoves_SPECIES_MUK[] =  // Curse	Explosion	Haze	Imprison	L
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MUK[] = 
 {
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_STICKY_HOLD,
 		.hiddenPowerType=TYPE_NONE,
@@ -9990,7 +9913,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MUK[] =
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_STICKY_HOLD,
 		.hiddenPowerType=TYPE_NONE,
@@ -10005,7 +9928,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MUK[] =
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
 		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_STICKY_HOLD,
 		.hiddenPowerType=TYPE_GHOST,
@@ -10130,22 +10053,21 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHELLDER
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SHELL_ARMOR,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_CALM,
 		.moves=
 		{
-			MOVE_ICICLE_SPEAR,
-			MOVE_WITHDRAW,
-			MOVE_BUBBLE_BEAM,
-			MOVE_TAKE_DOWN,
+			MOVE_ICE_BEAM,
+			MOVE_PROTECT,
+			MOVE_CLAMP,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SHELL_ARMOR,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
@@ -10153,7 +10075,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHELLDER
 		.moves=
 		{
 			MOVE_AURORA_BEAM,
-			MOVE_WITHDRAW,
+			MOVE_PROTECT,
 			MOVE_HIDDEN_POWER,
 		},
 	},
@@ -10321,16 +10243,48 @@ static u16 const sTutorMoves_SPECIES_GASTLY[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GASTLY[] = 
 {
 	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_LEVITATE,
+		.hiddenPowerType=TYPE_ICE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_THUNDERBOLT,
+			MOVE_HIDDEN_POWER,
+			MOVE_GIGA_DRAIN,
+			MOVE_SUBSTITUTE,
+		},
+	},
+	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_HASTY,
 		.moves=
 		{
-			MOVE_NIGHT_SHADE,
+			MOVE_PSYCHIC,
+			MOVE_SLUDGE_BOMB,
 			MOVE_THUNDERBOLT,
+			MOVE_EXPLOSION,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SALAC_BERRY,
+		.ability=ABILITY_LEVITATE,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_NAIVE,
+		.moves=
+		{
+			MOVE_EXPLOSION,
+			MOVE_THUNDERBOLT,
+			MOVE_PSYCHIC,
+			MOVE_ENDURE,
 		},
 	},
 };
@@ -10406,32 +10360,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HAUNTER[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_SHADOW_PUNCH,
+			MOVE_SHADOW_BALL,
 			MOVE_NIGHT_SHADE,
 			MOVE_WILL_O_WISP,
-			MOVE_PSYCHIC,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_SHADOW_PUNCH,
+			MOVE_SHADOW_BALL,
 			MOVE_NIGHT_SHADE,
 			MOVE_THUNDERBOLT,
-			MOVE_GIGA_DRAIN,
 		},
 	},
 };
@@ -10725,32 +10677,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ONIX[] =
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_ROCK_HEAD,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_CAREFUL,
-		.moves=
-		{
-			MOVE_RAGE,
-			MOVE_ROCK_THROW,
-			MOVE_REST,
-			MOVE_ROAR,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_ROCK_HEAD,
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_STURDY,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_RAGE,
+			MOVE_IRON_TAIL,
 			MOVE_ROCK_THROW,
-			MOVE_TOXIC,
-			MOVE_PROTECT,
+			MOVE_EARTHQUAKE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_ROCK_HEAD,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_IMPISH,
+		.moves=
+		{
+			MOVE_DOUBLE_EDGE,
+			MOVE_DRAGON_BREATH,
+			MOVE_ROCK_SLIDE,
 		},
 	},
 };
@@ -10839,32 +10789,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DROWZEE[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INSOMNIA,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_SASSY,
 		.moves=
 		{
-			MOVE_CONFUSION,
+			MOVE_PSYCHIC,
 			MOVE_HEADBUTT,
 			MOVE_FIRE_PUNCH,
-			MOVE_ICE_PUNCH,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INSOMNIA,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BOLD,
 		.moves=
 		{
-			MOVE_CONFUSION,
-			MOVE_HEADBUTT,
+			MOVE_PSYCHIC,
+			MOVE_FUTURE_SIGHT,
 			MOVE_THUNDER_WAVE,
-			MOVE_CALM_MIND,
 		},
 	},
 };
@@ -11053,32 +11001,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KRABBY[]
 {
 		{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SHELL_ARMOR,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_NAUGHTY,
 		.moves=
 		{
-			MOVE_MUD_SHOT,
-			MOVE_STOMP,
+			MOVE_CRABHAMMER,
+			MOVE_PROTECT,
 			MOVE_SWORDS_DANCE,
-			MOVE_KNOCK_OFF,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SHELL_ARMOR,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
+		.nature=NATURE_NAUGHTY,
 		.moves=
 		{
-			MOVE_MUD_SHOT,
-			MOVE_HARDEN,
+			MOVE_CRABHAMMER,
+			MOVE_PROTECT,
 			MOVE_RETURN,
-			MOVE_AMNESIA,
 		},
 	},
 };
@@ -11306,7 +11252,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VOLTORB[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_STATIC,
 		.hiddenPowerType=TYPE_ICE,
 		.teraType=TYPE_NONE,
@@ -11320,7 +11266,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VOLTORB[
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_STATIC,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -11330,7 +11276,6 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VOLTORB[
 			MOVE_SPARK,
 			MOVE_LIGHT_SCREEN,
 			MOVE_RAIN_DANCE,
-			MOVE_THUNDER,
 		},
 	},
 };
@@ -11498,21 +11443,21 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EXEGGCUT
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CHLOROPHYLL,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BOLD,
 		.moves=
 		{
-			MOVE_STUN_SPORE,
+			MOVE_LEECH_SEED,
 			MOVE_CONFUSION,
 			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_CHLOROPHYLL,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -11520,9 +11465,8 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EXEGGCUT
 		.moves=
 		{
 			MOVE_LEECH_SEED,
-			MOVE_CONFUSION,
-			MOVE_REFLECT,
-			MOVE_SYNTHESIS,
+			MOVE_SLEEP_POWDER,
+			MOVE_PSYCHIC,
 		},
 	},
 };
@@ -11770,7 +11714,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CUBONE[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_ROCK_HEAD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -11778,14 +11722,13 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CUBONE[]
 		.moves=
 		{
 			MOVE_BONEMERANG,
-			MOVE_HEADBUTT,
+			MOVE_DOUBLE_EDGE,
 			MOVE_ROCK_SLIDE,
-			MOVE_SUBSTITUTE,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_ROCK_HEAD,
 		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
@@ -11793,9 +11736,8 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CUBONE[]
 		.moves=
 		{
 			MOVE_BONEMERANG,
-			MOVE_HEADBUTT,
+			MOVE_DOUBLE_EDGE,
 			MOVE_SWORDS_DANCE,
-			MOVE_FOCUS_PUNCH,
 		},
 	},
 };
@@ -11975,9 +11917,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAROWAK[
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_HITMONLEE
-#define MON_FLAGS_SPECIES_HITMONLEE (APPEND_MON_FLAGS_SPECIES_HITMONLEE | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_HITMONLEE (APPEND_MON_FLAGS_SPECIES_HITMONLEE | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_HITMONLEE (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_HITMONLEE (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_HITMONLEE[] = 
@@ -12048,7 +11990,7 @@ static u16 const sTutorMoves_SPECIES_HITMONLEE[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HITMONLEE[] = 
 {
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_LIMBER,
 		.hiddenPowerType=TYPE_GHOST,
@@ -12482,7 +12424,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KOFFING[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -12490,14 +12432,13 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KOFFING[
 		.moves=
 		{
 			MOVE_SLUDGE,
-			MOVE_SMOKESCREEN,
+			MOVE_HAZE,
 			MOVE_WILL_O_WISP,
-			MOVE_PAIN_SPLIT,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -12507,7 +12448,6 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KOFFING[
 			MOVE_SLUDGE,
 			MOVE_SMOKESCREEN,
 			MOVE_THUNDERBOLT,
-			MOVE_FLAMETHROWER,
 		},
 	},
 };
@@ -12695,10 +12635,10 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RHYHORN[
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_SCARY_FACE,
-			MOVE_STOMP,	
 			MOVE_SUBSTITUTE,
-			MOVE_SWORDS_DANCE,
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
+			MOVE_MEGAHORN,
 		},
 	},
 	{
@@ -12710,10 +12650,10 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RHYHORN[
 		.nature=NATURE_CAREFUL,
 		.moves=
 		{
-			MOVE_SCARY_FACE,
-			MOVE_STOMP,
-			MOVE_TOXIC,
-			MOVE_DIG, 
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
+			MOVE_MEGAHORN,
+			MOVE_PROTECT,
 		},
 	},
 };
@@ -12807,7 +12747,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RHYDON[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_ROCK_HEAD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -12821,7 +12761,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RHYDON[]
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LIGHTNING_ROD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -12930,37 +12870,6 @@ static u16 const sTutorMoves_SPECIES_CHANSEY[] = // Aromatherapy	Heal Bell	Metro
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHANSEY[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SERENE_GRACE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_DOUBLE_SLAP,
-			MOVE_SOFT_BOILED,
-			MOVE_THUNDERBOLT,
-			MOVE_ICE_BEAM,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_NATURAL_CURE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_DOUBLE_SLAP,
-			MOVE_SOFT_BOILED,
-			MOVE_SEISMIC_TOSS,
-			MOVE_SUBSTITUTE,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_TANGELA
@@ -13340,7 +13249,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HORSEA[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_MYSTIC_WATER,
 		.ability=ABILITY_SWIFT_SWIM,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
@@ -13355,7 +13264,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HORSEA[]
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
@@ -13366,6 +13275,21 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HORSEA[]
 			MOVE_SURF,
 			MOVE_HIDDEN_POWER,
 			MOVE_RAIN_DANCE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_MYSTIC_WATER,
+		.ability=ABILITY_SWIFT_SWIM,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_MODEST,
+		.moves=
+		{
+			MOVE_HIDDEN_POWER,
+			MOVE_RAIN_DANCE,
+			MOVE_ICE_BEAM,
+			MOVE_HYDRO_PUMP,
 		},
 	},
 };
@@ -13433,31 +13357,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SEADRA[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_POISON_POINT,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_SMOKESCREEN,
+			MOVE_DRAGON_DANCE,
 			MOVE_WATER_GUN,
 			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_POISON_POINT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_SMOKESCREEN,
-			MOVE_WATER_GUN,
+			MOVE_DRAGON_DANCE,
 			MOVE_RAIN_DANCE,
-			MOVE_DRAGON_BREATH,
+			MOVE_HYDRO_PUMP,
 		},
 	},
 };
@@ -13524,30 +13447,29 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GOLDEEN[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_LONELY,
 		.moves=
 		{
-			MOVE_PECK,
-			MOVE_HORN_ATTACK,
+			MOVE_WATERFALL,
+			MOVE_MEGAHORN,
 			MOVE_DOUBLE_EDGE,
-			MOVE_RAIN_DANCE,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MILD,
 		.moves=
 		{
-			MOVE_PECK,
-			MOVE_HORN_ATTACK,
+			MOVE_WATERFALL,
+			MOVE_FURY_ATTACK,
 			MOVE_HIDDEN_POWER,
 		},
 	},
@@ -13804,7 +13726,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_STARYU[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_NATURAL_CURE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -13818,7 +13740,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_STARYU[]
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_NATURAL_CURE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -14207,31 +14129,62 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SCYTHER[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_SWARM,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_BUG,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_QUICK_ATTACK,
-			MOVE_FOCUS_ENERGY,
+			MOVE_HIDDEN_POWER,
 			MOVE_AERIAL_ACE,
-			MOVE_SILVER_WIND,
+			MOVE_DOUBLE_EDGE,
+			MOVE_QUICK_ATTACK,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SALAC_BERRY,
+		.ability=ABILITY_SWARM,
+		.hiddenPowerType=TYPE_FLYING,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_JOLLY,
+		.moves=
+		{
+			MOVE_HIDDEN_POWER,
+			MOVE_REVERSAL,
+			MOVE_SUBSTITUTE,
+			MOVE_SWORDS_DANCE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3UU),
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_SWARM,
 		.hiddenPowerType=TYPE_GROUND,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
+			MOVE_SWORDS_DANCE,
+			MOVE_SILVER_WIND,
+			MOVE_AERIAL_ACE,
 			MOVE_HIDDEN_POWER,
-			MOVE_QUICK_ATTACK,
-			MOVE_FOCUS_ENERGY,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3UU),
+		.heldItem=ITEM_CHOICE_BAND,
+		.ability=ABILITY_SWARM,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_JOLLY,
+		.moves=
+		{
+			MOVE_SILVER_WIND,
+			MOVE_AERIAL_ACE,
+			MOVE_SWORDS_DANCE,
+			MOVE_DOUBLE_EDGE,
 		},
 	},
 };
@@ -14394,9 +14347,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_JYNX[] =
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_ELECTABUZZ
-#define MON_FLAGS_SPECIES_ELECTABUZZ (APPEND_MON_FLAGS_SPECIES_ELECTABUZZ | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_ELECTABUZZ (APPEND_MON_FLAGS_SPECIES_ELECTABUZZ | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_ELECTABUZZ (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_ELECTABUZZ (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_ELECTABUZZ[] = 
@@ -14468,7 +14421,7 @@ static u16 const sTutorMoves_SPECIES_ELECTABUZZ[] = // Barrier	Cross	Fire	Ice	Ka
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ELECTABUZZ[] = 
 {
 	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
+		.flags= (0 | MON_FLAGS_GEN3OU),
 		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_STATIC,
 		.hiddenPowerType=TYPE_GRASS,
@@ -14560,9 +14513,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ELECTABU
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MAGMAR
-#define MON_FLAGS_SPECIES_MAGMAR (APPEND_MON_FLAGS_SPECIES_MAGMAR | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_MAGMAR (APPEND_MON_FLAGS_SPECIES_MAGMAR | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_MAGMAR (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_MAGMAR (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_MAGMAR[] = 
@@ -15357,32 +15310,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EEVEE[] 
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_RUN_AWAY,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_GROWL,
+			MOVE_BITE,
 			MOVE_QUICK_ATTACK,
 			MOVE_HIDDEN_POWER,
-			MOVE_BODY_SLAM,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_RUN_AWAY,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_CALM,
 		.moves=
 		{
-			MOVE_GROWL,
+			MOVE_BITE,
 			MOVE_QUICK_ATTACK,
 			MOVE_WISH,
-			MOVE_PROTECT,
 		},
 	},
 };
@@ -15843,31 +15794,29 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PORYGON[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_TRACE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BOLD,
 		.moves=
 		{
-			MOVE_TACKLE,
+			MOVE_TRI_ATTACK,
+			MOVE_ICE_BEAM,
 			MOVE_RECOVER,
-			MOVE_THUNDER_WAVE,
-			MOVE_PSYCHIC,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_TRACE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_RELAXED,
 		.moves=
 		{
-			MOVE_TACKLE,
-			MOVE_PSYBEAM,
-			MOVE_THUNDERBOLT,	
+			MOVE_TRI_ATTACK,
+			MOVE_THUNDERBOLT,
 			MOVE_ICE_BEAM,
 		},
 	},
@@ -15942,29 +15891,28 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_OMANYTE[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_BITE,
-			MOVE_WATER_GUN,
+			MOVE_ANCIENT_POWER,
+			MOVE_HYDRO_PUMP,
 			MOVE_RAIN_DANCE,
-			MOVE_SPIKES,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SHELL_ARMOR,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BOLD,
 		.moves=
 		{
-			MOVE_BITE,
+			MOVE_ANCIENT_POWER,
 			MOVE_WATER_GUN,
 			MOVE_HIDDEN_POWER,
 		},
@@ -15972,9 +15920,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_OMANYTE[
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_OMASTAR
-#define MON_FLAGS_SPECIES_OMASTAR (APPEND_MON_FLAGS_SPECIES_OMASTAR | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU)
+#define MON_FLAGS_SPECIES_OMASTAR (APPEND_MON_FLAGS_SPECIES_OMASTAR | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU)
 #else
-#define MON_FLAGS_SPECIES_OMASTAR (0 | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU)
+#define MON_FLAGS_SPECIES_OMASTAR (0 | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_OMASTAR[] = 
@@ -16233,40 +16181,38 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KABUTO[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_BATTLE_ARMOR,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_SCRATCH,
+			MOVE_ANCIENT_POWER,
 			MOVE_MUD_SHOT,
 			MOVE_SWORDS_DANCE,
-			MOVE_ROCK_TOMB,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_NAUGHTY,
 		.moves=
 		{
-			MOVE_SCRATCH,
+			MOVE_ANCIENT_POWER,
 			MOVE_MUD_SHOT,
 			MOVE_FLAIL,
-			MOVE_ROCK_TOMB,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_KABUTOPS
-#define MON_FLAGS_SPECIES_KABUTOPS (APPEND_MON_FLAGS_SPECIES_KABUTOPS | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_KABUTOPS (APPEND_MON_FLAGS_SPECIES_KABUTOPS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_KABUTOPS (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_KABUTOPS (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_KABUTOPS[] = 
@@ -17394,32 +17340,30 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DRAGONAI
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SHED_SKIN,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
+			MOVE_SLAM,
 			MOVE_THUNDER_WAVE,
 			MOVE_FLAMETHROWER,
-			MOVE_ICE_BEAM,
-			MOVE_THUNDERBOLT,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SHED_SKIN,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_QUIET,
 		.moves=
 		{
+			MOVE_SLAM,
 			MOVE_THUNDER_WAVE,
-			MOVE_DRAGON_DANCE,
-			MOVE_REST,
-			MOVE_SWIFT,
+			MOVE_ICE_BEAM,
 		},
 	},
 };
@@ -18090,39 +18034,40 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BAYLEEF[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_OVERGROW,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_CALM,
 		.moves=
 		{
-			MOVE_RAZOR_LEAF,
+			MOVE_LIGHT_SCREEN,
+			MOVE_HIDDEN_POWER,
 			MOVE_SYNTHESIS,
-			MOVE_LEECH_SEED,
-			MOVE_PROTECT,
+			MOVE_REFLECT,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_OVERGROW,
-		.hiddenPowerType=TYPE_FIRE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BOLD,
 		.moves=
 		{
-			MOVE_RAZOR_LEAF,
-			MOVE_SYNTHESIS,
 			MOVE_HIDDEN_POWER,
+			MOVE_LEECH_SEED,
+			MOVE_SYNTHESIS,
+			MOVE_TOXIC,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MEGANIUM
-#define MON_FLAGS_SPECIES_MEGANIUM (APPEND_MON_FLAGS_SPECIES_MEGANIUM | MON_FLAGS_GEN3OU)
+#define MON_FLAGS_SPECIES_MEGANIUM (APPEND_MON_FLAGS_SPECIES_MEGANIUM | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_MEGANIUM (0 | MON_FLAGS_GEN3OU)
+#define MON_FLAGS_SPECIES_MEGANIUM (0 | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_MEGANIUM[] = 
@@ -18285,6 +18230,51 @@ static u16 const sTutorMoves_SPECIES_CYNDAQUIL[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CYNDAQUIL[] = 
 {
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_SALAC_BERRY,
+		.ability=ABILITY_BLAZE,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_HASTY,
+		.moves=
+		{
+			MOVE_ENDURE,
+			MOVE_FIRE_BLAST,
+			MOVE_HIDDEN_POWER,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_CHARCOAL,
+		.ability=ABILITY_BLAZE,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_HASTY,
+		.moves=
+		{
+			MOVE_FIRE_BLAST,
+			MOVE_HIDDEN_POWER,
+			MOVE_QUICK_ATTACK,
+			MOVE_TOXIC,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SALAC_BERRY,
+		.ability=ABILITY_BLAZE,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_HIDDEN_POWER,
+			MOVE_QUICK_ATTACK,
+			MOVE_ENDURE,
+			MOVE_FLAMETHROWER,
+		},
+	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_QUILAVA
@@ -18358,29 +18348,75 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_QUILAVA[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_BLAZE,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_HASTY,
 		.moves=
 		{
-			MOVE_EMBER,
+			MOVE_FIRE_BLAST,
+			MOVE_HIDDEN_POWER,
+			MOVE_TOXIC,
 			MOVE_QUICK_ATTACK,
-			MOVE_SUBSTITUTE,
-			MOVE_FOCUS_PUNCH,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_BLAZE,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_EMBER,
+			MOVE_FIRE_BLAST,
+			MOVE_HIDDEN_POWER,
+			MOVE_SUBSTITUTE,
+			MOVE_TOXIC,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_CHESTO_BERRY,
+		.ability=ABILITY_BLAZE,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_FIRE_BLAST,
+			MOVE_HIDDEN_POWER,
+			MOVE_QUICK_ATTACK,
+			MOVE_REST,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_PETAYA_BERRY,
+		.ability=ABILITY_BLAZE,
+		.hiddenPowerType=TYPE_GROUND,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_NAIVE,
+		.moves=
+		{
+			MOVE_SUNNY_DAY,
+			MOVE_SUBSTITUTE,
+			MOVE_FIRE_BLAST,
+			MOVE_HIDDEN_POWER,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_CHARCOAL,
+		.ability=ABILITY_BLAZE,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_HASTY,
+		.moves=
+		{
+			MOVE_FIRE_BLAST,
+			MOVE_OVERHEAT,
 			MOVE_QUICK_ATTACK,
 			MOVE_HIDDEN_POWER,
 		},
@@ -18674,39 +18710,40 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CROCONAW
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_TORRENT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_NAIVE,
 		.moves=
 		{
-			MOVE_WATER_GUN,
-			MOVE_BITE,
+			MOVE_SWORDS_DANCE,
+			MOVE_DOUBLE_EDGE,
 			MOVE_BRICK_BREAK,
-			MOVE_RETURN,
+			MOVE_SURF,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SALAC_BERRY,
 		.ability=ABILITY_TORRENT,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_WATER_GUN,
-			MOVE_BITE,
+			MOVE_SUBSTITUTE,
+			MOVE_HYDRO_PUMP,
+			MOVE_ICE_BEAM,
 			MOVE_HIDDEN_POWER,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_FERALIGATR
-#define MON_FLAGS_SPECIES_FERALIGATR (APPEND_MON_FLAGS_SPECIES_FERALIGATR | MON_FLAGS_GEN3OU)
+#define MON_FLAGS_SPECIES_FERALIGATR (APPEND_MON_FLAGS_SPECIES_FERALIGATR | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_FERALIGATR (0 | MON_FLAGS_GEN3OU)
+#define MON_FLAGS_SPECIES_FERALIGATR (0 | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_FERALIGATR[] = 
@@ -19133,37 +19170,6 @@ static u16 const sTutorMoves_SPECIES_HOOTHOOT[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HOOTHOOT[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_INSOMNIA,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_HARDY,
-		.moves=
-		{
-			MOVE_PECK,
-			MOVE_GROWL,
-			MOVE_FAINT_ATTACK,
-			MOVE_TOXIC,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_INSOMNIA,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_HARDY,
-		.moves=
-		{
-			MOVE_PECK,
-			MOVE_GROWL,
-			MOVE_WING_ATTACK,
-			MOVE_PSYCHIC,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_NOCTOWL
@@ -19661,9 +19667,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ARIADOS[
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_CROBAT
-#define MON_FLAGS_SPECIES_CROBAT (APPEND_MON_FLAGS_SPECIES_CROBAT | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_CROBAT (APPEND_MON_FLAGS_SPECIES_CROBAT | MON_FLAGS_GEN3OU)
 #else
-#define MON_FLAGS_SPECIES_CROBAT (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_CROBAT (0 | MON_FLAGS_GEN3OU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_CROBAT[] = 
@@ -19819,32 +19825,47 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHINCHOU
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_VOLT_ABSORB,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_SPARK,
-			MOVE_WATER_GUN,
-			MOVE_RAIN_DANCE,
-			MOVE_REST,
+			MOVE_HYDRO_PUMP,
+			MOVE_THUNDERBOLT,
+			MOVE_ICE_BEAM,
+			MOVE_THUNDER_WAVE,
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_VOLT_ABSORB,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_SPARK,
+			MOVE_THUNDERBOLT,
+			MOVE_SURF,
+			MOVE_ICE_BEAM,
+			MOVE_SUBSTITUTE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_VOLT_ABSORB,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_THUNDERBOLT,
+			MOVE_SURF,
+			MOVE_HIDDEN_POWER,
 			MOVE_THUNDER_WAVE,
-			MOVE_WATER_PULSE,
-			MOVE_AMNESIA,
 		},
 	},
 };
@@ -20289,37 +20310,6 @@ static u16 const sTutorMoves_SPECIES_TOGEPI[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TOGEPI[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SERENE_GRACE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_CALM,
-		.moves=
-		{
-			MOVE_ENCORE,
-			MOVE_ANCIENT_POWER,
-			MOVE_PSYCHIC,
-			MOVE_THUNDER_WAVE,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SERENE_GRACE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_CALM,
-		.moves=
-		{
-			MOVE_ENCORE,
-			MOVE_ANCIENT_POWER,
-			MOVE_FLAMETHROWER,
-			MOVE_SOFT_BOILED,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_TOGETIC
@@ -20562,35 +20552,19 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NATU[] =
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_SYNCHRONIZE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_NIGHT_SHADE,
-			MOVE_PECK,
-			MOVE_CALM_MIND,
-			MOVE_THUNDER_WAVE,
+			MOVE_PSYCHIC,
+			MOVE_SUBSTITUTE,
+			MOVE_TOXIC,
+			MOVE_PROTECT,
 		},
 	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SYNCHRONIZE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_NIGHT_SHADE,
-			MOVE_PECK,
-			MOVE_BATON_PASS,
-			MOVE_GIGA_DRAIN,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_XATU
@@ -20847,39 +20821,25 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_FLAAFFY[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_STATIC,
 		.hiddenPowerType=TYPE_WATER,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_THUNDER_SHOCK,
-			MOVE_THUNDER_WAVE,
-			MOVE_TOXIC,
-			MOVE_FIRE_PUNCH,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_STATIC,
-		.hiddenPowerType=TYPE_ICE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_THUNDER_SHOCK,
-			MOVE_THUNDER_WAVE,
+			MOVE_THUNDERBOLT,
+			MOVE_HEAL_BELL,
 			MOVE_HIDDEN_POWER,
+			MOVE_FIRE_PUNCH,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_AMPHAROS
-#define MON_FLAGS_SPECIES_AMPHAROS (APPEND_MON_FLAGS_SPECIES_AMPHAROS | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_AMPHAROS (APPEND_MON_FLAGS_SPECIES_AMPHAROS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_AMPHAROS (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_AMPHAROS (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_AMPHAROS[] = 
@@ -21192,42 +21152,12 @@ static u16 const sTutorMoves_SPECIES_MARILL[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MARILL[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_HUGE_POWER,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_ROLLOUT,
-			MOVE_PERISH_SONG,
-			MOVE_SUBSTITUTE,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_HUGE_POWER,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_ROLLOUT,
-			MOVE_DIG,
-			MOVE_FOCUS_PUNCH,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_AZUMARILL
-#define MON_FLAGS_SPECIES_AZUMARILL (APPEND_MON_FLAGS_SPECIES_AZUMARILL | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_AZUMARILL (APPEND_MON_FLAGS_SPECIES_AZUMARILL | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_AZUMARILL (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_AZUMARILL (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_AZUMARILL[] = 
@@ -21702,42 +21632,12 @@ static u16 const sTutorMoves_SPECIES_SKIPLOOM[] = // Amnesia	Confusion	Double-Ed
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SKIPLOOM[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CHLOROPHYLL,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_LEECH_SEED,
-			MOVE_SLEEP_POWDER,
-			MOVE_AERIAL_ACE,	
-			MOVE_ENCORE,	
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CHLOROPHYLL,
-		.hiddenPowerType=TYPE_FLYING,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_LEECH_SEED,
-			MOVE_SLEEP_POWDER,
-			MOVE_AERIAL_ACE,
-			MOVE_SUBSTITUTE,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_JUMPLUFF
-#define MON_FLAGS_SPECIES_JUMPLUFF (APPEND_MON_FLAGS_SPECIES_JUMPLUFF | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_JUMPLUFF (APPEND_MON_FLAGS_SPECIES_JUMPLUFF | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_JUMPLUFF (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_JUMPLUFF (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_JUMPLUFF[] = 
@@ -22108,36 +22008,6 @@ static u16 const sTutorMoves_SPECIES_SUNKERN[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SUNKERN[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CHLOROPHYLL,
-		.hiddenPowerType=TYPE_FIRE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_MEGA_DRAIN,
-			MOVE_LEECH_SEED,
-			MOVE_HIDDEN_POWER,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CHLOROPHYLL,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_CALM,
-		.moves=
-		{
-			MOVE_MEGA_DRAIN,
-			MOVE_LEECH_SEED,
-			MOVE_SUBSTITUTE,
-			MOVE_TOXIC,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_SUNFLORA
@@ -22445,37 +22315,6 @@ static u16 const sTutorMoves_SPECIES_WOOPER[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WOOPER[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_WATER_ABSORB,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_BRAVE,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_MUD_SHOT,
-			MOVE_CURSE,
-			MOVE_WATER_PULSE,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_WATER_ABSORB,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_RELAXED,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_MUD_SHOT,
-			MOVE_BODY_SLAM,
-			MOVE_TOXIC,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_QUAGSIRE
@@ -23051,9 +22890,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SLOWKING
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MISDREAVUS
-#define MON_FLAGS_SPECIES_MISDREAVUS (APPEND_MON_FLAGS_SPECIES_MISDREAVUS | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_MISDREAVUS (APPEND_MON_FLAGS_SPECIES_MISDREAVUS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_MISDREAVUS (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_MISDREAVUS (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_MISDREAVUS[] = 
@@ -23430,40 +23269,55 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PINECO[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_STURDY,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_CAREFUL,
 		.moves=
 		{
-			MOVE_TAKE_DOWN,
+			MOVE_SPIKES,
 			MOVE_PROTECT,
-			MOVE_PIN_MISSILE,
 			MOVE_EARTHQUAKE,
+			MOVE_EXPLOSION,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_STURDY,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_CAREFUL,
 		.moves=
 		{
-			MOVE_TAKE_DOWN,
-			MOVE_PROTECT,
-			MOVE_TOXIC,
-			MOVE_GIGA_DRAIN,
+			MOVE_SPIKES,
+			MOVE_ROCK_SLIDE,
+			MOVE_LIGHT_SCREEN,
+			MOVE_EXPLOSION,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_STURDY,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_CAREFUL,
+		.moves=
+		{
+			MOVE_SPIKES,
+			MOVE_EXPLOSION,
+			MOVE_RAPID_SPIN,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_FORRETRESS
-#define MON_FLAGS_SPECIES_FORRETRESS (APPEND_MON_FLAGS_SPECIES_FORRETRESS | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_FORRETRESS (APPEND_MON_FLAGS_SPECIES_FORRETRESS | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU)
 #else
-#define MON_FLAGS_SPECIES_FORRETRESS (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_FORRETRESS (0 | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_FORRETRESS[] = 
@@ -23834,9 +23688,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GLIGAR[]
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_STEELIX
-#define MON_FLAGS_SPECIES_STEELIX (APPEND_MON_FLAGS_SPECIES_STEELIX | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_STEELIX (APPEND_MON_FLAGS_SPECIES_STEELIX | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU)
 #else
-#define MON_FLAGS_SPECIES_STEELIX (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_STEELIX (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_STEELIX[] = 
@@ -24053,40 +23907,40 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SNUBBULL
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INTIMIDATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_CHARM,
-			MOVE_BITE,
 			MOVE_RETURN,
-			MOVE_BRICK_BREAK,
+			MOVE_SHADOW_BALL,
+			MOVE_THUNDER_WAVE,
+			MOVE_THIEF,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INTIMIDATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_CHARM,
-			MOVE_BITE,
-			MOVE_THUNDER_WAVE,
-			MOVE_DIG,
+			MOVE_RETURN,
+			MOVE_EARTHQUAKE,
+			MOVE_SHADOW_BALL,
+			MOVE_THIEF,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_GRANBULL
-#define MON_FLAGS_SPECIES_GRANBULL (APPEND_MON_FLAGS_SPECIES_GRANBULL | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_GRANBULL (APPEND_MON_FLAGS_SPECIES_GRANBULL | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_GRANBULL (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_GRANBULL (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_GRANBULL[] = 
@@ -25067,36 +24921,6 @@ static u16 const sTutorMoves_SPECIES_TEDDIURSA[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TEDDIURSA[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_PICKUP,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_FURY_SWIPES,
-			MOVE_FAINT_ATTACK,
-			MOVE_BRICK_BREAK,
-			MOVE_DIG,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_PICKUP,
-		.hiddenPowerType=TYPE_GHOST,		// OR DARK
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_FURY_SWIPES,
-			MOVE_FAINT_ATTACK,
-			MOVE_HIDDEN_POWER,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_URSARING
@@ -25306,37 +25130,6 @@ static u16 const sTutorMoves_SPECIES_SLUGMA[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SLUGMA[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_FLAME_BODY,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_SASSY,
-		.moves=
-		{
-			MOVE_EMBER,
-			MOVE_ROCK_THROW,
-			MOVE_ACID_ARMOR,
-			MOVE_TOXIC,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_FLAME_BODY,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_SASSY,
-		.moves=
-		{
-			MOVE_YAWN,
-			MOVE_ROCK_THROW,
-			MOVE_SUNNY_DAY,
-			MOVE_HEAT_WAVE,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MAGCARGO
@@ -25872,36 +25665,6 @@ static u16 const sTutorMoves_SPECIES_REMORAID[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_REMORAID[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_HUSTLE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_PSYBEAM,	
-			MOVE_THUNDER_WAVE,
-			MOVE_PSYCHIC,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_HUSTLE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_PSYBEAM,
-			MOVE_FLAMETHROWER,
-			MOVE_ROCK_BLAST,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_OCTILLERY
@@ -26471,30 +26234,46 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HOUNDOUR
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_FLASH_FIRE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_BITE,
-			MOVE_EMBER,
+			MOVE_PURSUIT,
+			MOVE_FIRE_BLAST,
+			MOVE_CRUNCH,
 			MOVE_WILL_O_WISP,
-			MOVE_SUNNY_DAY,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_EARLY_BIRD,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_BITE,
-			MOVE_EMBER,
+			MOVE_FIRE_BLAST,
+			MOVE_CRUNCH,
+			MOVE_HIDDEN_POWER,
+			MOVE_PURSUIT,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_FLASH_FIRE,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_PURSUIT,
+			MOVE_CRUNCH,
+			MOVE_FIRE_BLAST,
 			MOVE_HIDDEN_POWER,
 		},
 	},
@@ -27321,9 +27100,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TYROGUE[
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_HITMONTOP
-#define MON_FLAGS_SPECIES_HITMONTOP (APPEND_MON_FLAGS_SPECIES_HITMONTOP | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_HITMONTOP (APPEND_MON_FLAGS_SPECIES_HITMONTOP | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_HITMONTOP (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_HITMONTOP (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_HITMONTOP[] = 
@@ -27556,7 +27335,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SMOOCHUM
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_OBLIVIOUS,
 		.hiddenPowerType=TYPE_FIRE,
 		.teraType=TYPE_NONE,
@@ -27570,7 +27349,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SMOOCHUM
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_OBLIVIOUS,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -27578,9 +27357,8 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SMOOCHUM
 		.moves=
 		{
 			MOVE_CONFUSION,
-			MOVE_POWDER_SNOW,
+			MOVE_BLIZZARD,
 			MOVE_SUBSTITUTE,
-			MOVE_CALM_MIND,
 		},
 	},
 
@@ -27659,29 +27437,28 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ELEKID[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_STATIC,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_HASTY,
 		.moves=
 		{
-			MOVE_THUNDER_PUNCH,
+			MOVE_THUNDERBOLT,
 			MOVE_QUICK_ATTACK,
 			MOVE_ICE_PUNCH,
-			MOVE_CROSS_CHOP,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_STATIC,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_THUNDER_PUNCH,
+			MOVE_THUNDERBOLT,
 			MOVE_HIDDEN_POWER,
 			MOVE_QUICK_ATTACK,
 		},
@@ -27756,22 +27533,21 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGBY[] 
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_FLAME_BODY,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_FIRE_PUNCH,
-			MOVE_SMOKESCREEN,
-			MOVE_THUNDER_PUNCH,
-			MOVE_CROSS_CHOP,
+			MOVE_FLAMETHROWER,
+			MOVE_PSYCHIC,
+			MOVE_SUNNY_DAY,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_FLAME_BODY,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -27918,9 +27694,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MILTANK[
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_BLISSEY
-#define MON_FLAGS_SPECIES_BLISSEY (APPEND_MON_FLAGS_SPECIES_BLISSEY | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_BLISSEY (APPEND_MON_FLAGS_SPECIES_BLISSEY | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU | MON_FLAGS_GEN31V1)
 #else
-#define MON_FLAGS_SPECIES_BLISSEY (0 | MON_FLAGS_GEN3UU) 
+#define MON_FLAGS_SPECIES_BLISSEY (0 | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU | MON_FLAGS_GEN31V1)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_BLISSEY[] = 
@@ -28657,7 +28433,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LARVITAR
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_GUTS,
 		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
@@ -28668,6 +28444,21 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LARVITAR
 			MOVE_ROCK_SLIDE,
 			MOVE_EARTHQUAKE,
 			MOVE_HIDDEN_POWER,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_GUTS,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_JOLLY,
+		.moves=
+		{
+			MOVE_EARTHQUAKE,
+			MOVE_DRAGON_DANCE,
+			MOVE_ROCK_SLIDE,
+			MOVE_SUBSTITUTE,
 		},
 	},
 };
@@ -28733,32 +28524,32 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PUPITAR[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_SHED_SKIN,
 		.hiddenPowerType=TYPE_BUG,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_ROCK_SLIDE,
-			MOVE_RETURN,
 			MOVE_DRAGON_DANCE,
-			MOVE_SUBSTITUTE,
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_SHED_SKIN,
 		.hiddenPowerType=TYPE_BUG,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_BITE,
-			MOVE_BRICK_BREAK,
-			MOVE_TOXIC,
-			MOVE_PROTECT,
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
+			MOVE_DRAGON_DANCE,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 };
@@ -29638,31 +29429,47 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GROVYLE[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_OVERGROW,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_ABSORB,
-			MOVE_QUICK_ATTACK,
-			MOVE_LEECH_SEED,
-			MOVE_SUBSTITUTE,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_OVERGROW,
 		.hiddenPowerType=TYPE_ICE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_ABSORB,
-			MOVE_QUICK_ATTACK,
+			MOVE_LEAF_BLADE,
+			MOVE_CRUNCH,
 			MOVE_HIDDEN_POWER,
+			MOVE_SUBSTITUTE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_PETAYA_BERRY,
+		.ability=ABILITY_OVERGROW,
+		.hiddenPowerType=TYPE_ICE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_SUBSTITUTE,
+			MOVE_ENDEAVOR,
+			MOVE_LEAF_BLADE,
+			MOVE_HIDDEN_POWER,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_OVERGROW,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_SUBSTITUTE,
+			MOVE_LEECH_SEED,
+			MOVE_PROTECT,
+			MOVE_LEAF_BLADE,
 		},
 	},
 };
@@ -30033,31 +29840,47 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_COMBUSKE
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_BLAZE,
 		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MILD,
 		.moves=
 		{
-			MOVE_EMBER,
-			MOVE_DOUBLE_KICK,
+			MOVE_FIRE_BLAST,
 			MOVE_HIDDEN_POWER,
+			MOVE_SKY_UPPERCUT,
+			MOVE_QUICK_ATTACK,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SALAC_BERRY,
 		.ability=ABILITY_BLAZE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_HASTY,
 		.moves=
 		{
-			MOVE_EMBER,
-			MOVE_DOUBLE_KICK,
-			MOVE_ROCK_SLIDE,
-			MOVE_THUNDER_PUNCH,
+			MOVE_ENDURE,
+			MOVE_SWORDS_DANCE,
+			MOVE_REVERSAL,
+			MOVE_FIRE_BLAST,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_BLAZE,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_SWORDS_DANCE,
+			MOVE_SKY_UPPERCUT,
+			MOVE_HIDDEN_POWER,
+			MOVE_FIRE_BLAST,
 		},
 	},
 };
@@ -30404,32 +30227,32 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MARSHTOM
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_TORRENT,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_WATER_GUN,
-			MOVE_MUD_SHOT,
-			MOVE_CURSE,
-			MOVE_REFRESH,
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
+			MOVE_BODY_SLAM,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_TORRENT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_RELAXED,
 		.moves=
 		{
-			MOVE_WATER_GUN,
-			MOVE_MUD_SHOT,
+			MOVE_EARTHQUAKE,
+			MOVE_SURF,
 			MOVE_TOXIC,
-			MOVE_RETURN,
+			MOVE_PROTECT,
 		},
 	},
 };
@@ -30709,37 +30532,6 @@ static u16 const sTutorMoves_SPECIES_POOCHYENA[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POOCHYENA[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_RUN_AWAY,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_BOLD,
-		.moves=
-		{
-			MOVE_BITE,
-			MOVE_SAND_ATTACK,
-			MOVE_POISON_FANG,
-			MOVE_HEAL_BELL,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_RUN_AWAY,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_BOLD,
-		.moves=
-		{
-			MOVE_BITE,
-			MOVE_SAND_ATTACK,
-			MOVE_DIG,
-			MOVE_TOXIC,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MIGHTYENA
@@ -30933,38 +30725,6 @@ static u16 const sTutorMoves_SPECIES_ZIGZAGOON[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ZIGZAGOON[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_PICKUP,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_HEADBUTT,
-			MOVE_SAND_ATTACK,
-			MOVE_SUBSTITUTE,
-			MOVE_SURF,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_PICKUP,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_HEADBUTT,
-			MOVE_SAND_ATTACK,
-			MOVE_SHADOW_BALL,
-			MOVE_THUNDER_WAVE,
-		},
-	},
-
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_LINOONE
@@ -31411,6 +31171,21 @@ static u16 const sTutorMoves_SPECIES_LOTAD[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LOTAD[] = 
 {
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_SWIFT_SWIM,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_CALM,
+		.moves=
+		{
+			MOVE_GIGA_DRAIN,
+			MOVE_SURF,
+			MOVE_RAIN_DANCE,
+			MOVE_THIEF,
+		},
+	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_LOMBRE
@@ -31489,37 +31264,6 @@ static u16 const sTutorMoves_SPECIES_LOMBRE[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LOMBRE[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_RAIN_DISH,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_CALM,
-		.moves=
-		{
-			MOVE_FAKE_OUT,	
-			MOVE_NATURE_POWER,
-			MOVE_RAIN_DANCE,
-			MOVE_LEECH_SEED,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SWIFT_SWIM,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_FAKE_OUT,
-			MOVE_NATURE_POWER,
-			MOVE_RAZOR_LEAF,
-			MOVE_BRICK_BREAK,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_LUDICOLO
@@ -31821,43 +31565,12 @@ static u16 const sTutorMoves_SPECIES_NUZLEAF[] = // Amnesia	False Swipe	Leech	Qu
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NUZLEAF[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3UBERS),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CHLOROPHYLL,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_FAKE_OUT,
-			MOVE_NATURE_POWER,
-			MOVE_LEECH_SEED,
-			MOVE_SUNNY_DAY,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3UBERS),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CHLOROPHYLL,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_FAKE_OUT,
-			MOVE_NATURE_POWER,
-			MOVE_BULLET_SEED,
-			MOVE_BRICK_BREAK,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_SHIFTRY
-#define MON_FLAGS_SPECIES_SHIFTRY (APPEND_MON_FLAGS_SPECIES_SHIFTRY | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_SHIFTRY (APPEND_MON_FLAGS_SPECIES_SHIFTRY | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_SHIFTRY (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_SHIFTRY (0 | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_SHIFTRY[] = 
@@ -32439,32 +32152,17 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TAILLOW[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_GUTS,
-		.hiddenPowerType=TYPE_FIGHTING,
+		.hiddenPowerType=TYPE_GROUND,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_WING_ATTACK,
-			MOVE_QUICK_ATTACK,
+			MOVE_DOUBLE_EDGE,
+			MOVE_AERIAL_ACE,
 			MOVE_HIDDEN_POWER,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_GUTS,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_WING_ATTACK,
 			MOVE_QUICK_ATTACK,
-			MOVE_RETURN,
-			MOVE_BATON_PASS,
-
 		},
 	},
 };
@@ -32622,37 +32320,6 @@ static u16 const sTutorMoves_SPECIES_SHROOMISH[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHROOMISH[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_EFFECT_SPORE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_LEECH_SEED,
-			MOVE_HEADBUTT,
-			MOVE_SWORDS_DANCE,
-			MOVE_CHARM,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_EFFECT_SPORE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_LEECH_SEED,
-			MOVE_STUN_SPORE,
-			MOVE_SUBSTITUTE,
-			MOVE_GIGA_DRAIN,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_BRELOOM
@@ -32963,36 +32630,6 @@ static u16 const sTutorMoves_SPECIES_WINGULL[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WINGULL[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_KEEN_EYE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_BOLD,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_WING_ATTACK,
-			MOVE_SHOCK_WAVE,
-			MOVE_TOXIC,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_KEEN_EYE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_BOLD,
-		.moves=
-		{
-			MOVE_GROWL,
-			MOVE_WING_ATTACK,
-			MOVE_WATER_PULSE,
-			MOVE_REST,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_PELIPPER
@@ -33155,35 +32792,6 @@ static u16 const sTutorMoves_SPECIES_SURSKIT[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SURSKIT[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SWIFT_SWIM,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_BUBBLE,
-			MOVE_QUICK_ATTACK,
-			MOVE_PSYBEAM,
-			MOVE_GIGA_DRAIN,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SWIFT_SWIM,
-		.hiddenPowerType=TYPE_FIRE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_BUBBLE,
-			MOVE_QUICK_ATTACK,
-			MOVE_HIDDEN_POWER,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MASQUERAIN
@@ -33385,32 +32993,62 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WAILMER[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LUM_BERRY,
 		.ability=ABILITY_WATER_VEIL,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_HASTY,
 		.moves=
 		{
-			MOVE_WATER_GUN,
-			MOVE_ASTONISH,
-			MOVE_RETURN,
-			MOVE_SLEEP_TALK,
+			MOVE_WATER_SPOUT,
+			MOVE_SELF_DESTRUCT,
+			MOVE_HYDRO_PUMP,
+			MOVE_ROAR,
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WATER_VEIL,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
-		.nature=NATURE_HASTY,
+		.nature=NATURE_SASSY,
 		.moves=
 		{
-			MOVE_WATER_GUN,
-			MOVE_ASTONISH,
-			MOVE_TOXIC,
-			MOVE_ROCK_TOMB,
+			MOVE_SURF,
+			MOVE_EARTHQUAKE,
+			MOVE_HIDDEN_POWER,
+			MOVE_SELF_DESTRUCT,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_WATER_VEIL,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_MODEST,
+		.moves=
+		{
+			MOVE_WATER_SPOUT,
+			MOVE_HYDRO_PUMP,
+			MOVE_HIDDEN_POWER,
+			MOVE_SELF_DESTRUCT,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_WATER_VEIL,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_MILD,
+		.moves=
+		{
+			MOVE_SELF_DESTRUCT,
+			MOVE_HIDDEN_POWER,
+			MOVE_SURF,
+			MOVE_ICE_BEAM,
 		},
 	},
 };
@@ -33609,37 +33247,6 @@ static u16 const sTutorMoves_SPECIES_SKITTY[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SKITTY[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CUTE_CHARM,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_CHARM,
-			MOVE_SING,
-			MOVE_THUNDERBOLT,
-			MOVE_ICE_BEAM,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CUTE_CHARM,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_CALM,
-		.moves=
-		{
-			MOVE_CHARM,
-			MOVE_DOUBLE_SLAP,
-			MOVE_THUNDER_WAVE,
-			MOVE_WISH,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_DELCATTY
@@ -33792,9 +33399,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DELCATTY
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_KECLEON
-#define MON_FLAGS_SPECIES_KECLEON (APPEND_MON_FLAGS_SPECIES_KECLEON | MON_FLAGS_GEN3NU)
+#define MON_FLAGS_SPECIES_KECLEON (APPEND_MON_FLAGS_SPECIES_KECLEON | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3NU)
 #else
-#define MON_FLAGS_SPECIES_KECLEON (0 | MON_FLAGS_GEN3NU)
+#define MON_FLAGS_SPECIES_KECLEON (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3NU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_KECLEON[] = 
@@ -34031,41 +33638,40 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BALTOY[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_CAREFUL,
 		.moves=
 		{
-			MOVE_ANCIENT_POWER,
-			MOVE_PSYBEAM,
-			MOVE_DIG,
-			MOVE_TOXIC,
+			MOVE_EARTHQUAKE,
+			MOVE_SHADOW_BALL,
+			MOVE_ROCK_TOMB,
+			MOVE_EXPLOSION,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
-		.nature=NATURE_CAREFUL,
+		.nature=NATURE_HASTY,
 		.moves=
 		{
-			MOVE_ANCIENT_POWER,
-			MOVE_PSYBEAM,
-			MOVE_DIG,
-			MOVE_SHADOW_BALL,
+			MOVE_EARTHQUAKE,
+			MOVE_EXPLOSION,
+			MOVE_RAPID_SPIN,
+			MOVE_PSYCHIC,
 		},
 	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_CLAYDOL
-#define MON_FLAGS_SPECIES_CLAYDOL (APPEND_MON_FLAGS_SPECIES_CLAYDOL | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU)
+#define MON_FLAGS_SPECIES_CLAYDOL (APPEND_MON_FLAGS_SPECIES_CLAYDOL | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU)
 #else
-#define MON_FLAGS_SPECIES_CLAYDOL (0 | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU)
+#define MON_FLAGS_SPECIES_CLAYDOL (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_CLAYDOL[] = 
@@ -34508,7 +34114,6 @@ static u16 const sTutorMoves_SPECIES_SABLEYE[] =
 	MOVE_SUBSTITUTE,
 	MOVE_SUNNY_DAY,
 	MOVE_SWAGGER,
-	MOVE_SYNTHESIS,
 	MOVE_TAUNT,
 	MOVE_THIEF,
 	MOVE_THUNDER_PUNCH,
@@ -34674,37 +34279,6 @@ static u16 const sTutorMoves_SPECIES_BARBOACH[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BARBOACH[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_OBLIVIOUS,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_RELAXED,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_MAGNITUDE,
-			MOVE_SPARK,
-			MOVE_TOXIC,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_OBLIVIOUS,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_RELAXED,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_MAGNITUDE,
-			MOVE_SUBSTITUTE,
-			MOVE_PROTECT,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_WHISCASH
@@ -34970,36 +34544,6 @@ static u16 const sTutorMoves_SPECIES_CORPHISH[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CORPHISH[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SHELL_ARMOR,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_NAUGHTY,
-		.moves=
-		{
-			MOVE_BUBBLE_BEAM,
-			MOVE_VICE_GRIP,
-			MOVE_BRICK_BREAK,
-			MOVE_SLUDGE_BOMB,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SHELL_ARMOR,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_NAUGHTY,
-		.moves=
-		{
-			MOVE_BUBBLE_BEAM,
-			MOVE_PROTECT,
-			MOVE_TOXIC,
-			MOVE_RETURN,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_CRAWDAUNT
@@ -35179,37 +34723,6 @@ static u16 const sTutorMoves_SPECIES_FEEBAS[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_FEEBAS[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_NONE,
-		.ability=ABILITY_MARVEL_SCALE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_BOLD,
-		.moves=
-		{
-			MOVE_SPLASH,
-			MOVE_TACKLE,
-			MOVE_DRAGON_BREATH,
-			MOVE_MIRROR_COAT,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_NONE,
-		.ability=ABILITY_MARVEL_SCALE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_BOLD,
-		.moves=
-		{
-			MOVE_SPLASH,
-			MOVE_TACKLE,
-			MOVE_HYPNOSIS,
-			MOVE_LIGHT_SCREEN,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MILOTIC
@@ -35401,35 +34914,19 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CARVANHA
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SALAC_BERRY,
 		.ability=ABILITY_ROUGH_SKIN,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
+			MOVE_HYDRO_PUMP,
 			MOVE_CRUNCH,
-			MOVE_FOCUS_ENERGY,
-			MOVE_RETURN,
-			MOVE_TOXIC,
+			MOVE_HIDDEN_POWER,
+			MOVE_SUBSTITUTE,
 		},
 	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_ROUGH_SKIN,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_CRUNCH,
-			MOVE_FOCUS_ENERGY,
-			MOVE_RAIN_DANCE,
-			MOVE_WATER_PULSE,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_SHARPEDO
@@ -35611,17 +35108,107 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TRAPINCH
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_ARENA_TRAP,
 		.hiddenPowerType=TYPE_BUG,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_BITE,
-			MOVE_SAND_TOMB,
+			MOVE_EARTHQUAKE,
+			MOVE_HIDDEN_POWER,
+			MOVE_ROCK_SLIDE,
 			MOVE_QUICK_ATTACK,
-			MOVE_RETURN,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_ARENA_TRAP,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_EARTHQUAKE,
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_CHOICE_BAND,
+		.ability=ABILITY_ARENA_TRAP,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
+			MOVE_HIDDEN_POWER,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_ARENA_TRAP,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_SUBSTITUTE,
+			MOVE_TOXIC,
+			MOVE_EARTHQUAKE,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_ARENA_TRAP,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_CAREFUL,
+		.moves=
+		{
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
+			MOVE_HIDDEN_POWER,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_ARENA_TRAP,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_CAREFUL,
+		.moves=
+		{
+			MOVE_EARTHQUAKE,
+			MOVE_HIDDEN_POWER,
+			MOVE_QUICK_ATTACK,
+			MOVE_PROTECT,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_ARENA_TRAP,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_EARTHQUAKE,
+			MOVE_ROCK_SLIDE,
+			MOVE_QUICK_ATTACK,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 };
@@ -35691,35 +35278,19 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VIBRAVA[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_LEVITATE,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GHOST,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_DRAGON_BREATH,
-			MOVE_CRUNCH,
-			MOVE_EARTHQUAKE,
-			MOVE_TOXIC,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_LEVITATE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_DRAGON_BREATH,
-			MOVE_CRUNCH,
 			MOVE_EARTHQUAKE,
 			MOVE_ROCK_SLIDE,
+			MOVE_HIDDEN_POWER,
+			MOVE_QUICK_ATTACK,
 		},
 	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_FLYGON
@@ -35946,36 +35517,6 @@ static u16 const sTutorMoves_SPECIES_MAKUHITA[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAKUHITA[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_THICK_FAT,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_FAKE_OUT,
-			MOVE_ARM_THRUST,
-			MOVE_ROCK_SLIDE,
-			MOVE_BULK_UP,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_THICK_FAT,
-		.hiddenPowerType=TYPE_GHOST,	// DARK
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_FAKE_OUT,
-			MOVE_ARM_THRUST,
-			MOVE_HIDDEN_POWER,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_HARIYAMA
@@ -36226,35 +35767,6 @@ static u16 const sTutorMoves_SPECIES_ELECTRIKE[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ELECTRIKE[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_STATIC,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_THUNDER_WAVE,
-			MOVE_SPARK,
-			MOVE_CRUNCH,
-			MOVE_TOXIC,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_STATIC,
-		.hiddenPowerType=TYPE_ICE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_THUNDER_WAVE,
-			MOVE_SPARK,
-			MOVE_HIDDEN_POWER,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MANECTRIC
@@ -36419,40 +35931,25 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NUMEL[] 
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_OBLIVIOUS,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_SASSY,
 		.moves=
 		{
-			MOVE_EMBER,
-			MOVE_MAGNITUDE,
-			MOVE_TOXIC,
+			MOVE_EARTHQUAKE,
+			MOVE_FIRE_BLAST,
 			MOVE_REST,
+			MOVE_SLEEP_TALK,
 		},
 	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3ZU | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_OBLIVIOUS,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_SASSY,
-		.moves=
-		{
-			MOVE_EMBER,
-			MOVE_MAGNITUDE,
-			MOVE_ROCK_SLIDE,
-			MOVE_REST,
-		},
-	}
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_CAMERUPT
-#define MON_FLAGS_SPECIES_CAMERUPT (APPEND_MON_FLAGS_SPECIES_CAMERUPT | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_CAMERUPT (APPEND_MON_FLAGS_SPECIES_CAMERUPT | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_CAMERUPT (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_CAMERUPT (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_CAMERUPT[] = 
@@ -36652,22 +36149,6 @@ static u16 const sTutorMoves_SPECIES_SPHEAL[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SPHEAL[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_THICK_FAT,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_AURORA_BEAM,
-			MOVE_BODY_SLAM,
-			MOVE_CHARM,
-			MOVE_RAIN_DANCE,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_SEALEO
@@ -36746,40 +36227,40 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SEALEO[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_THICK_FAT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_AURORA_BEAM,
-			MOVE_BODY_SLAM,
 			MOVE_SURF,
-			MOVE_SLEEP_TALK,
+			MOVE_ICE_BEAM,
+			MOVE_ENCORE,
+			MOVE_SUBSTITUTE,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_THICK_FAT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BOLD,
 		.moves=
 		{
-			MOVE_AURORA_BEAM,
-			MOVE_BODY_SLAM,
-			MOVE_EARTHQUAKE,
-			MOVE_CURSE,
+			MOVE_ICE_BEAM,
+			MOVE_SURF,
+			MOVE_PROTECT,
+			MOVE_ENCORE,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_WALREIN
-#define MON_FLAGS_SPECIES_WALREIN (APPEND_MON_FLAGS_SPECIES_WALREIN | MON_FLAGS_GEN3OU | MON_FLAGS_GEN31V1)
+#define MON_FLAGS_SPECIES_WALREIN (APPEND_MON_FLAGS_SPECIES_WALREIN | MON_FLAGS_GEN3UU | MON_FLAGS_GEN31V1)
 #else
-#define MON_FLAGS_SPECIES_WALREIN (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN31V1)
+#define MON_FLAGS_SPECIES_WALREIN (0 | MON_FLAGS_GEN3UU | MON_FLAGS_GEN31V1)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_WALREIN[] = 
@@ -36999,32 +36480,47 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CACNEA[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_SAND_VEIL,
+		.hiddenPowerType=TYPE_WATER,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_SPIKES,
+			MOVE_GIGA_DRAIN,
+			MOVE_THUNDER_PUNCH,
+			MOVE_HIDDEN_POWER,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_SAND_VEIL,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_MODEST,
+		.moves=
+		{
+			MOVE_SPIKES,
+			MOVE_HIDDEN_POWER,
+			MOVE_ENCORE,
+			MOVE_DESTINY_BOND,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SAND_VEIL,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_LEECH_SEED,
-			MOVE_SAND_ATTACK,
-			MOVE_SUBSTITUTE,
-			MOVE_RETURN,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SAND_VEIL,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_LEECH_SEED,
-			MOVE_SAND_ATTACK,
-			MOVE_THUNDER_PUNCH,
-			MOVE_FOCUS_PUNCH,
+			MOVE_SPIKES,
+			MOVE_DESTINY_BOND,
+			MOVE_GIGA_DRAIN,
+			MOVE_ENCORE,
 		},
 	},
 };
@@ -37255,40 +36751,55 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SNORUNT[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SALAC_BERRY,
 		.ability=ABILITY_INNER_FOCUS,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_POWDER_SNOW,
-			MOVE_BITE,
-			MOVE_SING,
 			MOVE_SPIKES,
+			MOVE_ICE_BEAM,
+			MOVE_HIDDEN_POWER,
+			MOVE_ENDURE,
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_INNER_FOCUS,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_SPIKES,
+			MOVE_ICE_BEAM,
+			MOVE_HIDDEN_POWER,
+			MOVE_TOXIC,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INNER_FOCUS,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_POWDER_SNOW,
-			MOVE_BITE,
+			MOVE_SPIKES,
+			MOVE_ICE_BEAM,
+			MOVE_CRUNCH,
 			MOVE_TOXIC,
-			MOVE_WATER_PULSE,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_GLALIE
-#define MON_FLAGS_SPECIES_GLALIE (APPEND_MON_FLAGS_SPECIES_GLALIE | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3NU)
+#define MON_FLAGS_SPECIES_GLALIE (APPEND_MON_FLAGS_SPECIES_GLALIE | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3NU)
 #else
-#define MON_FLAGS_SPECIES_GLALIE (0 | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3NU)
+#define MON_FLAGS_SPECIES_GLALIE (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3NU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_GLALIE[] = 
@@ -37796,32 +37307,47 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SPOINK[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_THICK_FAT,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_PSYBEAM,
-			MOVE_CONFUSE_RAY,
 			MOVE_CALM_MIND,
-			MOVE_ICY_WIND,
+			MOVE_SUBSTITUTE,
+			MOVE_PSYCHIC,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_THICK_FAT,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_TIMID,
 		.moves=
 		{
-			MOVE_PSYBEAM,
-			MOVE_CONFUSE_RAY,
 			MOVE_SUBSTITUTE,
-			MOVE_SHOCK_WAVE,
+			MOVE_CALM_MIND,
+			MOVE_PSYCHIC,
+			MOVE_HIDDEN_POWER,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_LUM_BERRY,
+		.ability=ABILITY_THICK_FAT,
+		.hiddenPowerType=TYPE_FIRE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_TIMID,
+		.moves=
+		{
+			MOVE_CALM_MIND,
+			MOVE_TAUNT,
+			MOVE_PSYCHIC,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 };
@@ -38448,35 +37974,19 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEDITITE
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_PURE_POWER,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_FLYING,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_MEDITATE,
-			MOVE_CONFUSION,
-			MOVE_BATON_PASS,
-			MOVE_ROCK_TOMB,
+			MOVE_HI_JUMP_KICK,
+			MOVE_RETURN,
+			MOVE_SHADOW_BALL,
+			MOVE_HIDDEN_POWER,
 		},
 	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_PURE_POWER,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_SWAGGER,
-			MOVE_CONFUSION,
-			MOVE_SUBSTITUTE,
-			MOVE_FAKE_OUT,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_MEDICHAM
@@ -38720,36 +38230,6 @@ static u16 const sTutorMoves_SPECIES_SWABLU[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SWABLU[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_NATURAL_CURE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_CALM,
-		.moves=
-		{
-			MOVE_SING,
-			MOVE_FURY_ATTACK,
-			MOVE_ICE_BEAM,
-			MOVE_REST,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3UU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_NATURAL_CURE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_CALM,
-		.moves=
-		{
-			MOVE_SING,
-			MOVE_FURY_ATTACK,
-			MOVE_TOXIC,
-			MOVE_AERIAL_ACE,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_ALTARIA
@@ -38996,10 +38476,10 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DUSKULL[
 		.nature=NATURE_IMPISH,
 		.moves=
 		{
-			MOVE_NIGHT_SHADE,
+			MOVE_WILL_O_WISP,
+			MOVE_MEMENTO,
+			MOVE_PAIN_SPLIT,
 			MOVE_CONFUSE_RAY,
-			MOVE_REST,
-			MOVE_ICE_BEAM,
 		},
 	},
 	{
@@ -39011,18 +38491,48 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DUSKULL[
 		.nature=NATURE_BOLD,
 		.moves=
 		{
+			MOVE_REST,
+			MOVE_SLEEP_TALK,
+			MOVE_WILL_O_WISP,
 			MOVE_NIGHT_SHADE,
-			MOVE_CONFUSE_RAY,
-			MOVE_CALM_MIND,
-			MOVE_PSYCHIC,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_LEVITATE,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_RELAXED,
+		.moves=
+		{
+			MOVE_SHADOW_BALL,
+			MOVE_ICY_WIND,
+			MOVE_THIEF,
+			MOVE_MEMENTO,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_LEVITATE,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_SASSY,
+		.moves=
+		{
+			MOVE_SHADOW_BALL,
+			MOVE_WILL_O_WISP,
+			MOVE_THIEF,
+			MOVE_MEMENTO,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_DUSCLOPS
-#define MON_FLAGS_SPECIES_DUSCLOPS (APPEND_MON_FLAGS_SPECIES_DUSCLOPS | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU | MON_FLAGS_GEN31V1)
+#define MON_FLAGS_SPECIES_DUSCLOPS (APPEND_MON_FLAGS_SPECIES_DUSCLOPS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU | MON_FLAGS_GEN31V1)
 #else
-#define MON_FLAGS_SPECIES_DUSCLOPS (0 | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU | MON_FLAGS_GEN31V1)
+#define MON_FLAGS_SPECIES_DUSCLOPS (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU | MON_FLAGS_GEN31V1)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_DUSCLOPS[] = 
@@ -39457,32 +38967,92 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VIGOROTH
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_VITAL_SPIRIT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_CAREFUL,
 		.moves=
 		{
-			MOVE_FURY_SWIPES,
-			MOVE_ENCORE,
-			MOVE_AERIAL_ACE,
-			MOVE_BRICK_BREAK,
+			MOVE_RETURN,
+			MOVE_EARTHQUAKE,
+			MOVE_SLACK_OFF,
+			MOVE_BULK_UP,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SALAC_BERRY,
 		.ability=ABILITY_VITAL_SPIRIT,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
-		.nature=NATURE_CAREFUL,
+		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_FURY_SWIPES,
-			MOVE_ENCORE,
-			MOVE_BULK_UP,
+			MOVE_ENDURE,
+			MOVE_FLAIL,
+			MOVE_REVERSAL,
 			MOVE_SHADOW_BALL,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_CHOICE_BAND,
+		.ability=ABILITY_VITAL_SPIRIT,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_RETURN,
+			MOVE_EARTHQUAKE,
+			MOVE_SHADOW_BALL,
+			MOVE_FOCUS_PUNCH,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_SALAC_BERRY,
+		.ability=ABILITY_VITAL_SPIRIT,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_SUBSTITUTE,
+			MOVE_BULK_UP,
+			MOVE_FOCUS_PUNCH,
+			MOVE_FLAIL,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_VITAL_SPIRIT,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_JOLLY,
+		.moves=
+		{
+			MOVE_TAUNT,
+			MOVE_RETURN,
+			MOVE_EARTHQUAKE,
+			MOVE_SHADOW_BALL,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_SALAC_BERRY,
+		.ability=ABILITY_VITAL_SPIRIT,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_EARTHQUAKE,
+			MOVE_SHADOW_BALL,
+			MOVE_RETURN,
+			MOVE_BULK_UP,
 		},
 	},
 };
@@ -40159,32 +39729,17 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LOUDRED[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_SOUNDPROOF,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_NAUGHTY,
 		.moves=
 		{
-			MOVE_POUND,
-			MOVE_ASTONISH,
-			MOVE_ICE_BEAM,
-			MOVE_BRICK_BREAK,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_SOUNDPROOF,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_NAUGHTY,
-		.moves=
-		{
-			MOVE_POUND,
-			MOVE_ASTONISH,
+			MOVE_RETURN,
 			MOVE_SHADOW_BALL,
-			MOVE_FLAMETHROWER,
+			MOVE_EARTHQUAKE,
+			MOVE_FIRE_BLAST,
 		},
 	},
 };
@@ -40306,9 +39861,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EXPLOUD[
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_CLAMPERL
-#define MON_FLAGS_SPECIES_CLAMPERL (APPEND_MON_FLAGS_SPECIES_CLAMPERL | MON_FLAGS_GEN3PU | MON_FLAGS_GEN3ZU)
+#define MON_FLAGS_SPECIES_CLAMPERL (APPEND_MON_FLAGS_SPECIES_CLAMPERL | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3PU | MON_FLAGS_GEN3ZU)
 #else
-#define MON_FLAGS_SPECIES_CLAMPERL (0 | MON_FLAGS_GEN3PU | MON_FLAGS_GEN3ZU)
+#define MON_FLAGS_SPECIES_CLAMPERL (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3PU | MON_FLAGS_GEN3ZU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_CLAMPERL[] = 
@@ -40360,32 +39915,63 @@ static u16 const sTutorMoves_SPECIES_CLAMPERL[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLAMPERL[] = 
 {
 	{
-		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3OU),
+		.heldItem=ITEM_DEEP_SEA_TOOTH,
 		.ability=ABILITY_SHELL_ARMOR,
 		.hiddenPowerType=TYPE_ELECTRIC,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_MODEST,
 		.moves=
 		{
-			MOVE_CLAMP,
-			MOVE_IRON_DEFENSE,
-			MOVE_RAIN_DANCE,
+			MOVE_SURF,
+			MOVE_ICE_BEAM,
+			MOVE_HIDDEN_POWER,
 			MOVE_TOXIC,
 		},
 	},
 	{
-		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3OU),
+		.heldItem=ITEM_DEEP_SEA_SCALE,
 		.ability=ABILITY_SHELL_ARMOR,
-		.hiddenPowerType=TYPE_GRASS,
+		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_BOLD,
 		.moves=
 		{
-			MOVE_CLAMP,
-			MOVE_IRON_DEFENSE,
+			MOVE_BARRIER,
+			MOVE_REST,
+			MOVE_SLEEP_TALK,
+			MOVE_TOXIC,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_DEEP_SEA_TOOTH,
+		.ability=ABILITY_SHELL_ARMOR,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_MODEST,
+		.moves=
+		{
+			MOVE_SURF,
+			MOVE_ICE_BEAM,
 			MOVE_HIDDEN_POWER,
+			MOVE_SUBSTITUTE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_DEEP_SEA_TOOTH,
+		.ability=ABILITY_SHELL_ARMOR,
+		.hiddenPowerType=TYPE_GRASS,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_MODEST,
+		.moves=
+		{
+			MOVE_SURF,
+			MOVE_HIDDEN_POWER,
+			MOVE_ICE_BEAM,
+			MOVE_SUBSTITUTE,
 		},
 	},
 };
@@ -40597,9 +40183,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GOREBYSS
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_ABSOL
-#define MON_FLAGS_SPECIES_ABSOL (APPEND_MON_FLAGS_SPECIES_ABSOL | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_ABSOL (APPEND_MON_FLAGS_SPECIES_ABSOL | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_ABSOL (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_ABSOL (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_ABSOL[] = 
@@ -40802,31 +40388,17 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHUPPET[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_INSOMNIA,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_NIGHT_SHADE,
-			MOVE_CURSE,
-			MOVE_THUNDERBOLT,
-			MOVE_RETURN,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_INSOMNIA,
 		.hiddenPowerType=TYPE_FIGHTING,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_NIGHT_SHADE,
-			MOVE_CURSE,
+			MOVE_SHADOW_BALL,
 			MOVE_HIDDEN_POWER,
+			MOVE_SUBSTITUTE,
+			MOVE_THUNDER_WAVE,
 		},
 	},
 };
@@ -41466,19 +41038,34 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ARON[] =
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_ROCK_HEAD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_TAKE_DOWN,
-			MOVE_METAL_CLAW,
-			MOVE_ROCK_TOMB,
-			MOVE_DIG,
-		}
-	}
+			MOVE_PROTECT,
+			MOVE_DOUBLE_EDGE,
+			MOVE_ROCK_SLIDE,
+			MOVE_EARTHQUAKE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_ROCK_HEAD,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_ROCK_SLIDE,
+			MOVE_EARTHQUAKE,
+			MOVE_DOUBLE_EDGE,
+			MOVE_SUBSTITUTE,
+		},
+	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_LAIRON
@@ -41552,41 +41139,71 @@ static u16 const sTutorMoves_SPECIES_LAIRON[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LAIRON[] = 
 {
 	{
-		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_ROCK_HEAD,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_ROCK,
 		.teraType=TYPE_NONE,
-		.nature=NATURE_ADAMANT,
+		.nature=NATURE_CAREFUL,
 		.moves=
 		{
-			MOVE_TAKE_DOWN,
-			MOVE_IRON_TAIL,
-			MOVE_ROCK_SLIDE,
-			MOVE_EARTHQUAKE,
-		}
+			MOVE_HIDDEN_POWER,
+			MOVE_TOXIC,
+			MOVE_ROAR,
+			MOVE_PROTECT,
+		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_CHOICE_BAND,
+		.ability=ABILITY_ROCK_HEAD,
+		.hiddenPowerType=TYPE_ROCK,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_HIDDEN_POWER,
+			MOVE_IRON_TAIL,
+			MOVE_EARTHQUAKE,
+			MOVE_DOUBLE_EDGE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_CHOICE_BAND,
 		.ability=ABILITY_ROCK_HEAD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_TAKE_DOWN,
 			MOVE_IRON_TAIL,
 			MOVE_ROCK_SLIDE,
-			MOVE_TOXIC,
+			MOVE_EARTHQUAKE,
+			MOVE_DOUBLE_EDGE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_ROCK_HEAD,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_IRON_TAIL,
+			MOVE_ROCK_SLIDE,
+			MOVE_EARTHQUAKE,
+			MOVE_PROTECT,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_AGGRON
-#define MON_FLAGS_SPECIES_AGGRON (APPEND_MON_FLAGS_SPECIES_AGGRON | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_AGGRON (APPEND_MON_FLAGS_SPECIES_AGGRON | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
-#define MON_FLAGS_SPECIES_AGGRON (0 | MON_FLAGS_GEN3UU)
+#define MON_FLAGS_SPECIES_AGGRON (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_AGGRON[] = 
@@ -42232,40 +41849,40 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LILEEP[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SUCTION_CUPS,
-		.hiddenPowerType=TYPE_NONE,
+		.hiddenPowerType=TYPE_GRASS,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_RELAXED,
 		.moves=
 		{
-			MOVE_ACID,
-			MOVE_ASTONISH,
-			MOVE_RECOVER,		
-			MOVE_TOXIC,
+			MOVE_RECOVER,
+			MOVE_ROCK_SLIDE,
+			MOVE_MIRROR_COAT,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SUCTION_CUPS,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
-		.nature=NATURE_RELAXED,
+		.nature=NATURE_CAREFUL,
 		.moves=
 		{
-			MOVE_ACID,
-			MOVE_ASTONISH,
 			MOVE_RECOVER,
+			MOVE_ROCK_SLIDE,
 			MOVE_GIGA_DRAIN,
+			MOVE_TOXIC,
 		},
 	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_CRADILY
-#define MON_FLAGS_SPECIES_CRADILY (APPEND_MON_FLAGS_SPECIES_CRADILY | MON_FLAGS_GEN3UU | MON_FLAGS_GEN31V1)
+#define MON_FLAGS_SPECIES_CRADILY (APPEND_MON_FLAGS_SPECIES_CRADILY | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU | MON_FLAGS_GEN31V1)
 #else
-#define MON_FLAGS_SPECIES_CRADILY (0 | MON_FLAGS_GEN3UU | MON_FLAGS_GEN31V1)
+#define MON_FLAGS_SPECIES_CRADILY (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU | MON_FLAGS_GEN31V1)
 #endif
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_CRADILY[] = 
@@ -42480,32 +42097,77 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ANORITH[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3PU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LUM_BERRY,
 		.ability=ABILITY_BATTLE_ARMOR,
 		.hiddenPowerType=TYPE_BUG,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_METAL_CLAW,
-			MOVE_WATER_GUN,
 			MOVE_SWORDS_DANCE,
-			MOVE_DIG,
+			MOVE_HIDDEN_POWER,
+			MOVE_ROCK_SLIDE,
+			MOVE_BRICK_BREAK,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3ZU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SALAC_BERRY,
 		.ability=ABILITY_BATTLE_ARMOR,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_METAL_CLAW,
-			MOVE_WATER_GUN,
-			MOVE_TOXIC,
-			MOVE_ROCK_TOMB,
+			MOVE_SWORDS_DANCE,
+			MOVE_ROCK_SLIDE,
+			MOVE_BRICK_BREAK,
+			MOVE_SUBSTITUTE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3ZU),
+		.heldItem=ITEM_CHOICE_BAND,
+		.ability=ABILITY_BATTLE_ARMOR,
+		.hiddenPowerType=TYPE_BUG,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_ROCK_SLIDE,
+			MOVE_BRICK_BREAK,
+			MOVE_HIDDEN_POWER,
+			MOVE_RAPID_SPIN,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_BATTLE_ARMOR,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_JOLLY,
+		.moves=
+		{
+			MOVE_SWORDS_DANCE,
+			MOVE_BRICK_BREAK,
+			MOVE_ROCK_BLAST,
+			MOVE_SUBSTITUTE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_BATTLE_ARMOR,
+		.hiddenPowerType=TYPE_BUG,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_JOLLY,
+		.moves=
+		{
+			MOVE_BRICK_BREAK,
+			MOVE_ROCK_SLIDE,
+			MOVE_SWORDS_DANCE,
+			MOVE_HIDDEN_POWER,
 		},
 	},
 };
@@ -42718,7 +42380,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RALTS[] 
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3LC),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_TRACE,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
@@ -42812,36 +42474,6 @@ static u16 const sTutorMoves_SPECIES_KIRLIA[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KIRLIA[] = 
 {
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_TRACE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_CALM_MIND,
-			MOVE_CONFUSION,
-			MOVE_FIRE_PUNCH,
-			MOVE_THUNDER_PUNCH,
-		},
-	},
-	{
-		.flags= (0 | MON_FLAGS_GEN3OU),
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_TRACE,
-		.hiddenPowerType=TYPE_NONE,
-		.teraType=TYPE_NONE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_CALM_MIND,
-			MOVE_CONFUSION,
-			MOVE_ICE_PUNCH,
-			MOVE_WILL_O_WISP,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_GARDEVOIR
@@ -43068,6 +42700,36 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BAGON[] 
 			MOVE_HYDRO_PUMP,
 		},
 	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_ROCK_HEAD,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_CAREFUL,
+		.moves=
+		{
+			MOVE_DOUBLE_EDGE,
+			MOVE_BRICK_BREAK,
+			MOVE_HIDDEN_POWER,
+			MOVE_DRAGON_DANCE,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3LC),
+		.heldItem=ITEM_SITRUS_BERRY,
+		.ability=ABILITY_ROCK_HEAD,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_DRAGON_DANCE,
+			MOVE_DOUBLE_EDGE,
+			MOVE_HIDDEN_POWER,
+			MOVE_SUBSTITUTE,
+		},
+	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_SHELGON
@@ -43143,35 +42805,79 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHELGON[
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_ROCK_HEAD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_DRAGON_BREATH,
-			MOVE_BITE,
-			MOVE_TOXIC,
 			MOVE_DRAGON_DANCE,
+			MOVE_DOUBLE_EDGE,
+			MOVE_ROCK_SLIDE,
+			MOVE_BRICK_BREAK,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_ROCK_HEAD,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_IMPISH,
+		.moves=
+		{
+			MOVE_WISH,
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+			MOVE_BODY_SLAM,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_ROCK_HEAD,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_JOLLY,
 		.moves=
 		{
-			MOVE_DRAGON_BREATH,
-			MOVE_HEADBUTT,
-			MOVE_FLAMETHROWER,
+			MOVE_DOUBLE_EDGE,
+			MOVE_DRAGON_DANCE,
+			MOVE_BRICK_BREAK,
 			MOVE_ROCK_SLIDE,
 		},
 	},
-
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_ROCK_HEAD,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_IMPISH,
+		.moves=
+		{
+			MOVE_WISH,
+			MOVE_PROTECT,
+			MOVE_ROAR,
+			MOVE_BODY_SLAM,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3PU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_ROCK_HEAD,
+		.hiddenPowerType=TYPE_GHOST,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_JOLLY,
+		.moves=
+		{
+			MOVE_DRAGON_DANCE,
+			MOVE_DOUBLE_EDGE,
+			MOVE_BRICK_BREAK,
+			MOVE_HIDDEN_POWER,
+		},
+	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_SALAMENCE
@@ -43458,35 +43164,64 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_METANG[]
 {
 	{
 		.flags= (0 | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_CLEAR_BODY,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_IMPISH,
 		.moves=
 		{
-			MOVE_METAL_CLAW,
-			MOVE_PSYCHIC,
+			MOVE_METEOR_MASH,
 			MOVE_EARTHQUAKE,
 			MOVE_TOXIC,
+			MOVE_PROTECT,
 		},
 	},
 	{
 		.flags= (0 | MON_FLAGS_GEN3NU),
-		.heldItem=ITEM_ORAN_BERRY,
+		.heldItem=ITEM_LEFTOVERS,
 		.ability=ABILITY_CLEAR_BODY,
 		.hiddenPowerType=TYPE_NONE,
 		.teraType=TYPE_NONE,
 		.nature=NATURE_ADAMANT,
 		.moves=
 		{
-			MOVE_METAL_CLAW,
-			MOVE_PSYCHIC,
-			MOVE_PROTECT,
-			MOVE_BRICK_BREAK,
+			MOVE_METEOR_MASH,
+			MOVE_EARTHQUAKE,
+			MOVE_EXPLOSION,
+			MOVE_AGILITY,
 		},
 	},
-
+	{
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_CHOICE_BAND,
+		.ability=ABILITY_CLEAR_BODY,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_METEOR_MASH,
+			MOVE_EARTHQUAKE,
+			MOVE_EXPLOSION,
+			MOVE_SLEEP_TALK,
+		},
+	},
+	{
+		.flags= (0 | MON_FLAGS_GEN3NU),
+		.heldItem=ITEM_LEFTOVERS,
+		.ability=ABILITY_CLEAR_BODY,
+		.hiddenPowerType=TYPE_NONE,
+		.teraType=TYPE_NONE,
+		.nature=NATURE_ADAMANT,
+		.moves=
+		{
+			MOVE_METEOR_MASH,
+			MOVE_EXPLOSION,
+			MOVE_EARTHQUAKE,
+			MOVE_TOXIC,
+		},
+	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_METAGROSS

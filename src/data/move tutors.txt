@@ -1,0 +1,21 @@
+Body Slam
+Counter
+Double-Edge
+Explosion
+Mega Kick
+Mega Punch
+Rock Slide
+Seismic Toss
+Blast Burn
+Frenzy Plant
+Hydro Cannon
+DynamicPunch
+Fury Cutter
+Rollout
+Swift
+Icy Wind
+Ice Punch
+ThunderPunch
+Fire Punch
+Sky Attack
+Selfdestruct
