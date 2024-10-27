@@ -32,7 +32,9 @@ struct TrainerHeldItemScratch
 {
     bool8 hasLeftovers : 1;
     bool8 hasShellbell : 1;
-    bool8 hasChoiceItem : 1;
+    bool8 hasChoiceItem : 1; 
+	bool8 hasBerry : 1; // Use for Oran, Lum, Sitrus, Chesto 
+	//bool8 hasTypeItem : 1; 
 #ifdef ROGUE_EXPANSION
     bool8 hasBlackSludge : 1;
     bool8 hasMegaStone : 1;
@@ -565,38 +567,14 @@ bool8 Rogue_ShouldTrainerSmartSwitch(u16 trainerNum)
 
     case DIFFICULTY_LEVEL_AVERAGE:
         if(Rogue_IsKeyTrainer(trainerNum))
-        {
-            if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-                return TRUE;
-            else
-                return FALSE;
-        }
-        else
-        {
-            if(Rogue_GetCurrentDifficulty() >= ROGUE_ELITE_START_DIFFICULTY)
-                return TRUE;
-            else
-                return FALSE;
-        }
-        break;
+			return TRUE;
+        else if(Rogue_GetCurrentDifficulty() >= 6)
+			return TRUE;
+		else return FALSE; 
+			
+		break;
 
     case DIFFICULTY_LEVEL_HARD:
-        if(Rogue_IsKeyTrainer(trainerNum))
-        {
-            if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_START_DIFFICULTY + 2)
-                return TRUE;
-            else
-                return FALSE;
-        }
-        else
-        {
-            if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-                return TRUE;
-            else
-                return FALSE;
-        }
-        break;
-
     case DIFFICULTY_LEVEL_BRUTAL:
         return TRUE;
     }
@@ -646,7 +624,7 @@ bool8 Rogue_ShouldTrainerTrySetup(u16 trainerNum)
         if(Rogue_IsKeyTrainer(trainerNum))
             return TRUE;
         else
-            return (Rogue_GetCurrentDifficulty() >= ROGUE_ELITE_START_DIFFICULTY);
+            return (Rogue_GetCurrentDifficulty() >= 6);
         break;
 
     case DIFFICULTY_LEVEL_HARD:
@@ -673,7 +651,7 @@ bool8 Rogue_ShouldTrainerBeSmart(u16 trainerNum)
         if(Rogue_IsKeyTrainer(trainerNum))
             return TRUE;
         else
-            return (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 1);
+            return (Rogue_GetCurrentDifficulty() >= 3);
         break;
 
     case DIFFICULTY_LEVEL_HARD:
@@ -861,21 +839,6 @@ static void GetGlobalFilter(u8 difficulty, struct TrainerFliter* filter)
 #ifdef ROGUE_EXPANSION
     if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_SINNOH))
         filter->trainerFlagsInclude |= TRAINER_FLAG_REGION_SINNOH;
-
-    if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_UNOVA))
-        filter->trainerFlagsInclude |= TRAINER_FLAG_REGION_UNOVA;
-
-    if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_KALOS))
-        filter->trainerFlagsInclude |= TRAINER_FLAG_REGION_KALOS;
-
-    if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_ALOLA))
-        filter->trainerFlagsInclude |= TRAINER_FLAG_REGION_ALOLA;
-
-    if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_GALAR))
-        filter->trainerFlagsInclude |= TRAINER_FLAG_REGION_GALAR;
-
-    if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_PALDEA))
-        filter->trainerFlagsInclude |= TRAINER_FLAG_REGION_PALDEA;
 #endif
 
     if(Rogue_GetModeRules()->trainerOrder == TRAINER_ORDER_RAINBOW)
@@ -1625,6 +1588,7 @@ static u8 CalculateMonFixedIV(u16 trainerNum)
 {
     u8 fixedIV = 0;
 
+	// we're removing enemy AI advantage so to compensate, increase their IVs 
     switch (Rogue_GetConfigRange(CONFIG_RANGE_TRAINER))
     {
     case DIFFICULTY_LEVEL_EASY:
@@ -1632,19 +1596,15 @@ static u8 CalculateMonFixedIV(u16 trainerNum)
         if(Rogue_IsKeyTrainer(trainerNum))
         {
             if(Rogue_GetCurrentDifficulty() >= ROGUE_CHAMP_START_DIFFICULTY)
-                fixedIV = 20;
+                fixedIV = 30;
             else if(Rogue_GetCurrentDifficulty() >= ROGUE_ELITE_START_DIFFICULTY)
-                fixedIV = 15;
-            else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-                fixedIV = 10;
-            else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 1)
-                fixedIV = 8;
+                fixedIV = 25;
             else
-                fixedIV = 0;
+                fixedIV = 20;
         }
         else
         {
-            fixedIV = 0;
+            fixedIV = 15;
         }
         break;
 
@@ -1732,14 +1692,10 @@ static u8 ShouldTrainerOptimizeCoverage(u16 trainerNum)
         if(Rogue_IsRivalTrainer(trainerNum))
             return TRUE;
         else if(Rogue_IsKeyTrainer(trainerNum))
-        {
-            if(difficulty >= ROGUE_ELITE_START_DIFFICULTY - 2)
-                return TRUE;
-            else
-                return FALSE;
-        }
+			return TRUE;
         else
         {
+			if(difficulty >= 8) 
             // Misc trainers just have any mons they can
             return FALSE;
         }
@@ -1896,7 +1852,7 @@ static bool8 ShouldTrainerUseValidNatures(u16 trainerNum)
         return FALSE;
 
     case DIFFICULTY_LEVEL_AVERAGE:
-        if(difficulty >= ROGUE_FINAL_CHAMP_DIFFICULTY)
+        if(difficulty >= ROGUE_ELITE_START_DIFFICULTY)
             return TRUE;
         return FALSE;
 
@@ -3334,6 +3290,13 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
             outPreset->heldItem = ITEM_NONE;
         }
         
+		if(outPreset->heldItem == ITEM_ORAN_BERRY && scratch->heldItems.hasBerry)
+        {
+            // Swap shell bell to NONE (i.e. berry)
+            outPreset->heldItem = ITEM_NONE;
+        }
+		
+		
         if(IsChoiceItem(outPreset->heldItem) && scratch->heldItems.hasChoiceItem)
         {
             // Swap choice items for weaker versions
@@ -3358,7 +3321,18 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
                 break;
             }
         }
-
+        
+		if(outPreset->heldItem == ITEM_SITRUS_BERRY && scratch->heldItems.hasShellbell)
+        {
+            // Swap shell bell to NONE (i.e. berry)
+            outPreset->heldItem = ITEM_NONE;
+        }      
+		
+		if(outPreset->heldItem == ITEM_SHELL_BELL && scratch->heldItems.hasShellbell)
+        {
+            // Swap shell bell to NONE (i.e. berry)
+            outPreset->heldItem = ITEM_NONE;
+        }
 #ifdef ROGUE_EXPANSION
         if(outPreset->heldItem == ITEM_BLACK_SLUDGE && scratch->heldItems.hasBlackSludge)
         {
@@ -3396,8 +3370,8 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
         //
         if(outPreset->heldItem == ITEM_NONE)
         {
-            // Swap empty item to a berry either lum or sitrus
-            outPreset->heldItem = RogueRandomRange(2, FLAG_SET_SEED_TRAINERS) == 0 ? ITEM_LUM_BERRY : ITEM_SITRUS_BERRY;
+            // Swap empty item to a starf berry rather than lum or sitrus 
+            outPreset->heldItem = ITEM_STARF_BERRY;
         }
         else if(outPreset->heldItem == ITEM_LEFTOVERS)
         {
@@ -3411,6 +3385,12 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
         {
             scratch->heldItems.hasChoiceItem = TRUE;
         }
+		
+		else if(outPreset->heldItem == ITEM_ORAN_BERRY)
+        {
+            scratch->heldItems.hasBerry = TRUE;
+        }
+		
 #ifdef ROGUE_EXPANSION
         else if(outPreset->heldItem == ITEM_BLACK_SLUDGE)
         {
