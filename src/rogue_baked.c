@@ -1184,7 +1184,10 @@ u16 Rogue_GetPrice(u16 itemId)
 
     if(Rogue_IsEvolutionItem(itemId))
     {
-        price = 2100;
+		if (itemId == ITEM_MOON_STONE)
+			price = 1400; 
+        else 
+			price = 2100;
         applyDefaultHubIncrease = FALSE;
     }
 

@@ -53,8 +53,9 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ZUBAT", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ZUBAT", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR",
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -86,8 +87,20 @@
                     [
                         {
                             "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "FLYING" ], 
+							"exclude_types": [ "BUG" ] 
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+							"exclude_types": [ "FLYING", "NORMAL" ] 
+                        },
+						{
+                            "is_diversity_subset": true,
                             "max_samples": 4,
-                            "include_types": [ "FLYING", "NORMAL" ]
+                            "include_types": [ "FLYING" ], 
+							"exclude_types": [ "BUG", "WATER" ] 
                         },
                         {
                             "max_samples": 6,
@@ -97,8 +110,9 @@
                     "weight_script":
                     [
                         "HAS_TYPE", "TYPE_NORMAL", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_PIDGEY", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_PIDGEY", "INC_FAVOUR", "INC_FAVOUR",
                         "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR",
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -123,10 +137,20 @@
                 {
                     "subsets":
                     [
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "BUG" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+							"exclude_types": [ "BUG", "POISON", "FLYING" ]
+                        },
                         {
                             "is_diversity_subset": true,
                             "max_samples": 4,
-                            "include_types": [ "BUG", "FIGHTING" ]
+                            "include_types": [ "BUG" ]
                         },
                         {
                             "max_samples": 6,
@@ -135,8 +159,11 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_SCYTHER", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_TYPE", "TYPE_FLYING", "INC_FAVOUR",
+						"HAS_TYPE", "TYPE_POISON", "INC_FAVOUR",
+						"EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_SCYTHER", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -162,16 +189,22 @@
                 {
                     "subsets":
                     [
-                        {
+						{
                             "is_diversity_subset": true,
-                            "max_samples": 3,
-                            "include_types": [ "NORMAL", "DARK" ],
+                            "max_samples": 1,
+                            "include_types": [ "NORMAL"],
                             "exclude_types": [ "FLYING" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "exclude_types": [ "NORMAL" ]
                         },
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 6,
-                            "include_types": [ "NORMAL", "DARK" ]
+                            "max_samples": 3,
+                            "include_types": [ "NORMAL"],
+                            "exclude_types": [ "FLYING" ]
                         },
                         {
                             "max_samples": 6,
@@ -181,8 +214,13 @@
                     ],
                     "weight_script":
                     [
+						"HAS_TYPE", "TYPE_WATER", "INC_FAVOUR",
+						"HAS_TYPE", "TYPE_GRASS", "INC_FAVOUR",
+						"HAS_TYPE", "TYPE_PSYCHIC", "INC_FAVOUR",
+						"HAS_TYPE", "TYPE_GROUND", "INC_FAVOUR",
                         "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MILTANK", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
                         "IS_MONO_TYPE", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -208,16 +246,20 @@
                 {
                     "subsets":
                     [
-                        {
+						{
                             "is_diversity_subset": true,
-                            "max_samples": 4,
-                            "include_types": [ "GHOST" ],
-                            "exclude_types": [ "POISON" ]
+                            "max_samples": 1,
+                            "include_types": [ "GHOST" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+							"exclude_types": [ "GHOST" ]
                         },
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 2,
-                            "include_types": [ "GHOST", "DARK", "POISON" ]
+                            "max_samples": 3,
+                            "include_types": [ "GHOST" ]
                         },
                         {
                             "max_samples": 2,
@@ -231,8 +273,9 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MISDREAVUS", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_GASTLY", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR",
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -258,6 +301,16 @@
                 {
                     "subsets":
                     [
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+							"include_types": [ "FIGHTING" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+							"exclude_types": [ "FIGHTING" ]
+                        },
                         {
                             "max_samples": 6,
                             "include_types": [ "FIGHTING" ]
@@ -265,10 +318,10 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_POLIWAG", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_POLIWAG", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
-                        "IS_MONO_TYPE", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -295,8 +348,23 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 5,
-                            "include_types": [ "STEEL", "ELECTRIC" ]
+                            "max_samples": 2,
+                            "include_types": [ "STEEL" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "ELECTRIC" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+							"exclude_types": [ "ELECTRIC", "STEEL" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "ELECTRIC", "STEEL" ]
                         },
                         {
                             "max_samples": 6,
@@ -314,7 +382,9 @@
                     "weight_script":
                     [
                         "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ONIX", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR",
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
+						"HAS_TYPE", "TYPE_ELECTRIC", "DEC_FAVOUR", 
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -342,9 +412,23 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 4,
-                            "include_types": [ "ICE", "GROUND" ],
-                            "exclude_types": [ "WATER" ]
+                            "max_samples": 2,
+                            "include_types": [ "ICE" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "GROUND" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+							"exclude_types": [ "ICE", "GROUND" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "ICE", "GROUND" ]
                         },
                         {
                             "max_samples": 6,
@@ -359,7 +443,9 @@
                     "weight_script":
                     [
                         "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_SWINUB", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
+						"HAS_TYPE", "TYPE_WATER", "INC_FAVOUR",
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -390,20 +476,24 @@
                             "is_diversity_subset": true,
                             "max_samples": 2,
                             "include_types": [ "DRAGON" ],
-                            "exclude_types": [ "FLYING" ]
+							"exclude_types": [ "FLYING" ]
                         },
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 2,
-                            "include_types": [ "DRAGON", "WATER" ],
-                            "exclude_types": [ "FLYING" ]
+                            "max_samples": 1,
+                            "include_types": [ "WATER" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+							"exclude_types": [ "WATER", "DRAGON" ]
                         },
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 4,
+                            "max_samples": 1,
                             "include_types": [ "DRAGON", "WATER" ]
                         },
-                        {
+						{
                             "max_samples": 5,
                             "include_types": [ "DRAGON" ]
                         },
@@ -414,10 +504,10 @@
                     ],
                     "weight_script":
                     [
-                        "HAS_TYPE", "TYPE_WATER", "INC_FAVOUR",
-                        "HAS_TYPE", "TYPE_FIRE", "DEC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_HORSEA", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_TYPE", "TYPE_DRAGON", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_HORSEA", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -449,10 +539,14 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 5,
-                            "include_types": [ "PSYCHIC", "GHOST" ],
-                            "exclude_types": [ "POISON"]
+                            "max_samples": 3,
+                            "include_types": [ "PSYCHIC" ]
                         },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 3,
+							"exclude_types": [ "PSYCHIC" ] 
+						},
                         {
                             "max_samples": 5,
                             "include_types": [ "PSYCHIC" ]
@@ -465,8 +559,9 @@
                     "weight_script":
                     [
                         "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_NATU", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
-                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
+						"HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -476,7 +571,7 @@
                 "type_assignment": "POISON",
                 "gfx_suffix": "KANTO_KOGA",
                 "class_flags": [ "BOSS_ELITE_2" ],
-                "shiny_species": "SPECIES_ZUBAT",
+                "shiny_species": "SPECIES_GRIMER",
                 "encounter_text":
                 [
                     {
@@ -493,16 +588,16 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 3,
+                            "max_samples": 4,
                             "include_types": [ "POISON", "BUG" ],
                             "exclude_types": [ "GHOST" ]
+						},
+						{
+							"is_diversity_subset": true,
+							"max_samples": 2,
+							"exclude_types": [ "POISON", "BUG" ] 
                         },
-                        {
-                            "is_diversity_subset": true,
-                            "max_samples": 3,
-                            "include_types": [ "POISON", "FIGHTING" ]
-                        },
-                        {
+						{
                             "max_samples": 6,
                             "include_types": [ "POISON" ]
                         },
@@ -513,10 +608,11 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ZUBAT", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
-                        "IS_MONO_TYPE", "INC_FAVOUR",
-                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_GRIMER", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
+						"HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+						"IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
             },
@@ -543,12 +639,17 @@
                         {
                             "is_diversity_subset": true,
                             "max_samples": 3,
-                            "include_types": [ "FIGHTING", "GROUND" ]
+                            "include_types": [ "FIGHTING" ]
                         },
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 3,
-                            "include_types": [ "FIGHTING", "STEEL" ]
+                            "max_samples": 2,
+                            "include_types": [ "STEEL", "ROCK" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+							"exclude_types": [ "FIGHTING", "STEEL", "ROCK", "GROUND" ]
                         },
                         {
                             "max_samples": 1,
@@ -566,8 +667,10 @@
                     "weight_script":
                     [
                         "HAS_TYPE", "TYPE_FIGHTING", "INC_FAVOUR",
+						"HAS_TYPE", "TYPE_GROUND", "INC_FAVOUR",
                         "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ONIX", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -595,12 +698,19 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 5,
-                            "include_types": [ "DARK", "STEEL" ]
+                            "max_samples": 3,
+                            "include_types": [ "DARK" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 2,
+                            "include_types": [ "GRASS", "GHOST" ],
+							"exclude_types": [ "BUG" ]
                         },
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 2
+                            "max_samples": 2,
+							"exclude_types": [ "DARK", "POISON" ] 
                         },
                         {
                             "max_samples": 6,
@@ -613,9 +723,10 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_EEVEE", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
-                        "IS_MONO_TYPE", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_EEVEE", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 		
+						"HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -630,7 +741,7 @@
                 "gfx_suffix": "KANTO_LANCE",
                 "weather": "NONE",
                 "class_flags": [ "BOSS_CHAMP" ],
-                "shiny_species": "SPECIES_MAGIKARP",
+                "shiny_species": "SPECIES_DRATINI",
                 "encounter_text":
                 [
                     {
@@ -648,20 +759,18 @@
                         {
                             "is_diversity_subset": true,
                             "max_samples": 3,
-                            "include_types": [ "DRAGON", "FLYING" ],
-                            "exclude_types": [ "BUG", "NORMAL" ]
+                            "include_types": [ "DRAGON" ]
                         },
                         {
                             "is_diversity_subset": true,
                             "max_samples": 2,
-                            "include_types": [ "DRAGON" ],
-                            "exclude_types": [ "FLYING" ]
+                            "include_types": [ "FLYING" ],
+                            "exclude_types": [ "BUG" , "NORMAL" ]
                         },
                         {
                             "is_diversity_subset": true,
                             "max_samples": 2,
-                            "include_types": [ "DRAGON", "FLYING" ],
-                            "exclude_types": [ "BUG" ]
+                            "exclude_types": [ "DRAGON" ]
                         },
                         {
                             "max_samples": 1,
@@ -681,8 +790,9 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_DRATINI", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_DRATINI", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
+						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]

@@ -9589,6 +9589,10 @@ static u8 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data)
     u8 pocket = ItemId_GetPocket(itemId);
     u8 weight;
 
+	if (itemid == ITEM_MOON_STONE) 
+		weight = 10;
+		break; 
+
     switch (pocket)
     {
     case POCKET_TM_HM:
@@ -9600,7 +9604,7 @@ static u8 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data)
         break;
 
     case POCKET_STONES:
-        weight = 6;
+		weight = 6;
         break;
 
     case POCKET_MEDICINE:
