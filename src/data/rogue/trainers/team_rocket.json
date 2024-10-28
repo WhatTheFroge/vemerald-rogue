@@ -26,7 +26,7 @@
             ],
             "weight_script":
             [
-                "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
                 "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
             ]
         }
@@ -68,8 +68,8 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MEWTWO", "INC_FAVOUR", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "FORCE_INCLUDE_SPECIES", "SPECIES_MEWTWO",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -141,7 +141,7 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -352,7 +352,7 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -389,7 +389,7 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -426,7 +426,7 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -463,7 +463,7 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -500,7 +500,7 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
@@ -537,7 +537,7 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }

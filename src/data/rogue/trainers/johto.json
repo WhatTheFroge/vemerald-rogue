@@ -641,7 +641,7 @@
                             "max_samples": 3,
                             "include_types": [ "FIGHTING" ]
                         },
-                        {
+						{
                             "is_diversity_subset": true,
                             "max_samples": 2,
                             "include_types": [ "STEEL", "ROCK" ]
@@ -770,7 +770,7 @@
                         {
                             "is_diversity_subset": true,
                             "max_samples": 2,
-                            "exclude_types": [ "DRAGON" ]
+                            "exclude_types": [ "DRAGON", "BUG", "NORMAL" ]
                         },
                         {
                             "max_samples": 1,
@@ -790,6 +790,7 @@
                     ],
                     "weight_script":
                     [
+                        "HAS_TYPE", "TYPE_FLYING", "INC_FAVOUR",
                         "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_DRATINI", "INC_FAVOUR", "INC_FAVOUR",
                         "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
 						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR", 
