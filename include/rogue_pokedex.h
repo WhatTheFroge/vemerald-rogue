@@ -35,6 +35,11 @@ bool8 RoguePokedex_IsSpeciesValidBoxLegendary(u16 species);
 bool8 RoguePokedex_IsSpeciesValidRoamerLegendary(u16 species);
 bool8 RoguePokedex_IsSpeciesRare(u16 species); 
 bool8 RoguePokedex_IsSpeciesUncommon(u16 species); 
+bool8 RoguePokedex_IsSpeciesGood(u16 species);
+bool8 RoguePokedex_IsSpeciesKantoMid(u16 species);
+bool8 RoguePokedex_IsSpeciesJohtoMid(u16 species);
+bool8 RoguePokedex_IsSpeciesHoennMid(u16 species);
+
 
 u8 const* RoguePokedex_GetSpeciesName(u16 species);
 u8 RoguePokedex_GetSpeciesType(u16 species, u8 typeIndex);

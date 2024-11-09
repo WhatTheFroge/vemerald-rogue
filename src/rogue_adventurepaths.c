@@ -727,7 +727,7 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
         validEncounterList[validEncounterCount++] = ADVPATH_ROOM_SHRINE;
 
     // Battle sim
-    if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && GetPathGenerationDifficulty() >= 1 && RogueRandomChance(33, 0))
+    if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && RogueRandomChance(80, 0)) // GetPathGenerationDifficulty() >= 0 && RogueRandomChance(33, 0))
         validEncounterList[validEncounterCount++] = ADVPATH_ROOM_BATTLE_SIM;
 
     {

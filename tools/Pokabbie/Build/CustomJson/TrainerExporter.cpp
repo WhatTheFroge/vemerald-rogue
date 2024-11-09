@@ -20,6 +20,19 @@ static void ExportQueryScriptData_C(TrainerDataExport_C& exporter, std::string c
 static TrainerStrings ExtractTrainerStrings(json const& trainers);
 static void ExportTrainerStringsData_C(TrainerDataExport_C& exporter, json const& trainers);
 
+//void processSubsets(const nlohmann::json& subsets);
+//void processSubsets(const nlohmann::json& subsets) {
+//    for (const auto& subset : subsets) {
+//        if (subset.contains("call_function")) {
+//            std::string funcName = subset["call_function"].get<std::string>();
+//            if (funcName == "RoguePokedex_IsJohtoMid") {
+//                // Call the C function
+//                RoguePokedex_IsJohtoMid(QUERY_FUNC_INCLUDE); // Assuming QUERY_FUNC_INCLUDE is defined
+//            }
+//            // Add more function calls as needed
+//        }
+//    }
+//}
 
 static json ExpandTrainersJson(std::string const& sourcePath, json const& rawData)
 {
@@ -197,6 +210,20 @@ static void ExportTrainerGroupData_C(TrainerDataExport_C& exporter, json const& 
 
 					exporter.earlyBlock << "};\n";
 				}
+				
+				if (subset.contains("extra_subsets"))
+				{
+					exporter.earlyBlock << "\nstatic u16 const sTrainerTeamSubsets_" << trainerSuffix << "_" << subsetIndex << "[] =\n{\n";
+
+					for (auto extraSubsetJson : subset["extra_subsets"])
+					{
+						std::string extraSubset = extraSubsetJson.get<std::string>();
+						exporter.earlyBlock << "\t" << extraSubset << ",\n"; // Adjust based on your needs
+					}
+
+					exporter.earlyBlock << "};\n";
+				}
+				
 			}
 
 			counter = 0;
@@ -279,6 +306,12 @@ static void ExportTrainerGroupData_C(TrainerDataExport_C& exporter, json const& 
 				{
 					exporter.earlyBlock << c_TabSpacing << ".additionalSpecies = NULL,\n";
 					exporter.earlyBlock << c_TabSpacing << ".additionalSpeciesCount = 0,\n";
+				}
+
+				if (subset.contains("extra_subsets"))
+				{
+					exporter.earlyBlock << c_TabSpacing << ".extraSubsets = sTrainerTeamSubsets_" << trainerSuffix << "_" << subsetIndex << ",\n";
+					exporter.earlyBlock << c_TabSpacing << ".extraSubsetsCount = ARRAY_COUNT(sTrainerTeamSubsets_" << trainerSuffix << "_" << subsetIndex << "),\n";
 				}
 
 				exporter.earlyBlock << c_TabSpacing << "},\n";

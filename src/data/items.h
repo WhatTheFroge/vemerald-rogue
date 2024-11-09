@@ -859,6 +859,220 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
     },
 
+	// mints
+	
+    [ITEM_LONELY_MINT] =
+    {
+        .name = _("Lonely Mint"),
+        .price = 20,
+        .description = sLonelyMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_ADAMANT_MINT] =
+    {
+        .name = _("Adamant Mint"),
+        .price = 20,
+        .description = sAdamantMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_NAUGHTY_MINT] =
+    {
+        .name = _("Naughty Mint"),
+        .price = 20,
+        .description = sNaughtyMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_BRAVE_MINT] =
+    {
+        .name = _("Brave Mint"),
+        .price = 20,
+        .description = sBraveMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_BOLD_MINT] =
+    {
+        .name = _("Bold Mint"),
+        .price = 20,
+        .description = sBoldMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_IMPISH_MINT] =
+    {
+        .name = _("Impish Mint"),
+        .price = 20,
+        .description = sImpishMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_LAX_MINT] =
+    {
+        .name = _("Lax Mint"),
+        .price = 20,
+        .description = sLaxMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_RELAXED_MINT] =
+    {
+        .name = _("Relaxed Mint"),
+        .price = 20,
+        .description = sRelaxedMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_MODEST_MINT] =
+    {
+        .name = _("Modest Mint"),
+        .price = 20,
+        .description = sModestMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_MILD_MINT] =
+    {
+        .name = _("Mild Mint"),
+        .price = 20,
+        .description = sMildMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_RASH_MINT] =
+    {
+        .name = _("Rash Mint"),
+        .price = 20,
+        .description = sRashMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_QUIET_MINT] =
+    {
+        .name = _("Quiet Mint"),
+        .price = 20,
+        .description = sQuietMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_CALM_MINT] =
+    {
+        .name = _("Calm Mint"),
+        .price = 20,
+        .description = sCalmMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_GENTLE_MINT] =
+    {
+        .name = _("Gentle Mint"),
+        .price = 20,
+        .description = sGentleMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_CAREFUL_MINT] =
+    {
+        .name = _("Careful Mint"),
+        .price = 20,
+        .description = sCarefulMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_SASSY_MINT] =
+    {
+        .name = _("Sassy Mint"),
+        .price = 20,
+        .description = sSassyMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_TIMID_MINT] =
+    {
+        .name = _("Timid Mint"),
+        .price = 20,
+        .description = sTimidMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_HASTY_MINT] =
+    {
+        .name = _("Hasty Mint"),
+        .price = 20,
+        .description = sHastyMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_JOLLY_MINT] =
+    {
+        .name = _("Jolly Mint"),
+        .price = 20,
+        .description = sJollyMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_NAIVE_MINT] =
+    {
+        .name = _("Naive Mint"),
+        .price = 20,
+        .description = sNaiveMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+    [ITEM_SERIOUS_MINT] =
+    {
+        .name = _("Serious Mint"),
+        .price = 20,
+        .description = sSeriousMintDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_NatureMint,
+    },
+
+
+
     [ITEM_RARE_CANDY] =
     {
         .name = _("RARE CANDY"),

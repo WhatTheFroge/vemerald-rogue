@@ -556,6 +556,10 @@
                             "include_types": [ "DARK" ]
                         }
                     ],
+					"extra_subsets":
+					{
+						"JohtoSubset": "RoguePokedex_IsSpeciesJohtoMid"  
+					},
                     "weight_script":
                     [
                         "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_NATU", "INC_FAVOUR",
@@ -606,6 +610,10 @@
                             "include_types": [ "BUG" ]
                         }
                     ],
+					"extra_subsets":
+					{
+					"JohtoSubset": "RoguePokedex_IsSpeciesJohtoMid"  
+					},
                     "weight_script":
                     [
                         "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_GRIMER", "INC_FAVOUR", "INC_FAVOUR",
@@ -770,7 +778,7 @@
                         {
                             "is_diversity_subset": true,
                             "max_samples": 2,
-                            "exclude_types": [ "DRAGON", "BUG", "NORMAL" ]
+                            "exclude_types": [ "DRAGON" ]
                         },
                         {
                             "max_samples": 1,

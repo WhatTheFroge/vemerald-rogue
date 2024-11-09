@@ -35,6 +35,25 @@ struct TrainerHeldItemScratch
     bool8 hasChoiceItem : 1; 
 	bool8 hasBerry : 1; // Use for Oran, Lum, Sitrus, Chesto 
 	//bool8 hasTypeItem : 1; 
+	
+	bool8 hasTypeItem1  : 1;  // Normal
+	bool8 hasTypeItem2  : 1;  // Fighting
+	bool8 hasTypeItem3  : 1;  // Flying
+	bool8 hasTypeItem4  : 1;  // Poison
+	bool8 hasTypeItem5  : 1;  // Ground
+	bool8 hasTypeItem6  : 1;  // Rock
+	bool8 hasTypeItem7  : 1;  // Bug
+	bool8 hasTypeItem8  : 1;  // Ghost
+	bool8 hasTypeItem9  : 1;  // Steel
+	bool8 hasTypeItem10 : 1;  // Fire
+	bool8 hasTypeItem11 : 1;  // Water
+	bool8 hasTypeItem12 : 1;  // Grass
+	bool8 hasTypeItem13 : 1;  // Electric
+	bool8 hasTypeItem14 : 1;  // Psychic
+	bool8 hasTypeItem15 : 1;  // Ice
+	bool8 hasTypeItem16 : 1;  // Dragon
+	bool8 hasTypeItem17 : 1;  // Dark
+
 #ifdef ROGUE_EXPANSION
     bool8 hasBlackSludge : 1;
     bool8 hasMegaStone : 1;
@@ -2739,7 +2758,7 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
 
         if(scratch->preferStrongSpecies && CanEntirelyAvoidWeakSpecies())
         {
-            RogueMonQuery_ContainsPresetFlags(QUERY_FUNC_INCLUDE, MON_FLAG_SINGLES_STRONG);
+            RogueMonQuery_IsGood(QUERY_FUNC_INCLUDE);
         }
 
         if(scratch->forceLegends)
@@ -3203,50 +3222,63 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
                     currentScore /= 2;
                 }
 
+                if(currPreset->heldItem == ITEM_SOFT_SAND && scratch->heldItems.hasTypeItem1)
+                    currentScore /= 2; // Normal
+
+                if(currPreset->heldItem == ITEM_BLACK_BELT && scratch->heldItems.hasTypeItem2)
+                    currentScore /= 2; // Fighting
+
+                if(currPreset->heldItem == ITEM_SHARP_BEAK && scratch->heldItems.hasTypeItem3)
+                    currentScore /= 2; // Flying
+
+                if(currPreset->heldItem == ITEM_POISON_BARB && scratch->heldItems.hasTypeItem4)
+                    currentScore /= 2; // Poison
+
+                if(currPreset->heldItem == ITEM_SOFT_SAND && scratch->heldItems.hasTypeItem5)
+                    currentScore /= 2; // Ground
+
+                if(currPreset->heldItem == ITEM_HARD_STONE && scratch->heldItems.hasTypeItem6)
+                    currentScore /= 2; // Rock
+
+                if(currPreset->heldItem == ITEM_SILVER_POWDER && scratch->heldItems.hasTypeItem7)
+                    currentScore /= 2; // Bug
+
+                if(currPreset->heldItem == ITEM_SPELL_TAG && scratch->heldItems.hasTypeItem8)
+                    currentScore /= 2; // Ghost
+
+                if(currPreset->heldItem == ITEM_METAL_COAT && scratch->heldItems.hasTypeItem9)
+                    currentScore /= 2; // Steel
+
+                if(currPreset->heldItem == ITEM_CHARCOAL && scratch->heldItems.hasTypeItem10)
+                    currentScore /= 2; // Fire
+
+                if(currPreset->heldItem == ITEM_MYSTIC_WATER && scratch->heldItems.hasTypeItem11)
+                    currentScore /= 2; // Water
+
+                if(currPreset->heldItem == ITEM_MIRACLE_SEED && scratch->heldItems.hasTypeItem12)
+                    currentScore /= 2; // Grass
+
+                if(currPreset->heldItem == ITEM_MAGNET && scratch->heldItems.hasTypeItem13)
+                    currentScore /= 2; // Electric
+
+                if(currPreset->heldItem == ITEM_TWISTED_SPOON && scratch->heldItems.hasTypeItem14)
+                    currentScore /= 2; // Psychic
+
+                if(currPreset->heldItem == ITEM_NEVER_MELT_ICE && scratch->heldItems.hasTypeItem15)
+                    currentScore /= 2; // Ice
+
+                if(currPreset->heldItem == ITEM_DRAGON_FANG && scratch->heldItems.hasTypeItem16)
+                    currentScore /= 2; // Dragon
+
+                if(currPreset->heldItem == ITEM_BLACK_GLASSES && scratch->heldItems.hasTypeItem17)
+                    currentScore /= 2; // Dark
+        
+
+
 #ifdef ROGUE_EXPANSION
                 if(currPreset->heldItem == ITEM_BLACK_SLUDGE && scratch->heldItems.hasBlackSludge)
                 {
                     currentScore /= 2;
-                }
-
-                // Special case for primal reversion
-                if(!IsMegaEvolutionEnabled())
-                {
-                    if(currPreset->heldItem == ITEM_RED_ORB || currPreset->heldItem == ITEM_BLUE_ORB)
-                    {
-                        currentScore /= 4;
-                    }
-                }
-
-                // Handle megas
-                if(currPreset->heldItem >= ITEM_VENUSAURITE && currPreset->heldItem <= ITEM_DIANCITE)
-                {
-                    if(IsMegaEvolutionEnabled())
-                    {
-                        if(!scratch->heldItems.hasMegaStone)
-                            currentScore *= 8;
-                        else
-                            currentScore /= 4;
-                    }
-                    else
-                    {
-                        currentScore /= 4;
-                    }
-                }
-
-                if(currPreset->heldItem >= ITEM_NORMALIUM_Z && currPreset->heldItem <= ITEM_ULTRANECROZIUM_Z)
-                {
-                    if(IsZMovesEnabled())
-                    {
-                        if(!scratch->heldItems.hasZCrystal)
-                            currentScore *= 4;
-                        else
-                            currentScore /= 4;
-                    }
-                    else
-                    {
-                        currentScore /= 4;
-                    }
                 }
 #endif
                 // Handle identical scores by adding on some random amount
@@ -3333,38 +3365,57 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
             // Swap shell bell to NONE (i.e. berry)
             outPreset->heldItem = ITEM_NONE;
         }
-#ifdef ROGUE_EXPANSION
-        if(outPreset->heldItem == ITEM_BLACK_SLUDGE && scratch->heldItems.hasBlackSludge)
-        {
-            // Swap left overs to shell bell
-            outPreset->heldItem = ITEM_SHELL_BELL;
-        }
 
-        if(!IsMegaEvolutionEnabled())
-        {
-            // Special case for primal reversion
-            if(outPreset->heldItem == ITEM_RED_ORB || outPreset->heldItem == ITEM_BLUE_ORB)
-            {
-                outPreset->heldItem = ITEM_NONE;
-            }
-        }
+        if(outPreset->heldItem == ITEM_SILK_SCARF && scratch->heldItems.hasTypeItem1)
+            outPreset->heldItem = ITEM_NONE; // Normal
 
-        if(scratch->heldItems.hasMegaStone || !IsMegaEvolutionEnabled())
-        {
-            if(outPreset->heldItem >= ITEM_VENUSAURITE && outPreset->heldItem <= ITEM_DIANCITE)
-            {
-                outPreset->heldItem = ITEM_NONE;
-            }
-        }
+        if(outPreset->heldItem == ITEM_BLACK_BELT && scratch->heldItems.hasTypeItem2)
+            outPreset->heldItem = ITEM_NONE; // Fighting
 
-        if(scratch->heldItems.hasZCrystal || !IsZMovesEnabled())
-        {
-            if(outPreset->heldItem >= ITEM_NORMALIUM_Z && outPreset->heldItem <= ITEM_ULTRANECROZIUM_Z)
-            {
-                outPreset->heldItem = ITEM_NONE;
-            }
-        }
-#endif
+        if(outPreset->heldItem == ITEM_SHARP_BEAK && scratch->heldItems.hasTypeItem3)
+            outPreset->heldItem = ITEM_NONE; // Flying
+
+        if(outPreset->heldItem == ITEM_POISON_BARB && scratch->heldItems.hasTypeItem4)
+            outPreset->heldItem = ITEM_NONE; // Poison
+
+        if(outPreset->heldItem == ITEM_SOFT_SAND && scratch->heldItems.hasTypeItem5)
+            outPreset->heldItem = ITEM_NONE; // Ground
+
+        if(outPreset->heldItem == ITEM_HARD_STONE && scratch->heldItems.hasTypeItem6)
+            outPreset->heldItem = ITEM_NONE; // Rock
+
+        if(outPreset->heldItem == ITEM_SILVER_POWDER && scratch->heldItems.hasTypeItem7)
+            outPreset->heldItem = ITEM_NONE; // Bug
+
+        if(outPreset->heldItem == ITEM_SPELL_TAG && scratch->heldItems.hasTypeItem8)
+            outPreset->heldItem = ITEM_NONE; // Ghost
+
+        if(outPreset->heldItem == ITEM_METAL_COAT && scratch->heldItems.hasTypeItem9)
+            outPreset->heldItem = ITEM_NONE; // Steel
+
+        if(outPreset->heldItem == ITEM_CHARCOAL && scratch->heldItems.hasTypeItem10)
+            outPreset->heldItem = ITEM_NONE; // Fire
+
+        if(outPreset->heldItem == ITEM_MYSTIC_WATER && scratch->heldItems.hasTypeItem11)
+            outPreset->heldItem = ITEM_NONE; // Water
+
+        if(outPreset->heldItem == ITEM_MIRACLE_SEED && scratch->heldItems.hasTypeItem12)
+            outPreset->heldItem = ITEM_NONE; // Grass
+
+        if(outPreset->heldItem == ITEM_MAGNET && scratch->heldItems.hasTypeItem13)
+            outPreset->heldItem = ITEM_NONE; // Electric
+
+        if(outPreset->heldItem == ITEM_TWISTED_SPOON && scratch->heldItems.hasTypeItem14)
+            outPreset->heldItem = ITEM_NONE; // Psychic
+
+        if(outPreset->heldItem == ITEM_NEVER_MELT_ICE && scratch->heldItems.hasTypeItem15)
+            outPreset->heldItem = ITEM_NONE; // Ice
+
+        if(outPreset->heldItem == ITEM_DRAGON_FANG && scratch->heldItems.hasTypeItem16)
+            outPreset->heldItem = ITEM_NONE; // Dragon
+
+        if(outPreset->heldItem == ITEM_BLACK_GLASSES && scratch->heldItems.hasTypeItem17)
+            outPreset->heldItem = ITEM_NONE; // Dark
 
         // Give an item if we're missing one
         //
@@ -3391,27 +3442,40 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
             scratch->heldItems.hasBerry = TRUE;
         }
 		
-#ifdef ROGUE_EXPANSION
-        else if(outPreset->heldItem == ITEM_BLACK_SLUDGE)
-        {
-            scratch->heldItems.hasBlackSludge = TRUE;
-
-            // Replace at last second, as we will allow multiple leftovers for this edge case
-            if(IsTerastallizeEnabled())
-            {
-                // Avoid black sludge during tera because it's a bit silly
-                outPreset->heldItem == ITEM_LEFTOVERS;
-            }
-        }
-        else if(outPreset->heldItem >= ITEM_VENUSAURITE && outPreset->heldItem <= ITEM_DIANCITE)
-        {
-            scratch->heldItems.hasMegaStone = TRUE;
-        }
-        else if(outPreset->heldItem >= ITEM_NORMALIUM_Z && outPreset->heldItem <= ITEM_ULTRANECROZIUM_Z)
-        {
-            scratch->heldItems.hasZCrystal = TRUE;
-        }
-#endif
+		else if(outPreset->heldItem == ITEM_SILK_SCARF)
+			scratch->heldItems.hasTypeItem1 = TRUE; // Normal
+		else if(outPreset->heldItem == ITEM_BLACK_BELT)
+			scratch->heldItems.hasTypeItem2 = TRUE; // Fighting
+		else if(outPreset->heldItem == ITEM_SHARP_BEAK)
+			scratch->heldItems.hasTypeItem3 = TRUE; // Flying
+		else if(outPreset->heldItem == ITEM_POISON_BARB)
+			scratch->heldItems.hasTypeItem4 = TRUE; // Poison
+		else if(outPreset->heldItem == ITEM_SOFT_SAND)
+			scratch->heldItems.hasTypeItem5 = TRUE; // Ground
+		else if(outPreset->heldItem == ITEM_HARD_STONE)
+			scratch->heldItems.hasTypeItem6 = TRUE; // Rock
+		else if(outPreset->heldItem == ITEM_SILVER_POWDER)
+			scratch->heldItems.hasTypeItem7 = TRUE; // Bug
+		else if(outPreset->heldItem == ITEM_SPELL_TAG)
+			scratch->heldItems.hasTypeItem8 = TRUE; // Ghost
+		else if(outPreset->heldItem == ITEM_METAL_COAT)
+			scratch->heldItems.hasTypeItem9 = TRUE; // Steel
+		else if(outPreset->heldItem == ITEM_CHARCOAL)
+			scratch->heldItems.hasTypeItem10 = TRUE; // Fire
+		else if(outPreset->heldItem == ITEM_MYSTIC_WATER)
+			scratch->heldItems.hasTypeItem11 = TRUE; // Water
+		else if(outPreset->heldItem == ITEM_MIRACLE_SEED)
+			scratch->heldItems.hasTypeItem12 = TRUE; // Grass
+		else if(outPreset->heldItem == ITEM_MAGNET)
+			scratch->heldItems.hasTypeItem13 = TRUE; // Electric
+		else if(outPreset->heldItem == ITEM_TWISTED_SPOON)
+			scratch->heldItems.hasTypeItem14 = TRUE; // Psychic
+		else if(outPreset->heldItem == ITEM_NEVER_MELT_ICE)
+			scratch->heldItems.hasTypeItem15 = TRUE; // Ice
+		else if(outPreset->heldItem == ITEM_DRAGON_FANG)
+			scratch->heldItems.hasTypeItem16 = TRUE; // Dragon
+		else if(outPreset->heldItem == ITEM_BLACK_GLASSES)
+			scratch->heldItems.hasTypeItem17 = TRUE; // Dark
 
         return TRUE;
     }

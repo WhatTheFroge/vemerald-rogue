@@ -4053,129 +4053,6 @@ bool8 RoguePokedex_IsSpeciesLegendary(u16 species)
         case SPECIES_LATIOS:
         case SPECIES_JIRACHI:
         case SPECIES_DEOXYS:
-#ifdef ROGUE_EXPANSION
-
-        case SPECIES_UXIE:
-        case SPECIES_MESPRIT:
-        case SPECIES_AZELF:
-        case SPECIES_DIALGA:
-        case SPECIES_PALKIA:
-        case SPECIES_HEATRAN:
-        case SPECIES_REGIGIGAS:
-        case SPECIES_GIRATINA:
-        case SPECIES_CRESSELIA:
-        case SPECIES_PHIONE:
-        case SPECIES_MANAPHY:
-        case SPECIES_DARKRAI:
-        case SPECIES_SHAYMIN:
-        case SPECIES_ARCEUS:
-
-        case SPECIES_VICTINI:
-        case SPECIES_COBALION:
-        case SPECIES_TERRAKION:
-        case SPECIES_VIRIZION:
-        case SPECIES_TORNADUS:
-        case SPECIES_THUNDURUS:
-        case SPECIES_RESHIRAM:
-        case SPECIES_ZEKROM:
-        case SPECIES_LANDORUS:
-        case SPECIES_KYUREM:
-        case SPECIES_KELDEO:
-        case SPECIES_MELOETTA:
-        case SPECIES_GENESECT:
-
-        case SPECIES_XERNEAS:
-        case SPECIES_YVELTAL:
-        case SPECIES_ZYGARDE:
-        case SPECIES_DIANCIE:
-        case SPECIES_HOOPA:
-        case SPECIES_VOLCANION:
-        
-        case SPECIES_TYPE_NULL:
-        case SPECIES_SILVALLY:
-        case SPECIES_TAPU_KOKO:
-        case SPECIES_TAPU_LELE:
-        case SPECIES_TAPU_BULU:
-        case SPECIES_TAPU_FINI:
-        case SPECIES_COSMOG:
-        case SPECIES_COSMOEM:
-        case SPECIES_SOLGALEO:
-        case SPECIES_LUNALA:
-        case SPECIES_NIHILEGO:
-        case SPECIES_BUZZWOLE:
-        case SPECIES_PHEROMOSA:
-        case SPECIES_XURKITREE:
-        case SPECIES_CELESTEELA:
-        case SPECIES_KARTANA:
-        case SPECIES_GUZZLORD:
-        case SPECIES_NECROZMA:
-        case SPECIES_MAGEARNA:
-        case SPECIES_MARSHADOW:
-        case SPECIES_POIPOLE:
-        case SPECIES_NAGANADEL:
-        case SPECIES_STAKATAKA:
-        case SPECIES_BLACEPHALON:
-        case SPECIES_ZERAORA:
-        case SPECIES_MELTAN:
-        case SPECIES_MELMETAL:
-
-        case SPECIES_ZACIAN:
-        case SPECIES_ZAMAZENTA:
-        case SPECIES_ETERNATUS:
-        case SPECIES_KUBFU:
-        case SPECIES_URSHIFU:
-        case SPECIES_ZARUDE:
-        case SPECIES_REGIELEKI:
-        case SPECIES_REGIDRAGO:
-        case SPECIES_GLASTRIER:
-        case SPECIES_SPECTRIER:
-        case SPECIES_CALYREX:
-
-        case SPECIES_ENAMORUS:
-
-        case SPECIES_WO_CHIEN:
-        case SPECIES_CHIEN_PAO:
-        case SPECIES_TING_LU:
-        case SPECIES_CHI_YU:
-        case SPECIES_KORAIDON:
-        case SPECIES_MIRAIDON:
-        case SPECIES_WALKING_WAKE:
-        case SPECIES_IRON_LEAVES:
-        case SPECIES_OKIDOGI:
-        case SPECIES_MUNKIDORI:
-        case SPECIES_FEZANDIPITI:
-        case SPECIES_OGERPON:
-
-        case SPECIES_GOUGING_FIRE:
-        case SPECIES_RAGING_BOLT:
-        case SPECIES_IRON_BOULDER:
-        case SPECIES_IRON_CROWN:
-        case SPECIES_TERAPAGOS:
-        case SPECIES_PECHARUNT:
-
-        // Forms
-        case SPECIES_KYUREM_WHITE:
-        case SPECIES_KYUREM_BLACK:
-        
-        case SPECIES_NECROZMA_DUSK_MANE:
-        case SPECIES_NECROZMA_DAWN_WINGS:
-        case SPECIES_NECROZMA_ULTRA:
-
-        case SPECIES_ZACIAN_CROWNED_SWORD:
-        case SPECIES_ZAMAZENTA_CROWNED_SHIELD:
-        case SPECIES_ETERNATUS_ETERNAMAX:
-        case SPECIES_URSHIFU_RAPID_STRIKE_STYLE:
-        case SPECIES_ZARUDE_DADA:
-        case SPECIES_CALYREX_ICE_RIDER:
-        case SPECIES_CALYREX_SHADOW_RIDER:
-
-        case SPECIES_ARTICUNO_GALARIAN:
-        case SPECIES_ZAPDOS_GALARIAN:
-        case SPECIES_MOLTRES_GALARIAN:
-
-        case SPECIES_TERAPAGOS_TERASTAL:
-        case SPECIES_TERAPAGOS_STELLAR:
-#endif
             return TRUE;
     };
 
@@ -4200,52 +4077,6 @@ bool8 RoguePokedex_IsSpeciesValidBoxLegendary(u16 species)
         case SPECIES_KYOGRE:
         case SPECIES_GROUDON:
         case SPECIES_RAYQUAZA:
-#ifdef ROGUE_EXPANSION
-
-        case SPECIES_DIALGA:
-        case SPECIES_PALKIA:
-        case SPECIES_REGIGIGAS:
-        case SPECIES_GIRATINA:
-        case SPECIES_ARCEUS:
-
-        case SPECIES_RESHIRAM:
-        case SPECIES_ZEKROM:
-        case SPECIES_KYUREM:
-
-        case SPECIES_XERNEAS:
-        case SPECIES_YVELTAL:
-        case SPECIES_ZYGARDE:
-
-        case SPECIES_COSMOEM:
-        case SPECIES_SOLGALEO:
-        case SPECIES_LUNALA:
-        case SPECIES_NECROZMA:
-
-        case SPECIES_ZACIAN:
-        case SPECIES_ZAMAZENTA:
-        case SPECIES_ETERNATUS:
-        case SPECIES_CALYREX:
-        
-        case SPECIES_KORAIDON:
-        case SPECIES_MIRAIDON:
-        case SPECIES_OGERPON:
-
-        case SPECIES_TERAPAGOS:
-        case SPECIES_PECHARUNT:
-
-        // Forms
-        case SPECIES_KYUREM_WHITE:
-        case SPECIES_KYUREM_BLACK:
-        
-        case SPECIES_NECROZMA_DUSK_MANE:
-        case SPECIES_NECROZMA_DAWN_WINGS:
-        case SPECIES_NECROZMA_ULTRA:
-
-        case SPECIES_ZACIAN_CROWNED_SWORD:
-        case SPECIES_ZAMAZENTA_CROWNED_SHIELD:
-        case SPECIES_CALYREX_ICE_RIDER:
-        case SPECIES_CALYREX_SHADOW_RIDER:
-#endif
             return TRUE;
     };
 
@@ -4273,75 +4104,6 @@ bool8 RoguePokedex_IsSpeciesValidRoamerLegendary(u16 species)
         case SPECIES_LATIAS:
         case SPECIES_LATIOS:
         case SPECIES_JIRACHI:
-#ifdef ROGUE_EXPANSION
-
-        case SPECIES_UXIE:
-        case SPECIES_MESPRIT:
-        case SPECIES_AZELF:
-        case SPECIES_CRESSELIA:
-        case SPECIES_PHIONE:
-        case SPECIES_MANAPHY:
-        case SPECIES_DARKRAI:
-        case SPECIES_SHAYMIN:
-
-        case SPECIES_VICTINI:
-        case SPECIES_COBALION:
-        case SPECIES_TERRAKION:
-        case SPECIES_VIRIZION:
-        case SPECIES_TORNADUS:
-        case SPECIES_THUNDURUS:
-        case SPECIES_LANDORUS:
-
-        case SPECIES_DIANCIE:
-        case SPECIES_HOOPA:
-        
-        case SPECIES_COSMOG:
-        case SPECIES_NIHILEGO:
-        case SPECIES_BUZZWOLE:
-        case SPECIES_PHEROMOSA:
-        case SPECIES_XURKITREE:
-        case SPECIES_CELESTEELA:
-        case SPECIES_KARTANA:
-        case SPECIES_GUZZLORD:
-        case SPECIES_NECROZMA:
-        case SPECIES_MAGEARNA:
-        case SPECIES_MARSHADOW:
-        case SPECIES_POIPOLE:
-        case SPECIES_NAGANADEL:
-        case SPECIES_STAKATAKA:
-        case SPECIES_BLACEPHALON:
-        case SPECIES_ZERAORA:
-
-        case SPECIES_KUBFU:
-        case SPECIES_URSHIFU:
-        case SPECIES_ZARUDE:
-
-        case SPECIES_ENAMORUS:
-
-        case SPECIES_WO_CHIEN:
-        case SPECIES_CHIEN_PAO:
-        case SPECIES_TING_LU:
-        case SPECIES_CHI_YU:
-
-        case SPECIES_WALKING_WAKE:
-        case SPECIES_IRON_LEAVES:
-        case SPECIES_GOUGING_FIRE:
-        case SPECIES_RAGING_BOLT:
-        case SPECIES_IRON_BOULDER:
-        case SPECIES_IRON_CROWN:
-        
-        case SPECIES_OKIDOGI:
-        case SPECIES_MUNKIDORI:
-        case SPECIES_FEZANDIPITI:
-
-        // Forms
-        case SPECIES_URSHIFU_RAPID_STRIKE_STYLE:
-        case SPECIES_ZARUDE_DADA:
-
-        case SPECIES_ARTICUNO_GALARIAN:
-        case SPECIES_ZAPDOS_GALARIAN:
-        case SPECIES_MOLTRES_GALARIAN:
-#endif
             return TRUE;
     };
 
@@ -4366,7 +4128,9 @@ bool8 RoguePokedex_IsSpeciesRare(u16 species)
 		case SPECIES_RELICANTH:
 		case SPECIES_SKARMORY:
 		case SPECIES_TORKOAL:
+			return TRUE;
 	}
+	return FALSE;
 }
 
 bool8 RoguePokedex_IsSpeciesUncommon(u16 species)
@@ -4389,8 +4153,207 @@ bool8 RoguePokedex_IsSpeciesUncommon(u16 species)
 		case SPECIES_QWILFISH:
 		case SPECIES_SNEASEL:
 		case SPECIES_CHIMECHO:
+			return TRUE;
 	}
+	return FALSE;
 }	
+
+// Used to filter for E4 and onwards. OU power level 
+bool8 RoguePokedex_IsSpeciesGood(u16 species)
+{
+	switch(species)
+	{
+		// Legends: Limited number per team
+        case SPECIES_ARTICUNO:
+        case SPECIES_ZAPDOS:
+        case SPECIES_MOLTRES:
+
+        case SPECIES_RAIKOU:
+        case SPECIES_ENTEI:
+        case SPECIES_SUICUNE:
+
+        case SPECIES_REGIROCK:
+        case SPECIES_REGICE:
+        case SPECIES_REGISTEEL:
+		
+        case SPECIES_LATIAS:
+        case SPECIES_LATIOS:
+		
+        case SPECIES_MEW:
+        case SPECIES_CELEBI:
+        case SPECIES_JIRACHI:
+        case SPECIES_DEOXYS:
+		
+		// OU 
+		case SPECIES_AERODACTYL:
+		//case SPECIES_BLISSEY:
+		case SPECIES_BRELOOM:
+		case SPECIES_CHARIZARD:
+		case SPECIES_CLAYDOL:
+		//case SPECIES_CLOYSTER:
+		//case SPECIES_DUGTRIO:
+		case SPECIES_FLYGON:
+		case SPECIES_FORRETRESS:
+		case SPECIES_GENGAR:
+		case SPECIES_GYARADOS:
+		case SPECIES_HERACROSS:
+		case SPECIES_JOLTEON:
+		//case SPECIES_MAGNETON:
+		case SPECIES_METAGROSS:
+		case SPECIES_MILOTIC:
+		case SPECIES_SALAMENCE:
+		case SPECIES_SKARMORY:
+		case SPECIES_SNORLAX:
+		case SPECIES_STARMIE:
+		case SPECIES_SWAMPERT:
+		case SPECIES_TYRANITAR:
+		
+		// UUBL  
+		case SPECIES_ALAKAZAM:
+		case SPECIES_BLAZIKEN:
+		case SPECIES_DODRIO:
+		case SPECIES_DONPHAN:
+		case SPECIES_DRAGONITE:
+		case SPECIES_ESPEON:
+		case SPECIES_EXEGGUTOR:
+		case SPECIES_GARDEVOIR:
+		case SPECIES_HARIYAMA:
+		case SPECIES_HOUNDOOM:
+		case SPECIES_JYNX:
+		case SPECIES_KINGDRA:
+		case SPECIES_LUDICOLO:
+		case SPECIES_MACHAMP:
+		case SPECIES_MAROWAK:
+		case SPECIES_MEDICHAM:
+		case SPECIES_MILTANK:
+		case SPECIES_RHYDON:
+		case SPECIES_SCEPTILE:
+		case SPECIES_SLOWBRO:
+		case SPECIES_STEELIX:
+		case SPECIES_TAUROS:
+		case SPECIES_UMBREON:
+		case SPECIES_URSARING:
+		case SPECIES_VAPOREON:
+		case SPECIES_VENUSAUR:
+			return TRUE;
+			
+		// Hand-picked additions
+		case SPECIES_LAPRAS:
+		case SPECIES_WALREIN:
+		case SPECIES_SLOWKING:
+		case SPECIES_ARCANINE:
+		case SPECIES_KANGASKHAN: 
+			return TRUE; 
+		
+	}
+	return FALSE; 
+}	
+
+// if a Pokemon is Borderline between Mid and Good, put them in Mid. Then add to Good if they make the cut
+bool8 RoguePokedex_IsSpeciesKantoMid(u16 species)
+{
+	switch(species)
+	{
+		case SPECIES_BLASTOISE:
+		case SPECIES_CLEFABLE:
+		case SPECIES_ELECTABUZZ:
+		case SPECIES_ELECTRODE:
+		case SPECIES_FEAROW:
+		case SPECIES_GOLDUCK:
+		case SPECIES_GOLEM:
+		case SPECIES_HITMONLEE:
+		case SPECIES_HYPNO:
+		case SPECIES_MR_MIME:
+		case SPECIES_MUK:
+		case SPECIES_NIDOKING:
+		case SPECIES_NIDOQUEEN:
+		case SPECIES_OMASTAR:
+		case SPECIES_PINSIR:
+		case SPECIES_RAICHU:
+		case SPECIES_SANDSLASH:
+		case SPECIES_SCYTHER:
+		case SPECIES_TENTACRUEL:
+		case SPECIES_VILEPLUME:
+		// Dugtrio Magneton Cloyster 
+			
+		//DROP FROM OU
+		case SPECIES_CLOYSTER:
+		case SPECIES_DUGTRIO:
+		case SPECIES_MAGNETON:
+		case SPECIES_WEEZING:
+		
+		//HAND-PICKED
+		case SPECIES_FLAREON:
+			return TRUE; 
+	}
+	return FALSE;
+}
+
+bool8 RoguePokedex_IsSpeciesJohtoMid(u16 species)
+{
+	switch(species)
+	{
+		case SPECIES_AMPHAROS:
+		case SPECIES_FERALIGATR:
+		case SPECIES_GIRAFARIG:
+		case SPECIES_GLIGAR:
+		case SPECIES_GRANBULL:
+		case SPECIES_HITMONTOP:
+		case SPECIES_LANTURN:
+		case SPECIES_MISDREAVUS:
+		case SPECIES_QUAGSIRE:
+		case SPECIES_QWILFISH:
+		case SPECIES_XATU:
+			return TRUE; 
+			
+		// drop from OU/UUBL 
+		case SPECIES_BLISSEY:
+		case SPECIES_CROBAT:
+		case SPECIES_PORYGON2:
+		case SPECIES_SCIZOR:
+		case SPECIES_SMEARGLE:
+		case SPECIES_TYPHLOSION: 
+		case SPECIES_WOBBUFFET:
+
+		// hand-picked
+		case SPECIES_MEGANIUM:
+			return TRUE;
+	}
+	return FALSE;
+}
+
+bool8 RoguePokedex_IsSpeciesHoennMid(u16 species)
+{
+	switch(species)
+	{
+		case SPECIES_AGGRON:
+		case SPECIES_ALTARIA:
+		case SPECIES_CRADILY:
+		case SPECIES_GLALIE:
+		case SPECIES_GOREBYSS:
+		case SPECIES_GRUMPIG:
+		case SPECIES_MISDREAVUS:
+		case SPECIES_MANECTRIC:
+		case SPECIES_ROSELIA:
+		case SPECIES_SABLEYE:
+		case SPECIES_SOLROCK:
+			return TRUE;
+			
+		// // drop from OU/UUBL 
+		case SPECIES_ARMALDO: 
+		case SPECIES_DUSCLOPS:
+		case SPECIES_LINOONE:
+		case SPECIES_SLAKING:
+		case SPECIES_SWELLOW:
+		case SPECIES_ZANGOOSE:
+			return TRUE; 
+		
+		// hand-picked
+		
+	}
+	return FALSE; 
+}
+
 
 u8 const* RoguePokedex_GetSpeciesName(u16 species)
 {

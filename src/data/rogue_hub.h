@@ -515,7 +515,7 @@ const struct RogueAreaUpgrade gRogueHubUpgrades[HUB_UPGRADE_COUNT] =
     {
         .upgradeName = _("Battle Shop"),
         .targetArea = HUB_AREA_MARTS,
-        .buildCost = 3,
+        .buildCost = 0,
         .descText = gHubUpgradeDesc_Mart_TravelerBattleEnhancers,
         .requiredUpgrades = { HUB_UPGRADE_NONE }
     },

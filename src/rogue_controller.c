@@ -8105,10 +8105,9 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
     case ROGUE_SHOP_BATTLE_ENHANCERS:
         RogueItemQuery_IsGeneralShopItem(QUERY_FUNC_EXCLUDE);
 
-#ifdef ROGUE_EXPANSION
         // Mints are in treat shop
         RogueMiscQuery_EditRange(QUERY_FUNC_EXCLUDE, ITEM_LONELY_MINT, ITEM_SERIOUS_MINT);
-#endif
+		
         {
             u8 pocket;
             for(pocket = POCKET_NONE + 1; pocket <= POCKET_KEY_ITEMS; ++pocket)

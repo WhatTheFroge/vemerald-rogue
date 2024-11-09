@@ -747,6 +747,72 @@ void RogueMonQuery_ContainsPresetFlags(u8 func, u32 presetflags)
     }
 }
 
+void RogueMonQuery_IsGood(u8 func)
+{
+    u32 species;
+    const bool32 checkState = (func == QUERY_FUNC_INCLUDE);
+    ASSERT_MON_QUERY;
+    
+    for(species = SPECIES_NONE + 1; species < QUERY_NUM_SPECIES; ITERATOR_INC(species))
+    {
+        if(GetQueryBitFlag(species) && RoguePokedex_IsSpeciesGood(species) != checkState)
+        {
+            SetQueryBitFlag(species, FALSE);
+        }
+    }
+}
+
+
+
+void RogueMonQuery_IsKantoMid(u8 func)
+{
+    u32 species;
+    const bool32 checkState = (func == QUERY_FUNC_INCLUDE);
+    ASSERT_MON_QUERY;
+    
+    for(species = SPECIES_NONE + 1; species < QUERY_NUM_SPECIES; ITERATOR_INC(species))
+    {
+        if(GetQueryBitFlag(species) && RoguePokedex_IsSpeciesKantoMid(species) != checkState)
+        {
+            SetQueryBitFlag(species, FALSE);
+        }
+    }
+}
+
+
+
+void RogueMonQuery_IsJohtoMid(u8 func)
+{
+    u32 species;
+    const bool32 checkState = (func == QUERY_FUNC_INCLUDE);
+    ASSERT_MON_QUERY;
+    
+    for(species = SPECIES_NONE + 1; species < QUERY_NUM_SPECIES; ITERATOR_INC(species))
+    {
+        if(GetQueryBitFlag(species) && RoguePokedex_IsSpeciesJohtoMid(species) != checkState)
+        {
+            SetQueryBitFlag(species, FALSE);
+        }
+    }
+}
+
+
+void RogueMonQuery_IsHoennMid(u8 func)
+{
+    u32 species;
+    const bool32 checkState = (func == QUERY_FUNC_INCLUDE);
+    ASSERT_MON_QUERY;
+    
+    for(species = SPECIES_NONE + 1; species < QUERY_NUM_SPECIES; ITERATOR_INC(species))
+    {
+        if(GetQueryBitFlag(species) && RoguePokedex_IsSpeciesHoennMid(species) != checkState)
+        {
+            SetQueryBitFlag(species, FALSE);
+        }
+    }
+}
+
+
 void RogueMonQuery_IsLegendary(u8 func)
 {
     u32 species;
@@ -1057,86 +1123,7 @@ bool8 Query_IsSpeciesEnabled(u16 species)
 {
     // Check if mon has valid data
     if(gRogueSpeciesInfo[species].baseHP != 0)
-    {
-#ifdef ROGUE_EXPANSION
-        if(species > GEN9_START && species <= PLACEHOLDER_START)
-        {
-            // Gen 9 section is after the forms start
-            // Illegal species for either wild or trainers
-            switch (species)
-            {
-            //case SPECIES_MAUSHOLD_FAMILY_OF_FOUR:
-            case SPECIES_PALAFIN_HERO:
-            //case SPECIES_DUDUNSPARCE_THREE_SEGMENT:
-            case SPECIES_GIMMIGHOUL_ROAMING:
-            case SPECIES_OGERPON_TEAL_MASK_TERA:
-            case SPECIES_OGERPON_WELLSPRING_MASK_TERA:
-            case SPECIES_OGERPON_HEARTHFLAME_MASK_TERA:
-            case SPECIES_OGERPON_CORNERSTONE_MASK_TERA:
-            case SPECIES_TERAPAGOS_TERASTAL:
-            case SPECIES_TERAPAGOS_STELLAR:
-                return FALSE;
-            
-            }
-        }
-
-        // Include specific forms in these queries
-        else if(species > FORMS_START)
-        {
-            // Regional forms
-            if(species >= SPECIES_RATTATA_ALOLAN && species <= SPECIES_STUNFISK_GALARIAN)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            // Alt forms
-            // Gen4
-            if(species >= SPECIES_BURMY_SANDY_CLOAK && species <= SPECIES_SHAYMIN_SKY)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            // Gen5
-            if(species == SPECIES_BASCULIN_BLUE_STRIPED || species == SPECIES_BASCULIN_WHITE_STRIPED)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            if(species >= SPECIES_DEERLING_SUMMER && species <= SPECIES_KYUREM_BLACK)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            // Gen6
-            if(species == SPECIES_MEOWSTIC_FEMALE)
-                return Query_IsSpeciesEnabledInternal(species);
-    
-            // Gen7
-            if(species >= SPECIES_ORICORIO_POM_POM && species <= SPECIES_LYCANROC_DUSK)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            if(species >= SPECIES_NECROZMA_DUSK_MANE && species <= SPECIES_NECROZMA_DAWN_WINGS)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            if(species == SPECIES_MAGEARNA_ORIGINAL_COLOR)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            // Gen8
-            if(species >= SPECIES_TOXTRICITY_LOW_KEY && species <= SPECIES_POLTEAGEIST_ANTIQUE)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            if(species == SPECIES_INDEEDEE_FEMALE)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            if(species >= SPECIES_ZACIAN_CROWNED_SWORD && species <= SPECIES_ZAMAZENTA_CROWNED_SHIELD)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            if(species >= SPECIES_CALYREX_ICE_RIDER && species <= SPECIES_CALYREX_SHADOW_RIDER)
-                return Query_IsSpeciesEnabledInternal(species);
-
-            // If we've gotten here then we're not interested in this form
-            return FALSE;
-        }
-#else
-        if(species >= SPECIES_OLD_UNOWN_B && species <= SPECIES_OLD_UNOWN_Z)
-            return FALSE;
-
-#endif
-
         return Query_IsSpeciesEnabledInternal(species);
-    }
 
     return FALSE;
 }
@@ -1294,18 +1281,6 @@ static bool8 Query_IsGeneralShopItem(u16 itemId)
 
         return FALSE;
     }
-
-#ifdef ROGUE_EXPANSION
-    if(itemId >= ITEM_RED_NECTAR && itemId <= ITEM_PURPLE_NECTAR)
-        return FALSE;
-
-    if(itemId >= ITEM_LONELY_MINT && itemId <= ITEM_SERIOUS_MINT)
-        return FALSE;
-
-    if(itemId >= ITEM_HEALTH_FEATHER && itemId <= ITEM_SWIFT_FEATHER)
-        return FALSE;
-#endif
-
     return TRUE;
 }
 

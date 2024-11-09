@@ -46,6 +46,13 @@ void RogueMonQuery_IsOfType(u8 func, u32 typeFlags);
 void RogueMonQuery_IsOfGeneration(u8 func, u32 generationFlags);
 void RogueMonQuery_EvosContainType(u8 func, u32 typeFlags);
 void RogueMonQuery_ContainsPresetFlags(u8 func, u32 flags);
+
+// e4/lategame filters 
+void RogueMonQuery_IsGood(u8 func);
+void RogueMonQuery_IsKantoMid(u8 func);
+void RogueMonQuery_IsJohtoMid(u8 func);
+void RogueMonQuery_IsHoennMid(u8 func);
+
 void RogueMonQuery_IsLegendary(u8 func);
 void RogueMonQuery_IsLegendaryWithPresetFlags(u8 func, u32 flags);
 void RogueMonQuery_IsBoxLegendary(u8 func);

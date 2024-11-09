@@ -94,10 +94,26 @@
                 "preferred_mon_gender": "MALE",
                 "team_generator":
                 {
-                    "subsets": [],
+                    "subsets": 	
+					[
+					{
+						"max_samples": 10,
+						"extra_species":
+						[	
+						"SPECIES_AMPHAROS", "SPECIES_FERALIGATR", "SPECIES_GIRAFARIG",
+						"SPECIES_GLIGAR", "SPECIES_GRANBULL", "SPECIES_HITMONTOP",
+						"SPECIES_LANTURN", "SPECIES_MISDREAVUS", "SPECIES_QUAGSIRE",
+						"SPECIES_QWILFISH", "SPECIES_XATU", "SPECIES_BLISSEY",
+						"SPECIES_CROBAT", "SPECIES_PORYGON2", "SPECIES_SCIZOR",
+						"SPECIES_SMEARGLE", "SPECIES_TYPHLOSION", "SPECIES_WOBBUFFET",
+						"SPECIES_MEGANIUM"
+						]
+					}
+					],
                     "weight_script":
                     [
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+						"EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
                 }
