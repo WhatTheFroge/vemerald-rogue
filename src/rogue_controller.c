@@ -77,7 +77,6 @@
 #include "rogue_settings.h"
 #include "rogue_timeofday.h"
 #include "rogue_trainers.h"
-#include "BakeHelpers.h"
 
 STATIC_ASSERT(sizeof(struct BoxPokemon) == sizeof(struct RogueBoxPokemonFacade), SizeOfRogueBoxPokemonFacade);
 STATIC_ASSERT(sizeof(struct Pokemon) == sizeof(struct RoguePokemonFacade), SizeOfRoguePokemonFacade);
@@ -213,14 +212,10 @@ static void RandomiseBerryTrees(void);
 static void RandomiseTRMoves();
 
 static bool8 IsRareWeightedSpecies(u16 species);
-static bool8 IsUncommonWeightedSpecies (u16 species); // new
-static bool8 IsVeryWeakWeightedSpecies(u16 species); // NEW
-static bool8 IsPoorWeightedSpecies(u16 species); // new
-static bool8 IsFrequentWeightedSpecies (u16 species); // new
 static void RandomiseCharmItems(void);
 static bool8 HasHoneyTreeEncounterPending(void);
 static void ClearHoneyTreePokeblock(void);
-u8 const* RoguePokedex_GetSpeciesName(u16 species);
+
 static void SetupTrainerBattleInternal(u16 trainerNum);
 
 u16 RogueRandomRange(u16 range, u8 flag)
@@ -1618,7 +1613,7 @@ void Rogue_ModifyBattleWinnings(u16 trainerNum, u32* money)
             else
             {
                 // Give slightly more money here
-                *money = (CalculateBattleWinnings(trainerNum) * 140) / 100;
+                *money *= 2;
             }
             break;
         }
@@ -1874,7 +1869,93 @@ u8 SpeciesToGen(u16 species)
 #ifdef ROGUE_EXPANSION
     if(species >= SPECIES_TURTWIG && species <= SPECIES_ARCEUS)
         return 4;
-#endif    
+    if(species >= SPECIES_VICTINI && species <= SPECIES_GENESECT)
+        return 5;
+    if(species >= SPECIES_CHESPIN && species <= SPECIES_VOLCANION)
+        return 6;
+    if(species >= SPECIES_ROWLET && species <= SPECIES_MELMETAL)
+        return 7;
+    if(species >= SPECIES_GROOKEY && species <= SPECIES_CALYREX)
+        return 8;
+    // Hisui is classes as gen8
+    if(species >= SPECIES_WYRDEER && species <= SPECIES_ENAMORUS)
+        return 8;
+
+    if(species >= SPECIES_SPRIGATITO && species <= SPECIES_PECHARUNT)
+        return 9;
+
+    if(species >= SPECIES_RATTATA_ALOLAN && species <= SPECIES_MAROWAK_ALOLAN)
+        return 7;
+    if(species >= SPECIES_MEOWTH_GALARIAN && species <= SPECIES_STUNFISK_GALARIAN)
+        return 8;
+
+    // Hisui is classes as gen8
+    if(species >= SPECIES_GROWLITHE_HISUIAN && species <= SPECIES_DECIDUEYE_HISUIAN)
+        return 8;
+
+    if(species >= SPECIES_BURMY_SANDY_CLOAK && species <= SPECIES_ARCEUS_FAIRY)
+        return 4;
+
+    // Just treat megas as gen 1 as they are controlled by a different mechanism
+    if(species >= SPECIES_VENUSAUR_MEGA && species <= SPECIES_GROUDON_PRIMAL)
+        return 1;
+    if(species >= SPECIES_VENUSAUR_GIGANTAMAX && species <= SPECIES_URSHIFU_RAPID_STRIKE_STYLE_GIGANTAMAX)
+        return 1;
+    
+    switch(species)
+    {
+        case SPECIES_GIRATINA_ORIGIN:
+            return 4;
+
+        case SPECIES_PALKIA_ORIGIN:
+        case SPECIES_DIALGA_ORIGIN:
+            return 8;
+
+        case SPECIES_KYUREM_WHITE:
+        case SPECIES_KYUREM_BLACK:
+            return 5;
+        
+        //case SPECIES_ZYGARDE_COMPLETE:
+        //    return 6;
+
+        case SPECIES_NECROZMA_DUSK_MANE:
+        case SPECIES_NECROZMA_DAWN_WINGS:
+        case SPECIES_NECROZMA_ULTRA:
+            return 7;
+
+        case SPECIES_ZACIAN_CROWNED_SWORD:
+        case SPECIES_ZAMAZENTA_CROWNED_SHIELD:
+        case SPECIES_ETERNATUS_ETERNAMAX:
+        case SPECIES_URSHIFU_RAPID_STRIKE_STYLE:
+        case SPECIES_ZARUDE_DADA:
+        case SPECIES_CALYREX_ICE_RIDER:
+        case SPECIES_CALYREX_SHADOW_RIDER:
+            return 8;
+
+        case SPECIES_ENAMORUS_THERIAN:
+            return 8;
+    }
+
+    // Alternate forms
+    switch(species)
+    {
+        case SPECIES_MEOWSTIC_FEMALE:
+            return 7;
+
+        case SPECIES_INDEEDEE_FEMALE:
+            return 8;
+    }
+
+    if(species >= SPECIES_LYCANROC_MIDNIGHT && species <= SPECIES_LYCANROC_DUSK)
+        return 7;
+
+    if(species >= SPECIES_TOXTRICITY_LOW_KEY && species <= SPECIES_ALCREMIE_STRAWBERRY_RAINBOW_SWIRL)
+        return 8;
+
+    if(species >= SPECIES_ALCREMIE_BERRY_VANILLA_CREAM && species <= SPECIES_ALCREMIE_RIBBON_RAINBOW_SWIRL)
+        return 8;
+#endif
+    
     return 0;
 }
 
@@ -1885,7 +1966,165 @@ static u8 ItemToGen(u16 item)
         // We want all items to appear in the hub, so long as we've unlocked the expanded mode
         return 1;
     }
-	
+
+#ifdef ROGUE_EXPANSION
+    if(item >= ITEM_FLAME_PLATE && item <= ITEM_PIXIE_PLATE)
+        return 4;
+
+    if(item >= ITEM_DOUSE_DRIVE && item <= ITEM_CHILL_DRIVE)
+        return 5;
+
+    if(item >= ITEM_FIRE_MEMORY && item <= ITEM_FAIRY_MEMORY)
+        return 7;
+
+    if(item >= ITEM_RED_NECTAR && item <= ITEM_PURPLE_NECTAR)
+        return 7;
+
+    // Mega stones are gonna be gen'd by the mons as we already feature toggle them based on key items
+    if(item >= ITEM_VENUSAURITE && item <= ITEM_MEWTWONITE_Y)
+        return 1;
+    if(item >= ITEM_AMPHAROSITE && item <= ITEM_TYRANITARITE)
+        return 2;
+    if(item >= ITEM_SCEPTILITE && item <= ITEM_LATIOSITE)
+        return 3;
+    if(item >= ITEM_LOPUNNITE && item <= ITEM_GALLADITE)
+        return 4;
+    if(item == ITEM_AUDINITE)
+        return 5;
+    if(item == ITEM_DIANCITE)
+        return 6;
+
+    // Z-crystals are key item feature toggled so leave them as always on except to for mon specific ones
+    if(item >= ITEM_NORMALIUM_Z && item <= ITEM_MEWNIUM_Z)
+        return 1;
+    if(item >= ITEM_DECIDIUM_Z && item <= ITEM_ULTRANECROZIUM_Z)
+        return 7;
+
+    switch(item)
+    {
+        case ITEM_SWEET_HEART:
+            return 5;
+
+        case ITEM_PEWTER_CRUNCHIES:
+            return 1;
+        case ITEM_RAGE_CANDY_BAR:
+            return 2;
+        case ITEM_LAVA_COOKIE:
+            return 3;
+        case ITEM_OLD_GATEAU:
+            return 4;
+        case ITEM_CASTELIACONE:
+            return 5;
+        case ITEM_LUMIOSE_GALETTE:
+            return 6;
+        case ITEM_SHALOUR_SABLE:
+            return 7;
+        case ITEM_BIG_MALASADA:
+            return 8;
+
+        case ITEM_SUN_STONE:
+        case ITEM_DRAGON_SCALE:
+        case ITEM_UPGRADE:
+        case ITEM_KINGS_ROCK:
+        case ITEM_METAL_COAT:
+            return 2;
+
+        case ITEM_SHINY_STONE:
+        case ITEM_DUSK_STONE:
+        case ITEM_DAWN_STONE:
+        case ITEM_ICE_STONE: // needed for gen 4 evos
+        case ITEM_PROTECTOR:
+        case ITEM_ELECTIRIZER:
+        case ITEM_MAGMARIZER:
+        case ITEM_DUBIOUS_DISC:
+        case ITEM_REAPER_CLOTH:
+        case ITEM_OVAL_STONE:
+        case ITEM_RAZOR_FANG:
+        case ITEM_RAZOR_CLAW:
+            return 4;
+
+        case ITEM_PRISM_SCALE:
+            return 5;
+
+        case ITEM_WHIPPED_DREAM:
+        case ITEM_SACHET:
+            return 6;
+
+        case ITEM_SWEET_APPLE:
+        case ITEM_TART_APPLE:
+        case ITEM_CRACKED_POT:
+        case ITEM_CHIPPED_POT:
+        case ITEM_GALARICA_CUFF:
+        case ITEM_GALARICA_WREATH:
+        case ITEM_STRAWBERRY_SWEET:
+        case ITEM_LOVE_SWEET:
+        case ITEM_BERRY_SWEET:
+        case ITEM_CLOVER_SWEET:
+        case ITEM_FLOWER_SWEET:
+        case ITEM_STAR_SWEET:
+        case ITEM_RIBBON_SWEET:
+            return 8;
+
+        case ITEM_RUSTED_SWORD:
+        case ITEM_RUSTED_SHIELD:
+            return 8;
+
+        case ITEM_RED_ORB:
+        case ITEM_BLUE_ORB:
+            return 3;
+
+        case ITEM_LIGHT_BALL:
+        case ITEM_LEEK:
+        case ITEM_THICK_CLUB:
+            return 1;
+
+        case ITEM_DEEP_SEA_SCALE:
+        case ITEM_DEEP_SEA_TOOTH:
+        case ITEM_SOUL_DEW:
+            return 3;
+
+        case ITEM_ADAMANT_ORB:
+        case ITEM_LUSTROUS_ORB:
+        case ITEM_GRISEOUS_ORB:
+        case ITEM_GRISEOUS_CORE: // <- Always have griseous core avaliable, so can transform as we did in og game
+            return 4;
+
+        case ITEM_ROTOM_CATALOG:
+        case ITEM_GRACIDEA:
+            return 4;
+
+        case ITEM_REVEAL_GLASS:
+        case ITEM_DNA_SPLICERS:
+            return 5;
+
+        case ITEM_ZYGARDE_CUBE:
+        case ITEM_PRISON_BOTTLE:
+            return 6;
+
+        case ITEM_N_SOLARIZER:
+        case ITEM_N_LUNARIZER:
+            return 7;
+
+        case ITEM_REINS_OF_UNITY:
+            return 8;
+        
+        // Hisui items gen8
+        case ITEM_BLACK_AUGURITE:
+        case ITEM_PEAT_BLOCK:
+        case ITEM_ADAMANT_CRYSTAL:
+        case ITEM_LUSTROUS_GLOBE:
+            return 8;
+
+        // Custom items
+        case ITEM_ALOLA_STONE:
+            return 7;
+        case ITEM_GALAR_STONE:
+            return 8;
+        case ITEM_HISUI_STONE:
+            return 8;
+    };
+
+#else
     // Item ranges are different so handle differently for EE and vanilla
     switch(item)
     {       
@@ -1904,6 +2143,7 @@ static u8 ItemToGen(u16 item)
         case ITEM_LAVA_COOKIE:
             return 3;
     };
+#endif
     
     // Assume gen 1 if we get here (i.e. always on)
     return 1;
@@ -1997,7 +2237,36 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
 
         if(itemId >= ITEM_BLUE_FLUTE && itemId <= ITEM_WHITE_FLUTE)
             return FALSE;
-		
+
+#ifdef ROGUE_EXPANSION
+        if(itemId >= ITEM_GROWTH_MULCH && itemId <= ITEM_BLACK_APRICORN)
+            return FALSE;
+
+        // Exclude all treasures then turn on the ones we want to use
+        if(itemId >= ITEM_BOTTLE_CAP && itemId <= ITEM_STRANGE_SOUVENIR)
+            return FALSE;
+
+        // These TMs aren't setup
+        if(itemId >= ITEM_TM51 && itemId <= ITEM_TM100)
+            return FALSE;
+
+        // Ignore fossils for now
+        if(itemId >= ITEM_HELIX_FOSSIL && itemId <= ITEM_FOSSILIZED_DINO)
+            return FALSE;
+
+        // Ignore sweets, as they are not used
+        if(itemId >= ITEM_STRAWBERRY_SWEET && itemId <= ITEM_RIBBON_SWEET)
+            return FALSE;
+
+        // No dynamax
+        if(itemId >= ITEM_EXP_CANDY_XS && itemId <= ITEM_DYNAMAX_CANDY)
+            return FALSE;
+
+        // No mochi
+        if(itemId >= ITEM_HEALTH_MOCHI && itemId <= ITEM_FRESH_START_MOCHI)
+            return FALSE;
+#endif
+
         if(Rogue_IsRunActive())
         {
             // Berries are not functional outside of the hub
@@ -2012,9 +2281,23 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
                 case ITEM_RABUTA_BERRY:
                 case ITEM_CORNN_BERRY:
                 case ITEM_MAGOST_BERRY:
-		case ITEM_SOUL_DEW:	// attempt ban Soul Dew in Vanilla 
                     return FALSE;
-					
+
+#ifdef ROGUE_EXPANSION
+                // Specific held items which don't trigger form changes, so won't be caught by the logic below
+                // we don't want unless the mon is avaliable
+                case ITEM_SOUL_DEW:
+                    return Query_IsSpeciesEnabled(SPECIES_LATIAS) || Query_IsSpeciesEnabled(SPECIES_LATIOS);
+
+                case ITEM_ADAMANT_ORB:
+                    return Query_IsSpeciesEnabled(SPECIES_DIALGA);
+
+                case ITEM_LUSTROUS_ORB:
+                    return Query_IsSpeciesEnabled(SPECIES_PALKIA);
+
+                case ITEM_GRISEOUS_ORB:
+                    return Query_IsSpeciesEnabled(SPECIES_GIRATINA);
+#endif
             }
         }
 
@@ -2030,6 +2313,9 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
             break;
 
 #ifdef ROGUE_EXPANSION
+        case ITEM_MAX_MUSHROOMS:
+            return Rogue_IsRunActive() && IsDynamaxEnabled();
+
         // Only active in hub via quest reward
         case ITEM_BERSERK_GENE:
             return !Rogue_IsRunActive();
@@ -2046,7 +2332,6 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
         case ITEM_FLUFFY_TAIL:
         case ITEM_SOOTHE_BELL:
         case ITEM_EVERSTONE:
-		case ITEM_SOUL_DEW:
 
         case ITEM_SMALL_COIN_CASE:
         case ITEM_LARGE_COIN_CASE:
@@ -2107,9 +2392,89 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
 
         if(!Rogue_GetConfigToggle(CONFIG_TOGGLE_EV_GAIN))
         {
+#if defined(ROGUE_EXPANSION)
+            if(itemId >= ITEM_HP_UP && itemId <= ITEM_CARBOS)
+                return FALSE;
+
+            if(itemId >= ITEM_HEALTH_FEATHER && itemId <= ITEM_SWIFT_FEATHER)
+                return FALSE;
+
+            if(itemId >= ITEM_MACHO_BRACE && itemId <= ITEM_POWER_ANKLET)
+                return FALSE;
+#else
             if((itemId >= ITEM_HP_UP && itemId <= ITEM_CALCIUM) || itemId == ITEM_ZINC)
                 return FALSE;
+#endif
         }
+
+#ifdef ROGUE_EXPANSION
+        // Mass exclude mega, Z moves & Tera Shards
+        // Only show tera shards if we have teras enabled
+        if((itemId >= ITEM_BUG_TERA_SHARD && itemId <= ITEM_WATER_TERA_SHARD) || itemId == ITEM_STELLAR_TERA_SHARD)
+        {
+            if(Rogue_IsRunActive())
+                return IsTerastallizeEnabled();
+            else
+                return TRUE;
+        }
+        
+        if(itemId >= ITEM_RED_ORB && itemId <= ITEM_DIANCITE)
+        {
+            if(Rogue_IsRunActive())
+                return IsMegaEvolutionEnabled();
+            else
+                return TRUE;
+        }
+        
+        if(itemId >= ITEM_NORMALIUM_Z && itemId <= ITEM_ULTRANECROZIUM_Z)
+        {
+            if(Rogue_IsRunActive())
+                return IsZMovesEnabled();
+            else
+                return TRUE;
+        }
+
+        // Regional treat (Avoid spawning in multiple)
+        if(itemId >= ITEM_PEWTER_CRUNCHIES && itemId <= ITEM_BIG_MALASADA)
+        {
+            switch(genLimit)
+            {
+                case 1:
+                    if(itemId != ITEM_PEWTER_CRUNCHIES)
+                        return FALSE;
+                    break;
+                case 2:
+                    if(itemId != ITEM_RAGE_CANDY_BAR)
+                        return FALSE;
+                    break;
+                case 3:
+                    if(itemId != ITEM_LAVA_COOKIE)
+                        return FALSE;
+                    break;
+                case 4:
+                    if(itemId != ITEM_OLD_GATEAU)
+                        return FALSE;
+                    break;
+                case 5:
+                    if(itemId != ITEM_CASTELIACONE)
+                        return FALSE;
+                    break;
+                case 6:
+                    if(itemId != ITEM_LUMIOSE_GALETTE)
+                        return FALSE;
+                    break;
+                case 7:
+                    if(itemId != ITEM_SHALOUR_SABLE)
+                        return FALSE;
+                    break;
+                //case 8:
+                default:
+                    if(itemId != ITEM_BIG_MALASADA)
+                        return FALSE;
+                    break;
+            }
+        }
+#endif
 
         if(Rogue_IsEvolutionItem(itemId))
         {
@@ -2145,22 +2510,63 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
 
 bool8 IsMegaEvolutionEnabled(void)
 {
+#if TESTING && defined(ROGUE_EXPANSION)
+    // todo - once we have Rogue specific tests, should come up with a good way to make this testable
+    return TRUE;
+#elif defined(ROGUE_EXPANSION)
+    if(Rogue_IsRunActive())
+        return gRogueRun.megasEnabled; // cached result
+    else
+        return CheckBagHasItem(ITEM_MEGA_RING, 1);
+
+#else
     return FALSE;
+#endif
 }
 
 bool8 IsZMovesEnabled(void)
 {
+#if TESTING && defined(ROGUE_EXPANSION)
+    // todo - once we have Rogue specific tests, should come up with a good way to make this testable
+    return TRUE;
+#elif defined(ROGUE_EXPANSION)
+    if(Rogue_IsRunActive())
+        return gRogueRun.zMovesEnabled; // cached result
+    else
+        return CheckBagHasItem(ITEM_Z_POWER_RING, 1);
+#else
     return FALSE;
+#endif
 }
 
 bool8 IsDynamaxEnabled(void)
 {
+#if TESTING && defined(ROGUE_EXPANSION)
+    // todo - once we have Rogue specific tests, should come up with a good way to make this testable
+    return TRUE;
+#elif defined(ROGUE_EXPANSION)
+    if(Rogue_IsRunActive())
+        return gRogueRun.dynamaxEnabled; // cached result
+    else
+        return CheckBagHasItem(ITEM_DYNAMAX_BAND, 1);
+#else
     return FALSE;
+#endif
 }
 
 bool8 IsTerastallizeEnabled(void)
 {
+#if TESTING && defined(ROGUE_EXPANSION)
+    // todo - once we have Rogue specific tests, should come up with a good way to make this testable
+    return TRUE;
+#elif defined(ROGUE_EXPANSION)
+    if(Rogue_IsRunActive())
+        return gRogueRun.terastallizeEnabled; // cached result
+    else
+        return CheckBagHasItem(ITEM_TERA_ORB, 1);
+#else
     return FALSE;
+#endif
 }
 
 bool8 IsHealingFlaskEnabled(void)
@@ -2513,9 +2919,11 @@ struct StarterSelectionData
 
 static const u8 sStarterTypeTriangles[] = 
 {
-	/*TYPE_NORMAL, TYPE_NORMAL, 	TYPE_NORMAL,
-   TYPE_WATER, TYPE_GRASS, TYPE_FIRE,
+    TYPE_WATER, TYPE_GRASS, TYPE_FIRE,
     TYPE_BUG, TYPE_ROCK, TYPE_GRASS,
+#ifdef ROGUE_EXPANSION
+    TYPE_FAIRY, TYPE_STEEL, TYPE_FIGHTING,
+#endif
 
     // dragon, dragon, dragon
     TYPE_ROCK, TYPE_GRASS, TYPE_FIRE,
@@ -2535,9 +2943,7 @@ static const u8 sStarterTypeTriangles[] =
 
     TYPE_GROUND, TYPE_ICE, TYPE_STEEL,
     TYPE_FLYING, TYPE_ROCK, TYPE_GRASS,
-    TYPE_STEEL, TYPE_FIRE, TYPE_ROCK*/
-	
-	TYPE_PSYCHIC, TYPE_PSYCHIC, TYPE_PSYCHIC
+    TYPE_STEEL, TYPE_FIRE, TYPE_ROCK
 };
 
 static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
@@ -2562,30 +2968,15 @@ static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
             RogueMonQuery_IsSpeciesActive();
             RogueMonQuery_IsBaseSpeciesInCurrentDex(QUERY_FUNC_INCLUDE);
             RogueMonQuery_EvosContainType(QUERY_FUNC_INCLUDE, typeFlags);
-            RogueMonQuery_IsLegendary(QUERY_FUNC_INCLUDE);
+            RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);
 
             RogueMonQuery_TransformIntoEggSpecies();
             RogueMonQuery_TransformIntoEvos(2, FALSE, FALSE); // to force mons to fit gen settings
-            RogueMonQuery_AnyActiveEvos(QUERY_FUNC_EXCLUDE);
+            RogueMonQuery_AnyActiveEvos(QUERY_FUNC_INCLUDE);
 
             RogueMonQuery_IsOfType(QUERY_FUNC_INCLUDE, typeFlags);
 
-			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SCYTHER);
-			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DRATINI);
-			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_LARVITAR);
-			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_BELDUM);
-			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_BAGON);
-			
-
-			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SHEDINJA);
-			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_CATERPIE);
-			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_WEEDLE);
-			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_WURMPLE);
-			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SCYTHER);
-			
-			
-			// This code isn't needed unless you want strict triangles with no repeat types.. not good for my use 
-            /* Exclude other types in triangle
+            // Exclude other types in triangle
             typeFlags = 0;
             if(i != 0)
                 typeFlags |= MON_TYPE_VAL_TO_FLAGS(sStarterTypeTriangles[typeTriangleOffset * 3 + 0]);
@@ -2594,7 +2985,7 @@ static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
             if(i != 2)
                 typeFlags |= MON_TYPE_VAL_TO_FLAGS(sStarterTypeTriangles[typeTriangleOffset * 3 + 2]);
 
-            RogueMonQuery_IsOfType(QUERY_FUNC_EXCLUDE, typeFlags);*/
+            RogueMonQuery_IsOfType(QUERY_FUNC_EXCLUDE, typeFlags);
 
             RogueWeightQuery_Begin();
             {
@@ -2818,18 +3209,10 @@ extern const u8 Rogue_Ridemon_PlayerIsTrapped[];
 
 void Rogue_NotifySaveVersionUpdated(u16 fromNumber, u16 toNumber)
 {
-    u32 i;
-
     if(Rogue_IsRunActive())
         gRogueLocal.hasSaveWarningPending = TRUE;
     else
         gRogueLocal.hasVersionUpdateMsgPending = TRUE;
-
-    // Clear saved adventures
-    for(i = 0; i < ARRAY_COUNT(gRogueSaveBlock->adventureReplay); ++i)
-        gRogueSaveBlock->adventureReplay[i].isValid = FALSE;
-
-    FlagClear(FLAG_ROGUE_ADVENTURE_REPLAY_ACTIVE);
 
     // TODO - Hook up warnings here??
     //if(IsPreReleaseCompatVersion(gSaveBlock1Ptr->rogueCompatVersion))
@@ -3377,25 +3760,19 @@ u16 Rogue_PostRunRewardLvls()
 
             for(i = 0; i < maxSlots; ++i)
             {
-                struct BoxPokemon* boxMon = Rogue_GetDaycareBoxMon(i);
-                struct Pokemon* tempMon = &gEnemyParty[PARTY_SIZE - 1];
-
-                BoxMonToMon(boxMon, tempMon);
+                struct BoxPokemon* mon = Rogue_GetDaycareBoxMon(i);
 
                 // Award levels
                 for(j = 0; j < daycareLvls; ++j)
                 {
-                    if(GetMonData(tempMon, MON_DATA_SPECIES) != SPECIES_NONE && GetMonData(tempMon, MON_DATA_LEVEL) != MAX_LEVEL)
+                    if(GetBoxMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE && GetBoxMonData(mon, MON_DATA_LEVEL) != MAX_LEVEL)
                     {
-                        exp = Rogue_ModifyExperienceTables(gRogueSpeciesInfo[GetMonData(tempMon, MON_DATA_SPECIES, NULL)].growthRate, GetMonData(tempMon, MON_DATA_LEVEL, NULL) + 1);
-                        SetMonData(tempMon, MON_DATA_EXP, &exp);
-                        CalculateMonStats(tempMon);
+                        exp = Rogue_ModifyExperienceTables(gRogueSpeciesInfo[GetBoxMonData(mon, MON_DATA_SPECIES, NULL)].growthRate, GetBoxMonData(mon, MON_DATA_LEVEL, NULL) + 1);
+                        SetBoxMonData(mon, MON_DATA_EXP, &exp);
                     }
                     
                     // don't give friendship for daycare mons
                 }
-		
-		CopyMon(boxMon, &tempMon->box, sizeof(struct BoxPokemon));	
             }
         }
     }
@@ -3569,7 +3946,6 @@ static void BeginRogueRun_ModifyParty(void)
             u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
             if(species != SPECIES_NONE)
             {
-		temp = 0;
                 SetMonData(&gPlayerParty[i], MON_DATA_HP_EV, &temp);
                 SetMonData(&gPlayerParty[i], MON_DATA_ATK_EV, &temp);
                 SetMonData(&gPlayerParty[i], MON_DATA_DEF_EV, &temp);
@@ -3614,14 +3990,6 @@ static void BeginRogueRun_ModifyParty(void)
                 u32 exp = Rogue_ModifyExperienceTables(gRogueSpeciesInfo[species].growthRate, STARTER_MON_LEVEL);
                 SetBoxMonData(boxMon, MON_DATA_EXP, &exp);
                 
-		temp = 0;
-                SetBoxMonData(boxMon, MON_DATA_HP_EV, &temp);
-                SetBoxMonData(boxMon, MON_DATA_ATK_EV, &temp);
-                SetBoxMonData(boxMon, MON_DATA_DEF_EV, &temp);
-                SetBoxMonData(boxMon, MON_DATA_SPEED_EV, &temp);
-                SetBoxMonData(boxMon, MON_DATA_SPATK_EV, &temp);
-                SetBoxMonData(boxMon, MON_DATA_SPDEF_EV, &temp);
-
                 // Adjust item
                 temp = GetBoxMonData(boxMon, MON_DATA_HELD_ITEM);
                 if(!CanBringInHeldItem(temp))
@@ -3832,17 +4200,19 @@ static void BeginRogueRun(void)
     {
         struct AdventureReplay const* replay = &gRogueSaveBlock->adventureReplay[ROGUE_ADVENTURE_REPLAY_REMEMBERED];
 
-        if(RogueHub_HasUpgrade(HUB_UPGRADE_ADVENTURE_ENTRANCE_ADVENTURE_REPLAY) && FlagGet(FLAG_ROGUE_ADVENTURE_REPLAY_ACTIVE) && replay->isValid)
+        if(FlagGet(FLAG_ROGUE_ADVENTURE_REPLAY_ACTIVE) && replay->isValid)
         {
             gRogueRun.baseSeed = replay->baseSeed;
             memcpy(&gRogueSaveBlock->difficultyConfig, &replay->difficultyConfig, sizeof(gRogueSaveBlock->difficultyConfig));
 
             Rogue_PushPopup_AdventureReplay();
+
+            // TODO - Ban challenges
+            // ACTUALLY DO THIS BEFORE FORGET
         }
         else
         {
             gRogueRun.baseSeed = Random();
-	    FlagClear(FLAG_ROGUE_ADVENTURE_REPLAY_ACTIVE);
         }
     }
 
@@ -4456,34 +4826,18 @@ static u8 UNUSED RandomMonType(u16 seedFlag)
 
 static u8 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 {
-
-    if(IsUncommonWeightedSpecies(species))							
-    {
-        // Uncommon species are very rare with 0 badges, normal rarity after 2 badges; slightly more frequent than on route  
-        if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-            return 10;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 3)		// 1 badge
-            return 8;
-        else										// no badges
-            return 3;
-    }
-
     if(IsRareWeightedSpecies(species))
     {
-        // Rare species become more common into late game; slightly more frequent than on route 
-        if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY + 1)		// 5 badge
-            return 10;
-	else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)		// 4 badge
-	    return 7;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 1)		// 3 badge
-            return 4;
-	else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-	    return 3;
+        // Rare species become more common into late game
+        if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY + 1)
+            return 3;
+        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 1)
+            return 2;
         else
             return 1;
     }
 
-    return 10;
+    return 3;
 }
 
 u16 Rogue_SelectWildDenEncounterRoom(void)
@@ -4918,10 +5272,6 @@ void Rogue_OnSetWarpData(struct WarpData *warp)
     }
 
     FlagClear(FLAG_ROGUE_MAP_EVENT);
-    
-    // Weird edge case fix for gyms
-    VarSet(VAR_ROGUE_ALWAYS_ZERO, 0);
-
 
     // Reset preview data
     memset(&gRogueLocal.encounterPreview[0], 0, sizeof(gRogueLocal.encounterPreview));
@@ -4952,7 +5302,6 @@ void Rogue_OnSetWarpData(struct WarpData *warp)
                 {
                     FlagSet(FLAG_ROGUE_DAYCARE_PHONE_CHARGED);
                     FlagSet(FLAG_ROGUE_COURIER_READY);
-                    FlagClear(FLAG_ROGUE_VENDING_MACHINE_USED);
                     TryRandomanSpawn(33);
                     break;
                 }
@@ -5135,12 +5484,6 @@ void Rogue_OnSetWarpData(struct WarpData *warp)
                     break;
                 }
 
-		case ADVPATH_ROOM_GAMESHOW:
-                {
-                    FlagClear(FLAG_ROGUE_HIDE_GAMESHOW_REWARD);
-                    break;
-                }
-	
                 case ADVPATH_ROOM_SIGN:
                 {
                     u8 i;
@@ -7626,7 +7969,7 @@ void Rogue_ModifyWildMon(struct Pokemon* mon)
             u16 presetIndex;
             u16 presetCount = gRoguePokemonProfiles[species].competitiveSetCount;
             u16 statA = (Random() % 6);
-            // u16 statB = (statA + 1 + (Random() % 5)) % 6;
+            u16 statB = (statA + 1 + (Random() % 5)) % 6;
             u16 temp = 31;
 
             if(presetCount != 0)
@@ -7643,10 +7986,8 @@ void Rogue_ModifyWildMon(struct Pokemon* mon)
             SetMonData(mon, MON_DATA_FRIENDSHIP, &temp);
 
             // Bump 2 of the IVs to max
-            temp = 31;
-	    SetMonData(mon, MON_DATA_HP_IV + statA, &temp);
-	    SetMonData(mon, MON_DATA_HP_IV + statA, &temp);	// added code, attempt set 2nd IV to max. 
-            // SetMonData(mon, MON_DATA_HP_IV + statB, &temp);
+            SetMonData(mon, MON_DATA_HP_IV + statA, &temp);
+            SetMonData(mon, MON_DATA_HP_IV + statB, &temp);
 
             // Clear held item
             temp = 0;
@@ -7670,8 +8011,7 @@ void Rogue_ModifyWildMon(struct Pokemon* mon)
                     moveId == MOVE_WHIRLWIND || 
                     moveId == MOVE_EXPLOSION ||
                     moveId == MOVE_SELF_DESTRUCT || 
-                    moveId == MOVE_TELEPORT ||
-		    moveId == MOVE_MEMENTO ) 
+                    moveId == MOVE_TELEPORT)
                 {
                     moveId = MOVE_HIDDEN_POWER;
                     SetMonData(mon, MON_DATA_MOVE1 + i, &moveId);
@@ -8120,9 +8460,10 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
     case ROGUE_SHOP_BATTLE_ENHANCERS:
         RogueItemQuery_IsGeneralShopItem(QUERY_FUNC_EXCLUDE);
 
+#ifdef ROGUE_EXPANSION
         // Mints are in treat shop
         RogueMiscQuery_EditRange(QUERY_FUNC_EXCLUDE, ITEM_LONELY_MINT, ITEM_SERIOUS_MINT);
-		
+#endif
         {
             u8 pocket;
             for(pocket = POCKET_NONE + 1; pocket <= POCKET_KEY_ITEMS; ++pocket)
@@ -8459,73 +8800,16 @@ void Rogue_CorrectBoxMonDetails(struct BoxPokemon* mon)
     }
 }
 
-static bool8 IsUncommonWeightedSpecies(u16 species)
-{
-    if((RoguePokedex_GetSpeciesBST(species) >= 425) && (RoguePokedex_GetSpeciesBST(species) < 470))
-            return TRUE;
-    return FALSE;
-}
-
 static bool8 IsRareWeightedSpecies(u16 species)
 {
-    if(RoguePokedex_GetSpeciesBST(species) >= 470)
+    if(RoguePokedex_GetSpeciesBST(species) >= 500)
+    {
+        if(Rogue_GetMaxEvolutionCount(species) == 0)
             return TRUE;
+    }
+
     return FALSE;
 }
-
-static bool8 IsVeryWeakWeightedSpecies(u16 species)
-{
-    if((RoguePokedex_GetSpeciesBST(species) <= 360) && (Rogue_GetMaxEvolutionCount(species) == 0)) // Aipom, Spinda, and Farfetch'd 
-            return TRUE;
-    return FALSE;
-}
-
-static bool8 IsPoorWeightedSpecies(u16 species)
-{
-	if((RoguePokedex_GetSpeciesBST(species) <= 420) && (RoguePokedex_GetSpeciesBST(species) >= 375))
-	{
-		if(Rogue_GetMaxEvolutionCount(species) == 0)			// ~400 BST 2-stage pokemon are stronger on average than 1-stage. They're in a different group 
-			return TRUE;
-		else if (Rogue_GetMaxEvolutionCount(species) == 2)	
-			if(RoguePokedex_GetSpeciesType(species, 0) == (TYPE_BUG))
-			return TRUE;
-	}
-	return FALSE;
-}
-		
-bool8 IsFrequentWeightedSpecies (u16 species) // Most experimental
-{
-	// species = GET_BASE_SPECIES_ID(species);
-	switch(species)
-	{
-		case SPECIES_POOCHYENA:
-		case SPECIES_ZIGZAGOON:
-		case SPECIES_SENTRET:
-		case SPECIES_SURSKIT:
-		case SPECIES_RATTATA:
-		case SPECIES_AZURILL:
-		case SPECIES_MAGNEMITE:
-		case SPECIES_PARAS:
-		case SPECIES_DIGLETT:
-		case SPECIES_TOGEPI:
-		//case SPECIES_
-		//case SPECIES_
-		//case SPECIES_
-		//case SPECIES_
-			return TRUE;
-		//if(Rogue_GetMaxEvolutionCount(species) == 1)
-		//{	
-		//	if(RoguePokedex_GetSpeciesType(species, 0) == (TYPE_PSYCHIC))	// Wobbuffet 
-		//		return FALSE;
-		//	else if(RoguePokedex_GetSpeciesType(species, 1) == (TYPE_PSYCHIC)) // Medicham
-		//		return FALSE;
-		//	else 
-		//		return TRUE;
-		// }
-	}
-	return FALSE;
-}
-
 
 static u8 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void* data)
 {
@@ -8587,53 +8871,18 @@ static u8 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void* 
 
 #endif
 
-    if(IsUncommonWeightedSpecies(species))							
-    {
-        // Uncommon species are very rare with 0 badges, normal rarity after 2 badges 
-        if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-            return 10;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 3)	// 1 badge
-            return 7;
-        else																	// no badges
-            return 2;
-    }
-
     if(IsRareWeightedSpecies(species))
     {
         // Rare species become more common into late game
-		if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY + 1)			// 5 badge
-			return 10;
-		else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)			// 4 badge
-			return 6;
-		else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 1)		// 3 badge
-			return 3;
-		else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-			return 2;
-		else
-			return 1;
+        if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY + 1)
+            return 3;
+        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 1)
+            return 2;
+        else
+            return 1;
     }
 
-	if(IsVeryWeakWeightedSpecies(species))
-	{
-		if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-            return 10;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 3)	// 1 badge
-            return 15;
-        else																	// no badges
-            return 10;
-	}
-	
-	if(IsFrequentWeightedSpecies(species))
-	{
-		if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-            return 10;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 3)	// 1 badge
-            return 15;
-        else																	// no badges
-            return 50;
-	}
-	
-    return 10;
+    return 3;
 }
 
 static u8 RandomiseWildEncounters_CalculateInitialWeight(u16 index, u16 species, void* data)
@@ -8712,7 +8961,7 @@ static void RandomiseWildEncounters(void)
     BeginWildEncounterQuery();
     {
         u8 i;
-		u8 typeHint = Rogue_GetTypeForHintForRoom(&gRogueAdvPath.rooms[gRogueRun.adventureRoomId]);
+        u8 typeHint = Rogue_GetTypeForHintForRoom(&gRogueAdvPath.rooms[gRogueRun.adventureRoomId]);
         RogueWeightQuery_Begin();
 
         // Initial query will only allow mons of type hint
@@ -8838,8 +9087,6 @@ bool8 Rogue_TryAddHoneyTreePokeblock(u16 itemId)
 static u8 RandomiseFishingEncounters_CalculateWeight(u16 index, u16 species, void* data)
 {
     if(IsRareWeightedSpecies(species))
-        return 1;
-    if(IsUncommonWeightedSpecies(species))
         return 1;
 
     return 10;
@@ -9189,10 +9436,6 @@ static u8 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data)
 {
     u8 pocket = ItemId_GetPocket(itemId);
     u8 weight;
-	u16 itemid; 
-
-	if (itemid == ITEM_MOON_STONE) 
-		weight = 10;
 
     switch (pocket)
     {
@@ -9205,7 +9448,7 @@ static u8 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data)
         break;
 
     case POCKET_STONES:
-		weight = 6;
+        weight = 6;
         break;
 
     case POCKET_MEDICINE:
