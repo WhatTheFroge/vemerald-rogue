@@ -1,0 +1,123 @@
+{
+    "includes":
+    [
+        "trainers/debug.json",
+
+        "trainers/kanto.json",
+        "trainers/johto.json",
+        "trainers/hoenn.json",
+        "trainers/rogue.json",
+
+        "trainers/sinnoh.json",
+        "trainers/unova.json",
+        "trainers/kalos.json",
+        "trainers/alola.json",
+        "trainers/galar.json",
+        "trainers/paldea.json",
+
+        "trainers/route.json",
+        "trainers/team_rocket.json",
+        "trainers/team_aqua.json",
+        "trainers/team_magma.json",
+        "trainers/team_galactic.json"
+    ],
+    "defaults":
+    {
+        "type_assignment": "NONE"
+    },
+    "trainers":
+    {
+        "#if defined(ROGUE_DEBUG)":
+        [
+            {
+                "name": "DEBUG",
+                "gfx_suffix": "DEBUG_NPC",
+                "trainer_class": "TRAINER_CLASS_COOLTRAINER",
+                "music_player": "kanto_boss",
+                "trainer_flags": [],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12
+                        }
+                    ]
+                }
+            }
+        ],
+
+        "misc_trainers":
+        [
+            {
+                "name": "ASSISTANT",
+                "level_override": 1,
+                "object_event": "OBJ_EVENT_GFX_MISC_POKE_FAN_F",
+                "trainer_pic": "TRAINER_PIC_POKEFAN_F",
+                "trainer_class": "TRAINER_CLASS_POKEFAN",
+                "music_player": "route_trainer",
+                "trainer_flags": [ "REGION_ANY", "CLASS_SPECIAL" ],
+                "class_flags": [ "EXP_TRAINER" ],
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "I'll try to be gentle!",
+                        "POST_BATTLE_TAUNT": "I hope that helped!"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets": [],
+                    "query_script_override": 
+                    [
+                        "FORCE_INCLUDE_SPECIES", "SPECIES_CHANSEY"
+                    ]
+                }
+            },
+            {
+                "name": "JOEY",
+                "object_event": "OBJ_EVENT_GFX_YOUNGSTER",
+                "trainer_pic": "TRAINER_PIC_YOUNGSTER",
+                "trainer_class": "TRAINER_CLASS_YOUNGSTER",
+                "music_player": "battle_simulator",
+                "trainer_flags": [ "REGION_ANY", "CLASS_SPECIAL" ],
+                "class_flags": [ "BATTLE_SIM" ],
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "Let's go!",
+                        "POST_BATTLE_TAUNT": "Wow wow wow!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets": 	
+					[
+					{
+						"max_samples": 10,
+						"extra_species":
+						[	
+						"SPECIES_AMPHAROS", "SPECIES_FERALIGATR", "SPECIES_GIRAFARIG",
+						"SPECIES_GLIGAR", "SPECIES_GRANBULL", "SPECIES_HITMONTOP",
+						"SPECIES_LANTURN", "SPECIES_MISDREAVUS", "SPECIES_QUAGSIRE",
+						"SPECIES_QWILFISH", "SPECIES_XATU", "SPECIES_BLISSEY",
+						"SPECIES_CROBAT", "SPECIES_PORYGON2", "SPECIES_SCIZOR",
+						"SPECIES_SMEARGLE", "SPECIES_TYPHLOSION", "SPECIES_WOBBUFFET",
+						"SPECIES_MEGANIUM"
+						]
+					}
+					],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+						"EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            }
+        ]
+    }
+}

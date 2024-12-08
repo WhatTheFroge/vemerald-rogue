@@ -1,0 +1,334 @@
+const FLAG_CAN_GIVE_C_GEAR = FLAG_TEMP_10
+
+const VAR_TRIGGER_POKABBIE_MEET = VAR_TEMP_0
+
+// Reused vars
+const VAR_SHAKE_VERTICAL_PAN = VAR_0x8004
+const VAR_SHAKE_HORIZONTAL_PAN = VAR_0x8005
+const VAR_SHAKE_NUM_SHAKES = VAR_0x8006
+const VAR_SHAKE_SHAKE_DELAY = VAR_0x8007
+
+const OBJ_EVENT_POKABBIE = 2
+
+mapscripts Rogue_Interior_ConfigLab_MapScripts 
+{
+    MAP_SCRIPT_ON_LOAD: Rogue_Interior_ConfigLab_OnLoad
+}
+
+script Rogue_Interior_ConfigLab_OnLoad
+{
+    setvar(VAR_FOLLOW_MON_0, SPECIES_MAREEP)
+    if(flag(FLAG_ROGUE_UNCOVERRED_POKABBIE))
+    {
+        call(Rogue_Interior_ConfigLab_DrawBasementDoor)
+    }
+
+    if(var(VAR_ROGUE_INTRO_STATE) >= ROGUE_INTRO_STATE_REPORT_TO_PROF && flag(FLAG_ROGUE_MET_FENNEL))
+    {
+        setflag(FLAG_CAN_GIVE_C_GEAR)
+    }
+    else
+    {
+        clearflag(FLAG_CAN_GIVE_C_GEAR)
+    }
+
+    if(!flag(FLAG_ROGUE_MET_POKABBIE))
+    {
+        setvar(VAR_TRIGGER_POKABBIE_MEET, YES)
+    }
+    else
+    {
+        setvar(VAR_TRIGGER_POKABBIE_MEET, NO)
+    }
+}
+
+script Rogue_Interior_ConfigLab_DrawBasementDoor
+{
+    setmetatile(2, 13, 0x27C, TRUE)
+    setmetatile(3, 13, 0x27D, TRUE)
+    setmetatile(4, 13, 0x27E, TRUE)
+
+    setmetatile(2, 14, 0x284, TRUE)
+    setmetatile(3, 14, 0x283, FALSE)
+    setmetatile(4, 14, 0x286, TRUE)
+
+    setmetatile(2, 15, 0x28C, TRUE)
+    setmetatile(4, 15, 0x28E, FALSE)
+    special(DrawWholeMapView)
+}
+
+script Rogue_Interior_ConfigLab_TalkHiddenDoor
+{
+    special(Rogue_IsMultiplayerClient)
+    if(flag(FLAG_ROGUE_UNCOVERRED_POKABBIE) == FALSE && var(VAR_RESULT) == NO)
+    {
+        lock
+
+        msgbox(format("What's this?\pA hidden switch!\pPress the switch?"), MSGBOX_YESNO)
+
+        if(var(VAR_RESULT) == YES)
+        {
+            msgbox(format("WARNING!\nPressing this switch will skip ahead and activate post-game content.\pYou're recommended to complete a run normally before pressing this switch.\pPress the switch?"), MSGBOX_YESNO)
+
+            if(var(VAR_RESULT) == YES)
+            {
+                setflag(FLAG_ROGUE_UNCOVERRED_POKABBIE)
+
+                waitse
+                playse(SE_TRUCK_DOOR)
+                call(Rogue_Interior_ConfigLab_DrawBasementDoor)
+            }
+        }
+
+        release
+    }
+}
+
+script Rogue_Interior_ConfigLab_TalkFennel
+{
+    lock
+    faceplayer
+    msgbox(format("FENNEL: Oh, hi {PLAYER}!"), MSGBOX_DEFAULT)
+    
+    if(!flag(FLAG_ROGUE_MET_FENNEL))
+    {
+        msgbox(format("Now everything has settled a bit, I can finally continue my research.\pI've had a bit of a shift in my research.\nI'm now trying to figure what is happening out there whilst people are out on Adventures."))
+        msgbox(format("Speaking of Adventures…\pI did figure out how to adjust the behaviour of the Adventures you go on.\pHere, take a look!"))
+    }
+    else
+    {
+        checkitem(ITEM_C_GEAR)
+
+        if(var(VAR_RESULT) == FALSE && flag(FLAG_CAN_GIVE_C_GEAR))
+        {
+            msgbox(format("Just the Trainer I wanted to see!\pI have something for you!"), MSGBOX_DEFAULT)
+
+            giveitem(ITEM_C_GEAR)
+
+            bufferitemname(STR_VAR_1, ITEM_C_GEAR)
+            msgbox(format("I repurposed that {STR_VAR_1} so you can view and edit Config Lab settings remotely!\pYou can even use it whilst you're Adventuring to double check your settings!\pNow…\nDid you want to adjust your Adventure settings?"), MSGBOX_DEFAULT)
+        }
+        else
+        {
+            msgbox(format("Did you want to adjust your Adventure settings?"), MSGBOX_DEFAULT)
+        }
+    }
+
+    waitse
+    special(Special_ViewDifficultyConfigMenu)
+    waitstate
+
+    if(!flag(FLAG_ROGUE_MET_FENNEL))
+    {
+        setflag(FLAG_ROGUE_MET_FENNEL)
+        msgbox(format("I don't really understand it all myself yet.\pBut I'm sure, if you keep exploring, I'll eventually gather enough data to be able to unlock the secrets of Adventures and share them with you!"))
+    }
+
+    msgbox(format("If you ever want to adjust your Adventure settings again, please do come talk to me.")) 
+
+    release
+}
+
+script Rogue_Interior_ConfigLab_TriggerMeetPokabbie
+{
+    lock
+    setflag(FLAG_ROGUE_MET_POKABBIE)
+    setvar(VAR_TRIGGER_POKABBIE_MEET, NO)
+
+    applymovement(OBJ_EVENT_POKABBIE, Rogue_Interior_ConfigLab_Pokabbie0)
+    waitmovement(0)
+
+    playbgm(MUS_PL_MYSTERY_GIFT, TRUE)
+
+    msgbox(format("{PLAYER}?!\pWhat are you doing here, I didn't expect you to come so soon?\pWho am I?\pMy name's Pokabbie.\nI'm the Developer of Emerald Rogue!"))
+    closemessage
+
+    applymovement(OBJ_EVENT_POKABBIE, Pokabbie_Spin_FaceLeft)
+    waitmovement(0)
+
+    msgbox(format("POKABBIE: Ta-da!\pI must admit, I didn't expect to be speaking to you until after you had become Champion and entered the Hall of Fame.\pBut I guess we can sequence break a bit…\nLet me remember my speech.\pEhem.\pNow that you're the, {FONT_NARROW}hopefully soon to be{FONT_NORMAL}, Champion, there's sooooo much more fun stuff for you!\pSpeaking of…\nCan you lend me your Pokédex for one second, please."))
+
+    if(!flag(FLAG_SYS_POKEDEX_GET))
+    {
+        msgbox(format("What?\pYou haven't even gotten a Pokédex yet!?\pWow… you are reaaaaallly keen, huh?\pWell, here I guess you can have this one."))
+        
+        callnative(Rogue_PushPopup_UnlockPokedex)
+        call(Rogue_Common_DisplayPopups)
+        setflag(FLAG_SYS_POKEDEX_GET)
+
+        msgbox(format("{FONT_NARROW}Now that's sorted, I can continue with my script…{FONT_NORMAL}\pCan you lend me your Pokédex for one second, please."))
+    }
+
+    closemessage
+    applymovement(OBJ_EVENT_POKABBIE, Rogue_Interior_ConfigLab_Pokabbie1)
+    waitmovement(0)
+
+    delay(30)
+    playse(SE_M_COMET_PUNCH)
+    waitse
+    playse(SE_M_COMET_PUNCH)
+    waitse
+    playse(SE_M_COMET_PUNCH)
+    waitse
+    delay(30)
+
+    playse(SE_M_EXPLOSION)
+    setvar(VAR_SHAKE_VERTICAL_PAN, -5)
+    setvar(VAR_SHAKE_HORIZONTAL_PAN, 5)
+    setvar(VAR_SHAKE_NUM_SHAKES, 8)
+    setvar(VAR_SHAKE_SHAKE_DELAY, 4)
+    special(ShakeCameraNoSE)
+    waitstate
+    waitse
+
+    delay(30)
+
+    applymovement(OBJ_EVENT_POKABBIE, Rogue_Interior_ConfigLab_Pokabbie2)
+    waitmovement(0)
+
+    msgbox(format("POKABBIE: Phew…\nAll done!\pI've got a few upgrades for you!\pFirstly, your Pokédex can now change it's mode to different Regions.\pHere, take a look."))
+
+    waitse
+    special(Special_ViewRoguePokedex)
+    waitstate
+
+    msgbox(format("If you change your Pokédex mode, when you next set off on an Adventure, you'll encounter Pokémon only present in that Pokédex mode!\pThe next thing I did was upgrade the Config Lab for you!"))
+
+    checkitem(ITEM_C_GEAR)
+    if(var(VAR_RESULT) == NO)
+    {
+        bufferitemname(STR_VAR_1, ITEM_C_GEAR)
+
+        msgbox(format("What!?\nYou don't even have a {STR_VAR_1} of your own?\pWe can't have that!\nHere!"))
+        giveitem(ITEM_C_GEAR)
+
+        msgbox(format("The {STR_VAR_1} allows you to remotely access the Config Lab from wherever you are!\pYou can change your settings from wherever you are in {POKEMON_HUB}, or you can even check your settings, in the middle of an Adventure.\pAnyhow, I'm getting distracted!\pThat's not actually the thing I upgraded for you…"))
+    }
+
+    msgbox(format("I upgraded the Config Lab to have new settings for you.\pHere, take a look."))
+
+    waitse
+    special(Special_ViewDifficultyConfigMenu)
+    waitstate
+
+    msgbox(format("Annnnddddd!\pFinally, I've added a new upgrade you may build for {POKEMON_HUB}, the Challenge Area!"))
+
+    if(var(VAR_ROGUE_INTRO_STATE) <= ROGUE_INTRO_STATE_LEARN_TO_BUILD)
+    {
+        msgbox(format("Oh, shoot!\nYou haven't even learnt about upgrades yet?\pYou spoke to me so fast, that you hadn't even finished the Tutorial yet!\pNo matter.\nYou'll learn about it, as soon as you return from your first Adventure."))
+    }
+
+    msgbox(format("I won't spoil it for you, but in the Challenge Area there is a lot of stuff that I'm sure you'll find super fun!\pNow, you get going and complete yourself some Adventures!"))
+
+    fadedefaultbgm
+    release
+}
+
+script Rogue_Interior_ConfigLab_TalkPokabbie
+{
+    lock
+
+    applymovement(OBJ_EVENT_POKABBIE, Pokabbie_Spin_FaceDown)
+    waitmovement(0)
+
+    faceplayer
+
+    special(Rogue_CanActivatePikinEasterEgg)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        setflag(FLAG_ROGUE_UNLOCKED_PIKIN_EASTER_EGG)
+        msgbox(format("POKABBIE: Hi {PLAYER}!\pIs that-\pThat is!\nIt's one of my Mareep!\pSo it ended up with you, huh?\pI guess you'll at least be able to show it some exciting Adventures!"))
+
+        poryswitch(ROGUE_VERSION)
+        {
+            ROGUE_VERSION_VANILLA
+            {
+                msgbox(format("You know Pikin can also learn Blizzard too?\pHere, you should be able to teach Pikin it now from the Learn Moves menu!\pI hope you show Pikin some exciting Adventures!"))
+            }
+            ROGUE_VERSION_EXPANSION
+            {
+                msgbox(format("You know I once made a challenge hack for a friend of mine where I gave Pikin it's very own Mega!\pA Mega Mareep!\pIt was a bit insane in that ROM hack though…\pOh I forgot, doh!\pYou can Mega Evolve Pikin in Emerald Rogue too!\pYou need to teach it Hurricane and then it will be able to Mega Evolve.\p… … …\pYes… like Mega Rayquaza…\pLook… I love Mareep alright!\pThere!\pYou should be able to teach Pikin Hurricane now from the Learn Moves menu.\pWhy not give Mega Mareep a try for yourself!\pJust be careful not to evolve it, otherwise you're going to have to hunt down yet another Pikin…\pTo be fair…\nThere are many Pikins…\pI hope you show Pikin some exciting Adventures!"))
+            }
+        }
+    }
+    else
+    {
+        msgbox(format("POKABBIE: Hi {PLAYER}!\pI hope you're enjoying Emerald Rogue!\pIf not…\nI dunno?\lSorry I guess?"))
+    }
+
+    release
+}
+
+movement Rogue_Interior_ConfigLab_Pokabbie0
+{
+    face_left
+    emote_exclamation_mark
+    delay_16 * 4
+    walk_left
+}
+
+movement Rogue_Interior_ConfigLab_Pokabbie1
+{
+    walk_fast_right
+    face_up
+}
+
+movement Rogue_Interior_ConfigLab_Pokabbie2
+{
+    walk_fast_left
+}
+
+movement Pokabbie_Spin_FaceDown
+{
+    face_right
+    delay_1
+
+    face_up
+    delay_1
+
+    face_left
+    delay_1
+
+    face_down
+    delay_1
+    
+    face_right
+    delay_1
+
+    face_up
+    delay_1
+
+    face_left
+    delay_1
+
+    face_down
+    delay_1
+}
+
+movement Pokabbie_Spin_FaceLeft
+{
+    face_down
+    delay_1
+    
+    face_right
+    delay_1
+
+    face_up
+    delay_1
+
+    face_left
+    delay_1
+
+    face_down
+    delay_1
+
+    face_right
+    delay_1
+
+    face_up
+    delay_1
+
+    face_left
+    delay_1
+}

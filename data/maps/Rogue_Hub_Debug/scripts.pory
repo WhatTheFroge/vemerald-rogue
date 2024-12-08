@@ -1,0 +1,364 @@
+mapscripts Rogue_Hub_Debug_MapScripts {}
+
+
+script Rogue_Debug_FillPCWithGen
+{
+    lock
+    
+    msgbox(format("Fill PC?"), MSGBOX_YESNO)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        message(format("Which gen?"))
+        waitmessage
+
+        //setflag(FLAG_SYS_QUEST_LOG_GET)
+        //setflag(FLAG_SYS_FIELD_MOVES_GET)
+
+        checkitem(ITEM_QUEST_LOG)
+        if(var(VAR_RESULT) == NO)
+        {
+            giveitem(ITEM_QUEST_LOG)
+        }
+
+        if(flag(FLAG_ROGUE_EXPANSION_ACTIVE))
+        {
+            multichoice(20, 0, MULTI_GENERATIONS_UPTO8, NO)
+        }
+        else
+        {
+            multichoice(20, 6, MULTI_GENERATIONS_UPTO3, NO)
+        }
+
+        switch(var(VAR_RESULT))
+        {
+            case MULTI_B_PRESSED: 
+                msgbox(format("No worries!\nCome chat to me if you ever change your mind."), MSGBOX_DEFAULT)
+
+            default:
+                waitse
+                playse(SE_PIN)
+                addvar(VAR_RESULT, 1)
+                copyvar(VAR_0x8004, VAR_RESULT)
+
+                special(RogueDebug_FillGenPC)
+
+                msgbox(format("Done."), MSGBOX_DEFAULT)
+
+        }
+    }
+
+    msgbox(format("Fill dex?"), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES)
+    {
+        special(RogueDebug_FillDex)
+        msgbox(format("Done."), MSGBOX_DEFAULT)
+    }
+
+    release
+}
+
+script Rogue_Debug_ClearQuests
+{
+    lock
+
+    msgbox(format("ClearQuests"), MSGBOX_YESNO)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        special(RogueDebug_ClearQuests)
+    }
+
+    release
+}
+
+script Rogue_Debug_CompleteAvaliableQuests
+{
+    lock
+
+    msgbox(format("CompleteAvaliableQuests"), MSGBOX_YESNO)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        special(RogueDebug_CompleteAvaliableQuests)
+    }
+
+    release
+}
+
+script Rogue_Debug_CollectAllQuests
+{
+    lock
+
+    msgbox(format("CollectAllQuests"), MSGBOX_YESNO)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        special(RogueDebug_CollectAllQuests)
+    }
+
+    release
+}
+
+script Rogue_Debug_AddMoney
+{
+    lock
+
+    addmoney(10000)
+    msgbox(format("Lots of stuff."), MSGBOX_DEFAULT)
+
+    //checkitem(ITEM_HEALING_FLASK)
+    //if(var(VAR_RESULT) == NO)
+    //{
+    //    giveitem(ITEM_HEALING_FLASK, 1)
+    //}
+
+    //checkitem(ITEM_BASIC_RIDING_WHISTLE)
+    //if(var(VAR_RESULT) == NO)
+    //{
+    //    giveitem(ITEM_BASIC_RIDING_WHISTLE, 1)
+    //}
+//
+    //checkitem(ITEM_GOLD_RIDING_WHISTLE)
+    //if(var(VAR_RESULT) == NO)
+    //{
+    //    giveitem(ITEM_GOLD_RIDING_WHISTLE, 1)
+    //}
+
+    checkitem(ITEM_C_GEAR)
+    if(var(VAR_RESULT) == NO)
+    {
+        giveitem(ITEM_C_GEAR, 1)
+    }
+
+    giveitem(ITEM_STAR_PIECE, 100)
+    giveitem(ITEM_RARE_CANDY, 100)
+    giveitem(ITEM_ESCAPE_ROPE, 100)
+    giveitem(ITEM_BUILDING_SUPPLIES, 100)
+
+    release
+}
+
+script Rogue_Debug_GiveSacredAsh
+{
+    lock
+
+    checkitem(ITEM_SACRED_ASH)
+    if(var(VAR_RESULT) == YES)
+    {
+        msgbox(format("REMOVED"))
+        removeitem(ITEM_SACRED_ASH, 1)
+    }
+    else
+    {
+        msgbox(format("GIVEN"))
+        giveitem(ITEM_SACRED_ASH, 1)
+    }
+
+    release
+}
+
+script Rogue_Debug_TrainerSingle
+{
+    lock
+    special(HealPlayerParty)
+    special(RogueDebug_StartBattle)
+    release
+}
+
+script Rogue_Debug_DisplayDifficultyConfigMenu
+{
+    lock
+    msgbox(format("Difficulty menu"))
+    special(Special_ViewDifficultyConfigMenu)
+    waitstate
+    //msgbox(format("closed")) <- this gets ignored?
+    release
+}
+
+script Rogue_Debug_DisplayPokedex
+{
+    lock
+    msgbox(format("Select Mon"))
+    special(Special_SelectMonInPokedex)
+    waitstate
+    release
+}
+
+script Rogue_Debug_DisplayVoltorbFlip
+{
+    lock
+    msgbox(format("Voltorb flip"))
+    special(Special_ViewVoltorbFlip)
+    waitstate
+    release
+}
+
+script Rogue_Debug_DisplayWorldMap
+{
+    lock
+    msgbox(format("Hub map"))
+    special(Special_ViewWorldMap)
+    waitstate
+    release
+}
+
+script Rogue_Debug_GiveDynamicUniqueMon
+{
+    lock
+    msgbox(format("Give Dynamic Unique Common?"), MSGBOX_YESNO)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        setvar(VAR_0x8004, 0)
+        special(RogueDebug_GiveDynamicUniqueMon)
+    }
+
+    msgbox(format("Give Dynamic Unique Rare?"), MSGBOX_YESNO)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        setvar(VAR_0x8004, 1)
+        special(RogueDebug_GiveDynamicUniqueMon)
+    }
+
+    msgbox(format("Give Dynamic Unique Epic?"), MSGBOX_YESNO)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        setvar(VAR_0x8004, 2)
+        special(RogueDebug_GiveDynamicUniqueMon)
+    }
+
+    release
+}
+
+script Rogue_Debug_GiveMegaRing
+{
+    lock
+
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            msgbox(format("NOT IN EX"))
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            checkitem(ITEM_MEGA_RING)
+            if(var(VAR_RESULT) == YES)
+            {
+                removeitem(ITEM_MEGA_RING)
+            }
+            else
+            {
+                giveitem(ITEM_MEGA_RING)
+            }
+        }
+    }
+
+    release
+}
+
+script Rogue_Debug_GiveZRing
+{
+    lock
+
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            msgbox(format("NOT IN EX"))
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            checkitem(ITEM_Z_POWER_RING)
+            if(var(VAR_RESULT) == YES)
+            {
+                removeitem(ITEM_Z_POWER_RING)
+            }
+            else
+            {
+                giveitem(ITEM_Z_POWER_RING)
+            }
+        }
+    }
+
+    release
+}
+
+script Rogue_Debug_DynamaxBand
+{
+    lock
+
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            msgbox(format("NOT IN EX"))
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            checkitem(ITEM_DYNAMAX_BAND)
+            if(var(VAR_RESULT) == YES)
+            {
+                removeitem(ITEM_DYNAMAX_BAND)
+            }
+            else
+            {
+                giveitem(ITEM_DYNAMAX_BAND)
+            }
+        }
+    }
+
+    release
+}
+
+script Rogue_Debug_HealingFlask
+{
+    lock
+
+    checkitem(ITEM_HEALING_FLASK)
+    if(var(VAR_RESULT) == YES)
+    {
+        removeitem(ITEM_HEALING_FLASK)
+    }
+    else
+    {
+        giveitem(ITEM_HEALING_FLASK)
+    }
+
+    release
+}
+
+script Rogue_Debug_ChooseStarter
+{
+    lock
+    special(ChooseStarter)
+    release
+
+}
+
+script Rogue_Debug_ClearDynamicCustomMons
+{
+    special(RogueGift_ClearDynamicCustomMons)
+    call(Rogue_Interior_BillsLab_TalkPC)
+}
+
+script Rogue_Debug_AdjustMonMasteries
+{
+    lock
+    msgbox(format("reset mon masteries?"), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES)
+    {
+        callnative(RogueDebug_ClearMonMasteries)
+    }
+
+    msgbox(format("fill mon masteries?"), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES)
+    {
+        callnative(RogueDebug_FillMonMasteries)
+    }
+
+    release
+}

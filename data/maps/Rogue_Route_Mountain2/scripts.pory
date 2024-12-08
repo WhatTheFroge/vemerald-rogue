@@ -1,0 +1,13 @@
+mapscripts Rogue_Route_Mountain2_MapScripts 
+{
+    MAP_SCRIPT_ON_RESUME: Rogue_Route_Mountain2_OnResume
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
+    [
+        VAR_TEMP_1, 0: Rogue_Common_TurnPlayerSouth
+    ]
+}
+
+script Rogue_Route_Mountain2_OnResume
+{
+    setstepcallback(STEP_CB_ASH)
+}

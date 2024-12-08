@@ -1,0 +1,520 @@
+const VAR_FRAME_TABLE_IDX = VAR_TEMP_0
+const VAR_CAMERA_SPAWN_X = VAR_0x8004
+const VAR_CAMERA_SPAWN_Y = VAR_0x8005
+
+const COORD_CENTRE_X = 8
+const COORD_CENTRE_Y = 5
+
+const OBJ_LOCAL_ID_PROF = 1
+
+const OBJ_LOCAL_ID_FOLLOWMON_PARENT = 2
+const OBJ_LOCAL_ID_FOLLOWMON_CHILD = 3
+const OBJ_LOCAL_ID_FOLLOWMON_FLYMON0 = 4
+const OBJ_LOCAL_ID_FOLLOWMON_FLYMON1 = 5
+const OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON0 = 6
+const OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON1 = 7
+const OBJ_LOCAL_ID_FOLLOWMON_ROAMER = 8
+
+mapscripts Rogue_Intro_MapScripts 
+{
+    MAP_SCRIPT_ON_LOAD: Rogue_Intro_MapScripts_OnLoad
+    MAP_SCRIPT_ON_FRAME_TABLE 
+    [
+        VAR_FRAME_TABLE_IDX, 0: Rogue_Intro_MapScripts_LoadFrame_0
+    ]
+}
+
+script Rogue_Intro_MapScripts_OnLoad
+{
+    setvar(VAR_FOLLOW_MON_0, SPECIES_AMPHAROS) // OBJ_LOCAL_ID_FOLLOWMON_PARENT
+    setvar(VAR_FOLLOW_MON_1, SPECIES_MAREEP) // OBJ_LOCAL_ID_FOLLOWMON_CHILD
+
+
+    // OBJ_LOCAL_ID_FOLLOWMON_FLYMON0
+    // OBJ_LOCAL_ID_FOLLOWMON_FLYMON1
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            random(3)
+
+            switch(var(VAR_RESULT))
+            {
+                case 0:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_PIDGEOTTO)
+
+                case 1:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_NOCTOWL)
+
+                case 2:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_SWELLOW)
+            }
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            random(8)
+
+            switch(var(VAR_RESULT))
+            {
+                case 0:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_PIDGEOTTO)
+
+                case 1:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_NOCTOWL)
+
+                case 2:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_SWELLOW)
+
+                case 3:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_STARAVIA)
+
+                case 4:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_TRANQUILL)
+
+                case 5:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_TALONFLAME)
+
+                case 6:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_TRUMBEAK)
+
+                case 7:
+                    setvar(VAR_FOLLOW_MON_2, SPECIES_CORVISQUIRE)
+            }
+        }
+    }
+
+    // OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON0
+    // OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON1
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            random(3)
+
+            switch(var(VAR_RESULT))
+            {
+                case 0:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_GOLEM)
+
+                case 1:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_SCIZOR)
+
+                case 2:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_VIGOROTH)
+            }
+            
+            random(3)
+
+            switch(var(VAR_RESULT))
+            {
+                case 0:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_MACHAMP)
+
+                case 1:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_HERACROSS)
+
+                case 2:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_MAWILE)
+            }
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            random(8)
+
+            switch(var(VAR_RESULT))
+            {
+                case 0:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_GOLEM)
+
+                case 1:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_SCIZOR)
+
+                case 2:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_VIGOROTH)
+
+                case 3:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_GALLADE)
+
+                case 4:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_GURDURR)
+
+                case 5:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_AURORUS)
+
+                case 6:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_MUDSDALE)
+
+                case 7:
+                    setvar(VAR_FOLLOW_MON_4, SPECIES_TOXTRICITY)
+            }
+            
+            random(8)
+
+            switch(var(VAR_RESULT))
+            {
+                case 0:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_MACHAMP)
+
+                case 1:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_HERACROSS)
+
+                case 2:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_MAWILE)
+
+                case 3:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_WEAVILE)
+
+                case 4:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_DARMANITAN)
+
+                case 5:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_TYRANTRUM)
+
+                case 6:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_BEWEAR)
+
+                case 7:
+                    setvar(VAR_FOLLOW_MON_5, SPECIES_OBSTAGOON)
+            }
+        }
+    }
+
+    // OBJ_LOCAL_ID_FOLLOWMON_ROAMER
+    random(3)
+
+    switch(var(VAR_RESULT))
+    {
+        case 0:
+            setvar(VAR_FOLLOW_MON_3, SPECIES_RAIKOU)
+
+        case 1:
+            setvar(VAR_FOLLOW_MON_3, SPECIES_ENTEI)
+
+        case 2:
+            setvar(VAR_FOLLOW_MON_3, SPECIES_SUICUNE)
+    }
+}
+
+script Rogue_PreIntro
+{
+    bufferstring(STR_VAR_1, gText_RogueVersion)
+    bufferstring(STR_VAR_2, gText_RogueVersionPrefix)
+    bufferstring(STR_VAR_3, gText_RogueVersionSuffix)
+
+    msgbox(format("{COLOR BLUE}Welcome to Emerald Rogue {STR_VAR_2}\n{STR_VAR_1} {STR_VAR_3}!\pA few things before you get started…"))
+
+    msgbox(format("{COLOR BLUE}Firstly, please select an initial difficulty.\p(This can be changed in the Config Lab)"))
+    special(Special_ViewDifficultyConfigMenu)
+    waitstate
+
+
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            setvar(VAR_ROGUE_INITIAL_DEX_SELECTION, 0)
+            msgbox(format("{COLOR BLUE}Finally, as you are playing Vanilla version, you will be limited to the original Pokémon and battle mechanics of Pokémon Emerald.\pIf you would like to play with modern mechanics and Pokémon up to generation 9, please play the EX version instead."))
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            message(format("{COLOR BLUE}Finally, for your first Adventure-\pWhat encounters would you like?\n(Select an option to learn more)"))
+            setvar(VAR_RESULT, NO)
+
+            while(var(VAR_RESULT) == NO)
+            {
+                waitmessage
+
+                multichoice(20, 7, MULTI_CLASSIC_MODERN, TRUE)
+                copyvar(VAR_0x8000, VAR_RESULT)
+
+                switch(var(VAR_0x8000))
+                {
+                    case 0: // Modern
+                        setvar(VAR_ROGUE_INITIAL_DEX_SELECTION, 0)
+                        msgbox(format("{COLOR BLUE}You'll encounter a selection of Pokémon from across all 9 generations.\pSo Modern is your preference?"), MSGBOX_YESNO)
+                        
+
+                    case 1: // Classic
+                        setvar(VAR_ROGUE_INITIAL_DEX_SELECTION, 1)
+                        msgbox(format("{COLOR BLUE}You'll encounter Pokémon from generations 1 to 3 along with any future evolutions and forms added.\pSo Classic is your preference?"), MSGBOX_YESNO)
+                }
+
+                if(var(VAR_RESULT) == NO)
+                {
+                    message(format("{COLOR BLUE}For your first Adventure-\pWhat encounters would you like?\n(Select an option to learn more)"))
+                }
+            }
+        }
+    }
+
+    msgbox(format("{COLOR BLUE}You're now all ready to go.\nI hope you enjoy Emerald Rogue!"))
+    closemessage
+}
+
+script Rogue_Intro_MapScripts_LoadFrame_0
+{
+    lock
+    setvar(VAR_FRAME_TABLE_IDX, 1)
+
+    fadescreen(FADE_TO_BLACK)
+
+    playbgm(MUS_RG_NEW_GAME_INSTRUCT, FALSE)
+    call(Rogue_PreIntro)
+    fadeoutbgm(1)
+
+
+    // Fade in screen
+    //
+    delay(60)
+    msgbox(format("… … …\p… … …!\pHey… … …!\pCan you hear me?"), MSGBOX_AUTOCLOSE)
+
+    setobjectxy(OBJ_LOCAL_ID_PROF, COORD_CENTRE_X, COORD_CENTRE_Y)
+    
+    fadescreen(FADE_FROM_BLACK)
+    delay(10)
+    playbgm(MUS_RG_NEW_GAME_INTRO, FALSE)
+
+    msgbox(format
+    (
+        "Oh thank goodness!\pYou took quite the fall it seems.\pCan you tell me what you remember?\p… … …\p"
+        "Hmm…\nIt looks like you may have a mild case of amnesia.\pLet me see if I can jog your memory a bit."
+    ), MSGBOX_AUTOCLOSE)
+
+    playbgm(MUS_RG_NEW_GAME_EXIT, FALSE)
+    delay(90)
+
+    playbgm(MUS_RG_ROUTE24, TRUE)
+
+    // Pokemon walking anims
+    //
+    msgbox(format("I am Professor Elm."))
+
+    call(Rogue_Intro_PlayAnim_FlyingMons)
+    call(Rogue_Intro_PlayAnim_FightMons)
+    call(Rogue_Intro_PlayAnim_RoamerMons)
+    call(Rogue_Intro_PlayAnim_ParentChildMon)
+
+    msgbox(format(
+        "ELM: Pokémon inhabit every inch of this world… Be it land, sky or sea!\p"
+        "Pokémon are the friends of many and, for some, they even train and fight alongside their Pokémon in an attempt to become a Pokémon Champion!\p"
+        "I myself study Pokémon to try and understand what makes each and every species unique!\p"
+
+        "The world has changed quite a lot recently…\p"
+        "Routes within the world seem to be connecting up at random. Making exploring even more difficult.\p"
+        "Though there is one thing for sure, trainers are still out there and itching for battles!\p"
+
+        "Now…\nLet me put your memory to the test…"
+    ))
+
+    waitmovement(OBJ_LOCAL_ID_FOLLOWMON_PARENT)
+    waitmovement(OBJ_LOCAL_ID_FOLLOWMON_CHILD)
+    waitmovement(OBJ_LOCAL_ID_FOLLOWMON_FLYMON0)
+    waitmovement(OBJ_LOCAL_ID_FOLLOWMON_FLYMON1)
+    waitmovement(OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON0)
+    waitmovement(OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON1)
+    waitmovement(OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON0)
+    waitmovement(OBJ_LOCAL_ID_FOLLOWMON_ROAMER)
+
+    setvar(VAR_RESULT, NO)
+
+    while(var(VAR_RESULT) == NO)
+    {
+        call(Rogue_Intro_CustomisePlayer)
+    }
+
+    msgbox(format(
+        "Phew…\pYou had me worried for a second then {PLAYER}!\p"
+        "It looks like your memory is working fine to me!\p"
+        "Come on now, let's try and get you standing up."
+    ))
+
+    special(Rogue_AssignDefaultRegion)
+    special(Rogue_SafeSmartCheck)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        warpsilent(MAP_ROGUE_AREA_LABS, 11)
+    }
+    else
+    {
+        warpsilent(MAP_INSIDE_OF_TRUCK, 3)
+    }
+
+    release
+}
+
+script Rogue_Intro_CustomisePlayer
+{
+    msgbox(format("Do you remember what you look like?"))
+    fadescreen(FADE_TO_BLACK)
+    special(Special_ViewPlayerCustomisationMenu)
+    waitstate
+
+    msgbox(format("And what is your name?"))
+    fadescreen(FADE_TO_BLACK)
+    special(ChangePlayerNickname)
+    waitstate
+
+    msgbox(format("And finally…\pWe set out in a small group to build up a new village.\pWhat is the name of the village?"))
+    fadescreen(FADE_TO_BLACK)
+    special(ChangePokemonHubName)
+    waitstate
+
+    msgbox(format("So you're {PLAYER} living in {POKEMON_HUB}?"), MSGBOX_YESNO)
+}
+
+script Rogue_Intro_PlayAnim_ParentChildMon
+{
+    setobjectxy(OBJ_LOCAL_ID_FOLLOWMON_PARENT, -1, 3)
+    setobjectxy(OBJ_LOCAL_ID_FOLLOWMON_CHILD, -1, 3)
+
+    applymovement(OBJ_LOCAL_ID_FOLLOWMON_PARENT, Rogue_Intro_MonMovement_Parent)
+    applymovement(OBJ_LOCAL_ID_FOLLOWMON_CHILD, Rogue_Intro_MonMovement_Child)
+}
+
+movement Rogue_Intro_MonMovement_Parent
+{
+    walk_right * 11
+    face_down
+    delay_8
+    face_up
+    delay_8
+    jump_in_place_left
+
+    walk_fast_left * 5
+
+    delay_16 * 4
+    walk_slow_right * 13
+}
+
+movement Rogue_Intro_MonMovement_Child
+{
+    delay_2
+    walk_slow_right * 5
+
+    delay_16
+    face_down
+    delay_16
+    face_up
+    delay_16
+    face_down
+    delay_16
+    face_up
+    delay_16
+
+    face_right
+    emote_exclamation_mark
+    delay_16
+    jump_in_place_right
+    jump_in_place_right
+    delay_16 * 2
+
+    walk_slow_right * 13
+}
+
+script Rogue_Intro_PlayAnim_FlyingMons
+{
+    setobjectxy(OBJ_LOCAL_ID_FOLLOWMON_FLYMON0, 5, 12)
+    setobjectxy(OBJ_LOCAL_ID_FOLLOWMON_FLYMON1, 3, 13)
+
+    applymovement(OBJ_LOCAL_ID_FOLLOWMON_FLYMON0, Rogue_Intro_MonMovement_FlyMon)
+    applymovement(OBJ_LOCAL_ID_FOLLOWMON_FLYMON1, Rogue_Intro_MonMovement_FlyMon)
+}
+
+movement Rogue_Intro_MonMovement_FlyMon
+{
+    delay_16 * 24
+
+    walk_slow_up * 14
+}
+
+script Rogue_Intro_PlayAnim_FightMons
+{
+    setobjectxy(OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON0, 12, -3)
+    setobjectxy(OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON1, 12, 13)
+
+    applymovement(OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON0, Rogue_Intro_MonMovement_FightMon0)
+    applymovement(OBJ_LOCAL_ID_FOLLOWMON_FIGHTMON1, Rogue_Intro_MonMovement_FightMon1)
+}
+
+movement Rogue_Intro_MonMovement_FightMon0
+{
+    delay_16 * 8
+
+    walk_fast_down * 8
+    jump_2_up
+    face_down
+    delay_16 * 2
+
+    walk_fast_down * 2
+    delay_4
+    slide_up
+    face_down
+    delay_16 * 2
+    
+    walk_fast_down
+    delay_4
+    slide_up
+    face_down
+    delay_16 * 2
+
+    walk_fast_down
+    delay_16
+
+    jump_2_up
+    jump_up
+
+    delay_16 * 4
+    walk_slow_up * 4
+}
+
+movement Rogue_Intro_MonMovement_FightMon1
+{
+    delay_16 * 8
+
+    walk_fast_up * 8
+    jump_2_down
+    face_up
+    delay_16 * 2
+
+    walk_fast_up * 2
+    delay_4
+    slide_down
+    face_up
+    delay_16 * 2
+    
+    walk_fast_up
+    delay_4
+    slide_down
+    face_up
+    delay_16 * 2
+
+    walk_fast_up
+    delay_16 * 2
+    
+    delay_16 * 8
+    walk_slow_down * 7
+}
+
+script Rogue_Intro_PlayAnim_RoamerMons
+{
+    setobjectxy(OBJ_LOCAL_ID_FOLLOWMON_ROAMER, 17, 2)
+
+    applymovement(OBJ_LOCAL_ID_FOLLOWMON_ROAMER, Rogue_Intro_MonMovement_RoamerMon)
+}
+
+movement Rogue_Intro_MonMovement_RoamerMon
+{
+    delay_16 * 16
+
+    walk_left
+    jump_2_left * 5
+    jump_2_down * 2
+    jump_2_right * 2
+    jump_2_up * 2
+
+    jump_2_left
+    face_down
+    delay_16 * 3
+    jump_2_left * 5
+}

@@ -1,0 +1,377 @@
+{
+    "condition": "",
+    "defaults":
+    {
+        "name": "GRUNT",
+        "type_assignment": "NONE",
+        "trainer_class": "TRAINER_CLASS_TEAM_MAGMA",
+        "music_player": "team_magma",
+        "trainer_flags": [ "REGION_ANY", "CLASS_TEAM" ],
+        "class_flags": [ "TEAM_MAGMA" ],
+        "team_generator":
+        {
+            "subsets": 
+            [
+                {
+                    "max_samples": 1,
+                    "include_types": [ "FIRE" ],
+                    "exclude_types": [ "WATER" ]
+                },
+                {
+                    "max_samples": 1,
+                    "include_types": [ "DARK" ],
+                    "exclude_types": [ "WATER" ]
+                },
+                {
+                    "max_samples": 3,
+                    "include_types": [ "FIRE", "DARK" ],
+                    "exclude_types": [ "WATER" ]
+                },
+                {
+                    "max_samples": 6,
+                    "include_types": [ "FIRE", "DARK" ]
+                }
+            ],
+            "weight_script":
+            [
+                "EQUAL_TO", "VAR_MON_GENERATION", "3", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+            ]
+        }
+    },
+    "trainers":
+    {
+        "boss":
+        [
+            {
+                "name": "MAXIE",
+                "object_event": "OBJ_EVENT_GFX_MAXIE",
+                "trainer_pic": "TRAINER_PIC_MAGMA_LEADER_MAXIE",
+                "trainer_class": "TRAINER_CLASS_MAGMA_LEADER",
+                "trainer_flags": [ "REGION_ANY", "CLASS_TEAM_BOSS" ],
+                "shiny_species": "SPECIES_GROUDON",
+                "weather": "DROUGHT",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: I've seen you poking around uninvited here and there.\\pPullin cheap stunts on Team Magma…",
+                        "PRE_BATTLE_TAUNT": "I'll make you regret it!",
+                        "POST_BATTLE_TAUNT": "What makes you so adept at handling Pokémon?",
+                        "POST_BATTLE_CLOSER": "Humph…\\pThere is nothing you can do.\\pTeam Magma will not stop.\\pThis is where you and I part!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 1,
+                            "include_types": [ "GROUND", "FIRE", "DARK" ],
+                            "exclude_types": [ "WATER" ],
+                            "extra_species":
+                            [
+                                "SPECIES_GROUDON"
+                            ]
+                        },
+                        {
+                            "max_samples": 2,
+                            "include_types": [ "FIRE" ],
+                            "exclude_types": [ "WATER" ],
+                            "extra_species":
+                            [
+                                "SPECIES_GROUDON"
+                            ]
+                        },
+                        {
+                            "max_samples": 10,
+                            "include_types": [ "GROUND", "FIRE", "DARK" ],
+                            "exclude_types": [ "WATER" ],
+                            "extra_species":
+                            [
+                                "SPECIES_GROUDON"
+                            ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_GROUDON", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "3", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            }
+        ],
+        "route":
+        [
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "trainer_flags": [ "REGION_ANY", "CLASS_ROUTE" ],
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "The world needs more land!\\pThere's no other way around that!",
+                        "POST_BATTLE_TAUNT": "Don't be so stubborn!",
+                        "POST_BATTLE_CLOSER": "You'll change you're mind one day and then regret getting in our way!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "trainer_flags": [ "REGION_ANY", "CLASS_ROUTE" ],
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "I've got no time for dumb looking kids getting in our way!",
+                        "POST_BATTLE_TAUNT": "You're still dumb.",
+                        "POST_BATTLE_CLOSER": "If you weren't dumb, you wouldn't be getting in our way!"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            }
+        ],
+        
+        "hideout":
+        [
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "Now THIS is my colour!",
+                        "POST_BATTLE_TAUNT": "Phew!",
+                        "POST_BATTLE_CLOSER": "Red is my colour."
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "You can't stop Team Magma!",
+                        "POST_BATTLE_TAUNT": "Oh, I guess you can…",
+                        "POST_BATTLE_CLOSER": "Please don't get in our way though…"
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "You shouldn't be here!",
+                        "POST_BATTLE_TAUNT": "What!?",
+                        "POST_BATTLE_CLOSER": "How did you do that?!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "No-one can stop Team Magma's expansion!",
+                        "POST_BATTLE_TAUNT": "But think of all the open space!",
+                        "POST_BATTLE_CLOSER": "We'd have so much open space, if we had more land!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "This is my first day!\\pI'm gonna show you what I'm all about!",
+                        "POST_BATTLE_TAUNT": "I guess I wasn't ready after all…",
+                        "POST_BATTLE_CLOSER": "Maybe I should apply for Team Aqua instead?"
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "This is no place for kids!",
+                        "POST_BATTLE_TAUNT": "Nevermind.",
+                        "POST_BATTLE_CLOSER": "I guess you'll be fine."
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "HOT HOT HOT!",
+                        "POST_BATTLE_TAUNT": "Pstttttt!",
+                        "POST_BATTLE_CLOSER": "You snuffed out my flame…"
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "I can't wait for all the new land we're going to create!",
+                        "POST_BATTLE_TAUNT": "Exciting!",
+                        "POST_BATTLE_CLOSER": "Exciting!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_M",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "Intruder!?\\nHere!?",
+                        "POST_BATTLE_TAUNT": "Darn it!",
+                        "POST_BATTLE_CLOSER": "You still shouldn't be here!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE"
+            },
+
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "You're the one knocking out the newbies, huh?",
+                        "POST_BATTLE_TAUNT": "Ouch!",
+                        "POST_BATTLE_CLOSER": "You're knocking us all out!?"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "Who are you!?\\nA spy from Team Aqua!?",
+                        "POST_BATTLE_TAUNT": "So strong!",
+                        "POST_BATTLE_CLOSER": "You're far too strong for a spy!"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "Erm… you don't look like you're suppose to be here.",
+                        "POST_BATTLE_TAUNT": "I guess I was wrong",
+                        "POST_BATTLE_CLOSER": "Sorry. You're not wearing the correct uniform so I got confused."
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "I'm bringing the heat!",
+                        "POST_BATTLE_TAUNT": "Snuffed out!",
+                        "POST_BATTLE_CLOSER": "So chilly."
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "This is no place for snot nosed kids!",
+                        "POST_BATTLE_TAUNT": "Wha!!",
+                        "POST_BATTLE_CLOSER": "Wipe your nose!"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "It's far too warm here!",
+                        "POST_BATTLE_TAUNT": "Ouch!",
+                        "POST_BATTLE_CLOSER": "I'm getting a headache."
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "Calm, it!",
+                        "POST_BATTLE_TAUNT": "Calm, it!",
+                        "POST_BATTLE_CLOSER": "Have you STILL not calmed down?"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "I'll throw intruders straight in the magma!",
+                        "POST_BATTLE_TAUNT": "Too hot!\\nToo hot!",
+                        "POST_BATTLE_CLOSER": "I… I was joking!\\pDon't worry…!"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            },
+            {
+                "object_event": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+                "trainer_pic": "TRAINER_PIC_MAGMA_GRUNT_F",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "I'm here for some work experience.\\pLet's see how I manage!",
+                        "POST_BATTLE_TAUNT": "Youch…",
+                        "POST_BATTLE_CLOSER": "I hope that doesn't go into my report."
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE"
+            }
+        ]
+    }
+}

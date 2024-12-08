@@ -1,0 +1,28 @@
+const FLAG_HIDE_WILD_MON = FLAG_TEMP_1
+
+mapscripts Rogue_Encounter_HoneyTree_MapScripts 
+{
+    MAP_SCRIPT_ON_LOAD: Rogue_Encounter_HoneyTree_OnLoad
+}
+
+script Rogue_Encounter_HoneyTree_OnLoad
+{
+    if(var(VAR_FOLLOW_MON_0) == SPECIES_NONE)
+    {
+        setflag(FLAG_HIDE_WILD_MON)
+    }
+}
+
+script Rogue_Encounter_HoneyTree_ScatterPokeblock
+{
+    lock
+    msgbox(format("It's a Honey Tree!\pThere are {POKEBLOCK} crumbs among with tracks from all sorts of Pokémon.\p(Typed {POKEBLOCK} can be scattered here to attract {PKMN})"), MSGBOX_DEFAULT)
+    release
+}
+
+script Rogue_Encounter_HoneyTree_TrainerTips
+{
+    lock
+    msgbox(format("Trainer Tips.\nPokémon often visit Honey Trees, which makes them a prime location to scatter {POKEBLOCK}.\pIt's simple!\nScatter one or more {POKEBLOCK} near the Tree.\pThen, the next time you visit the Honey Tree, you will likely find a Pokémon who enjoys the flavours of {POKEBLOCK} you scattered."), MSGBOX_SIGN)
+    release
+}

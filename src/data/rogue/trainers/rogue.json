@@ -1,0 +1,1546 @@
+{
+    "condition": "",
+    "defaults":
+    {
+        "type_assignment": "NONE",
+        "trainer_flags": [ "REGION_ROGUE", "CLASS_BOSS", "MISC_RAINBOW_EXCLUDE" ],
+        "trainer_class": "TRAINER_CLASS_LEADER",
+        "music_player": "rogue_boss",
+        "pokeball": "FINAL_TRAINERS_POKEBALL",
+        "encounter_text":
+        [
+            {
+                "PRE_BATTLE_OPENNING": "{STR_VAR_1}: … … …",
+                "PRE_BATTLE_TAUNT": "… … …",
+                "POST_BATTLE_TAUNT": "… … …!",
+                "POST_BATTLE_CLOSER": "… … …"
+            }
+        ]
+    },
+    "trainers":
+    {
+        "rivals":
+        [
+            {
+                "name": "POKABBIE",
+                "object_event": "OBJ_EVENT_GFX_MISC_AROMA_GIRL",
+                "trainer_pic": "TRAINER_PIC_POKABBIE",
+                "trainer_class": "TRAINER_CLASS_DEVELOPER",
+                "trainer_flags": [ "REGION_ROGUE", "CLASS_RIVAL", "MISC_RAINBOW_EXCLUDE" ],
+                "class_flags": [],
+                "shiny_species": "SPECIES_MAREEP",
+                "pokeball": "POKABBIE_POKEBALL",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: Hi {PLAYER}!\\pI really couldn't resist joining you on an Adventure!\\pSo…\\nI'll be your Rival for this run!",
+                        "POST_BATTLE_TAUNT": "Wow!\\nYou made that look easy!",
+                        "POST_BATTLE_CLOSER": "I shouldn't be surprised!\\pThis is hardly your first run!\\pBe seeing you later, {PLAYER}!"
+                    },
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: Ahh it's {PLAYER}!\\pRight!\\pLet's see if your team building has kept up with mine!",
+                        "POST_BATTLE_TAUNT": "Superb!\\pI'd give that a 9 out of 10!",
+                        "POST_BATTLE_CLOSER": "That was a really surprising strategy you used there {PLAYER}!\\pUnless it wasn't…\\nThis is prewritten text so I really have no idea.\\pAnywaaaayyy\\nI'll see you at the next battle!"
+                    },
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: {PLAYER}!\\pOooooooo!\\nWhat team have you got this time!",
+                        "POST_BATTLE_TAUNT": "Impressive!\\nYou keep growing and growing!",
+                        "POST_BATTLE_CLOSER": "I hope I didn't rough up your team too much right before the Elite Four… … …\\p… … …\\pAnyhow!\\nSee you later!"
+                    },
+                    {
+                        "PRE_BATTLE_OPENNING": "… … …\\pYou knew this was coming, {PLAYER}…",
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: Last chance for me to win, I guess!\\pLet me see if I can send you right back to {POKEMON_HUB}!",
+                        "POST_BATTLE_TAUNT": "Congratulations {PLAYER}!\\nA very well deserved victory!",
+                        "POST_BATTLE_CLOSER": "…"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MAREEP", "INC_FAVOUR",
+                        "GREATER_THAN", "VAR_MON_BST", "600", "INC_FAVOUR",
+                        "GREATER_THAN", "VAR_MON_BST", "500", "INC_FAVOUR",
+                        "LESS_THAN", "VAR_MON_BST", "400", "DEC_FAVOUR", "DEC_FAVOUR", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "ALREADY_HAS_TYPE_IN_TEAM", "DEC_FAVOUR", "ELSE", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            }
+        ],
+
+        "gyms":
+        [
+            {
+                "name": "RED",
+                "type_group_override": "FINAL_TYPE_1",
+                "gfx_suffix": "RIVAL_RED",
+                "class_flags": [ "BOSS_GYM_1" ],
+                "shiny_species": "SPECIES_CHARMANDER",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "1" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_CHARMANDER", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "LEAF",
+                "type_group_override": "FINAL_TYPE_1",
+                "gfx_suffix": "RIVAL_LEAF",
+                "class_flags": [ "BOSS_GYM_1" ],
+                "shiny_species": "SPECIES_BULBASAUR",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "1" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_BULBASAUR", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+
+            {
+                "name": "ETHAN",
+                "type_group_override": "FINAL_TYPE_2",
+                "gfx_suffix": "RIVAL_ETHAN",
+                "class_flags": [ "BOSS_GYM_2" ],
+                "shiny_species": "SPECIES_TOTODILE",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "2" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_TOTODILE", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "LYRA",
+                "type_group_override": "FINAL_TYPE_2",
+                "gfx_suffix": "RIVAL_LYRA",
+                "class_flags": [ "BOSS_GYM_2" ],
+                "shiny_species": "SPECIES_CHIKORITA",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "2" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_CHIKORITA", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+
+            {
+                "name": "BRENDAN",
+                "type_group_override": "FINAL_TYPE_3",
+                "gfx_suffix": "RIVAL_BRENDAN",
+                "class_flags": [ "BOSS_GYM_3" ],
+                "shiny_species": "SPECIES_MUDKIP",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "3" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MUDKIP", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "MAY",
+                "type_group_override": "FINAL_TYPE_3",
+                "gfx_suffix": "RIVAL_MAY",
+                "class_flags": [ "BOSS_GYM_3" ],
+                "shiny_species": "SPECIES_TORCHIC",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "3" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_TORCHIC", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+
+            {
+                "name": "LUCAS",
+                "type_group_override": "FINAL_TYPE_4",
+                "gfx_suffix": "RIVAL_LUCAS",
+                "class_flags": [ "BOSS_GYM_4" ],
+                "shiny_species": "SPECIES_TURTWIG",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "4" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_TURTWIG", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+            {
+                "name": "DAWN",
+                "type_group_override": "FINAL_TYPE_4",
+                "gfx_suffix": "RIVAL_DAWN",
+                "class_flags": [ "BOSS_GYM_4" ],
+                "shiny_species": "SPECIES_PIPLUP",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "4" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_PIPLUP", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+
+            {
+                "name": "HILBERT",
+                "type_group_override": "FINAL_TYPE_5",
+                "gfx_suffix": "RIVAL_HILBERT",
+                "class_flags": [ "BOSS_GYM_5" ],
+                "shiny_species": "SPECIES_SNIVY",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "5" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_SNIVY", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+            {
+                "name": "HILDA",
+                "type_group_override": "FINAL_TYPE_5",
+                "gfx_suffix": "RIVAL_HILDA",
+                "class_flags": [ "BOSS_GYM_5" ],
+                "shiny_species": "SPECIES_TEPIG",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "5" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_TEPIG", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+            {
+                "name": "NATE",
+                "type_group_override": "FINAL_TYPE_5",
+                "gfx_suffix": "RIVAL_NATE",
+                "class_flags": [ "BOSS_GYM_5" ],
+                "shiny_species": "SPECIES_OSHAWOTT",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "5" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_OSHAWOTT", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+            {
+                "name": "ROSA",
+                "type_group_override": "FINAL_TYPE_5",
+                "gfx_suffix": "RIVAL_ROSA",
+                "class_flags": [ "BOSS_GYM_5" ],
+                "shiny_species": "SPECIES_SNIVY",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "5" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_SNIVY", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+
+            {
+                "name": "CALEM",
+                "type_group_override": "FINAL_TYPE_6",
+                "gfx_suffix": "RIVAL_CALEM",
+                "class_flags": [ "BOSS_GYM_6" ],
+                "shiny_species": "SPECIES_FROAKIE",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "6" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_FROAKIE", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+            {
+                "name": "SERENA",
+                "type_group_override": "FINAL_TYPE_6",
+                "gfx_suffix": "RIVAL_SERENA",
+                "class_flags": [ "BOSS_GYM_6" ],
+                "shiny_species": "SPECIES_FENNEKIN",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "6" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_FENNEKIN", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+
+            {
+                "name": "ELIO",
+                "type_group_override": "FINAL_TYPE_7",
+                "gfx_suffix": "RIVAL_ELIO",
+                "class_flags": [ "BOSS_GYM_7" ],
+                "shiny_species": "SPECIES_LITTEN",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "7" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_LITTEN", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+            {
+                "name": "SELENE",
+                "type_group_override": "FINAL_TYPE_7",
+                "gfx_suffix": "RIVAL_SELENE",
+                "class_flags": [ "BOSS_GYM_7" ],
+                "shiny_species": "SPECIES_ROWLET",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "7" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ROWLET", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+
+            {
+                "name": "VICTOR",
+                "type_group_override": "FINAL_TYPE_8",
+                "gfx_suffix": "RIVAL_VICTOR",
+                "class_flags": [ "BOSS_GYM_8" ],
+                "shiny_species": "SPECIES_GROOKEY",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "8" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_GROOKEY", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+            {
+                "name": "GLORIA",
+                "type_group_override": "FINAL_TYPE_8",
+                "gfx_suffix": "RIVAL_GLORIA",
+                "class_flags": [ "BOSS_GYM_8" ],
+                "shiny_species": "SPECIES_SCORBUNNY",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "8" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_SCORBUNNY", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+
+            {
+                "name": "FLORIAN",
+                "type_group_override": "FINAL_TYPE_9",
+                "gfx_suffix": "RIVAL_FLORIAN",
+                "class_flags": [ "BOSS_GYM_8" ],
+                "shiny_species": "SPECIES_SPRIGATITO",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "9" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_SPRIGATITO", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            },
+            {
+                "name": "JULIANA",
+                "type_group_override": "FINAL_TYPE_9",
+                "gfx_suffix": "RIVAL_JULIANA",
+                "class_flags": [ "BOSS_GYM_8" ],
+                "shiny_species": "SPECIES_FUECOCO",
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12,
+                            "include_gens": [ "9" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "INC_FAVOUR", "ELSE", "DEC_FAVOUR", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR",
+                        "#ifdef ROGUE_EXPANSION",
+                            "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_FUECOCO", "INC_FAVOUR",
+                        "#endif"
+                    ]
+                }
+            }
+        ],
+
+        "elite":
+        [
+            {
+                "name": "KATE",
+                "object_event": "OBJ_EVENT_GFX_GLITCH_KATE",
+                "trainer_pic": "TRAINER_PIC_GLITCH_KATE",
+                "trainer_class": "TRAINER_CLASS_COMMUNITY_MOD",
+                "class_flags": [ "BOSS_ANY_ELITE" ],
+                "weather": "VOLCANIC_ASH",
+                "shiny_species": "SPECIES_KATE_ACE",
+                "pokeball": "LUXURY_BALL",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Have you spoken to Pokabbie?",
+                        "PRE_BATTLE_TAUNT": "Well, don't get any big ideas!",
+                        "POST_BATTLE_TAUNT": "Oh no!",
+                        "POST_BATTLE_CLOSER": "Please don't tell her I lost!"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 10
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_GASTLY", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "ALREADY_HAS_TYPE_IN_TEAM", "DEC_FAVOUR", "ELSE", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ],
+                    "query_script_override":
+                    [
+                        "TRY_INCLUDE_SPECIES_LIST",
+                        "SPECIES_VENUSAUR",
+                        "SPECIES_ARBOK",
+                        "SPECIES_NIDOKING",
+                        "SPECIES_GENGAR",
+                        "SPECIES_TENTACRUEL",
+                        "SPECIES_MUK",
+                        "SPECIES_VILEPLUME",
+                        "SPECIES_NIDOQUEEN",
+                        "SPECIES_GOLBAT",
+                        "SPECIES_VICTREEBEL",
+                        "SPECIES_WEEZING",
+                        "SPECIES_CLEFABLE",
+                        "SPECIES_BEEDRILL",
+                        
+                        "SPECIES_CROBAT",
+                        "SPECIES_HOUNDOOM",
+                        "SPECIES_ARIADOS",
+                        "SPECIES_HERACROSS",
+
+                        "SPECIES_MIGHTYENA",
+                        "SPECIES_SABLEYE",
+                        "SPECIES_SWALOT",
+                        "SPECIES_SEVIPER",
+                        "SPECIES_BANETTE",
+                        "SPECIES_ABSOL",
+                        "SPECIES_SHARPEDO",
+                        
+                        "#ifdef ROGUE_EXPANSION",
+                            "SPECIES_FROSLASS",
+                            "SPECIES_DUSKNOIR",
+                            "SPECIES_DRIFBLIM",
+                            "SPECIES_MISMAGIUS",
+                            "SPECIES_HONCHKROW",
+                            "SPECIES_SKUNTANK",
+                            "SPECIES_TOXICROAK",
+                            "SPECIES_WEAVILE",
+                            "SPECIES_ROTOM",
+                            "SPECIES_ROTOM_HEAT",
+                            "SPECIES_ROTOM_WASH",
+                            "SPECIES_ROTOM_FROST",
+                            "SPECIES_ROTOM_FAN",
+                            "SPECIES_ROTOM_MOW",
+                            "SPECIES_GARCHOMP",
+
+                            "SPECIES_SCOLIPEDE",
+                            "SPECIES_KROOKODILE",
+                            "SPECIES_SCRAFTY",
+                            "SPECIES_COFAGRIGUS",
+                            "SPECIES_GARBODOR",
+                            "SPECIES_AMOONGUSS",
+                            "SPECIES_JELLICENT",
+                            "SPECIES_CHANDELURE",
+                            "SPECIES_HAXORUS",
+                            "SPECIES_BISHARP",
+                            "SPECIES_GOLURK",
+                            "SPECIES_HYDREIGON",
+
+                            "SPECIES_PANGORO",
+                            "SPECIES_MEOWSTIC",
+                            "SPECIES_AEGISLASH",
+                            "SPECIES_DRAGALGE",
+                            "SPECIES_TYRANTRUM",
+                            "SPECIES_GOURGEIST",
+                            "SPECIES_NOIVERN",
+
+                            "SPECIES_DECIDUEYE",
+                            "SPECIES_RATICATE_ALOLAN",
+                            "SPECIES_PERSIAN_ALOLAN",
+                            "SPECIES_MUK_ALOLAN",
+                            "SPECIES_SALAZZLE",
+                            "SPECIES_MAROWAK_ALOLAN",
+                            "SPECIES_TREVENANT",
+                            "SPECIES_NINETALES_ALOLAN",
+                            "SPECIES_DHELMISE",
+
+                            "SPECIES_THIEVUL",
+                            "SPECIES_OBSTAGOON",
+                            "SPECIES_WEEZING_GALARIAN",
+                            "SPECIES_MIMIKYU",
+                            "SPECIES_TOXTRICITY",
+                            "SPECIES_DRAGAPULT",
+
+                            "SPECIES_ANNIHILAPE",
+                            "SPECIES_TINKATON",
+                            "SPECIES_SPIDOPS",
+                            "SPECIES_CERULEDGE",
+                        "#endif",
+                        "SPECIES_NONE"
+                    ]
+                }
+            },
+            {
+                "name": "ERMA",
+                "object_event": "OBJ_EVENT_GFX_GLITCH_ERMA",
+                "trainer_pic": "TRAINER_PIC_GLITCH_ERMA",
+                "trainer_class": "TRAINER_CLASS_COMMUNITY_MOD",
+                "class_flags": [ "BOSS_ANY_ELITE" ],
+                "weather": "SANDSTORM",
+                "shiny_species": "SPECIES_ERMA_ACE",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: What was that? A challenge?\\pThen let us get started!",
+                        "PRE_BATTLE_TAUNT": "You better not underestimate me!",
+                        "POST_BATTLE_TAUNT": "Woah! You're amazing!\\nLet's do this again sometime!",
+                        "POST_BATTLE_CLOSER": "It's not going to get easier from here on out.\\pI'll be rooting for you!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 10
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ERMA_ACE", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "ALREADY_HAS_TYPE_IN_TEAM", "DEC_FAVOUR", "ELSE", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ],
+                    "query_script_override":
+                    [
+                        "TRY_INCLUDE_SPECIES_LIST",
+                        "SPECIES_ARBOK",
+                        "SPECIES_SANDSLASH",
+                        "SPECIES_NINETALES",
+                        "SPECIES_VENOMOTH",
+                        "SPECIES_ARCANINE",
+                        "SPECIES_VICTREEBEL",
+                        "SPECIES_SLOWBRO",
+                        "SPECIES_CLOYSTER",
+                        "SPECIES_GENGAR",
+                        "SPECIES_HYPNO",
+                        "SPECIES_LAPRAS",
+                        "SPECIES_FLAREON",
+                        "SPECIES_KABUTOPS",
+                        "SPECIES_ARTICUNO",
+                        "SPECIES_DRAGONITE",
+                    
+                        "SPECIES_MEGANIUM",
+                        "SPECIES_ARIADOS",
+                        "SPECIES_LANTURN",
+                        "SPECIES_AMPHAROS",
+                        "SPECIES_JUMPLUFF",
+                        "SPECIES_QUAGSIRE",
+                        "SPECIES_SCIZOR",
+                        "SPECIES_TYRANITAR",
+                        "SPECIES_LUGIA",
+                    
+                        "SPECIES_DUSTOX",
+                        "SPECIES_SHIFTRY",
+                        "SPECIES_GARDEVOIR",
+                        "SPECIES_MASQUERAIN",
+                        "SPECIES_DELCATTY",
+                        "SPECIES_AGGRON",
+                        "SPECIES_FLYGON",
+                        "SPECIES_LUNATONE",
+                        "SPECIES_BANETTE",
+                        "SPECIES_DUSCLOPS",
+                        "SPECIES_SALAMENCE",
+                        "SPECIES_METAGROSS",
+                        "SPECIES_LATIAS",
+                        "SPECIES_GROUDON",
+                        "SPECIES_JIRACHI",
+                        
+                        "#ifdef ROGUE_EXPANSION",
+                            "SPECIES_SANDSLASH_ALOLAN",
+                            "SPECIES_NINETALES_ALOLAN",
+                            "SPECIES_RAPIDASH_GALARIAN",
+                        
+                            "SPECIES_EMPOLEON",
+                            "SPECIES_LUXRAY",
+                            "SPECIES_ROSERADE",
+                            "SPECIES_RAMPARDOS",
+                            "SPECIES_VESPIQUEN",
+                            "SPECIES_PACHIRISU",
+                            "SPECIES_LOPUNNY",
+                            "SPECIES_MISMAGIUS",
+                            "SPECIES_SPIRITOMB",
+                            "SPECIES_GARCHOMP",
+                            "SPECIES_DRAPION",
+                            "SPECIES_MAGNEZONE",
+                            "SPECIES_TOGEKISS",
+                            "SPECIES_GLACEON",
+                            "SPECIES_GLISCOR",
+                            "SPECIES_FROSLASS",
+                            "SPECIES_DIALGA",
+                            "SPECIES_HEATRAN",
+                            "SPECIES_DARKRAI",
+                        
+                            "SPECIES_ZEBSTRIKA",
+                            "SPECIES_GIGALITH",
+                            "SPECIES_EXCADRILL",
+                            "SPECIES_LEAVANNY",
+                            "SPECIES_SCOLIPEDE",
+                            "SPECIES_WHIMSICOTT",
+                            "SPECIES_LILLIGANT",
+                            "SPECIES_CRUSTLE",
+                            "SPECIES_ARCHEOPS",
+                            "SPECIES_ZOROARK",
+                            "SPECIES_EMOLGA",
+                            "SPECIES_FERROTHORN",
+                            "SPECIES_EELEKTROSS",
+                            "SPECIES_CHANDELURE",
+                            "SPECIES_MIENSHAO",
+                            "SPECIES_BISHARP",
+                            "SPECIES_HYDREIGON",
+                            "SPECIES_VOLCARONA",
+                            "SPECIES_RESHIRAM",
+                            "SPECIES_MELOETTA",
+                        
+                            "SPECIES_GOGOAT",
+                            "SPECIES_MALAMAR",
+                            "SPECIES_DRAGALGE",
+                            "SPECIES_TYRANTRUM",
+                            "SPECIES_AURORUS",
+                            "SPECIES_CARBINK",
+                            "SPECIES_TREVENANT",
+                            "SPECIES_GOURGEIST",
+                            "SPECIES_XERNEAS",
+                            "SPECIES_DIANCIE",
+                            "SPECIES_TOXAPEX",
+                            "SPECIES_LURANTIS",
+                            "SPECIES_TSAREENA",
+                            "SPECIES_MIMIKYU",
+                            "SPECIES_TAPU_LELE",
+                            "SPECIES_TAPU_FINI",
+                            "SPECIES_LUNALA",
+                            "SPECIES_NIHILEGO",
+                            "SPECIES_MAGEARNA",
+                        
+                            "SPECIES_HATTERENE",
+                            "SPECIES_ALCREMIE",
+                            "SPECIES_FROSMOTH",
+                            "SPECIES_DRACOVISH",
+                            "SPECIES_DURALUDON",
+                            "SPECIES_DRAGAPULT",
+                            "SPECIES_REGIELEKI",
+
+                            "SPECIES_MEOWSCARADA",
+                            "SPECIES_ARBOLIVA",
+                            "SPECIES_GARGANACL",
+                            "SPECIES_BELLIBOLT",
+                            "SPECIES_KLAWF",
+                            "SPECIES_GLIMMORA",
+                            "SPECIES_HOUNDSTONE",
+                            "SPECIES_KINGAMBIT",
+                            "SPECIES_FLUTTER_MANE",
+                            "SPECIES_TING_LU",
+                        "#endif",
+                        "SPECIES_NONE"
+                    ]
+                }
+            },
+            {
+                "name": "TMK4",
+                "object_event": "OBJ_EVENT_GFX_GLITCH_TAILS",
+                "trainer_pic": "TRAINER_PIC_GLITCH_TAILS",
+                "trainer_class": "TRAINER_CLASS_COMMUNITY_MOD",
+                "class_flags": [ "BOSS_ANY_ELITE" ],
+                "weather": "PSYCHIC_FOG",
+                "shiny_species": "SPECIES_AZURILL",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Your willingness to adapt has brought you this far.",
+                        "PRE_BATTLE_TAUNT": "Let us see who is the better strategist!",
+                        "POST_BATTLE_TAUNT": "Seems RNG favored you this battle!",
+                        "POST_BATTLE_CLOSER": "This Pokémon League is always unpredictable.\\pGood luck!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 10
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_AZURILL", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "ALREADY_HAS_TYPE_IN_TEAM", "DEC_FAVOUR", "ELSE", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ],
+                    "query_script_override":
+                    [
+                        "TRY_INCLUDE_SPECIES_LIST",
+                        "SPECIES_NINETALES",
+                        "SPECIES_CLEFABLE",
+                        "SPECIES_GYARADOS",
+                        "SPECIES_STARMIE",
+                        "SPECIES_GENGAR",
+                        "SPECIES_MAGNETON",
+                        "SPECIES_MACHAMP",
+                        "SPECIES_VAPOREON",
+                        "SPECIES_JOLTEON",
+                        "SPECIES_FLAREON",
+                        "SPECIES_LAPRAS",
+                        "SPECIES_DRAGONITE",
+                        "SPECIES_MEWTWO",
+                        "SPECIES_MEW",
+                    
+                        "SPECIES_CROBAT",
+                        "SPECIES_LANTURN",
+                        "SPECIES_AMPHAROS",
+                        "SPECIES_AZUMARILL",
+                        "SPECIES_SCIZOR",
+                        "SPECIES_HERACROSS",
+                        "SPECIES_ESPEON",
+                        "SPECIES_UMBREON",
+                        "SPECIES_SKARMORY",
+                        "SPECIES_HOUNDOOM",
+                        "SPECIES_KINGDRA",
+                        "SPECIES_PORYGON2",
+                        "SPECIES_TYRANITAR",
+                        "SPECIES_LUGIA",
+                        "SPECIES_HO_OH",
+                    
+                        "SPECIES_GARDEVOIR",
+                        "SPECIES_BRELOOM",
+                        "SPECIES_SHEDINJA",
+                        "SPECIES_AGGRON",
+                        "SPECIES_SHARPEDO",
+                        "SPECIES_FLYGON",
+                        "SPECIES_MILOTIC",
+                        "SPECIES_WALREIN",
+                        "SPECIES_SALAMENCE",
+                        "SPECIES_METAGROSS",
+                        "SPECIES_KYOGRE",
+                        "SPECIES_GROUDON",
+                        "SPECIES_RAYQUAZA",
+                        
+                        "#ifdef ROGUE_EXPANSION",
+                            "SPECIES_RAICHU_ALOLAN",
+                            "SPECIES_NINETALES_ALOLAN",
+                            "SPECIES_MAGNEZONE",
+                            "SPECIES_RAPIDASH_GALARIAN",
+                        
+                            "SPECIES_PORYGON_Z",
+                        
+                            "SPECIES_STARAPTOR",
+                            "SPECIES_ROSERADE",
+                            "SPECIES_SPIRITOMB",
+                            "SPECIES_GARCHOMP",
+                            "SPECIES_LUCARIO",
+                            "SPECIES_DRAPION",
+                            "SPECIES_WEAVILE",
+                            "SPECIES_ELECTIVIRE",
+                            "SPECIES_MAGMORTAR",
+                            "SPECIES_TOGEKISS",
+                            "SPECIES_YANMEGA",
+                            "SPECIES_LEAFEON",
+                            "SPECIES_GLACEON",
+                            "SPECIES_GALLADE",
+                            "SPECIES_FROSLASS",
+                            "SPECIES_DUSKNOIR",
+                            "SPECIES_ROTOM_WASH",
+                            "SPECIES_ROTOM_FAN",
+                            "SPECIES_DIALGA",
+                            "SPECIES_PALKIA",
+                            "SPECIES_GIRATINA",
+                        
+                            "SPECIES_EXCADRILL",
+                            "SPECIES_SCOLIPEDE",
+                            "SPECIES_WHIMSICOTT",
+                            "SPECIES_KROOKODILE",
+                            "SPECIES_SCRAFTY",
+                            "SPECIES_COFAGRIGUS",
+                            "SPECIES_ZOROARK",
+                            "SPECIES_EMOLGA",
+                            "SPECIES_ESCAVALIER",
+                            "SPECIES_CHANDELURE",
+                            "SPECIES_EELEKTROSS",
+                            "SPECIES_VOLCARONA",
+                        
+                            "SPECIES_PANGORO",
+                            "SPECIES_AEGISLASH",
+                            "SPECIES_AROMATISSE",
+                            "SPECIES_KLEFKI",
+                            "SPECIES_TREVENANT",
+                            "SPECIES_SYLVEON",
+                            "SPECIES_XERNEAS",
+                            "SPECIES_YVELTAL",
+                            
+                            "SPECIES_TOXAPEX",
+                            "SPECIES_BEWEAR",
+                            "SPECIES_TOGEDEMARU",
+                            "SPECIES_MIMIKYU",
+                            "SPECIES_TAPU_KOKO",
+                            "SPECIES_TAPU_LELE",
+                            "SPECIES_TAPU_BULU",
+                            "SPECIES_TAPU_FINI",
+                        
+                            "SPECIES_CORVIKNIGHT",
+                            "SPECIES_CENTISKORCH",
+                            "SPECIES_GRIMMSNARL",
+                            "SPECIES_DURALUDON",
+
+                            "SPECIES_DRAGAPULT",
+                            "SPECIES_ZACIAN",
+                            "SPECIES_ZAMAZENTA",
+                            "SPECIES_ETERNATUS",
+
+                            "SPECIES_GREAT_TUSK",
+                            "SPECIES_FLUTTER_MANE",
+                            "SPECIES_WALKING_WAKE",
+                            "SPECIES_IRON_HANDS",
+                            "SPECIES_IRON_VALIANT",
+                            "SPECIES_IRON_LEAVES",
+                        "#endif",
+                        "SPECIES_NONE"
+                    ]
+                }
+            },
+
+            {
+                "name": "RAVEN",
+                "object_event": "OBJ_EVENT_GFX_GLITCH_RAVEN",
+                "trainer_pic": "TRAINER_PIC_GLITCH_RAVEN",
+                "trainer_class": "TRAINER_CLASS_COMMUNITY_MOD",
+                "class_flags": [ "BOSS_ANY_ELITE" ],
+                "weather": "MISTY_FOG",
+                "shiny_species": "SPECIES_RAVEN_ACE",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Have you taken good care of your Pokémon?",
+                        "PRE_BATTLE_TAUNT": "Show me the bonds you made!",
+                        "POST_BATTLE_TAUNT": "Strong Pokémon.\\nGood job!",
+                        "POST_BATTLE_CLOSER": "If you take good care of Pokémon, even weak ones can be strong!\\pKeep it up!"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 10
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_RAVEN_ACE", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "ALREADY_HAS_TYPE_IN_TEAM", "DEC_FAVOUR", "ELSE", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ],
+                    "query_script_override":
+                    [
+                        "TRY_INCLUDE_SPECIES_LIST",
+                        "SPECIES_NIDOKING",
+                        "SPECIES_VILEPLUME",
+                        "SPECIES_RAICHU",
+                        "SPECIES_DRAGONITE",
+                        "SPECIES_FLAREON",
+                        "SPECIES_VAPOREON",
+                        "SPECIES_ARTICUNO",
+                        "SPECIES_RAPIDASH",
+                    
+                        "SPECIES_FERALIGATR",
+                        "SPECIES_AMPHAROS",
+                        "SPECIES_MISDREAVUS",
+                        "SPECIES_BELLOSSOM",
+                        "SPECIES_HO_OH",
+                    
+                        "SPECIES_BLAZIKEN",
+                        "SPECIES_MAWILE",
+                        "SPECIES_ALTARIA",
+                        "SPECIES_BANETTE",
+                        "SPECIES_JIRACHI",
+                        
+                        "#ifdef ROGUE_EXPANSION",
+                            "SPECIES_PACHIRISU",
+                            "SPECIES_MISMAGIUS",
+                            "SPECIES_HONCHKROW",
+                            "SPECIES_VESPIQUEN",
+                            "SPECIES_EMPOLEON",
+                            "SPECIES_MANAPHY",
+                        
+                            "SPECIES_WHIMSICOTT",
+                            "SPECIES_SCOLIPEDE",
+                            "SPECIES_KROOKODILE",
+                            "SPECIES_VOLCARONA",
+                            "SPECIES_BRAVIARY",
+                            "SPECIES_CINCCINO",
+                        
+                            "SPECIES_GOODRA",
+                            "SPECIES_PANGORO",
+                            "SPECIES_MEOWSTIC",
+                            "SPECIES_CLAWITZER",
+                            "SPECIES_GOURGEIST",
+                            "SPECIES_DIANCIE",
+                        
+                            "SPECIES_PRIMARINA",
+                            "SPECIES_RAICHU_ALOLAN",
+                            "SPECIES_BEWEAR",
+                            "SPECIES_TAPU_LELE",
+                        
+                            "SPECIES_DRACOZOLT",
+                            "SPECIES_RAPIDASH_GALARIAN",
+                            "SPECIES_ALCREMIE",
+
+                            "SPECIES_REVAVROOM",
+                            "SPECIES_DACHSBUN",
+                        "#endif",
+                        "SPECIES_NONE"
+                    ]
+                }
+            },
+
+            {
+                "name": "LS7",
+                "object_event": "OBJ_EVENT_GFX_GLITCH_LS7",
+                "trainer_pic": "TRAINER_PIC_COMMUNITY_LIGHTNINGSTRIKE7",
+                "trainer_class": "TRAINER_CLASS_COMMUNITY_MOD",
+                "class_flags": [ "BOSS_ANY_ELITE" ],
+                "weather": "RAIN_THUNDERSTORM",
+                "shiny_species": "SPECIES_MAGNEMITE",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: You've made it this far.\\nImpressive.",
+                        "PRE_BATTLE_TAUNT": "But are you strong enough to withstand this power surge?",
+                        "POST_BATTLE_TAUNT": "That was quite the shocking performance!",
+                        "POST_BATTLE_CLOSER": "Only a few more battles left.\\pI'm sure you can do it."
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 10
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MAGNEMITE", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "ALREADY_HAS_TYPE_IN_TEAM", "DEC_FAVOUR", "ELSE", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ],
+                    "query_script_override":
+                    [
+                        "TRY_INCLUDE_SPECIES_LIST",
+                        "SPECIES_CHARIZARD",
+                        "SPECIES_RAICHU",
+                        "SPECIES_NIDOKING",
+                        "SPECIES_PRIMEAPE",
+                        "SPECIES_MAGNETON",
+                        "SPECIES_DODRIO",
+                        "SPECIES_EXEGGUTOR",
+                        "SPECIES_STARMIE",
+                        "SPECIES_ZAPDOS",
+
+                        "SPECIES_LANTURN",
+                        "SPECIES_AMPHAROS",
+                        "SPECIES_POLITOED",
+                        "SPECIES_STEELIX",
+                        "SPECIES_SCIZOR",
+                        "SPECIES_HERACROSS",
+                        "SPECIES_SKARMORY",
+                        "SPECIES_RAIKOU",
+
+                        "SPECIES_SWAMPERT",
+                        "SPECIES_PELIPPER",
+                        "SPECIES_BRELOOM",
+                        "SPECIES_MANECTRIC",
+                        "SPECIES_FLYGON",
+                        "SPECIES_WALREIN",
+                        "SPECIES_METAGROSS",
+                        "SPECIES_KYOGRE",
+                        "SPECIES_JIRACHI",
+
+                        "#ifdef ROGUE_EXPANSION",
+                            "SPECIES_TORTERRA",
+                            "SPECIES_EMPOLEON",
+                            "SPECIES_STARAPTOR",
+                            "SPECIES_LUXRAY",
+                            "SPECIES_LUCARIO",
+                            "SPECIES_MAGNEZONE",
+                            "SPECIES_ELECTIVIRE",
+                            "SPECIES_MAMOSWINE",
+                            "SPECIES_GALLADE",
+                            "SPECIES_FROSLASS",
+                            "SPECIES_ROTOM_WASH",
+                            "SPECIES_ROTOM_MOW",
+                            "SPECIES_DIALGA",
+
+                            "SPECIES_EXCADRILL",
+                            "SPECIES_CONKELDURR",
+                            "SPECIES_SCRAFTY",
+                            "SPECIES_JELLICENT",
+                            "SPECIES_GALVANTULA",
+                            "SPECIES_FERROTHORN",
+                            "SPECIES_EELEKTROSS",
+                            "SPECIES_HYDREIGON",
+                            "SPECIES_THUNDURUS_THERIAN",
+                            "SPECIES_ZEKROM",
+                            "SPECIES_KYUREM_BLACK",
+
+                            "SPECIES_AEGISLASH",
+                            "SPECIES_CLAWITZER",
+                            "SPECIES_HELIOLISK",
+                            "SPECIES_HAWLUCHA",
+                            "SPECIES_KLEFKI",
+                            "SPECIES_TREVENANT",
+                            "SPECIES_NOIVERN",
+                            "SPECIES_VOLCANION",
+
+                            "SPECIES_DECIDUEYE",
+                            "SPECIES_VIKAVOLT",
+                            "SPECIES_ORICORIO_POM_POM",
+                            "SPECIES_ARAQUANID",
+                            "SPECIES_TOGEDEMARU",
+                            "SPECIES_KOMMO_O",
+                            "SPECIES_TAPU_KOKO",
+                            "SPECIES_XURKITREE",
+                            "SPECIES_ZERAORA",
+                            "SPECIES_MELMETAL",
+                            "SPECIES_RAICHU_ALOLAN",
+                            "SPECIES_NINETALES_ALOLAN",
+                            "SPECIES_GOLEM_ALOLAN",
+                            "SPECIES_EXEGGUTOR_ALOLAN",
+
+                            "SPECIES_CORVIKNIGHT",
+                            "SPECIES_FLAPPLE",
+                            "SPECIES_CRAMORANT",
+                            "SPECIES_TOXTRICITY",
+                            "SPECIES_PINCURCHIN",
+                            "SPECIES_PINCURCHIN",
+                            "SPECIES_ARCTOZOLT",
+                            "SPECIES_REGIELEKI",
+                            "SPECIES_ZAPDOS_GALARIAN",
+                            "SPECIES_SNEASLER",
+                            "SPECIES_ELECTRODE_HISUIAN",
+                            "SPECIES_SAMUROTT_HISUIAN",
+                            "SPECIES_BRAVIARY_HISUIAN",
+                            "SPECIES_GOODRA_HISUIAN",
+
+                            "SPECIES_QUAQUAVAL",
+                            "SPECIES_PAWMOT",
+                            "SPECIES_KILOWATTREL",
+                            "SPECIES_REVAVROOM",
+                            "SPECIES_ANNIHILAPE",
+                            "SPECIES_SANDY_SHOCKS",
+                            "SPECIES_IRON_TREADS",
+                            "SPECIES_IRON_BUNDLE",
+                            "SPECIES_IRON_HANDS",
+                            "SPECIES_IRON_THORNS",
+                            "SPECIES_IRON_VALIANT",
+                            "SPECIES_MIRAIDON",
+                            "SPECIES_SINISTCHA",
+                            "SPECIES_ARCHALUDON",
+                            "SPECIES_RAGING_BOLT",
+                            "SPECIES_IRON_CROWN",
+                        "#endif",
+                        "SPECIES_NONE"
+                    ]
+                }
+            },
+
+            {
+                "name": "NACHO",
+                "object_event": "OBJ_EVENT_GFX_GLITCH_NACHO",
+                "trainer_pic": "TRAINER_PIC_COMMUNITY_NACHOLORD",
+                "trainer_class": "TRAINER_CLASS_COMMUNITY_MOD",
+                "class_flags": [ "BOSS_ANY_ELITE" ],
+                "weather": "PSYCHIC_FOG",
+                "shiny_species": "SPECIES_MUDKIP",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Ah, you're finally here.\\pI've been watching you battle, you're special.\\pSince you've made it this far, there's no reason for me to hold back!",
+                        "PRE_BATTLE_TAUNT": "Show me what you're made of, {PLAYER}!",
+                        "POST_BATTLE_TAUNT": "Heh… I anticipated this would happen.\\nYou're an incredibly skilled trainer.",
+                        "POST_BATTLE_CLOSER": "Welp, you beat me. I guess you could say I'm Nacho-problem anymore, huh? Hehe.\\pHey uhm…\\pDo you think they deliver food here? I'm starving…"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 10
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MUDKIP", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "ALREADY_HAS_TYPE_IN_TEAM", "DEC_FAVOUR", "ELSE", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ],
+                    "query_script_override":
+                    [
+                        "TRY_INCLUDE_SPECIES_LIST",
+                        "SPECIES_NIDOKING",
+                        "SPECIES_MEWTWO",
+                        "SPECIES_GYARADOS",
+                        "SPECIES_MEW",
+                        "SPECIES_GENGAR",
+                        "SPECIES_ZAPDOS",
+                        "SPECIES_DRAGONITE",
+                        "SPECIES_VENUSAUR",
+
+                        "SPECIES_TYRANITAR",
+                        "SPECIES_HERACROSS",
+                        "SPECIES_HO_OH",
+                        "SPECIES_LUGIA",
+                        "SPECIES_SCIZOR",
+                        "SPECIES_SUICUNE",
+                        "SPECIES_CELEBI",
+                        "SPECIES_RAIKOU",
+                        "SPECIES_ENTEI",
+
+                        "SPECIES_SWAMPERT",
+                        "SPECIES_RAYQUAZA",
+                        "SPECIES_GROUDON",
+                        "SPECIES_KYOGRE",
+                        "SPECIES_METAGROSS",
+                        "SPECIES_SALAMENCE",
+                        "SPECIES_BLAZIKEN",
+                        "SPECIES_LATIOS",
+                        "#ifdef ROGUE_EXPANSION",
+                            "SPECIES_DEOXYS_ATTACK",
+                        "#else",
+                            "SPECIES_DEOXYS",
+                        "#endif",
+
+                        "#ifdef ROGUE_EXPANSION",
+                            "SPECIES_GARCHOMP",
+                            "SPECIES_ARCEUS",
+                            "SPECIES_DIALGA",
+                            "SPECIES_GIRATINA_ORIGIN",
+                            "SPECIES_PALKIA",
+                            "SPECIES_HEATRAN",
+                            "SPECIES_HIPPOWDON",
+                            "SPECIES_DARKRAI",
+
+                            "SPECIES_HYDREIGON",
+                            "SPECIES_KYUREM_BLACK",
+                            "SPECIES_KYUREM_WHITE",
+                            "SPECIES_GENESECT",
+                            "SPECIES_EXCADRILL",
+                            "SPECIES_RESHIRAM",
+                            "SPECIES_LANDORUS_THERIAN",
+                            "SPECIES_THUNDURUS_THERIAN",
+                            "SPECIES_TORNADUS",
+
+                            "SPECIES_AEGISLASH",
+                            "SPECIES_YVELTAL",
+                            "SPECIES_XERNEAS",
+                            "SPECIES_DIANCIE",
+                            "SPECIES_GRENINJA",
+                            "SPECIES_ZYGARDE",
+                            "SPECIES_VOLCANION",
+                            "SPECIES_HOOPA_UNBOUND",
+
+                            "SPECIES_INCINEROAR",
+                            "SPECIES_TAPU_BULU",
+                            "SPECIES_TAPU_FINI",
+                            "SPECIES_TAPU_LELE",
+                            "SPECIES_NECROZMA_DUSK_MANE",
+                            "SPECIES_BUZZWOLE",
+                            "SPECIES_LUNALA",
+                            "SPECIES_CELESTEELA",
+                            "SPECIES_NAGANADEL",
+                            "SPECIES_KARTANA",
+
+                            "SPECIES_RILLABOOM",
+                            "SPECIES_CINDERACE",
+                            "SPECIES_ZACIAN_CROWNED_SWORD",
+                            "SPECIES_ETERNATUS",
+                            "SPECIES_CALYREX_SHADOW_RIDER",
+                            "SPECIES_REGIELEKI",
+                            "SPECIES_URSHIFU_RAPID_STRIKE_STYLE",
+                            "SPECIES_ZAMAZENTA_CROWNED_SHIELD",
+                            "SPECIES_CALYREX_ICE_RIDER",
+
+                            "SPECIES_SKELEDIRGE",
+                            "SPECIES_GHOLDENGO",
+                            "SPECIES_MIRAIDON",
+                            "SPECIES_KORAIDON",
+                            "SPECIES_FLUTTER_MANE",
+                            "SPECIES_TING_LU",
+                            "SPECIES_CHI_YU",
+                            "SPECIES_OGERPON_WELLSPRING_MASK",
+                            "SPECIES_CHIEN_PAO",
+                            "SPECIES_PALAFIN",
+                            "SPECIES_CLODSIRE",
+                            "SPECIES_ARCHALUDON",
+                            "SPECIES_GLIMMORA",
+                        "#endif",
+                        "SPECIES_NONE"
+                    ]
+                }
+            }
+        ],
+
+        "champ":
+        [
+            {
+                "name": "RANDOMAN",
+                "object_event": "OBJ_EVENT_GFX_CONTEST_JUDGE",
+                "trainer_pic": "TRAINER_PIC_GLITCH_RANDOMAN",
+                "music_player": "rogue_final_champion",
+                "class_flags": [ "BOSS_CHAMP" ],
+                "shiny_species": "SPECIES_NONE",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "unused",
+                        "PRE_BATTLE_TAUNT": "unused",
+                        "POST_BATTLE_TAUNT": "You are truly a fine\\nChampion of Emerald Rogue.",
+                        "POST_BATTLE_CLOSER": "unused"
+                    }
+                ],
+                "pokeball": "FINAL_BOSS_POKEBALL",
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 6
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            }
+        ]
+    }
+}

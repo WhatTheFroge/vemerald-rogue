@@ -1,0 +1,612 @@
+const FLAG_HIDE_MEGA_STONE      = FLAG_TEMP_1
+const FLAG_HIDE_Z_CRYSTAL       = FLAG_TEMP_2
+const FLAG_HIDE_DYNAMAX         = FLAG_TEMP_3
+const FLAG_HIDE_HEALTH_FLASK    = FLAG_TEMP_4
+const FLAG_HIDE_TERA            = FLAG_TEMP_5
+
+const VAR_MAP_LOAD_STATE = VAR_TEMP_0
+
+const NPC_OBJ_SCOTT         = 1
+
+const NPC_OBJ_MEGA_STONE    = 13
+const NPC_OBJ_Z_CRYSTAL     = 14
+const NPC_OBJ_DYNAMAX       = 15
+const NPC_OBJ_HEALTH_FLASK  = 16
+const NPC_OBJ_TERA_ORB      = 17
+
+mapscripts Rogue_Interior_ChallengeFrontier_MapScripts
+{
+    MAP_SCRIPT_ON_LOAD: Rogue_Interior_ChallengeFrontier_OnMapLoad
+    MAP_SCRIPT_ON_FRAME_TABLE 
+    [
+        VAR_MAP_LOAD_STATE, 0: Rogue_Interior_ChallengeFrontier_LoadState0
+    ]
+}
+
+script Rogue_Interior_ChallengeFrontier_OnMapLoad
+{
+    specialvar(VAR_RESULT, RogueHub_GetStatueLevel)
+
+    switch(var(VAR_RESULT))
+    {
+        case 3:
+            setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_STATUE_LEVEL_3)
+        case 2:
+            setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_STATUE_LEVEL_2)
+        case 1:
+            setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_STATUE_LEVEL_1)
+        default:
+            setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_STATUE_LEVEL_0)
+    }
+}
+
+script Rogue_Interior_ChallengeFrontier_LoadState0
+{
+    addvar(VAR_MAP_LOAD_STATE, 1)
+    call(Rogue_Interior_ChallengeFrontier_UpdateItemVisibility)
+}
+
+script Rogue_Interior_ChallengeFrontier_UpdateItemVisibility
+{
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            checkitem(ITEM_MEGA_RING)
+            if(var(VAR_RESULT) == YES)
+            {
+                removeobject(NPC_OBJ_MEGA_STONE)
+            }
+            else
+            {
+                addobject(NPC_OBJ_MEGA_STONE)
+            }
+
+            checkitem(ITEM_Z_POWER_RING)
+            if(var(VAR_RESULT) == YES)
+            {
+                removeobject(NPC_OBJ_Z_CRYSTAL)
+            }
+            else
+            {
+                addobject(NPC_OBJ_Z_CRYSTAL)
+            }
+
+            checkitem(ITEM_DYNAMAX_BAND)
+            if(var(VAR_RESULT) == YES)
+            {
+                removeobject(NPC_OBJ_DYNAMAX)
+            }
+            else
+            {
+                addobject(NPC_OBJ_DYNAMAX)
+            }
+
+            checkitem(ITEM_TERA_ORB)
+            if(var(VAR_RESULT) == YES)
+            {
+                removeobject(NPC_OBJ_TERA_ORB)
+            }
+            else
+            {
+                addobject(NPC_OBJ_TERA_ORB)
+            }
+        }
+    }
+
+    checkitem(ITEM_HEALING_FLASK)
+    if(var(VAR_RESULT) == YES)
+    {
+        removeobject(NPC_OBJ_HEALTH_FLASK)
+    }
+    else
+    {
+        addobject(NPC_OBJ_HEALTH_FLASK)
+    }
+}
+
+script Rogue_Interior_ChallengeFrontier_MegaStone
+{
+    lock
+
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            msgbox(format("It's a Mega Ring!\pThis item is only avaliable in Emerald Rogue EX version."))
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            checkitem(ITEM_MEGA_RING)
+            if(var(VAR_RESULT) == YES)
+            {
+                msgbox(format("Would you like to put back the Mega Ring?"), MSGBOX_YESNO)
+                if(var(VAR_RESULT) == YES)
+                {
+                    removeitem(ITEM_MEGA_RING)
+                }
+            }
+            else
+            {
+                message("Would you like to take the Mega Ring?")
+                waitmessage
+
+                multichoice(20, 6, MULTI_YESNOINFO, NO)
+
+                switch(var(VAR_RESULT))
+                {
+                    case 0: // Yes
+                        giveitem(ITEM_MEGA_RING)
+                        call(Rogue_Interior_ChallengeFrontier_GiveGimickItemTutorial)
+
+                    case 1: // No
+                        setvar(VAR_RESULT, NO)
+
+                    case 2: // Info
+                        msgbox(format("Grants you and other Trainer's the ability to Mega Evolve when a Pokémon is holding the correct Mega Stone."), MSGBOX_DEFAULT)
+
+                    case MULTI_B_PRESSED:
+                        setvar(VAR_RESULT, NO)
+                }
+            }
+            call(Rogue_Interior_ChallengeFrontier_UpdateItemVisibility)
+        }
+    }
+
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_ZCrystal
+{
+    lock
+
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            msgbox(format("It's a Z-Power Ring!\pThis item is only avaliable in Emerald Rogue EX version."))
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            checkitem(ITEM_Z_POWER_RING)
+            if(var(VAR_RESULT) == YES)
+            {
+                msgbox(format("Would you like to put back the Z-Power Ring?"), MSGBOX_YESNO)
+                if(var(VAR_RESULT) == YES)
+                {
+                    removeitem(ITEM_Z_POWER_RING)
+                }
+            }
+            else
+            {
+                message("Would you like to take the Z-Power Ring?")
+                waitmessage
+
+                multichoice(20, 6, MULTI_YESNOINFO, NO)
+
+                switch(var(VAR_RESULT))
+                {
+                    case 0: // Yes
+                        giveitem(ITEM_Z_POWER_RING)
+                        call(Rogue_Interior_ChallengeFrontier_GiveGimickItemTutorial)
+
+                    case 1: // No
+                        setvar(VAR_RESULT, NO)
+
+                    case 2: // Info
+                        msgbox(format("Grants you and other Trainer's the ability to use Z-Moves when a Pokémon is holding the correct Z-Crystal."), MSGBOX_DEFAULT)
+
+                    case MULTI_B_PRESSED:
+                        setvar(VAR_RESULT, NO)
+                }
+            }
+            call(Rogue_Interior_ChallengeFrontier_UpdateItemVisibility)
+        }
+    }
+
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_TryWarnAboutDynamaxAndTera
+{
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            // do nothing
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            checkitem(ITEM_DYNAMAX_BAND)
+            if(var(VAR_RESULT) == YES)
+            {
+                checkitem(ITEM_TERA_ORB)
+                if(var(VAR_RESULT) == YES)
+                {
+                    msgbox(format("Warning…\pYou are holding both the Dynamax Band and the Tera Orb.\pBoth of these cannot be activated at once.\pSo, at the start of battles where they would be active, one of them of them will be randomly selected to be active and the other will be temporarily deactivated."))
+                }
+            }
+        }
+    }
+}
+
+script Rogue_Interior_ChallengeFrontier_Dynamax
+{
+    lock
+
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            msgbox(format("It's a Dynamax Band!\pThis item is only avaliable in Emerald Rogue EX version."))
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            checkitem(ITEM_DYNAMAX_BAND)
+            if(var(VAR_RESULT) == YES)
+            {
+                msgbox(format("Would you like to put back the Dynamax Band?"), MSGBOX_YESNO)
+                if(var(VAR_RESULT) == YES)
+                {
+                    removeitem(ITEM_DYNAMAX_BAND)
+                }
+            }
+            else
+            {
+                message("Would you like to take the Dynamax Band?")
+                waitmessage
+
+                multichoice(20, 6, MULTI_YESNOINFO, NO)
+
+                switch(var(VAR_RESULT))
+                {
+                    case 0: // Yes
+                        giveitem(ITEM_DYNAMAX_BAND)
+                        call(Rogue_Interior_ChallengeFrontier_GiveGimickItemTutorial)
+                        call(Rogue_Interior_ChallengeFrontier_TryWarnAboutDynamaxAndTera)
+
+                    case 1: // No
+                        setvar(VAR_RESULT, NO)
+
+                    case 2: // Info
+                        msgbox(format("Grants you and other Key Trainer's (e.g. Strong Trainers, Rivals) the ability to Dynamax or Gigantamax, if the Pokémon has a Gigantamax form available."), MSGBOX_DEFAULT)
+
+                    case MULTI_B_PRESSED:
+                        setvar(VAR_RESULT, NO)
+                }
+            }
+            call(Rogue_Interior_ChallengeFrontier_UpdateItemVisibility)
+        }
+    }
+
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_Tera
+{
+    lock
+
+    poryswitch(ROGUE_VERSION)
+    {
+        ROGUE_VERSION_VANILLA
+        {
+            msgbox(format("It's a Tera Orb!\pThis item is only avaliable in Emerald Rogue EX version."))
+        }
+        ROGUE_VERSION_EXPANSION
+        {
+            checkitem(ITEM_TERA_ORB)
+            if(var(VAR_RESULT) == YES)
+            {
+                msgbox(format("Would you like to put back the Tera Orb?"), MSGBOX_YESNO)
+                if(var(VAR_RESULT) == YES)
+                {
+                    removeitem(ITEM_TERA_ORB)
+                }
+            }
+            else
+            {
+                message("Would you like to take the Tera Orb?")
+                waitmessage
+
+                multichoice(20, 6, MULTI_YESNOINFO, NO)
+
+                switch(var(VAR_RESULT))
+                {
+                    case 0: // Yes
+                        giveitem(ITEM_TERA_ORB)
+                        call(Rogue_Interior_ChallengeFrontier_GiveGimickItemTutorial)
+                        call(Rogue_Interior_ChallengeFrontier_TryWarnAboutDynamaxAndTera)
+
+                    case 1: // No
+                        setvar(VAR_RESULT, NO)
+
+                    case 2: // Info
+                        msgbox(format("Grants you and other Trainer's the ability to Terastallize.\pUnlike in Scarlet and Violet, the Tera Orb will be recharged upon entering every encounter/map, so you may Terastallize more freely."), MSGBOX_DEFAULT)
+
+                    case MULTI_B_PRESSED:
+                        setvar(VAR_RESULT, NO)
+                }
+            }
+            call(Rogue_Interior_ChallengeFrontier_UpdateItemVisibility)
+        }
+    }
+
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_HealingFlask
+{
+    lock
+
+    checkitem(ITEM_HEALING_FLASK)
+    if(var(VAR_RESULT) == YES)
+    {
+        msgbox(format("Would you like to put back the Healing Flask?"), MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES)
+        {
+            removeitem(ITEM_HEALING_FLASK)
+        }
+    }
+    else
+    {
+        message("Would you like to take the Healing Flask?")
+        waitmessage
+
+        multichoice(20, 6, MULTI_YESNOINFO, NO)
+
+        switch(var(VAR_RESULT))
+        {
+            case 0: // Yes
+                giveitem(ITEM_HEALING_FLASK)
+                call(Rogue_Interior_ChallengeFrontier_GiveGimickItemTutorial)
+
+            case 1: // No
+                setvar(VAR_RESULT, NO)
+
+            case 2: // Info
+                msgbox(format("When Adventuring with the Healing Flask, your Party will not get automatically healed after Key Battles e.g. Strong Trainers or Rival Battles.\pInstead you will be given a number of Healing charges you may use via the Healing Flask.\pThe Healing Flask will only be refilled when your Party is healed at any Nurse.\pThis will give you another Resource to manage and generally make Adventures more tedious, as you will have to be stricter with healing items."), MSGBOX_DEFAULT)
+
+            case MULTI_B_PRESSED:
+                setvar(VAR_RESULT, NO)
+        }
+    }
+    call(Rogue_Interior_ChallengeFrontier_UpdateItemVisibility)
+
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_GiveGimickItemTutorial
+{
+    if(!flag(FLAG_ROGUE_GIMICK_TUTORIAL))
+    {
+        setflag(FLAG_ROGUE_GIMICK_TUTORIAL)
+        msgbox(format("If you later wish to play without using this, simply place it back on this pedestal."))
+    }
+}
+
+script Rogue_Interior_ChallengeFrontier_TalkScott
+{
+    lock
+    faceplayer
+
+    if(var(VAR_ROGUE_POST_GAME_TUTORIAL) == 1)
+    {
+        msgbox(format("You've still got plenty of things to find around here!\pDon't you worry!"))
+    }
+
+    //msgbox(format("todo - unlock challenges"))
+//
+    //special(Rogue_UnlockChallengeQuests)
+    //special(Rogue_ShowNewQuests)
+    //waitstate
+
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_ScottIntroLeft
+{
+    lock
+
+    applymovement(NPC_OBJ_SCOTT, PostGameTutorial_Scott0)
+    waitmovement(0)
+
+    msgbox(format("Ah!\nYou must be {PLAYER}!"))
+
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, PostGameTutorial_Player0_Left)
+    waitmovement(0)
+
+    call(Rogue_Interior_ChallengeFrontier_ScottIntroCommon)
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_ScottIntroRight
+{
+    lock
+
+    applymovement(NPC_OBJ_SCOTT, PostGameTutorial_Scott0)
+    waitmovement(0)
+
+    msgbox(format("Ah!\nYou must be {PLAYER}!"))
+
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, PostGameTutorial_Player0_Right)
+    waitmovement(0)
+
+    call(Rogue_Interior_ChallengeFrontier_ScottIntroCommon)
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_ScottIntroCentre
+{
+    lock
+
+    applymovement(NPC_OBJ_SCOTT, PostGameTutorial_Scott0)
+    waitmovement(0)
+
+    msgbox(format("Ah!\nYou must be {PLAYER}!"))
+
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, PostGameTutorial_Player0_Centre)
+    waitmovement(0)
+
+    call(Rogue_Interior_ChallengeFrontier_ScottIntroCommon)
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_ScottIntroCommon
+{
+    addvar(VAR_ROGUE_POST_GAME_TUTORIAL, 1)
+
+    msgbox(format("SCOTT: The name's Scott!\pPokabbie told me to keep an eye out for a Champion in the making.\pI'm guessing that's you, right?"))
+
+    if(flag(FLAG_IS_CHAMPION))
+    {
+        msgbox(format("And would you look at that…\pYou already put your name in the Hall of Fame!\pYou're gonna fit in well around here!"))
+    }
+    else
+    {
+        msgbox(format("You still look a little fresh, but I see the potential!\pI bet you could even enter the Hall of Fame, if you put your mind to it!"))
+    }
+
+    msgbox(format("You see, this Building is an area for those who want to push themselves to complete some of the toughest Challenges imaginable!\pIn fact…\nWhy don't you have a look around?\pI'm sure you'll find plenty of the things around here interesting!"))
+    
+    quest_trigger(QUEST_TRIGGER_MAP_SPECIFIC_EVENT)
+}
+
+movement PostGameTutorial_Scott0
+{
+    emote_exclamation_mark
+}
+
+movement PostGameTutorial_Player0_Centre
+{
+    walk_up * 2
+}
+
+movement PostGameTutorial_Player0_Left
+{
+    walk_up
+    walk_right
+    walk_up * 2
+}
+
+movement PostGameTutorial_Player0_Right
+{
+    walk_up
+    walk_left
+    walk_up * 2
+}
+
+
+script Rogue_Interior_ChallengeFrontier_ScottBlockExit
+{
+    lock
+
+    if(flag(FLAG_SYS_MASTERIES_UNLOCKED) && flag(FLAG_SYS_CHALLENGES_UNLOCKED) && flag(FLAG_ROGUE_FOUND_GIMIC_ROOM))
+    {
+        addvar(VAR_ROGUE_POST_GAME_TUTORIAL, 1)
+    }
+    else
+    {
+        turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+        msgbox(format("SCOTT: {PLAYER}, you can't head out just yet.\pThere's still more for you to see!"))
+
+        closemessage
+        applymovement(OBJ_EVENT_ID_PLAYER, PostGameTutorial_Player1)
+        waitmovement(0)
+    }
+
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_VisitedGimicRoom
+{
+    lock
+    setflag(FLAG_ROGUE_FOUND_GIMIC_ROOM)
+    release
+}
+
+movement PostGameTutorial_Player1
+{
+    walk_up
+}
+
+script Rogue_Interior_ChallengeFrontier_TalkMasteries
+{
+    lock
+    faceplayer
+
+    if(!flag(FLAG_SYS_MASTERIES_UNLOCKED))
+    {
+        msgbox(format("Hello, {PLAYER}.\pI've enjoyed seeing your progress so far!\pI would like to issue you some additional Quests.\pThese Quests will prove your skill with using a variety of Pokémon.\pAs such, they are appropriately named, Pokémon Masteries.\pHere, take a look!"))
+        
+        special(Rogue_UnlockMasteryQuests)
+        special(Rogue_ShowNewMonMasteries)
+        waitstate
+
+        msgbox(format("You may also have noticed that you have access to the {PKMN} Tracker alongside the Quests I mentioned.\pThe {PKMN} Tracker keeps track of every Pokémon line you have entered into the Hall of Fame.\pDon't worry.\nYou are not required to fill the {PKMN} Tracker, in order to reach 100% Quest Completion.\pJust the Pokémon Mastery Quests listed."))
+        
+    
+        poryswitch(ROGUE_VERSION)
+        {
+            ROGUE_VERSION_VANILLA
+            {
+                msgbox(format("I wish you the best of luck with your Pokémon Masteries, {PLAYER}!"))
+            }
+            ROGUE_VERSION_EXPANSION
+            {
+                msgbox(format("Once, you have completed any of those Quests, their Special Items may be available for purchase.\pYou may speak to me, at any time, to buy any Special Items you gain access to through completing Quests.\pI wish you the best of luck with your Pokémon Masteries, {PLAYER}!"))
+            }
+        }
+    }
+    else
+    {
+        msgbox(format("Hello, {PLAYER}."))
+
+        poryswitch(ROGUE_VERSION)
+        {
+            ROGUE_VERSION_VANILLA
+            {
+                msgbox(format("I hope your Pokémon Masteries are going well!"))
+            }
+            ROGUE_VERSION_EXPANSION
+            {
+                message(format("Would you like to purchase any Special Item rewards?"))
+                waitmessage
+
+                rogue_dynamicpokemart(ROGUE_SHOP_RARE_HELD_ITEMS)
+
+                msgbox(format("Best of luck with you Pokémon Masteries, {PLAYER}."))
+            }
+        }
+    }
+
+    release
+}
+
+script Rogue_Interior_ChallengeFrontier_TalkChallenges
+{
+    lock
+    faceplayer
+
+    if(!flag(FLAG_SYS_CHALLENGES_UNLOCKED))
+    {
+        msgbox(format("What's that?\pThat little Quest Book you have there?\pSo you're trying to complete Quests, huh?\pWell, have I got just the thing for you!\pChallenges!\pChallenges are a special type of Quest that can be way more in depth!\pHere, take a look."))
+        
+        special(Rogue_UnlockChallengeQuests)
+        special(Rogue_ShowNewQuests)
+        waitstate
+        
+        msgbox(format("Challenges are different from regular Quests, as they track which Difficulty you last completed them on.\pThere's even some exclusive Rewards for completing them on higher difficulties too!\pIf you want to retry a Challenge on a harder difficulty, just head on over to the Config Lab and keep an eye on the Reward Difficulty.\pSounds exciting, right?\pShow me what you can do, {PLAYER}!"))
+    }
+    else
+    {
+        msgbox(format("Hi there, {PLAYER}.\pHow have your Challenges been going?\nWell I hope!"))
+    }
+
+    release
+}

@@ -1,0 +1,198 @@
+const VAR_OBJ_GFX_TEA_SHOP = VAR_OBJ_GFX_ID_0
+
+const FLAG_HIDE_BREEDER = FLAG_TEMP_1
+const FLAG_HIDE_PHONE = FLAG_TEMP_2
+const FLAG_HIDE_TEA = FLAG_TEMP_4
+
+const FLAG_HIDE_SPECIES_0 = FLAG_TEMP_5
+const FLAG_HIDE_SPECIES_1 = FLAG_TEMP_6
+const FLAG_HIDE_SPECIES_2 = FLAG_TEMP_7
+
+mapscripts Rogue_Area_DayCare_MapScripts 
+{
+    MAP_SCRIPT_ON_LOAD: Rogue_Area_DayCare_OnMapLoad
+}
+
+script Rogue_Area_DayCare_OnMapLoad
+{
+    special(Rogue_SetupDaycareSpeciesGraphics)
+
+    random(2)
+    if(var(VAR_RESULT) == 0)
+    {
+        setvar(VAR_OBJ_GFX_TEA_SHOP, OBJ_EVENT_GFX_MISC_YOUNG_COUPLE_M)
+    }
+    else
+    {
+        setvar(VAR_OBJ_GFX_TEA_SHOP, OBJ_EVENT_GFX_MISC_YOUNG_COUPLE_F)
+    }
+
+    hubupgradeunlocked(HUB_UPGRADE_DAY_CARE_BREEDER)
+    if(var(VAR_RESULT) == TRUE)
+    {
+        clearflag(FLAG_HIDE_BREEDER)
+    }
+    else
+    {
+        setflag(FLAG_HIDE_BREEDER)
+    }
+
+    hubupgradeunlocked(HUB_UPGRADE_DAY_CARE_PHONE)
+    if(var(VAR_RESULT) == TRUE)
+    {
+        clearflag(FLAG_HIDE_PHONE)
+    }
+    else
+    {
+        setflag(FLAG_HIDE_PHONE)
+    }
+
+    hubupgradeunlocked(HUB_UPGRADE_DAY_CARE_TEA_SHOP)
+    if(var(VAR_RESULT) == TRUE)
+    {
+        clearflag(FLAG_HIDE_TEA)
+    }
+    else
+    {
+        setflag(FLAG_HIDE_TEA)
+    }
+}
+
+script Rogue_Area_DayCare_SwapMonGender
+{
+    lock
+    faceplayer
+
+    setvar(VAR_0x8004, 0)
+    special(BufferMonNickname)
+    msgbox(format("Well hi there!\pI just brewed a fresh batch of Tea.\nSometimes Pokémon who drink it can change gender!\pDid you want me to share some with {STR_VAR_1}?"), MSGBOX_YESNO)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        fadescreen(FADE_TO_BLACK)
+
+        playse(SE_USE_ITEM)
+        waitse
+        special(Rogue_SwapMonGender)
+
+        special(ReloadWarpSilent)
+
+        //fadescreen(FADE_FROM_BLACK)
+    }
+    else
+    {
+        msgbox(format("Well, I have plenty of Herbal Remedy Tea to go around, if you change your mind!"))
+    }
+
+    release
+}
+
+script Rogue_Area_DayCare_TalkEggBreeder
+{
+    lock
+    faceplayer
+
+    msgbox(format("Hello there, {PLAYER}!"))
+
+    if(flag(FLAG_ROGUE_DAYCARE_EGG_READY))
+    {
+        bufferspeciesname(STR_VAR_1, VAR_ROGUE_DAYCARE_EGG_SPECIES)
+        msgbox(format("I managed to find that {STR_VAR_1} egg you were looking for!"))
+
+        giveegg(VAR_ROGUE_DAYCARE_EGG_SPECIES)
+
+        clearflag(FLAG_ROGUE_DAYCARE_EGG_READY)
+        setvar(VAR_ROGUE_DAYCARE_EGG_SPECIES, SPECIES_NONE)
+    }
+    else
+    {
+        if(var(VAR_ROGUE_DAYCARE_EGG_SPECIES) != SPECIES_NONE)
+        {
+            bufferspeciesname(STR_VAR_1, VAR_ROGUE_DAYCARE_EGG_SPECIES)
+            msgbox(format("I've not managed to locate a {STR_VAR_1} egg quite yet.\pWould you like for me to look for a different type of Pokémon instead?"), MSGBOX_YESNO)
+        }
+        else
+        {
+            msgbox(format("If you'd like I can attempt to acquire a Pokémon for you whilst, you're out Adventuring!\pWhich Pokémon would you like and egg for?"))
+            setvar(VAR_RESULT, YES)
+        }
+
+        if(var(VAR_RESULT) == YES)
+        {
+            hubupgradeunlocked(HUB_UPGRADE_DAY_CARE_BREEDER_SEEN_DEX)
+
+            if(var(VAR_RESULT) == YES)
+            {
+                special(Special_SelectDayCareMonInPokedex)
+                waitstate
+            }
+            else
+            {
+                special(Special_SelectDayCareCaughtMonInPokedex)
+                waitstate
+            }
+
+            if(var(VAR_RESULT) != SPECIES_NONE)
+            {
+                special(Rogue_TransformIntoValidDaycareEgg)
+                
+                if(var(VAR_RESULT) == SPECIES_NONE)
+                {
+                    msgbox(format("I'm not sure I would be able to locate an Egg for that Pokémon, I'm afraid."))
+                }
+                else
+                {
+                    clearflag(FLAG_ROGUE_DAYCARE_EGG_READY)
+                    copyvar(VAR_ROGUE_DAYCARE_EGG_SPECIES, VAR_RESULT)
+                    setvar(VAR_ROGUE_DAYCARE_EGG_CYCLES, 0)
+                    bufferspeciesname(STR_VAR_1, VAR_ROGUE_DAYCARE_EGG_SPECIES)
+
+                    msgbox(format("Alright!\nI'll keep my eyes out for a {STR_VAR_1} egg."))
+                }
+            }
+        }
+    }
+
+    release
+}
+
+script Rogue_Area_DayCare_InteractWithPhoneBooth
+{
+    specialvar(VAR_RESULT, GetPlayerFacingDirection)
+    if(var(VAR_RESULT) == DIR_NORTH)
+    {
+        lock
+        msgbox(format("It's the Day Care's phone!"))
+
+        if(!flag(FLAG_ROGUE_RUN_ACTIVE))
+        {
+            checkitem(ITEM_DAYCARE_PHONE)
+
+            if(var(VAR_RESULT) == NO)
+            {
+                call(Rogue_Area_DayCare_GiveDayCarePhone)
+            }
+        }
+
+        release
+    }
+}
+
+script Rogue_Area_DayCare_GiveDayCarePhone
+{
+    msgbox(format("Oh?\nThere's a small package with a note attached.\pIt reads…\p'Dear {PLAYER}, please accept this Pokégear.\pYou can use it to remotely make requests with the Day Care, whilst you're out on Adventures.\pBest of luck!\p - The Day Care Staff'"))
+    giveitem(ITEM_DAYCARE_PHONE)
+    call(Rogue_Common_DisplayPopups)
+}
+
+script Rogue_Area_DayCare_SpeakDaycareLady
+{
+    call(Rogue_SpeakDaycareLady)
+
+    if(var(VAR_RESULT) == YES)
+    {
+        lock
+        special(ReloadWarpSilent)
+        release
+    }
+}

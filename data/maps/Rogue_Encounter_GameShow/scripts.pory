@@ -1,0 +1,486 @@
+
+const NPC_HOST = 1
+const NPC_REWARD = 2
+
+const FAIL_ROUND_COUNTER = 100
+const STOP_ROUND_COUNTER = 99
+
+const FLAG_HIDE_HOST = FLAG_TEMP_1
+
+const VAR_CURRENT_ROUND = VAR_TEMP_0
+const VAR_GAMESHOW_TRIGGERED = VAR_TEMP_1
+const VAR_CURRENT_REWARD_COUNTER = VAR_TEMP_2
+const VAR_CURRENT_REWARD_ITEM = VAR_TEMP_3
+const VAR_CURRENT_REWARD_COUNT = VAR_TEMP_4
+const VAR_GOOD_BOX = VAR_TEMP_5
+
+// WTP Vars
+const VAR_CURRENT_SPECIES = VAR_TEMP_A
+
+// Triva Var
+const VAR_TRIVIA_ANSWER = VAR_TEMP_A
+
+// Voltob flip vars
+const VAR_VOLTORB_FLIP_LVL = VAR_0x8004
+
+
+mapscripts Rogue_Encounter_GameShow_MapScripts 
+{
+    MAP_SCRIPT_ON_LOAD: Rogue_Encounter_GameShow_OnLoad
+}
+
+script Rogue_Encounter_GameShow_OnLoad
+{
+    special(GameShow_RestartGameShow)
+
+    setvar(VAR_CURRENT_REWARD_COUNTER, 0)
+    special(GameShow_SelectRewardItem)
+
+    clearflag(FLAG_HIDE_HOST)
+}
+
+script Rogue_Encounter_GameShow_TriggerIntro
+{
+    lockall
+
+    setvar(VAR_GAMESHOW_TRIGGERED, 1)
+    msgbox(format("WAHEY!"), MSGBOX_DEFAULT)
+
+    applymovement(NPC_HOST, GameShow_Host_Spin)
+    waitmovement(0)
+
+    setweather(WEATHER_NONE)
+    doweather
+    playse(SE_TRUCK_DOOR)
+    delay(30)
+
+    playbgm(MUS_HG_GAME_CORNER, TRUE)
+
+    msgbox(format("Welcome to my ever so lovingly setup Game Show!"), MSGBOX_DEFAULT)
+
+    closemessage
+    playse(SE_APPLAUSE)
+    //waitse
+
+    msgbox(format("Now, contestant!\nAre you aware how this Game Show runs?"), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES)
+    {
+        msgbox(format("Wonderful!\nLet's get straight into the action!"), MSGBOX_DEFAULT)
+    }
+    else
+    {
+        msgbox(format("In each Game Show, we will have a specific game we will play.\pEach game will consist of several rounds.\pOnce you complete a round, you will earn a reward, you may then choose to finish the Game Show or try to push further to get an even better reward!\pIt's all or nothing!"), MSGBOX_DEFAULT)
+    }
+
+    msgbox(format("For our show today, the game will be… … …"), MSGBOX_DEFAULT)
+
+    special(GameShow_IsTeamTriviaRoundValid)
+    if(var(VAR_RESULT) == YES)
+    {
+        random(5)
+    }
+    else
+    {
+        random(4)
+    }
+
+    switch(var(VAR_RESULT))
+    {
+        // Weight this higher as it's more accessible
+        case 0:
+            call(Rogue_Encounter_GameShow_WhosThatPokemonFlow)
+
+        case 1:
+        case 2:
+            call(Rogue_Encounter_GameShow_WhosThatCryFlow)
+
+        case 3:
+            call(Rogue_Encounter_GameShow_VoltorbFlip)
+
+        case 4:
+            call(Rogue_Encounter_GameShow_TeamTrivia)
+    }
+
+    applymovement(NPC_HOST, GameShow_Host_Spin)
+    waitmovement(0)
+
+    msgbox(format("That's all for now folks!\nKe ke ke"), MSGBOX_DEFAULT)
+
+    if(var(VAR_CURRENT_ROUND) != FAIL_ROUND_COUNTER)
+    {
+        // Place reward
+        clearflag(FLAG_ROGUE_HIDE_GAMESHOW_REWARD)
+        setobjectxy(NPC_REWARD, 7, 8)
+        setobjectxyperm(NPC_REWARD, 7, 8)
+    }
+    else
+    {
+        // Hide reward 
+        hideobjectat(NPC_REWARD, MAP_ROGUE_ENCOUNTER_GAME_SHOW)
+        setflag(FLAG_ROGUE_HIDE_GAMESHOW_REWARD)
+        setobjectxy(NPC_REWARD, 0, 0)
+        setobjectxyperm(NPC_REWARD, 0, 0)
+    }
+
+    applymovement(NPC_HOST, GameShow_Host_Exit)
+    waitmovement(0)
+
+    setobjectxy(NPC_HOST, 0, 0)
+    setobjectxyperm(NPC_HOST, 0, 0)
+    hideobjectat(NPC_HOST, MAP_ROGUE_ENCOUNTER_GAME_SHOW)
+    setflag(FLAG_HIDE_HOST)
+
+    releaseall
+}
+
+script Rogue_Interact_GiveReward
+{
+    lock
+
+    if(var(VAR_CURRENT_REWARD_ITEM) == ITEM_NONE)
+    {
+        msgbox(format("Oh.\pIt has a note attached:\p'Cheaters never prosper ke ke ke - Randoman'"))
+
+        playmoncry(SPECIES_ELECTRODE, CRY_MODE_ENCOUNTER)
+        waitmoncry
+
+        removeobject(VAR_LAST_TALKED)
+
+        seteventmon(SPECIES_ELECTRODE, 1)
+
+        special(BattleSetup_StartLegendaryBattle)
+        waitstate
+    }
+    else
+    {
+        checkitemspace(VAR_CURRENT_REWARD_ITEM, VAR_CURRENT_REWARD_COUNT)
+        if(var(VAR_RESULT) == YES)
+        {
+            finditem(VAR_CURRENT_REWARD_ITEM, VAR_CURRENT_REWARD_COUNT)
+            removeobject(VAR_LAST_TALKED)
+        }
+        else
+        {
+            // Call this just so it displays the "can't pick up message"
+            finditem(VAR_CURRENT_REWARD_ITEM, VAR_CURRENT_REWARD_COUNT)
+        }
+    }
+
+    release
+}
+
+script Rogue_Encounter_GameShow_WhosThatPokemonFlow
+{
+    msgbox(format("Who's that Pokémon?!\pThere will be 6 rounds, you will have to guess the specific Pokémon based on our prompt.\pNow…"), MSGBOX_DEFAULT)
+
+    while(var(VAR_CURRENT_ROUND) <= 50)
+    {
+        buffernumberstring(STR_VAR_1, VAR_CURRENT_ROUND)
+        msgbox(format("Round {STR_VAR_1}!"))
+
+        special(GameShow_SelectRandomSpecies)
+        specialvar(VAR_CURRENT_SPECIES, GameShow_BufferSpecies)
+
+        //  rounds of sillouettes
+        message(format("Which Pokémon does this silhouette belong to?"))
+        showmonpic(VAR_CURRENT_SPECIES, 10, 3, TRUE)
+        delay(20)
+        waitmessage
+        waitbuttonpress
+        hidemonpic
+
+
+        message(format("Which Pokémon was that?"))
+        waitmessage
+
+        begindynamicmultichoice
+        special(GameShow_AppendSpeciesMultichoiceOptions)
+        enddynamicmultichoice(19, 4, 4, FALSE)
+
+        msgbox(format("That answer is…"))
+
+        if(var(VAR_RESULT) == YES)
+        {
+            playse(SE_DING_DONG)
+            waitse
+
+            msgbox(format("Correct!"))
+            addvar(VAR_CURRENT_ROUND, 1)
+            addvar(VAR_CURRENT_REWARD_COUNTER, 1)
+
+            call(Rogue_Encounter_GameShow_DisplayReward)
+        }
+        else
+        {
+            playse(SE_BOO)
+            waitse
+
+            bufferspeciesname(STR_VAR_1, VAR_CURRENT_SPECIES)
+
+            msgbox(format("Incorrect!\nThe answer was {STR_VAR_1}."))
+            setvar(VAR_CURRENT_ROUND, FAIL_ROUND_COUNTER)
+        }
+    }
+}
+
+script Rogue_Encounter_GameShow_WhosThatCryFlow
+{
+    msgbox(format("What's that Cry?!\pThere will be 6 rounds, you will have to guess the specific Pokémon based on their Cry.\pNow…"), MSGBOX_DEFAULT)
+
+    while(var(VAR_CURRENT_ROUND) <= 50)
+    {
+        buffernumberstring(STR_VAR_1, VAR_CURRENT_ROUND)
+        msgbox(format("Round {STR_VAR_1}!"))
+
+        special(GameShow_SelectRandomSpecies)
+        specialvar(VAR_CURRENT_SPECIES, GameShow_BufferSpecies)
+
+        // rounds of guess the cry
+        message(format("Which Pokémon does this cry belong to?"))
+        waitmessage
+        delay(30)
+
+        playmoncry(VAR_CURRENT_SPECIES, CRY_MODE_NORMAL)
+        waitmoncry
+        delay(90)
+
+        playmoncry(VAR_CURRENT_SPECIES, CRY_MODE_NORMAL)
+        waitmoncry
+        delay(90)
+
+        playmoncry(VAR_CURRENT_SPECIES, CRY_MODE_NORMAL)
+        waitmoncry
+        delay(90)
+
+
+        message(format("Which Pokémon did that Cry belong to?"))
+        waitmessage
+
+        begindynamicmultichoice
+        special(GameShow_AppendSpeciesMultichoiceOptions)
+        enddynamicmultichoice(19, 4, 4, FALSE)
+
+        msgbox(format("That answer is…"))
+
+        if(var(VAR_RESULT) == YES)
+        {
+            playse(SE_DING_DONG)
+            waitse
+
+            msgbox(format("Correct!"))
+            addvar(VAR_CURRENT_ROUND, 1)
+            addvar(VAR_CURRENT_REWARD_COUNTER, 1)
+
+            call(Rogue_Encounter_GameShow_DisplayReward)
+        }
+        else
+        {
+            playse(SE_BOO)
+            waitse
+
+            bufferspeciesname(STR_VAR_1, VAR_CURRENT_SPECIES)
+
+            msgbox(format("Incorrect!\nThe answer was {STR_VAR_1}."))
+            setvar(VAR_CURRENT_ROUND, FAIL_ROUND_COUNTER)
+        }
+    }
+}
+
+script Rogue_Encounter_GameShow_VoltorbFlip
+{
+    msgbox(format("Voltorb Flip!\pThere will be 3 rounds, you will have to collect all of the 2 and 3 cards on the board without flipping any Voltorbs.\pNow…"), MSGBOX_DEFAULT)
+
+    setvar(VAR_VOLTORB_FLIP_LVL, 0)
+
+    while(var(VAR_CURRENT_ROUND) <= 50)
+    {
+        buffernumberstring(STR_VAR_1, VAR_CURRENT_ROUND)
+        msgbox(format("Round {STR_VAR_1}!"))
+
+        special(Special_ViewVoltorbFlip)
+        waitstate
+
+        if(var(VAR_RESULT) == YES)
+        {
+            playse(SE_DING_DONG)
+            waitse
+
+            msgbox(format("Congratulations!"))
+            addvar(VAR_CURRENT_ROUND, 1)
+            addvar(VAR_CURRENT_REWARD_COUNTER, 2)
+            addvar(VAR_VOLTORB_FLIP_LVL, 2)
+
+            call(Rogue_Encounter_GameShow_DisplayReward)
+        }
+        else
+        {
+            playse(SE_BOO)
+            waitse
+
+            msgbox(format("Oh no!"))
+            setvar(VAR_CURRENT_ROUND, FAIL_ROUND_COUNTER)
+        }
+    }
+}
+
+script Rogue_Encounter_GameShow_TeamTrivia 
+{
+    msgbox(format("Team Trivia!\pThere will be 6 rounds, you will asked a question about your Pokémon teams and you just have to give the correct answer.\pIt's that simple!\pNow…"), MSGBOX_DEFAULT)
+
+    while(var(VAR_CURRENT_ROUND) <= 50)
+    {
+        buffernumberstring(STR_VAR_1, VAR_CURRENT_ROUND)
+        msgbox(format("Round {STR_VAR_1}!"))
+
+        bufferstring(STR_VAR_1, format("1"))
+        bufferstring(STR_VAR_2, format("2"))
+        bufferstring(STR_VAR_3, format("3"))
+        setvar(VAR_TRIVIA_ANSWER, 0)
+        
+
+        special(GameShow_NextTriviaQuestion)
+
+        switch(var(VAR_RESULT))
+        {
+            case 0:
+                message(format("So, what would you like to wager?"))
+
+            default:
+                message(format("???"))
+        }
+        call(Rogue_Encounter_GameShow_TeamTrivia_GetResult)
+
+        if(var(VAR_RESULT) == YES)
+        {
+            playse(SE_DING_DONG)
+            waitse
+
+            msgbox(format("Correct!"))
+            addvar(VAR_CURRENT_ROUND, 1)
+            addvar(VAR_CURRENT_REWARD_COUNTER, 1)
+
+            call(Rogue_Encounter_GameShow_DisplayReward)
+        }
+        else
+        {
+            playse(SE_BOO)
+            waitse
+
+            switch(var(VAR_TRIVIA_ANSWER))
+            {
+                case 0:
+                    msgbox(format("Incorrect!\nThe answer was {STR_VAR_1}."))
+                case 1:
+                    msgbox(format("Incorrect!\nThe answer was {STR_VAR_2}."))
+                case 2:
+                    msgbox(format("Incorrect!\nThe answer was {STR_VAR_3}."))
+            }
+
+            setvar(VAR_CURRENT_ROUND, FAIL_ROUND_COUNTER)
+        }
+    }
+}
+
+script Rogue_Encounter_GameShow_TeamTrivia_GetResult
+{
+    waitmessage
+    multichoice(20, 6, MULTI_EXPAND3, NO)
+
+    switch(var(VAR_RESULT))
+    {
+        case 0:
+        case 1:
+        case 2:
+            if(var(VAR_RESULT) == VAR_TRIVIA_ANSWER)
+            {
+                setvar(VAR_RESULT, YES)
+            }
+            else
+            {
+                setvar(VAR_RESULT, NO)
+            }
+        case MULTI_B_PRESSED:
+            setvar(VAR_RESULT, NO)
+    }
+
+    msgbox(format("That answer is…"))
+}
+
+script Rogue_Encounter_GameShow_DisplayReward
+{
+    copyvar(VAR_0x8004, VAR_CURRENT_REWARD_ITEM)
+    copyvar(VAR_0x8005, VAR_CURRENT_REWARD_COUNT)
+    special(GameShow_SelectRewardItem)
+    bufferitemnameplural(STR_VAR_1, VAR_0x8004, VAR_0x8005) // current reward if stop now
+    bufferitemnameplural(STR_VAR_2, VAR_CURRENT_REWARD_ITEM, VAR_CURRENT_REWARD_COUNT) // next reward
+
+    if(var(VAR_CURRENT_REWARD_ITEM) == ITEM_NONE)
+    {
+        msgbox(format("If you stop now, you can win yourself…\p{STR_VAR_1}!\pOr you can risk it to upgrade your prize to…\p{STR_VAR_2}!\nOr even better!\nAll or nothing!\pSo, do you want to risk it and play another round?"), MSGBOX_YESNO)
+    
+        if(var(VAR_RESULT) == NO)
+        {
+            copyvar(VAR_CURRENT_REWARD_ITEM, VAR_0x8004)
+            copyvar(VAR_CURRENT_REWARD_COUNT, VAR_0x8005)
+            setvar(VAR_CURRENT_ROUND, STOP_ROUND_COUNTER)
+        }
+    }
+    else
+    {
+        if(var(VAR_CURRENT_REWARD_COUNTER) >= 6)
+        {
+            msgbox(format("You just won yourself…\p{STR_VAR_1}!"))
+            setvar(VAR_RESULT, NO)
+            copyvar(VAR_CURRENT_REWARD_ITEM, VAR_0x8004)
+            copyvar(VAR_CURRENT_REWARD_COUNT, VAR_0x8005)
+            setvar(VAR_CURRENT_ROUND, STOP_ROUND_COUNTER)
+
+            quest_trigger(QUEST_TRIGGER_MAP_SPECIFIC_EVENT)
+        }
+        else
+        {
+            msgbox(format("You just won yourself…\p{STR_VAR_1}!\pNext round you could upgrade your prize to…\p{STR_VAR_2}!\pDo you want to risk it and play another round?"), MSGBOX_YESNO)
+        
+            if(var(VAR_RESULT) == NO)
+            {
+                copyvar(VAR_CURRENT_REWARD_ITEM, VAR_0x8004)
+                copyvar(VAR_CURRENT_REWARD_COUNT, VAR_0x8005)
+                setvar(VAR_CURRENT_ROUND, STOP_ROUND_COUNTER)
+            }
+        }
+    }
+}
+
+
+movement GameShow_Host_Spin
+{
+    face_right
+    delay_1
+
+    face_up
+    delay_1
+
+    face_left
+    delay_1
+
+    face_down
+    delay_1
+    
+    face_right
+    delay_1
+
+    face_up
+    delay_1
+
+    face_left
+    delay_1
+
+    face_down
+    delay_1
+
+    jump_in_place_down
+}
+
+movement GameShow_Host_Exit {
+    jump_2_up * 2
+}

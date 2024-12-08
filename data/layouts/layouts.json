@@ -1,0 +1,2135 @@
+{
+  "layouts_table_label": "gMapLayouts",
+  "layouts": [
+    {
+      "id": "LAYOUT_ROUTE130_MIRAGE_ISLAND",
+      "name": "Route130_MirageIsland_Layout",
+      "width": 80,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Route130_MirageIsland/border.bin",
+      "blockdata_filepath": "data/layouts/Route130_MirageIsland/map.bin"
+    },
+    {
+      "id": "LAYOUT_HOUSE1",
+      "name": "House1_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/House1/border.bin",
+      "blockdata_filepath": "data/layouts/House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_HOUSE2",
+      "name": "House2_Layout",
+      "width": 11,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/House2/border.bin",
+      "blockdata_filepath": "data/layouts/House2/map.bin"
+    },
+    {
+      "id": "LAYOUT_POKEMON_CENTER_1F",
+      "name": "PokemonCenter_1F_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/PokemonCenter_1F/border.bin",
+      "blockdata_filepath": "data/layouts/PokemonCenter_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_POKEMON_CENTER_2F",
+      "name": "PokemonCenter_2F_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/PokemonCenter_2F/border.bin",
+      "blockdata_filepath": "data/layouts/PokemonCenter_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MART",
+      "name": "Mart_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/Mart/border.bin",
+      "blockdata_filepath": "data/layouts/Mart/map.bin"
+    },
+    {
+      "id": "LAYOUT_HOUSE3",
+      "name": "House3_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/House3/border.bin",
+      "blockdata_filepath": "data/layouts/House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_HOUSE4",
+      "name": "House4_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/House4/border.bin",
+      "blockdata_filepath": "data/layouts/House4/map.bin"
+    },
+    {
+      "id": "LAYOUT_FALLARBOR_TOWN_LEFTOVER_RSCONTEST_LOBBY",
+      "name": "FallarborTown_LeftoverRSContestLobby_Layout",
+      "width": 15,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Contest",
+      "border_filepath": "data/layouts/FallarborTown_LeftoverRSContestLobby/border.bin",
+      "blockdata_filepath": "data/layouts/FallarborTown_LeftoverRSContestLobby/map.bin"
+    },
+    {
+      "id": "LAYOUT_FALLARBOR_TOWN_LEFTOVER_RSCONTEST_HALL",
+      "name": "FallarborTown_LeftoverRSContestHall_Layout",
+      "width": 21,
+      "height": 18,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Contest",
+      "border_filepath": "data/layouts/FallarborTown_LeftoverRSContestHall/border.bin",
+      "blockdata_filepath": "data/layouts/FallarborTown_LeftoverRSContestHall/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CONTEST_ROOM1",
+      "name": "UnusedContestRoom1_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Contest",
+      "border_filepath": "data/layouts/UnusedContestRoom1/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedContestRoom1/map.bin"
+    },
+    {
+      "id": "LAYOUT_HOUSE_WITH_BED",
+      "name": "HouseWithBed_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/HouseWithBed/border.bin",
+      "blockdata_filepath": "data/layouts/HouseWithBed/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CONTEST_ROOM2",
+      "name": "UnusedContestRoom2_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Contest",
+      "border_filepath": "data/layouts/UnusedContestRoom2/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedContestRoom2/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CONTEST_ROOM3",
+      "name": "UnusedContestRoom3_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Contest",
+      "border_filepath": "data/layouts/UnusedContestRoom3/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedContestRoom3/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARBOR",
+      "name": "Harbor_Layout",
+      "width": 24,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Harbor/border.bin",
+      "blockdata_filepath": "data/layouts/Harbor/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUSTBORO_CITY_HOUSE",
+      "name": "RustboroCity_House_Layout",
+      "width": 12,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/RustboroCity_House/border.bin",
+      "blockdata_filepath": "data/layouts/RustboroCity_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_EVER_GRANDE_CITY_SHORT_HALL",
+      "name": "EverGrandeCity_ShortHall_Layout",
+      "width": 11,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_EliteFour",
+      "border_filepath": "data/layouts/EverGrandeCity_ShortHall/border.bin",
+      "blockdata_filepath": "data/layouts/EverGrandeCity_ShortHall/map.bin"
+    },
+    {
+      "id": "LAYOUT_CABLE_CAR_STATION",
+      "name": "CableCarStation_Layout",
+      "width": 13,
+      "height": 12,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/CableCarStation/border.bin",
+      "blockdata_filepath": "data/layouts/CableCarStation/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE121_SAFARI_ZONE_ENTRANCE",
+      "name": "Route121_SafariZoneEntrance_Layout",
+      "width": 18,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/Route121_SafariZoneEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/Route121_SafariZoneEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE1",
+      "name": "UnusedCave1_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave1/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave1/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE2",
+      "name": "UnusedCave2_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave2/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave2/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE3",
+      "name": "UnusedCave3_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave3/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave3/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE4",
+      "name": "UnusedCave4_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave4/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave4/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE5",
+      "name": "UnusedCave5_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave5/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave5/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE6",
+      "name": "UnusedCave6_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave6/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave6/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE7",
+      "name": "UnusedCave7_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave7/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave7/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE8",
+      "name": "UnusedCave8_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave8/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave8/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE9",
+      "name": "UnusedCave9_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave9/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave9/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE10",
+      "name": "UnusedCave10_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave10/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave10/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE11",
+      "name": "UnusedCave11_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave11/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave11/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE12",
+      "name": "UnusedCave12_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave12/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave12/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE13",
+      "name": "UnusedCave13_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave13/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave13/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_CAVE14",
+      "name": "UnusedCave14_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/UnusedCave14/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedCave14/map.bin"
+    },
+    {
+      "id": "LAYOUT_INSIDE_OF_TRUCK",
+      "name": "InsideOfTruck_Layout",
+      "width": 5,
+      "height": 5,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideOfTruck",
+      "border_filepath": "data/layouts/InsideOfTruck/border.bin",
+      "blockdata_filepath": "data/layouts/InsideOfTruck/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAFARI_ZONE_NORTHWEST",
+      "name": "SafariZone_Northwest_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/SafariZone_Northwest/border.bin",
+      "blockdata_filepath": "data/layouts/SafariZone_Northwest/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAFARI_ZONE_NORTH",
+      "name": "SafariZone_North_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/SafariZone_North/border.bin",
+      "blockdata_filepath": "data/layouts/SafariZone_North/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAFARI_ZONE_SOUTHWEST",
+      "name": "SafariZone_Southwest_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/SafariZone_Southwest/border.bin",
+      "blockdata_filepath": "data/layouts/SafariZone_Southwest/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAFARI_ZONE_SOUTH",
+      "name": "SafariZone_South_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/SafariZone_South/border.bin",
+      "blockdata_filepath": "data/layouts/SafariZone_South/map.bin"
+    },
+    {
+      "id": "LAYOUT_UNUSED_OUTDOOR_AREA",
+      "name": "UnusedOutdoorArea_Layout",
+      "width": 58,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/UnusedOutdoorArea/border.bin",
+      "blockdata_filepath": "data/layouts/UnusedOutdoorArea/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE110_SEASIDE_CYCLING_ROAD_ENTRANCE",
+      "name": "Route110_SeasideCyclingRoadEntrance_Layout",
+      "width": 15,
+      "height": 6,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/Route110_SeasideCyclingRoadEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/Route110_SeasideCyclingRoadEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_ELEVATOR",
+      "name": "BattleElevator_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleFrontier",
+      "border_filepath": "data/layouts/BattleElevator/border.bin",
+      "blockdata_filepath": "data/layouts/BattleElevator/map.bin"
+    },
+    {
+      "id": "LAYOUT_CAVE_OF_ORIGIN_UNUSED_B4F_LAVA",
+      "name": "CaveOfOrigin_Unused_B4F_Lava_Layout",
+      "width": 19,
+      "height": 19,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/CaveOfOrigin_Unused_B4F_Lava/border.bin",
+      "blockdata_filepath": "data/layouts/CaveOfOrigin_Unused_B4F_Lava/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE131_SKY_PILLAR",
+      "name": "Route131_SkyPillar_Layout",
+      "width": 60,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Route131_SkyPillar/border.bin",
+      "blockdata_filepath": "data/layouts/Route131_SkyPillar/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEAFLOOR_CAVERN_ROOM9_LAVA",
+      "name": "SeafloorCavern_Room9_Lava_Layout",
+      "width": 27,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/SeafloorCavern_Room9_Lava/border.bin",
+      "blockdata_filepath": "data/layouts/SeafloorCavern_Room9_Lava/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAFARI_ZONE_REST_HOUSE",
+      "name": "SafariZone_RestHouse_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/SafariZone_RestHouse/border.bin",
+      "blockdata_filepath": "data/layouts/SafariZone_RestHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOOTOPOLIS_CITY_LEGENDS_BATTLE",
+      "name": "SootopolisCity_LegendsBattle_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Sootopolis",
+      "border_filepath": "data/layouts/SootopolisCity_LegendsBattle/border.bin",
+      "blockdata_filepath": "data/layouts/SootopolisCity_LegendsBattle/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_UNUSED",
+      "name": "BattleFrontier_BattlePikeRoomUnused_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattlePike",
+      "border_filepath": "data/layouts/BattleFrontier_BattlePikeRoomUnused/border.bin",
+      "blockdata_filepath": "data/layouts/BattleFrontier_BattlePikeRoomUnused/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_TENT_LOBBY",
+      "name": "BattleTentLobby_Layout",
+      "width": 13,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleTent",
+      "border_filepath": "data/layouts/BattleTentLobby/border.bin",
+      "blockdata_filepath": "data/layouts/BattleTentLobby/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_TENT_CORRIDOR",
+      "name": "BattleTentCorridor_Layout",
+      "width": 5,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleTent",
+      "border_filepath": "data/layouts/BattleTentCorridor/border.bin",
+      "blockdata_filepath": "data/layouts/BattleTentCorridor/map.bin"
+    },
+    {
+      "id": "LAYOUT_BATTLE_TENT_BATTLE_ROOM",
+      "name": "BattleTentBattleRoom_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleTent",
+      "border_filepath": "data/layouts/BattleTentBattleRoom/border.bin",
+      "blockdata_filepath": "data/layouts/BattleTentBattleRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE111_NO_MIRAGE_TOWER",
+      "name": "Route111_NoMirageTower_Layout",
+      "width": 40,
+      "height": 140,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Route111_NoMirageTower/border.bin",
+      "blockdata_filepath": "data/layouts/Route111_NoMirageTower/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAFARI_ZONE_NORTHEAST",
+      "name": "SafariZone_Northeast_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/SafariZone_Northeast/border.bin",
+      "blockdata_filepath": "data/layouts/SafariZone_Northeast/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAFARI_ZONE_SOUTHEAST",
+      "name": "SafariZone_Southeast_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/SafariZone_Southeast/border.bin",
+      "blockdata_filepath": "data/layouts/SafariZone_Southeast/map.bin"
+    },
+    {
+      "id": "LAYOUT_ISLAND_HARBOR",
+      "name": "IslandHarbor_Layout",
+      "width": 17,
+      "height": 13,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_IslandHarbor",
+      "border_filepath": "data/layouts/IslandHarbor/border.bin",
+      "blockdata_filepath": "data/layouts/IslandHarbor/map.bin"
+    },
+    {
+      "id": "LAYOUT_NAVEL_ROCK_LADDER_ROOM1",
+      "name": "NavelRock_LadderRoom1_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NavelRock",
+      "border_filepath": "data/layouts/NavelRock_LadderRoom1/border.bin",
+      "blockdata_filepath": "data/layouts/NavelRock_LadderRoom1/map.bin"
+    },
+    {
+      "id": "LAYOUT_NAVEL_ROCK_LADDER_ROOM2",
+      "name": "NavelRock_LadderRoom2_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NavelRock",
+      "border_filepath": "data/layouts/NavelRock_LadderRoom2/border.bin",
+      "blockdata_filepath": "data/layouts/NavelRock_LadderRoom2/map.bin"
+    },
+    {
+      "id": "LAYOUT_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB_WITH_TABLE",
+      "name": "LittlerootTown_ProfessorBirchsLabWithTable_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/LittlerootTown_ProfessorBirchsLabWithTable/border.bin",
+      "blockdata_filepath": "data/layouts/LittlerootTown_ProfessorBirchsLabWithTable/map.bin"
+    },
+    {
+      "id": "LAYOUT_SKY_PILLAR_1F_CLEAN",
+      "name": "SkyPillar_1F_Clean_Layout",
+      "width": 14,
+      "height": 14,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/SkyPillar_1F_Clean/border.bin",
+      "blockdata_filepath": "data/layouts/SkyPillar_1F_Clean/map.bin"
+    },
+    {
+      "id": "LAYOUT_SKY_PILLAR_2F_CLEAN",
+      "name": "SkyPillar_2F_Clean_Layout",
+      "width": 14,
+      "height": 14,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/SkyPillar_2F_Clean/border.bin",
+      "blockdata_filepath": "data/layouts/SkyPillar_2F_Clean/map.bin"
+    },
+    {
+      "id": "LAYOUT_SKY_PILLAR_3F_CLEAN",
+      "name": "SkyPillar_3F_Clean_Layout",
+      "width": 14,
+      "height": 14,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/SkyPillar_3F_Clean/border.bin",
+      "blockdata_filepath": "data/layouts/SkyPillar_3F_Clean/map.bin"
+    },
+    {
+      "id": "LAYOUT_SKY_PILLAR_4F_CLEAN",
+      "name": "SkyPillar_4F_Clean_Layout",
+      "width": 14,
+      "height": 14,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/SkyPillar_4F_Clean/border.bin",
+      "blockdata_filepath": "data/layouts/SkyPillar_4F_Clean/map.bin"
+    },
+    {
+      "id": "LAYOUT_SKY_PILLAR_5F_CLEAN",
+      "name": "SkyPillar_5F_Clean_Layout",
+      "width": 14,
+      "height": 14,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/SkyPillar_5F_Clean/border.bin",
+      "blockdata_filepath": "data/layouts/SkyPillar_5F_Clean/map.bin"
+    },
+    {
+      "id": "LAYOUT_SKY_PILLAR_TOP_CLEAN",
+      "name": "SkyPillar_Top_Clean_Layout",
+      "width": 27,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/SkyPillar_Top_Clean/border.bin",
+      "blockdata_filepath": "data/layouts/SkyPillar_Top_Clean/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_1F_STAIRS_UNBLOCKED",
+      "name": "SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked_Layout",
+      "width": 11,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MysteryEventsHouse",
+      "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
+      "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HUB",
+      "name": "Rogue_Hub_Layout",
+      "width": 58,
+      "height": 46,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/Rogue_Hub/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Hub/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HUB_TRANSITION",
+      "name": "Rogue_HubTransition_Layout",
+      "width": 21,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_EliteFour",
+      "border_filepath": "data/layouts/Rogue_HubTransition/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_HubTransition/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_FIELD0",
+      "name": "Rogue_Route_Field0_Layout",
+      "width": 46,
+      "height": 78,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Rogue_Route_Field0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Field0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_FIELD1",
+      "name": "Rogue_Route_Field1_Layout",
+      "width": 140,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/Rogue_Route_Field1/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Field1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_MANAGER",
+      "name": "Rogue_Manager_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Manager/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Manager/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_BOSS_0",
+      "name": "Rogue_Boss_0_Layout",
+      "width": 24,
+      "height": 24,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/Rogue_Boss_0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Boss_0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HUB_POKEMON_CENTRE",
+      "name": "Rogue_Hub_PokemonCentre_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Rogue_Hub_PokemonCentre/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Hub_PokemonCentre/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_BOSS_8",
+      "name": "Rogue_Boss_8_Layout",
+      "width": 13,
+      "height": 28,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_EliteFour",
+      "border_filepath": "data/layouts/Rogue_Boss_8/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Boss_8/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_BOSS_9",
+      "name": "Rogue_Boss_9_Layout",
+      "width": 13,
+      "height": 28,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_EliteFour",
+      "border_filepath": "data/layouts/Rogue_Boss_9/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Boss_9/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_BOSS_10",
+      "name": "Rogue_Boss_10_Layout",
+      "width": 13,
+      "height": 28,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_EliteFour",
+      "border_filepath": "data/layouts/Rogue_Boss_10/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Boss_10/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_BOSS_11",
+      "name": "Rogue_Boss_11_Layout",
+      "width": 13,
+      "height": 28,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_EliteFour",
+      "border_filepath": "data/layouts/Rogue_Boss_11/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Boss_11/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_BOSS_12",
+      "name": "Rogue_Boss_12_Layout",
+      "width": 13,
+      "height": 29,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_EliteFour",
+      "border_filepath": "data/layouts/Rogue_Boss_12/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Boss_12/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_BOSS_13",
+      "name": "Rogue_Boss_13_Layout",
+      "width": 17,
+      "height": 31,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NavelRock",
+      "border_filepath": "data/layouts/Rogue_Boss_13/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Boss_13/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_FOREST0",
+      "name": "Rogue_Route_Forest0_Layout",
+      "width": 48,
+      "height": 44,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Rogue_Route_Forest0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Forest0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HUB_INTERIOR_CONFIG_ROOM",
+      "name": "Rogue_Hub_Interior_ConfigRoom_Layout",
+      "width": 26,
+      "height": 25,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BikeShop",
+      "border_filepath": "data/layouts/Rogue_Hub_Interior_ConfigRoom/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Hub_Interior_ConfigRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HUB_INTERIOR_CLOTHES_SHOP",
+      "name": "Rogue_Hub_Interior_ClothesShop_Layout",
+      "width": 38,
+      "height": 28,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Contest",
+      "border_filepath": "data/layouts/Rogue_Hub_Interior_ClothesShop/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Hub_Interior_ClothesShop/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_REST_STOP",
+      "name": "Rogue_Encounter_RestStop_Layout",
+      "width": 50,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/Rogue_Encounter_RestStop/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_RestStop/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_FOREST1",
+      "name": "Rogue_Route_Forest1_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Route_Forest1/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Forest1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_CAVE0",
+      "name": "Rogue_Route_Cave0_Layout",
+      "width": 46,
+      "height": 45,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Route_Cave0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Cave0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_MOUNTAIN0",
+      "name": "Rogue_Route_Mountain0_Layout",
+      "width": 40,
+      "height": 142,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Rogue_Route_Mountain0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Mountain0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_MOUNTAIN1",
+      "name": "Rogue_Route_Mountain1_Layout",
+      "width": 45,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Rogue_Route_Mountain1/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Mountain1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_MOUNTAIN2",
+      "name": "Rogue_Route_Mountain2_Layout",
+      "width": 72,
+      "height": 55,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Rogue_Route_Mountain2/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Mountain2/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_WATER_FRONT0",
+      "name": "Rogue_Route_WaterFront0_Layout",
+      "width": 40,
+      "height": 140,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Rogue_Route_WaterFront0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_WaterFront0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_URBAN0",
+      "name": "Rogue_Route_Urban0_Layout",
+      "width": 54,
+      "height": 100,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Rogue_Route_Urban0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Urban0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SOUTHERN_ISLAND_LATIOS",
+      "name": "Rogue_SouthernIsland_Latios_Layout",
+      "width": 27,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Rogue_SouthernIsland_Latios/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_SouthernIsland_Latios/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SOUTHERN_ISLAND_LATIAS",
+      "name": "Rogue_SouthernIsland_Latias_Layout",
+      "width": 27,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Rogue_SouthernIsland_Latias/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_SouthernIsland_Latias/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HUB_PROF_LAB",
+      "name": "Rogue_Hub_ProfLab_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/Rogue_Hub_ProfLab/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Hub_ProfLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_ARTICUNO",
+      "name": "Rogue_Special_Articuno_Layout",
+      "width": 9,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Articuno/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Articuno/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_ZAPDOS",
+      "name": "Rogue_Special_Zapdos_Layout",
+      "width": 9,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Zapdos/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Zapdos/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_MOLTRES",
+      "name": "Rogue_Special_Moltres_Layout",
+      "width": 9,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Moltres/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Moltres/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_MEWTWO",
+      "name": "Rogue_Special_Mewtwo_Layout",
+      "width": 19,
+      "height": 21,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Mewtwo/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Mewtwo/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_RAIKOU",
+      "name": "Rogue_Special_Raikou_Layout",
+      "width": 9,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Raikou/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Raikou/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_ENTEI",
+      "name": "Rogue_Special_Entei_Layout",
+      "width": 9,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Entei/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Entei/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_SUICUNE",
+      "name": "Rogue_Special_Suicune_Layout",
+      "width": 9,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Suicune/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Suicune/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_CELEBI",
+      "name": "Rogue_Special_Celebi_Layout",
+      "width": 9,
+      "height": 12,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Celebi/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Celebi/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_JIRACHI",
+      "name": "Rogue_Special_Jirachi_Layout",
+      "width": 19,
+      "height": 21,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Jirachi/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Jirachi/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_GENERIC_WILD_MON",
+      "name": "Rogue_Special_GenericWildMon_Layout",
+      "width": 9,
+      "height": 18,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_GenericWildMon/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_GenericWildMon/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_KANTO_FIELD0",
+      "name": "Rogue_Route_Kanto_Field0_Layout",
+      "width": 22,
+      "height": 76,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Route_Kanto_Field0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Kanto_Field0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ADVENTURE_PATHS",
+      "name": "Rogue_AdventurePaths_Layout",
+      "width": 44,
+      "height": 30,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_AdventurePaths/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_AdventurePaths/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_HEALING",
+      "name": "Rogue_Encounter_Healing_Layout",
+      "width": 17,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Encounter_Healing/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_Healing/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_SHOPS",
+      "name": "Rogue_Encounter_Shops_Layout",
+      "width": 15,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/Rogue_Encounter_Shops/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_Shops/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_TUTORS",
+      "name": "Rogue_Encounter_Tutors_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_EverGrande",
+      "border_filepath": "data/layouts/Rogue_Encounter_Tutors/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_Tutors/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_MINI_BOSS",
+      "name": "Rogue_Encounter_MiniBoss_Layout",
+      "width": 16,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleArena",
+      "border_filepath": "data/layouts/Rogue_Encounter_MiniBoss/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_MiniBoss/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_DEN",
+      "name": "Rogue_Encounter_Den_Layout",
+      "width": 11,
+      "height": 15,
+      "primary_tileset": "gTileset_SecretBase",
+      "secondary_tileset": "gTileset_SecretBaseShrub",
+      "border_filepath": "data/layouts/Rogue_Encounter_Den/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_Den/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_GAME_SHOW",
+      "name": "Rogue_Encounter_GameShow_Layout",
+      "width": 15,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Contest",
+      "border_filepath": "data/layouts/Rogue_Encounter_GameShow/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_GameShow/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_GRAVEYARD",
+      "name": "Rogue_Encounter_Graveyard_Layout",
+      "width": 27,
+      "height": 19,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Rogue_Encounter_Graveyard/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_Graveyard/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_WATER_FRONT1",
+      "name": "Rogue_Route_WaterFront1_Layout",
+      "width": 40,
+      "height": 100,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Rogue_Route_WaterFront1/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_WaterFront1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_MOUNTAIN3",
+      "name": "Rogue_Route_Mountain3_Layout",
+      "width": 100,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Rogue_Route_Mountain3/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Mountain3/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_URBAN1",
+      "name": "Rogue_Route_Urban1_Layout",
+      "width": 134,
+      "height": 23,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Rogue_Route_Urban1/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Urban1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HUB_ADVENTURE_ENTERANCE",
+      "name": "Rogue_Hub_AdventureEnterance_Layout",
+      "width": 22,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleFrontier",
+      "border_filepath": "data/layouts/Rogue_Hub_AdventureEnterance/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Hub_AdventureEnterance/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HUB_DEBUG",
+      "name": "Rogue_Hub_Debug_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/Rogue_Hub_Debug/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Hub_Debug/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HUB_BAKERY",
+      "name": "Rogue_Hub_Bakery_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MossdeepGameCorner",
+      "border_filepath": "data/layouts/Rogue_Hub_Bakery/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Hub_Bakery/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_KANTO_MOUNTAIN0",
+      "name": "Rogue_Route_Kanto_Mountain0_Layout",
+      "width": 94,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Route_Kanto_Mountain0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Kanto_Mountain0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_KANTO_URBAN0",
+      "name": "Rogue_Route_Kanto_Urban0_Layout",
+      "width": 93,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Rogue_Route_Kanto_Urban0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Kanto_Urban0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_CHAOS0",
+      "name": "Rogue_Route_Chaos0_Layout",
+      "width": 78,
+      "height": 76,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NavelRock",
+      "border_filepath": "data/layouts/Rogue_Route_Chaos0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Chaos0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_JOHTO_FIELD0",
+      "name": "Rogue_Route_Johto_Field0_Layout",
+      "width": 36,
+      "height": 120,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Rogue_Route_Johto_Field0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Johto_Field0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_LAB",
+      "name": "Rogue_Encounter_Lab_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/Rogue_Encounter_Lab/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_Lab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_KANTO_FOREST0",
+      "name": "Rogue_Route_Kanto_Forest0_Layout",
+      "width": 54,
+      "height": 54,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Rogue_Route_Kanto_Forest0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Kanto_Forest0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_KANTO_CAVE0",
+      "name": "Rogue_Route_Kanto_Cave0_Layout",
+      "width": 102,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Route_Kanto_Cave0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Kanto_Cave0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_KANTO_URBAN1",
+      "name": "Rogue_Route_Kanto_Urban1_Layout",
+      "width": 96,
+      "height": 64,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Rogue_Route_Kanto_Urban1/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Kanto_Urban1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_JOHTO_FIELD1",
+      "name": "Rogue_Route_Johto_Field1_Layout",
+      "width": 34,
+      "height": 102,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Route_Johto_Field1/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Johto_Field1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_JOHTO_CAVE0",
+      "name": "Rogue_Route_Johto_Cave0_Layout",
+      "width": 58,
+      "height": 58,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Route_Johto_Cave0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Johto_Cave0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_GEN4_MON",
+      "name": "Rogue_Special_Gen4_Mon_Layout",
+      "width": 19,
+      "height": 28,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NavelRock",
+      "border_filepath": "data/layouts/Rogue_Special_Gen4_Mon/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Gen4_Mon/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_GEN5_MON",
+      "name": "Rogue_Special_Gen5_Mon_Layout",
+      "width": 21,
+      "height": 21,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_NavelRock",
+      "border_filepath": "data/layouts/Rogue_Special_Gen5_Mon/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Gen5_Mon/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_GEN6_MON",
+      "name": "Rogue_Special_Gen6_Mon_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Gen6_Mon/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Gen6_Mon/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_GEN7_MON",
+      "name": "Rogue_Special_Gen7_Mon_Layout",
+      "width": 9,
+      "height": 12,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Gen7_Mon/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Gen7_Mon/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_GEN8_MON",
+      "name": "Rogue_Special_Gen8_Mon_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Gen8_Mon/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Gen8_Mon/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_JOHTO_WATER_FRONT0",
+      "name": "Rogue_Route_Johto_WaterFront0_Layout",
+      "width": 50,
+      "height": 120,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Rogue_Route_Johto_WaterFront0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Johto_WaterFront0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_JOHTO_URBAN0",
+      "name": "Rogue_Route_Johto_Urban0_Layout",
+      "width": 92,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Rogue_Route_Johto_Urban0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Johto_Urban0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_JOHTO_MOUNTAIN0",
+      "name": "Rogue_Route_Johto_Mountain0_Layout",
+      "width": 31,
+      "height": 119,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Rogue_Route_Johto_Mountain0/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Johto_Mountain0/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TILE_TEST1",
+      "name": "Rogue_Tile_Test1_Layout",
+      "width": 18,
+      "height": 13,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Rogue_Tile_Test1/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Tile_Test1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TILE_TEST2",
+      "name": "Rogue_Tile_Test2_Layout",
+      "width": 16,
+      "height": 16,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Tile_Test2/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Tile_Test2/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TILE_TEST3",
+      "name": "Rogue_Tile_Test3_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_FacilityRocket",
+      "border_filepath": "data/layouts/Rogue_Tile_Test3/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Tile_Test3/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TILE_ADVENTURE_ENTRANCE",
+      "name": "Rogue_Tile_AdventureEntrance_Layout",
+      "width": 20,
+      "height": 16,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/Rogue_Tile_AdventureEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Tile_AdventureEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TILE_EMPTY",
+      "name": "Rogue_Tile_Empty_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Rogue_Tile_Empty/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Tile_Empty/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TILE_MART",
+      "name": "Rogue_Tile_Mart_Layout",
+      "width": 14,
+      "height": 14,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Rogue_Tile_Mart/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Tile_Mart/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TILE_SAFARI_ENTRANCE",
+      "name": "Rogue_Tile_SafariEntrance_Layout",
+      "width": 20,
+      "height": 16,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Rogue_Tile_SafariEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Tile_SafariEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TILE_OUTDOOR_MART",
+      "name": "Rogue_Tile_OutdoorMart_Layout",
+      "width": 32,
+      "height": 22,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Rogue_Tile_OutdoorMart/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Tile_OutdoorMart/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TILE_BERRY_PATCH1",
+      "name": "Rogue_Tile_BerryPatch1_Layout",
+      "width": 18,
+      "height": 12,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Tile_BerryPatch1/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Tile_BerryPatch1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_REGI",
+      "name": "Rogue_Special_Regi_Layout",
+      "width": 17,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Regi/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Regi/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_DEOXYS",
+      "name": "Rogue_Special_Deoxys_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/Rogue_Special_Deoxys/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Deoxys/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_MEW",
+      "name": "Rogue_Special_Mew_Layout",
+      "width": 29,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Rogue_Special_Mew/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Mew/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_KYOGRE",
+      "name": "Rogue_Special_Kyogre_Layout",
+      "width": 18,
+      "height": 17,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Kyogre/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Kyogre/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_GROUDON",
+      "name": "Rogue_Special_Groudon_Layout",
+      "width": 19,
+      "height": 17,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Groudon/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Groudon/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_RAYQUAZA",
+      "name": "Rogue_Special_Rayquaza_Layout",
+      "width": 27,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Rogue_Special_Rayquaza/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Rayquaza/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_HOOH",
+      "name": "Rogue_Special_Hooh_Layout",
+      "width": 25,
+      "height": 28,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NavelRock",
+      "border_filepath": "data/layouts/Rogue_Special_Hooh/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Hooh/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_LUGIA",
+      "name": "Rogue_Special_Lugia_Layout",
+      "width": 22,
+      "height": 22,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NavelRock",
+      "border_filepath": "data/layouts/Rogue_Special_Lugia/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Lugia/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HALLWAY_FACADE_HORIZONTAL",
+      "name": "Rogue_HallwayFacade_Horizontal_Layout",
+      "width": 16,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_HallwayFacade_Horizontal/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_HallwayFacade_Horizontal/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_HALLWAY_FACADE_VERTICAL",
+      "name": "Rogue_HallwayFacade_Vertical_Layout",
+      "width": 8,
+      "height": 12,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_HallwayFacade_Vertical/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_HallwayFacade_Vertical/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_HOME",
+      "name": "Rogue_Area_Home_Layout",
+      "width": 36,
+      "height": 36,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_PlayerHome",
+      "border_filepath": "data/layouts/Rogue_Area_Home/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_Home/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_HOME",
+      "name": "Rogue_Interior_Home_Layout",
+      "width": 12,
+      "height": 12,
+      "primary_tileset": "gTileset_SecretBase",
+      "secondary_tileset": "gTileset_SecretBaseRedCave",
+      "border_filepath": "data/layouts/Rogue_Interior_Home/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_Home/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_HOME_UPPER",
+      "name": "Rogue_Interior_HomeUpper_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/Rogue_Interior_HomeUpper/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_HomeUpper/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_FARMING_FIELD",
+      "name": "Rogue_Area_FarmingField_Layout",
+      "width": 40,
+      "height": 12,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Area_FarmingField/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_FarmingField/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_LABS",
+      "name": "Rogue_Area_Labs_Layout",
+      "width": 28,
+      "height": 24,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Area_Labs/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_Labs/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_PROF_LAB",
+      "name": "Rogue_Interior_ProfLab_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/Rogue_Interior_ProfLab/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_ProfLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_CONFIG_LAB",
+      "name": "Rogue_Interior_ConfigLab_Layout",
+      "width": 11,
+      "height": 21,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/Rogue_Interior_ConfigLab/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_ConfigLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_ADVENTURE_ENTRANCE",
+      "name": "Rogue_Area_AdventureEntrance_Layout",
+      "width": 20,
+      "height": 16,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Area_AdventureEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_AdventureEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTRO",
+      "name": "Rogue_Intro_Layout",
+      "width": 16,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/Rogue_Intro/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Intro/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_SAFARI_ZONE",
+      "name": "Rogue_Area_SafariZone_Layout",
+      "width": 38,
+      "height": 32,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Rogue_Area_SafariZone/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_SafariZone/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_POKE_CONNECT",
+      "name": "Rogue_Interior_PokeConnect_Layout",
+      "width": 35,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/Rogue_Interior_PokeConnect/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_PokeConnect/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_RIDE_TRAINING",
+      "name": "Rogue_Area_RideTraining_Layout",
+      "width": 34,
+      "height": 36,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Rogue_Area_RideTraining/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_RideTraining/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_SAFARI_CAVE",
+      "name": "Rogue_Interior_SafariCave_Layout",
+      "width": 22,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Interior_SafariCave/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_SafariCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_MARTS",
+      "name": "Rogue_Area_Marts_Layout",
+      "width": 22,
+      "height": 20,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Rogue_Area_Marts/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_Marts/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_SAFARI_ZONE_TUTORIAL",
+      "name": "Rogue_Area_SafariZone_Tutorial_Layout",
+      "width": 38,
+      "height": 32,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Rogue_Area_SafariZone_Tutorial/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_SafariZone_Tutorial/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_TOWN_SQUARE",
+      "name": "Rogue_Area_TownSquare_Layout",
+      "width": 28,
+      "height": 20,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Rogue_Area_TownSquare/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_TownSquare/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_RESTAURANT",
+      "name": "Rogue_Interior_Restaurant_Layout",
+      "width": 13,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Restaurant",
+      "border_filepath": "data/layouts/Rogue_Interior_Restaurant/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_Restaurant/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_CAFE",
+      "name": "Rogue_Interior_Cafe_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Rogue_Interior_Cafe/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_Cafe/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_SCHOOL",
+      "name": "Rogue_Interior_School_Layout",
+      "width": 12,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonSchool",
+      "border_filepath": "data/layouts/Rogue_Interior_School/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_School/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_205",
+      "name": "Rogue_Route_Sinnoh_205_Layout",
+      "width": 60,
+      "height": 100,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_205/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_205/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_ETERNA_FOREST",
+      "name": "Rogue_Route_Sinnoh_EternaForest_Layout",
+      "width": 84,
+      "height": 60,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_EternaForest",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_EternaForest/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_EternaForest/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_207",
+      "name": "Rogue_Route_Sinnoh_207_Layout",
+      "width": 62,
+      "height": 108,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_207/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_207/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_LAKE_GUARDIAN",
+      "name": "Rogue_Special_LakeGuardian_Layout",
+      "width": 19,
+      "height": 22,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_LakeGuardian/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_LakeGuardian/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_ARCEUS",
+      "name": "Rogue_Special_Arceus_Layout",
+      "width": 19,
+      "height": 48,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_NavelRock",
+      "border_filepath": "data/layouts/Rogue_Special_Arceus/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Arceus/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_HONEY_TREE",
+      "name": "Rogue_Encounter_HoneyTree_Layout",
+      "width": 16,
+      "height": 20,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Rogue_Encounter_HoneyTree/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_HoneyTree/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_DAY_CARE",
+      "name": "Rogue_Encounter_DayCare_Layout",
+      "width": 34,
+      "height": 28,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Rogue_Encounter_DayCare/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_DayCare/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_ROCKET_HIDEOUT",
+      "name": "Rogue_Encounter_RocketHideout_Layout",
+      "width": 59,
+      "height": 36,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_FacilityRocket",
+      "border_filepath": "data/layouts/Rogue_Encounter_RocketHideout/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_RocketHideout/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_BOSS_FINAL",
+      "name": "Rogue_Boss_Final_Layout",
+      "width": 17,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/Rogue_Boss_Final/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Boss_Final/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TEMPLATE_HOMES",
+      "name": "Rogue_Template_Homes_Layout",
+      "width": 55,
+      "height": 17,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_PlayerHome",
+      "border_filepath": "data/layouts/Rogue_Template_Homes/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Template_Homes/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TEMPLATE_HOME_FLOWERS",
+      "name": "Rogue_Template_Home_Flowers_Layout",
+      "width": 30,
+      "height": 32,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_PlayerHome",
+      "border_filepath": "data/layouts/Rogue_Template_Home_Flowers/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Template_Home_Flowers/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TEMPLATE_HOME_BASE",
+      "name": "Rogue_Template_Home_Base_Layout",
+      "width": 30,
+      "height": 32,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_PlayerHome",
+      "border_filepath": "data/layouts/Rogue_Template_Home_Base/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Template_Home_Base/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TEMPLATE_HOME_GRASS",
+      "name": "Rogue_Template_Home_Grass_Layout",
+      "width": 30,
+      "height": 32,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_PlayerHome",
+      "border_filepath": "data/layouts/Rogue_Template_Home_Grass/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Template_Home_Grass/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_SHRINE",
+      "name": "Rogue_Encounter_Shrine_Layout",
+      "width": 17,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleArena",
+      "border_filepath": "data/layouts/Rogue_Encounter_Shrine/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_Shrine/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_CATCHING_CONTEST",
+      "name": "Rogue_Encounter_CatchingContest_Layout",
+      "width": 40,
+      "height": 54,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Rogue_Encounter_CatchingContest/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_CatchingContest/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_215",
+      "name": "Rogue_Route_Sinnoh_215_Layout",
+      "width": 98,
+      "height": 35,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_215/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_215/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_SPECIAL_GEN9_MON",
+      "name": "Rogue_Special_Gen9_Mon_Layout",
+      "width": 27,
+      "height": 16,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Special_Gen9_Mon/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Special_Gen9_Mon/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_CHALLENGE_FRONTIER",
+      "name": "Rogue_Area_ChallengeFrontier_Layout",
+      "width": 40,
+      "height": 26,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/Rogue_Area_ChallengeFrontier/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_ChallengeFrontier/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_DAY_CARE",
+      "name": "Rogue_Area_DayCare_Layout",
+      "width": 32,
+      "height": 18,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Rogue_Area_DayCare/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_DayCare/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_SILPH_CO",
+      "name": "Rogue_Encounter_SilphCo_Layout",
+      "width": 40,
+      "height": 71,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_FacilityRocket",
+      "border_filepath": "data/layouts/Rogue_Encounter_SilphCo/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_SilphCo/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_SIGN",
+      "name": "Rogue_Encounter_Sign_Layout",
+      "width": 16,
+      "height": 26,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Rogue_Encounter_Sign/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_Sign/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_CHALLENGE_FRONTIER",
+      "name": "Rogue_Interior_ChallengeFrontier_Layout",
+      "width": 43,
+      "height": 29,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleDome",
+      "border_filepath": "data/layouts/Rogue_Interior_ChallengeFrontier/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_ChallengeFrontier/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_BATTLE_SIM",
+      "name": "Rogue_Encounter_BattleSim_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_CableClub",
+      "border_filepath": "data/layouts/Rogue_Encounter_BattleSim/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_BattleSim/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_MT_CHIMNEY",
+      "name": "Rogue_Encounter_MtChimney_Layout",
+      "width": 40,
+      "height": 78,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Rogue_Encounter_MtChimney/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_MtChimney/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_MAGMA_HIDEOUT",
+      "name": "Rogue_Encounter_MagmaHideout_Layout",
+      "width": 92,
+      "height": 68,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Rogue_Encounter_MagmaHideout/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_MagmaHideout/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_AQUA_HIDEOUT",
+      "name": "Rogue_Encounter_AquaHideout_Layout",
+      "width": 44,
+      "height": 86,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Rogue_Encounter_AquaHideout/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_AquaHideout/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_SEAFLOOR_CAVERN",
+      "name": "Rogue_Encounter_SeafloorCavern_Layout",
+      "width": 48,
+      "height": 74,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rogue_Encounter_SeafloorCavern/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_SeafloorCavern/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_212",
+      "name": "Rogue_Route_Sinnoh_212_Layout",
+      "width": 120,
+      "height": 40,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_212/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_212/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_INTERIOR_BILLS_LAB",
+      "name": "Rogue_Interior_BillsLab_Layout",
+      "width": 17,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleFactory",
+      "border_filepath": "data/layouts/Rogue_Interior_BillsLab/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Interior_BillsLab/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_TEMPLATE_HOME_INTERIOR",
+      "name": "Rogue_Template_Home_Interior_Layout",
+      "width": 22,
+      "height": 12,
+      "primary_tileset": "gTileset_SecretBase",
+      "secondary_tileset": "gTileset_SecretBaseBrownCave",
+      "border_filepath": "data/layouts/Rogue_Template_Home_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Template_Home_Interior/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_AREA_MARKET",
+      "name": "Rogue_Area_Market_Layout",
+      "width": 34,
+      "height": 24,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Rogue_Area_Market/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Area_Market/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_217",
+      "name": "Rogue_Route_Sinnoh_217_Layout",
+      "width": 76,
+      "height": 94,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_217/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_217/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_210",
+      "name": "Rogue_Route_Sinnoh_210_Layout",
+      "width": 102,
+      "height": 49,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_210/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_210/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_201",
+      "name": "Rogue_Route_Sinnoh_201_Layout",
+      "width": 68,
+      "height": 64,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_201/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_201/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_BOSS_VICTORY_LAP",
+      "name": "Rogue_Boss_VictoryLap_Layout",
+      "width": 17,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/Rogue_Boss_VictoryLap/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Boss_VictoryLap/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_LAKE_VALOR",
+      "name": "Rogue_Encounter_LakeValor_Layout",
+      "width": 48,
+      "height": 40,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Rogue_Encounter_LakeValor/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_LakeValor/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_214",
+      "name": "Rogue_Route_Sinnoh_214_Layout",
+      "width": 34,
+      "height": 96,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_214/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_214/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_209",
+      "name": "Rogue_Route_Sinnoh_209_Layout",
+      "width": 72,
+      "height": 92,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_209/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_209/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ENCOUNTER_GALACTIC_HQ",
+      "name": "Rogue_Encounter_GalacticHQ_Layout",
+      "width": 54,
+      "height": 74,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_FacilityGalactic",
+      "border_filepath": "data/layouts/Rogue_Encounter_GalacticHQ/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Encounter_GalacticHQ/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_MT_CORONET",
+      "name": "Rogue_Route_Sinnoh_MtCoronet_Layout",
+      "width": 50,
+      "height": 97,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_CaveAlt",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_MtCoronet/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_MtCoronet/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROGUE_ROUTE_SINNOH_IRON_ISLAND",
+      "name": "Rogue_Route_Sinnoh_IronIsland_Layout",
+      "width": 42,
+      "height": 54,
+      "primary_tileset": "gTileset_GeneralHub",
+      "secondary_tileset": "gTileset_CaveAlt",
+      "border_filepath": "data/layouts/Rogue_Route_Sinnoh_IronIsland/border.bin",
+      "blockdata_filepath": "data/layouts/Rogue_Route_Sinnoh_IronIsland/map.bin"
+    }
+  ]
+}

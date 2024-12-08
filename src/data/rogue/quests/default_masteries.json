@@ -1,0 +1,1594 @@
+{
+    "condition": "",
+    "defaults":
+    {
+        "name": "%MON_SPECIES% Mastery",
+        "description": "Enter the Hall of Fame with a Pokémon from the %MON_SPECIES% line in your party.",
+        "display_group": "mon_masteries",
+        "flags": 
+        [
+            "MON_MASTERY_DEFAULT",
+            "ACTIVE_IN_RUN"
+        ],
+        "triggers":
+        [
+            {
+                "on": [ "ENTER_HALL_OF_FAME" ],
+                "condition": "SpeciesMasteryComplete",
+                "template_params": [ "MON_SPECIES" ],
+                "pass": "SUCCESS",
+                "fail": "FAIL"
+            }
+        ]
+    },
+    "quest_groups":
+    {
+        "default_group":
+        [
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_BULBASAUR"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_VENUSAURITE" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_VENUSAUR_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_CHARMANDER"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_CHARIZARDITE_X" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_CHARIZARDITE_Y" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_CHARIZARD_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SQUIRTLE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_BLASTOISINITE" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_BLASTOISE_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_CATERPIE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_BUTTERFREE_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_WEEDLE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_BEEDRILLITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_PIDGEY"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_PIDGEOTITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_PICHU"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_PIKANIUM_Z" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_ALORAICHIUM_Z" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_PIKACHU_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MEOWTH"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_MEOWTH_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ABRA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_ALAKAZITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MACHOP"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_MACHAMP_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SLOWPOKE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_SLOWBRONITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_GASTLY"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_GENGARITE" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_GENGAR_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ONIX"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_STEELIXITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_KRABBY"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_KINGLER_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_KANGASKHAN"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_KANGASKHANITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_PINSIR"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_PINSIRITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SCYTHER"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_SCIZORITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MAGIKARP"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_GYARADOSITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_LAPRAS"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_LAPRAS_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_EEVEE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_EEVIUM_Z" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_EEVEE_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_AERODACTYL"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_AERODACTYLITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SNORLAX"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_SNORLIUM_Z" },
+                    { 
+                        "#if": "defined(ROGUE_EXPANSION)", 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_SNORLAX_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MEWTWO"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_MEWTWONITE_X" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_MEWTWONITE_Y" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_BERSERK_GENE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MEW"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_MEWNIUM_Z" }
+                ]
+            },
+
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MAREEP"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_AMPHAROSITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_HERACROSS"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_HERACRONITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_HOUNDOUR"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_HOUNDOOMINITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_LARVITAR"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_TYRANITARITE" }
+                ]
+            },
+
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_TREECKO"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_SCEPTILITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_TORCHIC"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_BLAZIKENITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MUDKIP"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_SWAMPERTITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_RALTS"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_GARDEVOIRITE" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_GALLADITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SABLEYE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_SABLENITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MAWILE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_MAWILITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ARON"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_AGGRONITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MEDITITE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_MEDICHAMITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ELECTRIKE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_MANECTITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_CARVANHA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_SHARPEDONITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_NUMEL"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_CAMERUPTITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SWABLU"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_ALTARIANITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SHUPPET"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_BANETTITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ABSOL"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_ABSOLITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SNORUNT"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_GLALITITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_BAGON"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_SALAMENCITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_BELDUM"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_METAGROSSITE" }
+                ]
+            },
+            {
+                "name": "Lati Mastery",
+                "description": "Enter the Hall of Fame with Latias or Latios in your party.",
+                "triggers":
+                [
+                    {
+                        "on": [ "ENTER_HALL_OF_FAME" ],
+                        "condition": "SpeciesMasteryComplete",
+                        "params": [ "SPECIES_LATIAS", "SPECIES_LATIOS" ],
+                        "pass": "SUCCESS",
+                        "fail": "FAIL"
+                    }
+                ],
+                "rewards":
+                [
+                    { "shop_item": "ITEM_SOUL_DEW" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_LATIAS"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_LATIASITE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_LATIOS"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_LATIOSITE" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_KYOGRE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_BLUE_ORB" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_GROUDON"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "shop_item": "ITEM_RED_ORB" }
+                ]
+            },
+            {
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_DEOXYS"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "#if": "defined(ROGUE_EXPANSION)", "item": "ITEM_METEORITE" }
+                ]
+            },
+
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_BUNEARY"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_LOPUNNITE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_GIBLE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_GARCHOMPITE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_RIOLU"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_LUCARIONITE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SNOVER"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_ABOMASITE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ROTOM"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "decor": "DECOR_ID_APPLIANCES" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_DIALGA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_ADAMANT_ORB" },
+                    { "shop_item": "ITEM_ADAMANT_CRYSTAL" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_PALKIA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_LUSTROUS_ORB" },
+                    { "shop_item": "ITEM_LUSTROUS_GLOBE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_GIRATINA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_GRISEOUS_ORB" },
+                    { "shop_item": "ITEM_GRISEOUS_CORE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SHAYMIN"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "item": "ITEM_GRACIDEA" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ARCEUS"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_FIST_PLATE", "visibility": "INVISIBLE" }, 
+                    { "shop_item": "ITEM_SKY_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_TOXIC_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_EARTH_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_STONE_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_INSECT_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_SPOOKY_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_IRON_PLATE" },
+                    { "shop_item": "ITEM_FLAME_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_SPLASH_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_MEADOW_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_ZAP_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_MIND_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_ICICLE_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_DRACO_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_DREAD_PLATE", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_PIXIE_PLATE", "visibility": "INVISIBLE" }
+                ]
+            },
+
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_AUDINO"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_AUDINITE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_TRUBBISH"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_GARBODOR_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "name": "Genie Mastery",
+                "description": "Enter the Hall of Fame with Tornadus, Thundurus, Landorus or Enamorus in your party.",
+                "triggers":
+                [
+                    {
+                        "on": [ "ENTER_HALL_OF_FAME" ],
+                        "condition": "SpeciesMasteryComplete",
+                        "params": [ "SPECIES_TORNADUS", "SPECIES_THUNDURUS", "SPECIES_LANDORUS", "SPECIES_ENAMORUS" ],
+                        "pass": "SUCCESS",
+                        "fail": "FAIL"
+                    }
+                ],
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "item": "ITEM_REVEAL_GLASS" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_GENESECT"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_SHOCK_DRIVE" },
+                    { "shop_item": "ITEM_BURN_DRIVE" },
+                    { "shop_item": "ITEM_CHILL_DRIVE" },
+                    { "shop_item": "ITEM_DOUSE_DRIVE" }
+                ]
+            },
+
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_FROAKIE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "species": "SPECIES_GRENINJA_BATTLE_BOND", "shiny": false }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ZYGARDE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "item": "ITEM_ZYGARDE_CUBE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_DIANCIE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_DIANCITE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_HOOPA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "item": "ITEM_PRISON_BOTTLE" }
+                ]
+            },
+
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ROWLET"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_DECIDIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_LITTEN"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_INCINIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_POPPLIO"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_PRIMARIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ROCKRUFF"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "species": "SPECIES_ROCKRUFF_OWN_TEMPO", "shiny": false },
+                    { "shop_item": "ITEM_LYCANIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MIMIKYU"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_MIMIKIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SILVALLY"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_FIRE_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_WATER_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_ELECTRIC_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_GRASS_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_ICE_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_FIGHTING_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_POISON_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_GROUND_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_FLYING_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_PSYCHIC_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_BUG_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_ROCK_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_GHOST_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_DRAGON_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_DARK_MEMORY", "visibility": "INVISIBLE" },
+                    { "shop_item": "ITEM_STEEL_MEMORY" },
+                    { "shop_item": "ITEM_FAIRY_MEMORY", "visibility": "INVISIBLE" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_JANGMO_O"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_KOMMONIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "name": "Tapu Mastery",
+                "description": "Enter the Hall of Fame with Tapu Koko, Tapu Lele, Tapu Bulu or Tapu Fini in your party.",
+                "triggers":
+                [
+                    {
+                        "on": [ "ENTER_HALL_OF_FAME" ],
+                        "condition": "SpeciesMasteryComplete",
+                        "params": [ "SPECIES_TAPU_KOKO", "SPECIES_TAPU_LELE", "SPECIES_TAPU_BULU", "SPECIES_TAPU_FINI" ],
+                        "pass": "SUCCESS",
+                        "fail": "FAIL"
+                    }
+                ],
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_TAPUNIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_COSMOG"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_SOLGANIUM_Z" },
+                    { "shop_item": "ITEM_LUNALIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_NECROZMA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_ULTRANECROZIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MAGEARNA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "species": "SPECIES_MAGEARNA_ORIGINAL_COLOR", "shiny": false }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MARSHADOW"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_MARSHADIUM_Z" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MELTAN"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_MELMETAL_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_GROOKEY"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_RILLABOOM_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SCORBUNNY"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_CINDERACE_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SOBBLE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_INTELEON_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ROOKIDEE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_CORVIKNIGHT_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_BLIPBUG"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_ORBEETLE_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_CHEWTLE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_DREDNAW_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ROLYCOLY"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_COALOSSAL_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_APPLIN"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_FLAPPLE_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SILICOBRA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_SANDACONDA_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_TOXEL"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_TOXTRICITY_AMPED_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_SIZZLIPEDE"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_CENTISKORCH_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_HATENNA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_HATTERENE_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_IMPIDIMP"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_GRIMMSNARL_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_MILCERY"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_ALCREMIE_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_CUFANT"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_COPPERAJAH_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_DURALUDON"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_DURALUDON_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ZACIAN"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_RUSTED_SWORD" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_ZAMAZENTA"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_RUSTED_SHIELD" }
+                ]
+            },
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_KUBFU"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { 
+                        "flag": "FLAG_ROGUE_STUB",
+                        "custom_popup":
+                        {
+                            "species_icon": "SPECIES_URSHIFU_SINGLE_STRIKE_STYLE_GIGANTAMAX",
+                            "title": "Gmax Form",
+                            "subtitle": "{COLOR LIGHT_BLUE}{SHADOW BLUE}Perma Unlocked!",
+                            "fanfare": "MUS_RG_OBTAIN_KEY_ITEM"
+                        }
+                     }
+                ]
+            },
+
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_OGERPON"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_CORNERSTONE_MASK" },
+                    { "shop_item": "ITEM_WELLSPRING_MASK" },
+                    { "shop_item": "ITEM_HEARTHFLAME_MASK" }
+                ]
+            },
+
+            {
+                "#if": "defined(ROGUE_EXPANSION)",
+                "template_params":
+                {
+                    "MON_SPECIES": "SPECIES_TERAPAGOS"
+                },
+                "rewards":
+                [
+                    { "money": "QUEST_REWARD_SMALL_MONEY" },
+                    { "shop_item": "ITEM_STELLAR_TERA_SHARD" }
+                ]
+            }
+        ]
+    }
+}

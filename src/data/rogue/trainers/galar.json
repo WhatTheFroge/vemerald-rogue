@@ -1,0 +1,646 @@
+{
+    "condition": "defined(ROGUE_EXPANSION)",
+    "defaults":
+    {
+        "trainer_flags": [ "REGION_GALAR", "CLASS_BOSS" ],
+        "trainer_class": "TRAINER_CLASS_LEADER",
+        "music_player": "galar_boss"
+    },
+    "trainers":
+    {
+        "rivals":
+        [
+            {
+                "name": "HOP",
+                "type_assignment": "NONE",
+                "gfx_suffix": "RIVAL_HOP",
+                "trainer_class": "TRAINER_CLASS_RIVAL",
+                "music_player": "sinnoh_boss",
+                "trainer_flags": [ "REGION_GALAR", "CLASS_RIVAL" ],
+                "class_flags": [],
+                "pokeball": "POKE_BALL",
+                "shiny_species": "SPECIES_WOOLOO",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: Hi there!\\pYou look like a strong Trainer!\\nPlease, would you battle with me?\\pGreat!\\pI've watched every match that my Brother Lee's ever had!\\pI've read every book and magazine he left behind at home, too!\\pI know exactly what to do in order to win!",
+                        "POST_BATTLE_TAUNT": "You and your Pokémon are too much!",
+                        "POST_BATTLE_CLOSER": "Well, that was a shock\\pGuess I shouldn't be too surprised given you even look strong.\\pYou know what…\\nI already want to get stronger and stronger!\\pWith you as my Rival!\\nI know I'll have to get stronger!"
+                    },
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: There you are! I've been waiting!\\pLet's have a battle, you and me.\\nWe'll get in a bit of training!",
+                        "POST_BATTLE_TAUNT": "Oof! Gutted that I lost…\\pBut I'd expect nothing less from my rival!",
+                        "POST_BATTLE_CLOSER": "Just what I'd expect from my rival!\\pWe've got a long way to go before any Championship Match.\\pStill, you'd better believe I'm going to keep on winning my way towards it!\\pSee you in a bit, {PLAYER}!"
+                    },
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: {PLAYER}!\\pAfter a great curry, I feel like I've got the energy to wrestle a Bewear!\\pSo, you know we've gotta battle!\\pTime for a little exhibition match, starring the future Champion!",
+                        "POST_BATTLE_TAUNT": "I still can't beat you, my true rival…\\pBut I think I'm starting to see the light!",
+                        "POST_BATTLE_CLOSER": "{PLAYER}… Thanks, mate.\\pYou've been such a great rival.\\pI just-\\pDidn't expect there to be such a gap between you and me…"
+                    },
+                    {
+                        "PRE_BATTLE_OPENNING": "… … …\\p{PLAYER}…",
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: I've got a favor to ask!\\pI want another battle against you.\\pTo see which one of us can be the true Champion!\\pA proper battle to finish it all!\\pAll right!\\nLet's go, {PLAYER}!",
+                        "POST_BATTLE_TAUNT": "Now that was a proper battle!",
+                        "POST_BATTLE_CLOSER": "…"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_WOOLOO", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "BEDE",
+                "type_assignment": "FAIRY",
+                "gfx_suffix": "RIVAL_BEDE",
+                "trainer_class": "TRAINER_CLASS_RIVAL",
+                "music_player": "kanto_boss",
+                "trainer_flags": [ "REGION_GALAR", "CLASS_RIVAL" ],
+                "class_flags": [],
+                "pokeball": "GREAT_BALL",
+                "shiny_species": "SPECIES_HATENNA",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: Coming this way?\\nI'd advise against it.\\pUnless you're looking for a beating from me and my Pokémon.\\p… … …\\pI suppose I should prove beyond a doubt just how pathetic you are and how strong I am.",
+                        "POST_BATTLE_TAUNT": "I see…\\nWell, that's fine.\\pI wasn't really trying all that hard anyway.",
+                        "POST_BATTLE_CLOSER": "Well, that was unexpected.\\nI suppose you're more able than I thought.\\pNaturally, I'll remember your battle style and strategies now.\\pI'm sure to easily defeat you if and when we face each other again.\\pNow that we've established that, I won't waste any more time on you."
+                    },
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: I'd feel sorry for my Pokémon if I made them take part in a battle against low-level opponents.\\pI'm not in the mood to deal with weaklings right now.\\pIf you're under the misguided impression that you're stronger than me, then surely you would be up for a Pokémon battle.",
+                        "POST_BATTLE_TAUNT": "You showed at least a little effort, so I decided I should let you win!",
+                        "POST_BATTLE_CLOSER": "Ah, pardon me. It seems I must take back my words.\\pYou're not weak-\\pYou just lack talent.\\pNow, where shall I go next?"
+                    },
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: Oh my.\\nYou again…\\pSo you think that you can start collecting Gym Badges to gain favor?\\pThat's the way of things, is it?\\nI see. So you do have some cunning in you.\\pI won't have it!\\nI won't allow anyone to stand in my way!",
+                        "POST_BATTLE_TAUNT": "This has to be some kind of mistake. I demand a do-over.",
+                        "POST_BATTLE_CLOSER": "But why…? How can this be?\\nHow could someone like you get in my way?\\pNo, you must be the issue.\\pYou must be too weak for me to understand…\\pYou stood in the path of a Pokémon's Simple Beam or something…\\pWell…\\pI won't give up!\\nYou hear me!"
+                    },
+                    {
+                        "PRE_BATTLE_OPENNING": "… … …\\pEver since you showed up, everything I've done has gone wrong.",
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: Even with everything I've been through…\\pMy will hasn't been broken yet!",
+                        "POST_BATTLE_TAUNT": "I couldn't win.\\pAt least I was able to show you a great battle…",
+                        "POST_BATTLE_CLOSER": "…"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 3,
+                            "include_types": [ "PSYCHIC", "FAIRY" ]
+                        },
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 6
+                        },
+                        {
+                            "max_samples": 3,
+                            "include_types": [ "PSYCHIC" ]
+                        },
+                        {
+                            "max_samples": 3,
+                            "include_types": [ "FAIRY" ]
+                        },
+                        {
+                            "max_samples": 12,
+                            "include_types": [ "FAIRY", "PSYCHIC" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_HATENNA", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "MARNIE",
+                "type_assignment": "DARK",
+                "gfx_suffix": "RIVAL_MARNIE",
+                "trainer_class": "TRAINER_CLASS_RIVAL",
+                "music_player": "hoenn_boss",
+                "trainer_flags": [ "REGION_GALAR", "CLASS_RIVAL" ],
+                "class_flags": [],
+                "pokeball": "DUSK_BALL",
+                "shiny_species": "SPECIES_MORPEKO",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: Uhhh, {PLAYER}, right?\\pOut givin' it your all, huh?\\pHey, help with somethin' for a sec. I want t'see if I'm ready for the next leg of my Adventure.\\pWicked! Got some fight in you, huh?",
+                        "POST_BATTLE_TAUNT": "You beat me… Guess you must not be too bad after all, huh?",
+                        "POST_BATTLE_CLOSER": "Guess I bet'er continue training some more, huh?\\pTa' very much, {PLAYER}!"
+                    },
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: Ohh, {PLAYER}!\\pErr- I'm not gonna let you past!\\pYou're my rival. So you'll have to beat me in a battle first, got it?",
+                        "POST_BATTLE_TAUNT": "What's with that?!\\pMy Pokémon didn't get a chance to really do their thing at all. Ugh!",
+                        "POST_BATTLE_CLOSER": "I'm definitely gonna get stronger just so I can have a rematch with you.\\pI'll get my revenge, next time I catch ya!"
+                    },
+                    {
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: {PLAYER}.\\pYou've had a pretty good win streak in the Gym Challenge, just like me!\\pI respect you as my rival and all that, but I got too much at stake to go around losin' now!",
+                        "POST_BATTLE_TAUNT": "What's with that?!\\pMy Pokémon didn't get a chance to really do their thing at all. Ugh!",
+                        "POST_BATTLE_CLOSER": "I've got everyone back home supportin' me.\\pI can't give up now, right!\\pDon'cha forget it!"
+                    },
+                    {
+                        "PRE_BATTLE_OPENNING": "… … …\\pHeh.",
+                        "PRE_BATTLE_TAUNT": "{STR_VAR_1}: I knew you'd get all the Badges and meet me here.\\pI know that there's been a lot goin' on.\\pBut the truth is, when all's said and done…\\pI really just wanna become Champion for myself!\\pSo don't take it personal when I kick your butt!",
+                        "POST_BATTLE_TAUNT": "OK, so I lost…\\pBut I got to see a lot of the good points of you and your Pokémon!",
+                        "POST_BATTLE_CLOSER": "…"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 3,
+                            "include_types": [ "DARK" ]
+                        },
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 6
+                        },
+                        {
+                            "max_samples": 12,
+                            "include_types": [ "DARK" ]
+                        },
+                        {
+                            "max_samples": 12
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MORPEKO", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_IMPIDIMP", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            }
+        ],
+
+        "gyms/elite":
+        [
+            {
+                "name": "MILO",
+                "type_assignment": "GRASS",
+                "gfx_suffix": "GALAR_MILO",
+                "class_flags": [ "BOSS_GYM_1", "BOSS_ANY_ELITE" ],
+                "shiny_species": "SPECIES_GOSSIFLEUR",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Sure seems like you understand Pokémon real well.",
+                        "PRE_BATTLE_TAUNT": "This is gonna be a doozy of a battle!",
+                        "POST_BATTLE_TAUNT": "The power of Grass has wilted…",
+                        "POST_BATTLE_CLOSER": "Incredible!\\pThat must have been a fulfilling Pokémon battle for you!\\pI bet you end up going far in your Adventure!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 3,
+                            "include_types": [ "GRASS", "STEEL" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "GRASS" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_GOSSIFLEUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "NESSA",
+                "type_assignment": "WATER",
+                "gfx_suffix": "GALAR_NESSA",
+                "class_flags": [ "BOSS_GYM_2", "BOSS_ANY_ELITE" ],
+                "shiny_species": "SPECIES_CHEWTLE",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: No matter what kind of plan your refined mind may be plotting…",
+                        "PRE_BATTLE_TAUNT": "My partner and I will be sure to sink it!",
+                        "POST_BATTLE_TAUNT": "I was totally washed away!",
+                        "POST_BATTLE_CLOSER": "How…? How can this be?!\\pNow that I've battled you, I think I understand.\\pContinue to seize victories in your Adventure with you Pokemon."
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 4,
+                            "include_types": [ "WATER", "FIGHTING" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "WATER" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_CHEWTLE", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "KABU",
+                "type_assignment": "FIRE",
+                "gfx_suffix": "GALAR_KABU",
+                "class_flags": [ "BOSS_GYM_3", "BOSS_ANY_ELITE" ],
+                "shiny_species": "SPECIES_SIZZLIPEDE",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Every Trainer and Pokémon trains hard in pursuit of victory.",
+                        "PRE_BATTLE_TAUNT": "In the end, the match is decided by which side is able to unleash their true potential.",
+                        "POST_BATTLE_TAUNT": "Great Pokémon and a great Trainer! It's no surprise that you won!",
+                        "POST_BATTLE_CLOSER": "Clearly, your talent surpassed my many years of experience.\\pI still have much to learn!\\pGood luck in your future battles!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 4,
+                            "include_types": [ "FIRE", "FIGHTING" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "FIRE" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_SIZZLIPEDE", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "BEA",
+                "type_assignment": "FIGHTING",
+                "gfx_suffix": "GALAR_BEA",
+                "class_flags": [ "BOSS_GYM_4", "BOSS_ANY_ELITE" ],
+                "shiny_species": "SPECIES_FARFETCHD_GALARIAN",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Do you have an unshakable spirit that won't be moved, no matter how you are attacked?",
+                        "PRE_BATTLE_TAUNT": "I think I'll just test that out, shall I?",
+                        "POST_BATTLE_TAUNT": "I felt the fighting spirit of your Pokémon as you led them in battle.",
+                        "POST_BATTLE_CLOSER": "Phew…\\nFacing you gave me all the explanation I needed.\\pI hadn't expected it, but it made my heart dance.\\pGood luck for your next battle!"
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 4,
+                            "include_types": [ "FIGHTING", "NORMAL", "DARK" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "FIGHTING" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_FARFETCHD_GALARIAN", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "ALLISTER",
+                "type_assignment": "GHOST",
+                "gfx_suffix": "GALAR_ALLISTER",
+                "class_flags": [ "BOSS_GYM_4", "BOSS_ANY_ELITE" ],
+                "shiny_species": "SPECIES_CORSOLA_GALARIAN",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: …'M Allister.",
+                        "PRE_BATTLE_TAUNT": "H-here…I go…",
+                        "POST_BATTLE_TAUNT": "I nearly lost my mask from the shock…",
+                        "POST_BATTLE_CLOSER": "Crumbs…\\p…That was ace.\\p…Good luck."
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 4,
+                            "include_types": [ "GHOST", "DARK" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "GHOST" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_CORSOLA_GALARIAN", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "OPAL",
+                "type_assignment": "FAIRY",
+                "gfx_suffix": "GALAR_OPAL",
+                "class_flags": [ "BOSS_GYM_5", "BOSS_ANY_ELITE" ],
+                "shiny_species": "SPECIES_MILCERY",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: I'll put aside my quiz for this battle.",
+                        "PRE_BATTLE_TAUNT": "Let me have a look at how you and your partner Pokemon behave!",
+                        "POST_BATTLE_TAUNT": "Your pink is still lacking, but you're an excellent Trainer with some excellent Pokemon.",
+                        "POST_BATTLE_CLOSER": "Well, good try.\\pAnd, good luck with the rest of your Adventure."
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 4,
+                            "include_types": [ "FAIRY", "PSYCHIC" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "FAIRY" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MILCERY", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "GORDIE",
+                "type_assignment": "ROCK",
+                "gfx_suffix": "GALAR_GORDIE",
+                "class_flags": [ "BOSS_GYM_6", "BOSS_ANY_ELITE" ],
+                "shiny_species": "SPECIES_ROLYCOLY",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: I admit I feel a little bad for doing this, but…",
+                        "PRE_BATTLE_TAUNT": "I'm going to use this match to show that my Pokémon are unbeatable!",
+                        "POST_BATTLE_TAUNT": "I just want to climb into a hole…",
+                        "POST_BATTLE_CLOSER": "That was… impressive.\\pI admit I'm shocked!\\pGood luck with the rest of your battles."
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 4,
+                            "include_types": [ "ROCK", "ICE" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "ROCK" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ROLYCOLY", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "MELONY",
+                "type_assignment": "ICE",
+                "gfx_suffix": "GALAR_MELONY",
+                "class_flags": [ "BOSS_GYM_6", "BOSS_ANY_ELITE" ],
+                "shiny_species": "SPECIES_DARUMAKA_GALARIAN",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: I suppose we should get started.",
+                        "PRE_BATTLE_TAUNT": "You won't be able to escape when I freeze you solid.",
+                        "POST_BATTLE_TAUNT": "I just want to climb into a hole…",
+                        "POST_BATTLE_CLOSER": "You… You're pretty good, huh?\\pOf course seeing my Pokémon lose is sad, but to meet someone so young with such ability is quite grand.\\pGood luck with your Adventure."
+                    }
+                ],
+                "preferred_mon_gender": "FEMALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 4,
+                            "include_types": [ "ROCK", "ICE" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "ICE" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_DARUMAKA_GALARIAN", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "PIERS",
+                "type_assignment": "DARK",
+                "gfx_suffix": "GALAR_PIERS",
+                "class_flags": [ "BOSS_GYM_7", "BOSS_ANY_ELITE" ],
+                "shiny_species": "SPECIES_ZIGZAGOON_GALARIAN",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: You wanna challenge me, even though you know you'll lose?\\pThen this song's for you, foolish Trainer!",
+                        "PRE_BATTLE_TAUNT": "Get ready for a mosh pit with me and my party!",
+                        "POST_BATTLE_TAUNT": "Me an' my team gave it our best.",
+                        "POST_BATTLE_CLOSER": "I'm glad we were able to battle.\\pSeems like my Pokémon feel the same way.\\pI hope you go far on your Adventure."
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 4,
+                            "include_types": [ "DARK", "FIRE", "DRAGON" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "DARK" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ZIGZAGOON_GALARIAN", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            },
+            {
+                "name": "RAIHAN",
+                "type_assignment": "DRAGON",
+                "gfx_suffix": "GALAR_RAIHAN",
+                "class_flags": [ "BOSS_GYM_8", "BOSS_ANY_ELITE" ],
+                "weather": "SANDSTORM",
+                "shiny_species": "SPECIES_DURALUDON",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Finally, a challenger made it!\\pI've been waiting for someone to battle…\\pYou haven't lost a battle yet, huh?",
+                        "PRE_BATTLE_TAUNT": "I-Raihan-will have to show you what that feels like then!",
+                        "POST_BATTLE_TAUNT": "I might have lost, but I still look good.",
+                        "POST_BATTLE_CLOSER": "In the aftermath of the furious battle…\\pI feel as pure and refreshed as when the sky clears after a storm.\\pWhat can I possibly say?\\pI hope you do well in the rest of your Adventure!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "is_diversity_subset": true,
+                            "max_samples": 4,
+                            "include_types": [ "DRAGON", "STEEL", "GROUND" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "DRAGON" ]
+                        },
+                        {
+                            "max_samples": 6,
+                            "include_types": [ "STEEL", "GROUND", "ROCK" ]
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_DURALUDON", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_TYPE", "TYPE_STEEL", "INC_FAVOUR",
+                        "HAS_TYPE", "TYPE_GROUND", "INC_FAVOUR",
+                        "HAS_TYPE", "TYPE_ROCK", "INC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            }
+        ],
+        
+        "champ":
+        [
+            {
+                "name": "LEON",
+                "type_assignment": "NONE",
+                "gfx_suffix": "GALAR_LEON",
+                "trainer_flags": [ "REGION_GALAR", "CLASS_BOSS", "MISC_RAINBOW_EXCLUDE" ],
+                "class_flags": [ "BOSS_CHAMP" ],
+                "shiny_species": "SPECIES_CHARMANDER",
+                "encounter_text":
+                [
+                    {
+                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: The greatest challenger along with the most powerful team of Pokémon-is that it?\\pNow you're really getting me excited!\\pLet's make this a final match that'll go down in history!",
+                        "PRE_BATTLE_TAUNT": "We're gonna have an absolutely champion time!",
+                        "POST_BATTLE_TAUNT": "My time as Champion is over…\\pBut what a champion time it's been!",
+                        "POST_BATTLE_CLOSER": "Thank you for the greatest battle I've ever had!\\pYou've beat even the unbeatable Champion- meaning you only have one more battle left before becoming the Champion!"
+                    }
+                ],
+                "preferred_mon_gender": "MALE",
+                "team_generator":
+                {
+                    "subsets":
+                    [
+                        {
+                            "max_samples": 6
+                        }
+                    ],
+                    "weight_script":
+                    [
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_CHARMANDER", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_GENERATION", "8", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
+                        "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
+                        "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
+                    ]
+                }
+            }
+        ]
+    }
+}
