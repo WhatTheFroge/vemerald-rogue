@@ -2513,11 +2513,9 @@ struct StarterSelectionData
 
 static const u8 sStarterTypeTriangles[] = 
 {
-    TYPE_WATER, TYPE_GRASS, TYPE_FIRE,
+	/*TYPE_NORMAL, TYPE_NORMAL, 	TYPE_NORMAL,
+   TYPE_WATER, TYPE_GRASS, TYPE_FIRE,
     TYPE_BUG, TYPE_ROCK, TYPE_GRASS,
-#ifdef ROGUE_EXPANSION
-    TYPE_FAIRY, TYPE_STEEL, TYPE_FIGHTING,
-#endif
 
     // dragon, dragon, dragon
     TYPE_ROCK, TYPE_GRASS, TYPE_FIRE,
@@ -2537,7 +2535,9 @@ static const u8 sStarterTypeTriangles[] =
 
     TYPE_GROUND, TYPE_ICE, TYPE_STEEL,
     TYPE_FLYING, TYPE_ROCK, TYPE_GRASS,
-    TYPE_STEEL, TYPE_FIRE, TYPE_ROCK
+    TYPE_STEEL, TYPE_FIRE, TYPE_ROCK*/
+	
+	TYPE_PSYCHIC, TYPE_PSYCHIC, TYPE_PSYCHIC
 };
 
 static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
@@ -2562,15 +2562,30 @@ static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
             RogueMonQuery_IsSpeciesActive();
             RogueMonQuery_IsBaseSpeciesInCurrentDex(QUERY_FUNC_INCLUDE);
             RogueMonQuery_EvosContainType(QUERY_FUNC_INCLUDE, typeFlags);
-            RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);
+            RogueMonQuery_IsLegendary(QUERY_FUNC_INCLUDE);
 
             RogueMonQuery_TransformIntoEggSpecies();
             RogueMonQuery_TransformIntoEvos(2, FALSE, FALSE); // to force mons to fit gen settings
-            RogueMonQuery_AnyActiveEvos(QUERY_FUNC_INCLUDE);
+            RogueMonQuery_AnyActiveEvos(QUERY_FUNC_EXCLUDE);
 
             RogueMonQuery_IsOfType(QUERY_FUNC_INCLUDE, typeFlags);
 
-            // Exclude other types in triangle
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SCYTHER);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DRATINI);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_LARVITAR);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_BELDUM);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_BAGON);
+			
+
+			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SHEDINJA);
+			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_CATERPIE);
+			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_WEEDLE);
+			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_WURMPLE);
+			//RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SCYTHER);
+			
+			
+			// This code isn't needed unless you want strict triangles with no repeat types.. not good for my use 
+            /* Exclude other types in triangle
             typeFlags = 0;
             if(i != 0)
                 typeFlags |= MON_TYPE_VAL_TO_FLAGS(sStarterTypeTriangles[typeTriangleOffset * 3 + 0]);
@@ -2579,7 +2594,7 @@ static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
             if(i != 2)
                 typeFlags |= MON_TYPE_VAL_TO_FLAGS(sStarterTypeTriangles[typeTriangleOffset * 3 + 2]);
 
-            RogueMonQuery_IsOfType(QUERY_FUNC_EXCLUDE, typeFlags);
+            RogueMonQuery_IsOfType(QUERY_FUNC_EXCLUDE, typeFlags);*/
 
             RogueWeightQuery_Begin();
             {

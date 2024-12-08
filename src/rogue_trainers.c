@@ -359,7 +359,7 @@ static u8 CalculateLvlFor(u8 difficulty)
     else if(difficulty < ROGUE_CHAMP_START_DIFFICULTY)
     {
         const u8 gymLastLvlCap = GYM_FIRST_LEVEL_CAP + GYM_LEVEL_CAP_JUMP * 7;
-        const u8 eliteLvlRange = MAX_LEVEL - gymLastLvlCap;
+        const u8 eliteLvlRange = 65 - gymLastLvlCap;
         const u8 eliteLvlJump = eliteLvlRange / 5; // Elite 4 + Champion
 
         difficulty -= ROGUE_ELITE_START_DIFFICULTY;
@@ -367,7 +367,7 @@ static u8 CalculateLvlFor(u8 difficulty)
     }
     else
     {
-        return MAX_LEVEL;
+        return 65;
     }
     
 }
