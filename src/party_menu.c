@@ -5177,7 +5177,7 @@ void ItemUseCB_PPUp(u8 taskId, TaskFunc task)
 
 u16 ItemIdToBattleMoveId(u16 item)
 {
-    if(item >= ITEM_TR01 && item <= ITEM_TR50)
+    if(item >= ITEM_TR01 && item <= ITEM_TR30) // tr test 
     {
         u16 trNumber = item - ITEM_TR01;
         return Rogue_GetTRMove(trNumber);
@@ -5213,7 +5213,7 @@ u16 BattleMoveIdToItemId(u16 move)
             return ITEM_TM01 + i;
     }
 
-    for(i = 0; i < NUM_TECHNICAL_RECORDS; ++i)
+    for(i = 0; i < 30; ++i)
     {
         if(Rogue_GetTRMove(i) == move)
             return ITEM_TR01 + i;
@@ -5294,7 +5294,7 @@ static void Task_LearnedMove(u8 taskId)
     if (move[1] == 0)
     {
         AdjustFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM);
-        if (item >= ITEM_TR01 && item <= ITEM_TR50)
+        if (item >= ITEM_TR01 && item <= ITEM_TR30)
             RemoveBagItem(item, 1);
     }
     GetMonNickname(mon, gStringVar1);

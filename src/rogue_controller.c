@@ -1235,7 +1235,7 @@ u16 Rogue_ModifyItemPickupAmount(u16 itemId, u16 amount)
                 break;
 
             case POCKET_TM_HM:
-                //if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+                //if(itemId >= ITEM_TR01 && itemId <= ITEM_TR30)
                 //    amount = 3;
                 //else
                 //    amount = 1;
@@ -1977,7 +1977,7 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
     {
         if(itemId >= ITEM_ROGUE_ITEM_FIRST && itemId <= ITEM_ROGUE_ITEM_LAST)
         {
-            if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+            if(itemId >= ITEM_TR01 && itemId <= ITEM_TR30)
             {
                 // do nothing, the ID is never set on these and that's intentional as they copy from a template
             }
@@ -2129,7 +2129,7 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
     // Hub only excludes
     else
     {
-        if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+        if(itemId >= ITEM_TR01 && itemId <= ITEM_TR30)
             return FALSE;
     }
 
@@ -5294,7 +5294,7 @@ void Rogue_ModifyObjectEvents(struct MapHeader *mapHeader, bool8 loadingFromSave
                                 break;
 
                             case POCKET_TM_HM:
-                                if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+                                if(itemId >= ITEM_TR01 && itemId <= ITEM_TR30)
                                     objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_SILVER_TM;
                                 else
                                     objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_GOLD_TM;
@@ -9030,8 +9030,9 @@ u8 Rogue_GetEncounterDifficultyModifier()
 
 u16 Rogue_GetTRMove(u16 trNumber)
 {
-    if(trNumber < NUM_TECHNICAL_RECORDS && Rogue_IsRunActive())
+    if(trNumber <= NUM_TECHNICAL_RECORDS && Rogue_IsRunActive())
         return gRogueRun.dynamicTRMoves[trNumber];
+
 
     // Return dud moves for item pricing calcs etc.
     return MOVE_SPLASH;
@@ -9063,8 +9064,8 @@ static void RandomiseTRMoves()
     RogueMoveQuery_Begin();
     RogueMoveQuery_Reset(QUERY_FUNC_INCLUDE);
 
-    RogueMoveQuery_IsTM(QUERY_FUNC_EXCLUDE);
-    RogueMoveQuery_IsHM(QUERY_FUNC_EXCLUDE);
+    //RogueMoveQuery_IsTM(QUERY_FUNC_EXCLUDE);		game freezes up when these are excluded?? 
+    //RogueMoveQuery_IsHM(QUERY_FUNC_EXCLUDE);
 
     RogueWeightQuery_Begin();
     {

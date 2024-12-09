@@ -1271,7 +1271,7 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         itemQuantity = BagGetQuantityByPocketPosition(gBagPosition.pocket + 1, itemIndex);
 
         // Draw TM icon
-        if (itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+        if (itemId >= ITEM_TR01 && itemId <= ITEM_TR30)
             BlitBitmapToWindow(windowId, gBagMenuTRIcon_Gfx, 8, y - 1, 16, 16);
         if (itemId >= ITEM_TM01 && itemId <= ITEM_TM50)
             BlitBitmapToWindow(windowId, gBagMenuTMIcon_Gfx, 8, y - 1, 16, 16);
@@ -1289,7 +1289,7 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         else if(gBagPosition.pocket == TMHM_POCKET)
         {
             // Prefer not to print item quantity for regular TMs/HMs as they are infinite use
-            if(itemQuantity > 1 || (itemId >= ITEM_TR01 && itemId <= ITEM_TR50))
+            if(itemQuantity > 1 || (itemId >= ITEM_TR01 && itemId <= ITEM_TR30))
             {
                 // Print item quantity
                 ConvertIntToDecimalStringN(gStringVar1, itemQuantity, STR_CONV_MODE_RIGHT_ALIGN, BAG_ITEM_CAPACITY_DIGITS);

@@ -997,7 +997,7 @@ void ItemUseOutOfBattle_TMHM(u8 taskId)
     PlaySE(SE_PC_LOGIN);
     gTasks[taskId].func = Task_ShowTMHMContainedMessage;
 
-    //if (gSpecialVar_ItemId >= ITEM_TR01 && gSpecialVar_ItemId <= ITEM_TR50)
+    //if (gSpecialVar_ItemId >= ITEM_TR01 && gSpecialVar_ItemId <= ITEM_TR30)
     //    DisplayItemMessage(taskId, FONT_NORMAL, gText_BootedUpTM, BootUpSoundTMHM); // TM
     //else
     //    DisplayItemMessage(taskId, FONT_NORMAL, gText_BootedUpHM, BootUpSoundTMHM); // HM

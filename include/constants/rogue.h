@@ -174,12 +174,13 @@
 
 #define LAST_ITEM_CURSE                 (ITEM_WILD_EGG_SPECIES_CURSE)
 
+// tr test
 #define ITEM_TR01                       (LAST_ITEM_CURSE + 1)
-#define ITEM_TR50                       (LAST_ITEM_CURSE + 50)
+#define ITEM_TR30                       (LAST_ITEM_CURSE + 30)
 
 #define FIRST_ITEM_TR                   ITEM_TR01
-#define LAST_ITEM_TR                    ITEM_TR50
-#define NUM_TECHNICAL_RECORDS           50
+#define LAST_ITEM_TR                    ITEM_TR30
+#define NUM_TECHNICAL_RECORDS           30
 
 #define ITEM_SORT_MODE_TYPE         0
 #define ITEM_SORT_MODE_NAME         1
@@ -708,7 +709,7 @@
 
 #define STARTER_MON_LEVEL 10
 #define GYM_FIRST_LEVEL_CAP 15
-#define GYM_LEVEL_CAP_JUMP 10
+#define GYM_LEVEL_CAP_JUMP 5
 #define MON_DATA_TEMP_PARTNER_RIBBON         MON_DATA_EFFORT_RIBBON
 
 

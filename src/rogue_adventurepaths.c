@@ -908,14 +908,16 @@ static void GenerateRoomInstance(u8 roomId, u8 roomType)
             weights[ADVPATH_SUBROOM_RESTSTOP_BATTLE] = 15;
             weights[ADVPATH_SUBROOM_RESTSTOP_SHOP] = 15;
             weights[ADVPATH_SUBROOM_RESTSTOP_DAYCARE] = 15;
-            weights[ADVPATH_SUBROOM_RESTSTOP_FULL] = 0;
+            weights[ADVPATH_SUBROOM_RESTSTOP_FULL] = 30; // test val
 
-            if(GetPathGenerationDifficulty() >= ROGUE_GYM_START_DIFFICULTY + 2)
+
+            /*if(GetPathGenerationDifficulty() >= ROGUE_GYM_START_DIFFICULTY + 2)
             {
                 // Only activate after 2nd badge
                 weights[ADVPATH_SUBROOM_RESTSTOP_FULL] = 1;
+				// test
             }
-            else if(GetPathGenerationDifficulty() >= ROGUE_ELITE_START_DIFFICULTY)
+            else*/ if(GetPathGenerationDifficulty() >= ROGUE_ELITE_START_DIFFICULTY)
             {
                 // Ever so slightly more common during E4 phase
                 weights[ADVPATH_SUBROOM_RESTSTOP_FULL] = 20;

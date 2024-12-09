@@ -250,12 +250,12 @@ void CopyItemName(u16 itemId, u8 *dst)
 
 void CopyItemNameN(u16 itemId, u8 *dst, u16 length)
 {
-    if((itemId >= ITEM_TM01 && itemId <= ITEM_HM08) || (itemId >= ITEM_TR01 && itemId <= ITEM_TR50))
+    if((itemId >= ITEM_TM01 && itemId <= ITEM_HM08) || (itemId >= ITEM_TR01 && itemId <= ITEM_TR30))
     {
         u16 moveId = ItemIdToBattleMoveId(itemId);
         AGB_ASSERT(moveId < MOVES_COUNT);
 
-        if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+        if(itemId >= ITEM_TR01 && itemId <= ITEM_TR30)
         {
             StringCopyN(dst, gText_TRPrefix, length);
         }

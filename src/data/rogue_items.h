@@ -1526,10 +1526,10 @@ const struct RogueItem gRogueItems[ITEM_ROGUE_ITEM_COUNT] =
         .iconImage = gItemIcon_TM,
         .iconPalette = gItemIconPalette_FightingTMHM,
     },
-    [ITEM_TR50 - ITEM_ROGUE_ITEM_FIRST] =
+    [ITEM_TR30 - ITEM_ROGUE_ITEM_FIRST] =
     {
         .name = _("TR"),
-        .itemId = ITEM_TR50,
+        .itemId = ITEM_TR30,
         .price = 1000,
         .description = gText_DexEmptyString,
         .pocket = POCKET_TM_HM,

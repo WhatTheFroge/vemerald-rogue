@@ -997,7 +997,7 @@ const u8* Rogue_GetItemDesc(u16 itemId)
     {
         return gItemDesc_TM;
     }
-    else if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+    else if(itemId >= ITEM_TR01 && itemId <= ITEM_TR30)
     {
         return gItemDesc_TR;
     }
@@ -1029,12 +1029,12 @@ const void* Rogue_GetItemIconPicOrPalette(u16 itemId, u8 which)
 {
     itemId = SanitizeItemId(itemId);
 
-    if((itemId >= ITEM_TM01 && itemId <= ITEM_HM08) || (itemId >= ITEM_TR01 && itemId <= ITEM_TR50))
+    if((itemId >= ITEM_TM01 && itemId <= ITEM_HM08) || (itemId >= ITEM_TR01 && itemId <= ITEM_TR30))
     {
         if(which == 0)
         {
             // TMs are visually HMs to indicate infinite usage?
-            if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+            if(itemId >= ITEM_TR01 && itemId <= ITEM_TR30)
                 return gItemIcon_TM;
             else
                 return gItemIcon_HM;
@@ -1141,7 +1141,7 @@ u16 Rogue_GetPrice(u16 itemId)
         price = 10000; // nerf from 4000
     }
 
-    if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)	// to-do: calculate each TM price individually; there's not that many in Gen 3.
+    if(itemId >= ITEM_TR01 && itemId <= ITEM_TR30)	// to-do: calculate each TM price individually; there's not that many in Gen 3.
     {
         u16 move = ItemIdToBattleMoveId(itemId);
         price = Rogue_CalculateMovePrice(move);
@@ -1409,7 +1409,7 @@ void Rogue_ModifyItem(u16 itemId, struct Item* outItem)
         const struct RogueItem* rogueItem;
         bool8 isValidItem;
 
-        if(itemId >= ITEM_TR01 && itemId <= ITEM_TR50)
+        if(itemId >= ITEM_TR01 && itemId <= ITEM_TR30)
         {
             // Copy from first entry, as these items are going to be dynamic anyway
             rogueItem = &gRogueItems[ITEM_TR01 - ITEM_ROGUE_ITEM_FIRST];
