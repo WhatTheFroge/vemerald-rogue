@@ -204,7 +204,7 @@ static void CheckAndNotifyForFaintedMons();
 static void SwapMonItems(u8 aIdx, u8 bIdx, struct Pokemon *party);
 
 static void RandomiseSafariWildEncounters(void);
-static void RandomiseWildEncounters(void);
+static void RandomiseWildEncounters(void); // 
 static void RandomiseFishingEncounters(void);
 static void ResetTrainerBattles(void);
 static void RandomiseEnabledTrainers(void);
@@ -212,11 +212,22 @@ static void RandomiseEnabledItems(void);
 static void RandomiseBerryTrees(void);
 static void RandomiseTRMoves();
 
-static bool8 IsRareWeightedSpecies(u16 species);
+/* static bool8 IsRareWeightedSpecies(u16 species);
 static bool8 IsUncommonWeightedSpecies (u16 species); // new
 static bool8 IsVeryWeakWeightedSpecies(u16 species); // NEW
-static bool8 IsPoorWeightedSpecies(u16 species); // new
-static bool8 IsFrequentWeightedSpecies (u16 species); // new
+static bool8 PoorSpeciesWeightedSpecies(u16 species); // new */
+
+static bool8 PoorSpecies1 (u16 species); // new
+static bool8 PoorSpecies2 (u16 species); // new
+static bool8 PoorSpecies3 (u16 species); // new
+static bool8 UncommonSpecies1 (u16 species); // new
+static bool8 UncommonSpecies2 (u16 species); // new
+static bool8 RareSpecies1 (u16 species); // new
+static bool8 RareSpecies2 (u16 species); // new
+
+static bool8 PseudoSpecies (u16 species); // new
+static bool8 StarterSpecies (u16 species); // new
+
 static void RandomiseCharmItems(void);
 static bool8 HasHoneyTreeEncounterPending(void);
 static void ClearHoneyTreePokeblock(void);
@@ -4442,31 +4453,105 @@ static u8 UNUSED RandomMonType(u16 seedFlag)
 static u8 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 {
 
-    if(IsUncommonWeightedSpecies(species))							
-    {
-        // Uncommon species are very rare with 0 badges, normal rarity after 2 badges; slightly more frequent than on route  
-        if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-            return 10;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 3)		// 1 badge
-            return 8;
-        else										// no badges
-            return 3;
+    if (PoorSpecies1(species))							
+    { 
+        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 4; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 5; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 7; 
+		else if (Rogue_GetCurrentDifficulty() == 1) // between first and second badge 
+			return 10; 
+        else										
+            return 14;
+    }
+	// use ROGUE_GYM_MID_DIFFICULTY so its easier to find when using a search; 
+	// Weak groups start with high frequency and taper off 
+
+    if (PoorSpecies2(species))							
+    { 
+        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 5; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 7; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 9; 
+		else if (Rogue_GetCurrentDifficulty() == 1) 
+			return 11; 
+        else										
+            return 13;
     }
 
-    if(IsRareWeightedSpecies(species))
-    {
-        // Rare species become more common into late game; slightly more frequent than on route 
-        if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY + 1)		// 5 badge
-            return 10;
-	else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)		// 4 badge
-	    return 7;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 1)		// 3 badge
-            return 4;
-	else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-	    return 3;
-        else
-            return 1;
-    }
+	if (PoorSpecies3(species))	
+	{
+		if (Rogue_GetCurrentDifficulty() >= 5)
+			return 5; 
+		if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
+			return 6; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 7; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 8; 
+		else if (Rogue_GetCurrentDifficulty() == 1) 
+			return 10; 
+        else										
+            return 12;
+	}
+	
+	if (UncommonSpecies1(species))
+	{
+		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 8; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 9; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 12; 
+		else	
+			return 3; 
+	}
+	
+	if (UncommonSpecies2(species))
+	{
+		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 10;
+		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
+			return 12;
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 3; 
+		else	
+			return 1; 
+	}
+	
+	if (RareSpecies1(species))
+	{
+		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 8; 
+		else
+			return 1; 
+	}
+	// don't restore weight to 10 right away;
+	// less common because these Pokemon are immediately strong and don't have a weak starting period 
+	
+	if (RareSpecies2(species))
+	{
+		if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
+			return 8;
+		else
+			return 1; 
+	}
+
+	if (PseudoSpecies(species))
+		return 3; 
+	
+	if (StarterSpecies(species))
+		return 0; // testing value; real value 6 or 7 
 
     return 10;
 }
@@ -8445,41 +8530,56 @@ void Rogue_CorrectBoxMonDetails(struct BoxPokemon* mon)
     }
 }
 
-static bool8 IsUncommonWeightedSpecies(u16 species)
+static bool8 PoorSpecies1(u16 species)
 {
-    if((RoguePokedex_GetSpeciesBST(species) >= 425) && (RoguePokedex_GetSpeciesBST(species) < 470))
+    switch(species)
+    {
+        case SPECIES_AIPOM:
+        case SPECIES_SPINDA:
+        case SPECIES_FARFETCHD:
+        case SPECIES_DELIBIRD:
+        case SPECIES_UNOWN:
+        case SPECIES_LUVDISC:
             return TRUE;
-    return FALSE;
+        default:
+            return FALSE;
+    }
 }
 
-static bool8 IsRareWeightedSpecies(u16 species)
-{
-    if(RoguePokedex_GetSpeciesBST(species) >= 470)
-            return TRUE;
-    return FALSE;
-}
 
-static bool8 IsVeryWeakWeightedSpecies(u16 species)
+static bool8 PoorSpecies2(u16 species)
 {
-    if((RoguePokedex_GetSpeciesBST(species) <= 360) && (Rogue_GetMaxEvolutionCount(species) == 0)) // Aipom, Spinda, and Farfetch'd 
-            return TRUE;
-    return FALSE;
-}
-
-static bool8 IsPoorWeightedSpecies(u16 species)
-{
-	if((RoguePokedex_GetSpeciesBST(species) <= 420) && (RoguePokedex_GetSpeciesBST(species) >= 375))
-	{
-		if(Rogue_GetMaxEvolutionCount(species) == 0)			// ~400 BST 2-stage pokemon are stronger on average than 1-stage. They're in a different group 
-			return TRUE;
-		else if (Rogue_GetMaxEvolutionCount(species) == 2)	
-			if(RoguePokedex_GetSpeciesType(species, 0) == (TYPE_BUG))
-			return TRUE;
-	}
-	return FALSE;
-}
+    switch(species)
+    {
+        case SPECIES_CASTFORM:
+        case SPECIES_DUNSPARCE:
+        case SPECIES_PLUSLE:
+        case SPECIES_MINUN:
+        case SPECIES_VOLBEAT:
+        case SPECIES_ILLUMISE:
+        case SPECIES_ROSELIA:
+        case SPECIES_YANMA:
+		case SPECIES_CORSOLA:
+        case SPECIES_LICKITUNG:
+        case SPECIES_SABLEYE:
+        case SPECIES_MAWILE:
+        case SPECIES_NOSEPASS:
+        case SPECIES_SMEARGLE:
+        case SPECIES_SKITTY:
 		
-bool8 IsFrequentWeightedSpecies (u16 species) // Most experimental
+        case SPECIES_CATERPIE:
+		case SPECIES_WEEDLE:
+        case SPECIES_LEDYBA:
+        case SPECIES_SPINARAK:
+        case SPECIES_WURMPLE:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
+		
+bool8 PoorSpecies3 (u16 species) // Most experimental
 {
 	// species = GET_BASE_SPECIES_ID(species);
 	switch(species)
@@ -8494,130 +8594,244 @@ bool8 IsFrequentWeightedSpecies (u16 species) // Most experimental
 		case SPECIES_PARAS:
 		case SPECIES_DIGLETT:
 		case SPECIES_TOGEPI:
-		//case SPECIES_
-		//case SPECIES_
-		//case SPECIES_
-		//case SPECIES_
 			return TRUE;
-		//if(Rogue_GetMaxEvolutionCount(species) == 1)
-		//{	
-		//	if(RoguePokedex_GetSpeciesType(species, 0) == (TYPE_PSYCHIC))	// Wobbuffet 
-		//		return FALSE;
-		//	else if(RoguePokedex_GetSpeciesType(species, 1) == (TYPE_PSYCHIC)) // Medicham
-		//		return FALSE;
-		//	else 
-		//		return TRUE;
-		// }
+
 	}
 	return FALSE;
 }
 
 
+// Gym 1 
+bool8 UncommonSpecies1(u16 species)			
+{
+    switch(species)
+    {
+        case SPECIES_TANGELA:
+        case SPECIES_SNEASEL:
+        case SPECIES_CHIMECHO:
+        case SPECIES_KECLEON:
+        case SPECIES_SUDOWOODO:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
+// Gym 2
+bool8 UncommonSpecies2(u16 species)
+{
+    switch(species)
+    {
+        case SPECIES_SCYTHER:
+        case SPECIES_SHUCKLE:
+        case SPECIES_STANTLER:
+        case SPECIES_ABSOL:
+        case SPECIES_MR_MIME:
+        case SPECIES_TROPIUS:
+        case SPECIES_ZANGOOSE:
+        case SPECIES_SEVIPER:
+        case SPECIES_GIRAFARIG:
+        case SPECIES_LUNATONE:
+        case SPECIES_SOLROCK:
+        case SPECIES_MISDREAVUS:
+        case SPECIES_GLIGAR:
+        case SPECIES_QWILFISH:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
+// Gym 3 
+bool8 RareSpecies1(u16 species)
+{
+    switch(species)
+    {
+        case SPECIES_PINSIR:
+        case SPECIES_KANGASKHAN:
+        case SPECIES_TAUROS:
+        case SPECIES_MILTANK:
+        case SPECIES_RELICANTH:
+        case SPECIES_SKARMORY:
+        case SPECIES_MANTINE:
+        case SPECIES_TORKOAL:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
+// Gym 4 
+bool8 RareSpecies2(u16 species)
+{
+    switch(species)
+    {
+        case SPECIES_SNORLAX:
+        case SPECIES_LAPRAS:
+        case SPECIES_AERODACTYL:
+        case SPECIES_HERACROSS:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
+bool8 StarterSpecies(u16 species)
+{
+    switch(species)
+    {
+        case SPECIES_BULBASAUR:
+        case SPECIES_CHIKORITA:
+        case SPECIES_TREECKO:
+        case SPECIES_CHARMANDER:
+		case SPECIES_CYNDAQUIL:
+        case SPECIES_TORCHIC:
+        case SPECIES_SQUIRTLE:
+        case SPECIES_TOTODILE:
+        case SPECIES_MUDKIP:
+		
+        /*case SPECIES_IVYSAUR:
+        case SPECIES_VENUSAUR:
+        case SPECIES_BAYLEEF:
+        case SPECIES_MEGANIUM:
+        case SPECIES_GROVYLE:
+        case SPECIES_SCEPTILE:
+        case SPECIES_CHARMELEON:
+        case SPECIES_CHARIZARD:
+        case SPECIES_QUILAVA:
+        case SPECIES_TYPHLOSION:
+        case SPECIES_COMBUSKEN:
+        case SPECIES_BLAZIKEN:
+        case SPECIES_WARTORTLE:
+        case SPECIES_BLASTOISE:
+        case SPECIES_CROCONAW:
+        case SPECIES_FERALIGATR:
+        case SPECIES_MARSHTOMP:
+        case SPECIES_SWAMPERT:*/ // testing 
+            return TRUE;
+
+        default:
+            return FALSE;
+    }
+}
+
+bool8 PseudoSpecies(u16 species)
+{
+    switch(species)
+    {
+        case SPECIES_DRATINI:
+        case SPECIES_LARVITAR:
+        case SPECIES_BAGON:
+        case SPECIES_BELDUM:
+            return TRUE;
+
+        default:
+            return FALSE;
+    }
+}
+
 static u8 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void* data)
 {
-#ifdef ROGUE_EXPANSION
-    switch (species)
-    {
-    case SPECIES_DEERLING:
-    case SPECIES_SAWSBUCK:
-        if(RogueToD_GetSeason() != SEASON_SPRING)
-            return 0;
-        break;
+	
+    if (PoorSpecies1(species))							
+    { 
+        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 4; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 5; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 7; 
+		else if (Rogue_GetCurrentDifficulty() == 1) // between first and second badge 
+			return 10; 
+        else										
+            return 14;
+    }
+	// use ROGUE_GYM_MID_DIFFICULTY so its easier to find when using a search; 
+	// Weak groups start with high frequency and taper off 
 
-    case SPECIES_DEERLING_SUMMER:
-    case SPECIES_SAWSBUCK_SUMMER:
-        if(RogueToD_GetSeason() != SEASON_SUMMER)
-            return 0;
-        break;
-
-    case SPECIES_DEERLING_AUTUMN:
-    case SPECIES_SAWSBUCK_AUTUMN:
-        if(RogueToD_GetSeason() != SEASON_AUTUMN)
-            return 0;
-        break;
-
-    case SPECIES_DEERLING_WINTER:
-    case SPECIES_SAWSBUCK_WINTER:
-        if(RogueToD_GetSeason() != SEASON_WINTER)
-            return 0;
-        break;
-
-    case SPECIES_LYCANROC:
-        if(RogueToD_IsNight() || RogueToD_IsDusk())
-            return 0;
-        break;
-
-    case SPECIES_LYCANROC_MIDNIGHT:
-        if(!RogueToD_IsNight())
-            return 0;
-        break;
-
-    case SPECIES_LYCANROC_DUSK:
-        if(!RogueToD_IsDusk())
-            return 0;
-        break;
-
-    case SPECIES_ROCKRUFF:
-        if(RogueToD_IsDusk())
-            return 0;
-        break;
-
-    case SPECIES_ROCKRUFF_OWN_TEMPO:
-        if(!RogueToD_IsDusk())
-            return 0;
-        break;
-
-    default:
-        break;
+    if (PoorSpecies2(species))							
+    { 
+        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 5; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 7; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 9; 
+		else if (Rogue_GetCurrentDifficulty() == 1) 
+			return 11; 
+        else										
+            return 13;
     }
 
-#endif
-
-    if(IsUncommonWeightedSpecies(species))							
-    {
-        // Uncommon species are very rare with 0 badges, normal rarity after 2 badges 
-        if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-            return 10;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 3)	// 1 badge
-            return 7;
-        else																	// no badges
-            return 2;
-    }
-
-    if(IsRareWeightedSpecies(species))
-    {
-        // Rare species become more common into late game
-		if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY + 1)			// 5 badge
-			return 10;
-		else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)			// 4 badge
-			return 6;
-		else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 1)		// 3 badge
-			return 3;
-		else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-			return 2;
-		else
-			return 1;
-    }
-
-	if(IsVeryWeakWeightedSpecies(species))
+	if (PoorSpecies3(species))	
 	{
-		if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-            return 10;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 3)	// 1 badge
-            return 15;
-        else																	// no badges
-            return 10;
+		if (Rogue_GetCurrentDifficulty() >= 5)
+			return 5; 
+		if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
+			return 6; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 7; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 8; 
+		else if (Rogue_GetCurrentDifficulty() == 1) 
+			return 10; 
+        else										
+            return 12;
 	}
 	
-	if(IsFrequentWeightedSpecies(species))
+	if (UncommonSpecies1(species))
 	{
-		if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 2)		// 2 badge
-            return 10;
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY - 3)	// 1 badge
-            return 15;
-        else																	// no badges
-            return 50;
+		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 8; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 9; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 12; 
+		else	
+			return 3; 
 	}
+	
+	if (UncommonSpecies2(species))
+	{
+		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 10;
+		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
+			return 12;
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 3; 
+		else	
+			return 1; 
+	}
+	
+	if (RareSpecies1(species))
+	{
+		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 8; 
+		else
+			return 1; 
+	}
+	// don't restore weight to 10 right away;
+	// less common because these Pokemon are immediately strong and don't have a weak starting period 
+	
+	if (RareSpecies2(species))
+	{
+		if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
+			return 8;
+		else
+			return 1; 
+	}
+
+	if (PseudoSpecies(species))
+		return 3; 
+	
+	if (StarterSpecies(species))
+		return 0; // testing value; real value 6 or 7 
 	
     return 10;
 }
@@ -8823,10 +9037,8 @@ bool8 Rogue_TryAddHoneyTreePokeblock(u16 itemId)
 
 static u8 RandomiseFishingEncounters_CalculateWeight(u16 index, u16 species, void* data)
 {
-    if(IsRareWeightedSpecies(species))
-        return 1;
-    if(IsUncommonWeightedSpecies(species))
-        return 1;
+    if(StarterSpecies(species))
+        return 0; 
 
     return 10;
 }

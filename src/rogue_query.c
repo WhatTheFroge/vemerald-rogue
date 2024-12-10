@@ -859,36 +859,6 @@ void RogueMonQuery_IsRoamerLegendary(u8 func)
     }
 }
 
-void RogueMonQuery_IsRare(u8 func)
-{
-	u32 species;
-    const bool32 checkState = (func == QUERY_FUNC_INCLUDE);
-    ASSERT_MON_QUERY;
-	
-    for(species = SPECIES_NONE + 1; species < QUERY_NUM_SPECIES; ITERATOR_INC(species))
-    {
-        if(GetQueryBitFlag(species) && RoguePokedex_IsSpeciesRare(species) != checkState)
-        {
-            SetQueryBitFlag(species, FALSE);
-        }
-    }
-}
-
-void RogueMonQuery_IsUncommon(u8 func)
-{
-	u32 species;
-	const bool32 checkState = (func == QUERY_FUNC_INCLUDE);
-    ASSERT_MON_QUERY;
-	
-	for(species = SPECIES_NONE + 1; species < QUERY_NUM_SPECIES; ITERATOR_INC(species))
-	{
-		if(GetQueryBitFlag(species) && RoguePokedex_IsSpeciesUncommon(species) != checkState)
-		{
-			SetQueryBitFlag(species, FALSE);
-        }
-    }
-}
-
 void RogueMonQuery_AnyActiveEvos(u8 func)
 {
     bool32 hasValidEvo;

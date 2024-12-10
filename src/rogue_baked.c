@@ -1186,6 +1186,10 @@ u16 Rogue_GetPrice(u16 itemId)
     {
 		if (itemId == ITEM_MOON_STONE)
 			price = 1400; 
+		else if (itemId == ITEM_LINK_CABLE)
+			price = 3000; 
+		else if (itemId == ITEM_DEEP_SEA_TOOTH)
+			price = 1800; 
         else 
 			price = 2100;
         applyDefaultHubIncrease = FALSE;

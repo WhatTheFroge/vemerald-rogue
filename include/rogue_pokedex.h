@@ -33,8 +33,12 @@ u16 RoguePokedex_CountNationalCaughtMons(u8 caseID);
 bool8 RoguePokedex_IsSpeciesLegendary(u16 species);
 bool8 RoguePokedex_IsSpeciesValidBoxLegendary(u16 species);
 bool8 RoguePokedex_IsSpeciesValidRoamerLegendary(u16 species);
-bool8 RoguePokedex_IsSpeciesRare(u16 species); 
-bool8 RoguePokedex_IsSpeciesUncommon(u16 species); 
+bool8 RoguePokedex_IsSpeciesUncommon1(u16 species); 
+bool8 RoguePokedex_IsSpeciesUncommon2(u16 species); 
+bool8 RoguePokedex_IsSpeciesRare1(u16 species); 
+bool8 RoguePokedex_IsSpeciesRare2(u16 species); 
+bool8 RoguePokedex_IsStarter (u16 species);
+bool8 RoguePokedex_IsPseudo (u16 species); 
 
 u8 const* RoguePokedex_GetSpeciesName(u16 species);
 u8 RoguePokedex_GetSpeciesType(u16 species, u8 typeIndex);
