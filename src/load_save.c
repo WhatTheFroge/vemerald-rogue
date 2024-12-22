@@ -171,7 +171,7 @@ void SavePlayerParty(void)
         gSaveBlock1Ptr->playerParty[i] = gPlayerParty[i];
 }
 
-void LoadPlayerParty(void)
+/*void LoadPlayerParty(void)
 {
     int i;
 
@@ -179,6 +179,45 @@ void LoadPlayerParty(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
         gPlayerParty[i] = gSaveBlock1Ptr->playerParty[i];
+}*/
+
+#include <stdbool.h>  // Include this to use `bool`
+#include "party_menu.h" 
+
+void LoadPlayerParty(void)
+{
+    int i, j;
+    bool isPresent[PARTY_SIZE] = {false}; // Array to track which Pokémon are already present in the party
+
+    // Mark the selected Pokémon as present
+    for (i = 0; i < 6; i++)
+    {
+        if (gSelectedOrderFromParty[i]) // If a Pokémon is selected
+        {
+            isPresent[gSelectedOrderFromParty[i] - 1] = true; // Mark the selected Pokémon as present
+        }
+    }
+
+    gPlayerPartyCount = gSaveBlock1Ptr->playerPartyCount;
+
+    // Now load the remaining Pokémon from the saved party
+    for (i = 0, j = 0; i < gSaveBlock1Ptr->playerPartyCount && j < PARTY_SIZE; i++)
+    {
+        // If the Pokémon is not already in the party (not selected), load it
+        if (!isPresent[i])
+        {
+            // Find the next empty spot in the player's party to add the Pokémon
+            while (j < PARTY_SIZE && GetMonData(&gPlayerParty[j], MON_DATA_SPECIES) != SPECIES_NONE) // Look for an empty slot using GetMonData
+                j++;
+
+            if (j < PARTY_SIZE)
+            {
+                gPlayerParty[j] = gSaveBlock1Ptr->playerParty[i]; // Load the Pokémon into the party
+            }
+        }
+    }
+
+    CalculatePlayerPartyCount(); // Recalculate the party count after loading the remaining Pokémon
 }
 
 void SaveObjectEvents(void)

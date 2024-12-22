@@ -215,8 +215,43 @@ script Rogue_Battle_Boss0
     
     special(Rogue_PlayStaticTrainerEncounterBGM)
     msgbox(gPlaceholder_Gym_PreBattleTaunt)
+	
+	//var(VAR_PLAYER_BADGES)
+	//setvar(VAR_PLAYER_BADGES, 0) 
+	//var(VAR_PLAYER_BADGES) = special(Rogue_GetCurrentDifficulty)
+	switch(var(VAR_ROGUE_DIFFICULTY))
+	{
+		case 0:
+			setvar(VAR_0x8005, 2)
+		case 1:
+			setvar(VAR_0x8005, 3)
+		case 2:
+			setvar(VAR_0x8005, 3)
+		case 3:
+			setvar(VAR_0x8005, 3)
+		case 4:
+			setvar(VAR_0x8005, 4)
+		case 5:
+			setvar(VAR_0x8005, 4)
+		case 6:
+			setvar(VAR_0x8005, 4)
+		default:
+			setvar(VAR_0x8005, 5)
+	}
+	
+	// choose 3 but doesn't restrict 
+	waitmessage
+	special(SavePlayerParty)
+	fadescreen(FADE_TO_BLACK)
+	//setvar(VAR_0x8005, 5)
+	special(ChoosePartyForBattleFrontier)
+	waitstate
+	
+	special(ReducePlayerPartyToSelectedMons)
+	//special(LoadPlayerParty)
     trainerbattle(TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, VAR_ROGUE_SPECIAL_ENCOUNTER_DATA, 0, gPlaceholder_Gym_PostBattleTaunt)
     call(Rogue_BattleDefeated_Boss0)
+	special(LoadPlayerParty) 
 }
 
 script Rogue_BattleDefeated_Boss0
@@ -246,10 +281,11 @@ script Rogue_BattleDefeated_Boss0
             setflag(FLAG_ROGUE_QUESTS_NEVER_ASK_FOR_RETIRE)
         }
     }
-
+	
+	special(LoadPlayerParty)
     msgbox(gPlaceholder_Gym_PostBattleCloser)
     waitmessage()
-    call(Rogue_EventScript_AttemptPostGymHeal)
+    //call(Rogue_EventScript_AttemptPostGymHeal)
     special(RemoveCameraObject)
     warp(MAP_ROGUE_HUB_TRANSITION, 0)
     waitstate

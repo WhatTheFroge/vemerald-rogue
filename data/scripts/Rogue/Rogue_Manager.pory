@@ -1394,6 +1394,15 @@ script Rogue_Battle_Rival
     //msgbox(gPlaceholder_Trainer_PreBattleOpenning)
 
     msgbox(gPlaceholder_Trainer_PreBattleTaunt)
+	
+	waitmessage
+	special(SavePlayerParty)
+	fadescreen(FADE_TO_BLACK)
+	setvar(VAR_0x8005, 3)
+	special(ChoosePartyForBattleFrontier)
+	waitstate
+	special(ReducePlayerPartyToSelectedMons)	
+	
     trainerbattle(TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, TRAINER_ROGUE_DYNAMIC, 0, gPlaceholder_Trainer_PostBattleTaunt)
     
     special(Rogue_PlayRivalTrainerEncounterBGM)
@@ -1403,7 +1412,9 @@ script Rogue_Battle_Rival
     removeobject(VAR_LAST_TALKED)
     setflag(FLAG_ROGUE_RIVAL_DISABLED)
 
-    call(Rogue_EventScript_AttemptPostRivalHeal)
+    //call(Rogue_EventScript_AttemptPostRivalHeal)
+	
+	special(LoadPlayerParty) 
     fadedefaultbgm
 
     release
