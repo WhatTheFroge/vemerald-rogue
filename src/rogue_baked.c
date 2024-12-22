@@ -1150,9 +1150,9 @@ u16 Rogue_GetPrice(u16 itemId)
     if(itemId >= ITEM_TM01 && itemId <= ITEM_HM08)
     {
         u16 move = ItemIdToBattleMoveId(itemId);
-
-        // increase as these are re-usable
-        price = Rogue_CalculateMovePrice(move) * 4;
+		price = Rogue_CalculateMovePrice(move) * 10/3; 
+	//	increase as these are re-usable
+    //   price = Rogue_CalculateMovePrice(move) * 4;
         applyDefaultHubIncrease = TRUE;
     }
 
@@ -1184,14 +1184,7 @@ u16 Rogue_GetPrice(u16 itemId)
 
     if(Rogue_IsEvolutionItem(itemId))
     {
-		if (itemId == ITEM_MOON_STONE)
-			price = 1400; 
-		else if (itemId == ITEM_LINK_CABLE)
-			price = 3000; 
-		else if (itemId == ITEM_DEEP_SEA_TOOTH)
-			price = 1800; 
-        else 
-			price = 2100;
+        price = 2100;
         applyDefaultHubIncrease = FALSE;
     }
 
@@ -1637,38 +1630,274 @@ void Rogue_ModifyItem(u16 itemId, struct Item* outItem)
 
 u32 Rogue_CalculateMovePrice(u16 move)
 {
-    // Move cost takes into account high level stats and then modifies based on usage
-    u32 cost = 0;
+	u32 cost = 0;
     u32 usageCount = gRoguePokemonMoveUsages[move];
     u8 accuracy = gBattleMoves[move].accuracy;
     u8 pp = gBattleMoves[move].pp;
     u8 power = gBattleMoves[move].power;
 
     AGB_ASSERT(move < MOVES_COUNT);
-
-    // Move specific costs
+	// Move specific costs
     switch (move)
     {
-    case MOVE_BATON_PASS:
-        return 3500;
-    }
+	
+	// TMs
+	case MOVE_CUT:			
+	case MOVE_ROCK_SMASH:	return 2000 * 3/10;
+	case MOVE_BULLET_SEED:	return 3000 * 3/10;			
+	case MOVE_ROCK_TOMB: 	return 5000 * 3/10;
+	case MOVE_DIG:			return 5000 * 3/10;
+	case MOVE_DIVE:			return 6000 * 3/10;
+	case MOVE_STEEL_WING:
+	case MOVE_AERIAL_ACE:
+	case MOVE_FLY:
+	case MOVE_SHOCK_WAVE:
+	case MOVE_WATER_PULSE:
+	case MOVE_THIEF:
+	case MOVE_FACADE:		return 6000 * 3/10;
+	case MOVE_DRAGON_CLAW:
+	case MOVE_SECRET_POWER:
+	case MOVE_IRON_TAIL:	return 7000 * 3/10;
+	case MOVE_WATERFALL:	return 8000 * 3/10;
+	case MOVE_GIGA_DRAIN:
+	case MOVE_BLIZZARD:		return 9000 * 3/10;
+	case MOVE_BRICK_BREAK:
+	case MOVE_SOLAR_BEAM:
+	case MOVE_HIDDEN_POWER:
+	case MOVE_HYPER_BEAM:
+	case MOVE_FOCUS_PUNCH:	return 10000 * 3/10;
+	case MOVE_THUNDER:
+	case MOVE_SLUDGE_BOMB:	return 11000 * 3/10;
+	case MOVE_FRUSTRATION:
+	case MOVE_SHADOW_BALL: 
+	case MOVE_THUNDERBOLT:
+	case MOVE_PSYCHIC:		return 12000 * 3/10;
+	case MOVE_OVERHEAT:
+	case MOVE_SURF:			return 13000 * 3/10;
+	case MOVE_FLAMETHROWER:
+	case MOVE_ICE_BEAM:
+	case MOVE_FIRE_BLAST:	return 14000 * 3/10;
+	case MOVE_RETURN:		return 16000 * 3/10;
+	case MOVE_EARTHQUAKE:	return 18000 * 3/10;
+	
+	// SUPPORT TMs
+	case MOVE_FLASH:		
+	case MOVE_SAFEGUARD:
+	case MOVE_ATTRACT: 		
+	case MOVE_TORMENT:
+	case MOVE_SNATCH:		return 4000 * 3/10;
+	case MOVE_TAUNT:		return 5000 * 3/10;
+	case MOVE_HAIL:
+	case MOVE_SANDSTORM:	
+	case MOVE_ROAR:			return 6000 * 3/10;
+	case MOVE_LIGHT_SCREEN:
+	case MOVE_REFLECT:		return 6500 * 3/10;
+	case MOVE_RAIN_DANCE:
+	case MOVE_SUNNY_DAY:	return 10000 * 3/10;
+	case MOVE_BULK_UP:		return 11000 * 3/10;
+	case MOVE_CALM_MIND:
+	case MOVE_DOUBLE_TEAM:	return 15000 * 3/10;
+	case MOVE_REST:			return 16000 * 3/10;
+	case MOVE_TOXIC:		return 17000 * 3/10;
+	case MOVE_PROTECT:		return 18000 * 3/10;
+	
+	// Tutors (Attacks)
+	case MOVE_SWIFT:
+	case MOVE_MEGA_PUNCH:
+	case MOVE_FURY_CUTTER:		return 1200;
+	case MOVE_SELF_DESTRUCT:
+	case MOVE_MEGA_KICK:
+	case MOVE_DYNAMIC_PUNCH:
+	case MOVE_ROLLOUT:
+	case MOVE_SKY_ATTACK:		return 1500;
+	case MOVE_COUNTER:
+	case MOVE_EXPLOSION:
+	case MOVE_BLAST_BURN:
+	case MOVE_FRENZY_PLANT:
+	case MOVE_HYDRO_CANNON:		return 2000;
+	case MOVE_SEISMIC_TOSS:		return 2200;
+	case MOVE_ICY_WIND:
+	case MOVE_FIRE_PUNCH:
+	case MOVE_ICE_PUNCH:
+	case MOVE_THUNDER_PUNCH:
+	case MOVE_ROCK_SLIDE:		return 2400;
+	case MOVE_BODY_SLAM:
+	case MOVE_DOUBLE_EDGE:		return 2700; 
 
-    switch (move)
-    {
-    case MOVE_RETURN:
-    case MOVE_FRUSTRATION:
-        power = 110;
-        break;
+	// Tutors (Utility)
+	// case MOVE_DEFENSE_CURL:	return 1250;	
+	//case MOVE_NIGHTMARE:	return 1000;
+	// case MOVE_SWORDS_DANCE:	return 3750;
+	case MOVE_NIGHTMARE:	
+	case MOVE_SNORE:		return 400;
+	case MOVE_SLEEP_TALK:	return 500;
+	case MOVE_METRONOME:	return 800;
+	case MOVE_DREAM_EATER:
+	case MOVE_MIMIC:		
+	case MOVE_PSYCH_UP:		return 1000;
+	case MOVE_ENDURE:		
+	case MOVE_MUD_SLAP:		return 1500;
+	case MOVE_SOFT_BOILED:	return 3000;
+	case MOVE_THUNDER_WAVE:	return 3200;
+	case MOVE_SWAGGER:		return 3500;
+	case MOVE_SUBSTITUTE:	return 4500;
+	
+	// Utility Moves (not TM, not Tutor) 
+	case MOVE_SPLASH:		return 100;
+	case MOVE_TELEPORT:	
+	case MOVE_TRANSFORM:	return 200;
+	case MOVE_CHARGE:		return 300;
+	case MOVE_SUPERSONIC:
+	case MOVE_BIDE:
+	case MOVE_MIST:
+	case MOVE_FORESIGHT:
+	case MOVE_SPITE:
+	case MOVE_GRUDGE:
+	case MOVE_ODOR_SLEUTH:	return 400;
+	case MOVE_CONVERSION:
+	case MOVE_RAPID_SPIN:
+	case MOVE_MUD_SPORT:
+	case MOVE_WATER_SPORT:
+	case MOVE_INGRAIN:
+	case MOVE_STOCKPILE:
+	case MOVE_SPIT_UP:
+	case MOVE_SWALLOW:
+	case MOVE_TEETER_DANCE:	return 500;
+	case MOVE_MIND_READER:
+	case MOVE_SWEET_KISS:
+	case MOVE_FLATTER:
+	case MOVE_LOCK_ON:		return 600;
+	case MOVE_ASSIST:		return 800;	
+	case MOVE_DISABLE:
+	case MOVE_POISON_GAS:
+	case MOVE_FOCUS_ENERGY:
+	case MOVE_MIRROR_MOVE:
+	case MOVE_FALSE_SWIPE:
+	case MOVE_CONVERSION_2:
+	//case MOVE_PSYCH_UP:
+	case MOVE_CAMOUFLAGE:
+	case MOVE_IMPRISON:
+	case MOVE_MEMENTO:
+	//case MOVE_TORMENT:
+	case MOVE_RECYCLE:
+	case MOVE_ROLE_PLAY:
+	case MOVE_SKILL_SWAP:
+	case MOVE_MAGIC_COAT:
+	//case MOVE_SNATCH:
+	case MOVE_BLOCK:
+	case MOVE_SPIDER_WEB:
+	case MOVE_MEAN_LOOK:	return 1000;
+	case MOVE_KINESIS:
+	case MOVE_KNOCK_OFF:
+	case MOVE_NATURE_POWER:
+	//case MOVE_TAUNT:		
+							return 1200;
+	case MOVE_CONFUSE_RAY:	return 1400;
+	case MOVE_WHIRLWIND:
+	case MOVE_HAZE:
+	case MOVE_DESTINY_BOND:
+	//case MOVE_ENDURE:
+	case MOVE_TRICK:
+	case MOVE_REFRESH:
+	case MOVE_ENDEAVOR:		return 1500;
+	case MOVE_SING:
+	case MOVE_POISON_POWDER:
+	case MOVE_PAIN_SPLIT:
+	case MOVE_GRASS_WHISTLE:return 1800;
+	case MOVE_HYPNOSIS:
+	case MOVE_FAKE_OUT:		return 2000;
+	case MOVE_PERISH_SONG:
+	case MOVE_YAWN:			return 2200;
+	case MOVE_GLARE:
+	case MOVE_STUN_SPORE:
+	case MOVE_SYNTHESIS:	return 2400;
+	case MOVE_DETECT:
+	case MOVE_SPIKES:
+	case MOVE_WILL_O_WISP:
+	case MOVE_WISH:			return 2500;
+	//case MOVE_SOFT_BOILED:
+	case MOVE_RECOVER:
+	case MOVE_MILK_DRINK:
+	case MOVE_SLACK_OFF:
+	case MOVE_HEAL_BELL:
+	case MOVE_AROMATHERAPY:
+	case MOVE_ENCORE:		return 3000;
+	case MOVE_SLEEP_POWDER:
+	case MOVE_LOVELY_KISS:
+	//case MOVE_SWAGGER:		return 3500;
+	case MOVE_LEECH_SEED:
+	//case MOVE_BATON_PASS:	return 4000;
+	//case MOVE_SUBSTITUTE:	return 4500;
+	case MOVE_SPORE:		return 5000;
+	
+	// stat moves
+	case MOVE_STRING_SHOT:
+	case MOVE_LEER:
+	case MOVE_GROWL:
+	case MOVE_TAIL_WHIP:	return 600;
+	case MOVE_SWEET_SCENT:	return 700;
+	case MOVE_GROWTH:
+	case MOVE_MEDITATE:
+	case MOVE_SHARPEN:
+	case MOVE_DEFENSE_CURL:
+	case MOVE_WITHDRAW:
+	case MOVE_HARDEN:		return 800;
+	
+	case MOVE_SCARY_FACE:	return 1500;
+	case MOVE_SCREECH:
+	case MOVE_METAL_SOUND:
+	case MOVE_AGILITY:		return 1600;
+	case MOVE_SMOKESCREEN:
+	case MOVE_SAND_ATTACK:	return 1800;
+	case MOVE_CHARM:
+	case MOVE_COTTON_SPORE:
+	case MOVE_TICKLE:
+	case MOVE_FAKE_TEARS:	return 2000;
+	case MOVE_BELLY_DRUM:	return 2200;
+	case MOVE_CURSE:		return 2500;
+	case MOVE_AMNESIA:	
+	case MOVE_MINIMIZE:
+	case MOVE_TAIL_GLOW:
+	case MOVE_ACID_ARMOR:
+	case MOVE_BARRIER:
+	case MOVE_IRON_DEFENSE:	return 2800;
+	case MOVE_SWORDS_DANCE:
+	case MOVE_COSMIC_POWER:	return 3000;
+	case MOVE_DRAGON_DANCE:	return 3200;
+	case MOVE_BATON_PASS:	return 4000;
+	
+	// Fixing a handful of outlier attack moves (For now. May expand to all moves)
+	case MOVE_MAGNITUDE:	return 1200;
+	case MOVE_THRASH:		return 1200;
+	case MOVE_CRUNCH:		return 2000;
+	
+	// Can be slightly underpriced compared to how good these moves are: 
+	// They are combo pieces (Endure/Sub) and require berries on top of that 
+	case MOVE_FLAIL:		return 1500;
+	case MOVE_REVERSAL:		return 1500;
+	
+	
+	}
+	// Set price for all Utility moves, but let the algorithm handle Attack-moves that are not TMs (Egg moves) 
+    // Move cost takes into account high level stats and then modifies based on usage
+
+    //switch (move)
+    //{
+    //case MOVE_RETURN:
+    //case MOVE_FRUSTRATION:
+    //    power = 110;
+    //    break;
     
-    case MOVE_HIDDEN_POWER:
-        power = 70;
-        break;
+    //case MOVE_HIDDEN_POWER:
+    //    power = 70;
+    //    break;
 
-    case MOVE_SPLASH:
-        power = 1;
-        break;
-    }
+    //case MOVE_SPLASH:
+    //    power = 1;
+    //    break;
+    //}
 
+	// Placeholder calculations 
     // accuracy cost
     if(accuracy == 100 || accuracy == 0)
         cost += 500;
@@ -1706,24 +1935,22 @@ u32 Rogue_CalculateMovePrice(u16 move)
         cost += 150;
 
     // Modify based on usage
-    if(usageCount >= 300)
+    if(usageCount >= 100)
         cost += 3000;
-    else if(usageCount >= 200)
-        cost += 2500;
-    else if(usageCount >= 100)
-        cost += 2000;
-    else if(usageCount >= 75)
-        cost += 2000;
     else if(usageCount >= 50)
-        cost += 1500;
+        cost += 2500;
+    else if(usageCount >= 30)
+        cost += 2250;
     else if(usageCount >= 20)
+        cost += 2000;
+    else if(usageCount >= 10)
+        cost += 1500;
+    else if(usageCount < 10)
         cost += 1000;
-    else if(usageCount >= 100)
-        cost += 500;
 
     if(cost < 100)
         cost = 100;
-
+	
     return cost;
 }
 

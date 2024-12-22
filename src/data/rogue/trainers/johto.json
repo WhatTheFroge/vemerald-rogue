@@ -87,18 +87,18 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 1,
+                            "max_samples": 2,
                             "include_types": [ "FLYING" ], 
 							"exclude_types": [ "BUG" ] 
                         },
 						{
                             "is_diversity_subset": true,
                             "max_samples": 1,
-							"exclude_types": [ "FLYING", "NORMAL" ] 
+							"exclude_types": [ "FLYING", "NORMAL", "BUG" ] 
                         },
 						{
                             "is_diversity_subset": true,
-                            "max_samples": 4,
+                            "max_samples": 2,
                             "include_types": [ "FLYING" ], 
 							"exclude_types": [ "BUG", "WATER" ] 
                         },
@@ -139,7 +139,7 @@
                     [
 						{
                             "is_diversity_subset": true,
-                            "max_samples": 1,
+                            "max_samples": 2,
                             "include_types": [ "BUG" ]
                         },
 						{
@@ -149,7 +149,7 @@
                         },
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 4,
+                            "max_samples": 3,
                             "include_types": [ "BUG" ]
                         },
                         {
@@ -191,7 +191,7 @@
                     [
 						{
                             "is_diversity_subset": true,
-                            "max_samples": 1,
+                            "max_samples": 2,
                             "include_types": [ "NORMAL"],
                             "exclude_types": [ "FLYING" ]
                         },
@@ -202,7 +202,7 @@
                         },
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 3,
+                            "max_samples": 2,
                             "include_types": [ "NORMAL"],
                             "exclude_types": [ "FLYING" ]
                         },
@@ -248,7 +248,7 @@
                     [
 						{
                             "is_diversity_subset": true,
-                            "max_samples": 1,
+                            "max_samples": 2,
                             "include_types": [ "GHOST" ]
                         },
 						{
@@ -258,7 +258,7 @@
                         },
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 3,
+                            "max_samples": 2,
                             "include_types": [ "GHOST" ]
                         },
                         {
@@ -303,7 +303,7 @@
                     [
 						{
                             "is_diversity_subset": true,
-                            "max_samples": 1,
+                            "max_samples": 2,
 							"include_types": [ "FIGHTING" ]
                         },
 						{
@@ -348,7 +348,7 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 2,
+                            "max_samples": 1,
                             "include_types": [ "STEEL" ]
                         },
 						{
@@ -360,6 +360,12 @@
                             "is_diversity_subset": true,
                             "max_samples": 1,
 							"exclude_types": [ "ELECTRIC", "STEEL" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "STEEL" ],
+							"exclude_types": [ "ELECTRIC" ] 
                         },
 						{
                             "is_diversity_subset": true,
@@ -412,7 +418,7 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 2,
+                            "max_samples": 1,
                             "include_types": [ "ICE" ]
                         },
 						{
@@ -424,6 +430,11 @@
                             "is_diversity_subset": true,
                             "max_samples": 1,
 							"exclude_types": [ "ICE", "GROUND" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "ICE" ]
                         },
 						{
                             "is_diversity_subset": true,
@@ -474,7 +485,7 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 2,
+                            "max_samples": 1,
                             "include_types": [ "DRAGON" ],
 							"exclude_types": [ "FLYING" ]
                         },
@@ -487,6 +498,12 @@
                             "is_diversity_subset": true,
                             "max_samples": 1,
 							"exclude_types": [ "WATER", "DRAGON" ]
+                        },
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "DRAGON" ],
+							"exclude_types": [ "FLYING" ]
                         },
                         {
                             "is_diversity_subset": true,
@@ -535,12 +552,40 @@
                 "preferred_mon_gender": "MALE",
                 "team_generator":
                 {
+					"extra_species": [
+							"SPECIES_AMPHAROS",
+							"SPECIES_BLISSEY",
+							"SPECIES_CROBAT",
+							"SPECIES_FERALIGATR",
+							"SPECIES_GIRAFARIG",
+							"SPECIES_GLIGAR",
+							"SPECIES_GRANBULL",
+							"SPECIES_HITMONTOP",
+							"SPECIES_LANTURN",
+							"SPECIES_MEGANIUM",
+							"SPECIES_MISDREAVUS",
+							"SPECIES_PORYGON2",
+							"SPECIES_QUAGSIRE",
+							"SPECIES_QWILFISH",
+							"SPECIES_SCIZOR",
+							"SPECIES_SMEARGLE",
+							"SPECIES_TYPHLOSION",
+							"SPECIES_WOBBUFFET",
+							"SPECIES_XATU"
+					], 
                     "subsets":
                     [
                         {
                             "is_diversity_subset": true,
                             "max_samples": 3,
-                            "include_types": [ "PSYCHIC" ]
+                            "include_types": [ "PSYCHIC" ],
+							"extra_species": [
+								"SPECIES_MR_MIME",
+								"SPECIES_HYPNO",
+								"SPECIES_SOLROCK",
+								"SPECIES_LUNATONE",
+								"SPECIES_GRUMPIG"
+							]
                         },
 						{
                             "is_diversity_subset": true,
@@ -584,13 +629,48 @@
                 "preferred_mon_gender": "MALE",
                 "team_generator":
                 {
+					"extra_species": [
+							"SPECIES_AMPHAROS",
+							"SPECIES_BLISSEY",
+							"SPECIES_CROBAT",
+							"SPECIES_FERALIGATR",
+							"SPECIES_GIRAFARIG",
+							"SPECIES_GLIGAR",
+							"SPECIES_GRANBULL",
+							"SPECIES_HITMONTOP",
+							"SPECIES_LANTURN",
+							"SPECIES_MEGANIUM",
+							"SPECIES_MISDREAVUS",
+							"SPECIES_PORYGON2",
+							"SPECIES_QUAGSIRE",
+							"SPECIES_QWILFISH",
+							"SPECIES_SCIZOR",
+							"SPECIES_SMEARGLE",
+							"SPECIES_TYPHLOSION",
+							"SPECIES_WOBBUFFET",
+							"SPECIES_XATU"
+					],
                     "subsets":
                     [
                         {
                             "is_diversity_subset": true,
                             "max_samples": 4,
                             "include_types": [ "POISON", "BUG" ],
-                            "exclude_types": [ "GHOST" ]
+                            "exclude_types": [ "GHOST" ],
+							"extra_species":
+							[
+								"SPECIES_NIDOKING",
+								"SPECIES_NIDOQUEEN",
+								"SPECIES_MUK",
+								"SPECIES_TENTACRUEL",
+								"SPECIES_VILEPLUME",
+								"SPECIES_VICTREEBEL",
+								"SPECIES_WEEZING",
+								"SPECIES_CROBAT",
+								"SPECIES_SCIZOR",
+								"SPECIES_ROSELIA",
+								"SPECIES_ARMALDO"
+							]
 						},
 						{
 							"is_diversity_subset": true,
@@ -634,17 +714,55 @@
                 "preferred_mon_gender": "MALE",
                 "team_generator":
                 {
+					"extra_species": [
+							"SPECIES_AMPHAROS",
+							"SPECIES_BLISSEY",
+							"SPECIES_CROBAT",
+							"SPECIES_FERALIGATR",
+							"SPECIES_GIRAFARIG",
+							"SPECIES_GLIGAR",
+							"SPECIES_GRANBULL",
+							"SPECIES_HITMONTOP",
+							"SPECIES_LANTURN",
+							"SPECIES_MEGANIUM",
+							"SPECIES_MISDREAVUS",
+							"SPECIES_PORYGON2",
+							"SPECIES_QUAGSIRE",
+							"SPECIES_QWILFISH",
+							"SPECIES_SCIZOR",
+							"SPECIES_SMEARGLE",
+							"SPECIES_TYPHLOSION",
+							"SPECIES_WOBBUFFET",
+							"SPECIES_XATU"
+					],					
                     "subsets":
                     [
                         {
                             "is_diversity_subset": true,
                             "max_samples": 3,
-                            "include_types": [ "FIGHTING" ]
+                            "include_types": [ "FIGHTING" ],
+							"extra_species": [
+								"SPECIES_HITMONLEE",
+								"SPECIES_HITMONCHAN",
+								"SPECIES_PRIMEAPE",
+								"SPECIES_POLIWRATH",
+								"SPECIES_PINSIR" ]
                         },
 						{
                             "is_diversity_subset": true,
                             "max_samples": 2,
-                            "include_types": [ "STEEL", "ROCK" ]
+                            "include_types": [ "STEEL", "ROCK" ],
+							"extra_species": [
+								"SPECIES_DUGTRIO",
+								"SPECIES_MAGNETON",
+								"SPECIES_GOLEM",
+								"SPECIES_OMASTAR",
+								"SPECIES_KABUTOPS",
+								"SPECIES_SOLROCK",
+								"SPECIES_LUNATONE",
+								"SPECIES_AGGRON",
+								"SPECIES_CRADILY",
+								"SPECIES_ARMALDO"]
                         },
 						{
                             "is_diversity_subset": true,
@@ -694,18 +812,58 @@
                 "preferred_mon_gender": "FEMALE",
                 "team_generator":
                 {
+					"extra_species": [
+							"SPECIES_AMPHAROS",
+							"SPECIES_BLISSEY",
+							"SPECIES_CROBAT",
+							"SPECIES_FERALIGATR",
+							"SPECIES_GIRAFARIG",
+							"SPECIES_GLIGAR",
+							"SPECIES_GRANBULL",
+							"SPECIES_HITMONTOP",
+							"SPECIES_LANTURN",
+							"SPECIES_MEGANIUM",
+							"SPECIES_MISDREAVUS",
+							"SPECIES_PORYGON2",
+							"SPECIES_QUAGSIRE",
+							"SPECIES_QWILFISH",
+							"SPECIES_SCIZOR",
+							"SPECIES_SMEARGLE",
+							"SPECIES_TYPHLOSION",
+							"SPECIES_WOBBUFFET",
+							"SPECIES_XATU"
+					],
                     "subsets":
                     [
                         {
                             "is_diversity_subset": true,
                             "max_samples": 3,
-                            "include_types": [ "DARK" ]
+                            "include_types": [ "DARK" ],
+							"extra_species": [
+								"SPECIES_SABLEYE",
+								"SPECIES_CACTURNE",
+								"SPECIES_SNEASEL",
+								"SPECIES_ABSOL",
+								"SPECIES_SHIFTRY",
+								"SPECIES_SHARPEDO"
+							]
                         },
 						{
                             "is_diversity_subset": true,
                             "max_samples": 2,
                             "include_types": [ "GRASS", "GHOST" ],
-							"exclude_types": [ "BUG" ]
+							"exclude_types": [ "BUG" ],
+							"extra_species": [
+								"SPECIES_MISDREAVUS",
+								"SPECIES_DUSCLOPS",
+								"SPECIES_VILEPLUME",
+								"SPECIES_VICTREEBEL",
+								"SPECIES_BANETTE",
+								"SPECIES_JUMPLUFF",
+								"SPECIES_BELLOSSOM",
+								"SPECIES_ROSELIA",
+								"SPECIES_MISDREAVUS",
+								"SPECIES_CRADILY" ]
                         },
                         {
                             "is_diversity_subset": true,
@@ -759,13 +917,15 @@
                         {
                             "is_diversity_subset": true,
                             "max_samples": 3,
-                            "include_types": [ "DRAGON" ]
+                            "include_types": [ "DRAGON" ],
+							"extra_species": [ "SPECIES_ALTARIA" ]
                         },
                         {
                             "is_diversity_subset": true,
                             "max_samples": 2,
                             "include_types": [ "FLYING" ],
-                            "exclude_types": [ "BUG" , "NORMAL" ]
+                            "exclude_types": [ "BUG" , "NORMAL" ],
+							"extra_species": [ "SPECIES_FEAROW", "SPECIES_SWELLOW", "SPECIES_CROBAT", "SPECIES_ALTARIA" ] 
                         },
                         {
                             "is_diversity_subset": true,

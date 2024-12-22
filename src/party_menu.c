@@ -2026,6 +2026,63 @@ u8 GetTutorMoves(struct Pokemon *pokemon, u16 *tutorMoves, u16 tutorMovesCapacit
     return GetTutorMovesForSpecies(GetMonData(pokemon, MON_DATA_SPECIES), tutorMoves, tutorMovesCapacity);
 }
 
+/*u8 GetTutorMovesForSpecies(u16 species, u16 *tutorMoves, u16 tutorMovesCapacity)
+{
+    u16 read = 0;
+    u16 write = 0;
+
+    // Add tutor moves
+    for(read = 0; gRoguePokemonProfiles[species].tutorMoves[read] != MOVE_NONE; ++read)
+    {
+        if(write >= tutorMovesCapacity)
+        {
+            AGB_ASSERT(FALSE);
+            break;
+        }
+
+        // If this move has a TM, ignore it
+        if(BattleMoveIdToItemId(gRoguePokemonProfiles[species].tutorMoves[read]) != ITEM_NONE)
+            continue;
+
+        tutorMoves[write++] = gRoguePokemonProfiles[species].tutorMoves[read];
+    }
+
+    // Now add level-up moves (if not already present)
+    const struct LevelUpMove *levelUpMoves = gLevelUpMoves[species]; // Assuming gLevelUpMoves is a global array storing level-up moves for each species
+    u16 levelUpIndex = 0;
+    
+    while(levelUpMoves[levelUpIndex].move != MOVE_NONE)
+    {
+        // Check if the move is already added in the tutor moves list
+        bool isDuplicate = false;
+        for(u16 i = 0; i < write; ++i)
+        {
+            if(tutorMoves[i] == levelUpMoves[levelUpIndex].move)
+            {
+                isDuplicate = true;
+                break;
+            }
+        }
+
+        if(!isDuplicate)
+        {
+            // Add the level-up move if it's not a duplicate
+            if(write >= tutorMovesCapacity)
+            {
+                AGB_ASSERT(FALSE); // Capacity exceeded
+                break;
+            }
+
+            tutorMoves[write++] = levelUpMoves[levelUpIndex].move;
+        }
+
+        ++levelUpIndex;
+    }
+
+    return write;
+}*/
+
+
 u8 GetTutorMovesForSpecies(u16 species, u16 *tutorMoves, u16 tutorMovesCapacity)
 {
     u16 read = 0;

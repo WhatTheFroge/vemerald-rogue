@@ -908,7 +908,7 @@ static void GenerateRoomInstance(u8 roomId, u8 roomType)
             weights[ADVPATH_SUBROOM_RESTSTOP_BATTLE] = 15;
             weights[ADVPATH_SUBROOM_RESTSTOP_SHOP] = 15;
             weights[ADVPATH_SUBROOM_RESTSTOP_DAYCARE] = 15;
-            weights[ADVPATH_SUBROOM_RESTSTOP_FULL] = 30; // test val
+            weights[ADVPATH_SUBROOM_RESTSTOP_FULL] = 0; // test val = 30 
 
 
             /*if(GetPathGenerationDifficulty() >= ROGUE_GYM_START_DIFFICULTY + 2)
@@ -995,17 +995,23 @@ static void GenerateRoomInstance(u8 roomId, u8 roomType)
             gRogueAdvPath.rooms[roomId].roomParams.roomIdx = Rogue_SelectRouteRoom(GetPathGenerationDifficulty());
             DebugPrintf("Route [%d] = %d", roomId, gRogueAdvPath.rooms[roomId].roomParams.roomIdx);
 
-            if(GetPathGenerationDifficulty() > ROGUE_ELITE_START_DIFFICULTY)
+            if (GetPathGenerationDifficulty() <= 1)
+			{
+                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 7;
+                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 3;
+                weights[ADVPATH_SUBROOM_ROUTE_TOUGH] = 0;
+            }
+			else if(GetPathGenerationDifficulty() > ROGUE_ELITE_START_DIFFICULTY)
             {
-                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 0;
-                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 1;
-                weights[ADVPATH_SUBROOM_ROUTE_TOUGH] = 8;
+                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 2;
+                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 6;
+                weights[ADVPATH_SUBROOM_ROUTE_TOUGH] = 2;
             }
             else
             {
-                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 3;
-                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 4;
-                weights[ADVPATH_SUBROOM_ROUTE_TOUGH] = 1;
+                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 0;
+                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 1;
+                weights[ADVPATH_SUBROOM_ROUTE_TOUGH] = 9;
             }
 
             gRogueAdvPath.rooms[roomId].roomParams.perType.route.difficulty = SelectIndexFromWeights(weights, ARRAY_COUNT(weights), RogueRandom());

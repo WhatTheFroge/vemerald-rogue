@@ -26,7 +26,8 @@
 
 #define TRAINER_SHINY_PERC 25
 
-#define RIVAL_BASE_TEAM_DIFFICULTY      ROGUE_ELITE_START_DIFFICULTY - 2
+#define RIVAL_BASE_TEAM_DIFFICULTY     ROGUE_GYM_START_DIFFICULTY + 2
+//	ROGUE_ELITE_START_DIFFICULTY - 2
 
 struct TrainerHeldItemScratch
 {
@@ -705,49 +706,16 @@ static bool8 ShouldBattleGimicBestSlot(u16 trainerNum, u8 gimic)
 
 bool8 Rogue_ShouldTrainerSaveAceMon(u16 trainerNum)
 {
-    // Ensure we don't send out the dynamax mon too early
-    if(IsDynamaxEnabled() && FlagGet(FLAG_ROGUE_DYNAMAX_BATTLE))
-        return !ShouldBattleGimicBestSlot(trainerNum, BATTLE_GIMIC_DYNAMAX);
-
-    if(IsTerastallizeEnabled() && FlagGet(FLAG_ROGUE_TERASTALLIZE_BATTLE))
-        return !ShouldBattleGimicBestSlot(trainerNum, BATTLE_GIMIC_TERA);
-
     return FALSE;
 }
 
 bool8 Rogue_ShouldDynamaxMon(u16 trainerNum, u8 slot, u8 numOthersAlive)
 {
-#if TESTING
-    // Test use different mechanism
-    // always fail below
-#elif defined(ROGUE_EXPANSION)
-    if(IsDynamaxEnabled() && FlagGet(FLAG_ROGUE_DYNAMAX_BATTLE))
-    {
-        // If all other mons have fainted just bail and dynamax now
-        if(numOthersAlive == 0)
-            return TRUE;
-
-        return (sTrainerTemp.dynamaxSlot == slot);
-    }
-#endif
     return FALSE;
 }
 
 bool8 Rogue_ShouldTerastallizeMon(u16 trainerNum, u8 slot, u8 numOthersAlive)
 {
-#if TESTING
-    // Test use different mechanism
-    // always fail below
-#elif defined(ROGUE_EXPANSION)
-    if(IsTerastallizeEnabled() && FlagGet(FLAG_ROGUE_TERASTALLIZE_BATTLE))
-    {
-        // If all other mons have fainted just bail and dynamax now
-        if(numOthersAlive == 0)
-            return TRUE;
-
-        return (sTrainerTemp.teraSlot == slot);
-    }
-#endif
     return FALSE;
 }
 
@@ -1257,7 +1225,7 @@ void Rogue_GenerateRivalBaseTeamIfNeeded()
 
         // Fake the difficulty for the generator
         u16 tempDifficulty = Rogue_GetCurrentDifficulty();
-        Rogue_SetCurrentDifficulty(RIVAL_BASE_TEAM_DIFFICULTY); // Generate base party as if we're about midway through
+        Rogue_SetCurrentDifficulty(RIVAL_BASE_TEAM_DIFFICULTY); // Generate base party at 2-3 badges 
 
         // Apply some base seed for anything which needs to be randomly setup
         SeedRogueRng(gRogueRun.baseSeed * 8071 + 6632);
@@ -1520,16 +1488,11 @@ static void ConfigurePartyScratchSettings(u16 trainerNum, struct TrainerPartyScr
             scratch->allowWeakLegends = TRUE;
         }
 
-        if(difficulty >= ROGUE_GYM_MID_DIFFICULTY)
+        if(difficulty >= 3)
         {
             scratch->allowItemEvos = TRUE;
         }
 		
-		if(difficulty >= ROGUE_GYM_START_DIFFICULTY +1) 
-		{
-			scratch->allowRare = TRUE;
-			scratch->allowUncommon = TRUE;
-		}
 		break;
 	
     case DIFFICULTY_LEVEL_HARD:
@@ -1751,7 +1714,39 @@ static u8 CalculatePartyMonCount(u16 trainerNum, u8 monCapacity, u8 monLevel)
             {
             case DIFFICULTY_LEVEL_EASY:
             case DIFFICULTY_LEVEL_AVERAGE:
-                if(Rogue_GetCurrentDifficulty() == 0)
+			    /*if(Rogue_GetCurrentDifficulty() == 0)
+                    //monCount = 2; 
+					monCount = Rogue_IsRivalTrainer(trainerNum) ? 2 : 2;
+                else if(Rogue_GetCurrentDifficulty() <= 3)
+                    monCount = 3;
+                else if(Rogue_GetCurrentDifficulty() <= 6)
+                    monCount = 4;
+                else if (Rogue_GetCurrentDifficulty() == 7)
+                    monCount = 5;
+				else if (Rogue_GetCurrentDifficulty() >= 8)		// Full teams at Elite Four only. However, they'll use more compsets 
+					monCount = 6;	
+                break;*/
+				// gym 1 2 pokemon correct 
+				
+                if (Rogue_GetCurrentDifficulty() == 0)
+					monCount = 2;
+                else if (Rogue_GetCurrentDifficulty() == 1)
+					monCount = Rogue_IsRivalTrainer(trainerNum) ? 2 : 3;
+                else if ((Rogue_GetCurrentDifficulty() == 2) || (Rogue_GetCurrentDifficulty() == 3))
+					monCount = 3; 
+				else if (Rogue_GetCurrentDifficulty() <= 6)
+					monCount = 4; 
+				else if (Rogue_GetCurrentDifficulty() == 7)
+					monCount = 5; 
+				else 
+					monCount = 6; 
+				break;
+				// rival 1: 3 
+				// gym 1: 4 
+				
+				
+				
+				/*if(Rogue_GetCurrentDifficulty() == 0)
                     monCount = Rogue_IsRivalTrainer(trainerNum) ? 2 : 3;
                 else if(Rogue_GetCurrentDifficulty() <= 1)
                     monCount = 3;
@@ -1761,7 +1756,7 @@ static u8 CalculatePartyMonCount(u16 trainerNum, u8 monCapacity, u8 monLevel)
                     monCount = 5;
                 else
                     monCount = 6;
-                break;
+                break;*/
             
             case DIFFICULTY_LEVEL_HARD:
                 if(Rogue_GetCurrentDifficulty() == 0)
@@ -2025,7 +2020,7 @@ static u8 CreateTrainerPartyInternal(u16 trainerNum, struct Pokemon* party, u8 m
         struct RoguePokemonCompetitiveSet preset;
         struct RoguePokemonCompetitiveSetRules presetRules;
 
-	u8 indexToRestoreSettings = 0;
+		u8 indexToRestoreSettings = 0;
         bool32 prevForceLegends = scratch.forceLegends;
         bool32 prevAllowStrongLegends = scratch.allowStrongLegends;
         bool32 prevAllowWeakLegends = scratch.allowWeakLegends;
@@ -2807,6 +2802,70 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
         // Only give Shedinja if at E4 stage as it's just unfun to deal with otherwise
         if(Rogue_GetCurrentDifficulty() < ROGUE_ELITE_START_DIFFICULTY)
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SHEDINJA);
+
+		if (Rogue_GetCurrentDifficulty() < 1) // == 0
+		{
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_TANGELA);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SNEASEL);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_CHIMECHO);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_KECLEON);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SUDOWOODO);
+		}
+		
+		if (Rogue_GetCurrentDifficulty() < 2)
+		{		
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SCYTHER);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SHUCKLE);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_STANTLER);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_ABSOL);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MR_MIME);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_TROPIUS);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_ZANGOOSE);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SEVIPER);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_GIRAFARIG);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_LUNATONE);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SOLROCK);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MISDREAVUS);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_GLIGAR);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_QWILFISH);
+		}
+
+        if (Rogue_GetCurrentDifficulty() < 3)
+        {
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_PINSIR);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_KANGASKHAN);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_TAUROS);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MILTANK);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_RELICANTH);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SKARMORY);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MANTINE);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_TORKOAL);
+        }
+		
+        if (Rogue_GetCurrentDifficulty() < 4)
+        {
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SNORLAX);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_LAPRAS);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_AERODACTYL);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_HERACROSS);
+			
+			// link cable pokes at 35 // gym 5
+			
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_ALAKAZAM);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_GENGAR);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_GOLEM);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MACHAMP);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_KINGDRA);
+        }
+
+		if (Rogue_GetCurrentDifficulty() >= 1)
+		{
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_WIGGLYTUFF);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DELCATTY);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_CLEFABLE);
+		}
+
+
 
         // Execute post process script
         if(trainer->teamGenerator.queryScriptPost != NULL)

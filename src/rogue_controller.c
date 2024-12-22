@@ -2023,8 +2023,12 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
                 case ITEM_RABUTA_BERRY:
                 case ITEM_CORNN_BERRY:
                 case ITEM_MAGOST_BERRY:
-		case ITEM_SOUL_DEW:	// attempt ban Soul Dew in Vanilla 
-                    return FALSE;
+				case ITEM_SOUL_DEW:	// attempt ban Soul Dew in Vanilla 
+                case ITEM_LUCKY_PUNCH:
+				case ITEM_METAL_POWDER: 
+				case ITEM_LAX_INCENSE:
+				case ITEM_SEA_INCENSE: 
+					return FALSE;
 					
             }
         }
@@ -4129,9 +4133,20 @@ static u16 SelectLegendarySpecies(u8 legendId)
 
 static void ChooseLegendarysForNewAdventure()
 {
-    bool8 spawnRoamer = RogueRandomChance(50, 0);
-    bool8 spawnMinor = RogueRandomChance(75, 0);
-    bool8 spawnBox = TRUE;
+    bool8 spawnRoamer = RogueRandomChance(25, 0);
+    bool8 spawnMinor = RogueRandomChance(35, 0);
+    bool8 spawnBox = FALSE;
+	// Roamer is more annoying so make it less likely 
+
+	// Don't generate both in same run 
+	if (spawnRoamer && spawnMinor)
+    {
+        if(RogueRandom() % 2)
+            spawnRoamer = TRUE;
+        else
+            spawnMinor = TRUE;
+    }
+
 
     // Always have 1
     if(!spawnRoamer && !spawnMinor)
@@ -4173,13 +4188,13 @@ static void ChooseLegendarysForNewAdventure()
 
     if(spawnRoamer)
     {
-        gRogueRun.legendaryDifficulties[ADVPATH_LEGEND_ROAMER] = (Rogue_GetModeRules()->adventureGenerator == ADV_GENERATOR_GAUNTLET) ? 0 : 1 + RogueRandomRange(5, 0);
+        gRogueRun.legendaryDifficulties[ADVPATH_LEGEND_ROAMER] = (Rogue_GetModeRules()->adventureGenerator == ADV_GENERATOR_GAUNTLET) ? 0 : 5 + RogueRandomRange(4, 0);
         gRogueRun.legendarySpecies[ADVPATH_LEGEND_ROAMER] = SelectLegendarySpecies(ADVPATH_LEGEND_ROAMER);
     }
 
     if(spawnMinor)
     {
-        gRogueRun.legendaryDifficulties[ADVPATH_LEGEND_MINOR] = (Rogue_GetModeRules()->adventureGenerator == ADV_GENERATOR_GAUNTLET) ? 0 : 4 + RogueRandomRange(4, 0);
+        gRogueRun.legendaryDifficulties[ADVPATH_LEGEND_MINOR] = (Rogue_GetModeRules()->adventureGenerator == ADV_GENERATOR_GAUNTLET) ? 0 : 7 + RogueRandomRange(1, 0);
         gRogueRun.legendarySpecies[ADVPATH_LEGEND_MINOR] = SelectLegendarySpecies(ADVPATH_LEGEND_MINOR);
     }
 
@@ -4551,7 +4566,7 @@ static u8 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 		return 3; 
 	
 	if (StarterSpecies(species))
-		return 0; // testing value; real value 6 or 7 
+		return 6; // testing value 0; real value 6 or 7 
 
     return 10;
 }
@@ -9367,11 +9382,15 @@ static bool8 RogueRandomChanceItem()
     u8 difficultyModifier = Rogue_GetEncounterDifficultyModifier();
 
     if(difficultyModifier == ADVPATH_SUBROOM_ROUTE_CALM)
-        chance = 65;
+        chance = 20;
     else if(difficultyModifier == ADVPATH_SUBROOM_ROUTE_TOUGH)
-        chance = 95;
-    else
         chance = 80;
+    else
+        chance = 50;
+	// 65 - 80 - 95
+	// 25 - 50 - 80 ?
+	// tough should be more rewarding - due to being harder 
+
 
     return RogueRandomChance(chance, FLAG_SET_SEED_ITEMS);
 }
@@ -9460,11 +9479,14 @@ static void RandomiseItemContent(u8 difficultyLevel)
 
         RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_PREMIER_BALL);
 
-        RogueItemQuery_InPriceRange(QUERY_FUNC_INCLUDE, 50 + 100 * (difficultyLevel + dropRarity), 300 + 800 * (difficultyLevel + dropRarity));
+        RogueItemQuery_InPriceRange(QUERY_FUNC_INCLUDE, 50 + 100 * (difficultyLevel + dropRarity), 400 + 800 * (difficultyLevel + dropRarity));
+		// 1100 -> 1200: can allow 1200 price Moon Stone to be generated a little earlier 
 
         if(difficultyLevel <= 1)
         {
-            //RogueItemQuery_IsStoredInPocket(QUERY_FUNC_EXCLUDE, POCKET_BERRIES);
+            // RogueItemQuery_IsStoredInPocket(QUERY_FUNC_EXCLUDE, POCKET_BERRIES);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_SITRUS_BERRY); 
+			// how to exclude sitrus berry specifically? 
         }
 
         if(difficultyLevel <= 3)
