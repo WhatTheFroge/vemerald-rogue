@@ -6297,7 +6297,8 @@ static u8 GetMinBattleEntries(void)
     case FACILITY_UNION_ROOM:
         return UNION_ROOM_PARTY_SIZE;
     default: // Battle Frontier
-        return gSpecialVar_0x8005;
+		return 1;
+        //return gSpecialVar_0x8005;
     }
 }
 

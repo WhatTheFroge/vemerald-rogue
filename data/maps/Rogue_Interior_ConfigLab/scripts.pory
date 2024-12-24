@@ -92,8 +92,9 @@ script Rogue_Interior_ConfigLab_TalkFennel
     
     if(!flag(FLAG_ROGUE_MET_FENNEL))
     {
-        msgbox(format("Now everything has settled a bit, I can finally continue my research.\pI've had a bit of a shift in my research.\nI'm now trying to figure what is happening out there whilst people are out on Adventures."))
-        msgbox(format("Speaking of Adventures…\pI did figure out how to adjust the behaviour of the Adventures you go on.\pHere, take a look!"))
+        msgbox(format("Since things have calmed down, I can\nfinally continue my research."))
+		msgbox(format("But I've had a change in plans.\nI'm now trying to study Adventures."))
+		msgbox(format("Speaking of which…\pI've learned how to modify\nsome behaviours of Adventures.\pHere, take a look!"))
     }
     else
     {
@@ -101,16 +102,18 @@ script Rogue_Interior_ConfigLab_TalkFennel
 
         if(var(VAR_RESULT) == FALSE && flag(FLAG_CAN_GIVE_C_GEAR))
         {
-            msgbox(format("Just the Trainer I wanted to see!\pI have something for you!"), MSGBOX_DEFAULT)
+            msgbox(format("Just the Trainer I wanted to see!\nI have something for you!"), MSGBOX_DEFAULT)
 
             giveitem(ITEM_C_GEAR)
 
             bufferitemname(STR_VAR_1, ITEM_C_GEAR)
-            msgbox(format("I repurposed that {STR_VAR_1} so you can view and edit Config Lab settings remotely!\pYou can even use it whilst you're Adventuring to double check your settings!\pNow…\nDid you want to adjust your Adventure settings?"), MSGBOX_DEFAULT)
+            msgbox(format("I repurposed that {STR_VAR_1}\nfor remote use."))
+			msgbox(format("You can even use it to check your\nsettings while on an Adventure."))
+			msgbox(format("Now…\nDid you want to adjust your Adventure settings?"), MSGBOX_DEFAULT)
         }
         else
         {
-            msgbox(format("Did you want to adjust your Adventure settings?"), MSGBOX_DEFAULT)
+            msgbox(format("Did you want to adjust your Adventure\nsettings?"), MSGBOX_DEFAULT)
         }
     }
 
@@ -121,10 +124,12 @@ script Rogue_Interior_ConfigLab_TalkFennel
     if(!flag(FLAG_ROGUE_MET_FENNEL))
     {
         setflag(FLAG_ROGUE_MET_FENNEL)
-        msgbox(format("I don't really understand it all myself yet.\pBut I'm sure, if you keep exploring, I'll eventually gather enough data to be able to unlock the secrets of Adventures and share them with you!"))
-    }
+        msgbox(format("I don't really understand much yet..."))
+		msgbox(format("But if you keep exploring, I'll\ndefinitely learn more and share\lmy findings with you!"))
+		
+	}
 
-    msgbox(format("If you ever want to adjust your Adventure settings again, please do come talk to me.")) 
+    msgbox(format("See me if you ever want to adjust these\nAdventure settings again.")) 
 
     release
 }

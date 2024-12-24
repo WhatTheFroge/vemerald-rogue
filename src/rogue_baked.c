@@ -1506,58 +1506,6 @@ void Rogue_ModifyItem(u16 itemId, struct Item* outItem)
         outItem->pocket = POCKET_HELD_ITEMS;
     }
 
-#ifdef ROGUE_EXPANSION
-    if(itemId >= ITEM_VENUSAURITE && itemId <= ITEM_DIANCITE)
-    {
-        outItem->pocket = POCKET_STONES;
-    }
-
-    if(itemId >= ITEM_NORMALIUM_Z && itemId <= ITEM_ULTRANECROZIUM_Z)
-    {
-        outItem->pocket = POCKET_STONES;
-    }
-
-    if(itemId >= ITEM_DOUSE_DRIVE && itemId <= ITEM_CHILL_DRIVE)
-    {
-        outItem->pocket = POCKET_STONES;
-    }
-
-    if(itemId >= ITEM_FLAME_PLATE && itemId <= ITEM_PIXIE_PLATE)
-    {
-        outItem->pocket = POCKET_STONES;
-    }
-
-    if(itemId >= ITEM_FIRE_MEMORY && itemId <= ITEM_FAIRY_MEMORY)
-    {
-        outItem->pocket = POCKET_STONES;
-    }
-
-    if(itemId >= ITEM_ADAMANT_CRYSTAL && itemId <= ITEM_LUSTROUS_GLOBE)
-    {
-        outItem->pocket = POCKET_STONES;
-    }
-
-    if(itemId >= ITEM_CORNERSTONE_MASK && itemId <= ITEM_HEARTHFLAME_MASK)
-    {
-        outItem->pocket = POCKET_STONES;
-    }
-
-    if((itemId >= ITEM_BUG_TERA_SHARD && itemId <= ITEM_WATER_TERA_SHARD) || itemId == ITEM_STELLAR_TERA_SHARD)
-    {
-        outItem->type = ITEM_USE_PARTY_MENU,
-        outItem->fieldUseFunc = ItemUseOutOfBattle_TeraShard,
-        outItem->pocket = POCKET_STONES;
-    }
-
-    if(itemId == ITEM_MAX_MUSHROOMS)
-    {
-        outItem->type = ITEM_USE_PARTY_MENU,
-        outItem->battleUsage = 0,
-        outItem->fieldUseFunc = ItemUseOutOfBattle_MaxMushroom,
-        outItem->pocket = POCKET_STONES;
-    }
-#endif
-
     // Individual items
     switch(itemId)
     {
@@ -1587,30 +1535,6 @@ void Rogue_ModifyItem(u16 itemId, struct Item* outItem)
             outItem->pocket = POCKET_STONES;
 #endif
             break;
-
-#ifdef ROGUE_EXPANSION
-        case ITEM_ABILITY_CAPSULE:
-        case ITEM_ABILITY_PATCH:
-            outItem->pocket = POCKET_MEDICINE;
-            break;
-
-        case ITEM_RED_ORB:
-        case ITEM_BLUE_ORB:
-            outItem->pocket = POCKET_STONES;
-            break;
-
-        // Weaker versions
-        case ITEM_ADAMANT_ORB:
-        case ITEM_LUSTROUS_ORB:
-        case ITEM_GRISEOUS_ORB:
-            outItem->pocket = POCKET_STONES;
-            break;
-
-        case ITEM_RUSTED_SWORD:
-        case ITEM_RUSTED_SHIELD:
-            outItem->pocket = POCKET_STONES;
-            break;
-#endif
     }
 
     // Check we're not a charm/curse otherwise we can get infinite loops here
@@ -1622,7 +1546,8 @@ void Rogue_ModifyItem(u16 itemId, struct Item* outItem)
         }
         else
         {
-            if(IsCurseActive(EFFECT_BATTLE_ITEM_BAN))
+            //disable items in battle 
+			//if(IsCurseActive(EFFECT_BATTLE_ITEM_BAN))
                 outItem->battleUsage = 0;
         }
     }

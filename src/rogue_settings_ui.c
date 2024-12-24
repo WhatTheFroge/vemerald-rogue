@@ -157,8 +157,7 @@ static u8 const* const sMenuNameDesc_PresetDescription[] =
 
 const u8 sMenuNameDesc_DifficultyOverLvlOff[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "{PKMN} will stop gaining lvls once they\n"
-    "reach the Level Cap."
+    "{PKMN} cannot surpass the Level Cap.\nStrongly recommended." 
 );
 const u8 sMenuNameDesc_DifficultyOverLvlOn[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
@@ -185,7 +184,8 @@ static u8 const sMenuNameDesc_GameModesSubmenu[] = _(
 
 static u8 const sMenuNameDesc_BattleFormatSingles[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "Trainer Battles will always be 1v1."
+    "Trainer Battles will always be 1v1.\n"
+	"Strongly recommended."
 );
 static u8 const sMenuNameDesc_BattleFormatDoubles[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
@@ -193,8 +193,8 @@ static u8 const sMenuNameDesc_BattleFormatDoubles[] = _(
 );
 static u8 const sMenuNameDesc_BattleFormatMixed[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "Trainer Battles will randomly be 1v1 or\n"
-    "2v2. (Equal chance for both)"
+    "Trainer Battles can be either 1v1 or 2v2.\n"
+	"There is an equal chance for both."
 );
 static u8 const* const sMenuNameDesc_BattleFormat[] = 
 {
@@ -211,8 +211,7 @@ const u8 sMenuNameDesc_Affection[] = _(
 
 const u8 sMenuNameDesc_ReleaseMonsOn[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "When {PKMN} faint, they will be released.\n"
-    "from your party."
+    "When {PKMN} faint, they will be released\nfrom your party."
 );
 
 const u8 sMenuNameDesc_ReleaseMonsOff[] = _(
@@ -228,13 +227,12 @@ static u8 const* const sMenuNameDesc_ReleaseMons[] =
 
 const u8 sMenuNameDesc_TrainerDiversityOff[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "Trainers will mostly stick to their type\n"
-    "specialties e.g. Brock has Rock"
+	"Gym Leaders will specialize in one Type."
 );
 const u8 sMenuNameDesc_TrainerDiversityOn[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "Trainers can have wider type specialties\n"
-    "e.g. Brock has a mix of Rock & Steel"
+    "Gym Leaders will use a variety of Types.\n"
+	"They will still have a preferred Type."
 );
 static u8 const* const sMenuNameDesc_TrainerDiversity[] = 
 {
@@ -326,12 +324,12 @@ static u8 const sMenuNameDesc_GameMode_RainbowGauntlet[] = _(
 
 static const u8 sText_DifficultyExpAllDescOff[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "Only {PKMN} send into battle will be awarded\n"
-    "Exp. (Not recommended)"
+    "Only {PKMN} who battle will be awarded Exp.\n"
+    "(Not recommended)"
 );
 static const u8 sText_DifficultyExpAllDescOn[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "All {PKMN} in the party will be awarded Exp.\n"
+    "All {PKMN} in the party will be awarded Exp.,\n"
     "even if they didn't enter the battle."
 );
 static u8 const* const sText_DifficultyExpAllDesc[] = 
@@ -344,12 +342,13 @@ static u8 const* const sText_DifficultyExpAllDesc[] =
 static const u8 sText_DifficultyOverworldMonsDescOff[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
     "Wild {PKMN} will spawn randomly as you move.\n"
-    "(Classic {PKMN} Game style encounters)"
+    "(Classic style encounters)"
 );
 static const u8 sText_DifficultyOverworldMonsDescOn[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "Wild {PKMN} can be encounted and interacted\n"
-    "with in the overworld."
+	"Wild {PKMN} are visible in the overworld.\n"
+	"(Modern style encounters)"
+    
 );
 static u8 const* const sText_DifficultyOverworldMonsDesc[] = 
 {
@@ -364,8 +363,7 @@ const u8 sText_DifficultyEVGainDescOff[] = _(
 );
 const u8 sText_DifficultyEVGainDescOn[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "{PKMN} gain EVs from Trainer battles based\n"
-    "on their nature.(Trainers never have EVs)"
+    "Your {PKMN} gain EVs from Trainer battles." 
 );
 static u8 const* const sText_DifficultyEVGainDesc[] = 
 {
@@ -376,13 +374,13 @@ static u8 const* const sText_DifficultyEVGainDesc[] =
 
 const u8 sText_DifficultySwitchModeDescOff[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "After fainting an opposing {PKMN}, you will\n"
-    "not be able to switch out until your turn."
+    "After KOing an opposing {PKMN}, you will not\n"
+    "be able to switch out until your turn."
 );
 const u8 sText_DifficultySwitchModeDescOn[] = _(
     "{COLOR GREEN}{SHADOW LIGHT_GREEN}"
-    "After fainting an opposing {PKMN} you will be\n"
-    "given a chance to switch out immediately."
+    "After KOing an opposing {PKMN}, you can\n"
+    "switch out immediately. (For babies)"
 );
 static u8 const* const sText_DifficultySwitchModeDesc[] = 
 {

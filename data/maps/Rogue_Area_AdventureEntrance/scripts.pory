@@ -155,7 +155,7 @@ script Rogue_Area_AdventureEntrance_WarpState0
 script Rogue_Area_AdventureEntrance_SpeakRuinManiac
 {
     lock
-    msgbox(format("Hmm…\nThose noises don't sound very good to me…"))
+    msgbox(format("Hmm… Those Pokemon seem angry..."))
     release
 }
 
@@ -238,19 +238,20 @@ script Rogue_Area_AdventureEntrance_SpeakNurse
 
     if(var(VAR_ROGUE_INTRO_STATE) == ROGUE_INTRO_STATE_CATCH_MON)
     {
-        msgbox(format("{PLAYER}!\pThere's some strange noises coming from the clearing!\pYou must go help the Professor!"))
+        msgbox(format("{PLAYER}!\nYou must go help the Professor!"))
     }
     elif (var(VAR_ROGUE_INTRO_STATE) < ROGUE_INTRO_STATE_COLLECT_QUEST_LOG)
     {
-        msgbox(format("Hi {PLAYER}!\pI'm afraid I can't let you past here without a Pokémon of your own.\pMaybe Professor Elm would be able to help with that?"))
+        msgbox(format("Hi {PLAYER}!\pI'm afraid it's too dangerous past here\nunless you have a Pokemon.\pHave you seen Professor Elm?"))
     }
     elif (var(VAR_ROGUE_INTRO_STATE) == ROGUE_INTRO_STATE_COLLECT_QUEST_LOG)
     {
-        msgbox(format("Hi {PLAYER}!\pIt looks like you're almost ready to set off on an Adventure!\pBefore you set off, please take this."))
+        msgbox(format("You're almost ready to Adventure!\nBut first, please take this."))
 
         giveitem(ITEM_QUEST_LOG)
-        msgbox(format("You can use that Quest Book to accept Quests and Challenges to complete during Adventures.\pIf you would please make your way over to the Quest Board to your left, there should be some initial Quests to get you started!"))
-
+        msgbox(format("You can use that Quest Book to accept\nQuests and Challenges."))
+		msgbox(format("Check the Quest Board to your left.\nTry out some Quests."))
+		
         closemessage
         playbgm(MUS_RG_FOLLOW_ME, FALSE)
 
@@ -267,14 +268,14 @@ script Rogue_Area_AdventureEntrance_SpeakNurse
     }
     elif(var(VAR_ROGUE_INTRO_STATE) == ROGUE_INTRO_STATE_LEARN_TO_BUILD)
     {
-        msgbox(format("Hi {PLAYER}!\pThe builder was looking for you.\pI believe he said he would wait in the Town Square for you."))
+        msgbox(format("Hey, {PLAYER}!\pThe builder was looking for you.\pI believe he said he would wait\nin the Town Square for you."))
     }
     else
     {
         if(var(VAR_ROGUE_INTRO_STATE) == ROGUE_INTRO_STATE_GO_ON_ADVENTURE)
         {
-            msgbox(format("Now you seem all ready to go!"))
-            msgbox(format("Would you like to set off on an Adventure?"), MSGBOX_YESNO)
+            msgbox(format("Now you seem all ready to go!\n"))
+            msgbox(format("Would you like to start an Adventure?"), MSGBOX_YESNO)
         }
         else
         {
@@ -294,7 +295,7 @@ script Rogue_Area_AdventureEntrance_SpeakNurse
             special(Rogue_HasPendingQuestRewards)
             if(var(VAR_RESULT) == YES)
             {
-                msgbox(format("Hi {PLAYER}!\pOh.\pIt looks like you still have some Quest Rewards to collect.\pDo you still want to continue and set off on an Adventure?"), MSGBOX_YESNO)
+                msgbox(format("Hi {PLAYER}!\pOh.\pIt looks like you still have some Quest\nRewards to collect.\pDo you still want to start\non an Adventure?"), MSGBOX_YESNO)
             }
             else
             {
@@ -315,14 +316,14 @@ script Rogue_Area_AdventureEntrance_SpeakNurse
                 msgbox(format("No worries!"), MSGBOX_DEFAULT)
                 turnobject(OBJ_EVENT_ADVENTURE_NURSE, DIR_WEST)
 
-                msgbox(format("You can collect any Quest rewards from the Quest Board over there."), MSGBOX_DEFAULT)
+                msgbox(format("You can collect any Quest rewards from the\nQuest Board over there."), MSGBOX_DEFAULT)
                 turnobject(OBJ_EVENT_ADVENTURE_NURSE, DIR_SOUTH)
 
-                msgbox(format("Come and talk to me, once you're ready."), MSGBOX_DEFAULT)
+                msgbox(format("Come and talk to me once you're ready."), MSGBOX_DEFAULT)
             }
             else
             {
-                msgbox(format("No worries!\pCome and talk to me, once you're ready."), MSGBOX_DEFAULT)
+                msgbox(format("No worries!\pCome and talk to me once you're ready."), MSGBOX_DEFAULT)
             }
         }
     }
@@ -468,7 +469,7 @@ script Rogue_ReturnAdventureInternal
 
     if(var(VAR_0x8000) != 0 || var(VAR_0x8001) != 0)
     {
-        msgbox(format("Let's take a look and see what you managed to gather."), MSGBOX_DEFAULT)
+        msgbox(format("Let's take a look and see what you\nmanaged to gather."), MSGBOX_DEFAULT)
 
         // Just returned from first successful adventure
         //if(var(VAR_ROGUE_INTRO_STATE) == 6)
@@ -487,7 +488,7 @@ script Rogue_ReturnAdventureInternal
         {
             buffernumberstring(STR_VAR_1, VAR_0x8000)
 
-            message(format("You received ¥{STR_VAR_1}"))
+            message(format("You received ¥{STR_VAR_1}!"))
             playfanfare(MUS_OBTAIN_ITEM)
             waitmessage
             waitfanfare
@@ -538,12 +539,12 @@ script Rogue_ReturnAdventureInternal
     //    }
     //}
     
-    msgbox(format("Would you like to Save your progress?"), MSGBOX_YESNO)
+    msgbox(format("Would you like to save your progress?"), MSGBOX_YESNO)
     if(var(VAR_RESULT) == YES)
     {
         call(Common_EventScript_SaveGame)
     }
-    msgbox(format("Come speak to me, once you're ready for your next adventure."), MSGBOX_DEFAULT)
+    msgbox(format("Come speak to me once you're ready for\nyour next Adventure."), MSGBOX_DEFAULT)
 
     releaseall
 }

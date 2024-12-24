@@ -4,7 +4,7 @@ script Rogue_Area_SafariZone_TalkSign
 {
     lock
 
-    msgbox(format("It's a sign which lists all of the Pokémon that have been recently sighted in the Safari Area!"))
+    msgbox(format("It's a sign which lists all of the\nPokémon in the Safari Area."))
     
     special(RogueSafari_CompactEmptyEntries)
     special(Special_SelectSafariMonInPokedex)

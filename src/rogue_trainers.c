@@ -2850,6 +2850,7 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_HERACROSS);
 			
 			// link cable pokes at 35 // gym 5
+			// should be <5? 
 			
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_ALAKAZAM);
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_GENGAR);

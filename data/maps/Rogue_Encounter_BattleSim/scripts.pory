@@ -19,9 +19,10 @@ script Rogue_Encounter_BattleSim_TalkJoey
     }
     else
     {
-        msgbox(format("Well hey!\pI'm still learning how to Battle so I like using this Battle Simulator for practice!\pI do like to make it a bit exciting though…"))
+        msgbox(format("Hey, you look like a Trainer!\pI'm still learning how to battle so I like\nusing this simulator for practice."))
+        msgbox(format("I do like to make it a little\nmore exciting though..."))
         turnobject(NPC_OBJ_JOEY, DIR_WEST)
-        msgbox(format("If you want to Battle me, log on to that PC over there."))
+        msgbox(format("If you want to battle me, log on to\nthat PC over there."))
     }
 
     release
@@ -44,7 +45,7 @@ script Rogue_Encounter_BattleSim_InteractMachine
 
         while(var(VAR_RESULT) == 2)
         {
-            message(format("So you want to have a go on the Battle Simulator?"))
+            message(format("You want to use the Battle Simulator?"))
             waitmessage
             multichoice(20, 6, MULTI_YESNOINFO, NO)
 
@@ -59,7 +60,9 @@ script Rogue_Encounter_BattleSim_InteractMachine
                     msgbox(format("Oh, ok…\nIf you change your mind, let me know."), MSGBOX_DEFAULT)
 
                 case 2: // Info
-                    msgbox(format("In the Battle Simulator, each of us will be given 3 random {LV}50 Pokémon.\pAfter that, it's simple.\nJust win!\pI like to make wagers on the Battle to make it more fun!\pI'll let you pick what you want to wager though, don't worry!"))
+                    msgbox(format("In the Battle Simulator, each of us will\nbe given 3 random {LV}50 Pokémon."))
+					msgbox(format("After that, it's simple. Just battle!"))
+					msgbox(format("I like to make wagers on the Battle to\nmake it more fun!\pBut don't worry, I'll let you pick\nwhatever you want to wager!"))
             }
         }
 
@@ -128,15 +131,15 @@ script Rogue_Encounter_BattleSim_ChooseWager_Money
 
     if(var(VAR_ROGUE_DIFFICULTY) >= ROGUE_ELITE_START_DIFFICULTY)
     {
-        msgbox(format("Money?\nSure thing!\pHow about, if you lose, I'll take half of your money.\pIf you win, I'll give you ¥15000?"), MSGBOX_YESNO)
+        msgbox(format("Money? Sure thing!\nHalf of your money for my ¥20000."), MSGBOX_YESNO)
     }
     elif(var(VAR_ROGUE_DIFFICULTY) >= ROGUE_GYM_MID_DIFFICULTY)
     {
-        msgbox(format("Money?\nSure thing!\pHow about, if you lose, I'll take half of your money.\pIf you win, I'll give you ¥10000?"), MSGBOX_YESNO)
+        msgbox(format("Money? Sure thing!\nHalf of your money for my ¥10000."), MSGBOX_YESNO)
     }
     else
     {
-        msgbox(format("Money?\nSure thing!\pHow about, if you lose, I'll take half of your money.\pIf you win, I'll give you ¥5000?"), MSGBOX_YESNO)
+        msgbox(format("Money? Sure thing!\nHalf of your money for my ¥5000."), MSGBOX_YESNO)
     }
 
     hidemoneybox
@@ -145,11 +148,12 @@ script Rogue_Encounter_BattleSim_ChooseWager_Money
 script Rogue_Encounter_BattleSim_ChooseWager_IVs
 {
     bufferspeciesname(STR_VAR_1, SPECIES_RATTATA)
-    msgbox(format("IVs?\nSure thing!\pHow about, you pick one of your Pokémon.\pIf you lose, I'll take some of it's IVs for my {STR_VAR_1}.\pIf you win, I'll feed your Pokémon some Pies to increase it's IVs?"), MSGBOX_YESNO)
+    msgbox(format("IVs? Sure thing!\nPick a Pokemon."))
+	msgbox(format("If you lose, I'll take some of\nits IVs for my {STR_VAR_1}.\lIf you win, I'll feed your Pokémon\lsome Pies to increase its IVs."), MSGBOX_YESNO)
 
     if(var(VAR_RESULT) == YES)
     {
-        msgbox(format("Which Pokémon would you like to nominate for our wager?"))
+        msgbox(format("Which Pokémon would you like to\nnominate for our wager?"))
         special(ChoosePartyMon)
         waitstate
 
@@ -171,7 +175,7 @@ script Rogue_Encounter_BattleSim_ChooseWager_Items
 
 
     bufferitemnameplural(STR_VAR_1, VAR_WAGER_PARAM0, VAR_WAGER_PARAM1)
-    msgbox(format("Items?\nSure thing!\pHow about, if you lose, I'll just take a handful of items from your bag.\pIf you win, I'll give you {STR_VAR_1}?"), MSGBOX_YESNO)
+    msgbox(format("Items?\nSure thing!\pIf you lose, I'll take some\nrandom items from your Bag.\lI'll offer {STR_VAR_1}."), MSGBOX_YESNO)
 
     if(var(VAR_RESULT) == YES)
     {
@@ -179,7 +183,7 @@ script Rogue_Encounter_BattleSim_ChooseWager_Items
         checkitemspace(ITEM_YELLOW_SHARD, 1)
         if(var(VAR_RESULT) == NO)
         {
-            msgbox(format("Oh, your bag looks like it's full.\pI wouldn't be able to give you any item, if you win.\pAre you sure you want to continue?"), MSGBOX_YESNO)
+            msgbox(format("Oh, your bag looks like it's full.\pI can't give you anything.\lContinue anyways?"), MSGBOX_YESNO)
         }
     }
 }
@@ -192,7 +196,7 @@ script Rogue_Encounter_BattleSim_BeginBattle
 
     if(var(VAR_RESULT) == YES)
     {
-        msgbox(format("Oh wow!\nYou're such a great Battler!\pHere you go!"))
+        msgbox(format("Oh wow!\nYou're such a great Battler!\lHere you go!"))
         quest_trigger(QUEST_TRIGGER_MAP_SPECIFIC_EVENT)
     }
     else

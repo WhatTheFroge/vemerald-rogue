@@ -2080,27 +2080,6 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
         case ITEM_IAPAPA_BERRY:
         case ITEM_MAGO_BERRY:
         case ITEM_FIGY_BERRY:
-#ifdef ROGUE_EXPANSION
-        case ITEM_ENIGMA_BERRY_E_READER:
-
-        // Not implemented/needed
-        case ITEM_MAX_HONEY:
-        case ITEM_LURE:
-        case ITEM_SUPER_LURE:
-        case ITEM_MAX_LURE:
-        case ITEM_WISHING_PIECE:
-        case ITEM_ARMORITE_ORE:
-        case ITEM_DYNITE_ORE:
-        case ITEM_GALARICA_TWIG:
-        case ITEM_SWEET_HEART:
-        case ITEM_POKE_TOY:
-
-        case ITEM_BIG_BAMBOO_SHOOT:
-        case ITEM_TINY_BAMBOO_SHOOT:
-
-        // Link cable is Rogue's item
-        case ITEM_LINKING_CORD:
-
         // Exclude all treasures then turn on the ones we want to use
         //case ITEM_NUGGET:
         //case ITEM_PEARL:
@@ -2109,8 +2088,6 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
         //case ITEM_STAR_PIECE:
 
         // Ignore these, as mons/form swaps currently not enabled
-        case ITEM_PIKASHUNIUM_Z:
-#endif
             return FALSE;
         }
     }
@@ -2120,6 +2097,11 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
     {
         u8 genLimit = RoguePokedex_GetDexGenLimit();
 
+		// disabled items in battle (baked), therefore disable acquisition of x items 
+		if((itemId >= ITEM_GUARD_SPEC && itemId <= ITEM_X_SPECIAL)) 
+			return FALSE; 
+
+		// ev toggle ver3 with no EVs from battle but with vitamins? 
         if(!Rogue_GetConfigToggle(CONFIG_TOGGLE_EV_GAIN))
         {
             if((itemId >= ITEM_HP_UP && itemId <= ITEM_CALCIUM) || itemId == ITEM_ZINC)
@@ -2528,18 +2510,20 @@ struct StarterSelectionData
 
 static const u8 sStarterTypeTriangles[] = 
 {
-    TYPE_WATER, TYPE_GRASS, TYPE_FIRE,
-    TYPE_BUG, TYPE_ROCK, TYPE_GRASS,
+	//dragon, dragon, dragon
+	// ghost, ghost, ghost 
+
+
+    //TYPE_WATER, TYPE_GRASS, TYPE_FIRE,
+    //TYPE_BUG, TYPE_ROCK, TYPE_GRASS,
 #ifdef ROGUE_EXPANSION
     TYPE_FAIRY, TYPE_STEEL, TYPE_FIGHTING,
 #endif
 
-    // dragon, dragon, dragon
-    TYPE_ROCK, TYPE_GRASS, TYPE_FIRE,
+/*    TYPE_ROCK, TYPE_GRASS, TYPE_FIRE,
     TYPE_DARK, TYPE_FIGHTING, TYPE_PSYCHIC,
 
     TYPE_PSYCHIC, TYPE_BUG, TYPE_POISON,
-    // ghost, ghost, ghost
     TYPE_ICE, TYPE_FIGHTING, TYPE_FLYING,
 
     TYPE_ELECTRIC, TYPE_GROUND, TYPE_WATER,
@@ -2552,7 +2536,10 @@ static const u8 sStarterTypeTriangles[] =
 
     TYPE_GROUND, TYPE_ICE, TYPE_STEEL,
     TYPE_FLYING, TYPE_ROCK, TYPE_GRASS,
-    TYPE_STEEL, TYPE_FIRE, TYPE_ROCK
+    TYPE_STEEL, TYPE_FIRE, TYPE_ROCK*/
+	
+	TYPE_BUG, TYPE_POISON, TYPE_POISON 
+	
 };
 
 static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
@@ -2561,7 +2548,10 @@ static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
     u8 i;
     bool8 isValidTriangle = FALSE;
     u16 typeTriangleOffset = (isSeeded ? RogueRandom() : Random());
-
+	
+	// track duplicate species 
+    bool8 speciesSelected[NUM_SPECIES] = { FALSE };
+	
     while(!isValidTriangle)
     {
         u16 triangleCount = ARRAY_COUNT(sStarterTypeTriangles) / 3;
@@ -2577,15 +2567,23 @@ static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
             RogueMonQuery_IsSpeciesActive();
             RogueMonQuery_IsBaseSpeciesInCurrentDex(QUERY_FUNC_INCLUDE);
             RogueMonQuery_EvosContainType(QUERY_FUNC_INCLUDE, typeFlags);
-            RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);
+            RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);//
 
             RogueMonQuery_TransformIntoEggSpecies();
             RogueMonQuery_TransformIntoEvos(2, FALSE, FALSE); // to force mons to fit gen settings
             RogueMonQuery_AnyActiveEvos(QUERY_FUNC_INCLUDE);
 
             RogueMonQuery_IsOfType(QUERY_FUNC_INCLUDE, typeFlags);
+			
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DRATINI);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_LARVITAR);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_BELDUM);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_BAGON);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SCYTHER);
+			//RogueMiscQuery_EditElement(QUERY_FUNC_INCLUDE, SPECIES_DEOXYS);
+			
 
-            // Exclude other types in triangle
+            /* Exclude other types in triangle
             typeFlags = 0;
             if(i != 0)
                 typeFlags |= MON_TYPE_VAL_TO_FLAGS(sStarterTypeTriangles[typeTriangleOffset * 3 + 0]);
@@ -2594,7 +2592,7 @@ static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
             if(i != 2)
                 typeFlags |= MON_TYPE_VAL_TO_FLAGS(sStarterTypeTriangles[typeTriangleOffset * 3 + 2]);
 
-            RogueMonQuery_IsOfType(QUERY_FUNC_EXCLUDE, typeFlags);
+            RogueMonQuery_IsOfType(QUERY_FUNC_EXCLUDE, typeFlags);*/
 
             RogueWeightQuery_Begin();
             {
@@ -2611,6 +2609,18 @@ static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
                 }
 
                 starters.species[i] = RogueWeightQuery_SelectRandomFromWeights(isSeeded ? RogueRandom() : Random());
+				
+				if(speciesSelected[starters.species[i]])
+                {
+                    RogueWeightQuery_End();
+                    RogueMonQuery_End();
+
+                    isValidTriangle = FALSE;
+                    break;
+                }
+				
+				speciesSelected[starters.species[i]] = TRUE;
+				
                 starters.shinyState[i] = Rogue_RollShinyState(SHINY_ROLL_DYNAMIC);
             }
             RogueWeightQuery_End();
@@ -3541,16 +3551,19 @@ static bool8 CanBringInHeldItem(u16 itemId)
 
 static void BeginRogueRun_ModifyParty(void)
 {
-    u16 starterSpecies = VarGet(VAR_STARTER_SWAP_SPECIES);
+	// partnerSpecies renamed from starterSpecies 
+    u16 partnerSpecies = VarGet(VAR_STARTER_SWAP_SPECIES);
 
     FlagClear(FLAG_ROGUE_HAS_RANDOM_STARTER);
 
-    if(starterSpecies != SPECIES_NONE)
+	// partnerSpecies 
+    if(partnerSpecies != SPECIES_NONE)
     {
         FlagSet(FLAG_ROGUE_HAS_RANDOM_STARTER);
         ClearPlayerTeam();
 
-        CreateMon(&gEnemyParty[0], starterSpecies, STARTER_MON_LEVEL, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
+	// partnerSpecies 
+        CreateMon(&gEnemyParty[0], partnerSpecies, STARTER_MON_LEVEL, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
 
         GiveMonToPlayer(&gEnemyParty[0]);
         CalculatePlayerPartyCount();
@@ -3569,7 +3582,7 @@ static void BeginRogueRun_ModifyParty(void)
             u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
             if(species != SPECIES_NONE)
             {
-		temp = 0;
+				temp = 0;
                 SetMonData(&gPlayerParty[i], MON_DATA_HP_EV, &temp);
                 SetMonData(&gPlayerParty[i], MON_DATA_ATK_EV, &temp);
                 SetMonData(&gPlayerParty[i], MON_DATA_DEF_EV, &temp);
@@ -3581,7 +3594,8 @@ static void BeginRogueRun_ModifyParty(void)
                 exp = Rogue_ModifyExperienceTables(gRogueSpeciesInfo[GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL)].growthRate, STARTER_MON_LEVEL);
                 SetMonData(&gPlayerParty[i], MON_DATA_EXP, &exp);
 
-                if(starterSpecies != SPECIES_NONE)
+				// partnerSpecies 
+                if(partnerSpecies != SPECIES_NONE)
                 {
                     // This mon was just added so it can appear in the safari
                 }
@@ -4563,10 +4577,10 @@ static u8 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 	}
 
 	if (PseudoSpecies(species))
-		return 3; 
+		return 0; // testing value 0; real value 3  
 	
 	if (StarterSpecies(species))
-		return 6; // testing value 0; real value 6 or 7 
+		return 0; // testing value 0; real value 6 or 7 
 
     return 10;
 }
@@ -8704,6 +8718,7 @@ bool8 StarterSpecies(u16 species)
         case SPECIES_SQUIRTLE:
         case SPECIES_TOTODILE:
         case SPECIES_MUDKIP:
+		case SPECIES_EEVEE: 
 		
         /*case SPECIES_IVYSAUR:
         case SPECIES_VENUSAUR:

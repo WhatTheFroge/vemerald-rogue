@@ -21,7 +21,7 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "…\\pHow did you get a Pokémon like that?!\\nWhat a waste.\\pThat's a Pokémon that's too good for a wimp like you.",
+                        "PRE_BATTLE_TAUNT": "Grubhub!\\p…\\pHow did you get Pokémon like that?!\\nWhat a waste.\\pThose Pokémon are too good for a\\nwimp like you.\\pDon't you get what I'm saying?\\nI'll show you what I mean!", 
                         "POST_BATTLE_TAUNT": "…Humph!\\nAre you happy you won?",
                         "POST_BATTLE_CLOSER": "…\\pI'm going to be the world's greatest Pokémon Trainer.\\pSo you better not get in my way."
                     },
@@ -74,10 +74,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: People say you can clip Flying-type Pokémon's wings with a jolt of electricity…\\pI won't allow such insults to bird Pokémon!",
-                        "PRE_BATTLE_TAUNT": "I'll show you the real power of the magnificent bird Pokémon!",
+                        "PRE_BATTLE_OPENNING": "People say you can clip\\nFlying-type Pokémon's wings with a\\ljolt of electricity…\\p…I won't allow such insults.",
+                        "PRE_BATTLE_TAUNT": "I'll show you the real power of\\nmagnificent bird Pokémon!",
                         "POST_BATTLE_TAUNT": "My dad's cherished bird Pokémon…",
-                        "POST_BATTLE_CLOSER": "A defeat is a defeat.\\pI hope you go far, {PLAYER}."
+                        "POST_BATTLE_CLOSER": "A defeat is a defeat.\\nI hope you go far, {PLAYER}."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -126,10 +126,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: My research is going to make me the authority on BUG-type Pokémon!",
-                        "PRE_BATTLE_TAUNT": "Let me demonstrate what I've learned!",
+                        "PRE_BATTLE_OPENNING": "My research makes me an\\nexpert on Bug Pokemon!\\pYou probably don't know very much\\nabout Bug-types.",
+                        "PRE_BATTLE_TAUNT": "Let me demonstrate how tough\\nthey can be!",
                         "POST_BATTLE_TAUNT": "Whoa, amazing!",
-                        "POST_BATTLE_CLOSER": "You're an expert on Pokémon!\\pI hope you're next battles are just as fun!"
+                        "POST_BATTLE_CLOSER": "You're an expert on Pokémon!\\pI need to do more research!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -178,10 +178,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Pokémon are super cute!\\pYou want to battle?",
-                        "PRE_BATTLE_TAUNT": "I'm warning you--I'm good!",
-                        "POST_BATTLE_TAUNT": "…Waaaaaaah",
-                        "POST_BATTLE_CLOSER": "You shouldn't be so serious!\\pYou're mean!"
+                        "PRE_BATTLE_OPENNING": "Hey, I'm Whitney!\\nMy Pokémon are super cute!",
+                        "PRE_BATTLE_TAUNT": "You want to battle?\\nI'm warning you--I'm good!",
+                        "POST_BATTLE_TAUNT": "Waaaaah!\\nI can't believe I lost!",
+                        "POST_BATTLE_CLOSER": "Ah, that was a good cry!\\nSee you later! Bye bye!"
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -235,10 +235,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: I will become a truly powerful Trainer, in order to make the Rainbow-hued Pokémon appear!",
-                        "PRE_BATTLE_TAUNT": "You're going to help me reach that level!",
-                        "POST_BATTLE_TAUNT": "I didn't think our potentials would be so different.",
-                        "POST_BATTLE_CLOSER": "You seem to have something more than I have…\\pSo be it."
+                        "PRE_BATTLE_OPENNING": "I have trained all my life to meet\\nthe rainbow-colored Pokemon.\\pIt's said to appear to\\ntruly powerful Trainers.",
+                        "PRE_BATTLE_TAUNT": "You're going to help me reach\\nthat level!",
+                        "POST_BATTLE_TAUNT": "I'm not good enough yet…\\nSo be it.",
+                        "POST_BATTLE_CLOSER": "I don't think our potentials are so\\ndifferent. But you have something\\lmore than that.."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -290,10 +290,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: You spoiled my training!\\pCome on.",
-                        "PRE_BATTLE_TAUNT": "We shall do battle!",
-                        "POST_BATTLE_TAUNT": "Hmm… I lost?",
-                        "POST_BATTLE_CLOSER": "All right.\\nYou're worthy!\\pCarry that strength forward!"
+                        "PRE_BATTLE_OPENNING": "Let me tell you, I'm tough.\\nI train every day to improve mind and body.",
+                        "PRE_BATTLE_TAUNT": "You must have guts to fight me!\\nCome on!",
+                        "POST_BATTLE_TAUNT": "Huh… I lost?",
+                        "POST_BATTLE_CLOSER": "That was a fun fight.\\nBut a loss is a loss!\\pYou better carry that strength forward!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -335,10 +335,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Do you know about the Steel type?\\pThey are very hard, cold, sharp, and really strong!",
+                        "PRE_BATTLE_OPENNING": "I'm Jasmine. Pleased to meet you.\\pSteel-types are very hard, cold, sharp,\\nand really strong!",
                         "PRE_BATTLE_TAUNT": "Um… I’m not lying.",
                         "POST_BATTLE_TAUNT": "You are a better Trainer than me.",
-                        "POST_BATTLE_CLOSER": "You show both skill and kindness.\\pI wish you the best of luck with your journey."
+                        "POST_BATTLE_CLOSER": "You are truly strong.\\pUm… good luck." 
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -405,10 +405,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: I, {STR_VAR_1}--the Winter Trainer--",
-                        "PRE_BATTLE_TAUNT": "shall demonstrate my power!",
+                        "PRE_BATTLE_OPENNING": "I'm Pryce, the Winter Trainer.\\pI've worked with Pokemon since\\nbefore you were born.",
+                        "PRE_BATTLE_TAUNT": "Now, I'll demonstrate my power!",
                         "POST_BATTLE_TAUNT": "I am impressed by your prowess.",
-                        "POST_BATTLE_CLOSER": "With your strong will, I know you will overcome all life’s obstacles.\\pKeep your head high as you move forward."
+                        "POST_BATTLE_CLOSER": "Cherish your time together\\nwith your Pokemon."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -472,10 +472,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: I am the world's best Dragon-type master.",
-                        "PRE_BATTLE_TAUNT": "I will use my full power against any opponent!",
-                        "POST_BATTLE_TAUNT": "I won't concede this.",
-                        "POST_BATTLE_CLOSER": "I might have lost, but you're still not as strong as me.\\pYou'd be wise to remember that, going forward."
+                        "PRE_BATTLE_OPENNING": "I am Clair. The world's best\\nDragon-type master.",
+                        "PRE_BATTLE_TAUNT": "If you're challenging me, you must\\nnot know who I am.",
+                        "POST_BATTLE_TAUNT": "I might have lost, but you're still not\\nas strong as me.",
+                        "POST_BATTLE_CLOSER": "Don't you dare lose!\\nIf you do, I'll feel even worse\\labout having lost to you!"
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -543,10 +543,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: I have trained all around the world, making my Psychic-type Pokémon powerful.",
-                        "PRE_BATTLE_TAUNT": "Losing is not an option!",
+                        "PRE_BATTLE_OPENNING": "I have trained all around the world,\\nmaking my Pokémon powerful.",
+                        "PRE_BATTLE_TAUNT": "I hope you've studied up on\\nPokemon strategies!",
                         "POST_BATTLE_TAUNT": "I… I… can't believe it.",
-                        "POST_BATTLE_CLOSER": "Even though I was defeated, I won't change my course.\\pI advise you to remain cautious for your upcoming fights."
+                        "POST_BATTLE_CLOSER": "Even though I was defeated, I\\nwon't change my course.\\pI have no regrets, and I'll continue\\nuntil I stand above all trainers.."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -620,10 +620,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Fwahahaha!\\pA mere child like you dares to challenge me?",
-                        "PRE_BATTLE_TAUNT": "Despair to the creeping horror of Poison-type Pokémon!",
-                        "POST_BATTLE_TAUNT": "Humph!",
-                        "POST_BATTLE_CLOSER": "You have proven your worth!\\pLet's just see how long you can last…"
+                        "PRE_BATTLE_OPENNING": "I'm a master of sinister techniques.\\nPrepare for despair!",
+                        "PRE_BATTLE_TAUNT": "Pokemon battles are not merely about\\nbrute force - you'll see soon enough!",
+                        "POST_BATTLE_TAUNT": "Ah, you've proven your worth.",
+                        "POST_BATTLE_CLOSER": "I subjected you to everything I could\\nmuster. But it wasn't enough.\\pI must hone my skills further."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -705,8 +705,8 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Through rigorous training, people and Pokémon can become stronger without limit.",
-                        "PRE_BATTLE_TAUNT": "My Pokémon will grind you down with our superior power!",
+                        "PRE_BATTLE_OPENNING": "I always train to the extreme.\\nThat is how I became strong,\\nalong with my Pokemon.",
+                        "PRE_BATTLE_TAUNT": "You will bow down to our\\nsuperior power!",
                         "POST_BATTLE_TAUNT": "How could I lose?",
                         "POST_BATTLE_CLOSER": "My job is done.\\pGo face your next challenge."
                     }
@@ -803,10 +803,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: You're {PLAYER}? How amusing.\\pI love Dark-type Pokémon.\\pThink you can take them?",
-                        "PRE_BATTLE_TAUNT": "Just try to entertain me.",
+                        "PRE_BATTLE_OPENNING": "A challenger?\\nHow amusing.",
+                        "PRE_BATTLE_TAUNT": "Just try to entertain me.\\nLet's go.",
                         "POST_BATTLE_TAUNT": "Well, aren't you good.\\nI like that in a Trainer.",
-                        "POST_BATTLE_CLOSER": "Strong Pokémon.\\pWeak Pokémon.\\pThat is only the selfish perception of people.\\pYou understand there's more to Pokémon than that.\\pDon't lose your way as you climb to the top."
+                        "POST_BATTLE_CLOSER": "Strong Pokémon. Weak Pokémon.\\pThat is only the selfish perception\\nof small-minded people.\\pYou understand there's more to\\nPokémon than that.\\pDon't lose your way as you climb to the top."
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -903,10 +903,10 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "{STR_VAR_1}: Are you ready to lose?",
-                        "PRE_BATTLE_TAUNT": "Your Adventure ends with me, {PLAYER}!",
-                        "POST_BATTLE_TAUNT": "That's it!",
-                        "POST_BATTLE_CLOSER": "I hate to admit it, but you have bested me.\\pI shall eagerly watch your path forward."
+                        "PRE_BATTLE_OPENNING": "There's no need for words.",
+                        "PRE_BATTLE_TAUNT": "We shall battle to determine\\nthe stronger one between us.",
+                        "POST_BATTLE_TAUNT": "…It's over.",
+                        "POST_BATTLE_CLOSER": "But oddly, I'm not angry.\\pIn fact, I feel proud that I \\nwitnessed the rise of a\\lpowerful new Champion!\\pWell,"
                     }
                 ],
                 "preferred_mon_gender": "MALE",

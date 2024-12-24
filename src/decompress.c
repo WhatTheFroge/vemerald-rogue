@@ -357,6 +357,7 @@ void DecompressPicFromTable_DontHandleDeoxys(const struct CompressedSpriteSheet 
         LZ77UnCompWram(gMonFrontPicTable[0].data, buffer);
     else
         LZ77UnCompWram(src->data, buffer);
+    DuplicateDeoxysTiles(buffer, species);
 }
 
 void HandleLoadSpecialPokePic_DontHandleDeoxys(const struct CompressedSpriteSheet *src, void *dest, s32 species, u32 personality)
@@ -368,12 +369,12 @@ void HandleLoadSpecialPokePic_DontHandleDeoxys(const struct CompressedSpriteShee
     else
         isFrontPic = FALSE; // backPic
 
-    LoadSpecialPokePic_DontHandleDeoxys(src, dest, species, personality, isFrontPic);
+    LoadSpecialPokePic_2(src, dest, species, personality, isFrontPic);
 }
 
 void LoadSpecialPokePic_DontHandleDeoxys(const struct CompressedSpriteSheet *src, void *dest, s32 species, u32 personality, bool8 isFrontPic)
 {
-    if (species == SPECIES_UNOWN)
+	if (species == SPECIES_UNOWN)
     {
         u16 i = GET_UNOWN_LETTER(personality);
 
@@ -393,6 +394,7 @@ void LoadSpecialPokePic_DontHandleDeoxys(const struct CompressedSpriteSheet *src
     else
         LZ77UnCompWram(src->data, dest);
 
+    DuplicateDeoxysTiles(dest, species);
     DrawSpindaSpots(species, personality, dest, isFrontPic);
 }
 
