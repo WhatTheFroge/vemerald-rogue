@@ -316,7 +316,7 @@ script Rogue_Area_AdventureEntrance_SpeakNurse
                 msgbox(format("No worries!"), MSGBOX_DEFAULT)
                 turnobject(OBJ_EVENT_ADVENTURE_NURSE, DIR_WEST)
 
-                msgbox(format("You can collect any Quest rewards from the\nQuest Board over there."), MSGBOX_DEFAULT)
+                msgbox(format("You can collect rewards from the\nQuest Board over there."), MSGBOX_DEFAULT)
                 turnobject(OBJ_EVENT_ADVENTURE_NURSE, DIR_SOUTH)
 
                 msgbox(format("Come and talk to me once you're ready."), MSGBOX_DEFAULT)
@@ -519,7 +519,7 @@ script Rogue_ReturnAdventureInternal
     }
     else
     {
-        msgbox(format("Looks like there aren't any rewards for this Adventure."))
+        msgbox(format("You didn't get any rewards."))
     }
 
     clearflag(FLAG_ROGUE_LEFT_ON_RUN)

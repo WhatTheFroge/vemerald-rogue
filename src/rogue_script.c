@@ -1,3 +1,5 @@
+// rogue script 
+
 #include "global.h"
 #include "constants/battle.h"
 #include "constants/battle_frontier.h"
@@ -81,10 +83,10 @@ static const u8 sStatNamesTable[NUM_STATS][13] = // a;t versopm pf gStatNamesTab
 {
     [STAT_HP]      = _("HP"),
     [STAT_ATK]     = _("Attack"),
-    [STAT_DEF]     = _("Defence"),
+    [STAT_DEF]     = _("Defense"),
     [STAT_SPEED]   = _("Speed"),
     [STAT_SPATK]   = _("Sp. Attack"),
-    [STAT_SPDEF]   = _("Sp. Defence"),
+    [STAT_SPDEF]   = _("Sp. Defense"),
 };
 
 static u8 const sText_The[] = _(" the ");
@@ -152,7 +154,7 @@ void Rogue_RandomisePartyMon(void)
 	}
 	
     RogueMonQuery_TransformIntoEggSpecies();
-    RogueMonQuery_TransformIntoEvos(targetlevel, TRUE, TRUE);
+    RogueMonQuery_TransformIntoEvos(targetlevel, TRUE, TRUE, TRUE);
 
     // Remove random entries until we can safely calcualte weights without going over
     while(RogueWeightQuery_IsOverSafeCapacity())

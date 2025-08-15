@@ -1,4 +1,4 @@
-#include "global.h"
+	#include "global.h"
 #include "constants/battle.h"
 #include "constants/event_objects.h"
 #include "constants/items.h"
@@ -2101,7 +2101,8 @@ static u8 CreateTrainerPartyInternal(u16 trainerNum, struct Pokemon* party, u8 m
     return monCount;
 }
 
-static u8 SelectEvoChainMon_CalculateWeight(u16 index, u16 species, void* data)
+//static u8 SelectEvoChainMon_CalculateWeight(u16 index, u16 species, void* data)
+static u16 SelectEvoChainMon_CalculateWeight(u16 index, u16 species, void* data)
 {
     u16* targetSpecies = (u16*)data;
     return Rogue_DoesEvolveInto(species, *targetSpecies) ? 1 : 0;
@@ -2198,7 +2199,7 @@ static u8 CreateRivalPartyInternal(u16 trainerNum, struct Pokemon* party, u8 mon
                 RogueMonQuery_Reset(QUERY_FUNC_EXCLUDE);
                 RogueMiscQuery_EditElement(QUERY_FUNC_INCLUDE, Rogue_GetEggSpecies(species));
 
-                RogueMonQuery_TransformIntoEvos(scratch.evoLevel, scratch.allowItemEvos, FALSE);
+                RogueMonQuery_TransformIntoEvos(scratch.evoLevel, scratch.allowItemEvos, FALSE, TRUE);
 
                 if(RogueMiscQuery_CheckState(species))
                 {
@@ -2729,7 +2730,7 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
         if(!customScript)
         {
             RogueMonQuery_TransformIntoEggSpecies();
-            RogueMonQuery_TransformIntoEvos(scratch->evoLevel, scratch->allowItemEvos, FALSE);
+            RogueMonQuery_TransformIntoEvos(scratch->evoLevel, scratch->allowItemEvos, FALSE, TRUE);
         }
 
         if(scratch->preferStrongSpecies && CanEntirelyAvoidWeakSpecies())

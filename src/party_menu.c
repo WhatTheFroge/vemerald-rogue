@@ -5306,7 +5306,7 @@ static void DisplayLearnMoveMessageAndClose(u8 taskId, const u8 *str)
 
 // move[1] doesn't use constants cause I don't know if it's actually a move ID storage
 
-void ItemUseCB_TMHM(u8 taskId, TaskFunc task)
+/*void ItemUseCB_TMHM(u8 taskId, TaskFunc task)
 {
     struct Pokemon *mon;
     s16 *move;
@@ -5340,7 +5340,69 @@ void ItemUseCB_TMHM(u8 taskId, TaskFunc task)
         DisplayLearnMoveMessage(gText_PkmnNeedsToReplaceMove);
         gTasks[taskId].func = Task_ReplaceMoveYesNo;
     }
+}*/
+
+// set new TM move pp to existing move pp 
+void ItemUseCB_TMHM(u8 taskId, TaskFunc task)
+{
+    struct Pokemon *mon;
+    s16 *move;
+    u16 item;
+
+    PlaySE(SE_SELECT);
+    mon = &gPlayerParty[gPartyMenu.slotId];
+    move = &gPartyMenu.data1;
+    item = gSpecialVar_ItemId;
+    GetMonNickname(mon, gStringVar1);
+    move[0] = ItemIdToBattleMoveId(item);
+    StringCopy(gStringVar2, gMoveNames[move[0]]);
+    move[1] = 0;
+
+    switch (CanMonLearnTMTutor(mon, item, 0))
+    {
+    case CANNOT_LEARN_MOVE:
+        DisplayLearnMoveMessageAndClose(taskId, gText_PkmnCantLearnMove);
+        return;
+    case ALREADY_KNOWS_MOVE:
+        DisplayLearnMoveMessageAndClose(taskId, gText_PkmnAlreadyKnows);
+        return;
+    }
+
+    // ✅ SET FLAG: we're using a TM
+    //sIsUsingTM = TRUE;
+
+	if (GiveMoveToMon(mon, move[0]) != MON_HAS_MAX_MOVES)
+	{
+		gTasks[taskId].func = Task_LearnedMove;
+	}
+	
+	else
+	{
+		DisplayLearnMoveMessage(gText_PkmnNeedsToReplaceMove);
+        gTasks[taskId].func = Task_ReplaceMoveYesNo;
+	}
+	
+/*	else
+	{
+		// Auto-delete first move and teach TM
+		DeleteFirstMoveAndGiveMoveToMon(mon, move[0]);
+		gTasks[taskId].func = Task_LearnedMove;
+	}*/
+
+
+    /*if (GiveMoveToMon(mon, move[0]) != MON_HAS_MAX_MOVES)
+    {
+        //sIsUsingTM = FALSE; // ✅ Clear flag after use
+        gTasks[taskId].func = Task_LearnedMove;
+    }
+    else
+    {
+        // Don't clear flag yet — replacement happens in DeleteFirstMoveAndGiveMoveToMon
+        DisplayLearnMoveMessage(gText_PkmnNeedsToReplaceMove);
+        gTasks[taskId].func = Task_ReplaceMoveYesNo;
+    }*/
 }
+
 
 static void Task_LearnedMove(u8 taskId)
 {

@@ -1,3 +1,5 @@
+// rogue baked 
+
 //
 // This file is shared between the game src and the offline bake to assist in making 
 // queries and other stuff which can be prepared offline a bit faster
@@ -1134,6 +1136,20 @@ u16 Rogue_GetPrice(u16 itemId)
 
     if(itemId == ITEM_NONE)
         return 0;
+	
+	if (itemId == ITEM_DEEP_SEA_TOOTH)
+		return 1800;
+	if (itemId == ITEM_SUN_STONE)
+		return 1800; 
+	if (itemId == ITEM_MOON_STONE)
+		return 1200; 
+	if (itemId == ITEM_LINK_CABLE)
+		return 3000; 
+	
+	if (itemId == ITEM_ETHER)
+		return 500;
+	if (itemId == ITEM_MAX_ETHER)
+		return 1000; 
 
     // Range edits
     if(itemId >= ITEM_HP_UP && itemId <= ITEM_PP_MAX)
@@ -1155,6 +1171,10 @@ u16 Rogue_GetPrice(u16 itemId)
     //   price = Rogue_CalculateMovePrice(move) * 4;
         applyDefaultHubIncrease = TRUE;
     }
+
+
+
+
 
     // Set hold items price based on usage and override specifics below
     if(item.holdEffect != 0 && item.pocket != POCKET_BERRIES)
@@ -1368,8 +1388,12 @@ u16 Rogue_GetPrice(u16 itemId)
 			break;
 
         case ITEM_RARE_CANDY:
-            price = 1000;
+            price = 2000;
             break;
+
+		case ITEM_SUPER_POTION:
+			price = 600; 
+			break; 
 
 #ifdef ROGUE_EXPANSION
         case ITEM_SPORT_BALL:
@@ -1620,11 +1644,15 @@ u32 Rogue_CalculateMovePrice(u16 move)
 	case MOVE_RAIN_DANCE:
 	case MOVE_SUNNY_DAY:	return 10000 * 3/10;
 	case MOVE_BULK_UP:		return 11000 * 3/10;
-	case MOVE_CALM_MIND:
-	case MOVE_DOUBLE_TEAM:	return 15000 * 3/10;
+	case MOVE_CALM_MIND:	return 15000 * 3/10;
 	case MOVE_REST:			return 16000 * 3/10;
 	case MOVE_TOXIC:		return 17000 * 3/10;
 	case MOVE_PROTECT:		return 18000 * 3/10;
+	
+	// double team value changed due to lower availability: 
+	case MOVE_DOUBLE_TEAM:	return 5000 * 3/10; // return 15000 * 3/10;
+	
+	
 	
 	// Tutors (Attacks)
 	case MOVE_SWIFT:
@@ -1800,6 +1828,10 @@ u32 Rogue_CalculateMovePrice(u16 move)
 	// They are combo pieces (Endure/Sub) and require berries on top of that 
 	case MOVE_FLAIL:		return 1500;
 	case MOVE_REVERSAL:		return 1500;
+	
+	// attack moves
+	case MOVE_ASTONISH:
+	case MOVE_UPROAR:		return 1000; 
 	
 	
 	}

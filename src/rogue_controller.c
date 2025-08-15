@@ -1,3 +1,8 @@
+// rogue controller 
+// before adjusting weights 8/15
+
+#include <stdlib.h>
+
 #include "global.h"
 #include "constants/abilities.h"
 #include "constants/battle.h"
@@ -227,6 +232,8 @@ static bool8 RareSpecies2 (u16 species); // new
 
 static bool8 PseudoSpecies (u16 species); // new
 static bool8 StarterSpecies (u16 species); // new
+static bool8 EeveeSpecies (u16 species); // new
+
 
 static void RandomiseCharmItems(void);
 static bool8 HasHoneyTreeEncounterPending(void);
@@ -1264,9 +1271,10 @@ u16 Rogue_ModifyItemPickupAmount(u16 itemId, u16 amount)
             case ITEM_ESCAPE_ROPE:
                 amount = 1;
                 break;
-
+	
+			// rare candy quantity fix 
             case ITEM_RARE_CANDY:
-                amount = 10;
+                amount = 5;
                 break;
 
 #ifdef ROGUE_EXPANSION
@@ -1280,16 +1288,6 @@ u16 Rogue_ModifyItemPickupAmount(u16 itemId, u16 amount)
             if(Rogue_IsEvolutionItem(itemId) || Rogue_IsFormItem(itemId))
                 amount = 1;
 
-#ifdef ROGUE_EXPANSION
-            if(itemId >= ITEM_LONELY_MINT && itemId <= ITEM_SERIOUS_MINT)
-                amount = 1;
-
-            if(itemId >= ITEM_RED_NECTAR && itemId <= ITEM_PURPLE_NECTAR)
-                amount = 1;
-
-            if((itemId >= ITEM_BUG_TERA_SHARD && itemId <= ITEM_WATER_TERA_SHARD) || itemId == ITEM_STELLAR_TERA_SHARD)
-                amount = 1;
-#endif
         }
     }
     else
@@ -1310,6 +1308,9 @@ u16 Rogue_ModifyItemPickupAmount(u16 itemId, u16 amount)
             break;
         }
     }
+
+	if (itemId == ITEM_STARF_BERRY)
+		amount = 4; 
 
     return amount;
 }
@@ -1753,8 +1754,8 @@ const u8* Rogue_ModifyOverworldInteractionScript(struct MapPosition *position, u
 
 u16 Rogue_ModifyOverworldMapWeather(u16 weather)
 {
-    if(gMapHeader.mapType != MAP_TYPE_INDOOR && gMapHeader.mapType != MAP_TYPE_UNDERGROUND)
-    {
+    //if(gMapHeader.mapType != MAP_TYPE_INDOOR && gMapHeader.mapType != MAP_TYPE_UNDERGROUND)
+    //{
         if(Rogue_IsRunActive())
         {
             switch (gRogueAdvPath.currentRoomType)
@@ -1841,7 +1842,7 @@ u16 Rogue_ModifyOverworldMapWeather(u16 weather)
                     return WEATHER_SNOW;
             }
         }
-    }
+    //}
 
     return weather;
 }
@@ -2027,7 +2028,8 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
                 case ITEM_LUCKY_PUNCH:
 				case ITEM_METAL_POWDER: 
 				case ITEM_LAX_INCENSE:
-				case ITEM_SEA_INCENSE: 
+				case ITEM_SEA_INCENSE:
+				case ITEM_LEFTOVERS: 
 					return FALSE;
 					
             }
@@ -2106,6 +2108,8 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
         {
             if((itemId >= ITEM_HP_UP && itemId <= ITEM_CALCIUM) || itemId == ITEM_ZINC)
                 return FALSE;
+			if((itemId == ITEM_PP_UP) || itemId == ITEM_PP_MAX)
+				return FALSE; 
         }
 
         if(Rogue_IsEvolutionItem(itemId))
@@ -2538,8 +2542,10 @@ static const u8 sStarterTypeTriangles[] =
     TYPE_FLYING, TYPE_ROCK, TYPE_GRASS,
     TYPE_STEEL, TYPE_FIRE, TYPE_ROCK*/
 	
-	TYPE_BUG, TYPE_POISON, TYPE_POISON 
+	// TYPE_BUG, TYPE_POISON, TYPE_POISON 
 	
+	// allow starters to be any types
+	TYPE_NONE, TYPE_NONE, TYPE_NONE
 };
 
 static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
@@ -2570,7 +2576,7 @@ static struct StarterSelectionData SelectStarterMons(bool8 isSeeded)
             RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);//
 
             RogueMonQuery_TransformIntoEggSpecies();
-            RogueMonQuery_TransformIntoEvos(2, FALSE, FALSE); // to force mons to fit gen settings
+            RogueMonQuery_TransformIntoEvos(2, FALSE, FALSE, FALSE); // to force mons to fit gen settings
             RogueMonQuery_AnyActiveEvos(QUERY_FUNC_INCLUDE);
 
             RogueMonQuery_IsOfType(QUERY_FUNC_INCLUDE, typeFlags);
@@ -3327,6 +3333,8 @@ u16 Rogue_PostRunRewardLvls()
 {
     u16 lvlCount = 2;
     u16 targettedMons = CalculateRewardLvlMonCount();
+	
+	return 0; // skip reward lvls 
 
     if(targettedMons == 0)
     {
@@ -3358,8 +3366,9 @@ u16 Rogue_PostRunRewardLvls()
                     CalculateMonStats(&gPlayerParty[i]);
                 }
                 
+				/* Disable friendship fresh start? 
                 // Increase friendship from these levels
-                AdjustFriendship(&gPlayerParty[i], FRIENDSHIP_EVENT_GROW_LEVEL);
+                // AdjustFriendship(&gPlayerParty[i], FRIENDSHIP_EVENT_GROW_LEVEL);*/
             }
         }
         
@@ -4163,13 +4172,6 @@ static void ChooseLegendarysForNewAdventure()
 
 
     // Always have 1
-    if(!spawnRoamer && !spawnMinor)
-    {
-        if(RogueRandom() % 2)
-            spawnRoamer = TRUE;
-        else
-            spawnMinor = TRUE;
-    }
 
     if(Rogue_GetModeRules()->adventureGenerator == ADV_GENERATOR_GAUNTLET)
     {
@@ -4479,7 +4481,7 @@ static u8 UNUSED RandomMonType(u16 seedFlag)
     return type;
 }
 
-static u8 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
+static u16 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 {
 
     if (PoorSpecies1(species))							
@@ -4577,10 +4579,13 @@ static u8 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 	}
 
 	if (PseudoSpecies(species))
-		return 0; // testing value 0; real value 3  
+		return 2; // testing value 0; real value 3  
 	
 	if (StarterSpecies(species))
-		return 0; // testing value 0; real value 6 or 7 
+		return 4; // testing value 0; real value 6 or 7 
+
+	if (EeveeSpecies(species))
+		return 4; // early evolution - less likely 
 
     return 10;
 }
@@ -4594,7 +4599,7 @@ u16 Rogue_SelectWildDenEncounterRoom(void)
     RogueMonQuery_IsSpeciesActive();
     RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);
     RogueMonQuery_TransformIntoEggSpecies();
-    RogueMonQuery_TransformIntoEvos(Rogue_CalculatePlayerMonLvl(), TRUE, FALSE);
+    RogueMonQuery_TransformIntoEvos(Rogue_CalculatePlayerMonLvl(), TRUE, FALSE, TRUE);
 
     // Remove random entries until we can safely calcualte weights without going over
     while(RogueWeightQuery_IsOverSafeCapacity())
@@ -4674,7 +4679,7 @@ u16 Rogue_SelectHoneyTreeEncounterRoom(void)
         RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);
 
         RogueMonQuery_TransformIntoEggSpecies();
-        RogueMonQuery_TransformIntoEvos(Rogue_CalculatePlayerMonLvl(), TRUE, FALSE);
+        RogueMonQuery_TransformIntoEvos(Rogue_CalculatePlayerMonLvl(), TRUE, FALSE, TRUE);
 
         // Now we've evolved we're only caring about mons of this type
         //RogueMonQuery_IsOfType(QUERY_FUNC_INCLUDE, typeFlags);
@@ -4737,7 +4742,8 @@ void Rogue_ResetAdventurePathBuffers()
     memset(&gRogueAdvPath.routeHistoryBuffer[0], (u16)-1, sizeof(u16) * ARRAY_COUNT(gRogueAdvPath.routeHistoryBuffer));
 }
 
-static u8 SelectRouteRoom_CalculateWeight(u16 index, u16 routeId, void* data, bool8 applyDelaySeeds)
+// u8 
+static u16 SelectRouteRoom_CalculateWeight(u16 index, u16 routeId, void* data, bool8 applyDelaySeeds)
 {
     u8 const roomDelay = 3; // maybe can increase this once added more routes
     u8 difficulty = *((u8*)data);
@@ -4764,12 +4770,14 @@ static u8 SelectRouteRoom_CalculateWeight(u16 index, u16 routeId, void* data, bo
     }
 }
 
-static u8 SelectRouteRoom_CalculateWeightDefault(u16 index, u16 routeId, void* data)
+// u8
+static u16 SelectRouteRoom_CalculateWeightDefault(u16 index, u16 routeId, void* data)
 {
     return SelectRouteRoom_CalculateWeight(index, routeId, data, TRUE);
 }
 
-static u8 SelectRouteRoom_CalculateWeightFallback(u16 index, u16 routeId, void* data)
+// u8 
+static u16 SelectRouteRoom_CalculateWeightFallback(u16 index, u16 routeId, void* data)
 {
     return SelectRouteRoom_CalculateWeight(index, routeId, data, FALSE);
 }
@@ -5058,8 +5066,9 @@ void Rogue_OnSetWarpData(struct WarpData *warp)
 
                 case ADVPATH_ROOM_ROUTE:
                 {
-                    u8 weatherChance = 5 + 20 * gRogueAdvPath.currentRoomParams.perType.route.difficulty;
-
+                    //u8 weatherChance = 5 + 20 * gRogueAdvPath.currentRoomParams.perType.route.difficulty;
+					//u8 weatherChance = 100; 
+					//u8 weatherChance = 20 + 20 * gRogueAdvPath.currentRoomParams.perType.route.difficulty;
                     gRogueRun.currentRouteIndex = gRogueAdvPath.currentRoomParams.roomIdx;
 
                     RandomiseWildEncounters();
@@ -5069,11 +5078,33 @@ void Rogue_OnSetWarpData(struct WarpData *warp)
                     RandomiseEnabledItems();
                     TryOptionalRandomanSpawn();
 
-                    if(Rogue_GetCurrentDifficulty() != 0 && RogueRandomChance(weatherChance, OVERWORLD_FLAG))
+					if (Rogue_GetCurrentDifficulty() >= 8) 
+					//if((Rogue_GetCurrentDifficulty() != 0) && (gRogueAdvPath.currentRoomParams.perType.route.difficulty == ADVPATH_SUBROOM_ROUTE_TOUGH)) // && RogueRandomChance(weatherChance, OVERWORLD_FLAG))
+                    //if(Rogue_GetCurrentDifficulty() != 0 && RogueRandomChance(weatherChance, OVERWORLD_FLAG))
                     {
-                        u8 randIdx = RogueRandomRange(ARRAY_COUNT(gRogueRouteTable.routes[gRogueRun.currentRouteIndex].wildTypeTable), OVERWORLD_FLAG);
+                        /*u8 randIdx = RogueRandomRange(ARRAY_COUNT(gRogueRouteTable.routes[gRogueRun.currentRouteIndex].wildTypeTable), OVERWORLD_FLAG);
                         u16 chosenType = gRogueRouteTable.routes[gRogueRun.currentRouteIndex].wildTypeTable[randIdx];
-                        u16 weatherType = gRogueTypeWeatherTable[chosenType];
+                        u16 weatherType = gRogueTypeWeatherTable[chosenType];*/
+
+						// Randomly pick a weather effect from four choices
+						u8 weatherChoice = (RogueRandom() % 4);  // rand() will give a value between 0 and 3
+
+						// Assign the corresponding weather effect based on the random number
+						u8 weatherType; 
+						switch (weatherChoice) {
+							case 0:
+								weatherType = WEATHER_DOWNPOUR;
+								break;
+							case 1:
+								weatherType = WEATHER_DROUGHT;
+								break;
+							case 2:
+								weatherType = WEATHER_SNOW;
+								break;
+							case 3:
+								weatherType = WEATHER_SANDSTORM;
+								break;
+						}
 
                         VarSet(VAR_ROGUE_DESIRED_WEATHER, weatherType);
                     }
@@ -5376,16 +5407,7 @@ void Rogue_ModifyObjectEvents(struct MapHeader *mapHeader, bool8 loadingFromSave
                         {
                             objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_RARE_CANDY;
                         }
-#ifdef ROGUE_EXPANSION
-                        else if(itemId >= ITEM_LONELY_MINT && itemId <= ITEM_SERIOUS_MINT)
-                        {
-                            objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_MINT;
-                        }
-                        else if((itemId >= ITEM_BUG_TERA_SHARD && itemId <= ITEM_WATER_TERA_SHARD) || itemId == ITEM_STELLAR_TERA_SHARD)
-                        {
-                            objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_TERA_SHARD;
-                        }
-#endif
+
                         else if(Rogue_IsEvolutionItem(itemId))
                         {
                             objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_EVO_STONE;
@@ -5413,16 +5435,7 @@ void Rogue_ModifyObjectEvents(struct MapHeader *mapHeader, bool8 loadingFromSave
                                 else
                                     objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_GOLD_TM;
                                 break;
-#ifdef ROGUE_EXPANSION
-                            case POCKET_STONES:
-                                if(itemId >= ITEM_RED_ORB && itemId <= ITEM_DIANCITE)
-                                    objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_MEGA_STONE;
-                                else if(itemId >= ITEM_NORMALIUM_Z && itemId <= ITEM_ULTRANECROZIUM_Z)
-                                    objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_Z_CRYSTAL;
-                                else
-                                    objectEvents[write].graphicsId = OBJ_EVENT_GFX_ITEM_HOLD_ITEM;
-                                break;
-#endif
+
                             }
                         }
 
@@ -6311,8 +6324,9 @@ void Rogue_Battle_EndTrainerBattle(u16 trainerNum)
                     if(levelOffsetDelta == 0)
                     {
                         // Apply default
-                        levelOffsetDelta = 4;
-                    }
+                        //levelOffsetDelta = 4;
+						levelOffsetDelta = 2;
+					}
 
                     // Every trainer battle drops level cap slightly
                     if(gRogueRun.currentLevelOffset < levelOffsetDelta)
@@ -6423,7 +6437,7 @@ void Rogue_Battle_EndWildBattle(void)
             if(levelOffsetDelta == 0)
             {
                 // Apply default
-                levelOffsetDelta = 4;
+                levelOffsetDelta = 1;
             }
 
             // Don't increase the level caps if we only caught the mon
@@ -6752,7 +6766,7 @@ void Rogue_DebugFillPartySnapshots()
                         else
                             RogueMiscQuery_EditElement(QUERY_FUNC_INCLUDE, gRogueRun.partySnapshots[snapshotIndex - 1].partySpeciesGfx[j]);
 
-                        RogueMonQuery_TransformIntoEvos(10 * i, TRUE, FALSE);
+                        RogueMonQuery_TransformIntoEvos(10 * i, TRUE, FALSE, TRUE);
 
                         gRogueRun.partySnapshots[snapshotIndex].partySpeciesGfx[j] = RogueMiscQuery_SelectRandomElement(Random());
                         gRogueRun.partySnapshots[snapshotIndex].partyPersonalities[j] = gRogueRun.partySnapshots[snapshotIndex - 1].partyPersonalities[j];
@@ -6784,7 +6798,7 @@ void Rogue_DebugFillPartySnapshots()
 #endif
 }
 
-void Rogue_PreBattleSetup(void)
+/*void Rogue_PreBattleSetup(void)
 {
     if(IsCurseActive(EFFECT_ITEM_SHUFFLE))
     {
@@ -6794,7 +6808,7 @@ void Rogue_PreBattleSetup(void)
         for(i = 0; i < size; ++i)
             SwapMonItems(i, Random() % size, gPlayerParty);
     }
-}
+}*/
 
 bool8 Rogue_OverrideTrainerItems(u16* items)
 {
@@ -7720,39 +7734,61 @@ void Rogue_ModifyWildMon(struct Pokemon* mon)
         {
             RogueGift_CreateMon(CUSTOM_MON_WAHEY_ELECTRODE, mon, SPECIES_ELECTRODE, GetMonData(mon, MON_DATA_LEVEL), 31);
         }
+
         else if(gRogueAdvPath.currentRoomType == ADVPATH_ROOM_WILD_DEN)
         {
             u16 presetIndex;
             u16 presetCount = gRoguePokemonProfiles[species].competitiveSetCount;
             u16 statA = (Random() % 6);
-            // u16 statB = (statA + 1 + (Random() % 5)) % 6;
-            u16 temp = 31;
+            u16 statB = (statA + 1 + (Random() % 5)) % 6;		//was commented out 
+			u16 temp = 31;
+			u8 nature = 0; 
+			
 
-            if(presetCount != 0)
-            {
-                struct RoguePokemonCompetitiveSetRules rules;
-                memset(&rules, 0, sizeof(rules));
-
-                presetIndex = Random() % presetCount;
-                Rogue_ApplyMonCompetitiveSet(mon, GetMonData(mon, MON_DATA_LEVEL), &gRoguePokemonProfiles[species].competitiveSets[presetIndex], &rules);
-            }
-
+			/*
             // Clear friendship
             temp = 0;
             SetMonData(mon, MON_DATA_FRIENDSHIP, &temp);
-
-            // Bump 2 of the IVs to max
-            temp = 31;
-	    SetMonData(mon, MON_DATA_HP_IV + statA, &temp);
-	    SetMonData(mon, MON_DATA_HP_IV + statA, &temp);	// added code, attempt set 2nd IV to max. 
-            // SetMonData(mon, MON_DATA_HP_IV + statB, &temp);
-
+			
             // Clear held item
             temp = 0;
             SetMonData(mon, MON_DATA_HELD_ITEM, &temp);
+			*/
+
+            // Bump 2 of the IVs to max
+            temp = 31;
+			SetMonData(mon, MON_DATA_HP_IV + statA, &temp);
+			//SetMonData(mon, MON_DATA_HP_IV + statA, &temp);	// added code, attempt set 2nd IV to max. 
+            SetMonData(mon, MON_DATA_HP_IV + statB, &temp);
+
             
+			if(presetCount != 0)
+            {
+                struct RoguePokemonCompetitiveSetRules rules;
+                memset(&rules, 0, sizeof(rules));
+				//presetRules->skipNature = FALSE;
+				rules.skipNature = 0;
+
+                presetIndex = Random() % presetCount;
+                Rogue_ApplyMonCompetitiveSet(mon, GetMonData(mon, MON_DATA_LEVEL), &gRoguePokemonProfiles[species].competitiveSets[presetIndex], &rules);
+				
+				// set Nature 
+				//u8 nature = gRoguePokemonProfiles[species].competitiveSets[presetIndex].nature;
+				//SetMonData(mon, MON_DATA_NATURE, &nature);
+
+            }
+			
+			// Clear friendship
+            temp = 0;
+            SetMonData(mon, MON_DATA_FRIENDSHIP, &temp);
+			
+            // Clear held item
+            temp = 0;
+            SetMonData(mon, MON_DATA_HELD_ITEM, &temp);
+			
             TryApplyCustomMon(species, mon);
         }
+
         else if(gRogueAdvPath.currentRoomType == ADVPATH_ROOM_LEGENDARY)
         {
             u8 i;
@@ -8002,7 +8038,7 @@ void Rogue_BeginCatchingContest(u8 type, u8 stat)
     RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);
 
     RogueMonQuery_TransformIntoEggSpecies();
-    RogueMonQuery_TransformIntoEvos(Rogue_CalculatePlayerMonLvl(), TRUE, FALSE);
+    RogueMonQuery_TransformIntoEvos(Rogue_CalculatePlayerMonLvl(), TRUE, FALSE, TRUE);
 
     // Now we've evolved we're only caring about mons of this type
     RogueMonQuery_IsOfType(QUERY_FUNC_INCLUDE, MON_TYPE_VAL_TO_FLAGS(type));
@@ -8218,6 +8254,10 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
 
     case ROGUE_SHOP_BATTLE_ENHANCERS:
         RogueItemQuery_IsGeneralShopItem(QUERY_FUNC_EXCLUDE);
+		
+		// attempt prevent trade evos too early (Gengar, Zam, Golem, Machamp); Link cables can still be found on routes. 
+		if (difficulty <= 4 && Rogue_IsRunActive())
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_LINK_CABLE);
 
 #ifdef ROGUE_EXPANSION
         // Mints are in treat shop
@@ -8596,11 +8636,22 @@ static bool8 PoorSpecies2(u16 species)
         case SPECIES_SMEARGLE:
         case SPECIES_SKITTY:
 		
-        case SPECIES_CATERPIE:
-		case SPECIES_WEEDLE:
-        case SPECIES_LEDYBA:
-        case SPECIES_SPINARAK:
-        case SPECIES_WURMPLE:
+        case SPECIES_CATERPIE://
+		case SPECIES_WEEDLE://
+        case SPECIES_LEDYBA://
+        case SPECIES_SPINARAK://
+        case SPECIES_WURMPLE://
+		
+		case SPECIES_METAPOD:
+		case SPECIES_BUTTERFREE:
+		case SPECIES_KAKUNA:
+		case SPECIES_BEEDRILL:
+		case SPECIES_LEDIAN:
+		case SPECIES_ARIADOS:
+		case SPECIES_SILCOON:
+		case SPECIES_CASCOON:
+		case SPECIES_DUSTOX:
+		case SPECIES_BEAUTIFLY:
             return TRUE;
         default:
             return FALSE;
@@ -8608,24 +8659,44 @@ static bool8 PoorSpecies2(u16 species)
 }
 
 		
-bool8 PoorSpecies3 (u16 species) // Most experimental
-{
-	// species = GET_BASE_SPECIES_ID(species);
-	switch(species)
+bool8 PoorSpecies3(u16 species) // Extended to include full families
+{	// species = GET_BASE_SPECIES_ID(species); 
+	switch (species)
 	{
 		case SPECIES_POOCHYENA:
-		case SPECIES_ZIGZAGOON:
-		case SPECIES_SENTRET:
-		case SPECIES_SURSKIT:
-		case SPECIES_RATTATA:
-		case SPECIES_AZURILL:
-		case SPECIES_MAGNEMITE:
-		case SPECIES_PARAS:
-		case SPECIES_DIGLETT:
-		case SPECIES_TOGEPI:
-			return TRUE;
+		case SPECIES_MIGHTYENA:
 
+		case SPECIES_ZIGZAGOON:
+		case SPECIES_LINOONE:
+
+		case SPECIES_SENTRET:
+		case SPECIES_FURRET:
+
+		case SPECIES_SURSKIT:
+		case SPECIES_MASQUERAIN:
+
+		case SPECIES_RATTATA:
+		case SPECIES_RATICATE:
+
+		case SPECIES_AZURILL:
+		case SPECIES_MARILL:
+		case SPECIES_AZUMARILL:
+
+		case SPECIES_MAGNEMITE:
+		case SPECIES_MAGNETON:
+
+		case SPECIES_PARAS:
+		case SPECIES_PARASECT:
+
+		case SPECIES_DIGLETT:
+		case SPECIES_DUGTRIO:
+
+		case SPECIES_TOGEPI:
+		case SPECIES_TOGETIC:
+
+			return TRUE;
 	}
+
 	return FALSE;
 }
 
@@ -8640,6 +8711,7 @@ bool8 UncommonSpecies1(u16 species)
         case SPECIES_CHIMECHO:
         case SPECIES_KECLEON:
         case SPECIES_SUDOWOODO:
+		case SPECIES_PORYGON: // unc2? 
             return TRUE;
         default:
             return FALSE;
@@ -8712,37 +8784,58 @@ bool8 StarterSpecies(u16 species)
         case SPECIES_BULBASAUR:
         case SPECIES_CHIKORITA:
         case SPECIES_TREECKO:
+		
         case SPECIES_CHARMANDER:
 		case SPECIES_CYNDAQUIL:
         case SPECIES_TORCHIC:
+
         case SPECIES_SQUIRTLE:
         case SPECIES_TOTODILE:
         case SPECIES_MUDKIP:
-		case SPECIES_EEVEE: 
 		
-        /*case SPECIES_IVYSAUR:
+        case SPECIES_IVYSAUR:
         case SPECIES_VENUSAUR:
         case SPECIES_BAYLEEF:
         case SPECIES_MEGANIUM:
         case SPECIES_GROVYLE:
         case SPECIES_SCEPTILE:
-        case SPECIES_CHARMELEON:
+        
+		case SPECIES_CHARMELEON:
         case SPECIES_CHARIZARD:
         case SPECIES_QUILAVA:
         case SPECIES_TYPHLOSION:
         case SPECIES_COMBUSKEN:
         case SPECIES_BLAZIKEN:
-        case SPECIES_WARTORTLE:
+        
+		case SPECIES_WARTORTLE:
         case SPECIES_BLASTOISE:
         case SPECIES_CROCONAW:
         case SPECIES_FERALIGATR:
         case SPECIES_MARSHTOMP:
-        case SPECIES_SWAMPERT:*/ // testing 
+        case SPECIES_SWAMPERT:  // required because evolutions aren't linked enough..  
             return TRUE;
 
         default:
             return FALSE;
     }
+}
+
+bool8 EeveeSpecies (u16 species)
+{
+	switch (species)
+	{
+		case SPECIES_EEVEE:
+		
+		case SPECIES_FLAREON:
+		case SPECIES_JOLTEON:
+		case SPECIES_VAPOREON:
+		case SPECIES_ESPEON:
+		case SPECIES_UMBREON:
+			return TRUE;
+			
+		default:
+			return FALSE;
+	}
 }
 
 bool8 PseudoSpecies(u16 species)
@@ -8753,15 +8846,28 @@ bool8 PseudoSpecies(u16 species)
         case SPECIES_LARVITAR:
         case SPECIES_BAGON:
         case SPECIES_BELDUM:
-            return TRUE;
+
+		case SPECIES_DRAGONAIR:
+		case SPECIES_DRAGONITE:
+		case SPECIES_PUPITAR:
+		case SPECIES_TYRANITAR:
+		case SPECIES_SHELGON:
+		case SPECIES_SALAMENCE:
+		case SPECIES_METANG:
+		case SPECIES_METAGROSS:
+			return TRUE; 
 
         default:
             return FALSE;
     }
 }
 
-static u8 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void* data)
+static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void* data)
 {
+	
+	// test 
+	//if (species == SPECIES_PIDGEY)
+	//	return 300; 
 	
     if (PoorSpecies1(species))							
     { 
@@ -8841,8 +8947,10 @@ static u8 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void* 
 			return 10; 
 		else if (Rogue_GetCurrentDifficulty() == 3)
 			return 8; 
+		else if (Rogue_GetCurrentDifficulty() == 1 || Rogue_GetCurrentDifficulty() == 2)
+			return 2; 
 		else
-			return 1; 
+			return 0; // does it work? 
 	}
 	// don't restore weight to 10 right away;
 	// less common because these Pokemon are immediately strong and don't have a weak starting period 
@@ -8853,20 +8961,28 @@ static u8 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void* 
 			return 10; 
 		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
 			return 8;
-		else
+		else if (Rogue_GetCurrentDifficulty() == 3)
 			return 1; 
+		else
+			return 0; // does it work?  
 	}
 
+	// pseudo 3 starter 6~7
+	// eevee ?? similar to/slightly less than starter 
 	if (PseudoSpecies(species))
-		return 3; 
+		return 2; 
 	
 	if (StarterSpecies(species))
-		return 0; // testing value; real value 6 or 7 
+		return 4; // testing value; real value 6 or 7 
+	
+	if (EeveeSpecies(species))
+		return 10; // more versatile than Starter Species
 	
     return 10;
 }
 
-static u8 RandomiseWildEncounters_CalculateInitialWeight(u16 index, u16 species, void* data)
+// u8
+static u16 RandomiseWildEncounters_CalculateInitialWeight(u16 index, u16 species, void* data)
 {
     // For the 1st encounter, we ensure we will have a mon of that typ
     u8 typeHint = *((u8*)data);
@@ -8915,8 +9031,9 @@ static void BeginWildEncounterQuery()
     RogueMonQuery_IsLegendary(QUERY_FUNC_EXCLUDE);
 
     RogueMonQuery_TransformIntoEggSpecies();
-    RogueMonQuery_TransformIntoEvos(maxlevel - min(6, maxlevel - 1), FALSE, FALSE);
-
+    //RogueMonQuery_TransformIntoEvos(maxlevel - min(6, maxlevel - 1), FALSE, FALSE);
+    RogueMonQuery_TransformIntoEvos(maxlevel - min(6, maxlevel - 1), FALSE, FALSE, FALSE);
+	
     // Now we've evolved we're only caring about mons of this type
     RogueMonQuery_IsOfType(QUERY_FUNC_INCLUDE, typeFlags);
 
@@ -9065,7 +9182,8 @@ bool8 Rogue_TryAddHoneyTreePokeblock(u16 itemId)
     return 0;
 }
 
-static u8 RandomiseFishingEncounters_CalculateWeight(u16 index, u16 species, void* data)
+// u8
+static u16 RandomiseFishingEncounters_CalculateWeight(u16 index, u16 species, void* data)
 {
     if(StarterSpecies(species))
         return 0; 
@@ -9280,7 +9398,8 @@ u16 Rogue_GetTRMove(u16 trNumber)
     return MOVE_SPLASH;
 }
 
-static u8 TRMove_CalculateWeight(u16 index, u16 move, void* data)
+// u8 
+static u16 TRMove_CalculateWeight(u16 index, u16 move, void* data)
 {
     // We're specifically going to use moves which would be Tutor moves i.e. ignore moves like growl or splash
     u16 usage = gRoguePokemonSpecialMoveUsages[move];
@@ -9418,14 +9537,17 @@ static bool8 RogueRandomChanceBerry()
     return RogueRandomChance(chance, FLAG_SET_SEED_ITEMS);
 }
 
-static u8 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data)
+// u8
+u16 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data)
 {
     u8 pocket = ItemId_GetPocket(itemId);
     u8 weight;
 	u16 itemid; 
 
-	if (itemid == ITEM_MOON_STONE) 
-		weight = 10;
+	//if (itemid == ITEM_MOON_STONE) 
+	//	weight = 10;
+	
+
 
     switch (pocket)
     {
@@ -9450,7 +9572,55 @@ static u8 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data)
         weight = 10;
         break;
     }
+	
+	// Link cable mons not as reliant on evo 
+	if (itemId == ITEM_LINK_CABLE)
+		weight = 5; 
 
+	if ((itemId >= ITEM_POMEG_BERRY) && (itemId <= ITEM_TAMATO_BERRY))
+		weight = 3; 
+
+	if (itemId == ITEM_STARF_BERRY)
+		weight = 30; 
+	
+	if (itemId == ITEM_ORAN_BERRY)
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			weight = 20;
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			weight = 15;
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			weight = 10;
+		else
+			weight = 0;
+	}
+	
+	if (itemId == ITEM_SITRUS_BERRY)
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			weight = 0;
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			weight = 5;
+		else 
+			weight = 10;
+	}
+	
+	if (itemId == ITEM_LUM_BERRY)
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			weight = 3;
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			weight = 6;
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			weight = 7;
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			weight = 8;
+		else if (Rogue_GetCurrentDifficulty() == 4)
+			weight = 9;
+		else
+			weight = 10; 
+	}
+	
     return weight;
 }
 

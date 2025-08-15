@@ -512,7 +512,7 @@ script Rogue_ReturnAdventureCommon
     }
     else
     {
-        msgbox(format("Looks like there aren't any rewards for this Adventure."))
+        msgbox(format("Looks like you didn't get any rewards."), MSGBOX_DEFAULT)
     }
 
     clearflag(FLAG_ROGUE_LEFT_ON_RUN)

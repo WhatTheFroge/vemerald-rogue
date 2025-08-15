@@ -3,7 +3,9 @@
 
 typedef bool8 (*QueryCallback)(u16 elem, u16 usrData);
 typedef bool8 (*QueryFilterCallback)(u16 elem, void* usrData);
-typedef u8 (*WeightCallback)(u16 index, u16 elem, void* usrData);
+//typedef u8 (*WeightCallback)(u16 index, u16 elem, void* usrData);
+typedef u16 (*WeightCallback)(u16 index, u16 elem, void* usrData);
+
 
 enum
 {
@@ -41,7 +43,7 @@ void RogueMonQuery_IsSpeciesActive();
 void RogueMonQuery_IsBaseSpeciesInCurrentDex(u8 func);
 void RogueMonQuery_IsSeenInPokedex(u8 func);
 void RogueMonQuery_TransformIntoEggSpecies();
-void RogueMonQuery_TransformIntoEvos(u8 levelLimit, bool8 includeItemEvos, bool8 keepSourceSpecies);
+void RogueMonQuery_TransformIntoEvos(u8 levelLimit, bool8 includeItemEvos, bool8 keepSourceSpecies, bool8 allowMoonStoneEvos);
 void RogueMonQuery_IsOfType(u8 func, u32 typeFlags);
 void RogueMonQuery_IsOfGeneration(u8 func, u32 generationFlags);
 void RogueMonQuery_EvosContainType(u8 func, u32 typeFlags);

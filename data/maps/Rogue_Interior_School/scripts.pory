@@ -67,7 +67,7 @@ script Rogue_Interior_School_TalkPokeblock
 
     msgbox(format("My Pokémon love Pokeblock!"))
     msgbox(format("Did you know that you can use\nPokeblock whilst on a route?"))
-    msgbox(format("This allows you to\nattract specific types of Pokemon."))
+    msgbox(format("This allows you to attract\nspecific types of Pokemon."))
     releaseall
 }
 
@@ -77,9 +77,10 @@ script Rogue_Interior_School_TalkTeacher
     faceplayer
 
     msgbox(format("Welcome!"))
-	msgbox(format("I've been teaching my students\ntobecome Adventurers."))
+	msgbox(format("I've been teaching my students\nall about Adventuring."))
 	
-	msgbox(format("They would gladly share their\nknowledge with you. Just talk to them!"))
+	msgbox(format("They would gladly share their\nknowledge with you."))
+	msgbox(format("Just talk to them!"))
 	
     releaseall
 }

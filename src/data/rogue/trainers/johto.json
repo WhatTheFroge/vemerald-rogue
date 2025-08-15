@@ -620,8 +620,8 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "I'm a master of sinister techniques.\\nPrepare for despair!",
-                        "PRE_BATTLE_TAUNT": "Pokemon battles are not merely about\\nbrute force - you'll see soon enough!",
+                        "PRE_BATTLE_OPENNING": "Pokemon battles are not merely about\\nbrute force - you'll see soon enough!",
+                        "PRE_BATTLE_TAUNT": "I'm a master of sinister techniques.\\nPrepare for despair!",
                         "POST_BATTLE_TAUNT": "Ah, you've proven your worth.",
                         "POST_BATTLE_CLOSER": "I subjected you to everything I could\\nmuster. But it wasn't enough.\\pI must hone my skills further."
                     }
@@ -705,8 +705,8 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_OPENNING": "I always train to the extreme.\\nThat is how I became strong,\\nalong with my Pokemon.",
-                        "PRE_BATTLE_TAUNT": "You will bow down to our\\nsuperior power!",
+                        "PRE_BATTLE_OPENNING": "I always train to the extreme.\\pThat is how I became strong,\\nalong with my Pokemon.",
+                        "PRE_BATTLE_TAUNT": "Bow down to our superior power!",
                         "POST_BATTLE_TAUNT": "How could I lose?",
                         "POST_BATTLE_CLOSER": "My job is done.\\pGo face your next challenge."
                     }

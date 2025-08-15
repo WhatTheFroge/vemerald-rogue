@@ -46,12 +46,12 @@ script Rogue_Encounter_DayCare_TalkItemCourier
         else
         {
             bufferitemnameplural(STR_VAR_1, VAR_ROGUE_COURIER_ITEM, VAR_ROGUE_COURIER_COUNT)
-            msgbox(format("I'll be sure to collect your {STR_VAR_1} during my next restock."))
+            msgbox(format("I'll be sure to collect your\n{STR_VAR_1} during my next restock."))
         }
     }
     else
     {
-        msgbox(format("Hello there.\nI am an Item Courier currently on my way to restock some Poké Marts.\pIf you would like, I could pick you up some extra supplies on my way?"))
+		msgbox(format("Hello! I am an Item Courier who\nstocks Poké Marts.\pWould you like me to purchase any\nitems for you?"))  
         waitmessage
 
         rogue_dynamicpokemart(ROGUE_SHOP_COURIER)
@@ -59,12 +59,12 @@ script Rogue_Encounter_DayCare_TalkItemCourier
 
         if(var(VAR_RESULT) == YES)
         {
-            msgbox(format("I'll make sure to pick that up for you on my next restock!\pPlease come and collect it from me, the next time we meet."))
+            msgbox(format("I'll make sure to pick that up for you!\pPlease come and collect it from\nme, the next time we meet."))
             clearflag(FLAG_ROGUE_COURIER_READY)
         }
         else
         {
-            msgbox(format("If you change your mind, feel free to let me know."))
+            msgbox(format("Let me know if you change your mind."))
         }
     }
 

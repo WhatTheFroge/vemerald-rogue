@@ -63,6 +63,8 @@ struct SpeciesItem
     u16 item;
 };
 
+//bool8 sIsUsingTM = FALSE;
+
 static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon);
 static union PokemonSubstruct *GetSubstruct(struct BoxPokemon *boxMon, u32 personality, u8 substructType);
 static void EncryptBoxMon(struct BoxPokemon *boxMon);
@@ -3042,6 +3044,61 @@ u16 GiveMoveToMon(struct Pokemon *mon, u16 move)
     return GiveMoveToBoxMon(&mon->box, move);
 }
 
+/*u16 GiveMoveToMon(struct Pokemon *mon, u16 move)
+{
+    u16 result = GiveMoveToBoxMon(&mon->box, move);
+
+    // Check if the move was successfully added
+    if (result == move)
+    {
+        // Find where the move was added and set PP to 0 only for player mons
+        s32 i;
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            u16 currentMove = GetMonData(mon, MON_DATA_MOVE1 + i);
+            if (currentMove == move)
+            {
+                u8 pp = 0;
+                SetMonData(mon, MON_DATA_PP1 + i, &pp);
+                break;
+            }
+        }
+    }
+
+    return result;
+}*/
+
+/*u16 GiveMoveToMon(struct Pokemon *mon, u16 move)
+{
+    u16 result = GiveMoveToBoxMon(&mon->box, move);
+	u8 pp; 
+	s32 i; 
+
+    // Only change PP if:
+    // - The move was successfully added
+    // - We're in the TM context (assumed by usage of GiveMoveToMon)
+    if (result == move)
+    {
+        // Find the slot the move was added to
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            u16 currentMove = GetMonData(mon, MON_DATA_MOVE1 + i);
+            if (currentMove == move)
+            {
+				pp = 0; 
+                SetMonData(mon, MON_DATA_PP1 + i, &pp);
+                break;
+            }
+        }
+    }
+
+    return result;
+}*/
+
+
+
+
+
 static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
 {
     s32 i;
@@ -3052,6 +3109,8 @@ static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
         {
             SetBoxMonData(boxMon, MON_DATA_MOVE1 + i, &move);
             SetBoxMonData(boxMon, MON_DATA_PP1 + i, &gBattleMoves[move].pp);
+//			u8 zeropp = 0; 
+//			SetBoxMonData(boxMon, MON_DATA_PP1 + i, &zeropp); // set TM move pp to 0 
             return move;
         }
         if (existingMove == move)
@@ -3079,9 +3138,121 @@ u16 GiveMoveToBattleMon(struct BattlePokemon *mon, u16 move)
 
 void SetMonMoveSlot(struct Pokemon *mon, u16 move, u8 slot)
 {
+    u8 oldPP = (u8)GetMonData(mon, MON_DATA_PP1 + slot, NULL);
+    u8 ppBonuses = (u8)GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
+    u8 ppUps = (ppBonuses >> (slot * 2)) & 0x3;
+
+    u8 oldMove = GetMonData(mon, MON_DATA_MOVE1 + slot, NULL);
+    u8 oldBasePP = (oldMove != MOVE_NONE) ? gBattleMoves[oldMove].pp : 0;
+    u8 newBasePP = gBattleMoves[move].pp;
+
+    u8 oldMaxPP = (oldBasePP * (5 + ppUps)) / 5;
+    u8 newMaxPP = (newBasePP * (5 + ppUps)) / 5;
+
+    u8 newPP;
+
+    if (oldMaxPP != 0 && oldPP <= oldMaxPP)
+    {
+        float ratio = (float)oldPP / oldMaxPP;
+        newPP = (u8)(ratio * newMaxPP + 0.5f);  // Round to nearest
+        if (newPP > newMaxPP)
+            newPP = newMaxPP;
+    }
+    else
+    {
+        newPP = newMaxPP;
+    }
+
     SetMonData(mon, MON_DATA_MOVE1 + slot, &move);
-    SetMonData(mon, MON_DATA_PP1 + slot, &gBattleMoves[move].pp);
+    SetMonData(mon, MON_DATA_PP1 + slot, &newPP);
 }
+
+// tm inherits PP but it's direct not propiortional 
+/*void SetMonMoveSlot(struct Pokemon *mon, u16 move, u8 slot)
+{
+    u8 oldPP = (u8)GetMonData(mon, MON_DATA_PP1 + slot, NULL);
+    u8 ppBonuses = (u8)GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
+    u8 ppUps = (ppBonuses >> (slot * 2)) & 0x3;  // Extract 2 bits for this slot
+
+    u8 basePP = gBattleMoves[move].pp;
+    u8 maxPP = (basePP * (5 + ppUps)) / 5;
+
+    // Adjust oldPP to not exceed maxPP of new move
+    if (oldPP > maxPP)
+        oldPP = maxPP;
+
+    SetMonData(mon, MON_DATA_MOVE1 + slot, &move);
+    SetMonData(mon, MON_DATA_PP1 + slot, &oldPP);
+}*/
+
+
+/*void SetMonMoveSlot(struct Pokemon *mon, u16 move, u8 slot)
+{
+    u8 oldPP = (u8)GetMonData(mon, MON_DATA_PP1 + slot, NULL);
+    
+    SetMonData(mon, MON_DATA_MOVE1 + slot, &move);
+    
+    if (oldPP != 0)
+    {
+        SetMonData(mon, MON_DATA_PP1 + slot, &oldPP);
+    }
+    else
+    {
+        u8 basePP = gBattleMoves[move].pp;
+        SetMonData(mon, MON_DATA_PP1 + slot, &basePP);
+    }
+}*/
+
+
+/*void SetMonMoveSlot(struct Pokemon *mon, u16 move, u8 slot)
+{
+    u8 oldPP;
+
+    oldPP = GetMonData(mon, MON_DATA_PP1 + slot, NULL);
+
+    SetMonData(mon, MON_DATA_MOVE1 + slot, &move);
+
+    if (oldPP != 0)
+        SetMonData(mon, MON_DATA_PP1 + slot, &oldPP);
+    else
+        // If no move existed, set full PP
+        SetMonData(mon, MON_DATA_PP1 + slot, &gBattleMoves[move].pp);
+}
+
+
+//void SetMonMoveSlot(struct Pokemon *mon, u16 move, u8 slot)
+//{
+//    SetMonData(mon, MON_DATA_MOVE1 + slot, &move);
+//    SetMonData(mon, MON_DATA_PP1 + slot, &gBattleMoves[move].pp);
+//}
+
+// attempt copy level- up logic (finite PP) 
+/*void SetMonMoveSlotFallback(struct Pokemon *mon, u16 move, u8 slot)
+{
+    s32 i;
+    u16 currentMove;
+    u8 numMoves = 0;
+
+    // Count how many moves the mon currently knows
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        currentMove = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
+        if (currentMove != MOVE_NONE)
+            numMoves++;
+    }
+
+    if (numMoves < MAX_MON_MOVES)
+    {
+        // Add move to next available slot
+        SetMonMoveSlot(mon, move, numMoves);
+    }
+    else
+    {
+        // Use the same logic as level-up: delete first move and shift
+        DeleteFirstMoveAndGiveMoveToMon(mon, move);
+    }
+}*/
+
 
 void SetBattleMonMoveSlot(struct BattlePokemon *mon, u16 move, u8 slot)
 {
@@ -5912,6 +6083,17 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem)
             }
         }
         break;
+		
+		// ✅ Custom logic: Sun Stone + Friendship
+        //if (currentEvo.method == EVO_SUN_STONE_FRIENDSHIP
+        // && currentEvo.param == evolutionItem
+        // && friendship >= 220)
+        //{
+        //    targetSpecies = currentEvo.targetSpecies;
+        //    break;
+        //}
+		
+		
     }
 
     return targetSpecies;

@@ -343,7 +343,7 @@ static u8 CountSubRoomType(u16 roomType, u16 roomIndex)
     return count;
 }
 
-static u8 SelectRoomType_CalculateWeight(u16 weightIndex, u16 roomType, void* data)
+static u16 SelectRoomType_CalculateWeight(u16 weightIndex, u16 roomType, void* data)
 {
     u8 count;
 
@@ -399,13 +399,14 @@ static u8 SelectRoomType_CalculateWeight(u16 weightIndex, u16 roomType, void* da
     // Only allow 1 and cycle weighting every third difficulty
     case ADVPATH_ROOM_DARK_DEAL:
         count = CountRoomType(roomType);
-        if(count != 0)
+        return 0; 
+		/*if(count != 0)
             return 0;
         else if((GetPathGenerationDifficulty() % 2) != 0)
             return 15;
         else
             return 1;
-        break;
+        break;*/
 
     // Only allow 1 and cycle weighting every third difficulty (offset from dark deal rates)
     case ADVPATH_ROOM_LAB:
@@ -444,6 +445,7 @@ static u8 SelectRoomType_CalculateWeight(u16 weightIndex, u16 roomType, void* da
     return 5;
 }
 
+// u8 
 static u16 SelectRoomType(u16* activeTypeBuffer, u16 activeTypeCount)
 {
     u16 i;
@@ -466,7 +468,8 @@ static u16 SelectRoomType(u16* activeTypeBuffer, u16 activeTypeCount)
     return result;
 }
 
-static u8 ReplaceRoomEncounters_CalculateWeight(u16 weightIndex, u16 roomId, void* data)
+// u8 
+static u16 ReplaceRoomEncounters_CalculateWeight(u16 weightIndex, u16 roomId, void* data)
 {
     s16 weight = 10;
     u8 roomType = *((u8*)data);
@@ -715,7 +718,8 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
         validEncounterList[validEncounterCount++] = ADVPATH_ROOM_HONEY_TREE;
 
     // Catching contest
-    if(RogueRandomChance(33, 0))
+    if(RogueRandomChance(80, 0))
+	//if(RogueRandomChance(33, 0))
         validEncounterList[validEncounterCount++] = ADVPATH_ROOM_CATCHING_CONTEST;
 
     // Mysterious Sign
@@ -829,27 +833,35 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
         // If players get encounters they basically have to get lucky with wild den
         if(GetPathGenerationDifficulty() >=  ROGUE_CHAMP_START_DIFFICULTY)
         {
-            chance = 90;
-            chanceFalloff = 15;
+            chance = 40;
+            chanceFalloff = 30;
             minRouteCount = 1;
         }
         else if(GetPathGenerationDifficulty() >=  ROGUE_ELITE_START_DIFFICULTY)
         {
-            chance = 60;
-            chanceFalloff = 10;
-            minRouteCount = 2;
+            //chance = 60;
+            chance = 30; 
+			chanceFalloff = 45;
+            minRouteCount = 3;
         }
         else if(GetPathGenerationDifficulty() >=  1)
         {
-            chance = 40;
-            chanceFalloff = 20;
-            minRouteCount = 3;
+            chance = 20;
+            chanceFalloff = 30;
+            minRouteCount = 5;
         }
+		else if(GetPathGenerationDifficulty() ==  1)
+        {
+            chance = 10;
+            chanceFalloff = 15;
+            minRouteCount = 5;
+        }
+		// 0 badge
         else
         {
-            chance = 5;
+            chance = 0;
             chanceFalloff = 0;
-            minRouteCount = 3;
+            minRouteCount = 5;
         }
 
         // Always make sure there is at least 1 regular route which can be chosen
@@ -997,8 +1009,8 @@ static void GenerateRoomInstance(u8 roomId, u8 roomType)
 
             if (GetPathGenerationDifficulty() <= 1)
 			{
-                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 7;
-                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 3;
+                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 9;
+                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 1;
                 weights[ADVPATH_SUBROOM_ROUTE_TOUGH] = 0;
             }
 			else if(GetPathGenerationDifficulty() > ROGUE_ELITE_START_DIFFICULTY)

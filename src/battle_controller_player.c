@@ -1558,13 +1558,16 @@ extern const u8 gText_MoveShortNoEffect[];
 extern const u8 gText_MoveShortSuperEffective[];
 extern const u8 gText_MoveShortNotVeryEffective[];
 
-enum
-{
-    EFFECTIVENESS_NO_EFFECT,
-    EFFECTIVENESS_NOT_VERY_EFFECTIVE,
-    EFFECTIVENESS_EFFECTIVE,
-    EFFECTIVENESS_SUPER_EFFECTIVE,
-};
+	enum
+	{
+		//EFFECTIVENESS_NO_EFFECT,
+		//EFFECTIVENESS_NOT_VERY_EFFECTIVE,
+		//EFFECTIVENESS_EFFECTIVE,
+		//EFFECTIVENESS_SUPER_EFFECTIVE,
+		
+		PHYSICAL_MOVE,
+		SPECIAL_MOVE,
+	};
 
 static u16 GetDisplayAbility(u16 ability)
 {
@@ -1577,33 +1580,61 @@ static u16 GetDisplayAbility(u16 ability)
     return ability;
 }
 
-static u8 GetDisplayEffectiveness(u16 move, u16 displayType, u32 battler, u32 opposingBattler, u16 ability)
+static u8 GetDisplaySplit(u16 move, u16 displayType)
 {
-#ifdef ROGUE_EXPANSION
-    uq4_12_t typeModifier = CalcTypeEffectivenessMultiplier(move, displayType, battler, opposingBattler, GetDisplayAbility(ability), FALSE);
+	u8 movetype = GetMoveDisplayTyping(move);
+    
+	//u8 type1 = gBattleMons[opposingBattler].type1;
+    //u8 type2 = gBattleMons[opposingBattler].type2;
+    //int typeEffect = GetMovePower(move, displayType, type1, type2, GetDisplayAbility(ability), 0);
 
-    if (typeModifier == UQ_4_12(0.0))
+	if (IS_TYPE_PHYSICAL(movetype) == TRUE)
+		return PHYSICAL_MOVE;
+	
+	if (IS_TYPE_SPECIAL(movetype) == TRUE)
+		return SPECIAL_MOVE; 
+}
+
+/*	if (movetype == TYPE_NORMAL || movetype == TYPE_FLYING || movetype == TYPE_POISON || movetype == TYPE_GROUND || movetype == TYPE_ROCK || movetype == TYPE_BUG || movetype == TYPE_STEEL)
+		return EFFECTIVENESS_NO_EFFECT;
+
+	if (movetype == TYPE_FIRE || movetype == TYPE_WATER || movetype == TYPE_GRASS || movetype == TYPE_ELECTRIC || movetype == TYPE_PSYCHIC || movetype == TYPE_ICE || movetype == TYPE_DRAGON)
+		return EFFECTIVENESS_SUPER_EFFECTIVE;
+
+	// ghost dark may change in future 	
+	if (movetype == TYPE_GHOST) 
+		return EFFECTIVENESS_NO_EFFECT; 
+	if (movetype == TYPE_DARK)
+		return EFFECTIVENESS_SUPER_EFFECTIVE; */
+
+    /*if(typeEffect == TYPE_x0)
     {
         return EFFECTIVENESS_NO_EFFECT;
     }
-    else if (typeModifier < UQ_4_12(1.0))
-    {
-        return EFFECTIVENESS_NOT_VERY_EFFECTIVE;
-    }
-    else if (typeModifier == UQ_4_12(1.0))
+    else if(typeEffect == TYPE_x1)
     {
         return EFFECTIVENESS_EFFECTIVE;
     }
-    else // if (typeModifier > UQ_4_12(1.0))
+    else if(typeEffect < TYPE_x1)
+    {
+        return EFFECTIVENESS_NOT_VERY_EFFECTIVE;
+    }
+    else //if(typeEffect > TYPE_x1)
     {
         return EFFECTIVENESS_SUPER_EFFECTIVE;
-    }
-#else
-    u8 type1 = gBattleMons[opposingBattler].type1;
+    }*/
+
+/*static u8 GetDisplayEffectiveness(u16 move, u16 displayType, u32 battler, u32 opposingBattler, u16 ability)
+{
+	u8 movetype = GetMoveDisplayTyping(move);
+    
+	u8 type1 = gBattleMons[opposingBattler].type1;
     u8 type2 = gBattleMons[opposingBattler].type2;
     int typeEffect = GetMovePower(move, displayType, type1, type2, GetDisplayAbility(ability), 0);
-
-    if(typeEffect == TYPE_x0)
+	
+	/*
+	
+	if(typeEffect == TYPE_x0)
     {
         return EFFECTIVENESS_NO_EFFECT;
     }
@@ -1619,10 +1650,31 @@ static u8 GetDisplayEffectiveness(u16 move, u16 displayType, u32 battler, u32 op
     {
         return EFFECTIVENESS_SUPER_EFFECTIVE;
     }
-#endif
+	
+	
+	
+}*/
+
+
+const u8 gText_Physical[] = _("Physical");
+const u8 gText_Special[]  = _("Special"); 
+
+//const u8 gText_Special[]  = _("{FONT_NORMAL}Special"); 
+
+static u8 const* GetDisplaySplitLong(u8 split)
+{
+	switch (split)
+	{
+		case PHYSICAL_MOVE:
+			return gText_Physical; 
+		case SPECIAL_MOVE:
+			return gText_Special; 
+		default:
+			return gText_MoveEffective;
+	}
 }
 
-static u8 const* GetDisplayEffectivenessLongString(u8 effectiveness)
+/*static u8 const* GetDisplayEffectivenessLongString(u8 effectiveness)
 {
     switch (effectiveness)
     {
@@ -1639,9 +1691,9 @@ static u8 const* GetDisplayEffectivenessLongString(u8 effectiveness)
     default:
         return gText_MoveEffective;
     }
-}
+}*/
 
-static u8 const* GetDisplayEffectivenessShortString(u8 effectiveness)
+/*static u8 const* GetDisplayEffectivenessShortString(u8 effectiveness)
 {
     switch (effectiveness)
     {
@@ -1658,17 +1710,42 @@ static u8 const* GetDisplayEffectivenessShortString(u8 effectiveness)
     default:
         return gText_MoveShortEffective;
     }
-}
+}*/
+
+/*const u8 gText_Physical[] = _("Physical");
+const u8 gText_Special[]  = _("Special");
+const u8 gText_Status[]   = _("-");
+
+const u8 * const gTypeSplitStrings[NUMBER_OF_MON_TYPES] =
+{
+    [TYPE_NORMAL]   = gText_Physical,
+    [TYPE_FIGHTING] = gText_Physical,
+    [TYPE_FLYING]   = gText_Physical,
+    [TYPE_POISON]   = gText_Physical,
+    [TYPE_GROUND]   = gText_Physical,
+    [TYPE_ROCK]     = gText_Physical,
+    [TYPE_BUG]      = gText_Physical,
+    [TYPE_GHOST]    = gText_Physical,
+    [TYPE_STEEL]    = gText_Physical,
+    [TYPE_FIRE]     = gText_Special,
+    [TYPE_WATER]    = gText_Special,
+    [TYPE_GRASS]    = gText_Special,
+    [TYPE_ELECTRIC] = gText_Special,
+    [TYPE_PSYCHIC]  = gText_Special,
+    [TYPE_ICE]      = gText_Special,
+    [TYPE_DRAGON]   = gText_Special,
+    [TYPE_DARK]     = gText_Special,
+    [TYPE_MYSTERY]  = gText_Status, // or special/status fallback
+}; */
+
 
 static void MoveSelectionDisplayMoveType(void)
 {
     u8 *txtPtr;
     u32 battler = gActiveBattler;
-#ifdef ROGUE_EXPANSION
-    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
-#else
-    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleBufferA[gActiveBattler][4]);
-#endif
+
+	struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleBufferA[gActiveBattler][4]);
+	
     u16 move = moveInfo->moves[gMoveSelectionCursor[gActiveBattler]];
     u8 displayType = GetMoveDisplayTyping(move);
 
@@ -1688,7 +1765,7 @@ static void MoveSelectionDisplayMoveType(void)
         *(txtPtr)++ = CHAR_HYPHEN;
         *(txtPtr)++ = EOS;
     }
-    else if(IsDoubleBattle())
+    /*else if(IsDoubleBattle())
     {
         u8 opposingBattlerLeft = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
         u8 opposingBattlerRight = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
@@ -1714,14 +1791,23 @@ static void MoveSelectionDisplayMoveType(void)
             txtPtr = StringCopy(txtPtr, gText_MoveSlash);
             txtPtr = StringCopy(txtPtr, GetDisplayEffectivenessShortString(effectivenessLeft));
         }
-    }
+    }*/
     else
     {
-        u8 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-        u8 opposingBattler = GetBattlerAtPosition(opposingPosition);
-        u8 effectiveness = GetDisplayEffectiveness(move, displayType, battler, opposingBattler, gBattleMons[opposingBattler].ability);
-        
-        txtPtr = StringCopy(txtPtr, GetDisplayEffectivenessLongString(effectiveness));
+//        u8 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
+//        u8 opposingBattler = GetBattlerAtPosition(opposingPosition);
+//        u8 effectiveness = GetDisplaySplit(move, displayType, battler, opposingBattler, gBattleMons[opposingBattler].ability);
+
+		//u8 split = GetDisplaySplit(move, displayType);       
+		// Display EFfectiveness / Split?
+        //txtPtr = StringCopy(txtPtr, GetDisplaySplit(split));
+
+		u8 split = GetDisplaySplit(move, displayType);       
+
+		// Convert split (which is EFFECTIVENESS_NO_EFFECT / EFFECTIVENESS_SUPER_EFFECTIVE) to string
+		txtPtr = StringCopy(txtPtr, GetDisplaySplitLong(split));
+		//txtPtr = StringCopy(txtPtr, GetDisplayEffectivenessLongString(effectiveness));
+
     }
 
     *(txtPtr)++ = EOS;

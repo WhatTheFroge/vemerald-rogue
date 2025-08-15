@@ -62,7 +62,8 @@ enum
 struct RogueQueryData
 {
     u8* bitFlags; // TODO - Should hard coded to be [MAX_QUERY_BYTE_COUNT], but for now just using existing memory
-    u8* weightArray;
+    //u8* weightArray;
+	u16* weightArray; 
     u16* listArray;
     u16 bitCount;
     u16 totalWeight;
@@ -92,7 +93,7 @@ static void SetQueryBitFlag(u16 elem, bool8 state);
 static bool8 GetQueryBitFlag(u16 elem);
 
 static u16 Query_GetEggSpecies(u16 species);
-static void Query_ApplyEvolutions(u16 species, u8 level, bool8 items, bool8 removeWhenEvo);
+static void Query_ApplyEvolutions(u16 species, u8 level, bool8 items, bool8 removeWhenEvo, bool8 allowMoonStoneEvos);
 
 static u16 Query_MaxBitCount();
 static u16 Query_GetWeightArrayCount();
@@ -498,7 +499,7 @@ void RogueMonQuery_TransformIntoEggSpecies()
     }
 }
 
-void RogueMonQuery_TransformIntoEvos(u8 levelLimit, bool8 includeItemEvos, bool8 keepSourceSpecies)
+void RogueMonQuery_TransformIntoEvos(u8 levelLimit, bool8 includeItemEvos, bool8 keepSourceSpecies, bool8 allowMoonStoneEvos)
 {
     u32 species;
 
@@ -508,12 +509,12 @@ void RogueMonQuery_TransformIntoEvos(u8 levelLimit, bool8 includeItemEvos, bool8
     {
         if(Rogue_GetMaxEvolutionCount(species) != 0 && GetQueryBitFlag(species))
         {
-            Query_ApplyEvolutions(species, levelLimit, includeItemEvos, !keepSourceSpecies);
+            Query_ApplyEvolutions(species, levelLimit, includeItemEvos, !keepSourceSpecies, allowMoonStoneEvos); // OR TRUE ? 
         }
     }
 }
 
-static void Query_ApplyEvolutions(u16 species, u8 level, bool8 items, bool8 removeWhenEvo)
+static void Query_ApplyEvolutions(u16 species, u8 level, bool8 items, bool8 removeWhenEvo, bool8 allowMoonStoneEvos)
 {
     u32 i;
     struct Evolution evo;
@@ -541,46 +542,20 @@ static void Query_ApplyEvolutions(u16 species, u8 level, bool8 items, bool8 remo
             case EVO_LEVEL_SHEDINJA:
             case EVO_LEVEL_DAY:
             case EVO_LEVEL_NIGHT:
-#ifdef ROGUE_EXPANSION
-            case EVO_LEVEL_FEMALE:
-            case EVO_LEVEL_MALE:
-            case EVO_LEVEL_DUSK:
-            case EVO_LEVEL_NATURE_AMPED:
-            case EVO_LEVEL_NATURE_LOW_KEY:
 
-            case EVO_LEVEL_FAMILY_OF_THREE:
-            case EVO_LEVEL_FAMILY_OF_FOUR:
-            case EVO_LEVEL_TWO_SEGMENT:
-            case EVO_LEVEL_THREE_SEGMENT:
-#endif
                 if (evo.param > level)
                     continue; // not the correct level to evolve
             break;
                 
-#ifdef ROGUE_EXPANSION
-            case EVO_MOVE_TYPE: // assume we have a move of this type by this level
-            case EVO_LEVEL_30_NATURE:
-            if (30 >= level)
-                continue;
-            break;
-
-            case EVOLUTIONS_END:
-            case EVO_NONE:
-                // Ignore these
-                continue;
-            break;
-#endif
-
             // Item evos
             case EVO_ITEM:
-#ifdef ROGUE_EXPANSION
-            //case EVO_ITEM_DAY:
-            //case EVO_ITEM_NIGHT:
-            case EVO_ITEM_MALE:
-            case EVO_ITEM_FEMALE:
-#endif
                 if (!items)
-                    continue; // not accepting item evos
+				{
+					if (evo.param == ITEM_LINK_CABLE)
+						continue; 
+					if (!allowMoonStoneEvos || evo.param != ITEM_MOON_STONE)
+						continue; // not accepting item evos, except for moon stone 
+				}
             break;
 
             default:
@@ -601,7 +576,7 @@ static void Query_ApplyEvolutions(u16 species, u8 level, bool8 items, bool8 remo
         {
             // We've already considered this species so we must reconsider it e.g. if a baby mon was introduced in later gen 
             // (Azuril is a good example as it will miss out on full evo chain)
-            Query_ApplyEvolutions(evo.targetSpecies, level, items, removeWhenEvo);
+            Query_ApplyEvolutions(evo.targetSpecies, level, items, removeWhenEvo, allowMoonStoneEvos);
         }
     }
 }
@@ -1669,7 +1644,8 @@ bool8 RogueWeightQuery_IsOverSafeCapacity()
 void RogueWeightQuery_Begin()
 {
     ASSERT_ANY_QUERY;
-    sRogueQuery.weightArray = (u8*)((void*)&gRogueQueryBuffer[0]); // TODO - Dynamic alloc
+	// u8 
+    sRogueQuery.weightArray = (u16*)((void*)&gRogueQueryBuffer[0]); // TODO - Dynamic alloc
     sRogueQuery.arrayCapacity = ARRAY_COUNT(gRogueQueryBuffer) * sizeof(u16);
     
     // Remove random entries until we can safely calcualte weights without going over
@@ -1738,7 +1714,9 @@ void RogueWeightQuery_CalculateWeights(WeightCallback callback, void* data)
     }
 }
 
-void RogueWeightQuery_FillWeights(u8 weight)
+// This function does not properly assign individual weights to items (Berries.)
+// It gives every item the same weight. 
+/*void RogueWeightQuery_FillWeights(u8 weight)
 {
     u32 weightCount = Query_GetWeightArrayCount();
 
@@ -1746,7 +1724,52 @@ void RogueWeightQuery_FillWeights(u8 weight)
 
     memset(sRogueQuery.weightArray, weight, weightCount);
     sRogueQuery.totalWeight = weight * weightCount;
+}*/
+
+// Helper function for FillWeights
+// Items are tracked by query bits	✅	You use SetQueryBitFlag() and GetQueryBitFlag()
+// Indexing should skip ITEM_NONE	✅	All your loops start from ITEM_NONE + 1
+// Max item range is QUERY_NUM_ITEMS	✅	All loops consistently use this upper bound
+static u16 Query_GetItemIdAt(u32 index)
+{
+    u32 itemId;
+    u32 count = 0;
+
+    for (itemId = ITEM_NONE + 1; itemId < QUERY_NUM_ITEMS; ++itemId)
+    {
+        if (GetQueryBitFlag(itemId))
+        {
+            if (count == index)
+                return itemId;
+
+            ++count;
+        }
+    }
+
+    return ITEM_NONE; // fallback if index out of range
 }
+
+
+
+void RogueWeightQuery_FillWeights(u8 defaultWeight)
+{
+    u32 i;
+    u32 weightCount = Query_GetWeightArrayCount();
+
+    ASSERT_WEIGHT_QUERY;
+
+    sRogueQuery.totalWeight = 0;
+
+    for (i = 0; i < weightCount; ++i)
+    {
+        u16 itemId = Query_GetItemIdAt(i);
+        u8 weight = RouteItems_CalculateWeight(i, itemId, NULL);
+
+        sRogueQuery.weightArray[i] = weight;
+        sRogueQuery.totalWeight += weight;
+    }
+}
+
 
 static u16 RogueWeightQuery_SelectRandomFromWeightsInternal(u16 randValue, bool8 updateWeight, u8 newWeight)
 {

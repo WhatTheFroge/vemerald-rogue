@@ -31,6 +31,9 @@ bool8 Rogue_RollShinyState(u8 shinyRoll);
 void RemoveMonAtSlot(u8 slot, bool8 keepItems, bool8 compactPartySlots);
 void RemoveAnyFaintedMons(bool8 keepItems);
 
+// u8 
+u16 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data);
+
 bool8 Rogue_IsRunActive(void);
 bool8 Rogue_IsVictoryLapActive(void);
 bool8 Rogue_InWildSafari(void);

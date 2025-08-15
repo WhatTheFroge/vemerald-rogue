@@ -128,7 +128,8 @@ void RogueQueryScript_Execute(struct QueryScriptContext* context)
     }
 }
 
-u8 RogueQueryScript_CalculateWeightsCallback(u16 index, u16 species, void* data)
+// u8 
+u16 RogueQueryScript_CalculateWeightsCallback(u16 index, u16 species, void* data)
 {
     struct QueryScriptContext* context = (struct QueryScriptContext*)data;
 

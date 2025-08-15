@@ -295,7 +295,8 @@ static void CreateBattleStartTask(u8 transition, u16 song)
 {
     u8 taskId = CreateTask(Task_BattleStart, 1);
 
-    Rogue_PreBattleSetup();
+	//used for curses 
+    //Rogue_PreBattleSetup();
 
     gTasks[taskId].tTransition = transition;
     PlayMapChosenOrBattleBGM(song);

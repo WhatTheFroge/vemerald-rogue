@@ -35,9 +35,55 @@ const u8 gText_StatusSeasonAutumn[] = _("·Autumn·");
 const u8 gText_StatusSeasonWinter[] = _("·Winter·");
 
 // Colours aren't exact as they'll be used in battle UI
-const u8 gText_MoveEffective[] = _("{COLOR BLUE}{SHADOW DYNAMIC_COLOR6}Neutral");
-const u8 gText_MoveNoEffect[] = _("{COLOR TRANSPARENT}{SHADOW BLUE}No Effect…");
-const u8 gText_MoveSuperEffective[] = _("{COLOR GREEN}{SHADOW DYNAMIC_COLOR6}Effective!");
+const u8 gText_MoveEffective[] = _("{COLOR BLUE}{SHADOW DYNAMIC_COLOR6}Grubby");
+
+//const u8 gText_Physical[] = _("{FONT_NORMAL}Physical"); 
+//const u8 gText_Special[]  = _("{FONT_NORMAL}Special"); 
+//const u8 gText_Status[]   = _("-");
+
+
+// demented 
+//const u8 gText_MoveNoEffect[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR1}Physical"); 
+// const u8 gText_MoveNoEffect[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR3}Physical"); 
+// const u8 gText_MoveNoEffect[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR4}Physical"); 
+// const u8 gText_MoveNoEffect[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}Physical"); 
+// const u8 gText_MoveNoEffect[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_RED}Physical"); 
+
+// red 
+//const u8 gText_MoveNoEffect[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR2}Physical"); 
+
+// light red
+// const u8 gText_MoveNoEffect[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR5}Physical"); 
+
+// a little off
+// const u8 gText_MoveNoEffect[] = _("{COLOR RED}{SHADOW LIGHT_GREEN}Physical"); 
+
+// looks pretty good 
+// const u8 gText_MoveNoEffect[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}Physical"); 
+
+const u8 gText_MoveNoEffect[] = _("{FONT_NORMAL}Physical"); 
+
+
+// black
+//const u8 gText_MoveNoEffect[] = _("{COLOR DYNAMIC_COLOR1}Physical"); 
+
+// black 
+// const u8 gText_MoveNoEffect[] = _("{COLOR DYNAMIC_COLOR1}{SHADOW DYNAMIC_COLOR2}Physical"); 
+//const u8 gText_MoveNoEffect[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR6}Physical"); 
+
+// red 
+//const u8 gText_MoveNoEffect[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR6}Physical"); 
+
+const u8 gText_MoveSuperEffective[] = _("{FONT_NORMAL}Special"); 
+
+// blue 
+// const u8 gText_MoveSuperEffective[] = _("{COLOR BLUE}Special"); 
+
+
+//{COLOR DARK_GRAY}{SHADOW DARK_GRAY} <default> orange tint
+
+//const u8 gText_MoveNoEffect[] = _("{COLOR TRANSPARENT}{SHADOW BLUE}No Effect…");
+//const u8 gText_MoveSuperEffective[] = _("{COLOR GREEN}{SHADOW DYNAMIC_COLOR6}Effective!");
 const u8 gText_MoveNotVeryEffective[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR6}Not Effective");
 const u8 gText_MoveSlash[] = _("{COLOR BLUE}{SHADOW DYNAMIC_COLOR6}·");
 const u8 gText_MoveShortEffective[] = _("{COLOR BLUE}{SHADOW DYNAMIC_COLOR6}Neutrl");

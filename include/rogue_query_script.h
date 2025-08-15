@@ -95,6 +95,7 @@ void RogueQueryScript_SetupVarsForParty(struct QueryScriptContext* context, stru
 
 void RogueQueryScript_Execute(struct QueryScriptContext* context);
 
-u8 RogueQueryScript_CalculateWeightsCallback(u16 index, u16 species, void* data);
+// u8
+u16 RogueQueryScript_CalculateWeightsCallback(u16 index, u16 species, void* data);
 
 #endif
