@@ -230,6 +230,8 @@ static bool8 UncommonSpecies2 (u16 species); // new
 static bool8 RareSpecies1 (u16 species); // new
 static bool8 RareSpecies2 (u16 species); // new
 
+static bool8 DualStandardSpecies (u16 species); // new (dual type logic)
+
 static bool8 PseudoSpecies (u16 species); // new
 static bool8 StarterSpecies (u16 species); // new
 static bool8 EeveeSpecies (u16 species); // new
@@ -8637,12 +8639,12 @@ static bool8 PoorSpecies2(u16 species)
         case SPECIES_SKITTY:
 		
         case SPECIES_CATERPIE://
-		case SPECIES_WEEDLE://
-        case SPECIES_LEDYBA://
-        case SPECIES_SPINARAK://
+		//case SPECIES_WEEDLE://
+        //case SPECIES_LEDYBA://
+        //case SPECIES_SPINARAK://
         case SPECIES_WURMPLE://
 		
-		case SPECIES_METAPOD:
+		/*case SPECIES_METAPOD:
 		case SPECIES_BUTTERFREE:
 		case SPECIES_KAKUNA:
 		case SPECIES_BEEDRILL:
@@ -8651,7 +8653,7 @@ static bool8 PoorSpecies2(u16 species)
 		case SPECIES_SILCOON:
 		case SPECIES_CASCOON:
 		case SPECIES_DUSTOX:
-		case SPECIES_BEAUTIFLY:
+		case SPECIES_BEAUTIFLY:*/
             return TRUE;
         default:
             return FALSE;
@@ -8672,8 +8674,8 @@ bool8 PoorSpecies3(u16 species) // Extended to include full families
 		case SPECIES_SENTRET:
 		case SPECIES_FURRET:
 
-		case SPECIES_SURSKIT:
-		case SPECIES_MASQUERAIN:
+//		case SPECIES_SURSKIT:
+//		case SPECIES_MASQUERAIN:
 
 		case SPECIES_RATTATA:
 		case SPECIES_RATICATE:
@@ -8692,7 +8694,7 @@ bool8 PoorSpecies3(u16 species) // Extended to include full families
 		case SPECIES_DUGTRIO:
 
 		case SPECIES_TOGEPI:
-		case SPECIES_TOGETIC:
+		//case SPECIES_TOGETIC:
 
 			return TRUE;
 	}
@@ -8776,6 +8778,204 @@ bool8 RareSpecies2(u16 species)
             return FALSE;
     }
 }
+
+// Test dual type logic 
+bool8 DualStandardSpecies(u16 species)
+{
+    switch (species)
+    {
+		case SPECIES_POLIWRATH:
+		case SPECIES_CACTURNE: 
+		case SPECIES_CRAWDAUNT: 
+		
+		// test ? 
+		case SPECIES_BUTTERFREE:
+		case SPECIES_CASCOON:
+		case SPECIES_DUSTOX:
+		case SPECIES_BEAUTIFLY:
+		
+		// other 
+		case SPECIES_SURSKIT:
+		case SPECIES_MASQUERAIN:
+		case SPECIES_WEEDLE:
+		case SPECIES_KAKUNA:
+		case SPECIES_BEEDRILL:
+		case SPECIES_LEDYBA:
+		case SPECIES_LEDIAN:
+		case SPECIES_SPINARAK:
+		case SPECIES_ARIADOS: 
+		case SPECIES_TOGETIC: 
+		
+        // Pidgey line
+        case SPECIES_PIDGEY:
+        case SPECIES_PIDGEOTTO:
+        case SPECIES_PIDGEOT:
+
+        // Spearow line
+        case SPECIES_SPEAROW:
+        case SPECIES_FEAROW:
+
+        // Zubat line
+        case SPECIES_ZUBAT:
+        case SPECIES_GOLBAT:
+        case SPECIES_CROBAT:
+
+        // Oddish line
+        case SPECIES_ODDISH:
+        case SPECIES_GLOOM:
+        case SPECIES_VILEPLUME:
+
+        // Venonat line
+        case SPECIES_VENONAT:
+        case SPECIES_VENOMOTH:
+
+        // Bellsprout line
+        case SPECIES_BELLSPROUT:
+        case SPECIES_WEEPINBELL:
+        case SPECIES_VICTREEBEL:
+
+        // Tentacool line
+        case SPECIES_TENTACOOL:
+        case SPECIES_TENTACRUEL:
+
+        // Geodude line
+        case SPECIES_GEODUDE:
+        case SPECIES_GRAVELER:
+        case SPECIES_GOLEM:
+
+        // Slowpoke line
+        case SPECIES_SLOWPOKE:
+        case SPECIES_SLOWBRO:
+        case SPECIES_SLOWKING:
+
+        // Doduo line
+        case SPECIES_DODUO:
+        case SPECIES_DODRIO:
+
+        // Gastly line
+        case SPECIES_GASTLY:
+        case SPECIES_HAUNTER:
+        case SPECIES_GENGAR:
+
+        // Onix line
+        case SPECIES_ONIX:
+        case SPECIES_STEELIX:
+
+        // Exeggcute line
+        case SPECIES_EXEGGCUTE:
+        case SPECIES_EXEGGUTOR:
+
+        // Rhyhorn line
+        case SPECIES_RHYHORN:
+        case SPECIES_RHYDON:
+
+        // Smoochum line
+        case SPECIES_SMOOCHUM:
+        case SPECIES_JYNX:
+
+        // Omanyte line
+        case SPECIES_OMANYTE:
+        case SPECIES_OMASTAR:
+
+        // Kabuto line
+        case SPECIES_KABUTO:
+        case SPECIES_KABUTOPS:
+
+        // Hoothoot line
+        case SPECIES_HOOTHOOT:
+        case SPECIES_NOCTOWL:
+
+        // Chinchou line
+        case SPECIES_CHINCHOU:
+        case SPECIES_LANTURN:
+
+        // Hoppip line
+        case SPECIES_HOPPIP:
+        case SPECIES_SKIPLOOM:
+        case SPECIES_JUMPLUFF:
+
+        // Wooper line
+        case SPECIES_WOOPER:
+        case SPECIES_QUAGSIRE:
+
+        // Murkrow line
+        case SPECIES_MURKROW:
+
+        // Swinub line
+        case SPECIES_SWINUB:
+        case SPECIES_PILOSWINE:
+
+        // Houndour line
+        case SPECIES_HOUNDOUR:
+        case SPECIES_HOUNDOOM:
+
+        // Carvanha line
+        case SPECIES_CARVANHA:
+        case SPECIES_SHARPEDO:
+
+        // Numel line
+        case SPECIES_NUMEL:
+        case SPECIES_CAMERUPT:
+
+        // Barboach line
+        case SPECIES_BARBOACH:
+        case SPECIES_WHISCASH:
+
+        // Baltoy line
+        case SPECIES_BALTOY:
+        case SPECIES_CLAYDOL:
+
+        // Lileep line
+        case SPECIES_LILEEP:
+        case SPECIES_CRADILY:
+
+        // Anorith line
+        case SPECIES_ANORITH:
+        case SPECIES_ARMALDO:
+
+        // Spheal line
+        case SPECIES_SPHEAL:
+        case SPECIES_SEALEO:
+        case SPECIES_WALREIN:
+
+        // Lotad line
+        case SPECIES_LOTAD:
+        case SPECIES_LOMBRE:
+        case SPECIES_LUDICOLO:
+
+        // Taillow line
+        case SPECIES_TAILLOW:
+        case SPECIES_SWELLOW:
+
+        // Wingull line
+        case SPECIES_WINGULL:
+        case SPECIES_PELIPPER:
+
+        // Nincada line
+        case SPECIES_NINCADA:
+        case SPECIES_NINJASK:
+        case SPECIES_SHEDINJA:
+
+        // Sableye (no evolution in most gens)
+        case SPECIES_SABLEYE:
+
+        // Aron line
+        case SPECIES_ARON:
+        case SPECIES_LAIRON:
+        case SPECIES_AGGRON:
+
+        // Meditite line
+        case SPECIES_MEDITITE:
+        case SPECIES_MEDICHAM:
+
+            return TRUE;
+
+        default:
+            return FALSE;
+    }
+}
+
+
 
 bool8 StarterSpecies(u16 species)
 {
@@ -8970,13 +9170,19 @@ static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void*
 	// pseudo 3 starter 6~7
 	// eevee ?? similar to/slightly less than starter 
 	if (PseudoSpecies(species))
-		return 2; 
+		return 0; // test dual 
+		//return 2; 
 	
 	if (StarterSpecies(species))
-		return 4; // testing value; real value 6 or 7 
+		return 0; // test dual 
+		//return 4; // testing value; real value 6 or 7 
 	
 	if (EeveeSpecies(species))
-		return 10; // more versatile than Starter Species
+		return 0; // test dual 
+		//return 5; // more versatile than Starter Species
+	
+	if (DualStandardSpecies(species))
+		return 7; 
 	
     return 10;
 }
