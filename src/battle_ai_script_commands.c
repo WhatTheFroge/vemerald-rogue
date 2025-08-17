@@ -46,6 +46,9 @@ in order to read the next command correctly. refer to battle_ai_scripts.s for th
 AI scripts.
 */
 
+// This file is more difficult to modify than battle_ai_switch_items.c
+// They use script files (.s) rather than c 
+
 extern const u8 *const gBattleAI_ScriptsTable[];
 
 static u8 ChooseMoveOrAction_Singles(void);

@@ -1225,7 +1225,8 @@ void Rogue_GenerateRivalBaseTeamIfNeeded()
 
         // Fake the difficulty for the generator
         u16 tempDifficulty = Rogue_GetCurrentDifficulty();
-        Rogue_SetCurrentDifficulty(RIVAL_BASE_TEAM_DIFFICULTY); // Generate base party at 2-3 badges 
+        Rogue_SetCurrentDifficulty(0); 
+		//Rogue_SetCurrentDifficulty(RIVAL_BASE_TEAM_DIFFICULTY); // Generate base party at 2-3 badges 
 
         // Apply some base seed for anything which needs to be randomly setup
         SeedRogueRng(gRogueRun.baseSeed * 8071 + 6632);
@@ -2858,16 +2859,73 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_GOLEM);
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MACHAMP);
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_KINGDRA);
+			// just want more scyther representation 
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SCIZOR); 
         }
 
-		if (Rogue_GetCurrentDifficulty() >= 1)
+		// Not sure - were they getting forced onto teams? 
+		//if (Rogue_GetCurrentDifficulty() >= 1)
+		//{
+		//	RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_WIGGLYTUFF);
+		//	RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DELCATTY);
+		//	RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_CLEFABLE);
+		//}
+
+		// filter out weak pokemon for boss trainers only 
+		if ((Rogue_IsBossTrainer) || (Rogue_IsTeamBossTrainer)) 
 		{
-			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_WIGGLYTUFF);
-			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DELCATTY);
-			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_CLEFABLE);
+			if (Rogue_GetCurrentDifficulty() < 2)
+			{
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MAGIKARP);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_TYROGUE);
+			}
+			
+			if (Rogue_GetCurrentDifficulty() < 4)
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_FEEBAS);
+			
+			if (Rogue_GetCurrentDifficulty() > 4)
+			{
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_AIPOM);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DELIBIRD);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SPINDA);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_FARFETCHD);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_UNOWN);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_LUVDISC);
+			}
+
+			if (Rogue_GetCurrentDifficulty() == 7)
+			{
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DRAGONAIR);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SHELGON);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_PUPITAR);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_METANG);
+			}
+
+			if (Rogue_GetCurrentDifficulty() >= 7) 
+			{
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_CASTFORM);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DUNSPARCE);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_PLUSLE);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MINUN);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_VOLBEAT);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_ILLUMISE);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_LICKITUNG);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MAWILE);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_NOSEPASS);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_ROSELIA);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_YANMA);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_CORSOLA);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SABLEYE);
+				
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DELCATTY);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_BUTTERFREE);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_BEEDRILL);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_LEDIAN);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_ARIADOS);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DUSTOX);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_BEAUTIFLY);
+			}
 		}
-
-
 
         // Execute post process script
         if(trainer->teamGenerator.queryScriptPost != NULL)

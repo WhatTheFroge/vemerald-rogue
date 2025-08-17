@@ -1157,6 +1157,18 @@ static void CompleteOnHealthbarDone(void)
 
     SetHealthboxSpriteVisible(gHealthboxSpriteIds[gActiveBattler]);
 
+	/* hp text fix. bug caused by faster battle animations?
+	if (hpValue == -1)
+    {
+        // ✅ Update HP text *once* at end of animation
+        UpdateHpTextInHealthbox(gHealthboxSpriteIds[gActiveBattler],
+                                GetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_HP),
+                                HP_CURRENT);
+
+        HandleLowHpMusicChange(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], gActiveBattler);
+        PlayerBufferExecCompleted();
+    }*/
+
     if (hpValue != -1)
     {
         UpdateHpTextInHealthbox(gHealthboxSpriteIds[gActiveBattler], hpValue, HP_CURRENT);
@@ -1655,9 +1667,14 @@ static u8 GetDisplaySplit(u16 move, u16 displayType)
 	
 }*/
 
+// if no color - then different font 
 
-const u8 gText_Physical[] = _("Physical");
-const u8 gText_Special[]  = _("Special"); 
+// white/shadow 2 is red 
+//const u8 gText_Physical[] = _("{FONT_NORMAL}{COLOR TRANSPARENT}{SHADOW DYNAMIC_COLOR2}Physical");
+//const u8 gText_Special[]  = _("{FONT_NORMAL}{COLOR TRANSPARENT}{SHADOW BLUE}Special"); 
+// "Physical" 
+const u8 gText_Physical[] = _("{FONT_NORMAL}{COLOR WHITE}{SHADOW DYNAMIC_COLOR2}Physical");
+const u8 gText_Special[]  = _("{FONT_NORMAL}{COLOR BLUE}Special"); 
 
 //const u8 gText_Special[]  = _("{FONT_NORMAL}Special"); 
 

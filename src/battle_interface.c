@@ -2215,14 +2215,18 @@ void UpdateHealthboxAttribute(u8 healthboxSpriteId, struct Pokemon *mon, u8 elem
             UpdateHpTextInHealthbox(healthboxSpriteId, GetMonData(mon, MON_DATA_HP), HP_CURRENT);
         if (elementId == HEALTHBOX_MAX_HP || elementId == HEALTHBOX_ALL)
             UpdateHpTextInHealthbox(healthboxSpriteId, GetMonData(mon, MON_DATA_MAX_HP), HP_MAX);
-        if (elementId == HEALTHBOX_HEALTH_BAR || elementId == HEALTHBOX_ALL)
-        {
-            LoadBattleBarGfx(0);
-            maxHp = GetMonData(mon, MON_DATA_MAX_HP);
-            currHp = GetMonData(mon, MON_DATA_HP);
-            SetBattleBarStruct(battlerId, healthboxSpriteId, maxHp, currHp, 0);
-            MoveBattleBar(battlerId, healthboxSpriteId, HEALTH_BAR, 0);
-        }
+		if (elementId == HEALTHBOX_HEALTH_BAR || elementId == HEALTHBOX_ALL)
+		{
+			LoadBattleBarGfx(0);
+			maxHp = GetMonData(mon, MON_DATA_MAX_HP);
+			currHp = GetMonData(mon, MON_DATA_HP);
+			SetBattleBarStruct(battlerId, healthboxSpriteId, maxHp, currHp, 0);
+			MoveBattleBar(battlerId, healthboxSpriteId, HEALTH_BAR, 0);
+
+			// Only do this if not already handled above
+			if (elementId == HEALTHBOX_HEALTH_BAR)
+			UpdateHpTextInHealthbox(healthboxSpriteId, currHp, HP_CURRENT);
+		}
         isDoubles = IsDoubleBattle();
         if (!isDoubles && (elementId == HEALTHBOX_EXP_BAR || elementId == HEALTHBOX_ALL))
         {

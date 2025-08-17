@@ -230,12 +230,20 @@ static bool8 UncommonSpecies2 (u16 species); // new
 static bool8 RareSpecies1 (u16 species); // new
 static bool8 RareSpecies2 (u16 species); // new
 
+static bool8 DualPoor1 (u16 species); // new
+static bool8 DualPoor2 (u16 species); // new
+static bool8 DualPoor3 (u16 species); // new
+static bool8 DualUncommon1 (u16 species);
+static bool8 DualUncommon2 (u16 species); 
+static bool8 DualRare1 (u16 species); // new
+static bool8 DualRare2 (u16 species); // new
 static bool8 DualStandardSpecies (u16 species); // new (dual type logic)
 
 static bool8 PseudoSpecies (u16 species); // new
 static bool8 StarterSpecies (u16 species); // new
 static bool8 EeveeSpecies (u16 species); // new
-
+static bool8 DualPseudo (u16 species);
+static bool8 DualStarter (u16 species); 
 
 static void RandomiseCharmItems(void);
 static bool8 HasHoneyTreeEncounterPending(void);
@@ -4485,111 +4493,239 @@ static u8 UNUSED RandomMonType(u16 seedFlag)
 
 static u16 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 {
-
+	// test 
+	//if (species == SPECIES_PIDGEY)
+	//	return 300; 
+	
     if (PoorSpecies1(species))							
     { 
+	//	14 10 7 5 4 
         if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 4; 
+			return 8; 
 		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 5; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 7; 
-		else if (Rogue_GetCurrentDifficulty() == 1) // between first and second badge 
 			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 1) // between first and second badge 
+			return 20; 
         else										
-            return 14;
+            return 28;
     }
 	// use ROGUE_GYM_MID_DIFFICULTY so its easier to find when using a search; 
 	// Weak groups start with high frequency and taper off 
 
-    if (PoorSpecies2(species))							
-    { 
-        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 5; 
+	if (DualPoor1(species))
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 20; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 10; 
 		else if (Rogue_GetCurrentDifficulty() == 3)
 			return 7; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 6; 
+	}
+
+    if (PoorSpecies2(species))							
+    { 
+	// 13 11 9 7 5 
+        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 14; 
 		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 9; 
+			return 18; 
 		else if (Rogue_GetCurrentDifficulty() == 1) 
-			return 11; 
+			return 22; 
         else										
-            return 13;
+            return 26;
     }
+
+	if (DualPoor2(species))
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 18; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 15; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 13; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 7; 
+	}
+
 
 	if (PoorSpecies3(species))	
 	{
+	// 12 10 8 7 6 5 
 		if (Rogue_GetCurrentDifficulty() >= 5)
-			return 5; 
-		if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 6; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 7; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 8; 
-		else if (Rogue_GetCurrentDifficulty() == 1) 
 			return 10; 
+		if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
+			return 12; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 16; 
+		else if (Rogue_GetCurrentDifficulty() == 1) 
+			return 20; 
         else										
-            return 12;
+            return 24;
+	}
+	
+	if (DualPoor3(species)) // 17	14	11	10	8	7
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 17; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 11; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
+			return 8; 
+		else if (Rogue_GetCurrentDifficulty() >= 5)
+			return 7; 
 	}
 	
 	if (UncommonSpecies1(species))
 	{
+	// 3 12 10 9 8 
 		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 8; 
+			return 16; 
 		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 9; 
+			return 18; 
 		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 10; 
+			return 20; 
 		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 12; 
+			return 24; 
 		else	
-			return 3; 
+			return 6; 
+	}
+	
+	// 4	17	14	13	11
+	if (DualUncommon1(species)) 
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 4; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 17; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 13; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 11; 
 	}
 	
 	if (UncommonSpecies2(species))
 	{
+	// 1 3 12 10 
 		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 10;
+			return 20;
 		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
-			return 12;
+			return 24;
 		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 3; 
+			return 6; 
 		else	
-			return 1; 
+			return 2; 
 	}
+	
+	if (DualUncommon2(species)) // 1	4	17	14
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 1; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 4; 
+		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
+			return 17; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 14; 
+	}
+	
 	
 	if (RareSpecies1(species))
 	{
+	//	0 2 8 10 
 		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 10; 
+			return 20; 
 		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 8; 
+			return 16; 
+		else if (Rogue_GetCurrentDifficulty() == 1 || Rogue_GetCurrentDifficulty() == 2)
+			return 4; 
 		else
-			return 1; 
+			return 0; // does it work? 
 	}
 	// don't restore weight to 10 right away;
 	// less common because these Pokemon are immediately strong and don't have a weak starting period 
 	
+	if (DualRare1(species)) // 0 3/3 11 14 
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 0; 
+		else if (Rogue_GetCurrentDifficulty() == 1 || Rogue_GetCurrentDifficulty() == 2)
+			return 3; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 11; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 14; 
+	}
+	
 	if (RareSpecies2(species))
 	{
+	// 0 1 8 10
 		if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
-			return 10; 
+			return 20; 
 		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 8;
+			return 16;
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 2; 
 		else
+			return 0; // does it work?  
+	}
+	
+	if (DualRare2(species))
+	{
+		if (Rogue_GetCurrentDifficulty() < 3)
+			return 0; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
 			return 1; 
+		else if (Rogue_GetCurrentDifficulty() == 4)
+			return 11; 
+		else if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
+			return 14; 
 	}
 
+	// pseudo 3 starter 6~7
+	// eevee ?? similar to/slightly less than starter 
 	if (PseudoSpecies(species))
-		return 2; // testing value 0; real value 3  
+		return 2; // test dual 
+		//return 2; 
+	if (DualPseudo(species))
+		return 1; 
 	
 	if (StarterSpecies(species))
-		return 4; // testing value 0; real value 6 or 7 
-
+		return 4; // test dual 
+		//return 4; // testing value; real value 6 or 7 
+	if (DualStarter(species))
+		return 2; 
+	
 	if (EeveeSpecies(species))
-		return 4; // early evolution - less likely 
-
-    return 10;
+		return 5; // test dual 
+		//return 5; // more versatile than Starter Species
+	
+	// simulate chansey's rarity
+	if ((species == SPECIES_CHANSEY) || (species == SPECIES_BLISSEY))
+		return 4; 
+	
+	if (DualStandardSpecies(species))
+		return 14; 
+	
+    return 20;
+	
 }
 
 u16 Rogue_SelectWildDenEncounterRoom(void)
@@ -8607,8 +8743,6 @@ static bool8 PoorSpecies1(u16 species)
     {
         case SPECIES_AIPOM:
         case SPECIES_SPINDA:
-        case SPECIES_FARFETCHD:
-        case SPECIES_DELIBIRD:
         case SPECIES_UNOWN:
         case SPECIES_LUVDISC:
             return TRUE;
@@ -8617,6 +8751,17 @@ static bool8 PoorSpecies1(u16 species)
     }
 }
 
+static bool8 DualPoor1 (u16 species)
+{
+	switch(species)
+	{
+		case SPECIES_DELIBIRD:
+		case SPECIES_FARFETCHD: 
+			return TRUE;
+		default: 
+			return FALSE; 
+	}
+}
 
 static bool8 PoorSpecies2(u16 species)
 {
@@ -8624,25 +8769,24 @@ static bool8 PoorSpecies2(u16 species)
     {
         case SPECIES_CASTFORM:
         case SPECIES_DUNSPARCE:
-        case SPECIES_PLUSLE:
-        case SPECIES_MINUN:
-        case SPECIES_VOLBEAT:
-        case SPECIES_ILLUMISE:
-        case SPECIES_ROSELIA:
-        case SPECIES_YANMA:
-		case SPECIES_CORSOLA:
         case SPECIES_LICKITUNG:
-        case SPECIES_SABLEYE:
         case SPECIES_MAWILE:
         case SPECIES_NOSEPASS:
         case SPECIES_SMEARGLE:
         case SPECIES_SKITTY:
+		
+		/* // half? 
+		case SPECIES_PLUSLE:
+        case SPECIES_MINUN:
+        case SPECIES_VOLBEAT:
+        case SPECIES_ILLUMISE:*/
 		
         case SPECIES_CATERPIE://
 		//case SPECIES_WEEDLE://
         //case SPECIES_LEDYBA://
         //case SPECIES_SPINARAK://
         case SPECIES_WURMPLE://
+		case SPECIES_SILCOON: 
 		
 		/*case SPECIES_METAPOD:
 		case SPECIES_BUTTERFREE:
@@ -8660,7 +8804,52 @@ static bool8 PoorSpecies2(u16 species)
     }
 }
 
+static bool8 DualPoor2(u16 species)
+{
+	switch (species)
+	{
+		// half? 
+		case SPECIES_PLUSLE:
+        case SPECIES_MINUN:
+        case SPECIES_VOLBEAT:
+        case SPECIES_ILLUMISE:
 		
+		
+		// Caterpie line
+		case SPECIES_CATERPIE:
+		case SPECIES_METAPOD:
+		case SPECIES_BUTTERFREE:
+
+		// Weedle line
+		case SPECIES_WEEDLE:
+		case SPECIES_KAKUNA:
+		case SPECIES_BEEDRILL:
+
+		// Ledyba line
+		case SPECIES_LEDYBA:
+		case SPECIES_LEDIAN:
+
+		// Spinarak line
+		case SPECIES_SPINARAK:
+		case SPECIES_ARIADOS:
+
+		// Wurmple line
+		//case SPECIES_WURMPLE:
+		//case SPECIES_SILCOON:
+		case SPECIES_BEAUTIFLY:
+		case SPECIES_CASCOON:
+		case SPECIES_DUSTOX:
+
+		case SPECIES_ROSELIA:
+		case SPECIES_YANMA:
+		case SPECIES_CORSOLA:
+		case SPECIES_SABLEYE:
+			return TRUE;
+		default:
+			return FALSE;
+	}
+}
+
 bool8 PoorSpecies3(u16 species) // Extended to include full families
 {	// species = GET_BASE_SPECIES_ID(species); 
 	switch (species)
@@ -8674,21 +8863,12 @@ bool8 PoorSpecies3(u16 species) // Extended to include full families
 		case SPECIES_SENTRET:
 		case SPECIES_FURRET:
 
-//		case SPECIES_SURSKIT:
-//		case SPECIES_MASQUERAIN:
-
 		case SPECIES_RATTATA:
 		case SPECIES_RATICATE:
 
 		case SPECIES_AZURILL:
 		case SPECIES_MARILL:
 		case SPECIES_AZUMARILL:
-
-		case SPECIES_MAGNEMITE:
-		case SPECIES_MAGNETON:
-
-		case SPECIES_PARAS:
-		case SPECIES_PARASECT:
 
 		case SPECIES_DIGLETT:
 		case SPECIES_DUGTRIO:
@@ -8702,6 +8882,23 @@ bool8 PoorSpecies3(u16 species) // Extended to include full families
 	return FALSE;
 }
 
+static bool8 DualPoor3 (u16 species)
+{
+	switch(species)
+	{
+
+		case SPECIES_SURSKIT:
+		case SPECIES_MASQUERAIN:
+
+		case SPECIES_PARAS:
+		case SPECIES_PARASECT:
+
+		case SPECIES_TOGETIC:
+			return TRUE; 
+		default:
+			return FALSE; 
+	}
+}
 
 // Gym 1 
 bool8 UncommonSpecies1(u16 species)			
@@ -8709,7 +8906,6 @@ bool8 UncommonSpecies1(u16 species)
     switch(species)
     {
         case SPECIES_TANGELA:
-        case SPECIES_SNEASEL:
         case SPECIES_CHIMECHO:
         case SPECIES_KECLEON:
         case SPECIES_SUDOWOODO:
@@ -8720,30 +8916,53 @@ bool8 UncommonSpecies1(u16 species)
     }
 }
 
+static bool8 DualUncommon1 (u16 species) // new
+{
+	switch(species)
+	{
+		case SPECIES_SNEASEL:
+			return TRUE;
+		default:
+			return FALSE; 
+	}
+}
+
+
 // Gym 2
 bool8 UncommonSpecies2(u16 species)
 {
     switch(species)
     {
-        case SPECIES_SCYTHER:
-        case SPECIES_SHUCKLE:
         case SPECIES_STANTLER:
         case SPECIES_ABSOL:
         case SPECIES_MR_MIME:
-        case SPECIES_TROPIUS:
         case SPECIES_ZANGOOSE:
-        case SPECIES_SEVIPER:
-        case SPECIES_GIRAFARIG:
-        case SPECIES_LUNATONE:
-        case SPECIES_SOLROCK:
         case SPECIES_MISDREAVUS:
-        case SPECIES_GLIGAR:
-        case SPECIES_QWILFISH:
             return TRUE;
         default:
             return FALSE;
     }
 }
+
+static bool8 DualUncommon2 (u16 species) // new
+{
+	switch(species)
+	{
+		case SPECIES_SCYTHER:
+		case SPECIES_SCIZOR: 
+        case SPECIES_SHUCKLE:
+        case SPECIES_TROPIUS:
+        case SPECIES_GIRAFARIG:
+        case SPECIES_LUNATONE:
+        case SPECIES_SOLROCK:
+        case SPECIES_GLIGAR:
+        case SPECIES_QWILFISH:
+			return TRUE;
+		default:
+			return FALSE; 
+	}
+}
+
 
 // Gym 3 
 bool8 RareSpecies1(u16 species)
@@ -8754,15 +8973,26 @@ bool8 RareSpecies1(u16 species)
         case SPECIES_KANGASKHAN:
         case SPECIES_TAUROS:
         case SPECIES_MILTANK:
-        case SPECIES_RELICANTH:
-        case SPECIES_SKARMORY:
-        case SPECIES_MANTINE:
         case SPECIES_TORKOAL:
             return TRUE;
         default:
             return FALSE;
     }
 }
+
+static bool8 DualRare1 (u16 species) // new
+{
+    switch(species)
+    {
+        case SPECIES_RELICANTH:
+        case SPECIES_SKARMORY:
+        case SPECIES_MANTINE:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
 
 // Gym 4 
 bool8 RareSpecies2(u16 species)
@@ -8779,32 +9009,42 @@ bool8 RareSpecies2(u16 species)
     }
 }
 
+static bool8 DualRare2 (u16 species) // new
+{
+	switch(species)
+	{
+		case SPECIES_LAPRAS:
+        case SPECIES_AERODACTYL:
+        case SPECIES_HERACROSS:
+			return TRUE;
+		default:
+			return FALSE; 
+	}
+}
+
+
 // Test dual type logic 
 bool8 DualStandardSpecies(u16 species)
 {
     switch (species)
     {
+		// Nidoran/nidorino are basically 100% similar to their F counterparts but king/queen divulge a bit 
+		case SPECIES_NIDORAN_M: 
+		case SPECIES_NIDORINO:
+		case SPECIES_NIDOKING:
+		case SPECIES_NIDORAN_F:
+		case SPECIES_NIDORINA:
+		case SPECIES_NIDOQUEEN:
+		
+		// exclude Vibrava+, Kingdra, Altaria 
 		case SPECIES_POLIWRATH:
+		case SPECIES_DEWGONG:
+		case SPECIES_STARMIE: 
+		case SPECIES_FORRETRESS: 
+		case SPECIES_MAGCARGO: //
 		case SPECIES_CACTURNE: 
 		case SPECIES_CRAWDAUNT: 
-		
-		// test ? 
-		case SPECIES_BUTTERFREE:
-		case SPECIES_CASCOON:
-		case SPECIES_DUSTOX:
-		case SPECIES_BEAUTIFLY:
-		
-		// other 
-		case SPECIES_SURSKIT:
-		case SPECIES_MASQUERAIN:
-		case SPECIES_WEEDLE:
-		case SPECIES_KAKUNA:
-		case SPECIES_BEEDRILL:
-		case SPECIES_LEDYBA:
-		case SPECIES_LEDIAN:
-		case SPECIES_SPINARAK:
-		case SPECIES_ARIADOS: 
-		case SPECIES_TOGETIC: 
+		case SPECIES_SWABLU: 
 		
         // Pidgey line
         case SPECIES_PIDGEY:
@@ -8847,6 +9087,10 @@ bool8 DualStandardSpecies(u16 species)
         case SPECIES_SLOWPOKE:
         case SPECIES_SLOWBRO:
         case SPECIES_SLOWKING:
+
+		// Magnemite line
+		case SPECIES_MAGNEMITE:
+		case SPECIES_MAGNETON: 
 
         // Doduo line
         case SPECIES_DODUO:
@@ -8979,9 +9223,8 @@ bool8 DualStandardSpecies(u16 species)
 
 bool8 StarterSpecies(u16 species)
 {
-    switch(species)
+    switch(species) // 16
     {
-        case SPECIES_BULBASAUR:
         case SPECIES_CHIKORITA:
         case SPECIES_TREECKO:
 		
@@ -8993,32 +9236,48 @@ bool8 StarterSpecies(u16 species)
         case SPECIES_TOTODILE:
         case SPECIES_MUDKIP:
 		
-        case SPECIES_IVYSAUR:
-        case SPECIES_VENUSAUR:
         case SPECIES_BAYLEEF:
         case SPECIES_MEGANIUM:
         case SPECIES_GROVYLE:
         case SPECIES_SCEPTILE:
         
 		case SPECIES_CHARMELEON:
-        case SPECIES_CHARIZARD:
         case SPECIES_QUILAVA:
         case SPECIES_TYPHLOSION:
-        case SPECIES_COMBUSKEN:
-        case SPECIES_BLAZIKEN:
         
 		case SPECIES_WARTORTLE:
         case SPECIES_BLASTOISE:
         case SPECIES_CROCONAW:
-        case SPECIES_FERALIGATR:
-        case SPECIES_MARSHTOMP:
-        case SPECIES_SWAMPERT:  // required because evolutions aren't linked enough..  
+        case SPECIES_FERALIGATR: // required because evolutions aren't linked enough..  
             return TRUE;
 
         default:
             return FALSE;
     }
 }
+
+bool8 DualStarter(u16 species)
+{
+    switch(species)
+    {
+        case SPECIES_BULBASAUR:
+        case SPECIES_IVYSAUR:
+        case SPECIES_VENUSAUR:
+		
+        case SPECIES_CHARIZARD:
+		
+        case SPECIES_COMBUSKEN:
+        case SPECIES_BLAZIKEN:
+        
+        case SPECIES_MARSHTOMP:
+        case SPECIES_SWAMPERT:  // required because evolutions aren't linked enough..  
+            return TRUE;
+
+        default:
+            return FALSE;
+	}
+}
+
 
 bool8 EeveeSpecies (u16 species)
 {
@@ -9043,16 +9302,28 @@ bool8 PseudoSpecies(u16 species)
     switch(species)
     {
         case SPECIES_DRATINI:
-        case SPECIES_LARVITAR:
         case SPECIES_BAGON:
-        case SPECIES_BELDUM:
 
 		case SPECIES_DRAGONAIR:
 		case SPECIES_DRAGONITE:
-		case SPECIES_PUPITAR:
-		case SPECIES_TYRANITAR:
 		case SPECIES_SHELGON:
 		case SPECIES_SALAMENCE:
+			return TRUE; 
+
+        default:
+            return FALSE;
+    }
+}
+
+bool8 DualPseudo(u16 species)
+{
+    switch(species)
+    {
+        case SPECIES_LARVITAR:
+        case SPECIES_BELDUM:
+
+		case SPECIES_PUPITAR:
+		case SPECIES_TYRANITAR:
 		case SPECIES_METANG:
 		case SPECIES_METAGROSS:
 			return TRUE; 
@@ -9071,120 +9342,232 @@ static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void*
 	
     if (PoorSpecies1(species))							
     { 
+	//	14 10 7 5 4 
         if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 4; 
+			return 8; 
 		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 5; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 7; 
-		else if (Rogue_GetCurrentDifficulty() == 1) // between first and second badge 
 			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 1) // between first and second badge 
+			return 20; 
         else										
-            return 14;
+            return 28;
     }
 	// use ROGUE_GYM_MID_DIFFICULTY so its easier to find when using a search; 
 	// Weak groups start with high frequency and taper off 
 
-    if (PoorSpecies2(species))							
-    { 
-        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 5; 
+	if (DualPoor1(species))
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 20; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 10; 
 		else if (Rogue_GetCurrentDifficulty() == 3)
 			return 7; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 6; 
+	}
+
+    if (PoorSpecies2(species))							
+    { 
+	// 13 11 9 7 5 
+        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 14; 
 		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 9; 
+			return 18; 
 		else if (Rogue_GetCurrentDifficulty() == 1) 
-			return 11; 
+			return 22; 
         else										
-            return 13;
+            return 26;
     }
+
+	if (DualPoor2(species))
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 18; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 15; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 13; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 7; 
+	}
+
 
 	if (PoorSpecies3(species))	
 	{
+	// 12 10 8 7 6 5 
 		if (Rogue_GetCurrentDifficulty() >= 5)
-			return 5; 
-		if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 6; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 7; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 8; 
-		else if (Rogue_GetCurrentDifficulty() == 1) 
 			return 10; 
+		if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
+			return 12; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 16; 
+		else if (Rogue_GetCurrentDifficulty() == 1) 
+			return 20; 
         else										
-            return 12;
+            return 24;
+	}
+	
+	if (DualPoor3(species)) // 17	14	11	10	8	7
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 17; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 11; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 10; 
+		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
+			return 8; 
+		else if (Rogue_GetCurrentDifficulty() >= 5)
+			return 7; 
 	}
 	
 	if (UncommonSpecies1(species))
 	{
+	// 3 12 10 9 8 
 		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 8; 
+			return 16; 
 		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 9; 
+			return 18; 
 		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 10; 
+			return 20; 
 		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 12; 
+			return 24; 
 		else	
-			return 3; 
+			return 6; 
+	}
+	
+	// 4	17	14	13	11
+	if (DualUncommon1(species)) 
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 4; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 17; 
+		else if (Rogue_GetCurrentDifficulty() == 2)
+			return 14; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 13; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 11; 
 	}
 	
 	if (UncommonSpecies2(species))
 	{
+	// 1 3 12 10 
 		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 10;
+			return 20;
 		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
-			return 12;
+			return 24;
 		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 3; 
+			return 6; 
 		else	
-			return 1; 
+			return 2; 
 	}
+	
+	if (DualUncommon2(species)) // 1	4	17	14
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 1; // 14 or 0.7
+		else if (Rogue_GetCurrentDifficulty() == 1)
+			return 4; 
+		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
+			return 17; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 14; 
+	}
+	
 	
 	if (RareSpecies1(species))
 	{
+	//	0 2 8 10 
 		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 10; 
+			return 20; 
 		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 8; 
+			return 16; 
 		else if (Rogue_GetCurrentDifficulty() == 1 || Rogue_GetCurrentDifficulty() == 2)
-			return 2; 
+			return 4; 
 		else
 			return 0; // does it work? 
 	}
 	// don't restore weight to 10 right away;
 	// less common because these Pokemon are immediately strong and don't have a weak starting period 
 	
+	if (DualRare1(species)) // 0 3/3 11 14 
+	{
+		if (Rogue_GetCurrentDifficulty() == 0)
+			return 0; 
+		else if (Rogue_GetCurrentDifficulty() == 1 || Rogue_GetCurrentDifficulty() == 2)
+			return 3; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 11; 
+		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
+			return 14; 
+	}
+	
 	if (RareSpecies2(species))
 	{
+	// 0 1 8 10
 		if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
-			return 10; 
+			return 20; 
 		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 8;
+			return 16;
 		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 1; 
+			return 2; 
 		else
 			return 0; // does it work?  
+	}
+	
+	if (DualRare2(species))
+	{
+		if (Rogue_GetCurrentDifficulty() < 3)
+			return 0; 
+		else if (Rogue_GetCurrentDifficulty() == 3)
+			return 1; 
+		else if (Rogue_GetCurrentDifficulty() == 4)
+			return 11; 
+		else if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
+			return 14; 
 	}
 
 	// pseudo 3 starter 6~7
 	// eevee ?? similar to/slightly less than starter 
 	if (PseudoSpecies(species))
-		return 0; // test dual 
+		return 2; // test dual 
 		//return 2; 
+	if (DualPseudo(species))
+		return 1; 
 	
 	if (StarterSpecies(species))
-		return 0; // test dual 
+		return 4; // test dual 
 		//return 4; // testing value; real value 6 or 7 
+	if (DualStarter(species))
+		return 2; 
 	
 	if (EeveeSpecies(species))
-		return 0; // test dual 
+		return 5; // test dual 
 		//return 5; // more versatile than Starter Species
 	
-	if (DualStandardSpecies(species))
-		return 7; 
+	// simulate chansey's rarity 
+	if ((species == SPECIES_CHANSEY) || (species == SPECIES_BLISSEY))
+		return 4; 
 	
-    return 10;
+	if (DualStandardSpecies(species))
+		return 14; 
+	
+    return 20;
 }
 
 // u8

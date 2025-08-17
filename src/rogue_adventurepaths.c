@@ -121,7 +121,9 @@ static bool8 ShouldBlockObjectEvent(struct RogueAdvPathRoom* room);
 static void BufferTypeAdjective(u8 type);
 
 static void GeneratePath(struct AdvPathSettings* pathSettings);
-static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings);
+//static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings, u8 *routeCount, u8 minRouteCount)
+//static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings);
+static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings, u8 routesNeeded);
 static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings);
 static void GenerateRoomInstance(u8 roomId, u8 roomType);
 static u8 CountRoomConnections(u8 mask);
@@ -150,10 +152,56 @@ static u8 GetPathGenerationDifficulty()
         return Rogue_GetCurrentDifficulty();
 }
 
+/*static void GeneratePath(struct AdvPathSettings* pathSettings)
+{
+    u8 routeCount = 0;
+    u8 minRouteCount = 5;  // Set this as needed or based on difficulty
+
+    struct AdvPathRoomSettings* bossRoom = &pathSettings->roomScratch[0];
+    memset(bossRoom, 0, sizeof(*bossRoom));
+    AGB_ASSERT(pathSettings->generator != NULL);
+    bossRoom->roomType = ADVPATH_ROOM_BOSS;
+
+    {
+        struct Coords8 coords = {0, 0};
+
+        gRogueAdvPath.roomCount = 0;
+        gRogueAdvPath.pathLength = pathSettings->totalLength;
+
+        GenerateFloorLayout(coords, pathSettings, &routeCount, minRouteCount);
+        GenerateRoomPlacements(pathSettings);
+    }
+	
+    // Store min/max Y coords
+    {
+        u8 i;
+
+        for(i = 0; i < gRogueAdvPath.roomCount; ++i)
+        {
+            if(i == 0)
+            {
+                gRogueAdvPath.pathMinY = gRogueAdvPath.rooms[i].coords.y;
+                gRogueAdvPath.pathMaxY = gRogueAdvPath.rooms[i].coords.y;
+            }
+            else
+            {
+                gRogueAdvPath.pathMinY = min(gRogueAdvPath.pathMinY, gRogueAdvPath.rooms[i].coords.y);
+                gRogueAdvPath.pathMaxY = max(gRogueAdvPath.pathMaxY, gRogueAdvPath.rooms[i].coords.y);
+            }
+        }
+    }
+
+    // (Rest of GeneratePath unchanged)
+}*/
+
 static void GeneratePath(struct AdvPathSettings* pathSettings)
 {
     struct AdvPathRoomSettings* bossRoom = &pathSettings->roomScratch[0];
+
+	u8 minRouteCount = 5;  // or whatever minimum number of routes you want guaranteed
     memset(bossRoom, 0, sizeof(*bossRoom));
+
+
 
     AGB_ASSERT(pathSettings->generator != NULL);
 
@@ -168,7 +216,7 @@ static void GeneratePath(struct AdvPathSettings* pathSettings)
         gRogueAdvPath.roomCount = 0;
         gRogueAdvPath.pathLength = pathSettings->totalLength;
 
-        GenerateFloorLayout(coords, pathSettings);
+        GenerateFloorLayout(coords, pathSettings, minRouteCount);
         GenerateRoomPlacements(pathSettings);
     }
 
@@ -192,7 +240,7 @@ static void GeneratePath(struct AdvPathSettings* pathSettings)
     }
 }
 
-static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings)
+/*static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings)
 {
     if(pathSettings->nodeCount >= ROGUE_ADVPATH_ROOM_CAPACITY)
     {
@@ -243,7 +291,67 @@ static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSett
             }
         }
     }
+}*/
+
+static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings, u8 routesNeeded)
+{
+    if(pathSettings->nodeCount >= ROGUE_ADVPATH_ROOM_CAPACITY)
+    {
+        // Cannot generate any more
+        DebugPrint("ADVPATH: \tReached room/node capacity.");
+        return;
+    }
+    else
+    {
+        u8 nodeId = gRogueAdvPath.roomCount++;
+
+        // Write base settings for this room (These will likely be overriden later)
+        gRogueAdvPath.rooms[nodeId].coords = currentCoords;
+        gRogueAdvPath.rooms[nodeId].roomType = ADVPATH_ROOM_NONE;
+        gRogueAdvPath.rooms[nodeId].connectionMask = 0;
+        gRogueAdvPath.rooms[nodeId].rngSeed = RogueRandom();
+
+        
+        // Generate children
+        //
+        if(currentCoords.x + 1 < pathSettings->totalLength)
+        {
+            struct Coords8 newCoords;
+            u8 connectionMask;
+
+            newCoords.x = currentCoords.x + 1;
+            newCoords.y = currentCoords.y;
+
+            connectionMask = GenerateRoomConnectionMask(currentCoords, pathSettings);
+            gRogueAdvPath.rooms[nodeId].connectionMask = connectionMask;
+
+            newCoords.y = currentCoords.y + 1;
+            if((connectionMask & ROOM_CONNECTION_MASK_TOP) != 0 && !DoesRoomExists(newCoords.x, newCoords.y))
+            {
+                int routesForThisBranch = (routesNeeded > 0) ? 1 : 0;
+				GenerateFloorLayout(newCoords, pathSettings, routesForThisBranch);
+				if (routesNeeded > 0) routesNeeded -= routesForThisBranch;
+            }
+            
+            newCoords.y = currentCoords.y + 0;
+            if((connectionMask & ROOM_CONNECTION_MASK_MID) != 0 && !DoesRoomExists(newCoords.x, newCoords.y))
+            {
+                int routesForThisBranch = (routesNeeded > 0) ? 1 : 0;
+				GenerateFloorLayout(newCoords, pathSettings, routesForThisBranch);
+				if (routesNeeded > 0) routesNeeded -= routesForThisBranch;
+            }
+
+            newCoords.y = currentCoords.y - 1;
+            if((connectionMask & ROOM_CONNECTION_MASK_BOT) != 0 && !DoesRoomExists(newCoords.x, newCoords.y))
+            {
+                int routesForThisBranch = (routesNeeded > 0) ? 1 : 0;
+				GenerateFloorLayout(newCoords, pathSettings, routesForThisBranch);
+				if (routesNeeded > 0) routesNeeded -= routesForThisBranch;
+            }
+        }
+    }
 }
+
 
 static bool8 IsPrecededByRoomType(struct RogueAdvPathRoom* room, u8 roomType)
 {
@@ -607,6 +715,7 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
     u8 validEncounterCount = 0;
     u16 validEncounterList[ADVPATH_ROOM_COUNT];
     u16 minReplaceCount = 1;
+    u8 minRouteCount = 5; // Add this here at the top
 
     // Place gym at very end
     GenerateRoomInstance(0, ADVPATH_ROOM_BOSS);
@@ -667,7 +776,23 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
 
         if(chance != 0)
         {
-            for(i = 0; i < gRogueAdvPath.roomCount; ++i)
+			for(i = 0; i < gRogueAdvPath.roomCount; ++i)
+			{
+				if (gRogueAdvPath.rooms[i].roomType == ADVPATH_ROOM_ROUTE
+					&& freeRoomCount > minRouteCount
+					&& RogueRandomChance(chance, 0))
+				{
+					GenerateRoomInstance(i, ADVPATH_ROOM_NONE);
+					--freeRoomCount;
+
+					if(chance <= chanceFalloff)
+						chance = 1;
+					else
+					chance -= chanceFalloff;
+				}
+			}
+
+            /*for(i = 0; i < gRogueAdvPath.roomCount; ++i)
             {
                 if(gRogueAdvPath.rooms[i].roomType == ADVPATH_ROOM_ROUTE && RogueRandomChance(chance, 0))
                 {
@@ -679,7 +804,7 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
                     else
                         chance -= chanceFalloff;
                 }
-            }
+            }*/
         }
     }
 
@@ -713,31 +838,38 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
         }
     }
 
-    // Honey tree
-    if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && GetPathGenerationDifficulty() >= 1 && RogueRandomChance(60, 0))
-        validEncounterList[validEncounterCount++] = ADVPATH_ROOM_HONEY_TREE;
-
-    // Catching contest
-    if(RogueRandomChance(80, 0))
-	//if(RogueRandomChance(33, 0))
-        validEncounterList[validEncounterCount++] = ADVPATH_ROOM_CATCHING_CONTEST;
-
-    // Mysterious Sign
-    if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && GetPathGenerationDifficulty() < ROGUE_ELITE_START_DIFFICULTY && RogueRandomChance(40, 0))
-        validEncounterList[validEncounterCount++] = ADVPATH_ROOM_SIGN;
-
     // Shrine (Gauntlet will always offer this encounter)
     if((Rogue_GetModeRules()->adventureGenerator == ADV_GENERATOR_GAUNTLET) || GetPathGenerationDifficulty() == gRogueRun.shrineSpawnDifficulty)
         validEncounterList[validEncounterCount++] = ADVPATH_ROOM_SHRINE;
 
-    // Battle sim
-    if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && GetPathGenerationDifficulty() >= 1 && RogueRandomChance(33, 0))
-        validEncounterList[validEncounterCount++] = ADVPATH_ROOM_BATTLE_SIM;
+	if (GetPathGenerationDifficulty() >= 1)
+	{
+
+		// Honey tree
+		if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && RogueRandomChance(60, 0))
+			validEncounterList[validEncounterCount++] = ADVPATH_ROOM_HONEY_TREE;
+
+		// Catching contest
+		//if(RogueRandomChance(80, 0)) testvalue 
+		if((RogueRandomChance(33, 0) && GetPathGenerationDifficulty() < ROGUE_ELITE_START_DIFFICULTY)) 
+			validEncounterList[validEncounterCount++] = ADVPATH_ROOM_CATCHING_CONTEST;
+
+		// Mysterious Sign
+		if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && GetPathGenerationDifficulty() < ROGUE_ELITE_START_DIFFICULTY && RogueRandomChance(40, 0))
+			validEncounterList[validEncounterCount++] = ADVPATH_ROOM_SIGN;
+
+		// Battle sim
+		if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && RogueRandomChance(33, 0))
+			validEncounterList[validEncounterCount++] = ADVPATH_ROOM_BATTLE_SIM;
+	}
+
 
     {
         bool8 allowDarkDeal = (GetPathGenerationDifficulty() % 3 != 0);
         bool8 allowLab = (GetPathGenerationDifficulty() % 3 != 1);
-        bool8 allowGameShow = RogueRandomChance(50, 0);
+        
+		// no game show 
+		bool8 allowGameShow = RogueRandomChance(0, 0);
 
         if(Rogue_GetModeRules()->adventureGenerator == ADV_GENERATOR_GAUNTLET)
         {
@@ -746,7 +878,9 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
             allowGameShow = FALSE;
         }
 
+		//no dark deal 
         allowDarkDeal = (allowDarkDeal && RogueRandomChance(25, 0));
+		//allowDarkDeal = (allowDarkDeal && RogueRandomChance(25, 0));
         allowLab = (allowLab && RogueRandomChance(25, 0));
 
 
@@ -810,6 +944,10 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
 
         for(i = 0; i < (u8)replaceCount; ++i)
         {
+			//u16 encounterType; 
+			//if (freeRoomCount <= minRouteCount) //
+			//	break;							//
+				
             u16 encounterType = SelectRoomType(validEncounterList, validEncounterCount);
             ReplaceRoomEncounter(ADVPATH_ROOM_ROUTE, encounterType);
             --freeRoomCount;
@@ -842,26 +980,26 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
             //chance = 60;
             chance = 30; 
 			chanceFalloff = 45;
-            minRouteCount = 3;
+            minRouteCount = 5;
         }
         else if(GetPathGenerationDifficulty() >=  1)
         {
             chance = 20;
             chanceFalloff = 30;
-            minRouteCount = 5;
+            minRouteCount = 10;
         }
 		else if(GetPathGenerationDifficulty() ==  1)
         {
             chance = 10;
             chanceFalloff = 15;
-            minRouteCount = 5;
+            minRouteCount = 7; // 5
         }
 		// 0 badge
         else
         {
             chance = 0;
             chanceFalloff = 0;
-            minRouteCount = 5;
+            minRouteCount = 5; // 5
         }
 
         // Always make sure there is at least 1 regular route which can be chosen
@@ -1007,13 +1145,19 @@ static void GenerateRoomInstance(u8 roomId, u8 roomType)
             gRogueAdvPath.rooms[roomId].roomParams.roomIdx = Rogue_SelectRouteRoom(GetPathGenerationDifficulty());
             DebugPrintf("Route [%d] = %d", roomId, gRogueAdvPath.rooms[roomId].roomParams.roomIdx);
 
-            if (GetPathGenerationDifficulty() <= 1)
+            if (GetPathGenerationDifficulty() == 0)
 			{
                 weights[ADVPATH_SUBROOM_ROUTE_CALM] = 9;
                 weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 1;
                 weights[ADVPATH_SUBROOM_ROUTE_TOUGH] = 0;
             }
-			else if(GetPathGenerationDifficulty() > ROGUE_ELITE_START_DIFFICULTY)
+			else if (GetPathGenerationDifficulty() == 1)
+			{
+                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 6;
+                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 3;
+                weights[ADVPATH_SUBROOM_ROUTE_TOUGH] = 0;
+            }
+			else if(GetPathGenerationDifficulty() < ROGUE_ELITE_START_DIFFICULTY)
             {
                 weights[ADVPATH_SUBROOM_ROUTE_CALM] = 2;
                 weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 6;

@@ -130,8 +130,9 @@ static const u8 sHornDrillDescription[] = _(
     "uses a horn like a drill.");
 
 static const u8 sTackleDescription[] = _(
-    "Charges the foe with a full-\n"
-    "body tackle.");
+	"No additional effect.");
+//    "Charges the foe with a full-\n"
+//    "body tackle.");
 
 static const u8 sBodySlamDescription[] = _(
     "A full-body slam that may\n"
@@ -254,8 +255,9 @@ static const u8 sHyperBeamDescription[] = _(
     "user immobile the next turn.");
 
 static const u8 sPeckDescription[] = _(
-    "Attacks the foe with a\n"
-    "jabbing beak, etc.");
+	"No additional effect.");
+//    "Attacks the foe with a\n"
+//    "jabbing beak, etc.");
 
 static const u8 sDrillPeckDescription[] = _(
     "A corkscrewing attack with\n"
