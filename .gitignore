@@ -45,3 +45,4 @@ tools/poryscript/*
 tools/ups/*
 !tools/Pokabbie/Build
 pokeemerald-*.pngpng2gba/
+png2gba/
