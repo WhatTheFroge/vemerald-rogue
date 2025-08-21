@@ -21,9 +21,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Grubhub!\\p…\\pHow did you get Pokémon like that?!\\nWhat a waste.\\pThose Pokémon are too good for a\\nwimp like you.\\pDon't you get what I'm saying?\\nI'll show you what I mean!", 
+                        "PRE_BATTLE_TAUNT": "How did you get Pokémon like that?!\\nWhat a waste.\\pThose Pokémon are too good for a\\nwimp like you.\\pDon't you get what I'm saying?\\nI'll show you what I mean!", 
                         "POST_BATTLE_TAUNT": "…Humph!\\nAre you happy you won?",
-                        "POST_BATTLE_CLOSER": "…\\pI'm going to be the world's greatest Pokémon Trainer.\\pSo you better not get in my way."
+                        "POST_BATTLE_CLOSER": "…\\pI'm going to be the world's greatest\\nPokémon Trainer.\\pYou'd better not get in my way."
                     },
                     {
                         "PRE_BATTLE_TAUNT": "…didn't I tell you to not get in my way?\\pIf you're that insistent…\\pThen let's see how good you are.",
@@ -293,7 +293,7 @@
                         "PRE_BATTLE_OPENNING": "Let me tell you, I'm tough.\\nI train every day to improve mind and body.",
                         "PRE_BATTLE_TAUNT": "You must have guts to fight me!\\nCome on!",
                         "POST_BATTLE_TAUNT": "Huh… I lost?",
-                        "POST_BATTLE_CLOSER": "That was a fun fight.\\nBut a loss is a loss!\\pYou better carry that strength forward!"
+                        "POST_BATTLE_CLOSER": "That was a fun fight.\\nBut a loss is a loss!\\pYou better continue building\\lyour strength!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",

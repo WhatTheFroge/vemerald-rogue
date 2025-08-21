@@ -2040,6 +2040,7 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
 				case ITEM_LAX_INCENSE:
 				case ITEM_SEA_INCENSE:
 				case ITEM_LEFTOVERS: 
+				case ITEM_BERRY_JUICE: // ? 
 					return FALSE;
 					
             }
@@ -2553,6 +2554,8 @@ static const u8 sStarterTypeTriangles[] =
     TYPE_STEEL, TYPE_FIRE, TYPE_ROCK*/
 	
 	// TYPE_BUG, TYPE_POISON, TYPE_POISON 
+	
+	//TYPE_FLYING, TYPE_FLYING, TYPE_FLYING, 
 	
 	// allow starters to be any types
 	TYPE_NONE, TYPE_NONE, TYPE_NONE
@@ -3599,9 +3602,11 @@ static void BeginRogueRun_ModifyParty(void)
         for(i = 0; i < gPlayerPartyCount; ++i)
         {
             u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+			int StartingFriendship = GetMonData(&gPlayerParty[i], MON_DATA_FRIENDSHIP);
             if(species != SPECIES_NONE)
             {
 				temp = 0;
+				StartingFriendship = StartingFriendship + 100;
                 SetMonData(&gPlayerParty[i], MON_DATA_HP_EV, &temp);
                 SetMonData(&gPlayerParty[i], MON_DATA_ATK_EV, &temp);
                 SetMonData(&gPlayerParty[i], MON_DATA_DEF_EV, &temp);
@@ -3612,6 +3617,9 @@ static void BeginRogueRun_ModifyParty(void)
                 // Force to starter lvl
                 exp = Rogue_ModifyExperienceTables(gRogueSpeciesInfo[GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL)].growthRate, STARTER_MON_LEVEL);
                 SetMonData(&gPlayerParty[i], MON_DATA_EXP, &exp);
+				
+				// Increase starter's friendship by 100 
+				SetMonData(&gPlayerParty[i], MON_DATA_FRIENDSHIP, &StartingFriendship);
 
 				// partnerSpecies 
                 if(partnerSpecies != SPECIES_NONE)
@@ -3811,6 +3819,7 @@ static void SetupRogueRunBag()
     {
         AddBagItem(ITEM_POKE_BALL, 5);
         AddBagItem(ITEM_POTION, 1);
+		// AddBagItem(ITEM_ORAN_BERRY, 1); 
     }
 
     RecalcCharmCurseValues();
@@ -3831,15 +3840,6 @@ static void BeginRogueRun(void)
 
     RogueGift_EnsureDynamicCustomMonsAreValid();
     RogueSave_SaveHubStates();
-
-#ifdef ROGUE_EXPANSION
-    // Cache the results for the run (Must do before ActiveRun flag is set)
-    gRogueRun.megasEnabled = IsMegaEvolutionEnabled();
-    gRogueRun.zMovesEnabled = IsZMovesEnabled();
-    gRogueRun.dynamaxEnabled = IsDynamaxEnabled();
-    gRogueRun.terastallizeEnabled = IsTerastallizeEnabled();
-    // CheckBagHasItem(ITEM_DYNAMAX_BAND, 1)
-#endif
 
     FlagSet(FLAG_ROGUE_RUN_ACTIVE);
     FlagClear(FLAG_ROGUE_IS_VICTORY_LAP);
@@ -4497,206 +4497,201 @@ static u16 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 	//if (species == SPECIES_PIDGEY)
 	//	return 300; 
 	
+	int diff = Rogue_GetCurrentDifficulty();
+	
     if (PoorSpecies1(species))							
     { 
 	//	14 10 7 5 4 
-        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 8; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 1) // between first and second badge 
-			return 20; 
-        else										
-            return 28;
+		if (diff == 0)		return 28; 
+		if (diff == 1)		return 20;
+		if (diff == 2)		return 14; 
+		if (diff == 3)		return 10; 
+		if (diff >= 4)		return 8;  
     }
+	
 	// use ROGUE_GYM_MID_DIFFICULTY so its easier to find when using a search; 
 	// Weak groups start with high frequency and taper off 
 
+	//		Dual Poor 1					D-Poor2					D-Poor3	
+	// 55%	60%		65%			55%		60%		65%			55%		60%		65%			
+	//15.4	16.8	18.2		14.3	15.6	16.9		13.2	14.4	15.6
+	//11	12		13			12.1	13.2	14.3		11		12		13
+	//7.7	8.4		9.1			9.9		10.8	11.7		8.8		9.6		10.4
+	//5.5	6		6.5			7.7		8.4		9.1			7.7		8.4		9.1
+	//4.4	4.8		5.2			5.5		6		6.5			6.6		7.2		7.8
+	//														5.5		6		6.5
+
+	// test dual special groups 0.7 -> 0.55 
+
+
+	// same as above but they are dual-typed, therefore eligible for more routes 
 	if (DualPoor1(species))
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 20; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 7; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 6; 
+		if (diff == 0)		return 15; 
+		if (diff == 1)		return 11; 
+		if (diff == 2)		return 8; 
+		if (diff == 3)		return 5; 
+		if (diff >= 4)		return 4; // diff 4+
 	}
 
-    if (PoorSpecies2(species))							
-    { 
+	if (PoorSpecies2(species))							
+	{ 
 	// 13 11 9 7 5 
-        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 18; 
-		else if (Rogue_GetCurrentDifficulty() == 1) 
-			return 22; 
-        else										
-            return 26;
-    }
+		if (diff == 0)		return 26; 
+		if (diff == 1)		return 22; 
+		if (diff == 2)		return 18; 
+		if (diff == 3)		return 14; 
+		if (diff >= 4)		return 10;	// diff 4+	
+	}
 
 	if (DualPoor2(species))
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 18; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 15; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 13; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 7; 
+		if (diff == 0)		return 14; // 14 or 0.7
+		if (diff == 1)		return 12; 
+		if (diff == 2)		return 10; 
+		if (diff == 3)		return 8; 
+		if (diff >= 4)		return 5; // diff 4+
 	}
-
 
 	if (PoorSpecies3(species))	
 	{
 	// 12 10 8 7 6 5 
-		if (Rogue_GetCurrentDifficulty() >= 5)
-			return 10; 
-		if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 12; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 16; 
-		else if (Rogue_GetCurrentDifficulty() == 1) 
-			return 20; 
-        else										
-            return 24;
+		if (diff == 0)		return 24; 
+		if (diff == 1)		return 20; 
+		if (diff == 2)		return 16; 
+		if (diff == 3)		return 14; 
+		if (diff == 4)		return 12; 
+		if (diff >= 5)		return 10; // diff 5+
 	}
-	
+
 	if (DualPoor3(species)) // 17	14	11	10	8	7
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 17; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 11; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 8; 
-		else if (Rogue_GetCurrentDifficulty() >= 5)
-			return 7; 
+		if (diff == 0)		return 13; // 14 or 0.7
+		if (diff == 1)		return 11; 
+		if (diff == 2)		return 9; 
+		if (diff == 3)		return 8; 
+		if (diff == 4)		return 7; 
+		if (diff >= 5)		return 5; 
 	}
+	
+	/*
+	D-Unc 1							D-Unc2	
+		0.55	0.6		0.65		0.55	0.6		0.65	
+	6	3.3		3.6		3.9			1.1		1.2		1.3
+	24	13.2	14.4	15.6		3.3		3.6		3.9
+	20	11		12		13			13.2	14.4	15.6
+	18	9.9		10.8	11.7		13.2	14.4	15.6
+	16	8.8		9.6		10.4		11		12		13
+	*/
 	
 	if (UncommonSpecies1(species))
 	{
 	// 3 12 10 9 8 
-		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 16; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 18; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 20; 
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 24; 
-		else	
-			return 6; 
+		if (diff == 0)		return 6; 
+		if (diff == 1)		return 24; 
+		if (diff == 2)		return 20; 
+		if (diff == 3)		return 18; 
+		if (diff >= 4)		return 16; // diff 4+
 	}
-	
+
 	// 4	17	14	13	11
 	if (DualUncommon1(species)) 
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 4; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 17; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 13; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 11; 
+		if (diff == 0)		return 3; // 14 or 0.7
+		if (diff == 1)		return 13; 
+		if (diff == 2)		return 11; 
+		if (diff == 3)		return 10; 
+		if (diff >= 4)		return 9; 
 	}
-	
+
 	if (UncommonSpecies2(species))
 	{
 	// 1 3 12 10 
-		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 20;
-		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
-			return 24;
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 6; 
-		else	
-			return 2; 
+		if (diff == 0)		return 2; 
+		if (diff == 1)		return 6; 
+		if (diff == 2)		return 24; 
+		if (diff == 3)		return 24; 
+		if (diff >= 4)		return 20;  // >=4
 	}
-	
+
 	if (DualUncommon2(species)) // 1	4	17	14
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 1; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 4; 
-		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
-			return 17; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 14; 
+		if (diff == 0)		return 1; // 14 or 0.7
+		if (diff == 1)		return 3; 
+		if (diff == 2)		return 13;
+		if (diff == 3)		return 13; 
+		if (diff >= 4)		return 11; 
 	}
+
+	
+	// unique: scyther has a poor start but is otherwise ~as strong as Rares (Pinsir, Kanga, Tauros, Miltank, Torkoal) 
+	// same weights as Dual Rares but spread differently 
+	// 70% 0, 7, 9, 10, 11, 13..
+	// 55% 0, 5, 7, 8, 9, 10...
+	if ((species == SPECIES_SCYTHER) || (species == SPECIES_SCIZOR))
+	{
+		if (diff == 0)		return 0; 
+		if (diff == 1)		return 5; 
+		if (diff == 2)		return 7; 
+		if (diff == 3)		return 8; 
+		if (diff == 4)		return 9; 
+		if (diff >= 5)	return 10; // diff 5+
+	}
+	
+	/*
+		D-Rare 1								D-Rare2	
+			0.55	0.6		0.65				0.55	0.6		0.65	
+	0		0		0		0			0		0		0		0
+	3		1.65	1.8		1.95		2		1.1		1.2		1.3
+	6		3.3		3.6		3.9			7		3.85	4.2		4.55
+	15		8.25	9		9.75		9		4.95	5.4		5.85
+	20		11		12		13			12		6.6		7.2		7.8
+								
+	*/
 	
 	
 	if (RareSpecies1(species))
 	{
 	//	0 2 8 10 
-		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 20; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 16; 
-		else if (Rogue_GetCurrentDifficulty() == 1 || Rogue_GetCurrentDifficulty() == 2)
-			return 4; 
-		else
-			return 0; // does it work? 
+		if (diff == 0)		return 0; 
+		if (diff == 1)		return 3; 
+		if (diff == 2)		return 6; 
+		if (diff == 3)		return 15; 
+		if (diff >= 4)		return 20; // diff 4+
 	}
+	
 	// don't restore weight to 10 right away;
 	// less common because these Pokemon are immediately strong and don't have a weak starting period 
-	
+		
 	if (DualRare1(species)) // 0 3/3 11 14 
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 0; 
-		else if (Rogue_GetCurrentDifficulty() == 1 || Rogue_GetCurrentDifficulty() == 2)
-			return 3; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 11; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 14; 
+		if (diff == 0)		return 0; 
+		if (diff == 1)		return 1; 
+		if (diff == 2)		return 3; 
+		if (diff == 3)		return 8; 
+		if (diff >= 4)		return 11; // diff 4+
 	}
+
 	
 	if (RareSpecies2(species))
 	{
 	// 0 1 8 10
-		if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
-			return 20; 
-		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 16;
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 2; 
-		else
-			return 0; // does it work?  
+	// 16 20 -> 14 17 
+	// 000 2 7 9 12...
+		if (diff < 3)		return 0; 
+		if (diff == 3)		return 2; 
+		if (diff == 4)		return 7; 
+		if (diff == 5)		return 9; 
+		if (diff >= 6)		return 12; // diff 6+
 	}
-	
+
 	if (DualRare2(species))
 	{
-		if (Rogue_GetCurrentDifficulty() < 3)
-			return 0; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 1; 
-		else if (Rogue_GetCurrentDifficulty() == 4)
-			return 11; 
-		else if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
-			return 14; 
+		if (diff < 3)		return 0; 
+		if (diff == 3)		return 1; 
+		if (diff == 4)		return 4; 
+		if (diff == 5)		return 5; 
+		if (diff >= 6)		return 6; // diff 6+
 	}
 
 	// pseudo 3 starter 6~7
@@ -4708,22 +4703,25 @@ static u16 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 		return 1; 
 	
 	if (StarterSpecies(species))
-		return 4; // test dual 
+		return 6; // test dual 
 		//return 4; // testing value; real value 6 or 7 
 	if (DualStarter(species))
-		return 2; 
+		return 3; 
 	
 	if (EeveeSpecies(species))
-		return 5; // test dual 
+		return 8; // test dual 
 		//return 5; // more versatile than Starter Species
 	
-	// simulate chansey's rarity
+	// simulate chansey's rarity 
 	if ((species == SPECIES_CHANSEY) || (species == SPECIES_BLISSEY))
 		return 4; 
 	
+	// duals occur on more routes than single-types, so let's reduce their frequency slightly 
+	// some dual types intentionally not included, such as Altaria and Vibrava, b/c dragon is a rare route type 
 	if (DualStandardSpecies(species))
-		return 14; 
+		return 13; 
 	
+	// Standard Pokemon with One Type 
     return 20;
 	
 }
@@ -7115,17 +7113,6 @@ void Rogue_ApplyMonCompetitiveSet(struct Pokemon* mon, u8 level, struct RoguePok
     move = useMaxHappiness ? MAX_FRIENDSHIP : 0;
     SetMonData(mon, MON_DATA_FRIENDSHIP, &move);
 
-#ifdef ROGUE_EXPANSION
-    if(!rules->skipTeraType)
-    {
-        u32 teraType = preset->teraType;
-        if(teraType != TYPE_NONE)
-        {
-            SetMonData(mon, MON_DATA_TERA_TYPE, &teraType);
-        }
-    }
-#endif
-
     if(!rules->skipHiddenPowerType)
     {
         u8 hiddenPowerType = preset->hiddenPowerType;
@@ -8380,13 +8367,7 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
         if(!Rogue_IsRunActive())
         {
             if(!RogueHub_HasUpgrade(HUB_UPGRADE_MARTS_TMS_STOCK))
-            {
-#ifdef ROGUE_EXPANSION
-                maxPriceRange = 15000;
-#else
                 maxPriceRange = 8000;
-#endif
-            }
         }
         break;
 
@@ -8429,12 +8410,7 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
         break;
 
     case ROGUE_SHOP_RARE_HELD_ITEMS:
-#ifdef ROGUE_EXPANSION
-        RogueItemQuery_IsStoredInPocket(QUERY_FUNC_INCLUDE, POCKET_STONES);
-        applyRandomChance = TRUE;
-#else
         AGB_ASSERT(FALSE);
-#endif
         break;
 
     case ROGUE_SHOP_QUEST_REWARDS:
@@ -8443,7 +8419,12 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
 
     case ROGUE_SHOP_BERRIES:
         RogueItemQuery_IsStoredInPocket(QUERY_FUNC_INCLUDE, POCKET_BERRIES);
-        if(Rogue_IsRunActive())
+		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_ORAN_BERRY);
+		// by removing half the friendship berries from the pool, we're basically cutting the chance by 50% 
+		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_GREPA_BERRY);
+		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_HONDEW_BERRY);
+		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_KELPSY_BERRY);
+		if(Rogue_IsRunActive())
             *minSalePrice = 1000;
         else
             *minSalePrice = 2500;
@@ -8774,6 +8755,7 @@ static bool8 PoorSpecies2(u16 species)
         case SPECIES_NOSEPASS:
         case SPECIES_SMEARGLE:
         case SPECIES_SKITTY:
+		case SPECIES_DELCATTY: 
 		
 		/* // half? 
 		case SPECIES_PLUSLE:
@@ -8909,7 +8891,9 @@ bool8 UncommonSpecies1(u16 species)
         case SPECIES_CHIMECHO:
         case SPECIES_KECLEON:
         case SPECIES_SUDOWOODO:
+		case SPECIES_SEVIPER: 
 		case SPECIES_PORYGON: // unc2? 
+		case SPECIES_PORYGON2: 
             return TRUE;
         default:
             return FALSE;
@@ -8948,8 +8932,8 @@ static bool8 DualUncommon2 (u16 species) // new
 {
 	switch(species)
 	{
-		case SPECIES_SCYTHER:
-		case SPECIES_SCIZOR: 
+//		case SPECIES_SCYTHER:
+//		case SPECIES_SCIZOR: 
         case SPECIES_SHUCKLE:
         case SPECIES_TROPIUS:
         case SPECIES_GIRAFARIG:
@@ -8962,6 +8946,9 @@ static bool8 DualUncommon2 (u16 species) // new
 			return FALSE; 
 	}
 }
+
+// Scyther Uncommon -> Rare ? 
+// Gym 2 - Lvl 20; Not available until Lvl 25 
 
 
 // Gym 3 
@@ -9000,9 +8987,6 @@ bool8 RareSpecies2(u16 species)
     switch(species)
     {
         case SPECIES_SNORLAX:
-        case SPECIES_LAPRAS:
-        case SPECIES_AERODACTYL:
-        case SPECIES_HERACROSS:
             return TRUE;
         default:
             return FALSE;
@@ -9340,206 +9324,201 @@ static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void*
 	//if (species == SPECIES_PIDGEY)
 	//	return 300; 
 	
+	int diff = Rogue_GetCurrentDifficulty();
+	
     if (PoorSpecies1(species))							
     { 
 	//	14 10 7 5 4 
-        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 8; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 1) // between first and second badge 
-			return 20; 
-        else										
-            return 28;
+		if (diff == 0)		return 28; 
+		if (diff == 1)		return 20;
+		if (diff == 2)		return 14; 
+		if (diff == 3)		return 10; 
+		if (diff >= 4)		return 8;  
     }
+	
 	// use ROGUE_GYM_MID_DIFFICULTY so its easier to find when using a search; 
 	// Weak groups start with high frequency and taper off 
 
+	//		Dual Poor 1					D-Poor2					D-Poor3	
+	// 55%	60%		65%			55%		60%		65%			55%		60%		65%			
+	//15.4	16.8	18.2		14.3	15.6	16.9		13.2	14.4	15.6
+	//11	12		13			12.1	13.2	14.3		11		12		13
+	//7.7	8.4		9.1			9.9		10.8	11.7		8.8		9.6		10.4
+	//5.5	6		6.5			7.7		8.4		9.1			7.7		8.4		9.1
+	//4.4	4.8		5.2			5.5		6		6.5			6.6		7.2		7.8
+	//														5.5		6		6.5
+
+	// test dual special groups 0.7 -> 0.55 
+
+
+	// same as above but they are dual-typed, therefore eligible for more routes 
 	if (DualPoor1(species))
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 20; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 7; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 6; 
+		if (diff == 0)		return 15; 
+		if (diff == 1)		return 11; 
+		if (diff == 2)		return 8; 
+		if (diff == 3)		return 5; 
+		if (diff >= 4)		return 4; // diff 4+
 	}
 
-    if (PoorSpecies2(species))							
-    { 
+	if (PoorSpecies2(species))							
+	{ 
 	// 13 11 9 7 5 
-        if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 18; 
-		else if (Rogue_GetCurrentDifficulty() == 1) 
-			return 22; 
-        else										
-            return 26;
-    }
+		if (diff == 0)		return 26; 
+		if (diff == 1)		return 22; 
+		if (diff == 2)		return 18; 
+		if (diff == 3)		return 14; 
+		if (diff >= 4)		return 10;	// diff 4+	
+	}
 
 	if (DualPoor2(species))
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 18; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 15; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 13; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 7; 
+		if (diff == 0)		return 14; // 14 or 0.7
+		if (diff == 1)		return 12; 
+		if (diff == 2)		return 10; 
+		if (diff == 3)		return 8; 
+		if (diff >= 4)		return 5; // diff 4+
 	}
-
 
 	if (PoorSpecies3(species))	
 	{
 	// 12 10 8 7 6 5 
-		if (Rogue_GetCurrentDifficulty() >= 5)
-			return 10; 
-		if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 12; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 16; 
-		else if (Rogue_GetCurrentDifficulty() == 1) 
-			return 20; 
-        else										
-            return 24;
+		if (diff == 0)		return 24; 
+		if (diff == 1)		return 20; 
+		if (diff == 2)		return 16; 
+		if (diff == 3)		return 14; 
+		if (diff == 4)		return 12; 
+		if (diff >= 5)		return 10; // diff 5+
 	}
-	
+
 	if (DualPoor3(species)) // 17	14	11	10	8	7
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 17; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 11; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 10; 
-		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 8; 
-		else if (Rogue_GetCurrentDifficulty() >= 5)
-			return 7; 
+		if (diff == 0)		return 13; // 14 or 0.7
+		if (diff == 1)		return 11; 
+		if (diff == 2)		return 9; 
+		if (diff == 3)		return 8; 
+		if (diff == 4)		return 7; 
+		if (diff >= 5)		return 5; 
 	}
+	
+	/*
+	D-Unc 1							D-Unc2	
+		0.55	0.6		0.65		0.55	0.6		0.65	
+	6	3.3		3.6		3.9			1.1		1.2		1.3
+	24	13.2	14.4	15.6		3.3		3.6		3.9
+	20	11		12		13			13.2	14.4	15.6
+	18	9.9		10.8	11.7		13.2	14.4	15.6
+	16	8.8		9.6		10.4		11		12		13
+	*/
 	
 	if (UncommonSpecies1(species))
 	{
 	// 3 12 10 9 8 
-		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 16; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 18; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 20; 
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 24; 
-		else	
-			return 6; 
+		if (diff == 0)		return 6; 
+		if (diff == 1)		return 24; 
+		if (diff == 2)		return 20; 
+		if (diff == 3)		return 18; 
+		if (diff >= 4)		return 16; // diff 4+
 	}
-	
+
 	// 4	17	14	13	11
 	if (DualUncommon1(species)) 
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 4; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 17; 
-		else if (Rogue_GetCurrentDifficulty() == 2)
-			return 14; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 13; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 11; 
+		if (diff == 0)		return 3; // 14 or 0.7
+		if (diff == 1)		return 13; 
+		if (diff == 2)		return 11; 
+		if (diff == 3)		return 10; 
+		if (diff >= 4)		return 9; 
 	}
-	
+
 	if (UncommonSpecies2(species))
 	{
 	// 1 3 12 10 
-		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 20;
-		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
-			return 24;
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 6; 
-		else	
-			return 2; 
+		if (diff == 0)		return 2; 
+		if (diff == 1)		return 6; 
+		if (diff == 2)		return 24; 
+		if (diff == 3)		return 24; 
+		if (diff >= 4)		return 20;  // >=4
 	}
-	
+
 	if (DualUncommon2(species)) // 1	4	17	14
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 1; // 14 or 0.7
-		else if (Rogue_GetCurrentDifficulty() == 1)
-			return 4; 
-		else if (Rogue_GetCurrentDifficulty() == 2 || Rogue_GetCurrentDifficulty() == 3)
-			return 17; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 14; 
+		if (diff == 0)		return 1; // 14 or 0.7
+		if (diff == 1)		return 3; 
+		if (diff == 2)		return 13;
+		if (diff == 3)		return 13; 
+		if (diff >= 4)		return 11; 
 	}
+
+	
+	// unique: scyther has a poor start but is otherwise ~as strong as Rares (Pinsir, Kanga, Tauros, Miltank, Torkoal) 
+	// same weights as Dual Rares but spread differently 
+	// 70% 0, 7, 9, 10, 11, 13..
+	// 55% 0, 5, 7, 8, 9, 10...
+	if ((species == SPECIES_SCYTHER) || (species == SPECIES_SCIZOR))
+	{
+		if (diff == 0)		return 0; 
+		if (diff == 1)		return 5; 
+		if (diff == 2)		return 7; 
+		if (diff == 3)		return 8; 
+		if (diff == 4)		return 9; 
+		if (diff >= 5)		return 10; // diff 5+
+	}
+	
+	/*
+		D-Rare 1								D-Rare2	
+			0.55	0.6		0.65				0.55	0.6		0.65	
+	0		0		0		0			0		0		0		0
+	3		1.65	1.8		1.95		2		1.1		1.2		1.3
+	6		3.3		3.6		3.9			7		3.85	4.2		4.55
+	15		8.25	9		9.75		9		4.95	5.4		5.85
+	20		11		12		13			12		6.6		7.2		7.8
+								
+	*/
 	
 	
 	if (RareSpecies1(species))
 	{
 	//	0 2 8 10 
-		if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 20; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 16; 
-		else if (Rogue_GetCurrentDifficulty() == 1 || Rogue_GetCurrentDifficulty() == 2)
-			return 4; 
-		else
-			return 0; // does it work? 
+		if (diff == 0)		return 0; 
+		if (diff == 1)		return 3; 
+		if (diff == 2)		return 6; 
+		if (diff == 3)		return 15; 
+		if (diff >= 4)		return 20; // diff 4+
 	}
+	
 	// don't restore weight to 10 right away;
 	// less common because these Pokemon are immediately strong and don't have a weak starting period 
-	
+		
 	if (DualRare1(species)) // 0 3/3 11 14 
 	{
-		if (Rogue_GetCurrentDifficulty() == 0)
-			return 0; 
-		else if (Rogue_GetCurrentDifficulty() == 1 || Rogue_GetCurrentDifficulty() == 2)
-			return 3; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 11; 
-		else if (Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-			return 14; 
+		if (diff == 0)		return 0; 
+		if (diff == 1)		return 1; 
+		if (diff == 2)		return 3; 
+		if (diff == 3)		return 8; 
+		if (diff >= 4)		return 11; // diff 4+
 	}
+
 	
 	if (RareSpecies2(species))
 	{
 	// 0 1 8 10
-		if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
-			return 20; 
-		else if (Rogue_GetCurrentDifficulty() == ROGUE_GYM_MID_DIFFICULTY)
-			return 16;
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 2; 
-		else
-			return 0; // does it work?  
+	// 16 20 -> 14 17 
+	// 000 2 7 9 12...
+		if (diff < 3)		return 0; 
+		if (diff == 3)		return 2; 
+		if (diff == 4)		return 7; 
+		if (diff == 5)		return 9; 
+		if (diff >= 6)		return 12; // diff 6+
 	}
-	
+
 	if (DualRare2(species))
 	{
-		if (Rogue_GetCurrentDifficulty() < 3)
-			return 0; 
-		else if (Rogue_GetCurrentDifficulty() == 3)
-			return 1; 
-		else if (Rogue_GetCurrentDifficulty() == 4)
-			return 11; 
-		else if (Rogue_GetCurrentDifficulty() > ROGUE_GYM_MID_DIFFICULTY)
-			return 14; 
+		if (diff < 3)		return 0; 
+		if (diff == 3)		return 1; 
+		if (diff == 4)		return 4; 
+		if (diff == 5)		return 5; 
+		if (diff >= 6)		return 6; // diff 6+
 	}
 
 	// pseudo 3 starter 6~7
@@ -9551,22 +9530,26 @@ static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void*
 		return 1; 
 	
 	if (StarterSpecies(species))
-		return 4; // test dual 
+		return 6; // test dual 
 		//return 4; // testing value; real value 6 or 7 
 	if (DualStarter(species))
-		return 2; 
+		return 3; 
 	
 	if (EeveeSpecies(species))
-		return 5; // test dual 
+		return 8; // test dual 
 		//return 5; // more versatile than Starter Species
 	
 	// simulate chansey's rarity 
 	if ((species == SPECIES_CHANSEY) || (species == SPECIES_BLISSEY))
 		return 4; 
 	
+	// duals occur on more routes than single-types, so let's reduce their frequency slightly 
+	// some dual types intentionally not included, such as Altaria and Vibrava, b/c dragon is a rare route type 
+	// Dual value 10~15 must adjust other groups accordingly 
 	if (DualStandardSpecies(species))
-		return 14; 
+		return 13; 
 	
+	// Standard Pokemon with One Type 
     return 20;
 }
 
@@ -9829,9 +9812,6 @@ void Rogue_SafariTypeForMap(u8* outArray, u8 arraySize)
     {
         outArray[0] = TYPE_NORMAL;
         outArray[1] = TYPE_FIGHTING;
-#ifdef ROGUE_EXPANSION
-        outArray[2] = TYPE_FAIRY;
-#endif
     }
     else if(gMapHeader.mapLayoutId == LAYOUT_SAFARI_ZONE_SOUTHWEST)
     {

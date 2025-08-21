@@ -11,6 +11,14 @@
         {
             "subsets": 
             [
+				{
+                    "is_diversity_subset": true,
+					"max_samples": 2
+				},
+                {
+                    "max_samples": 6,
+                    "include_types": [ "NORMAL", "POISON" ]
+                },
                 {
                     "max_samples": 1,
                     "include_types": [ "NORMAL" ]
@@ -18,10 +26,6 @@
                 {
                     "max_samples": 1,
                     "include_types": [ "POISON" ]
-                },
-                {
-                    "max_samples": 6,
-                    "include_types": [ "NORMAL", "POISON" ]
                 }
             ],
             "weight_script":
@@ -57,6 +61,11 @@
                 {
                     "subsets":
                     [
+						{
+							"is_diversity_subset": true,
+							"max_samples": 2,
+							"extra_species": [ "SPECIES_MEWTWO" ] 
+						},
                         {
                             "max_samples": 10,
                             "include_types": [ "GROUND", "POISON", "NORMAL" ],
@@ -70,6 +79,7 @@
                     [
                         "FORCE_INCLUDE_SPECIES", "SPECIES_MEWTWO",
                         "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR", "3", "DEC_FAVOUR",
+						"EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_MEWTWO", "INC_FAVOUR", "INC_FAVOUR",
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"
                     ]
@@ -126,6 +136,10 @@
                 {
                     "subsets": 
                     [
+						{
+							"is_diversity_subset": true,
+							"max_samples": 2
+						},
                         {
                             "max_samples": 1,
                             "include_types": [ "ELECTRIC" ]
@@ -171,7 +185,7 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "What do you think you're doing snooping around!?",
+                        "PRE_BATTLE_TAUNT": "Stop snooping around!",
                         "POST_BATTLE_TAUNT": "Err…\\nYou still shouldn't be here…",
                         "POST_BATTLE_CLOSER": "You still shouldn't be here…"
                     }
@@ -185,9 +199,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "You'll give up your Pokémon now if you know what's good for you!",
+                        "PRE_BATTLE_TAUNT": "Give up your Pokemon!",
                         "POST_BATTLE_TAUNT": "Too strong!",
-                        "POST_BATTLE_CLOSER": "It would be way easier to steal trainer's Pokémon if the boss gave us stronger Pokémon in the first place."
+                        "POST_BATTLE_CLOSER": "Boss gives us such weak Pokémon..."
                     }
                 ],
                 "preferred_mon_gender": "MALE"
@@ -227,9 +241,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "This is a really comfortable outfit, you know!",
-                        "POST_BATTLE_TAUNT": "Wait?\\nWere we suppose to be battling?",
-                        "POST_BATTLE_CLOSER": "I'm far to comfortable to battle at full strength."
+                        "PRE_BATTLE_TAUNT": "This outfit is comfy!",
+                        "POST_BATTLE_TAUNT": "Wait!",
+                        "POST_BATTLE_CLOSER": "I can't battle in this comfy outfit!"
                     }
                 ],
                 "preferred_mon_gender": "MALE"
@@ -242,7 +256,7 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I've got no time for dumb looking kids getting in our way!",
+                        "PRE_BATTLE_TAUNT": "I hate dumb kids!",
                         "POST_BATTLE_TAUNT": "Whaa!",
                         "POST_BATTLE_CLOSER": "If you weren't dumb, you wouldn't be getting in our way!"
                     }
@@ -270,7 +284,7 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I only joined Team Rocket recently so I've got to prove myself now!",
+                        "PRE_BATTLE_TAUNT": "I'm a recent recruit!\\nI've got to prove myself!",
                         "POST_BATTLE_TAUNT": "Read the room…",
                         "POST_BATTLE_CLOSER": "You could've just let me win."
                     }
@@ -314,7 +328,7 @@
                     {
                         "PRE_BATTLE_TAUNT": "Another kid breaking in?",
                         "POST_BATTLE_TAUNT": "Why are there so many today?!",
-                        "POST_BATTLE_CLOSER": "Another kid came through here not to long ago.\\pI thought this was suppose to be a Secret Hideout…"
+                        "POST_BATTLE_CLOSER": "Another kid came through here, too…\\pIsn't this a Secret Hideout?"
                     }
                 ],
                 "preferred_mon_gender": "FEMALE"
@@ -337,6 +351,10 @@
                 {
                     "subsets": 
                     [
+						{
+							"is_diversity_subset": true,
+							"max_samples": 2
+						},
                         {
                             "max_samples": 1,
                             "include_types": [ "ELECTRIC" ]
@@ -364,8 +382,8 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I've used the power of science to train my Pokémon!",
-                        "POST_BATTLE_TAUNT": "Why have you failed me science!?",
+                        "PRE_BATTLE_TAUNT": "Science!",
+                        "POST_BATTLE_TAUNT": "Eureka!",
                         "POST_BATTLE_CLOSER": "Why have you failed me science!?"
                     }
                 ],
@@ -374,6 +392,10 @@
                 {
                     "subsets": 
                     [
+						{
+							"is_diversity_subset": true,
+							"max_samples": 2
+						},
                         {
                             "max_samples": 1,
                             "include_types": [ "ELECTRIC" ]
@@ -401,7 +423,7 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Do you think this lab coat makes me look cool?",
+                        "PRE_BATTLE_TAUNT": "Do you think this lab coat looks cool?",
                         "POST_BATTLE_TAUNT": "Ouch…",
                         "POST_BATTLE_CLOSER": "You could have just said no!"
                     }
@@ -411,6 +433,10 @@
                 {
                     "subsets": 
                     [
+						{
+							"is_diversity_subset": true,
+							"max_samples": 2
+						},
                         {
                             "max_samples": 1,
                             "include_types": [ "ELECTRIC" ]
@@ -438,9 +464,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Team Rocket knows science is the way forward!",
-                        "POST_BATTLE_TAUNT": "I feel like I'm going backwards…",
-                        "POST_BATTLE_CLOSER": "I feel like I'm going backwards…"
+                        "PRE_BATTLE_TAUNT": "I support Team Rocket!\\nThey believe in science!",
+                        "POST_BATTLE_TAUNT": "That wasn't in the plan.",
+                        "POST_BATTLE_CLOSER": "Team Rocket promised me a research\\nlab if I helped them."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -448,6 +474,10 @@
                 {
                     "subsets": 
                     [
+						{
+							"is_diversity_subset": true,
+							"max_samples": 2
+						},
                         {
                             "max_samples": 1,
                             "include_types": [ "ELECTRIC" ]
@@ -485,6 +515,10 @@
                 {
                     "subsets": 
                     [
+						{
+							"is_diversity_subset": true,
+							"max_samples": 2
+						},
                         {
                             "max_samples": 1,
                             "include_types": [ "ELECTRIC" ]
@@ -522,6 +556,10 @@
                 {
                     "subsets": 
                     [
+						{
+							"is_diversity_subset": true,
+							"max_samples": 2
+						},
                         {
                             "max_samples": 1,
                             "include_types": [ "ELECTRIC" ]

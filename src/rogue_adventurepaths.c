@@ -214,7 +214,20 @@ static void GeneratePath(struct AdvPathSettings* pathSettings)
         coords.y = 0;
 
         gRogueAdvPath.roomCount = 0;
-        gRogueAdvPath.pathLength = pathSettings->totalLength;
+		
+		// Adjust path length (and therefore room count) based on difficulty
+		// Early game is more restricted, but gym 1 is pretty easy 
+		// length = more columns so don't do this 
+		/*if (GetPathGenerationDifficulty() == 0)
+		{
+			pathSettings->totalLength = 8;  
+		}
+		else if (GetPathGenerationDifficulty() == 1)
+		{
+			pathSettings->totalLength = 10;  // Slightly longer
+		}*/
+				
+        gRogueAdvPath.pathLength = pathSettings->totalLength; // 
 
         GenerateFloorLayout(coords, pathSettings, minRouteCount);
         GenerateRoomPlacements(pathSettings);
@@ -295,6 +308,11 @@ static void GeneratePath(struct AdvPathSettings* pathSettings)
 
 static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings, u8 routesNeeded)
 {
+
+	// Stop if we've reached max columns allowed by path length
+    if (currentCoords.x >= pathSettings->totalLength)
+        return;
+
     if(pathSettings->nodeCount >= ROGUE_ADVPATH_ROOM_CAPACITY)
     {
         // Cannot generate any more
@@ -303,7 +321,15 @@ static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSett
     }
     else
     {
-        u8 nodeId = gRogueAdvPath.roomCount++;
+		// must declare new variables before any calculations or function calls 
+		u8 nodeId; 
+		
+		// HARD CAP 7 at start of game
+		// 4 routes, 2 reststop, 1 boss battle 
+		if (GetPathGenerationDifficulty() == 0 && gRogueAdvPath.roomCount > 7)
+			return;
+        
+		nodeId = gRogueAdvPath.roomCount++;
 
         // Write base settings for this room (These will likely be overriden later)
         gRogueAdvPath.rooms[nodeId].coords = currentCoords;
@@ -923,13 +949,16 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
         switch (RogueRandom() % 3)
         {
         case 0:
-            replacePerc = 25;
+            replacePerc = 20;
+			//replacePerc = 25;
             break;
         case 1:
-            replacePerc = 33;
+			replacePerc = 30;
+            //replacePerc = 33;
             break;
         case 2:
-            replacePerc = 50;
+			replacePerc = 40;
+            //replacePerc = 50;
             break;
         }
 
@@ -1060,6 +1089,11 @@ static void GenerateRoomInstance(u8 roomId, u8 roomType)
             weights[ADVPATH_SUBROOM_RESTSTOP_DAYCARE] = 15;
             weights[ADVPATH_SUBROOM_RESTSTOP_FULL] = 0; // test val = 30 
 
+			// no reason for battle stop before gym 1; compensate with increased chance before gym 2 
+			if(GetPathGenerationDifficulty() == 0)
+                weights[ADVPATH_SUBROOM_RESTSTOP_BATTLE] = 0;
+			if(GetPathGenerationDifficulty() == 1)
+                weights[ADVPATH_SUBROOM_RESTSTOP_BATTLE] = 30;
 
             /*if(GetPathGenerationDifficulty() >= ROGUE_GYM_START_DIFFICULTY + 2)
             {

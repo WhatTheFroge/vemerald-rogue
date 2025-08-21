@@ -1667,13 +1667,20 @@ static u8 GetDisplaySplit(u16 move, u16 displayType)
 	
 }*/
 
+//[TEXT_COLOR_ORANGE] = RGB_ORANGE,
+
 // if no color - then different font 
 
 // white/shadow 2 is red 
 //const u8 gText_Physical[] = _("{FONT_NORMAL}{COLOR TRANSPARENT}{SHADOW DYNAMIC_COLOR2}Physical");
 //const u8 gText_Special[]  = _("{FONT_NORMAL}{COLOR TRANSPARENT}{SHADOW BLUE}Special"); 
 // "Physical" 
+//const u8 gText_Physical[] = _("{FONT_ORANGE}Physical");
+//const u8 gText_Physical[] = _("{FONT_NORMAL}Physical");
+
+//const u8 gText_Physical[] = _("{FONT_NORMAL}{COLOR GREEN}Physical");
 const u8 gText_Physical[] = _("{FONT_NORMAL}{COLOR WHITE}{SHADOW DYNAMIC_COLOR2}Physical");
+//const u8 gText_Physical[] = _("{FONT_NORMAL}{COLOR WHITE}{SHADOW DYNAMIC_COLOR2}Physical");
 const u8 gText_Special[]  = _("{FONT_NORMAL}{COLOR BLUE}Special"); 
 
 //const u8 gText_Special[]  = _("{FONT_NORMAL}Special"); 

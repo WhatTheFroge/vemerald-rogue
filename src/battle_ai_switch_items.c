@@ -12,6 +12,8 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 
+#include "rogue_controller.h"
+
 // this file's functions
 static bool8 HasSuperEffectiveMoveAgainstOpponents(bool8 noRng);
 static bool8 FindEffectivePartyMon(u8 flags, u8 moduloPercent);
@@ -102,9 +104,10 @@ static bool8 ShouldSwitchIfToxic(void)
             //if (itemEffects[3] & ITEM3_POISON && (gBattleMons[gActiveBattler].status1 & STATUS1_POISON
             //                                   || gBattleMons[gActiveBattler].status1 & STATUS1_TOXIC_POISON))
 
-static bool8 ShouldSwitchIfCurse(void)
+static bool8 ShouldSwitchIfCurse(void) // Foresight is status2 
 {
-	if ((gBattleMons[gActiveBattler].status2 && STATUS2_NIGHTMARE) || (gBattleMons[gActiveBattler].status2 && STATUS2_CURSED))
+	//if ((gBattleMons[gActiveBattler].status2 && STATUS2_NIGHTMARE) || (gBattleMons[gActiveBattler].status2 && STATUS2_CURSED))
+	if ((gBattleMons[gActiveBattler].status2 & STATUS2_NIGHTMARE) || (gBattleMons[gActiveBattler].status2 & STATUS2_CURSED))
 	{
 		*(gBattleStruct->AI_monToSwitchIntoId + gActiveBattler) = PARTY_SIZE;
         BtlController_EmitTwoReturnValues(BUFFER_B, B_ACTION_SWITCH, 0);
@@ -115,7 +118,7 @@ static bool8 ShouldSwitchIfCurse(void)
 
 static bool8 ShouldSwitchIfEncore(void)
 {
-	if (gDisableStructs[gActiveBattler].encoredMove != 0)
+	if (gDisableStructs[gActiveBattler].encoredMove != MOVE_NONE)
 	{
 		if (Random() % 100 < 50)
 		{
@@ -229,11 +232,39 @@ static bool8 ShouldSwitchIfIneffective(void)
     bool8 hasDamagingMove = FALSE;
     bool8 hasEffectiveMove = FALSE;
 	bool8 onlySpecial = TRUE; 
+	struct Pokemon *mon; // 
+	
+	u8 opposingPosition;
+    u8 opposingBattler;
+	u16 opposingSpecies;
+
+    // Count remaining usable Pokémon
+    u8 validMons = 0;
+    u32 battlerId = gActiveBattler;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (i == gBattlerPartyIndexes[battlerId])
+            continue; // Skip the currently active Pokémon
+
+        if (GetBattlerSide(battlerId) == B_SIDE_OPPONENT)
+            mon = &gEnemyParty[i];
+
+        if (GetMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE &&
+            GetMonData(mon, MON_DATA_HP) > 0)
+        {
+            validMons++;
+        }
+    }
+
+    // Only continue switch logic if at least 4 Pokémon are available
+    if (validMons < 3) // Active + 3 others = 4 total
+        return FALSE;
 
     // Get the opposing battler
-    u8 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(gActiveBattler));
-    u8 opposingBattler = GetBattlerAtPosition(opposingPosition);
-	u16 opposingSpecies = gBattleMons[opposingBattler].species;
+    opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(gActiveBattler));
+    opposingBattler = GetBattlerAtPosition(opposingPosition);
+	opposingSpecies = gBattleMons[opposingBattler].species;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
@@ -280,6 +311,7 @@ static bool8 ShouldSwitchIfIneffective(void)
         }
     }
 
+	// Special attackers switch out of Chansey/Blissey 
 	if (onlySpecial && (opposingSpecies == SPECIES_BLISSEY || opposingSpecies == SPECIES_CHANSEY))
     {
         if (Random() % 4 < 3) // 75% chance to switch — can be adjusted
@@ -511,12 +543,12 @@ static bool8 ShouldSwitchIfInaccurate(void)
             boosts += (gBattleMons[gActiveBattler].statStages[i] - DEFAULT_STAT_STAGE);
     }
 
-    // Number of stages dropped (1 to 6)
+	switchChance = 0; 
     drops = DEFAULT_STAT_STAGE - accuracyStage;
-
-    // Base switch chance: 15% per stage dropped
-    // e.g., -1 = 15%, -2 = 30%, ..., -6 = 90%
-    switchChance = 20 + (drops * 5) - (boosts * 3);
+	
+	if (drops >= 1) 
+		switchChance = 10 + (drops*7) - (boosts*4);
+		//switchChance = 20 + (drops * 5) - (boosts * 3);
 
     if (Random() % 100 < switchChance)
     {
@@ -539,7 +571,8 @@ static bool8 AreStatsRaised(void)
             buffedStatsValue += gBattleMons[gActiveBattler].statStages[i] - DEFAULT_STAT_STAGE;
     }
 
-    return (buffedStatsValue > 3);
+	return (buffedStatsValue >= 1);
+    //return (buffedStatsValue > 3);
 }
 
 // checks if AI should switch to better suited mon based on the last move the AI got hit with.
@@ -725,33 +758,35 @@ static bool8 ShouldSwitch(void)
     }
 
 	// conditions that encourage the opponent to switch out 
-    if (availableToSwitch == 0)
-        return FALSE;
-    if (ShouldSwitchIfPerishSong())
-        return TRUE;
-	if (ShouldSwitchIfCurse()) //
-		return TRUE; 
-	if (ShouldSwitchIfSeeded()) // 
-		return TRUE; 
-	if (ShouldSwitchIfToxic()) // 
-		return TRUE; 
-	if (ShouldSwitchIfEncore()) // 
-		return TRUE; 
-    if (ShouldSwitchIfWonderGuard())
-        return TRUE;
-    if (FindMonThatAbsorbsOpponentsMove())
-        return TRUE;
-    if (ShouldSwitchIfNaturalCure())
-        return TRUE;
-    if (HasSuperEffectiveMoveAgainstOpponents(FALSE))
-        return FALSE;
-	if (ShouldSwitchIfInaccurate()) // 
-		return TRUE; 
-    if (AreStatsRaised())
-        return FALSE;
+    if (availableToSwitch == 0)				return FALSE;
+	
+	
+    if (ShouldSwitchIfPerishSong())    		return TRUE;
+	if (ShouldSwitchIfSeeded()) 			return TRUE; 
+	if (ShouldSwitchIfToxic()) 				return TRUE; 
+	if (ShouldSwitchIfEncore())				return TRUE; 
+	
+	// was bugged seemsfine now 
+	if (ShouldSwitchIfCurse())				return TRUE; 
+	
+    if (ShouldSwitchIfWonderGuard())		return TRUE;
+    if (FindMonThatAbsorbsOpponentsMove())	return TRUE;
+    if (ShouldSwitchIfNaturalCure())		return TRUE;
+    if (HasSuperEffectiveMoveAgainstOpponents(FALSE))	return FALSE;
+
+	// super effective > accuracy drops 
+	if (ShouldSwitchIfInaccurate()) 		return TRUE; //
+		// should switch if stats are decreased too much? 
+    if (AreStatsRaised())		        	return FALSE;
+	
+	// new - switch out if lacks attacks 
+	// don't return early game when opponent lacks coverage options 
+	if (Rogue_GetCurrentDifficulty() >= 3) 
+		if (ShouldSwitchIfIneffective())		return TRUE; 
+	
     if (FindEffectivePartyMon(MOVE_RESULT_DOESNT_AFFECT_FOE, 2)
         || FindEffectivePartyMon(MOVE_RESULT_NOT_VERY_EFFECTIVE, 3))
-        return TRUE;
+											return TRUE;
 
     return FALSE;
 }

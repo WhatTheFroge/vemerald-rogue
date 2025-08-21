@@ -2269,18 +2269,23 @@ void Rogue_BattleSim_HandleItemIVs()
 void Rogue_BattleSim_HandleItemMoney()
 {
     // won wager
+	u8 diff = Rogue_GetCurrentDifficulty(); 
+	u8 moneywager; 
+	
+	moneywager = (diff+6) * 1000; 
+	
     if(gSpecialVar_Result == TRUE)
     {
-        if(Rogue_GetCurrentDifficulty() >= ROGUE_ELITE_START_DIFFICULTY)
+        if(diff >= ROGUE_ELITE_START_DIFFICULTY)
         {
             AddMoney(&gSaveBlock1Ptr->money, 15000);
             Rogue_PushPopup_AddMoney(15000);
         }
-        else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-        {
-            AddMoney(&gSaveBlock1Ptr->money, 10000);
-            Rogue_PushPopup_AddMoney(10000);
-        }
+		else if (diff == 1)
+		{
+            AddMoney(&gSaveBlock1Ptr->money, 6000);
+            Rogue_PushPopup_AddMoney(6000);
+		}
         else
         {
             AddMoney(&gSaveBlock1Ptr->money, 5000);
@@ -2290,11 +2295,18 @@ void Rogue_BattleSim_HandleItemMoney()
     // lost wager
     else
     {
-        // take half of money
+		
+        // take half of money -> subtract moneywager; 
         u32 money = GetMoney(&gSaveBlock1Ptr->money) / 2;
-
-        RemoveMoney(&gSaveBlock1Ptr->money, money);
-        Rogue_PushPopup_LostMoney(money);
+		RemoveMoney(&gSaveBlock1Ptr->money, money); 
+		Rogue_PushPopup_LostMoney(money);
+		
+		//instead of take half, subtract moneywager; 
+		//u32 money = GetMoney(&gSaveBlock1Ptr->money);
+		//RemoveMoney(&gSaveBlock1Ptr->money, moneywager);
+		//Rogue_PushPopup_LostMoney(moneywager);
+//        RemoveMoney(&gSaveBlock1Ptr->money, moneywager);
+//        Rogue_PushPopup_LostMoney(moneywager);
     }
 }
 

@@ -19,8 +19,8 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I hatched and rasied all of my Pokémon!",
-                        "POST_BATTLE_TAUNT": "I guess I need to work in my breeding technique…",
+                        "PRE_BATTLE_TAUNT": "I hatched and raised all of my Pokémon!",
+                        "POST_BATTLE_TAUNT": "Excellent!",
                         "POST_BATTLE_CLOSER": "My breeding technique still needs work I guess…"
                     }
                 ],
@@ -38,9 +38,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Did you really raise all your Pokémon yourself?",
+                        "PRE_BATTLE_TAUNT": "Did you really raise all your Pokémon\\nyourself?",
                         "POST_BATTLE_TAUNT": "Wow! That was something else!",
-                        "POST_BATTLE_CLOSER": "You've done a great job raising your Pokémon!"
+                        "POST_BATTLE_CLOSER": "You've done a great job raising your\\nPokémon!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -97,8 +97,8 @@
                 [
                     {
                         "PRE_BATTLE_TAUNT": "My mind and my Pokémon are in sync!",
-                        "POST_BATTLE_TAUNT": "You and your Pokémon were more in sync, it seems.",
-                        "POST_BATTLE_CLOSER": "How did you train your Pokémon I wonder?\\pLet me read you mind to find out!\\p… … …\\pThat makes no sense…\\nYou're crazy."
+                        "POST_BATTLE_TAUNT": "You were in sync with your Pokemon, too.",
+                        "POST_BATTLE_CLOSER": "Let me read your mind!\\p… … …\\pThat makes no sense…\\nYou're crazy."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -197,9 +197,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "It's all about the quality of your training!",
-                        "POST_BATTLE_TAUNT": "Huh, I guess I need to train some more.",
-                        "POST_BATTLE_CLOSER": "Back to training for me, I guess."
+                        "PRE_BATTLE_TAUNT": "It's all about the quality of your\\ntraining!",
+                        "POST_BATTLE_TAUNT": "I haven't trained enough!",
+                        "POST_BATTLE_CLOSER": "I love jogging outdoors!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -216,9 +216,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Move out of the way!\\pWhat are you doing!?",
-                        "POST_BATTLE_TAUNT": "Now that was just plain rude.",
-                        "POST_BATTLE_CLOSER": "Watch where you're going next time."
+                        "PRE_BATTLE_TAUNT": "Move out of the way!\\nWhat are you doing!?",
+                        "POST_BATTLE_TAUNT": "Now that was just plain rude!",
+                        "POST_BATTLE_CLOSER": "Watch where you're going next time!"
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -235,9 +235,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I can't wait to use my technique from school!",
-                        "POST_BATTLE_TAUNT": "What! That technique was much better than mine!",
-                        "POST_BATTLE_CLOSER": "Why don't they teach us useful techniques in school."
+                        "PRE_BATTLE_TAUNT": "I can't wait to use what I\\nlearned from school!",
+                        "POST_BATTLE_TAUNT": "What!?\\lThat technique was much better!",
+                        "POST_BATTLE_CLOSER": "Why don't they teach us useful techniques\\nin school!?"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -254,8 +254,8 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I lost my last battle so I'm gonna get payback on you!",
-                        "POST_BATTLE_TAUNT": "Oh no!\\nYou were suppose to lose!",
+                        "PRE_BATTLE_TAUNT": "I hate losing!",
+                        "POST_BATTLE_TAUNT": "Oh no!\\nYou were supposed to lose!",
                         "POST_BATTLE_CLOSER": "Why do I keep losing?"
                     }
                 ],
@@ -274,9 +274,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I'd love to see a Rare Pokémon collection!",
+                        "PRE_BATTLE_TAUNT": "I love to see Rare Pokémon!",
                         "POST_BATTLE_TAUNT": "You done got me, and real good, too!",
-                        "POST_BATTLE_CLOSER": "I once met a collector who had all sorts of Rare species of Pokémon!"
+                        "POST_BATTLE_CLOSER": "I once met a collector who had all sorts\\nof Rare species of Pokémon!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -345,9 +345,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I can knock down trees just by punching them!",
+                        "PRE_BATTLE_TAUNT": "I can knock down trees just\\nby punching them!",
                         "POST_BATTLE_TAUNT": "What? This can't be!?",
-                        "POST_BATTLE_CLOSER": "You made me drop all the logs I picked up."
+                        "POST_BATTLE_CLOSER": "You made me drop all those logs..."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -371,9 +371,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Fufufu!\\pI always look forward to Pokémon battles.",
+                        "PRE_BATTLE_TAUNT": "Fufufu!\\nI love Pokémon battles.",
                         "POST_BATTLE_TAUNT": "That was it!",
-                        "POST_BATTLE_CLOSER": "Maybe we can battle again sometime?\\pFufufu."
+                        "POST_BATTLE_CLOSER": "Maybe we can battle again sometime?\\nFufufu."
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -397,9 +397,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Stop right there!\\pYou were about to step on a precious sample!",
+                        "PRE_BATTLE_TAUNT": "Stop right there!\\pDon't step on that sample!",
                         "POST_BATTLE_TAUNT": "Oh wait…\\nThat's just a rock.",
-                        "POST_BATTLE_CLOSER": "My bad, I thought that was a precious sample."
+                        "POST_BATTLE_CLOSER": "My bad, I thought that was a precious\\nsample."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -422,9 +422,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Ha!\\pI'm on a streak and I'm not planning on ending it here!",
-                        "POST_BATTLE_TAUNT": "Well, I didn't plan on ending it here…",
-                        "POST_BATTLE_CLOSER": "Time to build it up from scratch again, I guess."
+                        "PRE_BATTLE_TAUNT": "I'm on a winning streak!",
+                        "POST_BATTLE_TAUNT": "Welp!\\nThat was unexpected.",
+                        "POST_BATTLE_CLOSER": "Time to start over!"
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -441,9 +441,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I bought myself the most powerful Pokémon imaginable!\\pYou don't stand a chance!",
+                        "PRE_BATTLE_TAUNT": "I bought myself the most powerful\\nPokémon imaginable!\\pYou don't stand a chance!",
                         "POST_BATTLE_TAUNT": "What!?!",
-                        "POST_BATTLE_CLOSER": "I spent so much on these useless Pokémon too."
+                        "POST_BATTLE_CLOSER": "Useless Pokemon!\\nI spent so much on you, too..."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -486,9 +486,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "You look very capable!\\pWould you mind entertaining my Pokémon in a battle?",
+                        "PRE_BATTLE_TAUNT": "You look very capable!\\pWould you mind entertaining my Pokémon\\nin battle?",
                         "POST_BATTLE_TAUNT": "Astounding!",
-                        "POST_BATTLE_CLOSER": "You have done a remarkable job raising up your Pokémon!"
+                        "POST_BATTLE_CLOSER": "You are a remarkable Trainer!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -506,9 +506,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I was just on my way home after a great haul!\\pI guess I can battle you too!",
+                        "PRE_BATTLE_TAUNT": "I just had a great haul.\\nI guess I can battle you too!",
                         "POST_BATTLE_TAUNT": "Well that was a bit of shame.",
-                        "POST_BATTLE_CLOSER": "I should've just taken my haul and gone home."
+                        "POST_BATTLE_CLOSER": "I should've just gone home with\\nmy haul..."
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -534,7 +534,7 @@
                     {
                         "PRE_BATTLE_TAUNT": "You better not wipe my run!",
                         "POST_BATTLE_TAUNT": "I was in the middle of a Quest too…",
-                        "POST_BATTLE_CLOSER": "Why?\\pI've been grinding this out for like 6 months…"
+                        "POST_BATTLE_CLOSER": "Why?\\nI've been grinding this out..."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -612,7 +612,7 @@
                     {
                         "PRE_BATTLE_TAUNT": "What?\\pBreak for a battle?\\nSure!",
                         "POST_BATTLE_TAUNT": "What fun!",
-                        "POST_BATTLE_CLOSER": "Exercise is good for both People and Pokémon!"
+                        "POST_BATTLE_CLOSER": "Exercise is good for Pokémon, too!"
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",

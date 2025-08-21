@@ -45,7 +45,8 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
 	// Hoenn Victory Road 
     {
         .mapFlags = ROUTE_FLAG_HOENN,
-        .dropRarity = 2,
+        .dropRarity = 1, 
+		//.dropRarity = 2,
         .map = ROUTE_MAP(ROGUE_ROUTE_CAVE0),
         .wildTypeTable = { TYPE_ICE, TYPE_GRASS, TYPE_GROUND }
     },
@@ -141,7 +142,8 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
 	// Mt. Moon 
     {
         .mapFlags = ROUTE_FLAG_KANTO,
-        .dropRarity = 2,
+        .dropRarity = 1, 
+		//.dropRarity = 2,
         .map = ROUTE_MAP(ROGUE_ROUTE_KANTO_CAVE0),
         .wildTypeTable = { TYPE_FLYING, TYPE_FIGHTING, TYPE_STEEL }
     },
@@ -174,7 +176,8 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
     {
         .mapFlags = ROUTE_FLAG_JOHTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_JOHTO_CAVE0),
-        .dropRarity = 2,
+        .dropRarity = 1, 
+		//.dropRarity = 2,
         .wildTypeTable = { TYPE_BUG, TYPE_ELECTRIC, TYPE_ROCK }
     },
 	
@@ -276,7 +279,8 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_MT_CORONET),
-        .dropRarity = 2,
+        .dropRarity = 1, 
+		//.dropRarity = 2,
         .wildTypeTable = { TYPE_FLYING, TYPE_WATER, TYPE_ELECTRIC }
     },
 	
@@ -284,7 +288,8 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_IRON_ISLAND),
-        .dropRarity = 2,
+        .dropRarity = 1, 
+		//.dropRarity = 2,
         .wildTypeTable = { TYPE_NORMAL, TYPE_FLYING, TYPE_GRASS }
     },
 };

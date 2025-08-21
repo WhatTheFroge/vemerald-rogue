@@ -647,7 +647,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VENUSAUR
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.nature = NATURE_IMPISH,
 		.moves=
 		{
@@ -1298,7 +1298,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BLASTOIS
         },
     },
     {
-        .heldItem = ITEM_LEFTOVERS,
+        .heldItem = ITEM_SITRUS_BERRY,
         .nature = NATURE_CALM,
         .moves =
         {
@@ -2552,7 +2552,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ARBOK[] 
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_INTIMIDATE,
 		.nature=NATURE_JOLLY,
 		.moves=
@@ -4815,7 +4815,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VILEPLUM
         },
     },
     {
-        .heldItem = ITEM_LEFTOVERS,
+        .heldItem = ITEM_SITRUS_BERRY,
         .nature = NATURE_SASSY,
         .moves =
         {
@@ -6645,7 +6645,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLIWRAT
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WATER_ABSORB,
 		.hiddenPowerType=TYPE_GHOST,
 		.nature=NATURE_ADAMANT,
@@ -6671,7 +6671,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLIWRAT
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WATER_ABSORB,
 		.nature=NATURE_RELAXED,
 		.moves=
@@ -7317,7 +7317,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MACHAMP[
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.nature=NATURE_IMPISH,
 		.moves=
 		{
@@ -10406,7 +10406,7 @@ static u16 const sTutorMoves_SPECIES_HYPNO[] =  // Assist	Barrier	Role Play	3x P
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HYPNO[] = 
 {
     {
-        .heldItem = ITEM_LEFTOVERS,
+        .heldItem = ITEM_SITRUS_BERRY,
         .nature = NATURE_BOLD,
         .moves =
         {
@@ -15302,7 +15302,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_OMASTAR[
         },
     },
     {
-        .heldItem = ITEM_LEFTOVERS,
+        .heldItem = ITEM_SITRUS_BERRY,
         .nature = NATURE_BOLD,
         .moves =
         {
@@ -15726,7 +15726,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_AERODACT
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PRESSURE,
 		.nature=NATURE_ADAMANT,
 		.moves=
@@ -15845,7 +15845,7 @@ static u16 const sTutorMoves_SPECIES_SNORLAX[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SNORLAX[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.nature = NATURE_CAREFUL,
 		.ability = ABILITY_IMMUNITY,
 		.moves=
@@ -16686,7 +16686,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEWTWO[]
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PRESSURE,
 		.nature=NATURE_JOLLY,
 		.moves=
@@ -16698,7 +16698,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEWTWO[]
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PRESSURE,
 		.nature=NATURE_MODEST,
 		.moves=
@@ -16710,7 +16710,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEWTWO[]
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PRESSURE,
 		.nature=NATURE_TIMID,
 		.moves=
@@ -16722,7 +16722,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEWTWO[]
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PRESSURE,
 		.nature=NATURE_TIMID,
 		.moves=
@@ -17132,7 +17132,7 @@ static u16 const sTutorMoves_SPECIES_MEGANIUM[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEGANIUM[] = 
 {
     {
-        .heldItem = ITEM_LEFTOVERS,
+        .heldItem = ITEM_SITRUS_BERRY,
         .nature = NATURE_CALM,
         .moves =
         {
@@ -17155,7 +17155,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEGANIUM
         },
     },
     {
-        .heldItem = ITEM_LEFTOVERS,
+        .heldItem = ITEM_SITRUS_BERRY,
         .nature = NATURE_RELAXED,
         .moves =
         {
@@ -19891,7 +19891,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_AMPHAROS
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_CALM,  // Replace with appropriate nature if needed
 		.moves =
 		{
@@ -21699,7 +21699,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_UMBREON[
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_CALM,
 		.moves =
 		{
@@ -21710,7 +21710,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_UMBREON[
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_BOLD,
 		.moves =
 		{
@@ -24789,8 +24789,17 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_OCTILLER
 static struct LevelUpMove const sLevelUpMoves_SPECIES_DELIBIRD[] = 
 {
 	{ .move=MOVE_PRESENT, .level=1 },
+	{ .move = MOVE_PECK, .level = 10 }, 
+	{ .move = MOVE_POWDER_SNOW, .level = 13 }, 
+	{ .move = MOVE_QUICK_ATTACK, .level = 16 }, 
+	{ .move = MOVE_ICY_WIND, .level = 19 }, 
+	{ .move = MOVE_AERIAL_ACE, .level = 22 }, 
+	{ .move = MOVE_BLIZZARD, .level = 25 },
 	{ .move=MOVE_NONE, .level=0 },
 };
+
+// Sing, Sweet Kiss, Charm, Encore, Agility, Safeguard 
+
 
 static u16 const sTutorMoves_SPECIES_DELIBIRD[] = 
 {
@@ -24947,7 +24956,7 @@ static u16 const sTutorMoves_SPECIES_MANTINE[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MANTINE[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WATER_ABSORB,
 		.nature=NATURE_CALM,
 		.moves=
@@ -24995,7 +25004,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MANTINE[
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WATER_ABSORB,
 		.nature=NATURE_MODEST,
 		.moves=
@@ -25076,7 +25085,7 @@ static u16 const sTutorMoves_SPECIES_SKARMORY[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SKARMORY[] = 
 {
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_IMPISH,
 		.moves =
 		{
@@ -25122,7 +25131,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SKARMORY
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_IMPISH,
 		.moves =
 		{
@@ -25466,7 +25475,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KINGDRA[
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_BOLD,  // Bold nature boosts Defense
 		.moves =
 		{
@@ -25631,7 +25640,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DONPHAN[
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_IMPISH,
 		.moves =
 		{
@@ -25747,7 +25756,7 @@ static u16 const sTutorMoves_SPECIES_PORYGON2[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PORYGON2[] = 
 {
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_BOLD,  // Enhancing physical defense
 		.moves =
 		{
@@ -25758,7 +25767,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PORYGON2
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_CALM,  // Boosting special defense
 		.moves =
 		{
@@ -26631,7 +26640,7 @@ static u16 const sTutorMoves_SPECIES_MILTANK[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MILTANK[] = 
 {
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_CAREFUL,
 		.moves =
 		{
@@ -27580,7 +27589,7 @@ static u16 const sTutorMoves_SPECIES_LUGIA[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LUGIA[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PRESSURE,
 		.nature=NATURE_BOLD,
 		.moves=
@@ -27604,7 +27613,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LUGIA[] 
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PRESSURE,
 		.nature=NATURE_BOLD,
 		.moves=
@@ -27695,7 +27704,7 @@ static u16 const sTutorMoves_SPECIES_HO_OH[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HO_OH[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PRESSURE,
 		.nature=NATURE_TIMID,
 		.moves=
@@ -27720,7 +27729,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HO_OH[] 
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_PRESSURE,
 		.nature=NATURE_TIMID,
 		.moves=
@@ -28113,7 +28122,7 @@ static u16 const sTutorMoves_SPECIES_SCEPTILE[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SCEPTILE[] = 
 {
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_MODEST,  // Jolly nature boosts Speed
 		.hiddenPowerType = TYPE_FIRE,
 		.moves =
@@ -28758,7 +28767,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SWAMPERT
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_BOLD,  // Bold nature boosts Defense
 		.moves =
 		{
@@ -29753,7 +29762,7 @@ static u16 const sTutorMoves_SPECIES_LUDICOLO[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LUDICOLO[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_RAIN_DISH,
 		.nature=NATURE_CALM,
 		.moves=
@@ -29765,7 +29774,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LUDICOLO
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.nature=NATURE_MODEST,
 		.moves=
@@ -29789,7 +29798,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LUDICOLO
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.nature=NATURE_MILD,
 		.moves=
@@ -32348,7 +32357,7 @@ static u16 const sTutorMoves_SPECIES_TORKOAL[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TORKOAL[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WHITE_SMOKE,
 		.nature=NATURE_RELAXED,
 		.moves=
@@ -32360,7 +32369,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TORKOAL[
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WHITE_SMOKE,
 		.hiddenPowerType=TYPE_ICE,
 		.nature=NATURE_RELAXED,
@@ -32386,7 +32395,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TORKOAL[
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WHITE_SMOKE,
 		.nature=NATURE_BOLD,
 		.moves=
@@ -32398,7 +32407,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TORKOAL[
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WHITE_SMOKE,
 		.hiddenPowerType=TYPE_GRASS,
 		.nature=NATURE_BOLD,
@@ -32411,7 +32420,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TORKOAL[
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_WHITE_SMOKE,
 		.nature=NATURE_SASSY,
 		.moves=
@@ -33208,7 +33217,7 @@ static u16 const sTutorMoves_SPECIES_MILOTIC[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MILOTIC[] = 
 {
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_BOLD,  // Bold nature boosts Defense
 		.moves =
 		{
@@ -33230,7 +33239,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MILOTIC[
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_BOLD,
 		.moves =
 		{
@@ -33241,7 +33250,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MILOTIC[
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_TIMID,
 		.moves =
 		{
@@ -33752,7 +33761,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_FLYGON[]
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_IMPISH,  // Impish nature boosts Defense
 		.moves =
 		{
@@ -33963,7 +33972,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HARIYAMA
 		},
 	},
 	{
-		.heldItem = ITEM_LEFTOVERS,
+		.heldItem = ITEM_SITRUS_BERRY,
 		.nature = NATURE_IMPISH,  // Impish nature boosts Defense
 		.ability = ABILITY_GUTS,
 		.moves =
@@ -37924,8 +37933,10 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LOUDRED[
 		{
 			MOVE_POUND,
 			MOVE_ASTONISH,
-			MOVE_ICE_BEAM,
-			MOVE_BRICK_BREAK,
+			MOVE_SECRET_POWER,
+			MOVE_EXTRASENSORY,
+			//MOVE_ICE_BEAM,
+			//MOVE_BRICK_BREAK,
 		},
 	},
 	{
@@ -37936,8 +37947,8 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LOUDRED[
 		{
 			MOVE_POUND,
 			MOVE_ASTONISH,
-			MOVE_SHADOW_BALL,
-			MOVE_FLAMETHROWER,
+			MOVE_MUD_SLAP,
+			MOVE_EXTRASENSORY,
 		},
 	},
 };
@@ -38567,8 +38578,10 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHUPPET[
 		{
 			MOVE_NIGHT_SHADE,
 			MOVE_CURSE,
-			MOVE_THUNDERBOLT,
-			MOVE_RETURN,
+			MOVE_SECRET_POWER,
+			MOVE_ICY_WIND,
+			//MOVE_THUNDERBOLT,
+			//MOVE_RETURN,
 		},
 	},
 	{
@@ -39068,7 +39081,7 @@ static u16 const sTutorMoves_SPECIES_RELICANTH[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RELICANTH[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.nature=NATURE_IMPISH,
 		.moves=
@@ -39093,7 +39106,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RELICANT
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.nature=NATURE_NAUGHTY,
 		.moves=
@@ -39105,7 +39118,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RELICANT
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_SWIFT_SWIM,
 		.nature=NATURE_IMPISH,
 		.moves=
@@ -41640,7 +41653,7 @@ static u16 const sTutorMoves_SPECIES_KYOGRE[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KYOGRE[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_DRIZZLE,
 		.nature=NATURE_MODEST,
 		.moves=
@@ -41652,7 +41665,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KYOGRE[]
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_DRIZZLE,
 		.nature=NATURE_MODEST,
 		.moves=
@@ -41664,7 +41677,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KYOGRE[]
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_DRIZZLE,
 		.nature=NATURE_MODEST,
 		.moves=
@@ -41676,7 +41689,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KYOGRE[]
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_DRIZZLE,
 		.nature=NATURE_MODEST,
 		.moves=
@@ -41701,7 +41714,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KYOGRE[]
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_DRIZZLE,
 		.nature=NATURE_MODEST,
 		.moves=
@@ -41800,7 +41813,7 @@ static u16 const sTutorMoves_SPECIES_GROUDON[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GROUDON[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_DROUGHT,
 		.hiddenPowerType=TYPE_GHOST,
 		.nature=NATURE_ADAMANT,
@@ -41839,7 +41852,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GROUDON[
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_DROUGHT,
 		.hiddenPowerType=TYPE_GHOST,
 		.nature=NATURE_ADAMANT,
@@ -41852,7 +41865,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GROUDON[
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_DROUGHT,
 		.hiddenPowerType=TYPE_GHOST,
 		.nature=NATURE_ADAMANT,
@@ -41961,7 +41974,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RAYQUAZA
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_AIR_LOCK,
 		.hiddenPowerType=TYPE_GHOST,
 		.nature=NATURE_ADAMANT,
@@ -41974,7 +41987,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RAYQUAZA
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_AIR_LOCK,
 		.nature=NATURE_MODEST,
 		.moves=
@@ -42566,7 +42579,7 @@ static u16 const sTutorMoves_SPECIES_CHIMECHO[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHIMECHO[] = 
 {
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.nature=NATURE_BOLD,
 		.moves=
@@ -42578,7 +42591,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHIMECHO
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.nature=NATURE_BOLD,
 		.moves=
@@ -42590,7 +42603,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHIMECHO
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_FIRE,
 		.nature=NATURE_MODEST,
@@ -42603,7 +42616,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHIMECHO
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_FIRE,
 		.nature=NATURE_MODEST,
@@ -42616,7 +42629,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHIMECHO
 		},
 	},
 	{
-		.heldItem=ITEM_LEFTOVERS,
+		.heldItem=ITEM_SITRUS_BERRY,
 		.ability=ABILITY_LEVITATE,
 		.hiddenPowerType=TYPE_FIRE,
 		.nature=NATURE_BOLD,

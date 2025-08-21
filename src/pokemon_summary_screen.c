@@ -711,6 +711,13 @@ static const struct WindowTemplate sPageMovesTemplate[] = // This is used for bo
 
 #define SUMMARY_TEXT_COLOR_RED 2
 #define SUMMARY_TEXT_COLOR_BLUE 3
+//#define SUMMARY_TEXT_COLOR_RED2 4 
+//#define SUMMARY_TEXT_COLOR_MYSTERY1 5
+//#define SUMMARY_TEXT_COLOR_MYSTERY2 6
+//#define SUMMARY_TEXT_COLOR_MYSTERY3 7
+//#define SUMMARY_TEXT_COLOR_MYSTERY4 8 
+//#define SUMMARY_TEXT_COLOR_MYSTERY5 9 
+//#define SUMMARY_TEXT_COLOR_MYSTERY6 10
 
 static const u8 sTextColors[][3] =
 {
@@ -726,7 +733,7 @@ static const u8 sTextColors[][3] =
     {0, 1, 2},
     {0, 3, 4},
     {0, 5, 6},
-    {0, 7, 8}
+	{0, 7, 8}
 };
 
 static const u8 sAButton_Gfx[] = INCBIN_U8("graphics/summary_screen/a_button.4bpp");
@@ -2917,10 +2924,28 @@ static void PrintAOrBButtonIcon(u8 windowId, bool8 bButton, u32 x)
     BlitBitmapToWindow(windowId, (bButton) ? sBButton_Gfx : sBButton_Gfx - sizeof(sBButton_Gfx), x, 0, 16, 16);
 }
 
+//static const u8 sStatColor_Green[]  = {0, TEXT_COLOR_GREEN, RGB_BLACK};
+
 static u8 SelectStatColor(u16 statType)
+//static const u8* SelectStatColor(u16 statType)
 {
     u8 result = ModifyStatByNature(sMonSummaryScreen->summary.nature, 100, statType);
-    return result > 100 ? SUMMARY_TEXT_COLOR_RED : (result < 100 ? SUMMARY_TEXT_COLOR_BLUE : 1);
+	return 1; 
+	//return result > 100 ? SUMMARY_TEXT_COLOR_RED : (result < 100 ? SUMMARY_TEXT_COLOR_BLUE : 1);
+    //red good, blue=bad
+	//return result > 100 ? SUMMARY_TEXT_COLOR_RED : (result < 100 ? SUMMARY_TEXT_COLOR_BLUE : 1);
+	//return result > 100 ? sStatColor_Green : (result < 100 ? SUMMARY_TEXT_COLOR_RED : 1);
+	
+	//return result > 100 ? {COLOR GREEN} : (result < 100 ? {COLOR RED} : 1);
+	// red is good but "green" is just another red 
+	// <100 should be red2
+	// lightred/lightblue
+	//return result > 100 ? SUMMARY_TEXT_COLOR_MYSTERY1 : (result < 100 ? SUMMARY_TEXT_COLOR_MYSTERY2 : 1);
+	// no
+	//	return result > 100 ? SUMMARY_TEXT_COLOR_MYSTERY3 : (result < 100 ? SUMMARY_TEXT_COLOR_MYSTERY4 : 1);
+	//	return result > 100 ? SUMMARY_TEXT_COLOR_MYSTERY5 : (result < 100 ? SUMMARY_TEXT_COLOR_MYSTERY6 : 1);
+	//return result > 100 ? TEXT_COLOR_WHITE, TEXT_COLOR_GREEN, TEXT_COLOR_LIGHT_GRAY : (result < 100 ? SUMMARY_TEXT_COLOR_RED : 1);
+
 }
 
 static void PrintPageNamesAndStats(void)

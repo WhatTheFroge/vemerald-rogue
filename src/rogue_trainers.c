@@ -303,8 +303,9 @@ u8 Rogue_GetTrainerWeather(u16 trainerNum)
             break;
         
         case DIFFICULTY_LEVEL_AVERAGE:
-            if(Rogue_GetCurrentDifficulty() >= 4)
-                weatherType = trainer->preferredWeather;
+                weatherType = WEATHER_NONE;
+				//if(Rogue_GetCurrentDifficulty() >= 4)
+				//weatherType = trainer->preferredWeather;
             break;
         
         case DIFFICULTY_LEVEL_HARD:
@@ -2812,6 +2813,8 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
 			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_CHIMECHO);
 			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_KECLEON);
 			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SUDOWOODO);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_PORYGON);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SEVIPER);
 		}
 		
 		if (Rogue_GetCurrentDifficulty() < 2)
@@ -2876,7 +2879,7 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
 		{
 			if (Rogue_GetCurrentDifficulty() < 2)
 			{
-				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MAGIKARP);
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MAGIKARP); // <3?
 				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_TYROGUE);
 			}
 			

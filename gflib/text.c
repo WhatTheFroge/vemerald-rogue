@@ -217,7 +217,18 @@ static const struct FontInfo sFontInfos[] =
         .fgColor = 1,
         .bgColor = 2,
         .shadowColor = 15,
+    },
+	[FONT_ORANGE] = {
+        .fontFunction = FontFunc_Normal,
+        .maxLetterWidth = 6,
+        .maxLetterHeight = 16,
+        .letterSpacing = 0,
+        .lineSpacing = 0,
+        .fgColor = TEXT_COLOR_ORANGE,
+        .bgColor = TEXT_COLOR_WHITE,
+        .shadowColor = 3,
     }
+
 };
 
 static const u8 sMenuCursorDimensions[][2] =
@@ -231,7 +242,8 @@ static const u8 sMenuCursorDimensions[][2] =
     [FONT_BRAILLE]      = { 8,  16 },
     [FONT_NARROW]       = { 8,  15 },
     [FONT_SMALL_NARROW] = { 8,   8 },
-    [FONT_BOLD]         = {}
+    [FONT_BOLD]         = {},
+	[FONT_ORANGE]		= {8, 15}
 };
 
 static const u16 sFontBoldJapaneseGlyphs[] = INCBIN_U16("graphics/fonts/bold.hwjpnfont");

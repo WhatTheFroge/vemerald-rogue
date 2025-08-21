@@ -31,7 +31,7 @@ script Rogue_Battle_Boss0_ShowHint
     //}
     else
     {
-        msgbox(format("It reads…\p'For a cost, I can provide you a glimpse of the future'"), MSGBOX_DEFAULT)
+        msgbox(format("It reads…\p'For a cost, I can provide you a\nglimpse of the future'"), MSGBOX_DEFAULT)
 
         showmoneybox(0, 0)
 
@@ -183,7 +183,7 @@ script Rogue_Battle_Boss0_Hint
         else
         {
             call(Rogue_Boss_BufferTypeHint)
-            msgbox(format("A Gym Leader who specialises in {STR_VAR_1} type Pokémon awaits…"), MSGBOX_DEFAULT)
+			msgbox(format("The upcoming Gym Leader specialises\nin {STR_VAR_1} type Pokémon."), MSGBOX_DEFAULT)
         }
     }
 
