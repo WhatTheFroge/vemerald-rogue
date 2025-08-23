@@ -687,8 +687,11 @@ static bool8 AllocPartyMenuBgGfx(void)
         }
         break;
     case 2:
-        LoadCompressedPalette(gPartyMenuBg_Pal, 0, 0x160);
-        CpuCopy16(gPlttBufferUnfaded, sPartyMenuInternal->palBuffer, 0x160);
+	    LoadCompressedPalette(gPartyMenuBg_Pal, BG_PLTT_ID(0), 11 * PLTT_SIZE_4BPP);
+        CpuCopy16(gPlttBufferUnfaded, sPartyMenuInternal->palBuffer, 11 * PLTT_SIZE_4BPP);
+	
+        //LoadCompressedPalette(gPartyMenuBg_Pal, 0, 0x160);
+        //CpuCopy16(gPlttBufferUnfaded, sPartyMenuInternal->palBuffer, 0x160);
         sPartyMenuInternal->data[0]++;
         break;
     case 3:

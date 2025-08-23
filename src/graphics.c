@@ -354,8 +354,8 @@ const u16 gBattleInterface_BallStatusBarPal[] = INCBIN_U16("graphics/battle_inte
 
 const u16 gBattleInterface_BallDisplayPal[] = INCBIN_U16("graphics/battle_interface/ball_display.gbapal");
 
-const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpbar.4bpp",
-                                                  "graphics/battle_interface/expbar.4bpp",
+const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpbar.4bpp",			//yes
+                                                  "graphics/battle_interface/expbar.4bpp",			//idkseemsgood
                                                   "graphics/battle_interface/status_psn.4bpp",
                                                   "graphics/battle_interface/status_par.4bpp",
                                                   "graphics/battle_interface/status_slp.4bpp",

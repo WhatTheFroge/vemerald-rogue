@@ -1887,6 +1887,32 @@ bool8 Rogue_CanRenameMon(struct Pokemon* mon)
 
 u8 SpeciesToGen(u16 species)
 {
+	switch(species)
+	{
+		// cross-gen - use gen of fully evolved, in most cases 
+		
+		// SPECIES_TYROGUE: 
+		case SPECIES_PICHU:
+		case SPECIES_CLEFFA:
+		case SPECIES_IGGLYBUFF:
+		case SPECIES_SMOOCHUM:
+		case SPECIES_ELEKID:
+		case SPECIES_MAGBY:
+			return 1;
+		case SPECIES_ONIX:
+		case SPECIES_ZUBAT:
+		case SPECIES_HORSEA:
+		case SPECIES_SEADRA:
+		case SPECIES_WYNAUT:
+		case SPECIES_AZURILL:
+			return 2;
+		// scyther, porygon?
+		// no change: bellossom, politoed, slowking, 'top 
+		// separate: tyrogue? 
+		default:
+			break;
+	}
+	
     if(species >= SPECIES_BULBASAUR && species <= SPECIES_MEW)
         return 1;
     if(species >= SPECIES_CHIKORITA && species <= SPECIES_CELEBI)
@@ -8374,7 +8400,8 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
     case ROGUE_SHOP_BATTLE_ENHANCERS:
         RogueItemQuery_IsGeneralShopItem(QUERY_FUNC_EXCLUDE);
 		
-		// attempt prevent trade evos too early (Gengar, Zam, Golem, Machamp); Link cables can still be found on routes. 
+		// attempt prevent trade evos too early (Gengar, Zam, Golem, Machamp); Link cables can still be found on routes.
+		// Kingdra & Pory2 are strong evos as well, but evolving those is OK as it's harder to find their item 
 		if (difficulty <= 4 && Rogue_IsRunActive())
 			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_LINK_CABLE);
 
