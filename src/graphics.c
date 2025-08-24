@@ -1,5 +1,12 @@
 #include "global.h"
 
+/*
+                                                  "graphics/battle_interface/status_psn.4bpp",
+                                                  "graphics/battle_interface/status_par.4bpp",
+                                                  "graphics/battle_interface/status_slp.4bpp",
+                                                  "graphics/battle_interface/status_frz.4bpp",
+                                                  "graphics/battle_interface/status_brn.4bpp",
+												  */
 const u32 gBattleTextboxTiles[] = INCBIN_U32("graphics/battle_interface/textbox.4bpp.lz");
 const u32 gBattleTextboxPalette[] = INCBIN_U32("graphics/battle_interface/textbox.gbapal.lz");
 const u32 gBattleTextboxTilemap[] = INCBIN_U32("graphics/battle_interface/textbox_map.bin.lz");
@@ -356,11 +363,7 @@ const u16 gBattleInterface_BallDisplayPal[] = INCBIN_U16("graphics/battle_interf
 
 const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpbar.4bpp",			//yes
                                                   "graphics/battle_interface/expbar.4bpp",			//idkseemsgood
-                                                  "graphics/battle_interface/status_psn.4bpp",
-                                                  "graphics/battle_interface/status_par.4bpp",
-                                                  "graphics/battle_interface/status_slp.4bpp",
-                                                  "graphics/battle_interface/status_frz.4bpp",
-                                                  "graphics/battle_interface/status_brn.4bpp",
+													"graphics/battle_interface/status.4bpp",
                                                   "graphics/battle_interface/misc.4bpp",
                                                   "graphics/battle_interface/hpbar_anim.4bpp",
                                                   "graphics/battle_interface/misc_frameend.4bpp",
@@ -369,7 +372,7 @@ const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpb
                                                   "graphics/battle_interface/status2.4bpp",  // these three duplicate sets of graphics are for the opponent pokemon
                                                   "graphics/battle_interface/status3.4bpp",  // and are also for use in double battles. they use dynamic palettes so
                                                   "graphics/battle_interface/status4.4bpp",  // coloring them is an extreme headache and wont be done for now
-                                                  "graphics/battle_interface/rogue_status1.4bpp",
+                                                  //"graphics/battle_interface/rogue_status1.4bpp",
                                                   "graphics/battle_interface/healthbox_doubles_frameend.4bpp",
                                                   "graphics/battle_interface/healthbox_doubles_frameend_bar.4bpp");
 const u32 gBattleInterfaceGfx_UnusedWindow3[] = INCBIN_U32("graphics/battle_interface/unused_window3.4bpp.lz");

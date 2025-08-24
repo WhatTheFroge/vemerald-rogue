@@ -2062,6 +2062,7 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
         statusGfxPtr = GetHealthboxElementGfxPtr(GetStatusIconForBattlerId(HEALTHBOX_GFX_STATUS_BRN_BATTLER0, battlerId));
         statusPalId = PAL_STATUS_BRN;
     }
+
     else if (status & STATUS1_FREEZE)
     {
         statusGfxPtr = GetHealthboxElementGfxPtr(GetStatusIconForBattlerId(HEALTHBOX_GFX_STATUS_FRZ_BATTLER0, battlerId));
@@ -2080,7 +2081,8 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     else
     {
         if (!IsDoubleBattle() && GetBattlerSide(battlerId) == B_SIDE_PLAYER)
-            statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_36);
+            statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_39); 
+			//statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_36);
         else
             statusGfxPtr = GetHealthboxElementGfxPtr(HEALTHBOX_GFX_39);
 
@@ -2110,10 +2112,11 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     CpuCopy32(statusGfxPtr, (void*)(OBJ_VRAM0 + (gSprites[healthboxSpriteId].oam.tileNum + tileNumAdder) * TILE_SIZE_4BPP), 96);
     if (IsDoubleBattle() == TRUE || GetBattlerSide(battlerId) == B_SIDE_OPPONENT)
     {
-        //if (!gBattleSpritesDataPtr->battlerData[battlerId].hpNumbersNoBars)
+		// cover up the "HP"/Pokeball icon with opponent's status icon 
+        if (!gBattleSpritesDataPtr->battlerData[battlerId].hpNumbersNoBars)
         {
-            //CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_0), (void*)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 32);
-            //CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_65), (void*)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 1) * TILE_SIZE_4BPP), 32);
+			CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_0), (void*)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 32);
+            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_65), (void*)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 1) * TILE_SIZE_4BPP), 32);
         }
     }
     TryAddPokeballIconToHealthbox(healthboxSpriteId, FALSE);
@@ -2210,8 +2213,8 @@ static void UpdateLeftNoOfBallsTextOnHealthbox(u8 healthboxSpriteId)
     txtPtr = StringAppend(txtPtr, gText_SafariBallLeft);
     ConvertIntToDecimalStringN(txtPtr, GetItemCountInBag(RogueSafari_GetActivePokeballType()), STR_CONV_MODE_LEFT_ALIGN, 2);
 
-	// bATTLE_INTERFACE_FILLED_BG,
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, GetStringRightAlignXOffset(FONT_SMALL, text, 0x2F), 3, 2, &windowId);
+	// bATTLE_INTERFACE_FILLED_BG,// 02xF
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, GetStringRightAlignXOffset(FONT_SMALL, text, 2), 3, 2, &windowId);
     spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
     SafariTextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0x2C0) + spriteTileNum, windowTileData, 2);
     SafariTextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0xA00) + spriteTileNum, windowTileData + 0x40, 4);
