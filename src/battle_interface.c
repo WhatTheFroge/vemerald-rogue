@@ -229,8 +229,9 @@ static const struct OamData sOamData_64x32 =
     .size = SPRITE_SIZE(64x32),
     .tileNum = 0,
     .priority = 1,
-    .paletteNum = 0,
+	.paletteNum = 4, 
     .affineParam = 0,
+    //changing priority messes up the hp bar 
 };
 
 static const struct SpriteTemplate sHealthboxPlayerSpriteTemplates[2] =

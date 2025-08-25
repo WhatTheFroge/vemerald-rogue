@@ -4816,6 +4816,7 @@ u16 Rogue_SelectWildDenEncounterRoom(void)
 //    return weight;
 //}
 
+// honey weight 
 u16 Rogue_SelectHoneyTreeEncounterRoom(void)
 {
     // Intentionally use Random instead of RogueRandom as this may be conditionally rerolled per player

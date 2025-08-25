@@ -480,6 +480,7 @@ static u8 CountSubRoomType(u16 roomType, u16 roomIndex)
 static u16 SelectRoomType_CalculateWeight(u16 weightIndex, u16 roomType, void* data)
 {
     u8 count;
+	u8 diff = GetPathGenerationDifficulty(); 
 
     switch (roomType)
     {
@@ -520,11 +521,25 @@ static u16 SelectRoomType_CalculateWeight(u16 weightIndex, u16 roomType, void* d
         count = CountRoomType(roomType);
         if(count == 0)
         {
+			if (diff == 0)	return 0;
+			if (diff == 1)	return 3;
+			if (diff == 2)	return 10; 
+			if (diff == 3)	return 4; 
+			if (diff == 4)	return 10; 
+			if (diff == 5)	return 5; 
+			if (diff == 6)	return 10; 
+			if (diff == 7)	return 6;
+			if (diff == 8)	return 10; 
+			if (diff == 9)	return 7;
+			if (diff == 10)	return 10;
+			if (diff > 10)	return 0; 
+			/*
             // Every other badge we want to increase weight otherwise decrease weight but not impossible
             if((GetPathGenerationDifficulty() - 1) % 2 == 0)
                 return 15;
             else
                 return 1;
+			*/
         }
         else
             return 0;
@@ -873,6 +888,7 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
 
 		// Honey tree
 		if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && RogueRandomChance(60, 0))
+		//if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && RogueRandomChance(60, 0))
 			validEncounterList[validEncounterCount++] = ADVPATH_ROOM_HONEY_TREE;
 
 		// Catching contest

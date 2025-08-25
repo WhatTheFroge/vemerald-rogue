@@ -160,7 +160,10 @@ static const u8 sText_PkmnTrappedInVortex[] = _("FIRE SPIN traps {B_DEF_NAME_WIT
 static const u8 sText_PkmnTrappedBySandTomb[] = _("SAND TOMB traps {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnWrappedBy[] = _("WRAP traps {B_DEF_NAME_WITH_PREFIX}!"); // {B_DEF_NAME_WITH_PREFIX} was WRAPPED by\n{B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnClamped[] = _("CLAMP traps {B_DEF_NAME_WITH_PREFIX}!"); // {B_ATK_NAME_WITH_PREFIX} CLAMPED\n{B_DEF_NAME_WITH_PREFIX}!");
-static const u8 sText_PkmnHurtBy[] = _("{B_BUFF1} continues to hurt {B_ATK_NAME_WITH_PREFIX}!");
+
+// wrap
+//static const u8 sText_PkmnHurtBy[] = _("{B_BUFF1} continues to hurt {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_PkmnHurtBy[] = _("{B_BUFF1} deals damage every turn!");
 static const u8 sText_PkmnFreedFrom[] = _("{B_ATK_NAME_WITH_PREFIX} broke free from {B_BUFF1}!");
 static const u8 sText_PkmnCrashed[] = _("{B_ATK_NAME_WITH_PREFIX} kept going\nand crashed!");
 const u8 gText_PkmnShroudedInMist[] = _("{B_ATK_PREFIX2} became\nshrouded in MIST!");
@@ -331,8 +334,8 @@ static const u8 sText_OneHitKO[] = _("It's a one-hit KO!");
 static const u8 sText_123Poof[] = _("{PLAY_SE SE_BALL_BOUNCE_1}Poof!\p");
 static const u8 sText_AndEllipsis[] = _("And…\p");
 static const u8 sText_HMMovesCantBeForgotten[] = _("HM moves can't be\nforgotten now.\p");
-static const u8 sText_NotVeryEffective[] = _("It's not very effective…");
-static const u8 sText_SuperEffective[] = _("It's super effective!");
+static const u8 sText_NotVeryEffective[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR2}It's not very effective…");
+static const u8 sText_SuperEffective[] = _("{COLOR BLUE}It's super effective!");
 static const u8 sText_GotAwaySafely[] = _("{PLAY_SE SE_FLEE}Got away safely!\p");
 static const u8 sText_PkmnFledUsingIts[] = _("{PLAY_SE SE_FLEE}{B_ATK_NAME_WITH_PREFIX} fled\nusing its {B_LAST_ITEM}!\p");
 static const u8 sText_PkmnFledUsing[] = _("{B_ATK_ABILITY} guaranteed escape!\p");

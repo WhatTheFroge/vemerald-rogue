@@ -1620,12 +1620,15 @@ static u8 GetDisplaySplit(u16 move, u16 displayType)
 
 
 //const u8 gText_Physical[] = _("{FONT_NORMAL}{COLOR GREEN}Physical");
-const u8 gText_Physical[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR2}Physical");
+//const u8 gText_Physical[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR2}Physical");
 //const u8 gText_Physical[] = _("{FONT_NORMAL}{COLOR WHITE}{SHADOW DYNAMIC_COLOR2}Physical");
-const u8 gText_Special[]  = _("{COLOR BLUE}SPECIAL");
 
-//const u8 gText_Special[]  = _("{FONT_NORMAL}Special"); 
+// Red physical, Blue Special turned into Black 
+//const u8 gText_Physical[] = _("{COLOR WHITE}{SHADOW DYNAMIC_COLOR2}Physical");
+//const u8 gText_Special[]  = _("{COLOR BLUE}SPECIAL");
 
+const u8 gText_Physical[] = _("Physical");
+const u8 gText_Special[]  = _("SPECIAL");
 static u8 const* GetDisplaySplitLong(u8 split)
 {
 	switch (split)

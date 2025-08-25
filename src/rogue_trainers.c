@@ -3130,7 +3130,7 @@ static u16 SampleNextSpecies(struct TrainerPartyScratch* scratch)
 static bool8 UseCompetitiveMoveset(struct TrainerPartyScratch* scratch, u8 monIdx, u8 totalMonCount)
 {
     bool8 preferCompetitive = FALSE;
-    u8 difficultyLevel = Rogue_GetCurrentDifficulty();
+    u8 diff = Rogue_GetCurrentDifficulty();
     u8 difficultyModifier = Rogue_GetEncounterDifficultyModifier();
     bool8 isFirstMon = (monIdx == 0);
     bool8 isLastMon = (monIdx == (totalMonCount - 1));
@@ -3169,7 +3169,7 @@ static bool8 UseCompetitiveMoveset(struct TrainerPartyScratch* scratch, u8 monId
     {
     // Easy is going to attempt to use comp sets BUT we're going to modify the sets before appling them to make them fairer
     case DIFFICULTY_LEVEL_EASY:
-        if(difficultyLevel == 0)
+        if(diff == 0)
             return FALSE;
         else if(preferCompetitive)
             return TRUE;
@@ -3191,25 +3191,32 @@ static bool8 UseCompetitiveMoveset(struct TrainerPartyScratch* scratch, u8 monId
         break;
 
     case DIFFICULTY_LEVEL_AVERAGE:
-        if(difficultyLevel == 0)
-            return FALSE;
-        else if(preferCompetitive)
-            return TRUE;
+        if(diff == 0)				return FALSE;
+        else if(preferCompetitive)	return TRUE;
+		// rival uses different logic than gym leaders; 
+		// early rival is weaker than gym, but catches up by gym 6; 
+		// late game rival is much stronger due to type variety 
+		if (Rogue_IsRivalTrainer(scratch->trainerNum))
+		{
+			// Id 2 is Rival's Partner pokemon; monId becomes competitive;
+			// Keep same mon competitive across battles 
+			if (diff <= 1) 			return FALSE;
+			else if (diff <= 3) 	return (monIdx == 2);	 
+			else if (diff == 4)		return (monIdx == 1) || (monIdx == 2); 
+			else if (diff == 5) 	return !isLastMon; 
+			else return TRUE; 
+		}
+		
         else if(Rogue_IsKeyTrainer(scratch->trainerNum))
         {
-            if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_MID_DIFFICULTY)
-                return TRUE;
-            else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_START_DIFFICULTY + 3)
-                return !isFirstMon; // Only 1 mons insn't competitive
-            else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_START_DIFFICULTY + 2)
-                return isFirstMon || isLastMon; // 2 mons are competitive
-            else if(Rogue_GetCurrentDifficulty() >= ROGUE_GYM_START_DIFFICULTY + 1)
-                return isLastMon; // Last mon is competitive
-            else
-                return FALSE;
+			if (diff == 1) 			return (monIdx == 2); 
+			else if (diff == 2)		return (monIdx == 2) || (monIdx == 3); 
+			else if (diff == 3)		return (monIdx == 2) || (monIdx == 3); 
+			else if (diff == 4)		return !isLastMon;  
+			else return TRUE; 
         }
-        else
-            return FALSE;
+		
+        else return FALSE;
         break;
 
     case DIFFICULTY_LEVEL_HARD:
