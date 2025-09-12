@@ -53,7 +53,7 @@
                     ],
                     "weight_script":
                     [
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ZUBAT", "INC_FAVOUR", "INC_FAVOUR",
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_ZUBAT", "INC_FAVOUR", 
                         "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR", 
 						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR",
                         "HAS_UNIQUE_TYPE_IN_TEAM", "INC_FAVOUR", "ELSE", "DEC_FAVOUR",
@@ -87,9 +87,15 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 2,
+                            "max_samples": 1,
                             "include_types": [ "FLYING" ], 
 							"exclude_types": [ "BUG" ] 
+                        },                        
+						{
+                            "is_diversity_subset": true,
+                            "max_samples": 1,
+                            "include_types": [ "FLYING" ], 
+							"exclude_types": [ "NORMAL", "GRASS", "PSYCHIC" ] 
                         },
 						{
                             "is_diversity_subset": true,
@@ -110,7 +116,9 @@
                     "weight_script":
                     [
                         "HAS_TYPE", "TYPE_NORMAL", "INC_FAVOUR",
-                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_PIDGEY", "INC_FAVOUR", "INC_FAVOUR",
+						"HAS_TYPE", "TYPE_ICE", "INC_FAVOUR", 
+                        "EQUAL_TO", "VAR_MON_EGG_SPECIES", "SPECIES_PIDGEY", "INC_FAVOUR", "INC_FAVOUR", "INC_FAVOUR", 
+                        "EQUAL_TO", "VAR_MON_GENERATION", "1", "INC_FAVOUR",
                         "EQUAL_TO", "VAR_MON_GENERATION", "2", "INC_FAVOUR",
 						"EQUAL_TO", "VAR_MON_GENERATION", "3", "DEC_FAVOUR",
                         "IS_BANNED_SPECIES", "IMPOSSIBLE_FAVOUR"

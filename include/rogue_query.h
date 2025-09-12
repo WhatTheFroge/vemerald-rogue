@@ -6,6 +6,7 @@ typedef bool8 (*QueryFilterCallback)(u16 elem, void* usrData);
 //typedef u8 (*WeightCallback)(u16 index, u16 elem, void* usrData);
 typedef u16 (*WeightCallback)(u16 index, u16 elem, void* usrData);
 
+void Rogue_InitWeakSetList(void);
 
 enum
 {

@@ -40,6 +40,11 @@
 #define MAX_QUERY_BIT_COUNT (max(QUERY_NUM_MOVES, max(QUERY_NUM_ITEMS, max(QUERY_NUM_ADVENTURE_PATH, max(QUERY_NUM_TRAINERS, max(ITEMS_COUNT, QUERY_NUM_SPECIES))))))
 #define MAX_QUERY_BYTE_COUNT (1 + MAX_QUERY_BIT_COUNT / 8)
 
+//#include "data/rogue_pokemon_profiles.h"
+
+//const struct RoguePokemonProfile* Rogue_GetProfile(u16 species);
+
+
 // Old API
 //
 EWRAM_DATA u16 gRogueQueryBufferSize = 0;

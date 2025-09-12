@@ -623,10 +623,12 @@ struct RoguePokemonCompetitiveSetRules
 struct RoguePokemonProfile
 {
     struct RoguePokemonCompetitiveSet const* competitiveSets;
+    const struct RoguePokemonCompetitiveSet* weakSets;      // ← NEW
     struct LevelUpMove const* levelUpMoves;
     u16 const* tutorMoves;
     u16 monFlags;
     u16 competitiveSetCount;
+	u16 weakSetCount; 
 };
 
 struct RogueRideMonState

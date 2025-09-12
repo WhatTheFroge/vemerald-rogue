@@ -997,6 +997,19 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
 				switch (difficulty)
 				{
 					case ROGUE_GYM_START_DIFFICULTY + 0:
+						filter.classFlagsInclude |= CLASS_FLAG_BOSS_GYM_1;
+						break;
+					case ROGUE_GYM_START_DIFFICULTY + 1:
+					case ROGUE_GYM_START_DIFFICULTY + 2:
+					case ROGUE_GYM_START_DIFFICULTY + 3:
+					case ROGUE_GYM_START_DIFFICULTY + 4:
+					case ROGUE_GYM_START_DIFFICULTY + 5:
+					case ROGUE_GYM_START_DIFFICULTY + 6:
+					case ROGUE_GYM_START_DIFFICULTY + 7:
+						filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
+						break;
+					/*
+					case ROGUE_GYM_START_DIFFICULTY + 0:
 					case ROGUE_GYM_START_DIFFICULTY + 1:
 					case ROGUE_GYM_START_DIFFICULTY + 2:
 					case ROGUE_GYM_START_DIFFICULTY + 3:
@@ -1012,6 +1025,7 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
 						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_1;
 						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_2;
 						break;
+						*/
 				}
             }
 			
@@ -2864,7 +2878,7 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
         {
             currentSubset = &trainer->teamGenerator.subsets[scratch->subsetIndex];
         }
-
+		
         // Execute initialisation
         if(trainer->teamGenerator.queryScriptOverride != NULL)
         {
@@ -2979,12 +2993,18 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
         // Never give trainers unown
         RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_UNOWN);
 	
-		if (Rogue_GetCurrentDifficulty() < 4) // 15, 20, 25, 30, then wears off after 4th badge
-			RogueMonQuery_ContainsPresetFlags(QUERY_FUNC_INCLUDE, SET_WEAK);
+		//if (Rogue_GetCurrentDifficulty() < 4) // 15, 20, 25, 30, then wears off after 4th badge
+		//	RogueMonQuery_ContainsPresetFlags(QUERY_FUNC_INCLUDE, SET_WEAK);
 	
         // Only give Shedinja if at E4 stage as it's just unfun to deal with otherwise
         if(Rogue_GetCurrentDifficulty() < ROGUE_ELITE_START_DIFFICULTY)
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SHEDINJA);
+
+		//test weak set
+		//if (Rogue_GetCurrentDifficulty() == 0)
+          //  RogueMiscQuery_EditElement(QUERY_FUNC_INCLUDE, SPECIES_PIDGEOTTO);
+
+
 
 		if (Rogue_GetCurrentDifficulty() < 1) // == 0
 		{
@@ -3371,7 +3391,8 @@ static bool8 UseCompetitiveMoveset(struct TrainerPartyScratch* scratch, u8 monId
         break;
 
     case DIFFICULTY_LEVEL_AVERAGE:
-        if(diff == 0)				return FALSE;
+        if (diff == 0)				return TRUE; 
+		//if(diff == 0)				return FALSE;
         else if(preferCompetitive)	return TRUE;
 		// rival uses different logic than gym leaders; 
 		// early rival is weaker than gym, but catches up by gym 6; 
@@ -3440,7 +3461,7 @@ static bool8 HasDamagingMove(struct RoguePokemonCompetitiveSet const* preset)
 static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, u8 monIdx, struct RoguePokemonCompetitiveSet* outPreset)
 {
     u8 i;
-    u16 presetCount = gRoguePokemonProfiles[species].competitiveSetCount;
+    //u16 presetCount = gRoguePokemonProfiles[species].competitiveSetCount;
 
     // Exact mirror copy trainer party
     //if(sTrainerScratch->monGenerator.generatorFlags & TRAINER_GENERATOR_FLAG_MIRROR_EXACT)
@@ -3457,6 +3478,15 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
     //    return TRUE;
     //}
 
+	const struct RoguePokemonCompetitiveSet* setArray = gRoguePokemonProfiles[species].competitiveSets;
+	u16 presetCount = gRoguePokemonProfiles[species].competitiveSetCount;
+
+	if (Rogue_GetCurrentDifficulty() <= 4 && gRoguePokemonProfiles[species].weakSets != NULL)
+	{
+		setArray = gRoguePokemonProfiles[species].weakSets;
+		presetCount = gRoguePokemonProfiles[species].weakSetCount;
+	}
+
     if(presetCount != 0)
     {
         {
@@ -3470,8 +3500,11 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
             // If none is found, we will use the last option and adjust below
             for(i = 0; i < presetCount; ++i)
             {
-                currPreset = &gRoguePokemonProfiles[species].competitiveSets[((randOffset + i) % presetCount)];
-                currentScore = 1024;
+				// competitive sets only; replace with competitive OR weak array 
+                //currPreset = &gRoguePokemonProfiles[species].competitiveSets[((randOffset + i) % presetCount)];
+                currPreset = &setArray[(randOffset + i) % presetCount];
+
+				currentScore = 1024;
 
                 // Avoid presets which don't have any damaging moves (e.g. Giratina)
                 if(!HasDamagingMove(currPreset))
@@ -3514,52 +3547,6 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
                     //currentScore /= 2;
                 }
 
-#ifdef ROGUE_EXPANSION
-                if(currPreset->heldItem == ITEM_BLACK_SLUDGE && scratch->heldItems.hasBlackSludge)
-                {
-                    currentScore /= 2;
-                }
-
-                // Special case for primal reversion
-                if(!IsMegaEvolutionEnabled())
-                {
-                    if(currPreset->heldItem == ITEM_RED_ORB || currPreset->heldItem == ITEM_BLUE_ORB)
-                    {
-                        currentScore /= 4;
-                    }
-                }
-
-                // Handle megas
-                if(currPreset->heldItem >= ITEM_VENUSAURITE && currPreset->heldItem <= ITEM_DIANCITE)
-                {
-                    if(IsMegaEvolutionEnabled())
-                    {
-                        if(!scratch->heldItems.hasMegaStone)
-                            currentScore *= 8;
-                        else
-                            currentScore /= 4;
-                    }
-                    else
-                    {
-                        currentScore /= 4;
-                    }
-                }
-
-                if(currPreset->heldItem >= ITEM_NORMALIUM_Z && currPreset->heldItem <= ITEM_ULTRANECROZIUM_Z)
-                {
-                    if(IsZMovesEnabled())
-                    {
-                        if(!scratch->heldItems.hasZCrystal)
-                            currentScore *= 4;
-                        else
-                            currentScore /= 4;
-                    }
-                    else
-                    {
-                        currentScore /= 4;
-                    }
-                }
-#endif
                 // Handle identical scores by adding on some random amount
                 // so we will essentially randomlly choose between the best sets and get more variety
                 currentScore += RogueRandom() % 64;
@@ -3644,38 +3631,6 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
             // Swap shell bell to NONE (i.e. berry)
             outPreset->heldItem = ITEM_NONE;
         }
-#ifdef ROGUE_EXPANSION
-        if(outPreset->heldItem == ITEM_BLACK_SLUDGE && scratch->heldItems.hasBlackSludge)
-        {
-            // Swap left overs to shell bell
-            outPreset->heldItem = ITEM_SHELL_BELL;
-        }
-
-        if(!IsMegaEvolutionEnabled())
-        {
-            // Special case for primal reversion
-            if(outPreset->heldItem == ITEM_RED_ORB || outPreset->heldItem == ITEM_BLUE_ORB)
-            {
-                outPreset->heldItem = ITEM_NONE;
-            }
-        }
-
-        if(scratch->heldItems.hasMegaStone || !IsMegaEvolutionEnabled())
-        {
-            if(outPreset->heldItem >= ITEM_VENUSAURITE && outPreset->heldItem <= ITEM_DIANCITE)
-            {
-                outPreset->heldItem = ITEM_NONE;
-            }
-        }
-
-        if(scratch->heldItems.hasZCrystal || !IsZMovesEnabled())
-        {
-            if(outPreset->heldItem >= ITEM_NORMALIUM_Z && outPreset->heldItem <= ITEM_ULTRANECROZIUM_Z)
-            {
-                outPreset->heldItem = ITEM_NONE;
-            }
-        }
-#endif
 
         // Give an item if we're missing one
         //
@@ -3844,65 +3799,7 @@ static void ModifyTrainerMonPreset(u16 trainerNum, struct Pokemon* mon, struct R
 
     if(!ShouldTrainerUseValidTeraTypes(trainerNum))
         presetRules->skipTeraType = TRUE;
-#ifdef ROGUE_EXPANSION
-    else if(preset->teraType != TYPE_NONE)
-    {
-        // No tera type provided, so assign something here
-        u16 species = GetMonData(mon, MON_DATA_SPECIES);
-        u8 bestStat = RoguePokedex_GetSpeciesBestStat(species);
-        u16 types[NUMBER_OF_MON_TYPES];
-        u32 typeCount = 0;
 
-        // Pick move from offensive types
-        if(bestStat == STAT_ATK || bestStat == STAT_SPATK || bestStat == STAT_SPEED)
-        {
-            u32 i;
-
-            for(i = 0; i < MAX_MON_MOVES; ++i)
-            {
-                if(preset->moves[i] != MOVE_NONE && gBattleMoves[preset->moves[i]].power != 0 && IS_STANDARD_TYPE(gBattleMoves[preset->moves[i]].type))
-                {
-                    types[typeCount++] = gBattleMoves[preset->moves[i]].type;
-                }
-            }
-
-        }
-        // Pick defensive type
-        else
-        {
-            u16 typeA = RoguePokedex_GetSpeciesType(species, 0);
-            u16 typeB = RoguePokedex_GetSpeciesType(species, 1);
-
-            // This is a bit odd, but just allow it to use any defensive typing
-            if(typeA != TYPE_STEEL && typeB != TYPE_STEEL)
-                types[typeCount++] = TYPE_STEEL;
-
-            if(typeA != TYPE_POISON && typeB != TYPE_POISON)
-                types[typeCount++] = TYPE_POISON;
-
-            if(typeA != TYPE_GHOST && typeB != TYPE_GHOST)
-                types[typeCount++] = TYPE_GHOST;
-
-            if(typeA != TYPE_FLYING && typeB != TYPE_FLYING)
-                types[typeCount++] = TYPE_FLYING;
-
-            if(typeA != TYPE_FAIRY && typeB != TYPE_FAIRY)
-                types[typeCount++] = TYPE_FAIRY;
-
-            if(typeA != TYPE_DRAGON && typeB != TYPE_DRAGON)
-                types[typeCount++] = TYPE_DRAGON;
-
-            if(typeA != TYPE_WATER && typeB != TYPE_WATER)
-                types[typeCount++] = TYPE_WATER;
-
-            if(typeA != TYPE_GRASS && typeB != TYPE_GRASS)
-                types[typeCount++] = TYPE_GRASS;
-        }
-
-        if(typeCount != 0)
-            preset->teraType = types[RogueRandom() % typeCount];
-    }
-#endif
 }
 
 static void SwapMons(u8 aIdx, u8 bIdx, struct Pokemon *party)
