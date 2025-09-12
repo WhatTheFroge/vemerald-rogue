@@ -1308,6 +1308,16 @@ void RogueItemQuery_IsHeldItem(u8 func)
     }
 }
 
+// used for filtering trainers by diff. 
+void RogueTrainerQuery_ExcludeTrainerId(u16 trainerId)
+{
+    ASSERT_TRAINER_QUERY;
+
+    // Just clear the bit for this trainer ID
+    SetQueryBitFlag(trainerId, FALSE);
+}
+
+
 // TRAINER QUERY
 //
 

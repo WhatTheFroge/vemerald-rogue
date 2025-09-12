@@ -280,7 +280,7 @@ script Rogue_InteractWithQuestBoard
         }
         else
         {
-            msgbox(format("It's the Quest Board!\pShame you can't read the postings from this side…"))
+            msgbox(format("It's the Quest Board!\pBetter read it from the front!"))
         }
     }
 
@@ -360,7 +360,7 @@ script Rogue_InteractWithPC
         else
         {
             lock
-            msgbox(format("It's a PC!\pShame you can't see the screen from this side…"))
+            msgbox(format("It's a PC!\pBetter use it from the front!"))
             release
         }
     }
@@ -1346,7 +1346,7 @@ script Rogue_Heal_PreBoss
     }
     else
     {
-        msgbox(format("Look kid...\nI'll give you a single free heal. After that you're gonna have to pay."), MSGBOX_DEFAULT)
+        msgbox(format("Look, twerp...\nI'll heal you for free, once."), MSGBOX_DEFAULT)
         msgbox(format("You wanna use your free heal now?"), MSGBOX_YESNO)
 
         if(var(VAR_RESULT) == YES)

@@ -3586,7 +3586,13 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                         gBattleTextBuff2[7] = EOS;
 
                         gEffectBattler = battlerId;
-                        SET_STATCHANGER(i + 1, 2, FALSE);
+						
+						// starf +2 
+                        //SET_STATCHANGER(i + 1, 2, FALSE);
+						
+						// starf +3
+                        SET_STATCHANGER(i + 1, 3, FALSE);
+						
                         gBattleScripting.animArg1 = 0x21 + i + 6;
                         gBattleScripting.animArg2 = 0;
                         BattleScriptExecute(BattleScript_BerryStatRaiseEnd2);

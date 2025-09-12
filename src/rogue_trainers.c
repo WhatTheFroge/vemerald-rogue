@@ -1,10 +1,12 @@
-	#include "global.h"
+#include "global.h"
 #include "constants/battle.h"
 #include "constants/event_objects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/weather.h"
 #include "gba/isagbprint.h"
+
+#include <stdbool.h>
 
 #include "battle.h"
 #include "event_data.h"
@@ -28,6 +30,8 @@
 
 #define RIVAL_BASE_TEAM_DIFFICULTY     ROGUE_GYM_START_DIFFICULTY + 2
 //	ROGUE_ELITE_START_DIFFICULTY - 2
+
+bool32 GetQueryBitFlag(u32 trainerNum);
 
 struct TrainerHeldItemScratch
 {
@@ -74,7 +78,37 @@ struct TrainerTemp
 #endif
 };
 
+struct BossTrainerMetadata
+{
+    u16 trainerId;
+    u8 preferredMinDifficulty;
+    u8 preferredMaxDifficulty;
+};
+
+const struct BossTrainerMetadata gBossTrainerMetadata[] =
+{
+	// Encourage generate early 
+    {TRAINER_JOHTO_FALKNER, 0, 1}, 
+    {TRAINER_JOHTO_BUGSY, 0, 1}, 
+    {TRAINER_JOHTO_JASMINE, 4, 7}, 
+    {TRAINER_JOHTO_CLAIR, 4, 7}, 
+	
+	/*
+    {TRAINER_JOHTO_MORTY, 0, 3}, 
+    {TRAINER_JOHTO_WHITNEY, 0, 3}, 
+    {TRAINER_JOHTO_CHUCK, 4, 7}, 
+    {TRAINER_JOHTO_PRYCE, 4, 7}, 
+	*/
+	
+	// Encourage generate late
+    // Add more entries as needed
+};
+
 static EWRAM_DATA struct TrainerTemp sTrainerTemp = {0};
+
+
+static bool DiffFilter(u16 trainerId, u16 difficulty);
+
 
 static u32 GetActiveTeamFlag();
 static void EnsureSubsetIsValid(struct TrainerPartyScratch* scratch);
@@ -87,7 +121,7 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
 static void ModifyTrainerMonPreset(u16 trainerNum, struct Pokemon* mon, struct RoguePokemonCompetitiveSet* preset, struct RoguePokemonCompetitiveSetRules* presetRules);
 static void ReorderPartyMons(u16 trainerNum, struct Pokemon *party, u8 monCount);
 static void AssignAnySpecialMons(u16 trainerNum, struct Pokemon *party, u8 monCount);
-static bool8 IsChoiceItem(u16 itemId);
+static bool8 IsChoiceItem(u16 itemId);	
 
 u16 Rogue_GetDynamicTrainer(u16 i)
 {
@@ -327,7 +361,8 @@ u8 Rogue_GetTrainerWeather(u16 trainerNum)
     return weatherType;
 }
 
-static u8 CalculateLvlFor(u8 difficulty)
+
+u8 CalculateLvlFor(u8 difficulty)
 {
     if(Rogue_GetModeRules()->disablePerBadgeLvlCaps)
     {
@@ -426,11 +461,20 @@ u8 Rogue_CalculateTrainerMonLvl()
 
     case ADVPATH_SUBROOM_ROUTE_AVERAGE:
         // Average of 2 so gap becomes larger as you reach level cap
-        return (startLvl + playerLvl) / 2;
+        // return (startLvl + playerLvl) / 2;
+		if (Rogue_GetCurrentDifficulty() < 8)
+			return startLvl + 2; 
+		else return startLvl + 1;
 
     case ADVPATH_SUBROOM_ROUTE_TOUGH:
+		if (Rogue_GetCurrentDifficulty() < 8)
+			return startLvl + 3;
+		else return playerLvl; 
+	
         // Scale with player level
-        return max(startLvl, playerLvl > 5 ? playerLvl - 5 : 5);
+		// return playerLvl; //too hard esp. earlyish 
+        // return max(startLvl, playerLvl > 5 ? playerLvl - 5 : 5);
+
 
     default:
         AGB_ASSERT(FALSE);
@@ -763,24 +807,32 @@ bool8 Rogue_UseCustomPartyGenerator(u16 trainerNum)
     return TRUE;
 }
 
-struct TrainerFliter
+struct TrainerFilter
 {
     u32 trainerFlagsInclude;
     u32 trainerFlagsExclude;
     u32 classFlagsInclude;
     u32 classFlagsExclude;
+	
+	//u16 typeInclude;
+	//u16 typeExclude; 
 };
 
-static void GetDefaultFilter(struct TrainerFliter* filter)
+#define INVALID_TYPE_GROUP 0xFFFF
+
+static void GetDefaultFilter(struct TrainerFilter* filter)
 {
     filter->trainerFlagsInclude = TRAINER_FLAG_NONE;
     filter->trainerFlagsExclude = TRAINER_FLAG_NONE;
 
     filter->classFlagsInclude = CLASS_FLAG_NONE;
     filter->classFlagsExclude = CLASS_FLAG_NONE;
+	
+	//filter->typeInclude = INVALID_TYPE_GROUP; // or 0xFFFF
+    //filter->typeExclude = INVALID_TYPE_GROUP;
 }
 
-static void GetGlobalFilter(u8 difficulty, struct TrainerFliter* filter)
+static void GetGlobalFilter(u8 difficulty, struct TrainerFilter* filter)
 {
     filter->trainerFlagsInclude = TRAINER_FLAG_NONE;
     filter->trainerFlagsExclude = TRAINER_FLAG_NONE;
@@ -801,9 +853,9 @@ static void GetGlobalFilter(u8 difficulty, struct TrainerFliter* filter)
 
     if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_JOHTO))
         filter->trainerFlagsInclude |= TRAINER_FLAG_REGION_JOHTO;
-
-    if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_HOENN))
-        filter->trainerFlagsInclude |= TRAINER_FLAG_REGION_HOENN;
+			
+	if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_HOENN))
+		filter->trainerFlagsInclude |= TRAINER_FLAG_REGION_HOENN;
 
 #ifdef ROGUE_EXPANSION
     if(Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_SINNOH))
@@ -821,13 +873,19 @@ static void GetGlobalFilter(u8 difficulty, struct TrainerFliter* filter)
         //AGB_ASSERT(FALSE);
         filter->trainerFlagsInclude = TRAINER_FLAG_REGION_DEFAULT;
     }
+	
+	
+
+	
 }
 
-static u16 Rogue_ChooseTrainerId(struct TrainerFliter* filter, u8 difficulty, u16* historyBuffer, u16 historyBufferCapacity)
+#define MAX_TRAINER_RETRIES 10
+
+static u16 Rogue_ChooseTrainerId(struct TrainerFilter* filter, u8 difficulty, u16* historyBuffer, u16 historyBufferCapacity)
 {
     u8 i;
     u16 trainerNum = gRogueTrainerCount;
-    struct TrainerFliter globalFilter;
+    struct TrainerFilter globalFilter;
     GetGlobalFilter(difficulty, &globalFilter);
 
     RogueTrainerQuery_Begin();
@@ -852,6 +910,14 @@ static u16 Rogue_ChooseTrainerId(struct TrainerFliter* filter, u8 difficulty, u1
     
         RogueTrainerQuery_ContainsClassFlag(QUERY_FUNC_INCLUDE, filter->classFlagsInclude);
         RogueTrainerQuery_ContainsClassFlag(QUERY_FUNC_EXCLUDE, filter->classFlagsExclude);
+
+		// ✅ Insert here
+		//if (filter->typeInclude != INVALID_TYPE_GROUP)
+		//	RogueTrainerQuery_IsOfTypeGroup(QUERY_FUNC_INCLUDE, filter->typeInclude);
+
+		//if (filter->typeExclude != INVALID_TYPE_GROUP)
+		//	RogueTrainerQuery_IsOfTypeGroup(QUERY_FUNC_EXCLUDE, filter->typeExclude);
+
 
         // Exclude any types we've already encountered
         for(i = 0; i < historyBufferCapacity; ++i)
@@ -898,7 +964,7 @@ static u16 Rogue_ChooseTrainerId(struct TrainerFliter* filter, u8 difficulty, u1
 
 static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 historyBufferCapacity)
 {
-    struct TrainerFliter filter;
+    struct TrainerFilter filter;
     GetDefaultFilter(&filter);
     filter.trainerFlagsInclude |= TRAINER_FLAG_CLASS_BOSS;
 
@@ -906,16 +972,63 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
     {
     case TRAINER_ORDER_DEFAULT:
         {
+			/*
             // Only include trainers we want
             filter.classFlagsInclude = TRAINER_FLAG_NONE;
-            if(difficulty >= ROGUE_CHAMP_START_DIFFICULTY)
+			//else if(difficulty >= ROGUE_CHAMP_START_DIFFICULTY)
+			if(difficulty >= ROGUE_CHAMP_START_DIFFICULTY)
                 filter.classFlagsInclude |= CLASS_FLAG_BOSS_CHAMP;
             else if(difficulty >= ROGUE_ELITE_START_DIFFICULTY)
                 filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_ELITE;
             else
                 filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
+		
+		}break;*/
+    
+			if(difficulty >= ROGUE_CHAMP_START_DIFFICULTY)
+                filter.classFlagsInclude |= CLASS_FLAG_BOSS_CHAMP;
+            else if(difficulty >= ROGUE_ELITE_START_DIFFICULTY)
+                filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_ELITE;
+			//else
+			//	filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
+		
+		
+            else{
+				switch (difficulty)
+				{
+					case ROGUE_GYM_START_DIFFICULTY + 0:
+					case ROGUE_GYM_START_DIFFICULTY + 1:
+					case ROGUE_GYM_START_DIFFICULTY + 2:
+					case ROGUE_GYM_START_DIFFICULTY + 3:
+						filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
+						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_6;
+						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_8;
+						break;
+					case ROGUE_GYM_START_DIFFICULTY + 4:
+					case ROGUE_GYM_START_DIFFICULTY + 5:
+					case ROGUE_GYM_START_DIFFICULTY + 6:
+					case ROGUE_GYM_START_DIFFICULTY + 7:
+						filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
+						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_1;
+						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_2;
+						break;
+				}
+            }
+			
         }
         break;
+		
+			/*
+            // Only include trainers we want
+            filter.classFlagsInclude = TRAINER_FLAG_NONE;
+			//else if(difficulty >= ROGUE_CHAMP_START_DIFFICULTY)
+			if(difficulty >= ROGUE_CHAMP_START_DIFFICULTY)
+                filter.classFlagsInclude |= CLASS_FLAG_BOSS_CHAMP;
+            else if(difficulty >= ROGUE_ELITE_START_DIFFICULTY)
+                filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_ELITE;
+            else
+                filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
+			*/
     
     case TRAINER_ORDER_RAINBOW:
         filter.classFlagsInclude = CLASS_FLAG_BOSS_ANY;
@@ -1042,7 +1155,7 @@ void Rogue_ChooseBossTrainersForNewAdventure()
 
 static u16 Rogue_ChooseRivalTrainerId()
 {
-    struct TrainerFliter filter;
+    struct TrainerFilter filter;
     GetDefaultFilter(&filter);
     filter.trainerFlagsInclude |= TRAINER_FLAG_CLASS_RIVAL;
 
@@ -1104,6 +1217,16 @@ void Rogue_ChooseRivalTrainerForNewAdventure()
     }
     else
     {
+		
+		// make rival encounters more stable
+		// 1-3-5-7 or 1-3-6 or 1-4-8 
+		gRogueRun.rivalEncounterDifficulties[0] = 1;  // First encounter (after 1st badge; more flexibility than diff0) 
+		gRogueRun.rivalEncounterDifficulties[1] = 3;  // Second encounter
+		gRogueRun.rivalEncounterDifficulties[2] = 5;  // Third encounter
+		gRogueRun.rivalEncounterDifficulties[3] = 7;  // Final rival encounter
+
+		
+		/*
         // First encounter just before or just after 1st badge
         gRogueRun.rivalEncounterDifficulties[0] = RogueRandom() % 2;
 
@@ -1126,6 +1249,7 @@ void Rogue_ChooseRivalTrainerForNewAdventure()
 
         // Last encounter just before or just after last gym
         gRogueRun.rivalEncounterDifficulties[3] = ROGUE_ELITE_START_DIFFICULTY - (RogueRandom() % 2);
+		*/
     }
 
 #ifdef ROGUE_DEBUG
@@ -1142,7 +1266,7 @@ void Rogue_ChooseRivalTrainerForNewAdventure()
 
 void Rogue_ChooseTeamBossTrainerForNewAdventure()
 {
-    struct TrainerFliter filter;
+    struct TrainerFilter filter;
     GetDefaultFilter(&filter);
     filter.trainerFlagsInclude |= TRAINER_FLAG_CLASS_TEAM_BOSS;
     filter.classFlagsInclude |= GetActiveTeamFlag();
@@ -1155,7 +1279,7 @@ void Rogue_ChooseTeamBossTrainerForNewAdventure()
 u16 Rogue_ChooseNextBossTrainerForVictoryLap()
 {
     //u16 historyBuffer[8];
-    struct TrainerFliter filter;
+    struct TrainerFilter filter;
     GetDefaultFilter(&filter);
 
     filter.trainerFlagsInclude |= TRAINER_FLAG_CLASS_BOSS;
@@ -1219,15 +1343,19 @@ static void SelectAndMoveStarterSpecies(u16 trainerNum, u16* speciesBuffer, u16 
 
 void Rogue_GenerateRivalBaseTeamIfNeeded()
 {
-    if(gRogueRun.rivalSpecies[0] == SPECIES_NONE)
+	// attempt not to give Rival 1 Rock/Steel types; 
+	// Rock/Steels are pushed to later mon ids (later battles), not removed 
+	bool isRockOrSteelI = false;
+	bool isRockOrSteelJ = false; 
+	
+    if (gRogueRun.rivalSpecies[0] == SPECIES_NONE)
     {
         u8 i;
         RAND_TYPE savedRng = gRngRogueValue;
 
         // Fake the difficulty for the generator
         u16 tempDifficulty = Rogue_GetCurrentDifficulty();
-        Rogue_SetCurrentDifficulty(0); 
-		//Rogue_SetCurrentDifficulty(RIVAL_BASE_TEAM_DIFFICULTY); // Generate base party at 2-3 badges 
+        Rogue_SetCurrentDifficulty(0); // Generate base party at early-game difficulty
 
         // Apply some base seed for anything which needs to be randomly setup
         SeedRogueRng(gRogueRun.baseSeed * 8071 + 6632);
@@ -1235,11 +1363,10 @@ void Rogue_GenerateRivalBaseTeamIfNeeded()
         DebugPrint("Generating Rival Base Team");
 
         // Create initial base team
-        //
         {
             CreateTrainerPartyInternal(gRogueRun.rivalTrainerNum, &gEnemyParty[0], RIVAL_BASE_PARTY_SIZE, RIVAL_BASE_PARTY_SIZE, FALSE, 0);
 
-            for(i = 0; i < RIVAL_BASE_PARTY_SIZE; ++i)
+            for (i = 0; i < RIVAL_BASE_PARTY_SIZE; ++i)
             {
                 AGB_ASSERT(gRogueRun.rivalSpecies[i] == SPECIES_NONE);
                 gRogueRun.rivalSpecies[i] = GetMonData(&gEnemyParty[i], MON_DATA_SPECIES);
@@ -1252,16 +1379,47 @@ void Rogue_GenerateRivalBaseTeamIfNeeded()
         Rogue_SetCurrentDifficulty(tempDifficulty);
         gRngRogueValue = savedRng;
 
-        // For just the base species we're going to sort based on BST so weakest mons appear first
+        // Sort species by base stat total
         SortByBst(gRogueRun.rivalSpecies, RIVAL_BASE_PARTY_SIZE);
+
+        // Then move Rock/Steel types to the end of the list (to avoid use in early battles)
+		// If there's numerous Rock/Steel types, can still be found in battle 1, but much less likely 
+        {
+            u8 j;
+            for (i = 0; i < RIVAL_BASE_PARTY_SIZE - 1; ++i)
+            {
+                for (j = i + 1; j < RIVAL_BASE_PARTY_SIZE; ++j)
+                {
+                    u16 speciesI = gRogueRun.rivalSpecies[i];
+                    u16 speciesJ = gRogueRun.rivalSpecies[j];
+
+                    isRockOrSteelI = (
+                        gBaseStats[speciesI].type1 == TYPE_ROCK || gBaseStats[speciesI].type2 == TYPE_ROCK ||
+                        gBaseStats[speciesI].type1 == TYPE_STEEL || gBaseStats[speciesI].type2 == TYPE_STEEL);
+
+                    isRockOrSteelJ = (
+                        gBaseStats[speciesJ].type1 == TYPE_ROCK || gBaseStats[speciesJ].type2 == TYPE_ROCK ||
+                        gBaseStats[speciesJ].type1 == TYPE_STEEL || gBaseStats[speciesJ].type2 == TYPE_STEEL);
+
+                    // If current is Rock/Steel and the other is not, swap them
+                    if (isRockOrSteelI && !isRockOrSteelJ)
+                    {
+                        u16 temp = gRogueRun.rivalSpecies[i];
+                        gRogueRun.rivalSpecies[i] = gRogueRun.rivalSpecies[j];
+                        gRogueRun.rivalSpecies[j] = temp;
+                    }
+                }
+            }
+        }
 
         // Assign the starter to stick with the player throughout
         SelectAndMoveStarterSpecies(gRogueRun.rivalTrainerNum, gRogueRun.rivalSpecies, RIVAL_BASE_PARTY_SIZE);
 
-        // Zero mons to avoid conflicts if called during team generation
+        // Clear temp party
         ZeroEnemyPartyMons();
     }
 }
+
 
 void Rogue_GenerateRivalSwapTeamIfNeeded()
 {
@@ -1372,7 +1530,7 @@ static u32 GetActiveTeamFlag()
 
 static u16 Rogue_RouteTrainerId(u16* historyBuffer, u16 historyBufferCapacity)
 {
-    struct TrainerFliter filter;
+    struct TrainerFilter filter;
     GetDefaultFilter(&filter);
     filter.trainerFlagsInclude |= TRAINER_FLAG_CLASS_ROUTE;
 
@@ -1400,7 +1558,7 @@ void Rogue_ChooseRouteTrainers(u16* writeBuffer, u16 bufferCapacity)
 
 static u16 Rogue_TeamHideoutTrainerId(u16* historyBuffer, u16 historyBufferCapacity)
 {
-    struct TrainerFliter filter;
+    struct TrainerFilter filter;
     GetDefaultFilter(&filter);
     filter.trainerFlagsInclude |= TRAINER_FLAG_CLASS_TEAM;
     filter.classFlagsInclude |= GetActiveTeamFlag();
@@ -1426,7 +1584,7 @@ void Rogue_ChooseTeamHideoutTrainers(u16* writeBuffer, u16 bufferCapacity)
 
 static u16 Rogue_SpectatorTrainerId(u16* historyBuffer, u16 historyBufferCapacity)
 {
-    struct TrainerFliter filter;
+    struct TrainerFilter filter;
     GetDefaultFilter(&filter);
     filter.trainerFlagsInclude |= TRAINER_FLAG_CLASS_ROUTE;
 
@@ -1490,6 +1648,7 @@ static void ConfigurePartyScratchSettings(u16 trainerNum, struct TrainerPartyScr
             scratch->allowWeakLegends = TRUE;
         }
 
+		// level 25+ 
         if(difficulty >= 3)
         {
             scratch->allowItemEvos = TRUE;
@@ -1552,22 +1711,40 @@ static void ConfigurePartyScratchSettings(u16 trainerNum, struct TrainerPartyScr
 static u8 CalculateMonFixedIV(u16 trainerNum)
 {
     u8 fixedIV = 0;
+	int diff = Rogue_GetCurrentDifficulty(); 
 
 	// we're removing enemy AI advantage so to compensate, increase their IVs 
     switch (Rogue_GetConfigRange(CONFIG_RANGE_TRAINER))
     {
     case DIFFICULTY_LEVEL_EASY:
     case DIFFICULTY_LEVEL_AVERAGE:
-        if(Rogue_IsKeyTrainer(trainerNum))
+		
+		// use different formula for rival; 
+		// rival starts off average but grows stronger 
+		if (Rogue_IsRivalTrainer(trainerNum))
+		{
+			if (diff <= 1) 
+				fixedIV = 15; 
+			else if (diff < 8) 
+				fixedIV = 20; 
+			else
+				fixedIV = 30; 
+		}
+		
+		else if (Rogue_IsBossTrainer(trainerNum))
+			fixedIV = 25; 
+		
+		else if (Rogue_IsKeyTrainer(trainerNum))
         {
-            if(Rogue_GetCurrentDifficulty() >= ROGUE_CHAMP_START_DIFFICULTY)
-                fixedIV = 30;
-            else if(Rogue_GetCurrentDifficulty() >= ROGUE_ELITE_START_DIFFICULTY)
-                fixedIV = 25;
-            else
-                fixedIV = 20;
+			if (diff < 7)
+				fixedIV = 20;
+			else if (diff < 12)
+				fixedIV = 25;
+			else if (diff >= ROGUE_CHAMP_START_DIFFICULTY)
+				fixedIV = 30; 
         }
-        else
+		
+        else // normal trainers 
         {
             fixedIV = 15;
         }
@@ -2801,7 +2978,10 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
 
         // Never give trainers unown
         RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_UNOWN);
-
+	
+		if (Rogue_GetCurrentDifficulty() < 4) // 15, 20, 25, 30, then wears off after 4th badge
+			RogueMonQuery_ContainsPresetFlags(QUERY_FUNC_INCLUDE, SET_WEAK);
+	
         // Only give Shedinja if at E4 stage as it's just unfun to deal with otherwise
         if(Rogue_GetCurrentDifficulty() < ROGUE_ELITE_START_DIFFICULTY)
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SHEDINJA);
@@ -2862,6 +3042,7 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_GOLEM);
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_MACHAMP);
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_KINGDRA);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_PORYGON2);
 			// just want more scyther representation 
 			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SCIZOR); 
         }
@@ -3167,7 +3348,6 @@ static bool8 UseCompetitiveMoveset(struct TrainerPartyScratch* scratch, u8 monId
 
     switch (Rogue_GetConfigRange(CONFIG_RANGE_TRAINER))
     {
-    // Easy is going to attempt to use comp sets BUT we're going to modify the sets before appling them to make them fairer
     case DIFFICULTY_LEVEL_EASY:
         if(diff == 0)
             return FALSE;
@@ -3329,7 +3509,9 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
 
                 if(IsChoiceItem(currPreset->heldItem) && scratch->heldItems.hasChoiceItem)
                 {
-                    currentScore /= 2;
+					if (Rogue_GetCurrentDifficulty() < 4) 
+						outPreset->heldItem = ITEM_LIECHI_BERRY;						
+                    //currentScore /= 2;
                 }
 
 #ifdef ROGUE_EXPANSION
@@ -3519,28 +3701,6 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
         {
             scratch->heldItems.hasBerry = TRUE;
         }
-		
-#ifdef ROGUE_EXPANSION
-        else if(outPreset->heldItem == ITEM_BLACK_SLUDGE)
-        {
-            scratch->heldItems.hasBlackSludge = TRUE;
-
-            // Replace at last second, as we will allow multiple leftovers for this edge case
-            if(IsTerastallizeEnabled())
-            {
-                // Avoid black sludge during tera because it's a bit silly
-                outPreset->heldItem == ITEM_LEFTOVERS;
-            }
-        }
-        else if(outPreset->heldItem >= ITEM_VENUSAURITE && outPreset->heldItem <= ITEM_DIANCITE)
-        {
-            scratch->heldItems.hasMegaStone = TRUE;
-        }
-        else if(outPreset->heldItem >= ITEM_NORMALIUM_Z && outPreset->heldItem <= ITEM_ULTRANECROZIUM_Z)
-        {
-            scratch->heldItems.hasZCrystal = TRUE;
-        }
-#endif
 
         return TRUE;
     }

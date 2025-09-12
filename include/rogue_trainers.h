@@ -1,6 +1,27 @@
 #ifndef ROGUE_TRAINERS_H
 #define ROGUE_TRAINERS_H
 
+//struct BossTrainerMetadata;
+//const struct BossTrainerMetadata gBossTrainerMetadata;
+
+// position in const struct RogueTrainer gRogueTrainers in src/data/rogue/trainers.h 
+#define TRAINER_JOHTO_FALKNER			21
+
+#define TRAINER_JOHTO_BUGSY				22
+
+#define TRAINER_JOHTO_WHITNEY			23
+
+#define TRAINER_JOHTO_MORTY				24
+
+#define TRAINER_JOHTO_CHUCK				25
+
+#define TRAINER_JOHTO_JASMINE			26
+
+#define TRAINER_JOHTO_PRYCE				27
+
+#define TRAINER_JOHTO_CLAIR				28	
+
+
 bool8 Rogue_IsBossTrainer(u16 trainerNum);
 bool8 Rogue_IsRivalTrainer(u16 trainerNum);
 bool8 Rogue_IsTeamBossTrainer(u16 trainerNum);
@@ -20,6 +41,7 @@ u16 Rogue_GetTrainerObjectEventGfx(u16 trainerNum);
 u16 Rogue_GetTrainerNumFromObjectEvent(struct ObjectEvent *curObject);
 u16 Rogue_GetTrainerNumFromLastInteracted();
 
+u8 CalculateLvlFor(u8 difficulty);
 u8 Rogue_GetTrainerWeather(u16 trainerNum);
 u8 Rogue_GetTrainerTypeAssignment(u16 trainerNum);
 u16 Rogue_GetTrainerTypeGroupId(u16 trainerNum);

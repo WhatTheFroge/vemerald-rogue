@@ -75,6 +75,7 @@ void RogueTrainerQuery_Reset(u8 func);
 void RogueTrainerQuery_ContainsClassFlag(u8 func, u32 trainerFlags);
 void RogueTrainerQuery_ContainsTrainerFlag(u8 func, u32 trainerFlags);
 void RogueTrainerQuery_IsOfTypeGroup(u8 func, u16 typeGroup);
+void RogueTrainerQuery_ExcludeTrainerId(u16 trainerId);
 
 // Adventure Path Query
 void RoguePathsQuery_Begin();

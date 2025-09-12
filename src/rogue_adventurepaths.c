@@ -152,60 +152,24 @@ static u8 GetPathGenerationDifficulty()
         return Rogue_GetCurrentDifficulty();
 }
 
-/*static void GeneratePath(struct AdvPathSettings* pathSettings)
-{
-    u8 routeCount = 0;
-    u8 minRouteCount = 5;  // Set this as needed or based on difficulty
-
-    struct AdvPathRoomSettings* bossRoom = &pathSettings->roomScratch[0];
-    memset(bossRoom, 0, sizeof(*bossRoom));
-    AGB_ASSERT(pathSettings->generator != NULL);
-    bossRoom->roomType = ADVPATH_ROOM_BOSS;
-
-    {
-        struct Coords8 coords = {0, 0};
-
-        gRogueAdvPath.roomCount = 0;
-        gRogueAdvPath.pathLength = pathSettings->totalLength;
-
-        GenerateFloorLayout(coords, pathSettings, &routeCount, minRouteCount);
-        GenerateRoomPlacements(pathSettings);
-    }
-	
-    // Store min/max Y coords
-    {
-        u8 i;
-
-        for(i = 0; i < gRogueAdvPath.roomCount; ++i)
-        {
-            if(i == 0)
-            {
-                gRogueAdvPath.pathMinY = gRogueAdvPath.rooms[i].coords.y;
-                gRogueAdvPath.pathMaxY = gRogueAdvPath.rooms[i].coords.y;
-            }
-            else
-            {
-                gRogueAdvPath.pathMinY = min(gRogueAdvPath.pathMinY, gRogueAdvPath.rooms[i].coords.y);
-                gRogueAdvPath.pathMaxY = max(gRogueAdvPath.pathMaxY, gRogueAdvPath.rooms[i].coords.y);
-            }
-        }
-    }
-
-    // (Rest of GeneratePath unchanged)
-}*/
-
 static void GeneratePath(struct AdvPathSettings* pathSettings)
 {
     struct AdvPathRoomSettings* bossRoom = &pathSettings->roomScratch[0];
 
 	u8 minRouteCount = 5;  // or whatever minimum number of routes you want guaranteed
+	u8 attempts = 0; 
+
+    u8 routeCount = 0;
+    u8 restStopCount = 0;
+	u8 i; 
+
     memset(bossRoom, 0, sizeof(*bossRoom));
-
-
-
     AGB_ASSERT(pathSettings->generator != NULL);
-
     bossRoom->roomType = ADVPATH_ROOM_BOSS;
+
+	// Used to force 7 rooms in difficulty 0 
+	retry:
+    ++attempts;
 
     // Generate base layout
     {
@@ -232,11 +196,31 @@ static void GeneratePath(struct AdvPathSettings* pathSettings)
         GenerateFloorLayout(coords, pathSettings, minRouteCount);
         GenerateRoomPlacements(pathSettings);
     }
+	
+	// If difficulty is 0 and too few rooms were generated, try again (up to 5 times)
+    // ENFORCE 4 routes and 1+ rest stop at difficulty 0
+    if (GetPathGenerationDifficulty() == 0)
+    {
+        routeCount = 0, restStopCount = 0; 
+
+        for (i = 0; i < gRogueAdvPath.roomCount; ++i)
+        {
+            if (gRogueAdvPath.rooms[i].roomType == ADVPATH_ROOM_ROUTE)
+                routeCount++;
+            else if (gRogueAdvPath.rooms[i].roomType == ADVPATH_ROOM_RESTSTOP)
+                restStopCount++;
+        }
+
+        // Check: 4 routes, at least 1 rest, and total of 7 rooms
+        if ((routeCount < 4 || restStopCount < 1 || gRogueAdvPath.roomCount < 7) && attempts++ < 20)
+        {
+            DebugPrintf("Retrying path gen: Routes=%d, Rests=%d, Rooms=%d", routeCount, restStopCount, gRogueAdvPath.roomCount);
+            goto retry;
+        }
+    }
 
     // Store min/max Y coords
     {
-        u8 i;
-
         for(i = 0; i < gRogueAdvPath.roomCount; ++i)
         {
             if(i == 0)
@@ -253,62 +237,13 @@ static void GeneratePath(struct AdvPathSettings* pathSettings)
     }
 }
 
-/*static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings)
-{
-    if(pathSettings->nodeCount >= ROGUE_ADVPATH_ROOM_CAPACITY)
-    {
-        // Cannot generate any more
-        DebugPrint("ADVPATH: \tReached room/node capacity.");
-        return;
-    }
-    else
-    {
-        u8 nodeId = gRogueAdvPath.roomCount++;
-
-        // Write base settings for this room (These will likely be overriden later)
-        gRogueAdvPath.rooms[nodeId].coords = currentCoords;
-        gRogueAdvPath.rooms[nodeId].roomType = ADVPATH_ROOM_NONE;
-        gRogueAdvPath.rooms[nodeId].connectionMask = 0;
-        gRogueAdvPath.rooms[nodeId].rngSeed = RogueRandom();
-
-        
-        // Generate children
-        //
-        if(currentCoords.x + 1 < pathSettings->totalLength)
-        {
-            struct Coords8 newCoords;
-            u8 connectionMask;
-
-            newCoords.x = currentCoords.x + 1;
-            newCoords.y = currentCoords.y;
-
-            connectionMask = GenerateRoomConnectionMask(currentCoords, pathSettings);
-            gRogueAdvPath.rooms[nodeId].connectionMask = connectionMask;
-
-            newCoords.y = currentCoords.y + 1;
-            if((connectionMask & ROOM_CONNECTION_MASK_TOP) != 0 && !DoesRoomExists(newCoords.x, newCoords.y))
-            {
-                GenerateFloorLayout(newCoords, pathSettings);
-            }
-            
-            newCoords.y = currentCoords.y + 0;
-            if((connectionMask & ROOM_CONNECTION_MASK_MID) != 0 && !DoesRoomExists(newCoords.x, newCoords.y))
-            {
-                GenerateFloorLayout(newCoords, pathSettings);
-            }
-
-            newCoords.y = currentCoords.y - 1;
-            if((connectionMask & ROOM_CONNECTION_MASK_BOT) != 0 && !DoesRoomExists(newCoords.x, newCoords.y))
-            {
-                GenerateFloorLayout(newCoords, pathSettings);
-            }
-        }
-    }
-}*/
-
 static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSettings* pathSettings, u8 routesNeeded)
 {
-
+	u8 i, nodeId;
+    u8 maxRouteCount = 0;
+	u8 attempts = 0; 
+	u8 routeCount;
+	
 	// Stop if we've reached max columns allowed by path length
     if (currentCoords.x >= pathSettings->totalLength)
         return;
@@ -319,16 +254,25 @@ static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSett
         DebugPrint("ADVPATH: \tReached room/node capacity.");
         return;
     }
-    else
+    
+	else
     {
-		// must declare new variables before any calculations or function calls 
-		u8 nodeId; 
+		if (GetPathGenerationDifficulty() == 0)
+		{
+		    for (i = 0; i < gRogueAdvPath.roomCount; ++i)
+			{
+				if (gRogueAdvPath.rooms[i].roomType == ADVPATH_ROOM_ROUTE)
+					maxRouteCount++;
+			}
+
+			// HARD CAP 4 routes, 7 total rooms at start of game 
+			if (maxRouteCount >= 4)
+				return;
+			
+			if (gRogueAdvPath.roomCount >= 7)
+				return;
+		}
 		
-		// HARD CAP 7 at start of game
-		// 4 routes, 2 reststop, 1 boss battle 
-		if (GetPathGenerationDifficulty() == 0 && gRogueAdvPath.roomCount > 7)
-			return;
-        
 		nodeId = gRogueAdvPath.roomCount++;
 
         // Write base settings for this room (These will likely be overriden later)
@@ -377,7 +321,6 @@ static void GenerateFloorLayout(struct Coords8 currentCoords, struct AdvPathSett
         }
     }
 }
-
 
 static bool8 IsPrecededByRoomType(struct RogueAdvPathRoom* room, u8 roomType)
 {
@@ -486,17 +429,28 @@ static u16 SelectRoomType_CalculateWeight(u16 weightIndex, u16 roomType, void* d
     {
     case ADVPATH_ROOM_RESTSTOP:
         count = CountRoomType(roomType);
-
-        // Always want at least 1 rest stop
-        if(count == 0)
-            return 100;
-        // Prefer a 2nd rest stop
-        else if(count == 1)
-            return 20;
-        // If we already have 4 perfer most other encounters
-        else if(count >= 4)
-            return 1;
-        break;
+		/* Intended: 1 rest stop only before Gym 1.
+		// However, this causes the game to crash. 
+		if (diff == 0)
+        {
+            if (count == 0)
+                return 100; // Must have one
+            else
+                return 0; // Don't allow more at diff 0
+			break; 
+        }*/
+		
+		
+        // Always want at least 1 rest stop;
+		// Prefer a 2nd rest stop;
+		// If we already have 4, decrease priority 
+		if (count == 0)
+			return 100;
+		else if (count == 1)
+			return 20;
+		else if(count >= 4)
+			return 1;
+		break;
 
     // Only allow 1 but we really want to place it
     case ADVPATH_ROOM_LEGENDARY:
@@ -533,13 +487,6 @@ static u16 SelectRoomType_CalculateWeight(u16 weightIndex, u16 roomType, void* d
 			if (diff == 9)	return 7;
 			if (diff == 10)	return 10;
 			if (diff > 10)	return 0; 
-			/*
-            // Every other badge we want to increase weight otherwise decrease weight but not impossible
-            if((GetPathGenerationDifficulty() - 1) % 2 == 0)
-                return 15;
-            else
-                return 1;
-			*/
         }
         else
             return 0;
@@ -757,6 +704,7 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
     u16 validEncounterList[ADVPATH_ROOM_COUNT];
     u16 minReplaceCount = 1;
     u8 minRouteCount = 5; // Add this here at the top
+    u8 restStopCount = 0;
 
     // Place gym at very end
     GenerateRoomInstance(0, ADVPATH_ROOM_BOSS);
@@ -775,6 +723,7 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
     // Now we're going to replace the routes based on the ideal placement
     // The order of these is important to decide the placement
 
+	// Note: Prefer place reststops at end in regular Adventures as well? 
     // For gauntlet, place full rest stop at end always
     if(Rogue_GetModeRules()->adventureGenerator == ADV_GENERATOR_GAUNTLET)
     {

@@ -140,7 +140,8 @@
 						{
                             "is_diversity_subset": true,
                             "max_samples": 2,
-                            "include_types": [ "BUG" ]
+                            "include_types": [ "BUG" ],
+							"extra_species": [ "SPECIES_SCYTHER" ] 
                         },
 						{
                             "is_diversity_subset": true,
@@ -150,11 +151,13 @@
                         {
                             "is_diversity_subset": true,
                             "max_samples": 3,
-                            "include_types": [ "BUG" ]
+                            "include_types": [ "BUG" ],
+							"extra_species": [ "SPECIES_SCYTHER" ] 
                         },
                         {
                             "max_samples": 6,
-                            "include_types": [ "BUG" ]
+                            "include_types": [ "BUG" ],
+							"extra_species": [ "SPECIES_SCYTHER" ] 
                         }
                     ],
                     "weight_script":
@@ -293,7 +296,7 @@
                         "PRE_BATTLE_OPENNING": "Let me tell you, I'm tough.\\nI train every day to improve mind and body.",
                         "PRE_BATTLE_TAUNT": "You must have guts to fight me!\\nCome on!",
                         "POST_BATTLE_TAUNT": "Huh… I lost?",
-                        "POST_BATTLE_CLOSER": "That was a fun fight.\\nBut a loss is a loss!\\pYou better continue building\\lyour strength!"
+                        "POST_BATTLE_CLOSER": "That was a fun fight.\\nBut a loss is a loss!\\pYou better continue getting stronger!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",

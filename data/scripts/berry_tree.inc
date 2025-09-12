@@ -185,8 +185,7 @@ BerryTree_Text_WantToPlant:
 	.string "Want to plant a Berry?$"
 
 BerryTree_Text_PlantedOneBerry:
-	.string "{PLAYER} planted one {STR_VAR_1} in\n"
-	.string "the soft, loamy soil.$"
+	.string "{PLAYER} planted one {STR_VAR_1}.$"
 
 BerryTree_Text_BerryGrowthStage1:
 	.string "One {STR_VAR_1} was planted here.$"

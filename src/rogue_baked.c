@@ -1146,11 +1146,22 @@ u16 Rogue_GetPrice(u16 itemId)
 	if (itemId == ITEM_LINK_CABLE)
 		return 3000; 
 	
+	// More PP problems but greater availability of Ethers. 
 	if (itemId == ITEM_ETHER)
 		return 500;
 	if (itemId == ITEM_MAX_ETHER)
 		return 1000; 
+	// if EVs are enabled only 
+	if (itemId == ITEM_PP_UP)			
+        return 2000; 
 
+	if (itemId == ITEM_SUPER_POTION)
+		return 600;
+	if (itemId == ITEM_REVIVE)
+		return 2000; 
+	if (itemId == ITEM_MAX_REVIVE)
+		return 4000; 
+	
     // Range edits
     if(itemId >= ITEM_HP_UP && itemId <= ITEM_PP_MAX)
     {
@@ -1213,17 +1224,6 @@ u16 Rogue_GetPrice(u16 itemId)
     // Individual items
     switch(itemId)
     {
-        case ITEM_REVIVE:
-            price = 2000;
-            break;
-        case ITEM_MAX_REVIVE:
-            price = 4000;
-            break;
-
-        case ITEM_PP_UP:
-            price = 2000;
-            break;
-
         case ITEM_ESCAPE_ROPE:
             price = Rogue_IsRunActive() ? 8000 : 16000;
             break;
@@ -1255,12 +1255,8 @@ u16 Rogue_GetPrice(u16 itemId)
         case ITEM_SACRED_ASH:
             price = 0;
             break;
-    
-        case ITEM_SOUL_DEW:
-            applyDefaultHubIncrease = TRUE;
-            price = HELD_ITEM_MID_PRICE;	
-	    break;
 
+		// Normal berry price 1000 
 		case ITEM_LUM_BERRY:
 			price = 2000;
 			break;
@@ -1278,9 +1274,6 @@ u16 Rogue_GetPrice(u16 itemId)
 			break;
 			
 			
-		case ITEM_LEFTOVERS:
-			price = 20000;
-			break;
 		case ITEM_AMULET_COIN:
 			price = 8000;
 			break;
@@ -1299,12 +1292,6 @@ u16 Rogue_GetPrice(u16 itemId)
 			price = 2000;
 			break;
 		
-		case ITEM_LUCKY_PUNCH:		// to remove
-			price = 100;
-			break;
-		case ITEM_METAL_POWDER:		// to remove
-			price = 100;
-			break;
 		case ITEM_STICK:
 			price = 1000;
 			break;
@@ -1314,58 +1301,51 @@ u16 Rogue_GetPrice(u16 itemId)
 		case ITEM_THICK_CLUB:
 			price = 1000;
 			break;
+	
+//		Soul Dew, Leftovers, Sea Incense, Lucky Punch, and Metal Powder are removed.
+//		Remove Macho Brace?  	
+
+//		Type items' price calculated based on a formula that ranks types.
+// 		Formula includes Representation, Power, and Coverage. Each type is ranked from 1 to 5. 
+//		Final price =~ 500 + (Score * 50). Fudged the numbers a bit to group types into tiers.  
+//		Formula - How common is the type? (as STAB)
+// 		Power - How powerful are the type's attack moves? (Not just their most powerful, but also mid-game moves.) 
+//		Coverage - How often is the move used as coverage? (Many pokemon learn Surf, but it's not used as coverage often.) 
 		
-		case ITEM_SOFT_SAND:
-			price = 1500;
-			break;
 		case ITEM_SILK_SCARF:
-			price = 1400;
+			price = 1250;
 			break;
-		case ITEM_HARD_STONE:
-			price = 1300;
-			break;
-		case ITEM_BLACK_BELT:
-			price = 1200;
-			break;
-		case ITEM_SHARP_BEAK:
-			price = 1100;
-			break;
-		case ITEM_SPELL_TAG:
-			price = 1000;
-			break;
-		case ITEM_SILVER_POWDER:
-			price = 800;
-			break;
-		case ITEM_POISON_BARB:
-			price = 700;
-			break;
+			
+		case ITEM_SOFT_SAND:
 		case ITEM_MYSTIC_WATER:
-			price = 1500;
+			price = 1150;
 			break;
-		case ITEM_SEA_INCENSE:		// bonus is only 5% rather than 10% 
-			price = 1000;
-			break;
-		case ITEM_CHARCOAL:
-			price = 1400;
-			break;
+	
 		case ITEM_NEVER_MELT_ICE:
-			price = 1300;
-			break;
+		case ITEM_CHARCOAL:
 		case ITEM_TWISTED_SPOON:
-			price = 1200;
+			price = 1050;
 			break;
-		case ITEM_BLACK_GLASSES:
-			price = 1100;
-			break;
-		case ITEM_DRAGON_FANG:
-			price = 1000;
-			break;
+		
+		case ITEM_HARD_STONE:
 		case ITEM_MAGNET:
-			price = 900;
+		case ITEM_BLACK_BELT:
+		case ITEM_SHARP_BEAK:
+		case ITEM_POISON_BARB:
+		case ITEM_SPELL_TAG:
+			price = 950;
 			break;
+		
 		case ITEM_MIRACLE_SEED:
-			price = 800;
+		case ITEM_DRAGON_FANG:
+		case ITEM_BLACK_GLASSES:
+			price = 850;
 			break;
+		
+		// Introduce a new held item for Steel moves? 
+		case ITEM_SILVER_POWDER:
+			price = 750;
+			break; 
 		
 		case ITEM_QUICK_CLAW:
 			price = 2500;
@@ -1386,14 +1366,6 @@ u16 Rogue_GetPrice(u16 itemId)
 		case ITEM_WHITE_HERB:
 			price = 1000;
 			break;
-
-        case ITEM_RARE_CANDY:
-            price = 2000;
-            break;
-
-		case ITEM_SUPER_POTION:
-			price = 600; 
-			break; 
 
 #ifdef ROGUE_EXPANSION
         case ITEM_SPORT_BALL:
@@ -1591,12 +1563,15 @@ u32 Rogue_CalculateMovePrice(u16 move)
     {
 	
 	// TMs
+	// Return 16 -> 9; Frustration 12 -> 7; 
+	// Where is Strength? 
+	// Lack of Available TMs in Early Game? 
 	case MOVE_CUT:			
 	case MOVE_ROCK_SMASH:	return 2000 * 3/10;
 	case MOVE_BULLET_SEED:	return 3000 * 3/10;			
 	case MOVE_ROCK_TOMB: 	return 5000 * 3/10;
 	case MOVE_DIG:			return 5000 * 3/10;
-	case MOVE_DIVE:			return 6000 * 3/10;
+	case MOVE_DIVE:			
 	case MOVE_STEEL_WING:
 	case MOVE_AERIAL_ACE:
 	case MOVE_FLY:
@@ -1606,10 +1581,13 @@ u32 Rogue_CalculateMovePrice(u16 move)
 	case MOVE_FACADE:		return 6000 * 3/10;
 	case MOVE_DRAGON_CLAW:
 	case MOVE_SECRET_POWER:
-	case MOVE_IRON_TAIL:	return 7000 * 3/10;
+	case MOVE_IRON_TAIL:	
+	case MOVE_FRUSTRATION:	
+	case MOVE_STRENGTH: 	return 7000 * 3/10;
 	case MOVE_WATERFALL:	return 8000 * 3/10;
 	case MOVE_GIGA_DRAIN:
-	case MOVE_BLIZZARD:		return 9000 * 3/10;
+	case MOVE_BLIZZARD:		
+	case MOVE_RETURN:		return 9000 * 3/10;
 	case MOVE_BRICK_BREAK:
 	case MOVE_SOLAR_BEAM:
 	case MOVE_HIDDEN_POWER:
@@ -1617,7 +1595,7 @@ u32 Rogue_CalculateMovePrice(u16 move)
 	case MOVE_FOCUS_PUNCH:	return 10000 * 3/10;
 	case MOVE_THUNDER:
 	case MOVE_SLUDGE_BOMB:	return 11000 * 3/10;
-	case MOVE_FRUSTRATION:
+	//case MOVE_FRUSTRATION:
 	case MOVE_SHADOW_BALL: 
 	case MOVE_THUNDERBOLT:
 	case MOVE_PSYCHIC:		return 12000 * 3/10;
@@ -1626,7 +1604,7 @@ u32 Rogue_CalculateMovePrice(u16 move)
 	case MOVE_FLAMETHROWER:
 	case MOVE_ICE_BEAM:
 	case MOVE_FIRE_BLAST:	return 14000 * 3/10;
-	case MOVE_RETURN:		return 16000 * 3/10;
+	//case MOVE_RETURN:		return 16000 * 3/10;
 	case MOVE_EARTHQUAKE:	return 18000 * 3/10;
 	
 	// SUPPORT TMs

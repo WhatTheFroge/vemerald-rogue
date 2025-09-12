@@ -44,6 +44,7 @@
 #include "rogue_charms.h"
 #include "rogue_controller.h"
 #include "rogue_player_customisation.h"
+#include "rogue_trainers.h"
 
 static void PlayerHandleGetMonData(void);
 static void PlayerHandleSetMonData(void);
@@ -115,11 +116,7 @@ static void HandleMoveSwitching(void);
 static void SwitchIn_HandleSoundAndEnd(void);
 static void WaitForMonSelection(void);
 static void CompleteWhenChoseItem(void);
-static void Task_LaunchLvlUpAnim(u8);
-static void Task_PrepareToGiveExpWithExpBar(u8);
 static void DestroyExpTaskAndCompleteOnInactiveTextPrinter(u8);
-static void Task_GiveExpWithExpBar(u8);
-static void Task_UpdateLvlInHealthbox(u8);
 static void PrintLinkStandbyMsg(void);
 static u32 CopyPlayerMonData(u8, u8 *);
 static void SetPlayerMonData(u8);
@@ -128,6 +125,12 @@ static void DoSwitchOutAnimation(void);
 static void PlayerDoMoveAnimation(void);
 static void Task_StartSendOutAnim(u8);
 static void EndDrawPartyStatusSummary(void);
+
+static u8 GetHighestLevelInParty(void);
+static void Task_PrepareToGiveExpWithExpBar(u8);
+static void Task_GiveExpWithExpBar(u8);
+static void Task_LaunchLvlUpAnim(u8);
+static void Task_UpdateLvlInHealthbox(u8);
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
 {
@@ -1189,52 +1192,168 @@ static void CompleteOnInactiveTextPrinter(void)
 #define tExpTask_monId      data[0]
 #define tExpTask_gainedExp  data[1]
 #define tExpTask_battler    data[2]
+#define tExpTask_highestLevel data[3]
 #define tExpTask_frames     data[10]
 
+// used to adjust XP formula for underleveled pokes 
+static u8 GetHighestLevelInParty(void)
+{
+    u8 highest = 0;
+	int i; 
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+        {
+            u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+            if (level > highest)
+                highest = level;
+        }
+    }
+
+	// finds numerical level, not monID 
+    return highest;
+}
+
+// revised; controls both active and party 
+// how to learn level-up moves if level is skipped?
 static void Task_GiveExpToMon(u8 taskId)
 {
     u32 monId = (u8)(gTasks[taskId].tExpTask_monId);
     u8 battlerId = gTasks[taskId].tExpTask_battler;
-    s16 gainedExp = gTasks[taskId].tExpTask_gainedExp;
+    s32 gainedExp = gTasks[taskId].tExpTask_gainedExp; // Use s32 here to allow subtraction
+	u8 savedActiveBattler; 
+	u32 nextLvlExp, nextNextLvlExp;
+	u8 highestLevel;
+	u8 levelCap; 
+	
+	bool8 isActiveMon;
+	u32 lvlsAllowed, levelsGained; 
 
-    if (IsDoubleBattle() == TRUE || monId != gBattlerPartyIndexes[battlerId]) // Give exp without moving the expbar.
+    struct Pokemon *mon = &gPlayerParty[monId];
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    u8 level = GetMonData(mon, MON_DATA_LEVEL);
+    u32 currExp = GetMonData(mon, MON_DATA_EXP);
+
+    // Get the level cap
+    levelCap = CalculateLvlFor(Rogue_GetCurrentDifficulty()); 
+
+    // If it's an EXP Trainer, allow multiple level ups until level cap is reached
+    if (Rogue_IsExpTrainer(gTrainerBattleOpponent_A))
     {
-        struct Pokemon *mon = &gPlayerParty[monId];
-        u16 species = GetMonData(mon, MON_DATA_SPECIES);
-        u8 level = GetMonData(mon, MON_DATA_LEVEL);
-        u32 currExp = GetMonData(mon, MON_DATA_EXP);
-        u32 nextLvlExp = Rogue_ModifyExperienceTables(gBaseStats[species].growthRate, level + 1);
-
-        if (currExp + gainedExp >= nextLvlExp)
+        while (gainedExp > 0 && level < levelCap)
         {
-            u8 savedActiveBattler;
+            u32 nextLvlExp = Rogue_ModifyExperienceTables(gBaseStats[species].growthRate, level + 1);
 
-            SetMonData(mon, MON_DATA_EXP, &nextLvlExp);
-            CalculateMonStats(mon);
-            gainedExp -= nextLvlExp - currExp;
-            savedActiveBattler = gActiveBattler;
-            gActiveBattler = battlerId;
-            BtlController_EmitTwoReturnValues(BUFFER_B, RET_VALUE_LEVELED_UP, gainedExp);
-            gActiveBattler = savedActiveBattler;
+            if (currExp + gainedExp >= nextLvlExp)
+            {
+                u32 usedExp = nextLvlExp - currExp;
+                gainedExp -= usedExp;
+                currExp = nextLvlExp;
+                level++;
 
-            if (IsDoubleBattle() == TRUE
-             && ((u16)(monId) == gBattlerPartyIndexes[battlerId] || (u16)(monId) == gBattlerPartyIndexes[battlerId ^ BIT_FLANK]))
-                gTasks[taskId].func = Task_LaunchLvlUpAnim;
+                SetMonData(mon, MON_DATA_EXP, &currExp);
+                SetMonData(mon, MON_DATA_LEVEL, &level);
+                CalculateMonStats(mon);
+
+                // Emit level-up event
+                savedActiveBattler = gActiveBattler;
+                gActiveBattler = battlerId;
+                BtlController_EmitTwoReturnValues(BUFFER_B, RET_VALUE_LEVELED_UP, 0);
+                gActiveBattler = savedActiveBattler;
+            }
+			
             else
-                gTasks[taskId].func = DestroyExpTaskAndCompleteOnInactiveTextPrinter;
+            {
+                currExp += gainedExp;
+                gainedExp = 0;
+                SetMonData(mon, MON_DATA_EXP, &currExp);
+            }
         }
-        else
-        {
-            currExp += gainedExp;
-            SetMonData(mon, MON_DATA_EXP, &currExp);
-            gBattlerControllerFuncs[battlerId] = CompleteOnInactiveTextPrinter;
-            DestroyTask(taskId);
-        }
+
+        // After leveling or giving exp, complete or start animation accordingly
+		// Fixed! Correct behavior: Active levels up, no notification for party 
+		// notably occurs after level++ and SetMonData 
+		if (level < levelCap)
+		{
+			// No more level ups, complete task cleanly
+			gTasks[taskId].func = DestroyExpTaskAndCompleteOnInactiveTextPrinter;
+		}
+		else
+		{
+			// Reached level cap - launch level up animation if this is the active mon
+			if (monId == gBattlerPartyIndexes[battlerId])
+			{
+				gTasks[taskId].func = Task_LaunchLvlUpAnim;
+			}
+			else
+			{
+				// Not active mon; just finish without anim
+				gTasks[taskId].func = DestroyExpTaskAndCompleteOnInactiveTextPrinter;
+			}
+		}
     }
-    else
-    {
-        gTasks[taskId].func = Task_PrepareToGiveExpWithExpBar;
-    }
+    
+	// not XP trainer 
+	else
+	{
+		// Normal EXP flow, but now:
+		// Active mon = 2 level ups max
+		// Non-active = 1 level up max
+
+		highestLevel = gTasks[taskId].tExpTask_highestLevel;
+
+		isActiveMon = (monId == gBattlerPartyIndexes[battlerId]);
+
+		lvlsAllowed = isActiveMon ? 2 : 1;
+
+		levelsGained = 0;
+
+		while (levelsGained < lvlsAllowed)
+		{
+			u32 nextLvlExp = Rogue_ModifyExperienceTables(gBaseStats[species].growthRate, level + 1);
+
+			if (currExp + gainedExp >= nextLvlExp)
+			{
+				u32 usedExp = nextLvlExp - currExp;
+				gainedExp -= usedExp;
+				currExp = nextLvlExp;
+				level++;
+				levelsGained++;
+
+				SetMonData(mon, MON_DATA_EXP, &currExp);
+				SetMonData(mon, MON_DATA_LEVEL, &level);
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		if (levelsGained > 0)
+		{
+			CalculateMonStats(mon);
+
+			savedActiveBattler = gActiveBattler;
+			gActiveBattler = battlerId;
+			BtlController_EmitTwoReturnValues(BUFFER_B, RET_VALUE_LEVELED_UP, 0);
+			gActiveBattler = savedActiveBattler;
+
+			if (isActiveMon)
+				gTasks[taskId].func = Task_LaunchLvlUpAnim;
+			else
+				gTasks[taskId].func = DestroyExpTaskAndCompleteOnInactiveTextPrinter;
+		}
+		else
+		{
+			// No level ups, just add the EXP
+			currExp += gainedExp;
+			SetMonData(mon, MON_DATA_EXP, &currExp);
+			gBattlerControllerFuncs[battlerId] = CompleteOnInactiveTextPrinter;
+			DestroyTask(taskId);
+		}
+	}
+
 }
 
 static void Task_PrepareToGiveExpWithExpBar(u8 taskId)
@@ -1265,6 +1384,7 @@ static void Task_GiveExpWithExpBar(u8 taskId)
     {
         gTasks[taskId].tExpTask_frames++;
     }
+	
     else
     {
         u8 monId = gTasks[taskId].tExpTask_monId;
@@ -1285,7 +1405,9 @@ static void Task_GiveExpWithExpBar(u8 taskId)
             level = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
             currExp = GetMonData(&gPlayerParty[monId], MON_DATA_EXP);
             species = GetMonData(&gPlayerParty[monId], MON_DATA_SPECIES);
-            expOnNextLvl = Rogue_ModifyExperienceTables(gBaseStats[species].growthRate, level + 1);
+            expOnNextLvl = Rogue_ModifyExperienceTables(gBaseStats[species].growthRate, level + 2);
+
+			//expOnNextLvl = Rogue_ModifyExperienceTables(gBaseStats[species].growthRate, level + 1);
 
             if (currExp + gainedExp >= expOnNextLvl)
             {
@@ -1295,11 +1417,16 @@ static void Task_GiveExpWithExpBar(u8 taskId)
                 CalculateMonStats(&gPlayerParty[monId]);
                 gainedExp -= expOnNextLvl - currExp;
                 savedActiveBattler = gActiveBattler;
+				gTasks[taskId].tExpTask_gainedExp = gainedExp;
+				
                 gActiveBattler = battlerId;
                 BtlController_EmitTwoReturnValues(BUFFER_B, RET_VALUE_LEVELED_UP, gainedExp);
                 gActiveBattler = savedActiveBattler;
-                gTasks[taskId].func = Task_LaunchLvlUpAnim;
+				gTasks[taskId].func = Task_GiveExpToMon;
+				gTasks[taskId].func = Task_LaunchLvlUpAnim;
+				
             }
+			
             else
             {
                 currExp += gainedExp;
@@ -1310,6 +1437,9 @@ static void Task_GiveExpWithExpBar(u8 taskId)
         }
     }
 }
+
+
+
 
 static void Task_LaunchLvlUpAnim(u8 taskId)
 {
@@ -1322,6 +1452,7 @@ static void Task_LaunchLvlUpAnim(u8 taskId)
     InitAndLaunchSpecialAnimation(battlerId, battlerId, battlerId, B_ANIM_LVL_UP);
     gTasks[taskId].func = Task_UpdateLvlInHealthbox;
 }
+
 
 static void Task_UpdateLvlInHealthbox(u8 taskId)
 {
@@ -1341,6 +1472,7 @@ static void Task_UpdateLvlInHealthbox(u8 taskId)
         gTasks[taskId].func = DestroyExpTaskAndCompleteOnInactiveTextPrinter;
     }
 }
+
 
 static void DestroyExpTaskAndCompleteOnInactiveTextPrinter(u8 taskId)
 {
@@ -3041,6 +3173,7 @@ static void PlayerHandleExpUpdate(void)
         GetMonData(&gPlayerParty[monId], MON_DATA_SPECIES);  // Unused return value.
         expPointsToGive = T1_READ_16(&gBattleBufferA[gActiveBattler][2]);
         taskId = CreateTask(Task_GiveExpToMon, 10);
+		gTasks[taskId].tExpTask_highestLevel = GetHighestLevelInParty();
         gTasks[taskId].tExpTask_monId = monId;
         gTasks[taskId].tExpTask_gainedExp = expPointsToGive;
         gTasks[taskId].tExpTask_battler = gActiveBattler;

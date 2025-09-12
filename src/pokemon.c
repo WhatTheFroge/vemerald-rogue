@@ -1866,6 +1866,7 @@ const u8 gPPUpGetMask[MAX_MON_MOVES]   = {PP_UP_SHIFTS(3)};
 const u8 gPPUpClearMask[MAX_MON_MOVES] = {PP_UP_SHIFTS_INV(3)};
 const u8 gPPUpAddValues[MAX_MON_MOVES] = {PP_UP_SHIFTS(1)};
 
+/*
 const u8 gStatStageRatios[MAX_STAT_STAGE + 1][2] =
 {
     {10, 40}, // -6, MIN_STAT_STAGE
@@ -1882,6 +1883,26 @@ const u8 gStatStageRatios[MAX_STAT_STAGE + 1][2] =
     {35, 10}, // +5
     {40, 10}, // +6, MAX_STAT_STAGE
 };
+*/
+
+// const u8 gStatStageRatios[][2] =
+const u8 gStatStageRatios[MAX_STAT_STAGE + 1][2] =
+{
+    {20, 50}, // -6 = 0.4x
+    {20, 45}, // -5 = 0.44x
+    {20, 40}, // -4 = 0.5x
+    {20, 35}, // -3 = 0.57x
+    {20, 30}, // -2 = 0.66x
+    {20, 25}, // -1 = 0.8x
+    {20, 20}, //  0 = 1.0x
+    {25, 20}, // +1 = 1.25x
+    {30, 20}, // +2 = 1.5x
+    {35, 20}, // +3 = 1.75x
+    {40, 20}, // +4 = 2.0x
+    {45, 20}, // +5 = 2.25x
+    {50, 20}, // +6 = 2.5x
+};
+
 
 static const u16 sDeoxysBaseStats[] =
 {

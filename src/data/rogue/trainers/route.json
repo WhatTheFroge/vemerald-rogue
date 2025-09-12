@@ -21,7 +21,7 @@
                     {
                         "PRE_BATTLE_TAUNT": "I hatched and raised all of my Pokémon!",
                         "POST_BATTLE_TAUNT": "Excellent!",
-                        "POST_BATTLE_CLOSER": "My breeding technique still needs work I guess…"
+                        "POST_BATTLE_CLOSER": "There's always room to improve!\\nBut I breed for friendliness, not IVs."
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -38,9 +38,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Did you really raise all your Pokémon\\nyourself?",
+                        "PRE_BATTLE_TAUNT": "Aren't my Pokemon lovely?",
                         "POST_BATTLE_TAUNT": "Wow! That was something else!",
-                        "POST_BATTLE_CLOSER": "You've done a great job raising your\\nPokémon!"
+                        "POST_BATTLE_CLOSER": "Your Pokemon are cute and strong.\\nNot as cute as mine, though!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -235,9 +235,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "I can't wait to use what I\\nlearned from school!",
+                        "PRE_BATTLE_TAUNT": "I can't wait to use the knowledge I\\nlearned from school!",
                         "POST_BATTLE_TAUNT": "What!?\\lThat technique was much better!",
-                        "POST_BATTLE_CLOSER": "Why don't they teach us useful techniques\\nin school!?"
+                        "POST_BATTLE_CLOSER": "Why don't they teach us useful things\\nin class!?"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -300,9 +300,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "My bird Pokémon are the strongest in the world!",
+                        "PRE_BATTLE_TAUNT": "My bird Pokémon are the strongest\\nin the world!",
                         "POST_BATTLE_TAUNT": "They're still the strongest in my world.",
-                        "POST_BATTLE_CLOSER": "Bird Pokémon are super cool, don't you think?!"
+                        "POST_BATTLE_CLOSER": "Bird Pokémon are super cool, don't you\\nthink?!"
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -424,7 +424,7 @@
                     {
                         "PRE_BATTLE_TAUNT": "I'm on a winning streak!",
                         "POST_BATTLE_TAUNT": "Welp!\\nThat was unexpected.",
-                        "POST_BATTLE_CLOSER": "Time to start over!"
+                        "POST_BATTLE_CLOSER": "Easy battles are boring!\\nYou need hard battles to grow!"
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -443,7 +443,7 @@
                     {
                         "PRE_BATTLE_TAUNT": "I bought myself the most powerful\\nPokémon imaginable!\\pYou don't stand a chance!",
                         "POST_BATTLE_TAUNT": "What!?!",
-                        "POST_BATTLE_CLOSER": "Useless Pokemon!\\nI spent so much on you, too..."
+                        "POST_BATTLE_CLOSER": "Money can't buy everything.\\nThat's Pokemon..."
                     }
                 ],
                 "preferred_mon_gender": "MALE",
@@ -461,9 +461,9 @@
                 "encounter_text":
                 [
                     {
-                        "PRE_BATTLE_TAUNT": "Me and my precious Bug Pokémon are on our way to fight a Gym!",
+                        "PRE_BATTLE_TAUNT": "I love Bug Pokémon with all my heart!",
                         "POST_BATTLE_TAUNT": "I guess we're not quite ready yet.",
-                        "POST_BATTLE_CLOSER": "I love Bug Pokémon with all my heart!"
+                        "POST_BATTLE_CLOSER": "They're so cool, but most girls don't like Bug Pokemon. I don't know why..."
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",
@@ -508,7 +508,7 @@
                     {
                         "PRE_BATTLE_TAUNT": "I just had a great haul.\\nI guess I can battle you too!",
                         "POST_BATTLE_TAUNT": "Well that was a bit of shame.",
-                        "POST_BATTLE_CLOSER": "I should've just gone home with\\nmy haul..."
+                        "POST_BATTLE_CLOSER": "I got too into fishing.\\nI forgot I had to raise my Pokemon..."
                     }
                 ],
                 "preferred_mon_gender": "FEMALE",

@@ -395,6 +395,7 @@
 #define MON_FLAG_SINGLES_STRONG         (1 << 0) // Used to filter for E4/Champ fights
 #define MON_FLAG_DOUBLES_STRONG         (1 << 1)
 #define MON_FLAG_STRONG_WILD            (1 << 2) // Used to filter for early legendary encounters
+#define SET_WEAK						(1 << 3) // Used to filter for early game fights 
 
 // These's are the category names fed in by the Showdown presets
 #ifdef ROGUE_EXPANSION
@@ -719,6 +720,7 @@
 
 #define WILD_ENCOUNTER_GRASS_CAPACITY 9
 #define WILD_ENCOUNTER_WATER_CAPACITY 3
+//#define WILD_ENCOUNTER_WATER_CAPACITY 3
 #define WILD_ENCOUNTER_TOTAL_CAPACITY (WILD_ENCOUNTER_GRASS_CAPACITY + WILD_ENCOUNTER_WATER_CAPACITY)
 
 // safariMons slots:

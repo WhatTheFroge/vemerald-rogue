@@ -1271,7 +1271,8 @@ u16 Rogue_ModifyItemPickupAmount(u16 itemId, u16 amount)
                 break;
 
             case POCKET_POKE_BALLS:
-                amount = 3;
+                amount = 3; 
+				//amount = 3;
                 break;
             }
 
@@ -1286,6 +1287,15 @@ u16 Rogue_ModifyItemPickupAmount(u16 itemId, u16 amount)
             case ITEM_RARE_CANDY:
                 amount = 5;
                 break;
+		
+			case ITEM_POTION:
+				amount = 4; 
+			
+			case ITEM_POKE_BALL:
+				amount = 4; 
+			case ITEM_GREAT_BALL:
+			case ITEM_ULTRA_BALL:
+				amount = 2; 
 
 #ifdef ROGUE_EXPANSION
             case ITEM_ABILITY_CAPSULE:
@@ -1900,9 +1910,8 @@ u8 SpeciesToGen(u16 species)
 		case SPECIES_MAGBY:
 			return 1;
 		case SPECIES_ONIX:
-		case SPECIES_ZUBAT:
-		case SPECIES_HORSEA:
-		case SPECIES_SEADRA:
+		case SPECIES_ZUBAT: case SPECIES_GOLBAT:
+		case SPECIES_HORSEA:case SPECIES_SEADRA:
 		case SPECIES_WYNAUT:
 		case SPECIES_AZURILL:
 			return 2;
@@ -4192,22 +4201,34 @@ static u16 SelectLegendarySpecies(u8 legendId)
 
 static void ChooseLegendarysForNewAdventure()
 {
-    bool8 spawnRoamer = RogueRandomChance(25, 0);
-    bool8 spawnMinor = RogueRandomChance(35, 0);
+    bool8 spawnRoamer = RogueRandomChance(45, 0);
+    bool8 spawnMinor = RogueRandomChance(55, 0);
     bool8 spawnBox = FALSE;
-	// Roamer is more annoying so make it less likely 
+	// Roamer is more annoying so make it less likely
 
-	// Don't generate both in same run 
-	if (spawnRoamer && spawnMinor)
+	// Don't generate both in same run
+	if (!spawnRoamer && !spawnMinor)
     {
         if(RogueRandom() % 2)
             spawnRoamer = TRUE;
         else
             spawnMinor = TRUE;
     }
+	else if (spawnRoamer && spawnMinor)
+	{
+		if (RogueRandom() % 2)
+		{
+			spawnRoamer = TRUE;
+			spawnMinor = FALSE;
+		}
+		else
+		{
+			spawnRoamer = FALSE;
+			spawnMinor = TRUE;
+		}
+	}
+	
 
-
-    // Always have 1
 
     if(Rogue_GetModeRules()->adventureGenerator == ADV_GENERATOR_GAUNTLET)
     {
@@ -4749,7 +4770,6 @@ static u16 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 	
 	// Standard Pokemon with One Type 
     return 20;
-	
 }
 
 u16 Rogue_SelectWildDenEncounterRoom(void)
@@ -7099,10 +7119,11 @@ void Rogue_ApplyMonCompetitiveSet(struct Pokemon* mon, u8 level, struct RoguePok
         {
             move = preset->moves[i]; 
 
-            if(move != MOVE_NONE && CanLearnMoveByLvl(species, move, level))
+			if(move != MOVE_NONE)
+            //if(move != MOVE_NONE && CanLearnMoveByLvl(species, move, level))
             {
-                if(move == MOVE_FRUSTRATION)
-                    useMaxHappiness = FALSE;
+                //if(move == MOVE_FRUSTRATION)
+                  //  useMaxHappiness = FALSE;
 
                 SetMonData(mon, MON_DATA_MOVE1 + writeMoveIdx, &move);
                 SetMonData(mon, MON_DATA_PP1 + writeMoveIdx, &gBattleMoves[move].pp);
@@ -7110,6 +7131,8 @@ void Rogue_ApplyMonCompetitiveSet(struct Pokemon* mon, u8 level, struct RoguePok
             }
         }
 
+		// Not needed if presets have 4 moves and no gatekeeping level-up moves 
+		/*
         if(rules->allowMissingMoves)
         {
             // Fill the remainer slots with empty moves
@@ -7135,6 +7158,7 @@ void Rogue_ApplyMonCompetitiveSet(struct Pokemon* mon, u8 level, struct RoguePok
                 }
             }
         }
+		*/
     }
 
     move = useMaxHappiness ? MAX_FRIENDSHIP : 0;
@@ -7346,11 +7370,14 @@ static u8 GetCurrentWildEncounterCount()
     return count;
 }
 
+// i dont like water encounters sorry! 
 static u8 GetCurrentWaterEncounterCount(void)
 {
-    u16 count = 0;
+	return 0;
+}
+		//u16 count = 0;
 
-    if(gRogueAdvPath.currentRoomType == ADVPATH_ROOM_ROUTE)
+/*    if(gRogueAdvPath.currentRoomType == ADVPATH_ROOM_ROUTE)
     {
         u8 difficultyModifier = Rogue_GetEncounterDifficultyModifier();
         count = 2;
@@ -7388,9 +7415,8 @@ static u8 GetCurrentWaterEncounterCount(void)
             count--;
         }
     }
+*/
 
-    return count;
-}
 
 static u16 GetWildGrassEncounter(u8 index)
 {
@@ -8585,6 +8611,7 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
         RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_CALCIUM);
         RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_ZINC);
         RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_CARBOS);
+		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_MACHO_BRACE); 
 #ifdef ROGUE_EXPANSION
         RogueMiscQuery_EditRange(QUERY_FUNC_EXCLUDE, ITEM_HP_UP, ITEM_CARBOS);
 #endif
@@ -9347,6 +9374,257 @@ bool8 DualPseudo(u16 species)
 
 static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void* data)
 {
+	int diff = Rogue_GetCurrentDifficulty();
+	u16 weight = 0xFFFF; 
+	// test 
+	//if (species == SPECIES_PIDGEY)
+	//	return 300; 
+	
+    if (PoorSpecies1(species))							
+    { 
+	//	14 10 7 5 4 
+		if (diff == 0)		weight = 28; 
+		if (diff == 1)		weight = 20;
+		if (diff == 2)		weight = 14; 
+		if (diff == 3)		weight = 10; 
+		if (diff >= 4)		weight = 8;  
+    }
+	
+	// use ROGUE_GYM_MID_DIFFICULTY so its easier to find when using a search; 
+	// Weak groups start with high frequency and taper off 
+
+	//		Dual Poor 1					D-Poor2					D-Poor3	
+	// 55%	60%		65%			55%		60%		65%			55%		60%		65%			
+	//15.4	16.8	18.2		14.3	15.6	16.9		13.2	14.4	15.6
+	//11	12		13			12.1	13.2	14.3		11		12		13
+	//7.7	8.4		9.1			9.9		10.8	11.7		8.8		9.6		10.4
+	//5.5	6		6.5			7.7		8.4		9.1			7.7		8.4		9.1
+	//4.4	4.8		5.2			5.5		6		6.5			6.6		7.2		7.8
+	//														5.5		6		6.5
+
+	// test dual special groups 0.7 -> 0.55 
+
+
+	// same as above but they are dual-typed, therefore eligible for more routes 
+	if (DualPoor1(species))
+	{
+		if (diff == 0)		weight = 15; 
+		if (diff == 1)		weight = 11; 
+		if (diff == 2)		weight = 8; 
+		if (diff == 3)		weight = 5; 
+		if (diff >= 4)		weight = 4; // diff 4+
+	}
+
+	if (PoorSpecies2(species))							
+	{ 
+	// 13 11 9 7 5 
+		if (diff == 0)		weight = 26; 
+		if (diff == 1)		weight = 22; 
+		if (diff == 2)		weight = 18; 
+		if (diff == 3)		weight = 14; 
+		if (diff >= 4)		weight = 10;	// diff 4+	
+	}
+
+	if (DualPoor2(species))
+	{
+		if (diff == 0)		weight = 14; // 14 or 0.7
+		if (diff == 1)		weight = 12; 
+		if (diff == 2)		weight = 10; 
+		if (diff == 3)		weight = 8; 
+		if (diff >= 4)		weight = 5; // diff 4+
+	}
+
+	if (PoorSpecies3(species))	
+	{
+	// 12 10 8 7 6 5 
+		if (diff == 0)		weight = 24; 
+		if (diff == 1)		weight = 20; 
+		if (diff == 2)		weight = 16; 
+		if (diff == 3)		weight = 14; 
+		if (diff == 4)		weight = 12; 
+		if (diff >= 5)		weight = 10; // diff 5+
+	}
+
+	if (DualPoor3(species)) // 17	14	11	10	8	7
+	{
+		if (diff == 0)		weight = 13; // 14 or 0.7
+		if (diff == 1)		weight = 11; 
+		if (diff == 2)		weight = 9; 
+		if (diff == 3)		weight = 8; 
+		if (diff == 4)		weight = 7; 
+		if (diff >= 5)		weight = 5; 
+	}
+	
+	/*
+	D-Unc 1							D-Unc2	
+		0.55	0.6		0.65		0.55	0.6		0.65	
+	6	3.3		3.6		3.9			1.1		1.2		1.3
+	24	13.2	14.4	15.6		3.3		3.6		3.9
+	20	11		12		13			13.2	14.4	15.6
+	18	9.9		10.8	11.7		13.2	14.4	15.6
+	16	8.8		9.6		10.4		11		12		13
+	*/
+	
+	if (UncommonSpecies1(species))
+	{
+	// 3 12 10 9 8 
+		if (diff == 0)		weight = 6; 
+		if (diff == 1)		weight = 24; 
+		if (diff == 2)		weight = 20; 
+		if (diff == 3)		weight = 18; 
+		if (diff >= 4)		weight = 16; // diff 4+
+	}
+
+	// 4	17	14	13	11
+	if (DualUncommon1(species)) 
+	{
+		if (diff == 0)		weight = 3; // 14 or 0.7
+		if (diff == 1)		weight = 13; 
+		if (diff == 2)		weight = 11; 
+		if (diff == 3)		weight = 10; 
+		if (diff >= 4)		weight = 9; 
+	}
+
+	if (UncommonSpecies2(species))
+	{
+	// 1 3 12 10 
+		if (diff == 0)		weight = 2; 
+		if (diff == 1)		weight = 6; 
+		if (diff == 2)		weight = 24; 
+		if (diff == 3)		weight = 24; 
+		if (diff >= 4)		weight = 20;  // >=4
+	}
+
+	if (DualUncommon2(species)) // 1	4	17	14
+	{
+		if (diff == 0)		weight = 1; // 14 or 0.7
+		if (diff == 1)		weight = 3; 
+		if (diff == 2)		weight = 13;
+		if (diff == 3)		weight = 13; 
+		if (diff >= 4)		weight = 11; 
+	}
+
+	
+	// unique: scyther has a poor start but is otherwise ~as strong as Rares (Pinsir, Kanga, Tauros, Miltank, Torkoal) 
+	// same weights as Dual Rares but spread differently 
+	// 70% 0, 7, 9, 10, 11, 13..
+	// 55% 0, 5, 7, 8, 9, 10...
+	if ((species == SPECIES_SCYTHER) || (species == SPECIES_SCIZOR))
+	{
+		if (diff == 0)		weight = 0; 
+		if (diff == 1)		weight = 5; 
+		if (diff == 2)		weight = 7; 
+		if (diff == 3)		weight = 8; 
+		if (diff == 4)		weight = 9; 
+		if (diff >= 5)		weight = 10; // diff 5+
+	}
+	
+	/*
+		D-Rare 1								D-Rare2	
+			0.55	0.6		0.65				0.55	0.6		0.65	
+	0		0		0		0			0		0		0		0
+	3		1.65	1.8		1.95		2		1.1		1.2		1.3
+	6		3.3		3.6		3.9			7		3.85	4.2		4.55
+	15		8.25	9		9.75		9		4.95	5.4		5.85
+	20		11		12		13			12		6.6		7.2		7.8
+								
+	*/
+	
+	
+	if (RareSpecies1(species))
+	{
+	//	0 2 8 10 
+		if (diff == 0)		weight = 0; 
+		if (diff == 1)		weight = 3; 
+		if (diff == 2)		weight = 6; 
+		if (diff == 3)		weight = 15; 
+		if (diff >= 4)		weight = 20; // diff 4+
+	}
+	
+	// don't restore weight to 10 right away;
+	// less common because these Pokemon are immediately strong and don't have a weak starting period 
+		
+	if (DualRare1(species)) // 0 3/3 11 14 
+	{
+		if (diff == 0)		weight = 0; 
+		if (diff == 1)		weight = 1; 
+		if (diff == 2)		weight = 3; 
+		if (diff == 3)		weight = 8; 
+		if (diff >= 4)		weight = 11; // diff 4+
+	}
+
+	
+	if (RareSpecies2(species))
+	{
+	// 0 1 8 10
+	// 16 20 -> 14 17 
+	// 000 2 7 9 12...
+		if (diff < 3)		weight = 0; 
+		if (diff == 3)		weight = 2; 
+		if (diff == 4)		weight = 7; 
+		if (diff == 5)		weight = 9; 
+		if (diff >= 6)		weight = 12; // diff 6+
+	}
+
+	if (DualRare2(species))
+	{
+		if (diff < 3)		weight = 0; 
+		if (diff == 3)		weight = 1; 
+		if (diff == 4)		weight = 4; 
+		if (diff == 5)		weight = 5; 
+		if (diff >= 6)		weight = 6; // diff 6+
+	}
+
+	// pseudo 3 starter 6~7
+	// eevee ?? similar to/slightly less than starter 
+	if (PseudoSpecies(species))
+		weight = 2; // test dual 
+		//weight = 2; 
+	if (DualPseudo(species))
+		weight = 1; 
+	
+	if (StarterSpecies(species))
+		weight = 6; // test dual 
+		//weight = 4; // testing value; real value 6 or 7 
+	if (DualStarter(species))
+		weight = 3; 
+	
+	if (EeveeSpecies(species))
+		weight = 8; // test dual 
+		//weight = 5; // more versatile than Starter Species
+	
+	// simulate chansey's rarity 
+	if ((species == SPECIES_CHANSEY) || (species == SPECIES_BLISSEY))
+		weight = 4; 
+	
+	// duals occur on more routes than single-types, so let's reduce their frequency slightly 
+	// some dual types intentionally not included, such as Altaria and Vibrava, b/c dragon is a rare route type 
+	// Dual value 10~15 must adjust other groups accordingly 
+	if (DualStandardSpecies(species))
+		weight = 13; 
+	
+	// Standard Pokemon with One Type 
+    if (weight == 0xFFFF) 
+		weight = 20;
+	
+	// Boost probability of mons matching region of adventure: 
+	// Kanto mons, for example, are stronger than Johto and Hoenn mons 
+	// test 1.2 - 1.4x; noticeable but not-too-large boost; 
+	// can't handle decimals; round instead of truncate (+0.5f) 
+	if((Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_KANTO)) && (SpeciesToGen(species) == 1))
+		weight = (u16)((float)weight * 1.25 + 0.5f);
+	else if((Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_JOHTO)) && (SpeciesToGen(species) == 2))
+		weight = (u16)((float)weight * 1.25 + 0.5f);
+	else if((Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_HOENN)) && (SpeciesToGen(species) == 3))
+		weight = (u16)((float)weight * 1.25 + 0.5f);
+	
+	return weight; 
+}
+
+
+/*
+static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void* data)
+{
 	
 	// test 
 	//if (species == SPECIES_PIDGEY)
@@ -9429,15 +9707,15 @@ static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void*
 		if (diff >= 5)		return 5; 
 	}
 	
-	/*
-	D-Unc 1							D-Unc2	
-		0.55	0.6		0.65		0.55	0.6		0.65	
-	6	3.3		3.6		3.9			1.1		1.2		1.3
-	24	13.2	14.4	15.6		3.3		3.6		3.9
-	20	11		12		13			13.2	14.4	15.6
-	18	9.9		10.8	11.7		13.2	14.4	15.6
-	16	8.8		9.6		10.4		11		12		13
-	*/
+	//
+	//D-Unc 1							D-Unc2	
+	//	0.55	0.6		0.65		0.55	0.6		0.65	
+//	6	3.3		3.6		3.9			1.1		1.2		1.3
+//	24	13.2	14.4	15.6		3.3		3.6		3.9
+//	20	11		12		13			13.2	14.4	15.6
+//	18	9.9		10.8	11.7		13.2	14.4	15.6
+//	16	8.8		9.6		10.4		11		12		13
+//
 	
 	if (UncommonSpecies1(species))
 	{
@@ -9492,18 +9770,6 @@ static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void*
 		if (diff == 4)		return 9; 
 		if (diff >= 5)		return 10; // diff 5+
 	}
-	
-	/*
-		D-Rare 1								D-Rare2	
-			0.55	0.6		0.65				0.55	0.6		0.65	
-	0		0		0		0			0		0		0		0
-	3		1.65	1.8		1.95		2		1.1		1.2		1.3
-	6		3.3		3.6		3.9			7		3.85	4.2		4.55
-	15		8.25	9		9.75		9		4.95	5.4		5.85
-	20		11		12		13			12		6.6		7.2		7.8
-								
-	*/
-	
 	
 	if (RareSpecies1(species))
 	{
@@ -9579,7 +9845,11 @@ static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void*
 	
 	// Standard Pokemon with One Type 
     return 20;
+	
+	if((Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_JOHTO)) && (speciestoGen(species) == 2))
+		weight *= 2; 
 }
+*/
 
 // u8
 static u16 RandomiseWildEncounters_CalculateInitialWeight(u16 index, u16 species, void* data)
@@ -10149,7 +10419,8 @@ u16 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data)
     switch (pocket)
     {
     case POCKET_TM_HM:
-        weight = 3;
+        //weight = 3;
+		weight = 4; 
         break;
 
     case POCKET_HELD_ITEMS:
@@ -10165,7 +10436,7 @@ u16 RouteItems_CalculateWeight(u16 index, u16 itemId, void* data)
         weight = 20;
         break;
     
-    default:
+    default: // berries 
         weight = 10;
         break;
     }
@@ -10261,7 +10532,11 @@ static void RandomiseItemContent(u8 difficultyLevel)
 
         RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_PREMIER_BALL);
 
-        RogueItemQuery_InPriceRange(QUERY_FUNC_INCLUDE, 50 + 100 * (difficultyLevel + dropRarity), 400 + 800 * (difficultyLevel + dropRarity));
+		// let diff == 0 get a bit higher prices so you can get some weak TMs 
+		if (difficultyLevel == 0)
+			RogueItemQuery_InPriceRange(QUERY_FUNC_INCLUDE, 50, 1000);
+		else 
+			RogueItemQuery_InPriceRange(QUERY_FUNC_INCLUDE, 50 + 100 * (difficultyLevel + dropRarity), 400 + 800 * (difficultyLevel + dropRarity));
 		// 1100 -> 1200: can allow 1200 price Moon Stone to be generated a little earlier 
 
         if(difficultyLevel <= 1)

@@ -833,12 +833,9 @@ void CB2_BagMenuFromStartMenu(void)
 void CB2_BagMenuFromBattle(void)
 {
     if(Rogue_UseSafariBattle())
-        // Just want to select pokeball type in safair
         GoToBagMenu(ITEMMENULOCATION_BERRY_TREE, BALLS_POCKET, CB2_SetUpReshowBattleScreenAfterMenu2);
-    else if (!InBattlePyramid())
-        GoToBagMenu(ITEMMENULOCATION_BATTLE, POCKETS_COUNT, CB2_SetUpReshowBattleScreenAfterMenu2);
     else
-        GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_BATTLE, CB2_SetUpReshowBattleScreenAfterMenu2);
+		GoToBagMenu(ITEMMENULOCATION_BATTLE, BALLS_POCKET, CB2_SetUpReshowBattleScreenAfterMenu2);
 }
 
 // Choosing berry to plant

@@ -1,6 +1,9 @@
 #ifndef GUARD_ROGUE_H
 #define GUARD_ROGUE_H
 
+#define MAX_SETS_PER_SPECIES 10
+//static bool8 sSetQueryFlags[NUM_SPECIES][MAX_SETS_PER_SPECIES];
+
 // Extra data for pokemon in party
 struct RoguePartyMon
 {
