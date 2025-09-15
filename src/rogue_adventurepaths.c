@@ -1146,8 +1146,8 @@ static void GenerateRoomInstance(u8 roomId, u8 roomType)
 
             if (GetPathGenerationDifficulty() == 0)
 			{
-                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 9;
-                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 1;
+                weights[ADVPATH_SUBROOM_ROUTE_CALM] = 1; //9;
+                weights[ADVPATH_SUBROOM_ROUTE_AVERAGE] = 0; //1;
                 weights[ADVPATH_SUBROOM_ROUTE_TOUGH] = 0;
             }
 			else if (GetPathGenerationDifficulty() == 1)

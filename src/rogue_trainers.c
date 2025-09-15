@@ -992,10 +992,13 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
 			//else
 			//	filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
 		
-		
+			
+			
             else{
 				switch (difficulty)
 				{
+					//
+					/*
 					case ROGUE_GYM_START_DIFFICULTY + 0:
 						filter.classFlagsInclude |= CLASS_FLAG_BOSS_GYM_1;
 						break;
@@ -1008,7 +1011,9 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
 					case ROGUE_GYM_START_DIFFICULTY + 7:
 						filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
 						break;
-					/*
+						 */
+						 // 
+					
 					case ROGUE_GYM_START_DIFFICULTY + 0:
 					case ROGUE_GYM_START_DIFFICULTY + 1:
 					case ROGUE_GYM_START_DIFFICULTY + 2:
@@ -1025,9 +1030,9 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
 						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_1;
 						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_2;
 						break;
-						*/
+						
 				}
-            }
+            } 
 			
         }
         break;
@@ -3391,8 +3396,8 @@ static bool8 UseCompetitiveMoveset(struct TrainerPartyScratch* scratch, u8 monId
         break;
 
     case DIFFICULTY_LEVEL_AVERAGE:
-        if (diff == 0)				return TRUE; 
-		//if(diff == 0)				return FALSE;
+        //if (diff == 0)				return TRUE; 
+		if(diff == 0)				return FALSE;
         else if(preferCompetitive)	return TRUE;
 		// rival uses different logic than gym leaders; 
 		// early rival is weaker than gym, but catches up by gym 6; 

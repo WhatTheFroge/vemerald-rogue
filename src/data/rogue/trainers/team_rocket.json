@@ -507,7 +507,7 @@
                     {
                         "PRE_BATTLE_TAUNT": "Dihydrogen Monoxide is too dangerous!",
                         "POST_BATTLE_TAUNT": "Splash!",
-                        "POST_BATTLE_CLOSER": "It's just water.\\pGosh you didn't even know that ku ku ku\\pKids these days ku ku ku"
+                        "POST_BATTLE_CLOSER": "It's just water.\\nGosh, you didn't even know that?"
                     }
                 ],
                 "preferred_mon_gender": "MALE",

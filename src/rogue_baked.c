@@ -1563,12 +1563,19 @@ u32 Rogue_CalculateMovePrice(u16 move)
     {
 	
 	// TMs
-	// Return 16 -> 9; Frustration 12 -> 7; 
+	// September 2025: 
+	// Return 16 -> 9; Frustration 12 -> 7; Earthquake 18 -> 17; 
+	// Cut/Rock Smash 2 -> 1; Bullet Seed 3 -> 2;
+	// Bulk Up 11 -> 10; Calm Mind 15 -> 11; Stat stages are adjusted 
+	// Rest/Toxic/Protect 16/17/18 -> 15/13/13; 
+	// Flash/Safeguard/Attract 4->3; 
+	// Substitute 4500 -> 6; 
+	
 	// Where is Strength? 
 	// Lack of Available TMs in Early Game? 
 	case MOVE_CUT:			
-	case MOVE_ROCK_SMASH:	return 2000 * 3/10;
-	case MOVE_BULLET_SEED:	return 3000 * 3/10;			
+	case MOVE_ROCK_SMASH:	return 1000 * 3/10;
+	case MOVE_BULLET_SEED:	return 2000 * 3/10;			
 	case MOVE_ROCK_TOMB: 	return 5000 * 3/10;
 	case MOVE_DIG:			return 5000 * 3/10;
 	case MOVE_DIVE:			
@@ -1605,12 +1612,13 @@ u32 Rogue_CalculateMovePrice(u16 move)
 	case MOVE_ICE_BEAM:
 	case MOVE_FIRE_BLAST:	return 14000 * 3/10;
 	//case MOVE_RETURN:		return 16000 * 3/10;
-	case MOVE_EARTHQUAKE:	return 18000 * 3/10;
+	case MOVE_EARTHQUAKE:	return 17000 * 3/10;
+	
 	
 	// SUPPORT TMs
 	case MOVE_FLASH:		
 	case MOVE_SAFEGUARD:
-	case MOVE_ATTRACT: 		
+	case MOVE_ATTRACT: 		return 3000 * 3/10; 
 	case MOVE_TORMENT:
 	case MOVE_SNATCH:		return 4000 * 3/10;
 	case MOVE_TAUNT:		return 5000 * 3/10;
@@ -1621,11 +1629,11 @@ u32 Rogue_CalculateMovePrice(u16 move)
 	case MOVE_REFLECT:		return 6500 * 3/10;
 	case MOVE_RAIN_DANCE:
 	case MOVE_SUNNY_DAY:	return 10000 * 3/10;
-	case MOVE_BULK_UP:		return 11000 * 3/10;
-	case MOVE_CALM_MIND:	return 15000 * 3/10;
-	case MOVE_REST:			return 16000 * 3/10;
-	case MOVE_TOXIC:		return 17000 * 3/10;
-	case MOVE_PROTECT:		return 18000 * 3/10;
+	case MOVE_BULK_UP:		return 10000 * 3/10;
+	case MOVE_CALM_MIND:	return 11000 * 3/10;
+	case MOVE_TOXIC:		
+	case MOVE_PROTECT:		return 13000 * 3/10;
+	case MOVE_REST:			return 15000 * 3/10;
 	
 	// double team value changed due to lower availability: 
 	case MOVE_DOUBLE_TEAM:	return 5000 * 3/10; // return 15000 * 3/10;
@@ -1671,7 +1679,7 @@ u32 Rogue_CalculateMovePrice(u16 move)
 	case MOVE_SOFT_BOILED:	return 3000;
 	case MOVE_THUNDER_WAVE:	return 3200;
 	case MOVE_SWAGGER:		return 3500;
-	case MOVE_SUBSTITUTE:	return 4500;
+	case MOVE_SUBSTITUTE:	return 6000;
 	
 	// Utility Moves (not TM, not Tutor) 
 	case MOVE_SPLASH:		return 100;

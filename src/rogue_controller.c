@@ -2076,6 +2076,7 @@ bool8 Rogue_IsItemEnabled(u16 itemId)
 				case ITEM_SEA_INCENSE:
 				case ITEM_LEFTOVERS: 
 				case ITEM_BERRY_JUICE: // ? 
+				case ITEM_POKEBLOCK_DRAGON: 
 					return FALSE;
 					
             }
@@ -3918,10 +3919,12 @@ static void BeginRogueRun(void)
     gRogueRun.currentLevelOffset = Rogue_GetModeRules()->initialLevelOffset;
     gRogueRun.adventureRoomId = ADVPATH_INVALID_ROOM_ID;
     
-    if(gRogueRun.currentLevelOffset == 0)
+	// this limits how many levels a Pokemon is allowed to gain per battle; 
+	// abbie used this in original exp code; was offset 3 
+	if(gRogueRun.currentLevelOffset == 0)
     {
         // Apply default
-        gRogueRun.currentLevelOffset = 3; // assume STARTER_MON_LEVEL == 5 and first boss level is 10
+        gRogueRun.currentLevelOffset = 0; // assume STARTER_MON_LEVEL == 5 and first boss level is 10
     }
 
     // Apply some base seed for anything which needs to be randomly setup
@@ -8310,6 +8313,8 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
     u16 maxPriceRange = 65000;
     u16 difficulty = Rogue_GetModeRules()->forceFullShopInventory ? ROGUE_FINAL_CHAMP_DIFFICULTY : Rogue_GetCurrentDifficulty();
     u16 originalItemCategory = itemCategory;
+	u16 itemId; 
+	u8 randNum; 
 
     gRogueLocal.rngSeedToRestore = gRngRogueValue;
 
@@ -8417,6 +8422,29 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
         *minSalePrice = 0;
         applyRandomChance = TRUE;
 
+		if (Rogue_IsRunActive())
+		{
+			if (difficulty == 0)
+			{
+				// I wanted to implement a low price cap but add some random extra moves later 
+				// Couldn't do random extra, so just improve the price cap a bit 
+				maxPriceRange = 6000; 
+				
+				for (itemId = ITEM_TR01; itemId <= ITEM_TR30; itemId++)
+					RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, itemId); 
+				
+				// shift these moves to price 6500? (with Light Screen and Reflect) 
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_HM02_FLY); 
+				RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_TM42_FACADE); 
+			}
+			
+			if (difficulty == 1)				maxPriceRange = 6000; // 6000 with TRs enabled 
+			if (difficulty == 2)				maxPriceRange = 9000; 
+			if (difficulty == 3)				maxPriceRange = 11000; 
+			if (difficulty == 4)				maxPriceRange = 12000; 
+		}
+	
+	
         if(!Rogue_IsRunActive())
         {
             if(!RogueHub_HasUpgrade(HUB_UPGRADE_MARTS_TMS_STOCK))
@@ -8638,16 +8666,25 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
             if(itemCategory == ROGUE_SHOP_GENERAL && !Rogue_ShouldReleaseFaintedMons())
                 RogueMiscQuery_EditElement(QUERY_FUNC_INCLUDE, ITEM_REVIVE);
 
+			// TM shop uses random Chance by default; General Shop does not.
+			// Therefore, if you include extra TMs, they are still only spawned randomly.
+			// Use for Support TMs or High-priced TMs that are OK early game, but usually not needed. 
+			
             if(applyRandomChance)
             {
                 u8 chance = 100;
 
                 if(difficulty < ROGUE_ELITE_START_DIFFICULTY)
                 {
-                    chance = 10 + 5 * difficulty;
+                    // 10 + 5 -> 20 + 4;
+					// 10~45 -> 20~48 
+					//chance = 15 + 5 * difficulty;
+					chance = 20 + 4 * difficulty; 
+					
                 }
                 else if(difficulty < ROGUE_CHAMP_START_DIFFICULTY)
                 {
+					// 60, 70, 80, 90, 100 
                     chance = 60 + 10 * (difficulty - ROGUE_ELITE_START_DIFFICULTY);
                 }
 
@@ -10500,7 +10537,8 @@ u8 GetCurrentDropRarity()
         return gRogueRouteTable.routes[gRogueRun.currentRouteIndex].dropRarity;
     
     case ADVPATH_ROOM_TEAM_HIDEOUT:
-        return 3;
+		return 2; 
+		//return 3;
     }
 
     return 0;

@@ -796,28 +796,61 @@ static const u16 sWeightToDamageTable[] =
 
 static const u16 sPickupItems[] =
 {
+    ITEM_ANTIDOTE,
+    ITEM_SUPER_POTION,
+    ITEM_ETHER,
+    ITEM_STARF_BERRY,
+    ITEM_ULTRA_BALL,
+    ITEM_SALAC_BERRY,
+    ITEM_CLEANSE_TAG,
+    ITEM_SILK_SCARF,
+    ITEM_SITRUS_BERRY,
+    ITEM_FULL_HEAL,
+    ITEM_STAR_PIECE,
+    ITEM_HYPER_POTION,
+    ITEM_CHESTO_BERRY,
+    ITEM_LUM_BERRY,
+    ITEM_MAX_POTION,
+};
+
+/*
+static const u16 sPickupItems[] =
+{
     ITEM_POTION,
     ITEM_ANTIDOTE,
     ITEM_SUPER_POTION,
     ITEM_GREAT_BALL,
-    ITEM_REPEL,
-    ITEM_ESCAPE_ROPE,
-    ITEM_X_ATTACK,
+    ITEM_REPEL, // 
+    ITEM_ESCAPE_ROPE, //
+    ITEM_X_ATTACK, //
     ITEM_FULL_HEAL,
     ITEM_ULTRA_BALL,
     ITEM_HYPER_POTION,
-    ITEM_RARE_CANDY,
-    ITEM_PROTEIN,
+    ITEM_RARE_CANDY, //
+    ITEM_PROTEIN, //
     //ITEM_REVIVE,
-    ITEM_HP_UP,
+    ITEM_HP_UP, //
     ITEM_FULL_RESTORE,
     //ITEM_MAX_REVIVE,
     ITEM_PP_UP,
     ITEM_MAX_ELIXIR,
 };
+*/
 
+// 2% chance; picks two and rolls one of these items (1% each) 
 static const u16 sRarePickupItems[] =
 {
+	ITEM_ETHER,
+	ITEM_TM28_DIG,
+	ITEM_TM40_AERIAL_ACE,
+	ITEM_TM27_RETURN,
+	ITEM_TM30_SHADOW_BALL,
+	ITEM_TM10_HIDDEN_POWER,
+	ITEM_TM26_EARTHQUAKE,
+	ITEM_TM38_FIRE_BLAST,
+	
+	
+	/*
     ITEM_HYPER_POTION,
     ITEM_NUGGET,
     ITEM_KINGS_ROCK,
@@ -826,9 +859,11 @@ static const u16 sRarePickupItems[] =
     ITEM_WHITE_HERB,
     ITEM_TM44_REST,
     ITEM_ELIXIR,
+	// following are lvl 70+
     ITEM_TM01_FOCUS_PUNCH,
     ITEM_LEFTOVERS,
     ITEM_TM26_EARTHQUAKE,
+	*/
 };
 
 static const u8 sPickupProbabilities[] =
@@ -1317,7 +1352,15 @@ static void Cmd_damagecalc(void)
     gBattleMoveDamage = CalculateBaseDamage(&gBattleMons[gBattlerAttacker], &gBattleMons[gBattlerTarget], gCurrentMove,
                                             sideStatus, gDynamicBasePower,
                                             gBattleStruct->dynamicMoveType, gBattlerAttacker, gBattlerTarget);
-    gBattleMoveDamage = gBattleMoveDamage * gCritMultiplier * gBattleScripting.dmgMultiplier;
+    //gBattleMoveDamage = gBattleMoveDamage * gCritMultiplier * gBattleScripting.dmgMultiplier;
+	
+	// 1.5x crit multiplier 
+	if (gCritMultiplier == 2)
+		gBattleMoveDamage =  (gBattleMoveDamage * gBattleScripting.dmgMultiplier * 15)/10; 
+	else
+		gBattleMoveDamage = gBattleMoveDamage * gCritMultiplier * gBattleScripting.dmgMultiplier;
+
+
 
     if (gStatuses3[gBattlerAttacker] & STATUS3_CHARGED_UP && gBattleMoves[gCurrentMove].type == TYPE_ELECTRIC)
         gBattleMoveDamage *= 2;

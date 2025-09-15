@@ -443,7 +443,7 @@
                     {
                         "PRE_BATTLE_TAUNT": "I bought myself the most powerful\\nPokémon imaginable!\\pYou don't stand a chance!",
                         "POST_BATTLE_TAUNT": "What!?!",
-                        "POST_BATTLE_CLOSER": "Money can't buy everything.\\nThat's Pokemon..."
+                        "POST_BATTLE_CLOSER": "Money can't buy everything.\\nThat's Pokemon...(copeland test)"
                     }
                 ],
                 "preferred_mon_gender": "MALE",

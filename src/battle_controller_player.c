@@ -1223,16 +1223,17 @@ static void Task_GiveExpToMon(u8 taskId)
     u8 battlerId = gTasks[taskId].tExpTask_battler;
     s32 gainedExp = gTasks[taskId].tExpTask_gainedExp; // Use s32 here to allow subtraction
 	u8 savedActiveBattler; 
-	u32 nextLvlExp, nextNextLvlExp;
+	u32 nextLvlExp;
 	u8 highestLevel;
 	u8 levelCap; 
 	
 	bool8 isActiveMon;
-	u32 lvlsAllowed, levelsGained; 
+	u32 lvlsAllowed, levelsGained, lvlIncrement; 
 
     struct Pokemon *mon = &gPlayerParty[monId];
     u16 species = GetMonData(mon, MON_DATA_SPECIES);
     u8 level = GetMonData(mon, MON_DATA_LEVEL);
+	int startingLevel; 
     u32 currExp = GetMonData(mon, MON_DATA_EXP);
 
     // Get the level cap
@@ -1295,24 +1296,28 @@ static void Task_GiveExpToMon(u8 taskId)
     }
     
 	// not XP trainer 
-	else
+	//else
+	else 
 	{
 		// Normal EXP flow, but now:
 		// Active mon = 2 level ups max
 		// Non-active = 1 level up max
+		// troublesome 12 -> 13 
 
-		highestLevel = gTasks[taskId].tExpTask_highestLevel;
-
+		//highestLevel = gTasks[taskId].tExpTask_highestLevel;
+		//startingLevel = level; 
+		
 		isActiveMon = (monId == gBattlerPartyIndexes[battlerId]);
 
 		lvlsAllowed = isActiveMon ? 2 : 1;
 
 		levelsGained = 0;
-
+		
+		//while (gainedExp > 0 && levelsGained < lvlsAllowed)
 		while (levelsGained < lvlsAllowed)
 		{
-			u32 nextLvlExp = Rogue_ModifyExperienceTables(gBaseStats[species].growthRate, level + 1);
-
+			nextLvlExp = Rogue_ModifyExperienceTables(gBaseStats[species].growthRate, level + 1);
+			
 			if (currExp + gainedExp >= nextLvlExp)
 			{
 				u32 usedExp = nextLvlExp - currExp;
@@ -1325,10 +1330,10 @@ static void Task_GiveExpToMon(u8 taskId)
 				SetMonData(mon, MON_DATA_LEVEL, &level);
 			}
 			else
-			{
 				break;
-			}
+			
 		}
+		
 
 		if (levelsGained > 0)
 		{
@@ -1353,7 +1358,6 @@ static void Task_GiveExpToMon(u8 taskId)
 			DestroyTask(taskId);
 		}
 	}
-
 }
 
 static void Task_PrepareToGiveExpWithExpBar(u8 taskId)
@@ -1760,7 +1764,8 @@ static u8 GetDisplaySplit(u16 move, u16 displayType)
 //const u8 gText_Special[]  = _("{COLOR BLUE}SPECIAL");
 
 const u8 gText_Physical[] = _("Physical");
-const u8 gText_Special[]  = _("SPECIAL");
+const u8 gText_Special[]  = _("Special");
+
 static u8 const* GetDisplaySplitLong(u8 split)
 {
 	switch (split)

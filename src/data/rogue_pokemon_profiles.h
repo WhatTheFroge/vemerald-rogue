@@ -1881,8 +1881,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PIDGEOTT
 static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PIDGEOTTO[] = 
 {
 	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.moves=
+		.moves =
 		{
 			MOVE_WING_ATTACK,
 			MOVE_QUICK_ATTACK,
@@ -1890,7 +1889,17 @@ static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PIDGEOTTO[] =
 			MOVE_SECRET_POWER,
 		},
 	},
+	{
+		.moves =
+		{
+			MOVE_WING_ATTACK,
+			MOVE_QUICK_ATTACK,
+			MOVE_STEEL_WING,
+			MOVE_SWIFT,
+		},
+	},
 };
+
 
 
 #ifdef APPEND_MON_FLAGS_SPECIES_PIDGEOT
@@ -1949,6 +1958,19 @@ static u16 const sTutorMoves_SPECIES_PIDGEOT[] =
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PIDGEOT[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FLY,
+			MOVE_SECRET_POWER,
+			MOVE_STEEL_WING,
+			MOVE_QUICK_ATTACK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PIDGEOT[] = 
@@ -2067,6 +2089,7 @@ static u16 const sTutorMoves_SPECIES_RATTATA[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RATTATA[] = 
 {
+	/*
 	{
 		.heldItem=ITEM_ORAN_BERRY,
 		.ability=ABILITY_GUTS,
@@ -2091,6 +2114,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RATTATA[
 			MOVE_THUNDER_WAVE,
 		},
 	},
+	*/
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_RATICATE
@@ -2165,6 +2189,28 @@ static u16 const sTutorMoves_SPECIES_RATICATE[] = // Bite	Counter	Flame Wheel	Fu
 	MOVE_TOXIC,
 	MOVE_UPROAR,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_RATICATE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_HYPER_FANG,
+			MOVE_QUICK_ATTACK,
+			MOVE_FLAME_WHEEL,
+			MOVE_MUD_SLAP,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_HYPER_FANG,
+			MOVE_QUICK_ATTACK,
+			MOVE_THIEF,
+			MOVE_DIG,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RATICATE[] = 
@@ -2271,28 +2317,7 @@ static u16 const sTutorMoves_SPECIES_SPEAROW[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SPEAROW[] = 
 {
-	{
-		.moves=
-		{
-			MOVE_RETURN,
-		}
-	}
-	
 };
-
-static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SPEAROW[] = 
-{
-		{
-		.heldItem=ITEM_ORAN_BERRY,
-		.moves=
-		{
-			MOVE_FAINT_ATTACK,
-			MOVE_STEEL_WING,
-			MOVE_RETURN, 
-		},
-	},
-};
-
 
 #ifdef APPEND_MON_FLAGS_SPECIES_FEAROW
 #define MON_FLAGS_SPECIES_FEAROW (APPEND_MON_FLAGS_SPECIES_FEAROW | MON_FLAGS_GEN3UU)
@@ -2352,6 +2377,29 @@ static u16 const sTutorMoves_SPECIES_FEAROW[] = // Astonish	False Swipe	Feint	Qu
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_FEAROW[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_AERIAL_ACE,
+			MOVE_PECK,
+			MOVE_STEEL_WING,
+			MOVE_SWIFT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_PECK,
+			MOVE_SECRET_POWER,
+			MOVE_MUD_SLAP,
+			MOVE_ENDURE,
+		},
+	},
+};
+
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_FEAROW[] = 
 {
@@ -2483,6 +2531,28 @@ static u16 const sTutorMoves_SPECIES_EKANS[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_EKANS[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_POISON_FANG,
+			MOVE_BITE,
+			MOVE_PROTECT,
+			MOVE_ATTRACT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SECRET_POWER,
+			MOVE_BITE,
+			MOVE_DIG,
+			MOVE_GIGA_DRAIN,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EKANS[] = 
 {
 };
@@ -2551,6 +2621,28 @@ static u16 const sTutorMoves_SPECIES_ARBOK[] = // Beat Up	Poison Fang	Pursuit	Sl
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ARBOK[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ACID,
+			MOVE_SLAM,
+			MOVE_BITE,
+			MOVE_GLARE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_IRON_TAIL,
+			MOVE_SECRET_POWER,
+			MOVE_BITE,
+			MOVE_GIGA_DRAIN,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ARBOK[] = 
@@ -2674,6 +2766,28 @@ static u16 const sTutorMoves_SPECIES_PIKACHU[] = // Bide	Charge	Double-Slap	Enco
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PIKACHU[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SHOCK_WAVE,
+			MOVE_SLAM,
+			MOVE_LIGHT_SCREEN,
+			MOVE_DIG,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_THUNDER_SHOCK,
+			MOVE_STRENGTH,
+			MOVE_MUD_SLAP,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PIKACHU[] = 
 {
 
@@ -2750,6 +2864,18 @@ static u16 const sTutorMoves_SPECIES_RAICHU[] = // Bide	Charge	Double-Slap	Encor
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_RAICHU[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_THUNDERBOLT,
+			MOVE_MEGA_KICK,
+			MOVE_QUICK_ATTACK,
+			MOVE_DOUBLE_TEAM,
+		},
+	},
+};
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RAICHU[] = 
 {
     {
@@ -2883,6 +3009,28 @@ static u16 const sTutorMoves_SPECIES_SANDSHREW[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SANDSHREW[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SWIFT,
+			MOVE_METAL_CLAW,
+			MOVE_MUD_SLAP,
+			MOVE_ROCK_TOMB,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FACADE,
+			MOVE_AERIAL_ACE,
+			MOVE_ROLLOUT,
+			MOVE_DEFENSE_CURL,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SANDSHREW[] = 
 {
 
@@ -2959,6 +3107,28 @@ static u16 const sTutorMoves_SPECIES_SANDSLASH[] =
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SANDSLASH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DIG,
+			MOVE_AERIAL_ACE,
+			MOVE_IRON_TAIL,
+			MOVE_MUD_SLAP,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SEISMIC_TOSS,
+			MOVE_BRICK_BREAK,
+			MOVE_ROCK_TOMB,
+			MOVE_AERIAL_ACE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SANDSLASH[] = 
@@ -3169,6 +3339,28 @@ static u16 const sTutorMoves_SPECIES_NIDORINA[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NIDORINA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+			MOVE_MUD_SLAP,
+			MOVE_TAKE_DOWN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_DIG,
+			MOVE_AERIAL_ACE,
+			MOVE_SHOCK_WAVE,
+			MOVE_BODY_SLAM,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NIDORINA[] = 
 {
 
@@ -3267,6 +3459,19 @@ static u16 const sTutorMoves_SPECIES_NIDOQUEEN[] =
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NIDOQUEEN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BODY_SLAM,
+			MOVE_CRUNCH,
+			MOVE_SURF,
+			MOVE_FLAMETHROWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NIDOQUEEN[] = 
@@ -3470,6 +3675,28 @@ static u16 const sTutorMoves_SPECIES_NIDORINO[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NIDORINO[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+			MOVE_MUD_SLAP,
+			MOVE_TAKE_DOWN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_DIG,
+			MOVE_AERIAL_ACE,
+			MOVE_SHOCK_WAVE,
+			MOVE_BODY_SLAM,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NIDORINO[] = 
 {
 };
@@ -3566,6 +3793,19 @@ static u16 const sTutorMoves_SPECIES_NIDOKING[] =
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NIDOKING[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MEGAHORN,
+			MOVE_DOUBLE_KICK,
+			MOVE_THUNDERBOLT,
+			MOVE_ICE_BEAM,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NIDOKING[] = 
@@ -3726,6 +3966,19 @@ static u16 const sTutorMoves_SPECIES_CLEFAIRY[] = // Amnesia	Belly Drum	Metronom
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CLEFAIRY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_SECRET_POWER,
+			MOVE_METRONOME,
+			MOVE_MOONLIGHT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFAIRY[] = 
 {
 	{
@@ -3849,6 +4102,28 @@ static u16 const sTutorMoves_SPECIES_CLEFABLE[] = // Amnesia	Belly Drum	Metronom
 	MOVE_WATER_PULSE,
 	MOVE_WISH,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CLEFABLE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DOUBLE_SLAP,
+			MOVE_SING,
+			MOVE_COSMIC_POWER,
+			MOVE_METRONOME,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_METRONOME,
+			MOVE_MUD_SLAP,
+			MOVE_CHARM,
+			MOVE_COUNTER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLEFABLE[] = 
@@ -4071,6 +4346,18 @@ static u16 const sTutorMoves_SPECIES_NINETALES[] = // Disable	Feint	Flail	Heat W
 	MOVE_TOXIC,
 	MOVE_WILL_O_WISP,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NINETALES[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FLAMETHROWER,
+			MOVE_WILL_O_WISP,
+			MOVE_RETURN,
+			MOVE_QUICK_ATTACK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NINETALES[] = 
@@ -4309,6 +4596,28 @@ static u16 const sTutorMoves_SPECIES_WIGGLYTUFF[] = // Fake Tears	Feint	Perish s
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_WIGGLYTUFF[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FACADE,
+			MOVE_LIGHT_SCREEN,
+			MOVE_REFLECT,
+			MOVE_CHARM,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_DOUBLE_SLAP,
+			MOVE_FAINT_ATTACK,
+			MOVE_REST,
+			MOVE_SNORE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WIGGLYTUFF[] = 
 {
 	{
@@ -4435,6 +4744,19 @@ static u16 const sTutorMoves_SPECIES_ZUBAT[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ZUBAT[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WING_ATTACK,
+			MOVE_BITE,
+			MOVE_ENDURE,
+			MOVE_TOXIC,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ZUBAT[] = 
 {
 
@@ -4504,6 +4826,28 @@ static u16 const sTutorMoves_SPECIES_GOLBAT[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GOLBAT[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WING_ATTACK,
+			MOVE_BITE,
+			MOVE_GIGA_DRAIN,
+			MOVE_CONFUSE_RAY,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WING_ATTACK,
+			MOVE_SECRET_POWER,
+			MOVE_STEEL_WING,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GOLBAT[] = 
 {
 };
@@ -4565,6 +4909,19 @@ static u16 const sTutorMoves_SPECIES_ODDISH[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ODDISH[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_BULLET_SEED,
+			MOVE_ACID,
+			MOVE_FLAIL,
+			MOVE_TOXIC,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ODDISH[] = 
 {
 };
@@ -4623,6 +4980,28 @@ static u16 const sTutorMoves_SPECIES_GLOOM[] = // Charm	Flail	Ingrain	Razor 	Swo
 	MOVE_SYNTHESIS,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GLOOM[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_MEGA_DRAIN,
+			MOVE_HIDDEN_POWER,
+			MOVE_CHARM,
+			MOVE_SECRET_POWER,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_RAZOR_LEAF,
+			MOVE_SUNNY_DAY,
+			MOVE_STUN_SPORE,
+			MOVE_SYNTHESIS,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GLOOM[] = 
@@ -4690,6 +5069,19 @@ static u16 const sTutorMoves_SPECIES_VILEPLUME[] = // Charm	Flail	Ingrain	Razor 
 	MOVE_SYNTHESIS,		
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_VILEPLUME[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_GIGA_DRAIN,
+			MOVE_PETAL_DANCE,
+			MOVE_STUN_SPORE,
+			MOVE_ACID,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VILEPLUME[] = 
@@ -4821,6 +5213,19 @@ static u16 const sTutorMoves_SPECIES_PARAS[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PARAS[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_BULLET_SEED,
+			MOVE_STUN_SPORE,
+			MOVE_ROCK_SMASH,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PARAS[] = 
 {
 };
@@ -4891,6 +5296,28 @@ static u16 const sTutorMoves_SPECIES_PARASECT[] = // Counter	False Swipe	Flail	L
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PARASECT[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_SPORE,
+			MOVE_SLUDGE_BOMB,
+			MOVE_AERIAL_ACE,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_SPORE,
+			MOVE_DIG,
+			MOVE_PSYBEAM,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PARASECT[] = 
@@ -4998,32 +5425,21 @@ static u16 const sTutorMoves_SPECIES_VENONAT[] = // Baton Pass	Giga Drain	Screec
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_VENONAT[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_POISON_POWDER,
+			MOVE_CONFUSION,
+			MOVE_SWIFT,
+			MOVE_THIEF,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VENONAT[] = 
 {
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_COMPOUND_EYES,
-		.nature=NATURE_HASTY,
-		.moves=
-		{
-			MOVE_POISON_POWDER,
-			MOVE_CONFUSION,
-			MOVE_SLUDGE_BOMB,
-			MOVE_GIGA_DRAIN,
-		},
-	},
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_COMPOUND_EYES,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_POISON_POWDER,
-			MOVE_CONFUSION,
-			MOVE_HIDDEN_POWER,
-		},
-	},
-
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_VENOMOTH
@@ -5085,6 +5501,27 @@ static u16 const sTutorMoves_SPECIES_VENOMOTH[] = // Baton Pass	Giga Drain	Scree
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_VENOMOTH[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_PSYBEAM,
+			MOVE_SILVER_WIND,
+			MOVE_GIGA_DRAIN,
+			MOVE_TOXIC,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_PSYBEAM,
+			MOVE_SUNNY_DAY,
+			MOVE_SOLAR_BEAM,
+			MOVE_AERIAL_ACE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VENOMOTH[] = 
@@ -5178,30 +5615,21 @@ static u16 const sTutorMoves_SPECIES_DIGLETT[] = // Ancient Power	Beat Up	Feint	
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DIGLETT[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_DIG,
+			MOVE_SLASH,
+			MOVE_AERIAL_ACE,
+			MOVE_ROCK_TOMB,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DIGLETT[] = 
 {
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_ARENA_TRAP,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_MAGNITUDE,
-			MOVE_FURY_SWIPES,
-			MOVE_SLASH,
-		},
-	},
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_ARENA_TRAP,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_MAGNITUDE,
-			MOVE_FURY_SWIPES,
-			MOVE_AERIAL_ACE,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_DUGTRIO
@@ -5265,6 +5693,18 @@ static u16 const sTutorMoves_SPECIES_DUGTRIO[] = // Ancient Power	Beat Up	Feint	
 	MOVE_TOXIC,
 	MOVE_UPROAR,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DUGTRIO[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_MAGNITUDE,
+			MOVE_SLASH,
+			MOVE_AERIAL_ACE,
+			MOVE_ANCIENT_POWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DUGTRIO[] = 
@@ -5405,33 +5845,21 @@ static u16 const sTutorMoves_SPECIES_MEOWTH[] =
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MEOWTH[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_BITE,
+			MOVE_FAKE_OUT,
+			MOVE_SWIFT,
+			MOVE_SCREECH,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEOWTH[] = 
 {
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_PICKUP,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_PAY_DAY,
-			MOVE_FAINT_ATTACK,
-			MOVE_HYPNOSIS,
-			MOVE_SHADOW_BALL,
-		},
-	},
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_PICKUP,
-		.hiddenPowerType=TYPE_FIGHTING,
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_PAY_DAY,
-			MOVE_FAINT_ATTACK,
-			MOVE_HIDDEN_POWER,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_PERSIAN
@@ -5508,6 +5936,27 @@ static u16 const sTutorMoves_SPECIES_PERSIAN[] = // Amnesia	Assist	Charm	Hypnosi
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PERSIAN[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_FAINT_ATTACK,
+			MOVE_FAKE_OUT,
+			MOVE_FACADE,
+			MOVE_ICY_WIND,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_SECRET_POWER,
+			MOVE_SHOCK_WAVE,
+			MOVE_WATER_PULSE,
+			MOVE_AERIAL_ACE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PERSIAN[] = 
@@ -5632,32 +6081,22 @@ static u16 const sTutorMoves_SPECIES_PSYDUCK[] = // Cross	Foresight	Future	Hypno
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PSYDUCK[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_DIVE,
+			MOVE_CONFUSION,
+			MOVE_LIGHT_SCREEN,
+			MOVE_CHARM,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PSYDUCK[] = 
 {
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CLOUD_NINE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_SCRATCH,
-			MOVE_CONFUSION,
-			MOVE_CALM_MIND,
-			MOVE_WATER_PULSE,
-		},
-	},
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CLOUD_NINE,
-		.hiddenPowerType=TYPE_GRASS,
-		.nature=NATURE_MILD,
-		.moves=
-		{
-			MOVE_SCRATCH,
-			MOVE_CONFUSION,
-			MOVE_HIDDEN_POWER,
-		},
-	},
+
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_GOLDUCK
@@ -5743,6 +6182,19 @@ static u16 const sTutorMoves_SPECIES_GOLDUCK[] = // Cross	Foresight	Future	Hypno
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GOLDUCK[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_PSYCHIC,
+			MOVE_RETURN,
+			MOVE_DIG, // Replace with MOVE_COUNTER if needed
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GOLDUCK[] = 
@@ -5890,33 +6342,21 @@ static u16 const sTutorMoves_SPECIES_MANKEY[] =
 	MOVE_NONE,
 };
 
-static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MANKEY[] = 
-{
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_VITAL_SPIRIT,
-		.nature=NATURE_JOLLY,
-		.moves=
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MANKEY[] = 
+{ 
+	{ 
+		.moves =
 		{
 			MOVE_KARATE_CHOP,
 			MOVE_LOW_KICK,
-			MOVE_ROCK_SLIDE,
-			MOVE_BULK_UP,
-		},
-	},
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_VITAL_SPIRIT,
-		.hiddenPowerType=TYPE_GHOST,
-		.nature=NATURE_ADAMANT,
-		.moves=
-		{
-			MOVE_KARATE_CHOP,
-			MOVE_LOW_KICK,
-			MOVE_HIDDEN_POWER,
+			MOVE_SWIFT,
+			MOVE_NONE,
 		},
 	},
 };
+
+static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MANKEY[] = 
+{}; 
 
 #ifdef APPEND_MON_FLAGS_SPECIES_PRIMEAPE
 #define MON_FLAGS_SPECIES_PRIMEAPE (APPEND_MON_FLAGS_SPECIES_PRIMEAPE | MON_FLAGS_GEN3UU)
@@ -6000,6 +6440,19 @@ static u16 const sTutorMoves_SPECIES_PRIMEAPE[] = // Beat Up	Counter	Foresight	M
 	MOVE_THUNDERBOLT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PRIMEAPE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CROSS_CHOP,
+			MOVE_ROCK_TOMB,
+			MOVE_SEISMIC_TOSS,
+			MOVE_OVERHEAT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PRIMEAPE[] = 
@@ -6120,33 +6573,20 @@ static u16 const sTutorMoves_SPECIES_GROWLITHE[] =
 	MOVE_NONE,
 };
 
-static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GROWLITHE[] = 
-{
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_INTIMIDATE,
-		.hiddenPowerType=TYPE_GRASS,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_EMBER,
-			MOVE_TAKE_DOWN,
-			MOVE_HIDDEN_POWER,
-		},
-	},
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_INTIMIDATE,
-		.nature=NATURE_SASSY,
-		.moves=
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GROWLITHE[] = 
+{ 
+	{ 
+		.moves =
 		{
 			MOVE_EMBER,
 			MOVE_BITE,
-			MOVE_TOXIC,
-			MOVE_DIG,
+			MOVE_SWIFT,
+			MOVE_NONE,
 		},
 	},
 };
+
+static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GROWLITHE[] = {}; 
 
 #ifdef APPEND_MON_FLAGS_SPECIES_ARCANINE
 #define MON_FLAGS_SPECIES_ARCANINE (APPEND_MON_FLAGS_SPECIES_ARCANINE | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU | MON_FLAGS_GEN3DOUBLESOU | MON_FLAGS_GEN31V1)
@@ -6213,6 +6653,18 @@ static u16 const sTutorMoves_SPECIES_ARCANINE[] =
 	MOVE_THRASH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ARCANINE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FLAMETHROWER,
+			MOVE_AGILITY,
+			MOVE_STRENGTH,
+			MOVE_IRON_TAIL,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ARCANINE[] = 
@@ -6343,20 +6795,7 @@ static u16 const sTutorMoves_SPECIES_POLIWAG[] =
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLIWAG[] = 
 {
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_DAMP,
-		.hiddenPowerType=TYPE_GHOST,
-		
-		.nature=NATURE_JOLLY,
-		.moves=
-		{
-			MOVE_RETURN,
-			MOVE_HIDDEN_POWER,
-			MOVE_BELLY_DRUM,
-			MOVE_SUBSTITUTE,
-		},
-	},
+
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_POLIWHIRL
@@ -6435,34 +6874,29 @@ static u16 const sTutorMoves_SPECIES_POLIWHIRL[] = // Bubble Beam	Haze	Ice Ball	
 	MOVE_NONE,
 };
 
-static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLIWHIRL[] = 
-{
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_WATER_ABSORB,
-		.nature=NATURE_BRAVE,
-		.moves=
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_POLIWHIRL[] = 
+{ 
+	{ 
+		.moves =
 		{
+			MOVE_RAIN_DANCE,
 			MOVE_WATER_GUN,
-			MOVE_DOUBLE_SLAP,
-			MOVE_DIG,
-			MOVE_PSYCHIC,
+			MOVE_ICY_WIND,
+			MOVE_FACADE,
 		},
 	},
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_WATER_ABSORB,
-		.hiddenPowerType=TYPE_GRASS,
-		.nature=NATURE_BOLD,
-		.moves=
+	{ 
+		.moves =
 		{
-			MOVE_WATER_GUN,
-			MOVE_DOUBLE_SLAP,
-			MOVE_HIDDEN_POWER,
+			MOVE_RAIN_DANCE,
+			MOVE_BUBBLE_BEAM,
+			MOVE_ICE_BALL,
+			MOVE_BRICK_BREAK,
 		},
 	},
-
 };
+
+static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLIWHIRL[] = {}; 
 
 #ifdef APPEND_MON_FLAGS_SPECIES_POLIWRATH
 #define MON_FLAGS_SPECIES_POLIWRATH (APPEND_MON_FLAGS_SPECIES_POLIWRATH | MON_FLAGS_GEN3UU)
@@ -6542,6 +6976,18 @@ static u16 const sTutorMoves_SPECIES_POLIWRATH[] = // Bubble Beam	Haze	Ice Ball	
 	MOVE_WATER_SPORT,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_POLIWRATH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_SUBMISSION,
+			MOVE_SEISMIC_TOSS,
+			MOVE_ATTRACT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLIWRATH[] = 
@@ -6669,18 +7115,7 @@ static u16 const sTutorMoves_SPECIES_ABRA[] = // Barrier	Encore	Knock Off	3x Pun
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ABRA[] = 
 {
-	{
-		.heldItem=ITEM_SALAC_BERRY,
-		.ability=ABILITY_SYNCHRONIZE,
-		.nature=NATURE_TIMID,
-		.moves=
-		{
-			MOVE_CALM_MIND,
-			MOVE_PSYCHIC,
-			MOVE_FIRE_PUNCH,
-			MOVE_SUBSTITUTE,
-		},
-	},
+
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_KADABRA
@@ -6760,6 +7195,19 @@ static u16 const sTutorMoves_SPECIES_KADABRA[] = // Barrier	Encore	Knock Off	3x 
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_KADABRA[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_CONFUSION,
+			MOVE_PSYBEAM,
+			MOVE_LIGHT_SCREEN,
+			MOVE_SHOCK_WAVE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KADABRA[] = 
@@ -7007,6 +7455,19 @@ static u16 const sTutorMoves_SPECIES_MACHOP[] = // Counter	Encore	Light	Meditate
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MACHOP[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_KARATE_CHOP,
+			MOVE_REVENGE,
+			MOVE_STRENGTH,
+			MOVE_MEDITATE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MACHOP[] = 
 {
 	{
@@ -7111,6 +7572,18 @@ static u16 const sTutorMoves_SPECIES_MACHOKE[] = // Counter	Encore	Light	Meditat
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MACHOKE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SUBMISSION,
+			MOVE_VITAL_THROW,
+			MOVE_STRENGTH,
+			MOVE_ROCK_TOMB,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MACHOKE[] = 
@@ -7340,6 +7813,18 @@ static u16 const sTutorMoves_SPECIES_BELLSPROUT[] =
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BELLSPROUT[] = 
 {
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BELLSPROUT[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_ACID,
+			MOVE_STUN_SPORE,
+			MOVE_VINE_WHIP,
+			MOVE_CUT,
+		},
+	},
+};
 
 #ifdef APPEND_MON_FLAGS_SPECIES_WEEPINBELL
 #define MON_FLAGS_SPECIES_WEEPINBELL (APPEND_MON_FLAGS_SPECIES_WEEPINBELL | MON_FLAGS_GEN3NU | MON_FLAGS_GEN3ZU)
@@ -7401,32 +7886,30 @@ static u16 const sTutorMoves_SPECIES_WEEPINBELL[] = // Encore	Ingrain	Leech Life
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_WEEPINBELL[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_RAZOR_LEAF,
+			MOVE_SECRET_POWER,
+			MOVE_STUN_SPORE,
+			MOVE_THIEF,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_SLUDGE_BOMB,
+			MOVE_VINE_WHIP,
+			MOVE_CUT,
+			MOVE_ENDURE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WEEPINBELL[] = 
 {
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CHLOROPHYLL,
-		.nature=NATURE_RASH,
-		.moves=
-		{
-			MOVE_SLEEP_POWDER,
-			MOVE_VINE_WHIP,
-			MOVE_SLUDGE_BOMB,
-			MOVE_SWORDS_DANCE,
-		},
-	},
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_CHLOROPHYLL,
-		.hiddenPowerType=TYPE_FIRE,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_SLEEP_POWDER,
-			MOVE_ACID,
-			MOVE_HIDDEN_POWER,
-		},
-	},
 };
 
 #ifdef APPEND_MON_FLAGS_SPECIES_VICTREEBEL
@@ -7493,6 +7976,18 @@ static u16 const sTutorMoves_SPECIES_VICTREEBEL[] = // Encore	Ingrain	Leech Life
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_VICTREEBEL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_RAZOR_LEAF,
+			MOVE_STUN_SPORE,
+			MOVE_ACID,
+			MOVE_RETURN,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VICTREEBEL[] = 
@@ -7610,6 +8105,18 @@ static u16 const sTutorMoves_SPECIES_TENTACOOL[] = // Aurora	Confuse	Haze	Mirror
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_TENTACOOL[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_ACID,
+			MOVE_WATER_PULSE,
+			MOVE_CUT,
+			MOVE_NONE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TENTACOOL[] = 
@@ -7835,6 +8342,18 @@ static u16 const sTutorMoves_SPECIES_GEODUDE[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GEODUDE[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_MAGNITUDE,
+			MOVE_ROLLOUT,
+			MOVE_ROCK_THROW,
+			MOVE_ROCK_SMASH,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GEODUDE[] = 
 {
@@ -7908,6 +8427,27 @@ static u16 const sTutorMoves_SPECIES_GRAVELER[] =
 	MOVE_SWAGGER,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GRAVELER[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_MAGNITUDE,
+			MOVE_ROCK_THROW,
+			MOVE_MEGA_PUNCH,
+			MOVE_SEISMIC_TOSS,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_MAGNITUDE,
+			MOVE_ROCK_TOMB,
+			MOVE_STRENGTH,
+			MOVE_BRICK_BREAK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GRAVELER[] = 
@@ -8139,6 +8679,19 @@ static u16 const sTutorMoves_SPECIES_PONYTA[] = // Charm	Dedge	Double Kick	Flame
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PONYTA[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_EMBER,
+			MOVE_DOUBLE_KICK,
+			MOVE_QUICK_ATTACK,
+			MOVE_SWIFT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PONYTA[] = 
 {
 	{
@@ -8349,32 +8902,21 @@ static u16 const sTutorMoves_SPECIES_SLOWPOKE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SLOWPOKE[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_DIVE,
+			MOVE_CONFUSION,
+			MOVE_STOMP,
+			MOVE_YAWN,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SLOWPOKE[] = 
 {
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_OWN_TEMPO,
-		.nature=NATURE_MODEST,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_CONFUSION,
-			MOVE_THUNDER_WAVE,
-			MOVE_FLAMETHROWER,
-		},
-	},
-	{
-		.heldItem=ITEM_ORAN_BERRY,
-		.ability=ABILITY_OWN_TEMPO,
-		.nature=NATURE_BOLD,
-		.moves=
-		{
-			MOVE_WATER_GUN,
-			MOVE_CONFUSION,
-			MOVE_CALM_MIND,
-			MOVE_REST,
-		},
-	},
 
 };
 
@@ -8581,6 +9123,18 @@ static u16 const sTutorMoves_SPECIES_MAGNEMITE[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MAGNEMITE[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_THUNDER_SHOCK,
+			MOVE_METAL_SOUND,
+			MOVE_ENDURE,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGNEMITE[] = 
 {
@@ -8664,6 +9218,19 @@ static u16 const sTutorMoves_SPECIES_MAGNETON[] =
 	MOVE_THUNDERBOLT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MAGNETON[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_THUNDERBOLT,
+			MOVE_TRI_ATTACK,
+			MOVE_THUNDER_WAVE,
+			MOVE_REFLECT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGNETON[] = 
@@ -8799,6 +9366,27 @@ static u16 const sTutorMoves_SPECIES_FARFETCHD[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_FARFETCHD[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_SECRET_POWER,
+			MOVE_AERIAL_ACE,
+			MOVE_SWORDS_DANCE,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_FACADE,
+			MOVE_PECK,
+			MOVE_STEEL_WING,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_FARFETCHD[] = 
 {
@@ -8910,6 +9498,27 @@ static u16 const sTutorMoves_SPECIES_DODUO[] = // Endeavor	Feint	Flail	Haze	Quic
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DODUO[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_FAINT_ATTACK,
+			MOVE_FLAIL,
+			MOVE_PECK,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_FACADE,
+			MOVE_STEEL_WING,
+			MOVE_MUD_SLAP,
+			MOVE_PURSUIT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DODUO[] = 
@@ -9132,6 +9741,18 @@ static u16 const sTutorMoves_SPECIES_SEEL[] = // Disable	Encore	Fake Out	Horn Dr
 	MOVE_WATERFALL,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SEEL[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_HEADBUTT,
+			MOVE_ICY_WIND,
+			MOVE_FAKE_OUT,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SEEL[] = 
 {
@@ -9340,6 +9961,28 @@ static u16 const sTutorMoves_SPECIES_GRIMER[] = // Curse	Explosion	Haze	Imprison
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GRIMER[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_SLUDGE,
+			MOVE_SHADOW_PUNCH,
+			MOVE_DIG,
+			MOVE_GIGA_DRAIN,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_SLUDGE,
+			MOVE_SHADOW_PUNCH,
+			MOVE_MUD_SLAP,
+			MOVE_CURSE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GRIMER[] = 
@@ -9573,6 +10216,18 @@ static u16 const sTutorMoves_SPECIES_SHELLDER[] = // Barrier	Bbeam	Ice Spear	Rap
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SHELLDER[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_ICY_WIND,
+			MOVE_SECRET_POWER,
+			MOVE_SUPERSONIC,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHELLDER[] = 
 {
@@ -9661,6 +10316,18 @@ static u16 const sTutorMoves_SPECIES_CLOYSTER[] =  // Barrier	Bbeam	Ice Spear	Ra
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CLOYSTER[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_AURORA_BEAM,
+			MOVE_WATERFALL,
+			MOVE_RETURN,
+			MOVE_PROTECT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLOYSTER[] = 
@@ -9790,6 +10457,18 @@ static u16 const sTutorMoves_SPECIES_GASTLY[] =
 	MOVE_WILL_O_WISP,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GASTLY[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_NIGHT_SHADE,
+			MOVE_CURSE,
+			MOVE_GIGA_DRAIN,
+			MOVE_THIEF,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GASTLY[] = 
 {
@@ -9871,6 +10550,27 @@ static u16 const sTutorMoves_SPECIES_HAUNTER[] = // Astonish	Explosion	Grudge	Ha
 	MOVE_TOXIC,
 	MOVE_WILL_O_WISP,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_HAUNTER[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_SHADOW_PUNCH,
+			MOVE_NIGHT_SHADE,
+			MOVE_GIGA_DRAIN,
+			MOVE_THUNDERBOLT,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_SLUDGE_BOMB,
+			MOVE_NIGHT_SHADE,
+			MOVE_PSYCHIC,
+			MOVE_TOXIC,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HAUNTER[] = 
@@ -10112,6 +10812,28 @@ static u16 const sTutorMoves_SPECIES_ONIX[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ONIX[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_ROCK_THROW,
+			MOVE_ROCK_SMASH,
+			MOVE_DRAGON_BREATH,
+			MOVE_SECRET_POWER,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_ROCK_TOMB,
+			MOVE_MUD_SLAP,
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ONIX[] = 
 {
 	{
@@ -10220,6 +10942,28 @@ static u16 const sTutorMoves_SPECIES_DROWZEE[] = // Assist	Barrier	Role Play	3x 
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DROWZEE[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_CONFUSION,
+			MOVE_HYPNOSIS,
+			MOVE_THIEF,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_CONFUSION,
+			MOVE_SEISMIC_TOSS,
+			MOVE_REFLECT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DROWZEE[] = 
@@ -10460,6 +11204,28 @@ static u16 const sTutorMoves_SPECIES_KRABBY[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_KRABBY[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_MUD_SHOT,
+			MOVE_VICE_GRIP,
+			MOVE_DIVE,
+			MOVE_ROCK_TOMB,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_MUD_SLAP,
+			MOVE_SECRET_POWER,
+			MOVE_HARDEN,
+			MOVE_AMNESIA,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KRABBY[] = 
 {
 		{
@@ -10698,6 +11464,18 @@ static u16 const sTutorMoves_SPECIES_VOLTORB[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_VOLTORB[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_SWIFT,
+			MOVE_SONIC_BOOM,
+			MOVE_TAUNT,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VOLTORB[] = 
 {
@@ -10923,6 +11701,28 @@ static u16 const sTutorMoves_SPECIES_EXEGGCUTE[] = // Ancient Power	Curse	Ingrai
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_EXEGGCUTE[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_CONFUSION,
+			MOVE_GIGA_DRAIN,
+			MOVE_LIGHT_SCREEN,
+		},
+	},
+	{ 
+		.moves =
+		{
+			MOVE_CONFUSION,
+			MOVE_SECRET_POWER,
+			MOVE_ANCIENT_POWER,
+			MOVE_THIEF,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EXEGGCUTE[] = 
 {
 	{
@@ -11019,6 +11819,19 @@ static u16 const sTutorMoves_SPECIES_EXEGGUTOR[] =  // Ancient Power	Curse	Ingra
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_EXEGGUTOR[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_STUN_SPORE,
+			MOVE_CONFUSION,
+			MOVE_GIGA_DRAIN,
+			MOVE_ANCIENT_POWER,
+		},
+	},
+};
+
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EXEGGUTOR[] = 
 {
@@ -11160,6 +11973,19 @@ static u16 const sTutorMoves_SPECIES_CUBONE[] = // Ancient Power	Belly drum	Peri
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CUBONE[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_BONEMERANG,
+			MOVE_AERIAL_ACE,
+			MOVE_ICY_WIND,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CUBONE[] = 
 {
 	{
@@ -11267,6 +12093,19 @@ static u16 const sTutorMoves_SPECIES_MAROWAK[] = // Ancient Power	Belly drum	Per
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MAROWAK[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BONEMERANG,
+			MOVE_MEGA_KICK,
+			MOVE_ROCK_TOMB,
+			MOVE_FLAMETHROWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAROWAK[] = 
@@ -11406,6 +12245,19 @@ static u16 const sTutorMoves_SPECIES_HITMONLEE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_HITMONLEE[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_ROLLING_KICK,
+			MOVE_MEGA_KICK,
+			MOVE_MEDITATE,
+			MOVE_ENDURE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HITMONLEE[] = 
 {
     {
@@ -11540,6 +12392,19 @@ static u16 const sTutorMoves_SPECIES_HITMONCHAN[] =
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_HITMONCHAN[] = 
+{ 
+	{ 
+		.moves =
+		{
+			MOVE_BULK_UP,
+			MOVE_MEGA_PUNCH,
+			MOVE_MACH_PUNCH,
+			MOVE_ROCK_TOMB,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HITMONCHAN[] = 
@@ -11716,6 +12581,28 @@ static u16 const sTutorMoves_SPECIES_LICKITUNG[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LICKITUNG[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_STOMP,
+			MOVE_ICY_WIND,
+			MOVE_MAGNITUDE,
+			MOVE_SHOCK_WAVE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_STOMP,
+			MOVE_WATER_PULSE,
+			MOVE_ROCK_TOMB,
+			MOVE_FIRE_PUNCH,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LICKITUNG[] = 
 {
 	{
@@ -11821,6 +12708,28 @@ static u16 const sTutorMoves_SPECIES_KOFFING[] = // Dbond	Pain split	Psybeam	Psy
 	MOVE_TOXIC,
 	MOVE_WILL_O_WISP,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_KOFFING[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SLUDGE,
+			MOVE_SMOKESCREEN,
+			MOVE_WILL_O_WISP,
+			MOVE_THIEF,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SLUDGE,
+			MOVE_SHOCK_WAVE,
+			MOVE_PSYBEAM,
+			MOVE_SECRET_POWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KOFFING[] = 
@@ -12051,6 +12960,28 @@ static u16 const sTutorMoves_SPECIES_RHYHORN[] = // Counter	Crunch	Crush Claw	Cu
 	MOVE_THUNDERBOLT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_RHYHORN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TAKE_DOWN,
+			MOVE_MAGNITUDE,
+			MOVE_ROCK_TOMB,
+			MOVE_ROCK_BLAST,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_CRUSH_CLAW,
+			MOVE_ICY_WIND,
+			MOVE_IRON_TAIL,
+			MOVE_ROLLOUT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RHYHORN[] = 
@@ -12326,6 +13257,28 @@ static u16 const sTutorMoves_SPECIES_CHANSEY[] = // Aromatherapy	Heal Bell	Metro
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CHANSEY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SOFT_BOILED,
+			MOVE_WATER_PULSE,
+			MOVE_SHOCK_WAVE,
+			MOVE_COUNTER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SOFT_BOILED,
+			MOVE_ICY_WIND,
+			MOVE_SHOCK_WAVE,
+			MOVE_CALM_MIND,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHANSEY[] = 
 {
 	{
@@ -12420,6 +13373,28 @@ static u16 const sTutorMoves_SPECIES_TANGELA[] =
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_TANGELA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_AMNESIA,
+			MOVE_THIEF,
+			MOVE_GIGA_DRAIN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SECRET_POWER,
+			MOVE_CONFUSION,
+			MOVE_STUN_SPORE,
+			MOVE_MEGA_DRAIN,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TANGELA[] = 
@@ -12568,6 +13543,19 @@ static u16 const sTutorMoves_SPECIES_KANGASKHAN[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_KANGASKHAN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FAKE_OUT,
+			MOVE_RETURN,
+			MOVE_SURF,
+			MOVE_COUNTER,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KANGASKHAN[] = 
 {
 	{
@@ -12686,6 +13674,27 @@ static u16 const sTutorMoves_SPECIES_HORSEA[] =
 	MOVE_WATERFALL,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_HORSEA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_TWISTER,
+			MOVE_SWIFT,
+			MOVE_RAIN_DANCE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_OCTAZOOKA,
+			MOVE_DRAGON_BREATH,
+			MOVE_FLAIL,
+			MOVE_AGILITY,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HORSEA[] = 
 {
@@ -12777,6 +13786,19 @@ static u16 const sTutorMoves_SPECIES_SEADRA[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SEADRA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_DRAGON_BREATH,
+			MOVE_RETURN,
+			MOVE_AGILITY,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SEADRA[] = 
 {
 	{
@@ -12863,6 +13885,18 @@ static u16 const sTutorMoves_SPECIES_GOLDEEN[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GOLDEEN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_SECRET_POWER,
+			MOVE_AGILITY,
+			MOVE_PSYBEAM,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GOLDEEN[] = 
@@ -12954,6 +13988,27 @@ static u16 const sTutorMoves_SPECIES_SEAKING[] = // Haze	Hydro	Mud	S.talk	Psybea
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SEAKING[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_FACADE,
+			MOVE_ATTRACT,
+			MOVE_REST,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_SECRET_POWER,
+			MOVE_PSYBEAM,
+			MOVE_RAIN_DANCE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SEAKING[] = 
@@ -13125,6 +14180,28 @@ static u16 const sTutorMoves_SPECIES_STARYU[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_STARYU[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_SWIFT,
+			MOVE_MINIMIZE,
+			MOVE_CAMOUFLAGE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_DIVE,
+			MOVE_FACADE,
+			MOVE_COSMIC_POWER,
+			MOVE_RECOVER,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_STARYU[] = 
 {
 	{
@@ -13220,6 +14297,18 @@ static u16 const sTutorMoves_SPECIES_STARMIE[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_STARMIE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_ICY_WIND,
+			MOVE_LIGHT_SCREEN,
+			MOVE_RECOVER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_STARMIE[] = 
@@ -13369,6 +14458,27 @@ static u16 const sTutorMoves_SPECIES_MR_MIME[] =
 	MOVE_TRICK,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MR_MIME[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MAGICAL_LEAF,
+			MOVE_PSYBEAM,
+			MOVE_REFLECT,
+			MOVE_LIGHT_SCREEN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_CONFUSION,
+			MOVE_SHADOW_BALL,
+			MOVE_ENCORE,
+			MOVE_SHOCK_WAVE,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MR_MIME[] = 
 {
@@ -13492,6 +14602,27 @@ static u16 const sTutorMoves_SPECIES_SCYTHER[] =
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SCYTHER[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FURY_CUTTER,
+			MOVE_PURSUIT,
+			MOVE_QUICK_ATTACK,
+			MOVE_ROCK_SMASH,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SWIFT,
+			MOVE_THIEF,
+			MOVE_FOCUS_ENERGY,
+			MOVE_MORNING_SUN,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SCYTHER[] = 
@@ -13637,6 +14768,19 @@ static u16 const sTutorMoves_SPECIES_JYNX[] = // Fake Out	Ice Punch	Meditate	Psy
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_JYNX[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ICE_PUNCH,
+			MOVE_CONFUSION,
+			MOVE_LOVELY_KISS,
+			MOVE_WATER_PULSE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_JYNX[] = 
 {
 	{
@@ -13773,6 +14917,19 @@ static u16 const sTutorMoves_SPECIES_ELECTABUZZ[] = // Barrier	Cross	Fire	Ice	Ka
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ELECTABUZZ[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_THUNDER_PUNCH,
+			MOVE_FIRE_PUNCH,
+			MOVE_QUICK_ATTACK,
+			MOVE_KARATE_CHOP,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ELECTABUZZ[] = 
 {
     {
@@ -13902,6 +15059,19 @@ static u16 const sTutorMoves_SPECIES_MAGMAR[] = // Barrier	Cross	Karate	Mega	Scr
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MAGMAR[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FIRE_PUNCH,
+			MOVE_THUNDER_PUNCH,
+			MOVE_SEISMIC_TOSS,
+			MOVE_TOXIC,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGMAR[] = 
 {
 	{
@@ -14009,7 +15179,18 @@ static u16 const sTutorMoves_SPECIES_PINSIR[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
-
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PINSIR[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_STRENGTH,
+			MOVE_BRICK_BREAK,
+			MOVE_SEISMIC_TOSS,
+			MOVE_FAINT_ATTACK,
+		},
+	},
+};
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PINSIR[] = 
 {
     {
@@ -14137,6 +15318,19 @@ static u16 const sTutorMoves_SPECIES_TAUROS[] =
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_TAUROS[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_THRASH,
+			MOVE_REST,
+			MOVE_FLAMETHROWER,
+			MOVE_SWAGGER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TAUROS[] = 
@@ -14288,6 +15482,18 @@ static u16 const sTutorMoves_SPECIES_GYARADOS[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GYARADOS[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_THRASH,
+			MOVE_BITE,
+			MOVE_TWISTER,
+			MOVE_WATER_PULSE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GYARADOS[] = 
@@ -14580,6 +15786,19 @@ static u16 const sTutorMoves_SPECIES_EEVEE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_EEVEE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_COVET,
+			MOVE_QUICK_ATTACK,
+			MOVE_BITE,
+			MOVE_TICKLE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EEVEE[] = 
 {
 	{
@@ -14678,6 +15897,18 @@ static u16 const sTutorMoves_SPECIES_VAPOREON[] = // Charm	Curse	Endure	Flail	Ti
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_VAPOREON[] = 
+{
+    {
+        .moves =
+        {
+            MOVE_AURORA_BEAM,
+            MOVE_WATER_PULSE,
+            MOVE_BITE,
+            MOVE_QUICK_ATTACK,
+        },
+    },
+};
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VAPOREON[] = 
 {
 	{
@@ -14806,7 +16037,18 @@ static u16 const sTutorMoves_SPECIES_JOLTEON[] = // Charm	Curse	Endure	Flail	Tic
 	MOVE_WISH,
 	MOVE_NONE,
 };
-
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_JOLTEON[] = 
+{
+    {
+        .moves =
+        {
+            MOVE_SHOCK_WAVE,
+            MOVE_DOUBLE_KICK,
+            MOVE_BITE,
+            MOVE_THUNDER_WAVE,
+        },
+    },
+};
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_JOLTEON[] = 
 {
 	{
@@ -14937,6 +16179,19 @@ static u16 const sTutorMoves_SPECIES_FLAREON[] = // Charm	Curse	Endure	Flail	Tic
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_FLAREON[] = 
+{
+    {
+        .moves =
+        {
+            MOVE_FLAME_WHEEL,
+            MOVE_BITE,
+            MOVE_QUICK_ATTACK,
+            MOVE_RETURN,
+        },
+    },
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_FLAREON[] = 
 {
 	{
@@ -15044,6 +16299,19 @@ static u16 const sTutorMoves_SPECIES_PORYGON[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PORYGON[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FACADE,
+			MOVE_PSYBEAM,
+			MOVE_THIEF,
+			MOVE_MIMIC,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PORYGON[] = 
 {
 	{
@@ -15136,6 +16404,28 @@ static u16 const sTutorMoves_SPECIES_OMANYTE[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_OMANYTE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MUD_SHOT,
+			MOVE_DIVE,
+			MOVE_BITE,
+			MOVE_ROCK_TOMB,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ICY_WIND,
+			MOVE_BUBBLE_BEAM,
+			MOVE_THIEF,
+			MOVE_SLAM,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_OMANYTE[] = 
@@ -15364,6 +16654,28 @@ static u16 const sTutorMoves_SPECIES_KABUTO[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_KABUTO[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ROCK_TOMB,
+			MOVE_MUD_SHOT,
+			MOVE_MUD_SLAP,
+			MOVE_SECRET_POWER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ROCK_SMASH,
+			MOVE_MUD_SHOT,
+			MOVE_AERIAL_ACE,
+			MOVE_GIGA_DRAIN,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KABUTO[] = 
@@ -16262,12 +17574,22 @@ static u16 const sTutorMoves_SPECIES_DRATINI[] =
 	MOVE_NONE,
 };
 
-static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DRATINI[] = 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DRATINI[] = 
 {
 	{
-		.heldItem = ITEM_STARF_BERRY,
+		.moves =
+		{
+			MOVE_TWISTER,
+			MOVE_THUNDER_WAVE,
+			MOVE_SECRET_POWER,
+			MOVE_WRAP,
+		},
 	}
 };
+
+
+static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DRATINI[] = 
+{};
 
 #ifdef APPEND_MON_FLAGS_SPECIES_DRAGONAIR
 #define MON_FLAGS_SPECIES_DRAGONAIR (APPEND_MON_FLAGS_SPECIES_DRAGONAIR | MON_FLAGS_GEN3PU)
@@ -16338,6 +17660,19 @@ static u16 const sTutorMoves_SPECIES_DRAGONAIR[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DRAGONAIR[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DRAGON_RAGE,
+			MOVE_THUNDER_WAVE,
+			MOVE_LIGHT_SCREEN,
+			MOVE_IRON_TAIL,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DRAGONAIR[] = 
@@ -16978,6 +18313,28 @@ static u16 const sTutorMoves_SPECIES_BAYLEEF[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BAYLEEF[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_RAZOR_LEAF,
+			MOVE_BODY_SLAM,
+			MOVE_REFLECT,
+			MOVE_SYNTHESIS,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_GIGA_DRAIN,
+			MOVE_ANCIENT_POWER,
+			MOVE_LIGHT_SCREEN,
+			MOVE_SYNTHESIS,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BAYLEEF[] = 
 {
 	{
@@ -17272,6 +18629,28 @@ static u16 const sTutorMoves_SPECIES_QUILAVA[] =
 	MOVE_THRASH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_QUILAVA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FLAME_WHEEL,
+			MOVE_QUICK_ATTACK,
+			MOVE_AERIAL_ACE,
+			MOVE_DIG,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FLAME_WHEEL,
+			MOVE_SWIFT,
+			MOVE_SMOKESCREEN,
+			MOVE_SUBSTITUTE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_QUILAVA[] = 
@@ -17604,6 +18983,27 @@ static u16 const sTutorMoves_SPECIES_CROCONAW[] =
 	MOVE_WATERFALL,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CROCONAW[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_BITE,
+			MOVE_AERIAL_ACE,
+			MOVE_SEISMIC_TOSS,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_ICY_WIND,
+			MOVE_SECRET_POWER,
+			MOVE_ANCIENT_POWER,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CROCONAW[] = 
 {
@@ -17932,6 +19332,28 @@ static u16 const sTutorMoves_SPECIES_FURRET[] = // Assist	Dedge	Focus Energy	Pur
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_FURRET[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_STRENGTH,
+			MOVE_THIEF,
+			MOVE_IRON_TAIL,
+			MOVE_WATER_PULSE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SLAM,
+			MOVE_QUICK_ATTACK,
+			MOVE_DEFENSE_CURL,
+			MOVE_REST,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_FURRET[] = 
 {
 	{
@@ -18116,6 +19538,28 @@ static u16 const sTutorMoves_SPECIES_NOCTOWL[] = // Feint	Feather	Mirror	Sky	Sup
 	MOVE_WHIRLWIND,
 	MOVE_WING_ATTACK,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NOCTOWL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_HYPNOSIS,
+			MOVE_CONFUSION,
+			MOVE_REFLECT,
+			MOVE_TAKE_DOWN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WING_ATTACK,
+			MOVE_STEEL_WING,
+			MOVE_FAINT_ATTACK,
+			MOVE_MUD_SLAP,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NOCTOWL[] = 
@@ -18334,6 +19778,28 @@ static u16 const sTutorMoves_SPECIES_LEDIAN[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LEDIAN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_GIGA_DRAIN,
+			MOVE_ICE_PUNCH,
+			MOVE_THUNDER_PUNCH,
+			MOVE_BRICK_BREAK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SWORDS_DANCE,
+			MOVE_SILVER_WIND,
+			MOVE_AERIAL_ACE,
+			MOVE_DIG,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LEDIAN[] = 
 {
 	{
@@ -18486,6 +19952,28 @@ static u16 const sTutorMoves_SPECIES_ARIADOS[] =
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ARIADOS[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_NIGHT_SHADE,
+			MOVE_PIN_MISSILE,
+			MOVE_AGILITY,
+			MOVE_GIGA_DRAIN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_NIGHT_SHADE,
+			MOVE_PIN_MISSILE,
+			MOVE_ENDURE,
+			MOVE_TOXIC,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ARIADOS[] = 
@@ -18717,6 +20205,28 @@ static u16 const sTutorMoves_SPECIES_CHINCHOU[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CHINCHOU[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_WATER_PULSE,
+			MOVE_THUNDER_WAVE,
+			MOVE_CONFUSE_RAY,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_WATER_PULSE,
+			MOVE_AMNESIA,
+			MOVE_REST,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHINCHOU[] = 
 {
 	{
@@ -18805,6 +20315,19 @@ static u16 const sTutorMoves_SPECIES_LANTURN[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LANTURN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_SPARK,
+			MOVE_THUNDER_WAVE,
+			MOVE_CONFUSE_RAY,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LANTURN[] = 
@@ -19306,6 +20829,28 @@ static u16 const sTutorMoves_SPECIES_TOGETIC[] = // Foresight	Future	Mirror	Peck
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_TOGETIC[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MAGICAL_LEAF,
+			MOVE_ENCORE,
+			MOVE_AERIAL_ACE,
+			MOVE_ANCIENT_POWER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_TRI_ATTACK,
+			MOVE_AERIAL_ACE,
+			MOVE_STEEL_WING,
+			MOVE_MUD_SLAP,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TOGETIC[] = 
 {
 	{
@@ -19527,6 +21072,28 @@ static u16 const sTutorMoves_SPECIES_XATU[] = // Drill 	Feint	Feather	Haze 	Psyc
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_XATU[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_NIGHT_SHADE,
+			MOVE_AERIAL_ACE,
+			MOVE_STEEL_WING,
+			MOVE_THUNDER_WAVE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_NIGHT_SHADE,
+			MOVE_FAINT_ATTACK,
+			MOVE_QUICK_ATTACK,
+			MOVE_GIGA_DRAIN,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_XATU[] = 
 {
 	{
@@ -19723,6 +21290,28 @@ static u16 const sTutorMoves_SPECIES_FLAAFFY[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_FLAAFFY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SHOCK_WAVE,
+			MOVE_TAKE_DOWN,
+			MOVE_LIGHT_SCREEN,
+			MOVE_THUNDER_WAVE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_THUNDER_SHOCK,
+			MOVE_SEISMIC_TOSS,
+			MOVE_ATTRACT,
+			MOVE_REFLECT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_FLAAFFY[] = 
 {
 	{
@@ -19821,6 +21410,18 @@ static u16 const sTutorMoves_SPECIES_AMPHAROS[] =
 	MOVE_THUNDERBOLT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_AMPHAROS[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_THUNDER_PUNCH,
+			MOVE_THUNDER_WAVE,
+			MOVE_FIRE_PUNCH,
+			MOVE_SEISMIC_TOSS,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_AMPHAROS[] = 
@@ -19949,6 +21550,20 @@ static u16 const sTutorMoves_SPECIES_BELLOSSOM[] = // Charm	Flail	Ingrain	Razor 
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BELLOSSOM[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_GIGA_DRAIN,
+			MOVE_PETAL_DANCE,
+			MOVE_STUN_SPORE,
+			MOVE_RETURN,
+		},
+	},
+};
+
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BELLOSSOM[] = 
 {
@@ -20163,6 +21778,28 @@ static u16 const sTutorMoves_SPECIES_AZUMARILL[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_AZUMARILL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_STRENGTH,
+			MOVE_ICY_WIND,
+			MOVE_DIG,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_BODY_SLAM,
+			MOVE_DEFENSE_CURL,
+			MOVE_ROLLOUT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_AZUMARILL[] = 
 {
 	{
@@ -20274,6 +21911,28 @@ static u16 const sTutorMoves_SPECIES_SUDOWOODO[] =
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SUDOWOODO[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ROCK_TOMB,
+			MOVE_FAINT_ATTACK,
+			MOVE_FLAIL,
+			MOVE_TAUNT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ROCK_THROW,
+			MOVE_SECRET_POWER,
+			MOVE_ATTRACT,
+			MOVE_ROCK_SMASH,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SUDOWOODO[] = 
@@ -20394,6 +22053,19 @@ static u16 const sTutorMoves_SPECIES_POLITOED[] = // Bubble Beam	Haze	Ice Ball	M
 	MOVE_WATERFALL,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_POLITOED[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_COUNTER, // Replace with MOVE_SWAGGER if preferred
+			MOVE_SEISMIC_TOSS,
+			MOVE_ATTRACT,
+		},
+	},
+};
+
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_POLITOED[] = 
 {
@@ -20559,6 +22231,28 @@ static u16 const sTutorMoves_SPECIES_SKIPLOOM[] = // Amnesia	Confusion	Double-Ed
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SKIPLOOM[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_MEGA_DRAIN,
+			MOVE_AERIAL_ACE,
+			MOVE_ATTRACT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_GIGA_DRAIN,
+			MOVE_GUST,
+			MOVE_REFLECT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SKIPLOOM[] = 
 {
 	{
@@ -20647,6 +22341,18 @@ static u16 const sTutorMoves_SPECIES_JUMPLUFF[] =
 	MOVE_SWORDS_DANCE,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_JUMPLUFF[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_AERIAL_ACE,
+			MOVE_GIGA_DRAIN,
+			MOVE_LEECH_SEED,
+			MOVE_SUBSTITUTE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_JUMPLUFF[] = 
@@ -20788,6 +22494,28 @@ static u16 const sTutorMoves_SPECIES_AIPOM[] =
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_AIPOM[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_STRENGTH,
+			MOVE_ICE_PUNCH,
+			MOVE_FIRE_PUNCH,
+			MOVE_THUNDER_PUNCH,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SEISMIC_TOSS,
+			MOVE_AGILITY,
+			MOVE_BATON_PASS,
+			MOVE_SUBSTITUTE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_AIPOM[] = 
@@ -21025,6 +22753,28 @@ static u16 const sTutorMoves_SPECIES_SUNFLORA[] = // Curse	Encore	Grasswhistle	H
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SUNFLORA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_MEGA_DRAIN,
+			MOVE_SECRET_POWER,
+			MOVE_LIGHT_SCREEN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_RAZOR_LEAF,
+			MOVE_SUNNY_DAY,
+			MOVE_ENDEAVOR,
+			MOVE_FACADE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SUNFLORA[] = 
 {
 	{
@@ -21140,6 +22890,28 @@ static u16 const sTutorMoves_SPECIES_YANMA[] =
 	MOVE_TOXIC,
 	MOVE_WHIRLWIND,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_YANMA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_AERIAL_ACE,
+			MOVE_QUICK_ATTACK,
+			MOVE_SONIC_BOOM,
+			MOVE_HYPNOSIS,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_STEEL_WING,
+			MOVE_GIGA_DRAIN,
+			MOVE_SHADOW_BALL,
+			MOVE_DOUBLE_TEAM,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_YANMA[] = 
@@ -21291,6 +23063,28 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WOOPER[]
 #else
 #define MON_FLAGS_SPECIES_QUAGSIRE (0 | MON_FLAGS_GEN3UU)
 #endif
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_QUAGSIRE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MUD_SHOT,
+			MOVE_MUD_SLAP,
+			MOVE_WATER_GUN,
+			MOVE_SECRET_POWER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_YAWN,
+			MOVE_PROTECT,
+			MOVE_MUD_SHOT,
+			MOVE_ANCIENT_POWER,
+		},
+	},
+};
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_QUAGSIRE[] = 
 {
@@ -21503,7 +23297,18 @@ static u16 const sTutorMoves_SPECIES_ESPEON[] = // Charm	Curse	Endure	Flail	Tick
 	MOVE_WISH,
 	MOVE_NONE,
 };
-
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ESPEON[] = 
+{
+    {
+        .moves =
+        {
+            MOVE_PSYBEAM,
+            MOVE_BITE,
+            MOVE_QUICK_ATTACK,
+            MOVE_RETURN,
+        },
+    },
+};
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ESPEON[] = 
 {
 	{
@@ -21636,7 +23441,18 @@ static u16 const sTutorMoves_SPECIES_UMBREON[] = // Charm	Curse	Endure	Flail	Tic
 	MOVE_WISH,
 	MOVE_NONE,
 };
-
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_UMBREON[] = 
+{
+    {
+        .moves =
+        {
+            MOVE_MOONLIGHT,
+            MOVE_BITE,
+            MOVE_QUICK_ATTACK,
+            MOVE_RETURN,
+        },
+    },
+};
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_UMBREON[] = 
 {
 	{
@@ -21765,6 +23581,28 @@ static u16 const sTutorMoves_SPECIES_MURKROW[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MURKROW[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FAINT_ATTACK,
+			MOVE_WING_ATTACK,
+			MOVE_NIGHT_SHADE,
+			MOVE_STEEL_WING,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FAINT_ATTACK,
+			MOVE_WING_ATTACK,
+			MOVE_NIGHT_SHADE,
+			MOVE_ICY_WIND,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MURKROW[] = 
 {
 	{
@@ -21880,6 +23718,18 @@ static u16 const sTutorMoves_SPECIES_SLOWKING[] = // Belly Drum	Future Sight	Mud
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SLOWKING[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_PSYCHIC,
+			MOVE_SWAGGER,
+			MOVE_BODY_SLAM,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SLOWKING[] = 
@@ -22010,6 +23860,27 @@ static u16 const sTutorMoves_SPECIES_MISDREAVUS[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MISDREAVUS[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_PSYWAVE,
+			MOVE_PSYBEAM,
+			MOVE_CONFUSE_RAY,
+			MOVE_THIEF,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SHOCK_WAVE,
+			MOVE_SECRET_POWER,
+			MOVE_ENDURE,
+			MOVE_DESTINY_BOND,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MISDREAVUS[] = 
 {
@@ -22113,6 +23984,27 @@ static u16 const sTutorMoves_SPECIES_WOBBUFFET[] =
 {
 	MOVE_ENCORE,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_WOBBUFFET[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_COUNTER,
+			MOVE_MIRROR_COAT,
+			MOVE_DESTINY_BOND,
+			MOVE_ENCORE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_COUNTER,
+			MOVE_MIRROR_COAT,
+			MOVE_DESTINY_BOND,
+			MOVE_ENCORE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WOBBUFFET[] = 
@@ -22229,6 +24121,27 @@ static u16 const sTutorMoves_SPECIES_GIRAFARIG[] =
 	MOVE_TOXIC,
 	MOVE_WISH,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GIRAFARIG[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_STOMP,
+			MOVE_CONFUSION,
+			MOVE_AGILITY,
+			MOVE_BATON_PASS,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_STOMP,
+			MOVE_PSYBEAM,
+			MOVE_SHOCK_WAVE,
+			MOVE_THIEF,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GIRAFARIG[] = 
@@ -22359,6 +24272,28 @@ static u16 const sTutorMoves_SPECIES_PINECO[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PINECO[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+			MOVE_REFLECT,
+			MOVE_LIGHT_SCREEN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_BODY_SLAM,
+			MOVE_PIN_MISSILE,
+			MOVE_ROCK_TOMB,
+			MOVE_GIGA_DRAIN,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PINECO[] = 
 {
 	{
@@ -22451,6 +24386,18 @@ static u16 const sTutorMoves_SPECIES_FORRETRESS[] = // Counter	Flail	Pin	Reflect
 	MOVE_SWIFT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_FORRETRESS[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+			MOVE_PIN_MISSILE,
+			MOVE_ROCK_SLIDE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_FORRETRESS[] = 
@@ -22595,6 +24542,28 @@ static u16 const sTutorMoves_SPECIES_DUNSPARCE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DUNSPARCE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_ROCK_SMASH,
+			MOVE_ROCK_TOMB,
+			MOVE_THIEF,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SECRET_POWER,
+			MOVE_WATER_PULSE,
+			MOVE_SHOCK_WAVE,
+			MOVE_ANCIENT_POWER,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DUNSPARCE[] = 
 {
 	{
@@ -22688,6 +24657,27 @@ static u16 const sTutorMoves_SPECIES_GLIGAR[] =
 	MOVE_TOXIC,
 	MOVE_WING_ATTACK,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GLIGAR[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FAINT_ATTACK,
+			MOVE_SLASH,
+			MOVE_QUICK_ATTACK,
+			MOVE_DIG,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_STEEL_WING,
+			MOVE_AERIAL_ACE,
+			MOVE_SAND_ATTACK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GLIGAR[] = 
@@ -22823,6 +24813,18 @@ static u16 const sTutorMoves_SPECIES_STEELIX[] = // Block	Explosion	Flail	Rock
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_STEELIX[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_IRON_TAIL,
+			MOVE_ROCK_SLIDE,
+			MOVE_MUD_SLAP,
+			MOVE_RETURN,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_STEELIX[] = 
@@ -22973,6 +24975,28 @@ static u16 const sTutorMoves_SPECIES_SNUBBULL[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SNUBBULL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_BITE,
+			MOVE_HOWL,
+			MOVE_MUD_SLAP,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SECRET_POWER,
+			MOVE_BITE,
+			MOVE_HOWL,
+			MOVE_MUD_SLAP,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SNUBBULL[] = 
 {
 	{
@@ -23091,6 +25115,28 @@ static u16 const sTutorMoves_SPECIES_GRANBULL[] = // Crunch	Feint	Heal Bell	Metr
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GRANBULL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_STRENGTH,
+			MOVE_WATER_PULSE,
+			MOVE_SHOCK_WAVE,
+			MOVE_REFLECT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_MEGA_PUNCH,
+			MOVE_ROCK_TOMB,
+			MOVE_FIRE_PUNCH,
+			MOVE_CRUNCH,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GRANBULL[] = 
@@ -23220,6 +25266,28 @@ static u16 const sTutorMoves_SPECIES_QWILFISH[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_QWILFISH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_REVENGE,
+			MOVE_SECRET_POWER,
+			MOVE_ATTRACT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_RAIN_DANCE,
+			MOVE_WATER_PULSE,
+			MOVE_ENDURE,
+			MOVE_DESTINY_BOND,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_QWILFISH[] = 
@@ -23469,6 +25537,27 @@ static u16 const sTutorMoves_SPECIES_SHUCKLE[] =
 	MOVE_SWEET_SCENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SHUCKLE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DEFENSE_CURL,
+			MOVE_ROLLOUT,
+			MOVE_REST,
+			MOVE_WRAP,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WRAP,
+			MOVE_ENCORE,
+			MOVE_SANDSTORM,
+			MOVE_MUD_SLAP,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHUCKLE[] = 
@@ -23734,6 +25823,27 @@ static u16 const sTutorMoves_SPECIES_SNEASEL[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SNEASEL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FAINT_ATTACK,
+			MOVE_ICY_WIND,
+			MOVE_SLASH,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FAINT_ATTACK,
+			MOVE_FAKE_OUT,
+			MOVE_SLASH,
+			MOVE_SCREECH,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SNEASEL[] = 
 {
@@ -23832,6 +25942,27 @@ static u16 const sTutorMoves_SPECIES_TEDDIURSA[] =
 	MOVE_TOXIC,
 	MOVE_YAWN,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_TEDDIURSA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_FAINT_ATTACK,
+			MOVE_MUD_SLAP,
+			MOVE_CHARM,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_SEISMIC_TOSS,
+			MOVE_YAWN,
+			MOVE_AERIAL_ACE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TEDDIURSA[] = 
@@ -23948,6 +26079,18 @@ static u16 const sTutorMoves_SPECIES_URSARING[] = // Counter	Crunch	Fake Tears	M
 	MOVE_TOXIC,
 	MOVE_YAWN,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_URSARING[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_RETURN,
+			MOVE_ROCK_TOMB,
+			MOVE_SEISMIC_TOSS,
+			MOVE_COUNTER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_URSARING[] = 
@@ -24162,6 +26305,28 @@ static u16 const sTutorMoves_SPECIES_MAGCARGO[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MAGCARGO[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_EMBER,
+			MOVE_ROCK_SLIDE,
+			MOVE_LIGHT_SCREEN,
+			MOVE_YAWN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FLAMETHROWER,
+			MOVE_ROCK_THROW,
+			MOVE_AMNESIA,
+			MOVE_MUD_SLAP,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGCARGO[] = 
 {
 	{
@@ -24269,6 +26434,27 @@ static u16 const sTutorMoves_SPECIES_SWINUB[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SWINUB[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DIG,
+			MOVE_ICY_WIND,
+			MOVE_TAKE_DOWN,
+			MOVE_LIGHT_SCREEN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ANCIENT_POWER,
+			MOVE_ICY_WIND,
+			MOVE_MUD_SHOT,
+			MOVE_REFLECT,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SWINUB[] = 
 {
@@ -24343,6 +26529,18 @@ static u16 const sTutorMoves_SPECIES_PILOSWINE[] = // Ancient Power	Bite	Body Sl
 	MOVE_TAKE_DOWN,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PILOSWINE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BLIZZARD,
+			MOVE_DIG,
+			MOVE_RETURN,
+			MOVE_ICY_WIND,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PILOSWINE[] = 
@@ -24460,6 +26658,27 @@ static u16 const sTutorMoves_SPECIES_CORSOLA[] =
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CORSOLA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_ROCK_BLAST,
+			MOVE_ICICLE_SPEAR,
+			MOVE_RECOVER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_ROCK_TOMB,
+			MOVE_MUD_SLAP,
+			MOVE_RECOVER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CORSOLA[] = 
@@ -24702,6 +26921,27 @@ static u16 const sTutorMoves_SPECIES_OCTILLERY[] = // Aurora	Haze	Octazooka	Rock
 	MOVE_WATERFALL,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_OCTILLERY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_OCTAZOOKA,
+			MOVE_PSYBEAM,
+			MOVE_AURORA_BEAM,
+			MOVE_BULLET_SEED,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_OCTAZOOKA,
+			MOVE_THIEF,
+			MOVE_SEISMIC_TOSS,
+			MOVE_ATTRACT,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_OCTILLERY[] = 
 {
@@ -24857,17 +27097,26 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DELIBIRD
 
 static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DELIBIRD[] = 
 {
-		{
-		.heldItem=ITEM_ORAN_BERRY,
-		.moves=
+	{
+		.moves =
 		{
 			MOVE_ICY_WIND,
-			MOVE_QUICK_ATTACK,
 			MOVE_AERIAL_ACE,
+			MOVE_QUICK_ATTACK,
+			MOVE_SEISMIC_TOSS,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ICY_WIND,
+			MOVE_AERIAL_ACE,
+			MOVE_QUICK_ATTACK,
 			MOVE_SEISMIC_TOSS,
 		},
 	},
 };
+
 #ifdef APPEND_MON_FLAGS_SPECIES_MANTINE
 #define MON_FLAGS_SPECIES_MANTINE (APPEND_MON_FLAGS_SPECIES_MANTINE | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3UU)
 #else
@@ -24930,6 +27179,18 @@ static u16 const sTutorMoves_SPECIES_MANTINE[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MANTINE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_WING_ATTACK,
+			MOVE_CONFUSE_RAY,
+			MOVE_ICY_WIND,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MANTINE[] = 
@@ -25059,6 +27320,18 @@ static u16 const sTutorMoves_SPECIES_SKARMORY[] =
 	MOVE_TOXIC,
 	MOVE_WHIRLWIND,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SKARMORY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DRILL_PECK,
+			MOVE_STEEL_WING,
+			MOVE_AGILITY,
+			MOVE_MUD_SLAP,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SKARMORY[] = 
@@ -25193,6 +27466,18 @@ static u16 const sTutorMoves_SPECIES_HOUNDOUR[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_HOUNDOUR[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BITE,
+			MOVE_EMBER,
+			MOVE_ROAR,
+			MOVE_SWIFT,
+		},
+	},
+};
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HOUNDOUR[] = 
 {
 	{
@@ -25291,6 +27576,18 @@ static u16 const sTutorMoves_SPECIES_HOUNDOOM[] = // Beat Up	Counter	Fire Spin	P
 	MOVE_TOXIC,
 	MOVE_WILL_O_WISP,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_HOUNDOOM[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BITE,
+			MOVE_FAINT_ATTACK,
+			MOVE_DOUBLE_EDGE,
+			MOVE_PURSUIT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HOUNDOOM[] = 
@@ -25604,6 +27901,27 @@ static u16 const sTutorMoves_SPECIES_DONPHAN[] = // Ancient Power	Body Slam	Coun
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DONPHAN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_STRENGTH,
+			MOVE_MUD_SLAP,
+			MOVE_ANCIENT_POWER,
+			MOVE_ATTRACT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_STRENGTH,
+			MOVE_ROCK_TOMB,
+			MOVE_FOCUS_ENERGY,
+			MOVE_REST,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DONPHAN[] = 
 {
@@ -25863,6 +28181,27 @@ static u16 const sTutorMoves_SPECIES_STANTLER[] =
 	MOVE_THUNDERBOLT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_STANTLER[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CONFUSE_RAY,
+			MOVE_STOMP,
+			MOVE_BITE,
+			MOVE_MUD_SLAP,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_HYPNOSIS,
+			MOVE_SECRET_POWER,
+			MOVE_BITE,
+			MOVE_SHOCK_WAVE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_STANTLER[] = 
@@ -26171,6 +28510,28 @@ static u16 const sTutorMoves_SPECIES_HITMONTOP[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_HITMONTOP[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ROLLING_KICK,
+			MOVE_AGILITY,
+			MOVE_QUICK_ATTACK,
+			MOVE_ENDEAVOR,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ROLLING_KICK,
+			MOVE_AGILITY,
+			MOVE_QUICK_ATTACK,
+			MOVE_ENDEAVOR,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HITMONTOP[] = 
 {
 	{
@@ -26310,6 +28671,27 @@ static u16 const sTutorMoves_SPECIES_SMOOCHUM[] =
 	MOVE_WISH,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SMOOCHUM[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CONFUSION,
+			MOVE_ICE_PUNCH,
+			MOVE_THIEF,
+			MOVE_SWEET_KISS,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_CONFUSION,
+			MOVE_ICE_PUNCH,
+			MOVE_LIGHT_SCREEN,
+			MOVE_WATER_PULSE,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SMOOCHUM[] = 
 {
@@ -26410,6 +28792,27 @@ static u16 const sTutorMoves_SPECIES_ELEKID[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ELEKID[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SHOCK_WAVE,
+			MOVE_SWIFT,
+			MOVE_MUD_SLAP,
+			MOVE_LIGHT_SCREEN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SHOCK_WAVE,
+			MOVE_SEISMIC_TOSS,
+			MOVE_ENDURE,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ELEKID[] = 
 {
@@ -26502,6 +28905,27 @@ static u16 const sTutorMoves_SPECIES_MAGBY[] = // Barrier	Cross	Karate	Mega	Scre
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MAGBY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FIRE_PUNCH,
+			MOVE_CONFUSE_RAY,
+			MOVE_SMOKESCREEN,
+			MOVE_FACADE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FIRE_PUNCH,
+			MOVE_SEISMIC_TOSS,
+			MOVE_KARATE_CHOP,
+			MOVE_SUNNY_DAY,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAGBY[] = 
@@ -26614,6 +29038,18 @@ static u16 const sTutorMoves_SPECIES_MILTANK[] =
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MILTANK[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MILK_DRINK,
+			MOVE_SURF,
+			MOVE_BODY_SLAM,
+			MOVE_COUNTER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MILTANK[] = 
@@ -26766,7 +29202,18 @@ static u16 const sTutorMoves_SPECIES_BLISSEY[] = // Aromatherapy	Heal Bell	Metro
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
 };
-
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BLISSEY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SOFT_BOILED,
+			MOVE_MINIMIZE,
+			MOVE_SHOCK_WAVE,
+			MOVE_ICY_WIND,
+		},
+	},
+};
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BLISSEY[] = 
 {
 	{
@@ -27235,6 +29682,28 @@ static u16 const sTutorMoves_SPECIES_LARVITAR[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LARVITAR[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BITE,
+			MOVE_ANCIENT_POWER,
+			MOVE_MUD_SLAP,
+			MOVE_THRASH,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ANCIENT_POWER,
+			MOVE_DIG,
+			MOVE_DRAGON_DANCE,
+			MOVE_FACADE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LARVITAR[] = 
 {
 	{
@@ -27307,6 +29776,18 @@ static u16 const sTutorMoves_SPECIES_PUPITAR[] =
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PUPITAR[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ROCK_SLIDE,
+			MOVE_DIG,
+			MOVE_CRUNCH,
+			MOVE_RETURN,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PUPITAR[] = 
@@ -27990,6 +30471,28 @@ static u16 const sTutorMoves_SPECIES_GROVYLE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GROVYLE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MEGA_DRAIN,
+			MOVE_DRAGON_BREATH,
+			MOVE_PURSUIT,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_MEGA_DRAIN,
+			MOVE_SLASH,
+			MOVE_LEECH_SEED,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GROVYLE[] = 
 {
 	{
@@ -28302,6 +30805,27 @@ static u16 const sTutorMoves_SPECIES_COMBUSKEN[] =
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_COMBUSKEN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DOUBLE_KICK,
+			MOVE_EMBER,
+			MOVE_FOCUS_ENERGY,
+			MOVE_ROCK_TOMB,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_DOUBLE_KICK,
+			MOVE_AERIAL_ACE,
+			MOVE_DIG, // or MOVE_SWIFT
+			MOVE_QUICK_ATTACK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_COMBUSKEN[] = 
@@ -28618,6 +31142,28 @@ static u16 const sTutorMoves_SPECIES_MARSHTOMP[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MARSHTOMP[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MUD_SHOT,
+			MOVE_WATER_GUN,
+			MOVE_MUD_SLAP,
+			MOVE_TAKE_DOWN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+			MOVE_WATER_PULSE,
+			MOVE_SECRET_POWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MARSHTOMP[] = 
@@ -28957,6 +31503,27 @@ static u16 const sTutorMoves_SPECIES_MIGHTYENA[] =
 	MOVE_YAWN,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MIGHTYENA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BITE,
+			MOVE_SECRET_POWER,
+			MOVE_POISON_FANG,
+			MOVE_SAND_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_BITE,
+			MOVE_TAKE_DOWN,
+			MOVE_SWAGGER,
+			MOVE_ATTRACT,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MIGHTYENA[] = 
 {
@@ -29179,6 +31746,28 @@ static u16 const sTutorMoves_SPECIES_LINOONE[] = // Charm	Pursuit	Sub	Tickle	Tri
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LINOONE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_MUD_SLAP,
+			MOVE_WATER_PULSE,
+			MOVE_FLAIL,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_DIG,
+			MOVE_ICY_WIND,
+			MOVE_TICKLE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LINOONE[] = 
 {
     {
@@ -29339,6 +31928,28 @@ static u16 const sTutorMoves_SPECIES_BEAUTIFLY[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BEAUTIFLY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_STUN_SPORE,
+			MOVE_SILVER_WIND,
+			MOVE_AERIAL_ACE,
+			MOVE_MEGA_DRAIN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SUBSTITUTE,
+			MOVE_SILVER_WIND,
+			MOVE_AERIAL_ACE,
+			MOVE_MEGA_DRAIN,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BEAUTIFLY[] = 
 {
 	{
@@ -29432,6 +32043,28 @@ static u16 const sTutorMoves_SPECIES_DUSTOX[] =
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DUSTOX[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TOXIC,
+			MOVE_SILVER_WIND,
+			MOVE_PSYBEAM,
+			MOVE_MOONLIGHT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_AERIAL_ACE,
+			MOVE_SILVER_WIND,
+			MOVE_PSYBEAM,
+			MOVE_SECRET_POWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DUSTOX[] = 
@@ -29633,6 +32266,28 @@ static u16 const sTutorMoves_SPECIES_LOMBRE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LOMBRE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FAKE_OUT,
+			MOVE_MEGA_DRAIN,
+			MOVE_BUBBLE_BEAM,
+			MOVE_THIEF,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_PROTECT,
+			MOVE_BUBBLE_BEAM,
+			MOVE_SECRET_POWER,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LOMBRE[] = 
 {
 	{
@@ -29744,6 +32399,18 @@ static u16 const sTutorMoves_SPECIES_LUDICOLO[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LUDICOLO[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_RAZOR_LEAF,
+			MOVE_SEISMIC_TOSS,
+			MOVE_LEECH_SEED,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LUDICOLO[] = 
@@ -29957,6 +32624,27 @@ static u16 const sTutorMoves_SPECIES_NUZLEAF[] = // Amnesia	False Swipe	Leech	Qu
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NUZLEAF[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FAKE_OUT,
+			MOVE_RAZOR_LEAF,
+			MOVE_FAINT_ATTACK,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FAINT_ATTACK,
+			MOVE_ROCK_TOMB,
+			MOVE_MEGA_KICK,
+			MOVE_BULLET_SEED,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NUZLEAF[] = 
 {
@@ -30063,6 +32751,18 @@ static u16 const sTutorMoves_SPECIES_SHIFTRY[] = // Amnesia	False Swipe	Leech	Qu
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SHIFTRY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_GIGA_DRAIN,
+			MOVE_FAINT_ATTACK,
+			MOVE_EXTRASENSORY,
+			MOVE_QUICK_ATTACK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHIFTRY[] = 
@@ -30204,6 +32904,18 @@ static u16 const sTutorMoves_SPECIES_NINCADA[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NINCADA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_METAL_CLAW,
+			MOVE_MUD_SLAP,
+			MOVE_HARDEN,
+		},
+	},
+};
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NINCADA[] = 
 {
 };
@@ -30273,6 +32985,28 @@ static u16 const sTutorMoves_SPECIES_NINJASK[] = // Endure	Feint	Gust	Silver Win
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NINJASK[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_METAL_CLAW,
+			MOVE_FURY_CUTTER,
+			MOVE_DOUBLE_TEAM,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_METAL_CLAW,
+			MOVE_FURY_CUTTER,
+			MOVE_DIG,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NINJASK[] = 
@@ -30471,6 +33205,27 @@ static u16 const sTutorMoves_SPECIES_TAILLOW[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_TAILLOW[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WING_ATTACK,
+			MOVE_QUICK_ATTACK,
+			MOVE_MUD_SLAP,
+			MOVE_THIEF,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WING_ATTACK,
+			MOVE_QUICK_ATTACK,
+			MOVE_MUD_SLAP,
+			MOVE_THIEF,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TAILLOW[] = 
 {
@@ -30559,6 +33314,28 @@ static u16 const sTutorMoves_SPECIES_SWELLOW[] = // Mirror Move	Pursuit	Rage	Ref
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SWELLOW[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_AERIAL_ACE,
+			MOVE_QUICK_ATTACK,
+			MOVE_STEEL_WING,
+			MOVE_SECRET_POWER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SUBSTITUTE,
+			MOVE_AERIAL_ACE,
+			MOVE_ENDEAVOR,
+			MOVE_SECRET_POWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SWELLOW[] = 
@@ -30684,6 +33461,28 @@ static u16 const sTutorMoves_SPECIES_SHROOMISH[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SHROOMISH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TOXIC,
+			MOVE_LEECH_SEED,
+			MOVE_HEADBUTT,
+			MOVE_MEGA_DRAIN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_TOXIC,
+			MOVE_LEECH_SEED,
+			MOVE_HEADBUTT,
+			MOVE_MEGA_DRAIN,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHROOMISH[] = 
 {
 	{
@@ -30787,6 +33586,28 @@ static u16 const sTutorMoves_SPECIES_BRELOOM[] = // Charm	Fake Tears	False Swipe
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BRELOOM[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_MACH_PUNCH,
+			MOVE_LEECH_SEED,
+			MOVE_COUNTER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_MEGA_DRAIN,
+			MOVE_MACH_PUNCH,
+			MOVE_MEGA_PUNCH,
+			MOVE_STUN_SPORE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BRELOOM[] = 
@@ -30939,6 +33760,28 @@ static u16 const sTutorMoves_SPECIES_SPINDA[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SPINDA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TEETER_DANCE,
+			MOVE_DIZZY_PUNCH,
+			MOVE_PSYBEAM,
+			MOVE_FAINT_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_TEETER_DANCE,
+			MOVE_DIZZY_PUNCH,
+			MOVE_PSYBEAM,
+			MOVE_FAINT_ATTACK,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SPINDA[] = 
 {
 	{
@@ -31027,6 +33870,28 @@ static u16 const sTutorMoves_SPECIES_WINGULL[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATER_SPORT,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_WINGULL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_WING_ATTACK,
+			MOVE_QUICK_ATTACK,
+			MOVE_PURSUIT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_WING_ATTACK,
+			MOVE_QUICK_ATTACK,
+			MOVE_PURSUIT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WINGULL[] = 
@@ -31121,6 +33986,28 @@ static u16 const sTutorMoves_SPECIES_PELIPPER[] = // Agility	Gust	Mist	Twister	W
 	MOVE_WATER_PULSE,
 	MOVE_WATER_SPORT,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PELIPPER[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WING_ATTACK,
+			MOVE_WATER_PULSE,
+			MOVE_ICY_WIND,
+			MOVE_SHOCK_WAVE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_FLY,
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PELIPPER[] = 
@@ -31313,6 +34200,28 @@ static u16 const sTutorMoves_SPECIES_MASQUERAIN[] = // Foresight	Hydro Pump	Mind
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MASQUERAIN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_GUST,
+			MOVE_BUBBLE_BEAM,
+			MOVE_SILVER_WIND,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ICY_WIND,
+			MOVE_PSYBEAM,
+			MOVE_STUN_SPORE,
+			MOVE_BUBBLE_BEAM,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MASQUERAIN[] = 
 {
 	{
@@ -31430,6 +34339,28 @@ static u16 const sTutorMoves_SPECIES_WAILMER[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_WAILMER[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_ROCK_TOMB,
+			MOVE_STRENGTH,
+			MOVE_TICKLE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_ROLLOUT,
+			MOVE_AMNESIA,
+			MOVE_REST,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WAILMER[] = 
@@ -31746,6 +34677,28 @@ static u16 const sTutorMoves_SPECIES_DELCATTY[] = // Baton Pass	Fake Tears	Psych
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DELCATTY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CALM_MIND,
+			MOVE_THUNDERBOLT,
+			MOVE_ICE_BEAM,
+			MOVE_WISH,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_DOUBLE_EDGE,
+			MOVE_SING,
+			MOVE_MUD_SLAP,
+			MOVE_FAINT_ATTACK,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DELCATTY[] = 
 {
 	{
@@ -31902,6 +34855,27 @@ static u16 const sTutorMoves_SPECIES_KECLEON[] =
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_KECLEON[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_PSYBEAM,
+			MOVE_FAINT_ATTACK,
+			MOVE_COUNTER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_AERIAL_ACE,
+			MOVE_SHOCK_WAVE,
+			MOVE_WATER_PULSE,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KECLEON[] = 
 {
@@ -32030,6 +35004,28 @@ static u16 const sTutorMoves_SPECIES_BALTOY[] =
 	MOVE_SWAGGER,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BALTOY[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MUD_SLAP,
+			MOVE_PSYBEAM,
+			MOVE_ROCK_TOMB,
+			MOVE_COSMIC_POWER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_MUD_SLAP,
+			MOVE_PSYBEAM,
+			MOVE_ROCK_TOMB,
+			MOVE_COSMIC_POWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BALTOY[] = 
@@ -32257,6 +35253,28 @@ static u16 const sTutorMoves_SPECIES_NOSEPASS[] =
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NOSEPASS[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_THUNDER_WAVE,
+			MOVE_ROCK_SLIDE,
+			MOVE_SECRET_POWER,
+			MOVE_REST,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ROCK_TOMB,
+			MOVE_SHOCK_WAVE,
+			MOVE_THUNDER_WAVE,
+			MOVE_ROCK_SLIDE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NOSEPASS[] = 
@@ -32511,6 +35529,28 @@ static u16 const sTutorMoves_SPECIES_SABLEYE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SABLEYE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FAKE_OUT,
+			MOVE_NIGHT_SHADE,
+			MOVE_MUD_SLAP,
+			MOVE_MOONLIGHT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_CALM_MIND,
+			MOVE_FAINT_ATTACK,
+			MOVE_WATER_PULSE,
+			MOVE_MOONLIGHT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SABLEYE[] = 
 {
     {
@@ -32635,6 +35675,27 @@ static u16 const sTutorMoves_SPECIES_BARBOACH[] =
 	MOVE_WHIRLPOOL,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BARBOACH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MAGNITUDE,
+			MOVE_WATER_GUN,
+			MOVE_AMNESIA,
+			MOVE_REST,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_MAGNITUDE,
+			MOVE_WATER_GUN,
+			MOVE_SPARK,
+			MOVE_SECRET_POWER,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BARBOACH[] = 
 {
@@ -32730,6 +35791,18 @@ static u16 const sTutorMoves_SPECIES_WHISCASH[] =
 	MOVE_WATERFALL,
 	MOVE_WHIRLPOOL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_WHISCASH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_EARTHQUAKE,
+			MOVE_REST,
+			MOVE_SLEEP_TALK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WHISCASH[] = 
@@ -32832,6 +35905,27 @@ static u16 const sTutorMoves_SPECIES_LUVDISC[] =
 	MOVE_WATERFALL,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LUVDISC[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_SWEET_KISS,
+			MOVE_FLAIL,
+			MOVE_ATTRACT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_TAKE_DOWN,
+			MOVE_RAIN_DANCE,
+			MOVE_SAFEGUARD,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LUVDISC[] = 
 {
@@ -32920,6 +36014,27 @@ static u16 const sTutorMoves_SPECIES_CORPHISH[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CORPHISH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_VICE_GRIP,
+			MOVE_ANCIENT_POWER,
+			MOVE_TAUNT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_BUBBLE_BEAM,
+			MOVE_VICE_GRIP,
+			MOVE_ROCK_TOMB,
+			MOVE_MUD_SLAP,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CORPHISH[] = 
@@ -33024,6 +36139,18 @@ static u16 const sTutorMoves_SPECIES_CRAWDAUNT[] = // Ancient Power	Bslam	Endeav
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CRAWDAUNT[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CRABHAMMER,
+			MOVE_CRUNCH,
+			MOVE_RETURN,
+			MOVE_TAUNT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CRAWDAUNT[] = 
@@ -33333,6 +36460,28 @@ static u16 const sTutorMoves_SPECIES_CARVANHA[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CARVANHA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DIVE,
+			MOVE_BITE,
+			MOVE_TAKE_DOWN,
+			MOVE_SWAGGER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WATER_GUN,
+			MOVE_CRUNCH,
+			MOVE_MUD_SLAP,
+			MOVE_SECRET_POWER,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CARVANHA[] = 
 {
 	{
@@ -33432,6 +36581,18 @@ static u16 const sTutorMoves_SPECIES_SHARPEDO[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SHARPEDO[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATERFALL,
+			MOVE_CRUNCH,
+			MOVE_AGILITY,
+			MOVE_SLASH,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHARPEDO[] = 
@@ -33533,6 +36694,28 @@ static u16 const sTutorMoves_SPECIES_TRAPINCH[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_TRAPINCH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DIG,
+			MOVE_MUD_SLAP,
+			MOVE_CRUNCH,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_DIG,
+			MOVE_MUD_SLAP,
+			MOVE_CRUNCH,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TRAPINCH[] = 
 {
 	{
@@ -33610,6 +36793,18 @@ static u16 const sTutorMoves_SPECIES_VIBRAVA[] =
 	MOVE_SWIFT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_VIBRAVA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DRAGON_BREATH,
+			MOVE_FLAMETHROWER,
+			MOVE_CRUNCH,
+			MOVE_QUICK_ATTACK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VIBRAVA[] = 
@@ -33845,6 +37040,28 @@ static u16 const sTutorMoves_SPECIES_MAKUHITA[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MAKUHITA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FAKE_OUT,
+			MOVE_SMELLING_SALT,
+			MOVE_VITAL_THROW,
+			MOVE_ARM_THRUST,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FAKE_OUT,
+			MOVE_SMELLING_SALT,
+			MOVE_VITAL_THROW,
+			MOVE_ARM_THRUST,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAKUHITA[] = 
 {
 	{
@@ -33948,6 +37165,28 @@ static u16 const sTutorMoves_SPECIES_HARIYAMA[] = // Counter	Cross	Detect	D-punc
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_HARIYAMA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ROCK_TOMB,
+			MOVE_VITAL_THROW,
+			MOVE_ARM_THRUST,
+			MOVE_BULK_UP,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FAKE_OUT,
+			MOVE_VITAL_THROW,
+			MOVE_ARM_THRUST,
+			MOVE_COUNTER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HARIYAMA[] = 
@@ -34080,6 +37319,28 @@ static u16 const sTutorMoves_SPECIES_ELECTRIKE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ELECTRIKE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_BITE,
+			MOVE_THUNDER_WAVE,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_MUD_SLAP,
+			MOVE_THUNDER_WAVE,
+			MOVE_SWIFT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ELECTRIKE[] = 
 {
 	{
@@ -34170,6 +37431,19 @@ static u16 const sTutorMoves_SPECIES_MANECTRIC[] = // Crunch	Curse	Headbutt	Swif
 	MOVE_TOXIC,
 	MOVE_UPROAR,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MANECTRIC[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_THUNDERBOLT,
+			MOVE_BITE,
+			MOVE_QUICK_ATTACK,
+			MOVE_SECRET_POWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MANECTRIC[] = 
@@ -34303,6 +37577,28 @@ static u16 const sTutorMoves_SPECIES_NUMEL[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_NUMEL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_MAGNITUDE,
+			MOVE_EMBER,
+			MOVE_ROCK_TOMB,
+			MOVE_TAKE_DOWN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_MAGNITUDE,
+			MOVE_EMBER,
+			MOVE_DOUBLE_EDGE,
+			MOVE_SCARY_FACE,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_NUMEL[] = 
 {
 	{
@@ -34398,6 +37694,18 @@ static u16 const sTutorMoves_SPECIES_CAMERUPT[] = // Bslam	Defcurl	Howl	Rollout	
 	MOVE_SWAGGER,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CAMERUPT[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FLAMETHROWER,
+			MOVE_EARTHQUAKE,
+			MOVE_DOUBLE_EDGE,
+			MOVE_ROCK_SLIDE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CAMERUPT[] = 
@@ -34521,6 +37829,27 @@ static u16 const sTutorMoves_SPECIES_SPHEAL[] =
 	MOVE_WATERFALL,
 	MOVE_YAWN,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SPHEAL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ICE_BALL,
+			MOVE_BODY_SLAM,
+			MOVE_WATER_PULSE,
+			MOVE_ENCORE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_AURORA_BEAM,
+			MOVE_BODY_SLAM,
+			MOVE_WATER_GUN,
+			MOVE_ICY_WIND,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SPHEAL[] = 
@@ -34840,6 +38169,27 @@ static u16 const sTutorMoves_SPECIES_CACNEA[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CACNEA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_FAINT_ATTACK,
+			MOVE_NEEDLE_ARM,
+			MOVE_PROTECT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_FAINT_ATTACK,
+			MOVE_NEEDLE_ARM,
+			MOVE_SECRET_POWER,
+			MOVE_SAND_ATTACK,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CACNEA[] = 
 {
@@ -34936,6 +38286,18 @@ static u16 const sTutorMoves_SPECIES_CACTURNE[] = // Acid	Counter	D-punch	Grassw
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CACTURNE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_FAINT_ATTACK,
+			MOVE_RETURN,
+			MOVE_THUNDER_PUNCH,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CACTURNE[] = 
@@ -35078,6 +38440,27 @@ static u16 const sTutorMoves_SPECIES_SNORUNT[] =
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SNORUNT[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_ICY_WIND,
+			MOVE_CRUNCH,
+			MOVE_DOUBLE_TEAM,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_ICY_WIND,
+			MOVE_BITE,
+			MOVE_WATER_PULSE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SNORUNT[] = 
@@ -35303,6 +38686,27 @@ static u16 const sTutorMoves_SPECIES_LUNATONE[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LUNATONE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CONFUSION,
+			MOVE_ROCK_THROW,
+			MOVE_HYPNOSIS,
+			MOVE_COSMIC_POWER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_CONFUSION,
+			MOVE_ROCK_THROW,
+			MOVE_HYPNOSIS,
+			MOVE_COSMIC_POWER,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LUNATONE[] = 
 {
@@ -35434,6 +38838,27 @@ static u16 const sTutorMoves_SPECIES_SOLROCK[] =
 	MOVE_SWIFT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SOLROCK[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CONFUSION,
+			MOVE_ROCK_THROW,
+			MOVE_MUD_SLAP,
+			MOVE_COSMIC_POWER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_CONFUSION,
+			MOVE_ROCK_THROW,
+			MOVE_MUD_SLAP,
+			MOVE_COSMIC_POWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SOLROCK[] = 
@@ -35625,6 +39050,28 @@ static u16 const sTutorMoves_SPECIES_SPOINK[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SPOINK[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_PSYWAVE,
+			MOVE_CONFUSE_RAY,
+			MOVE_PSYCHIC,
+			MOVE_SHOCK_WAVE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_PSYCHIC,
+			MOVE_CONFUSE_RAY,
+			MOVE_REFLECT,
+			MOVE_LIGHT_SCREEN,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SPOINK[] = 
 {
 	{
@@ -35730,6 +39177,18 @@ static u16 const sTutorMoves_SPECIES_GRUMPIG[] = // Extrasense	Future	Sub	Trick
 	MOVE_TOXIC,
 	MOVE_TRICK,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GRUMPIG[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_PSYCHIC,
+			MOVE_REST,
+			MOVE_CONFUSE_RAY,
+			MOVE_SEISMIC_TOSS,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GRUMPIG[] = 
@@ -35866,6 +39325,28 @@ static u16 const sTutorMoves_SPECIES_PLUSLE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_PLUSLE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_THUNDER_WAVE,
+			MOVE_ENCORE,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_THUNDER_WAVE,
+			MOVE_ENCORE,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_PLUSLE[] = 
 {
 	{
@@ -35960,6 +39441,28 @@ static u16 const sTutorMoves_SPECIES_MINUN[] =
 	MOVE_TOXIC,
 	MOVE_WISH,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MINUN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_THUNDER_WAVE,
+			MOVE_ENCORE,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SPARK,
+			MOVE_THUNDER_WAVE,
+			MOVE_ENCORE,
+			MOVE_QUICK_ATTACK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MINUN[] = 
@@ -36105,6 +39608,28 @@ static u16 const sTutorMoves_SPECIES_MAWILE[] =
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MAWILE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_METAL_CLAW,
+			MOVE_FAINT_ATTACK,
+			MOVE_SECRET_POWER,
+			MOVE_CRUNCH,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ANCIENT_POWER,
+			MOVE_MUD_SLAP,
+			MOVE_TICKLE,
+			MOVE_CRUNCH,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAWILE[] = 
@@ -36262,6 +39787,28 @@ static u16 const sTutorMoves_SPECIES_MEDITITE[] =
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_MEDITITE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SWAGGER,
+			MOVE_CONFUSION,
+			MOVE_SECRET_POWER,
+			MOVE_FAKE_OUT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ROCK_SMASH,
+			MOVE_CONFUSION,
+			MOVE_ROCK_TOMB,
+			MOVE_SECRET_POWER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEDITITE[] = 
@@ -36498,6 +40045,27 @@ static u16 const sTutorMoves_SPECIES_SWABLU[] =
 	MOVE_THIEF,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SWABLU[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TAKE_DOWN,
+			MOVE_AERIAL_ACE,
+			MOVE_SING,
+			MOVE_STEEL_WING,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SECRET_POWER,
+			MOVE_PURSUIT,
+			MOVE_PERISH_SONG,
+			MOVE_MIRROR_MOVE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SWABLU[] = 
@@ -36771,6 +40339,27 @@ static u16 const sTutorMoves_SPECIES_DUSKULL[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_DUSKULL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_NIGHT_SHADE,
+			MOVE_CONFUSE_RAY,
+			MOVE_FACADE,
+			MOVE_WILL_O_WISP,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_NIGHT_SHADE,
+			MOVE_CURSE,
+			MOVE_FAINT_ATTACK,
+			MOVE_WILL_O_WISP,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DUSKULL[] = 
 {
@@ -37014,6 +40603,28 @@ static u16 const sTutorMoves_SPECIES_ROSELIA[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ROSELIA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_MAGICAL_LEAF,
+			MOVE_SUBSTITUTE,
+			MOVE_SECRET_POWER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+			MOVE_MAGICAL_LEAF,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ROSELIA[] = 
 {
     {
@@ -37240,6 +40851,28 @@ static u16 const sTutorMoves_SPECIES_VIGOROTH[] = // Body Slam	Crush Claw	Curse	
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_VIGOROTH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SLASH,
+			MOVE_ENCORE,
+			MOVE_FOCUS_ENERGY,
+			MOVE_FAINT_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SLACK_OFF,
+			MOVE_FOCUS_ENERGY,
+			MOVE_SLASH,
+			MOVE_FAINT_ATTACK,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VIGOROTH[] = 
@@ -37488,6 +41121,28 @@ static u16 const sTutorMoves_SPECIES_GULPIN[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GULPIN[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SLUDGE,
+			MOVE_TOXIC,
+			MOVE_SHOCK_WAVE,
+			MOVE_WATER_PULSE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SLUDGE,
+			MOVE_TOXIC,
+			MOVE_ENCORE,
+			MOVE_PROTECT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GULPIN[] = 
 {
 };
@@ -37566,6 +41221,19 @@ static u16 const sTutorMoves_SPECIES_SWALOT[] = // Acid Armor	Dream Eater	Pain S
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SWALOT[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SLUDGE_BOMB,
+			MOVE_TOXIC,
+			MOVE_GIGA_DRAIN,
+			MOVE_RETURN,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SWALOT[] = 
@@ -37689,6 +41357,27 @@ static u16 const sTutorMoves_SPECIES_TROPIUS[] =
 	MOVE_SWORDS_DANCE,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_TROPIUS[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_RAZOR_LEAF,
+			MOVE_BODY_SLAM,
+			MOVE_AERIAL_ACE,
+			MOVE_SYNTHESIS,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_LEECH_SEED,
+			MOVE_BODY_SLAM,
+			MOVE_AERIAL_ACE,
+			MOVE_STEEL_WING,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_TROPIUS[] = 
@@ -37918,6 +41607,28 @@ static u16 const sTutorMoves_SPECIES_LOUDRED[] =  // Extrasens, Smellingsalt, Ta
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LOUDRED[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_FACADE,
+			MOVE_ICY_WIND,
+			MOVE_SHOCK_WAVE,
+			MOVE_WATER_PULSE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_STOMP,
+			MOVE_EXTRASENSORY,
+			MOVE_MUD_SLAP,
+			MOVE_REST,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LOUDRED[] = 
 {
 	{
@@ -38031,6 +41742,19 @@ static u16 const sTutorMoves_SPECIES_EXPLOUD[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_EXPLOUD[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_HYPER_VOICE,
+			MOVE_EXTRASENSORY,
+			MOVE_SHADOW_BALL,
+			MOVE_REST, // Replace with MOVE_HYPER_BEAM if desired
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EXPLOUD[] = 
 {
 	{
@@ -38109,6 +41833,27 @@ static u16 const sTutorMoves_SPECIES_CLAMPERL[] =
 	MOVE_WATER_PULSE,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CLAMPERL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_IRON_DEFENSE,
+			MOVE_SECRET_POWER,
+			MOVE_ATTRACT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_WATER_PULSE,
+			MOVE_MUD_SPORT,
+			MOVE_SECRET_POWER,
+			MOVE_ICY_WIND,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CLAMPERL[] = 
@@ -38452,6 +42197,27 @@ static u16 const sTutorMoves_SPECIES_ABSOL[] =
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ABSOL[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BITE,
+			MOVE_SLASH,
+			MOVE_QUICK_ATTACK,
+			MOVE_TAUNT,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_SWORDS_DANCE,
+			MOVE_SLASH,
+			MOVE_QUICK_ATTACK,
+			MOVE_ROCK_SMASH,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ABSOL[] = 
 {
@@ -38561,6 +42327,27 @@ static u16 const sTutorMoves_SPECIES_SHUPPET[] =
 	MOVE_TORMENT,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SHUPPET[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_NIGHT_SHADE,
+			MOVE_CURSE,
+			MOVE_SECRET_POWER,
+			MOVE_ICY_WIND,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_NIGHT_SHADE,
+			MOVE_CURSE,
+			MOVE_WILL_O_WISP,
+			MOVE_TAUNT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHUPPET[] = 
@@ -38782,6 +42569,27 @@ static u16 const sTutorMoves_SPECIES_SEVIPER[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SEVIPER[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_POISON_TAIL,
+			MOVE_CRUNCH,
+			MOVE_DIG,
+			MOVE_GLARE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_POISON_FANG,
+			MOVE_SUBSTITUTE,
+			MOVE_GLARE,
+			MOVE_SWAGGER,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SEVIPER[] = 
 {
@@ -38941,6 +42749,27 @@ static u16 const sTutorMoves_SPECIES_ZANGOOSE[] =
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ZANGOOSE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CRUSH_CLAW,
+			MOVE_PURSUIT,
+			MOVE_DOUBLE_KICK,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_CRUSH_CLAW,
+			MOVE_PURSUIT,
+			MOVE_DOUBLE_KICK,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ZANGOOSE[] = 
 {
@@ -39071,6 +42900,18 @@ static u16 const sTutorMoves_SPECIES_RELICANTH[] =
 	MOVE_WATER_SPORT,
 	MOVE_WATERFALL,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_RELICANTH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ANCIENT_POWER,
+			MOVE_WATER_PULSE,
+			MOVE_MAGNITUDE,
+			MOVE_TAKE_DOWN,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_RELICANTH[] = 
@@ -39278,6 +43119,18 @@ static u16 const sTutorMoves_SPECIES_LAIRON[] =
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LAIRON[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_IRON_TAIL,
+			MOVE_ROCK_TOMB,
+			MOVE_DIG,
+			MOVE_DOUBLE_EDGE,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LAIRON[] = 
@@ -39529,6 +43382,27 @@ static u16 const sTutorMoves_SPECIES_CASTFORM[] =
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CASTFORM[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_RAIN_DANCE,
+			MOVE_POWDER_SNOW,
+			MOVE_WEATHER_BALL,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_HEADBUTT,
+			MOVE_SUNNY_DAY,
+			MOVE_POWDER_SNOW,
+			MOVE_WEATHER_BALL,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CASTFORM[] = 
 {
@@ -39720,6 +43594,28 @@ static u16 const sTutorMoves_SPECIES_VOLBEAT[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_VOLBEAT[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_SIGNAL_BEAM,
+			MOVE_QUICK_ATTACK,
+			MOVE_MOONLIGHT,
+			MOVE_FACADE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_TAIL_GLOW,
+			MOVE_SHOCK_WAVE,
+			MOVE_WATER_PULSE,
+			MOVE_MOONLIGHT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VOLBEAT[] = 
 {
 	{
@@ -39835,6 +43731,28 @@ static u16 const sTutorMoves_SPECIES_ILLUMISE[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ILLUMISE[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TOXIC,
+			MOVE_PROTECT,
+			MOVE_MOONLIGHT,
+			MOVE_QUICK_ATTACK,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ENCORE,
+			MOVE_SILVER_WIND,
+			MOVE_SHOCK_WAVE,
+			MOVE_MOONLIGHT,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ILLUMISE[] = 
 {
 	{
@@ -39918,6 +43836,27 @@ static u16 const sTutorMoves_SPECIES_LILEEP[] =
 	MOVE_SWAGGER,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_LILEEP[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_ACID,
+			MOVE_CONFUSE_RAY,
+			MOVE_BULLET_SEED,
+			MOVE_SECRET_POWER,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_BULLET_SEED,
+			MOVE_CONFUSE_RAY,
+			MOVE_SECRET_POWER,
+			MOVE_MIRROR_COAT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_LILEEP[] = 
@@ -40129,6 +44068,27 @@ static u16 const sTutorMoves_SPECIES_ANORITH[] =
 	MOVE_TOXIC,
 	MOVE_WATER_PULSE,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_ANORITH[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_METAL_CLAW,
+			MOVE_SLASH,
+			MOVE_WATER_GUN,
+			MOVE_DIG,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_ROCK_TOMB,
+			MOVE_SLASH,
+			MOVE_WATER_GUN,
+			MOVE_FURY_CUTTER,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ANORITH[] = 
@@ -40454,6 +44414,28 @@ static u16 const sTutorMoves_SPECIES_KIRLIA[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_KIRLIA[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CALM_MIND,
+			MOVE_CONFUSION,
+			MOVE_MAGICAL_LEAF,
+			MOVE_SHOCK_WAVE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_PSYCHIC,
+			MOVE_MAGICAL_LEAF,
+			MOVE_THIEF,
+			MOVE_MUD_SLAP,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KIRLIA[] = 
 {
 	{
@@ -40558,6 +44540,18 @@ static u16 const sTutorMoves_SPECIES_GARDEVOIR[] =
 	MOVE_TOXIC,
 	MOVE_WILL_O_WISP,
 	MOVE_NONE,
+};
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_GARDEVOIR[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_CALM_MIND,
+			MOVE_PSYCHIC,
+			MOVE_MAGICAL_LEAF,
+			MOVE_REFLECT,
+		},
+	},
 };
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_GARDEVOIR[] = 
@@ -40686,6 +44680,28 @@ static u16 const sTutorMoves_SPECIES_BAGON[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BAGON[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_BITE,
+			MOVE_HEADBUTT,
+			MOVE_EMBER,
+			MOVE_DRAGON_BREATH,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_BITE,
+			MOVE_HEADBUTT,
+			MOVE_EMBER,
+			MOVE_DRAGON_BREATH,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BAGON[] = 
 {
 	{
@@ -40770,6 +44786,19 @@ static u16 const sTutorMoves_SPECIES_SHELGON[] =
 	MOVE_TOXIC,
 	MOVE_TWISTER,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_SHELGON[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_DRAGON_CLAW,
+			MOVE_DOUBLE_EDGE,
+			MOVE_SCARY_FACE,
+			MOVE_FLAMETHROWER,
+		},
+	},
 };
 
 // Use full-power sets for 2nd stage pseudo 
@@ -40955,6 +44984,22 @@ static u16 const sTutorMoves_SPECIES_BELDUM[] =
 	MOVE_NONE,
 };
 
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_BELDUM[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_TAKE_DOWN,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_TAKE_DOWN,
+		},
+	},
+};
+
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BELDUM[] = 
 {
 	{
@@ -41036,6 +45081,19 @@ static u16 const sTutorMoves_SPECIES_METANG[] =
 	MOVE_THUNDER_PUNCH,
 	MOVE_TOXIC,
 	MOVE_NONE,
+};
+
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_METANG[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_METAL_CLAW,
+			MOVE_CONFUSION,
+			MOVE_BODY_SLAM,
+			MOVE_AGILITY,
+		},
+	},
 };
 
 // use full-power sets for 2nd-stage pseudo 
@@ -42570,6 +46628,27 @@ static u16 const sTutorMoves_SPECIES_CHIMECHO[] =
 	MOVE_TOXIC,
 	MOVE_NONE,
 };
+static struct RoguePokemonCompetitiveSet const sWeakSets_SPECIES_CHIMECHO[] = 
+{
+	{
+		.moves =
+		{
+			MOVE_PSYWAVE,
+			MOVE_CONFUSION,
+			MOVE_DOUBLE_EDGE,
+			MOVE_SHOCK_WAVE,
+		},
+	},
+	{
+		.moves =
+		{
+			MOVE_YAWN,
+			MOVE_CONFUSION,
+			MOVE_DOUBLE_EDGE,
+			MOVE_WISH,
+		},
+	},
+};
 
 static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CHIMECHO[] = 
 {
@@ -42787,7 +46866,7 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PIDGEOTTO),
 		.monFlags = MON_FLAGS_SPECIES_PIDGEOTTO,
 		.weakSets = sWeakSets_SPECIES_PIDGEOTTO,
-		.weakSetCount = 1, 
+		.weakSetCount = 2, 
 	},
 	[SPECIES_PIDGEOT] = 
 	{
@@ -42796,6 +46875,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PIDGEOT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PIDGEOT),
 		.monFlags = MON_FLAGS_SPECIES_PIDGEOT,
+		.weakSets = sWeakSets_SPECIES_PIDGEOT,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_RATTATA] = 
 	{
@@ -42811,7 +46892,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_RATICATE,
 		.competitiveSets = sCompetitiveSets_SPECIES_RATICATE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_RATICATE),
-		.monFlags = MON_FLAGS_SPECIES_RATICATE,
+		.monFlags = MON_FLAGS_SPECIES_RATICATE,	
+		.weakSets = sWeakSets_SPECIES_RATICATE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SPEAROW] = 
 	{
@@ -42820,8 +46903,6 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SPEAROW,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SPEAROW),
 		.monFlags = MON_FLAGS_SPECIES_SPEAROW,
-		.weakSets = sWeakSets_SPECIES_SPEAROW,
-		.weakSetCount = 1, 
 	},
 	[SPECIES_FEAROW] = 
 	{
@@ -42830,6 +46911,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_FEAROW,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_FEAROW),
 		.monFlags = MON_FLAGS_SPECIES_FEAROW,
+		.weakSets = sWeakSets_SPECIES_FEAROW,
+		.weakSetCount = 2,
 	},
 	[SPECIES_EKANS] = 
 	{
@@ -42837,7 +46920,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_EKANS,
 		.competitiveSets = sCompetitiveSets_SPECIES_EKANS,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_EKANS),
-		.monFlags = MON_FLAGS_SPECIES_EKANS,
+		.monFlags = MON_FLAGS_SPECIES_EKANS,		
+		.weakSets = sWeakSets_SPECIES_EKANS,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ARBOK] = 
 	{
@@ -42845,7 +46930,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_ARBOK,
 		.competitiveSets = sCompetitiveSets_SPECIES_ARBOK,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ARBOK),
-		.monFlags = MON_FLAGS_SPECIES_ARBOK,
+		.monFlags = MON_FLAGS_SPECIES_ARBOK,		
+		.weakSets = sWeakSets_SPECIES_ARBOK,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_PIKACHU] = 
 	{
@@ -42853,7 +46940,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_PIKACHU,
 		.competitiveSets = sCompetitiveSets_SPECIES_PIKACHU,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PIKACHU),
-		.monFlags = MON_FLAGS_SPECIES_PIKACHU,
+		.monFlags = MON_FLAGS_SPECIES_PIKACHU,		
+		.weakSets = sWeakSets_SPECIES_PIKACHU,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_RAICHU] = 
 	{
@@ -42862,6 +46951,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_RAICHU,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_RAICHU),
 		.monFlags = MON_FLAGS_SPECIES_RAICHU,
+		.weakSets = sWeakSets_SPECIES_RAICHU,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_SANDSHREW] = 
 	{
@@ -42869,7 +46960,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_SANDSHREW,
 		.competitiveSets = sCompetitiveSets_SPECIES_SANDSHREW,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SANDSHREW),
-		.monFlags = MON_FLAGS_SPECIES_SANDSHREW,
+		.monFlags = MON_FLAGS_SPECIES_SANDSHREW,		
+		.weakSets = sWeakSets_SPECIES_SANDSHREW,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SANDSLASH] = 
 	{
@@ -42877,7 +46970,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_SANDSLASH,
 		.competitiveSets = sCompetitiveSets_SPECIES_SANDSLASH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SANDSLASH),
-		.monFlags = MON_FLAGS_SPECIES_SANDSLASH,
+		.monFlags = MON_FLAGS_SPECIES_SANDSLASH,		
+		.weakSets = sWeakSets_SPECIES_SANDSLASH,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_NIDORAN_F] = 
 	{
@@ -42893,7 +46988,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_NIDORINA,
 		.competitiveSets = sCompetitiveSets_SPECIES_NIDORINA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NIDORINA),
-		.monFlags = MON_FLAGS_SPECIES_NIDORINA,
+		.monFlags = MON_FLAGS_SPECIES_NIDORINA,		
+		.weakSets = sWeakSets_SPECIES_NIDORINA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_NIDOQUEEN] = 
 	{
@@ -42902,6 +46999,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_NIDOQUEEN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NIDOQUEEN),
 		.monFlags = MON_FLAGS_SPECIES_NIDOQUEEN,
+		.weakSets = sWeakSets_SPECIES_NIDOQUEEN,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_NIDORAN_M] = 
 	{
@@ -42917,7 +47016,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_NIDORINO,
 		.competitiveSets = sCompetitiveSets_SPECIES_NIDORINO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NIDORINO),
-		.monFlags = MON_FLAGS_SPECIES_NIDORINO,
+		.monFlags = MON_FLAGS_SPECIES_NIDORINO,	
+		.weakSets = sWeakSets_SPECIES_NIDORINO,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_NIDOKING] = 
 	{
@@ -42926,6 +47027,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_NIDOKING,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NIDOKING),
 		.monFlags = MON_FLAGS_SPECIES_NIDOKING,
+		.weakSets = sWeakSets_SPECIES_NIDOKING,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_CLEFAIRY] = 
 	{
@@ -42934,6 +47037,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CLEFAIRY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CLEFAIRY),
 		.monFlags = MON_FLAGS_SPECIES_CLEFAIRY,
+		.weakSets = sWeakSets_SPECIES_CLEFAIRY,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_CLEFABLE] = 
 	{
@@ -42941,7 +47046,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_CLEFABLE,
 		.competitiveSets = sCompetitiveSets_SPECIES_CLEFABLE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CLEFABLE),
-		.monFlags = MON_FLAGS_SPECIES_CLEFABLE,
+		.monFlags = MON_FLAGS_SPECIES_CLEFABLE,	
+		.weakSets = sWeakSets_SPECIES_CLEFABLE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_VULPIX] = 
 	{
@@ -42958,6 +47065,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_NINETALES,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NINETALES),
 		.monFlags = MON_FLAGS_SPECIES_NINETALES,
+		.weakSets = sWeakSets_SPECIES_NINETALES,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_JIGGLYPUFF] = 
 	{
@@ -42973,7 +47082,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_WIGGLYTUFF,
 		.competitiveSets = sCompetitiveSets_SPECIES_WIGGLYTUFF,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_WIGGLYTUFF),
-		.monFlags = MON_FLAGS_SPECIES_WIGGLYTUFF,
+		.monFlags = MON_FLAGS_SPECIES_WIGGLYTUFF,	
+		.weakSets = sWeakSets_SPECIES_WIGGLYTUFF,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ZUBAT] = 
 	{
@@ -42981,7 +47092,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_ZUBAT,
 		.competitiveSets = sCompetitiveSets_SPECIES_ZUBAT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ZUBAT),
-		.monFlags = MON_FLAGS_SPECIES_ZUBAT,
+		.monFlags = MON_FLAGS_SPECIES_ZUBAT,	
+		.weakSets = sWeakSets_SPECIES_ZUBAT,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_GOLBAT] = 
 	{
@@ -42989,7 +47102,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_GOLBAT,
 		.competitiveSets = sCompetitiveSets_SPECIES_GOLBAT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GOLBAT),
-		.monFlags = MON_FLAGS_SPECIES_GOLBAT,
+		.monFlags = MON_FLAGS_SPECIES_GOLBAT,	
+		.weakSets = sWeakSets_SPECIES_GOLBAT,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ODDISH] = 
 	{
@@ -42997,7 +47112,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_ODDISH,
 		.competitiveSets = sCompetitiveSets_SPECIES_ODDISH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ODDISH),
-		.monFlags = MON_FLAGS_SPECIES_ODDISH,
+		.monFlags = MON_FLAGS_SPECIES_ODDISH,	
+		.weakSets = sWeakSets_SPECIES_ODDISH,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_GLOOM] = 
 	{
@@ -43005,7 +47122,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_GLOOM,
 		.competitiveSets = sCompetitiveSets_SPECIES_GLOOM,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GLOOM),
-		.monFlags = MON_FLAGS_SPECIES_GLOOM,
+		.monFlags = MON_FLAGS_SPECIES_GLOOM,	
+		.weakSets = sWeakSets_SPECIES_GLOOM,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_VILEPLUME] = 
 	{
@@ -43014,6 +47133,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_VILEPLUME,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_VILEPLUME),
 		.monFlags = MON_FLAGS_SPECIES_VILEPLUME,
+		.weakSets = sWeakSets_SPECIES_VILEPLUME,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_PARAS] = 
 	{
@@ -43021,7 +47142,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_PARAS,
 		.competitiveSets = sCompetitiveSets_SPECIES_PARAS,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PARAS),
-		.monFlags = MON_FLAGS_SPECIES_PARAS,
+		.monFlags = MON_FLAGS_SPECIES_PARAS,	
+		.weakSets = sWeakSets_SPECIES_PARAS,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_PARASECT] = 
 	{
@@ -43030,6 +47153,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PARASECT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PARASECT),
 		.monFlags = MON_FLAGS_SPECIES_PARASECT,
+		.weakSets = sWeakSets_SPECIES_PARASECT,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_VENONAT] = 
 	{
@@ -43037,7 +47162,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_VENONAT,
 		.competitiveSets = sCompetitiveSets_SPECIES_VENONAT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_VENONAT),
-		.monFlags = MON_FLAGS_SPECIES_VENONAT,
+		.monFlags = MON_FLAGS_SPECIES_VENONAT,	
+		.weakSets = sWeakSets_SPECIES_VENONAT,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_VENOMOTH] = 
 	{
@@ -43045,7 +47172,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_VENOMOTH,
 		.competitiveSets = sCompetitiveSets_SPECIES_VENOMOTH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_VENOMOTH),
-		.monFlags = MON_FLAGS_SPECIES_VENOMOTH,
+		.monFlags = MON_FLAGS_SPECIES_VENOMOTH,	
+		.weakSets = sWeakSets_SPECIES_VENOMOTH,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_DIGLETT] = 
 	{
@@ -43053,7 +47182,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_DIGLETT,
 		.competitiveSets = sCompetitiveSets_SPECIES_DIGLETT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DIGLETT),
-		.monFlags = MON_FLAGS_SPECIES_DIGLETT,
+		.monFlags = MON_FLAGS_SPECIES_DIGLETT,	
+		.weakSets = sWeakSets_SPECIES_DIGLETT,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_DUGTRIO] = 
 	{
@@ -43061,7 +47192,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_DUGTRIO,
 		.competitiveSets = sCompetitiveSets_SPECIES_DUGTRIO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DUGTRIO),
-		.monFlags = MON_FLAGS_SPECIES_DUGTRIO,
+		.monFlags = MON_FLAGS_SPECIES_DUGTRIO,	
+		.weakSets = sWeakSets_SPECIES_DUGTRIO,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MEOWTH] = 
 	{
@@ -43069,7 +47202,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_MEOWTH,
 		.competitiveSets = sCompetitiveSets_SPECIES_MEOWTH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MEOWTH),
-		.monFlags = MON_FLAGS_SPECIES_MEOWTH,
+		.monFlags = MON_FLAGS_SPECIES_MEOWTH,	
+		.weakSets = sWeakSets_SPECIES_MEOWTH,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_PERSIAN] = 
 	{
@@ -43077,7 +47212,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_PERSIAN,
 		.competitiveSets = sCompetitiveSets_SPECIES_PERSIAN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PERSIAN),
-		.monFlags = MON_FLAGS_SPECIES_PERSIAN,
+		.monFlags = MON_FLAGS_SPECIES_PERSIAN,	
+		.weakSets = sWeakSets_SPECIES_PERSIAN,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_PSYDUCK] = 
 	{
@@ -43085,7 +47222,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_PSYDUCK,
 		.competitiveSets = sCompetitiveSets_SPECIES_PSYDUCK,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PSYDUCK),
-		.monFlags = MON_FLAGS_SPECIES_PSYDUCK,
+		.monFlags = MON_FLAGS_SPECIES_PSYDUCK,	
+		.weakSets = sWeakSets_SPECIES_PSYDUCK,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_GOLDUCK] = 
 	{
@@ -43094,6 +47233,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_GOLDUCK,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GOLDUCK),
 		.monFlags = MON_FLAGS_SPECIES_GOLDUCK,
+		.weakSets = sWeakSets_SPECIES_GOLDUCK,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MANKEY] = 
 	{
@@ -43101,7 +47242,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_MANKEY,
 		.competitiveSets = sCompetitiveSets_SPECIES_MANKEY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MANKEY),
-		.monFlags = MON_FLAGS_SPECIES_MANKEY,
+		.monFlags = MON_FLAGS_SPECIES_MANKEY,	
+		.weakSets = sWeakSets_SPECIES_MANKEY,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_PRIMEAPE] = 
 	{
@@ -43110,6 +47253,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PRIMEAPE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PRIMEAPE),
 		.monFlags = MON_FLAGS_SPECIES_PRIMEAPE,
+		.weakSets = sWeakSets_SPECIES_PRIMEAPE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_GROWLITHE] = 
 	{
@@ -43117,7 +47262,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_GROWLITHE,
 		.competitiveSets = sCompetitiveSets_SPECIES_GROWLITHE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GROWLITHE),
-		.monFlags = MON_FLAGS_SPECIES_GROWLITHE,
+		.monFlags = MON_FLAGS_SPECIES_GROWLITHE,	
+		.weakSets = sWeakSets_SPECIES_GROWLITHE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_ARCANINE] = 
 	{
@@ -43126,6 +47273,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ARCANINE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ARCANINE),
 		.monFlags = MON_FLAGS_SPECIES_ARCANINE,
+		.weakSets = sWeakSets_SPECIES_ARCANINE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_POLIWAG] = 
 	{
@@ -43141,7 +47290,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_POLIWHIRL,
 		.competitiveSets = sCompetitiveSets_SPECIES_POLIWHIRL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_POLIWHIRL),
-		.monFlags = MON_FLAGS_SPECIES_POLIWHIRL,
+		.monFlags = MON_FLAGS_SPECIES_POLIWHIRL,	
+		.weakSets = sWeakSets_SPECIES_POLIWHIRL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_POLIWRATH] = 
 	{
@@ -43150,6 +47301,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_POLIWRATH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_POLIWRATH),
 		.monFlags = MON_FLAGS_SPECIES_POLIWRATH,
+		.weakSets = sWeakSets_SPECIES_POLIWRATH,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_ABRA] = 
 	{
@@ -43165,7 +47318,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_KADABRA,
 		.competitiveSets = sCompetitiveSets_SPECIES_KADABRA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_KADABRA),
-		.monFlags = MON_FLAGS_SPECIES_KADABRA,
+		.monFlags = MON_FLAGS_SPECIES_KADABRA,	
+		.weakSets = sWeakSets_SPECIES_KADABRA,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_ALAKAZAM] = 
 	{
@@ -43181,7 +47336,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_MACHOP,
 		.competitiveSets = sCompetitiveSets_SPECIES_MACHOP,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MACHOP),
-		.monFlags = MON_FLAGS_SPECIES_MACHOP,
+		.monFlags = MON_FLAGS_SPECIES_MACHOP,	
+		.weakSets = sWeakSets_SPECIES_MACHOP,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MACHOKE] = 
 	{
@@ -43190,6 +47347,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MACHOKE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MACHOKE),
 		.monFlags = MON_FLAGS_SPECIES_MACHOKE,
+		.weakSets = sWeakSets_SPECIES_MACHOKE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MACHAMP] = 
 	{
@@ -43205,7 +47364,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_BELLSPROUT,
 		.competitiveSets = sCompetitiveSets_SPECIES_BELLSPROUT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_BELLSPROUT),
-		.monFlags = MON_FLAGS_SPECIES_BELLSPROUT,
+		.monFlags = MON_FLAGS_SPECIES_BELLSPROUT,	
+		.weakSets = sWeakSets_SPECIES_BELLSPROUT,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_WEEPINBELL] = 
 	{
@@ -43213,7 +47374,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_WEEPINBELL,
 		.competitiveSets = sCompetitiveSets_SPECIES_WEEPINBELL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_WEEPINBELL),
-		.monFlags = MON_FLAGS_SPECIES_WEEPINBELL,
+		.monFlags = MON_FLAGS_SPECIES_WEEPINBELL,	
+		.weakSets = sWeakSets_SPECIES_WEEPINBELL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_VICTREEBEL] = 
 	{
@@ -43222,6 +47385,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_VICTREEBEL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_VICTREEBEL),
 		.monFlags = MON_FLAGS_SPECIES_VICTREEBEL,
+		.weakSets = sWeakSets_SPECIES_VICTREEBEL,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_TENTACOOL] = 
 	{
@@ -43229,7 +47394,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_TENTACOOL,
 		.competitiveSets = sCompetitiveSets_SPECIES_TENTACOOL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_TENTACOOL),
-		.monFlags = MON_FLAGS_SPECIES_TENTACOOL,
+		.monFlags = MON_FLAGS_SPECIES_TENTACOOL,	
+		.weakSets = sWeakSets_SPECIES_TENTACOOL,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_TENTACRUEL] = 
 	{
@@ -43245,7 +47412,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_GEODUDE,
 		.competitiveSets = sCompetitiveSets_SPECIES_GEODUDE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GEODUDE),
-		.monFlags = MON_FLAGS_SPECIES_GEODUDE,
+		.monFlags = MON_FLAGS_SPECIES_GEODUDE,	
+		.weakSets = sWeakSets_SPECIES_GEODUDE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_GRAVELER] = 
 	{
@@ -43253,7 +47422,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_GRAVELER,
 		.competitiveSets = sCompetitiveSets_SPECIES_GRAVELER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GRAVELER),
-		.monFlags = MON_FLAGS_SPECIES_GRAVELER,
+		.monFlags = MON_FLAGS_SPECIES_GRAVELER,	
+		.weakSets = sWeakSets_SPECIES_GRAVELER,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_GOLEM] = 
 	{
@@ -43269,7 +47440,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_PONYTA,
 		.competitiveSets = sCompetitiveSets_SPECIES_PONYTA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PONYTA),
-		.monFlags = MON_FLAGS_SPECIES_PONYTA,
+		.monFlags = MON_FLAGS_SPECIES_PONYTA,	
+		.weakSets = sWeakSets_SPECIES_PONYTA,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_RAPIDASH] = 
 	{
@@ -43285,7 +47458,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_SLOWPOKE,
 		.competitiveSets = sCompetitiveSets_SPECIES_SLOWPOKE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SLOWPOKE),
-		.monFlags = MON_FLAGS_SPECIES_SLOWPOKE,
+		.monFlags = MON_FLAGS_SPECIES_SLOWPOKE,	
+		.weakSets = sWeakSets_SPECIES_SLOWPOKE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_SLOWBRO] = 
 	{
@@ -43302,6 +47477,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MAGNEMITE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MAGNEMITE),
 		.monFlags = MON_FLAGS_SPECIES_MAGNEMITE,
+		.weakSets = sWeakSets_SPECIES_MAGNEMITE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MAGNETON] = 
 	{
@@ -43310,6 +47487,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MAGNETON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MAGNETON),
 		.monFlags = MON_FLAGS_SPECIES_MAGNETON,
+		.weakSets = sWeakSets_SPECIES_MAGNETON,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_FARFETCHD] = 
 	{
@@ -43317,7 +47496,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_FARFETCHD,
 		.competitiveSets = sCompetitiveSets_SPECIES_FARFETCHD,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_FARFETCHD),
-		.monFlags = MON_FLAGS_SPECIES_FARFETCHD,
+		.monFlags = MON_FLAGS_SPECIES_FARFETCHD,	
+		.weakSets = sWeakSets_SPECIES_FARFETCHD,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_DODUO] = 
 	{
@@ -43325,7 +47506,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_DODUO,
 		.competitiveSets = sCompetitiveSets_SPECIES_DODUO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DODUO),
-		.monFlags = MON_FLAGS_SPECIES_DODUO,
+		.monFlags = MON_FLAGS_SPECIES_DODUO,	
+		.weakSets = sWeakSets_SPECIES_DODUO,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_DODRIO] = 
 	{
@@ -43341,7 +47524,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_SEEL,
 		.competitiveSets = sCompetitiveSets_SPECIES_SEEL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SEEL),
-		.monFlags = MON_FLAGS_SPECIES_SEEL,
+		.monFlags = MON_FLAGS_SPECIES_SEEL,	
+		.weakSets = sWeakSets_SPECIES_SEEL,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_DEWGONG] = 
 	{
@@ -43357,7 +47542,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_GRIMER,
 		.competitiveSets = sCompetitiveSets_SPECIES_GRIMER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GRIMER),
-		.monFlags = MON_FLAGS_SPECIES_GRIMER,
+		.monFlags = MON_FLAGS_SPECIES_GRIMER,	
+		.weakSets = sWeakSets_SPECIES_GRIMER,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MUK] = 
 	{
@@ -43373,7 +47560,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_SHELLDER,
 		.competitiveSets = sCompetitiveSets_SPECIES_SHELLDER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SHELLDER),
-		.monFlags = MON_FLAGS_SPECIES_SHELLDER,
+		.monFlags = MON_FLAGS_SPECIES_SHELLDER,	
+		.weakSets = sWeakSets_SPECIES_SHELLDER,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_CLOYSTER] = 
 	{
@@ -43382,6 +47571,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CLOYSTER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CLOYSTER),
 		.monFlags = MON_FLAGS_SPECIES_CLOYSTER,
+		.weakSets = sWeakSets_SPECIES_CLOYSTER,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_GASTLY] = 
 	{
@@ -43389,7 +47580,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_GASTLY,
 		.competitiveSets = sCompetitiveSets_SPECIES_GASTLY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GASTLY),
-		.monFlags = MON_FLAGS_SPECIES_GASTLY,
+		.monFlags = MON_FLAGS_SPECIES_GASTLY,	
+		.weakSets = sWeakSets_SPECIES_GASTLY,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_HAUNTER] = 
 	{
@@ -43397,7 +47590,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_HAUNTER,
 		.competitiveSets = sCompetitiveSets_SPECIES_HAUNTER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_HAUNTER),
-		.monFlags = MON_FLAGS_SPECIES_HAUNTER,
+		.monFlags = MON_FLAGS_SPECIES_HAUNTER,	
+		.weakSets = sWeakSets_SPECIES_HAUNTER,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_GENGAR] = 
 	{
@@ -43413,7 +47608,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_ONIX,
 		.competitiveSets = sCompetitiveSets_SPECIES_ONIX,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ONIX),
-		.monFlags = MON_FLAGS_SPECIES_ONIX,
+		.monFlags = MON_FLAGS_SPECIES_ONIX,	
+		.weakSets = sWeakSets_SPECIES_ONIX,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_DROWZEE] = 
 	{
@@ -43421,7 +47618,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_DROWZEE,
 		.competitiveSets = sCompetitiveSets_SPECIES_DROWZEE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DROWZEE),
-		.monFlags = MON_FLAGS_SPECIES_DROWZEE,
+		.monFlags = MON_FLAGS_SPECIES_DROWZEE,	
+		.weakSets = sWeakSets_SPECIES_DROWZEE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_HYPNO] = 
 	{
@@ -43437,7 +47636,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_KRABBY,
 		.competitiveSets = sCompetitiveSets_SPECIES_KRABBY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_KRABBY),
-		.monFlags = MON_FLAGS_SPECIES_KRABBY,
+		.monFlags = MON_FLAGS_SPECIES_KRABBY,	
+		.weakSets = sWeakSets_SPECIES_KRABBY,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_KINGLER] = 
 	{
@@ -43453,7 +47654,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_VOLTORB,
 		.competitiveSets = sCompetitiveSets_SPECIES_VOLTORB,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_VOLTORB),
-		.monFlags = MON_FLAGS_SPECIES_VOLTORB,
+		.monFlags = MON_FLAGS_SPECIES_VOLTORB,	
+		.weakSets = sWeakSets_SPECIES_VOLTORB,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_ELECTRODE] = 
 	{
@@ -43469,7 +47672,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_EXEGGCUTE,
 		.competitiveSets = sCompetitiveSets_SPECIES_EXEGGCUTE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_EXEGGCUTE),
-		.monFlags = MON_FLAGS_SPECIES_EXEGGCUTE,
+		.monFlags = MON_FLAGS_SPECIES_EXEGGCUTE,	
+		.weakSets = sWeakSets_SPECIES_EXEGGCUTE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_EXEGGUTOR] = 
 	{
@@ -43478,6 +47683,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_EXEGGUTOR,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_EXEGGUTOR),
 		.monFlags = MON_FLAGS_SPECIES_EXEGGUTOR,
+		.weakSets = sWeakSets_SPECIES_EXEGGUTOR,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_CUBONE] = 
 	{
@@ -43485,7 +47692,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_CUBONE,
 		.competitiveSets = sCompetitiveSets_SPECIES_CUBONE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CUBONE),
-		.monFlags = MON_FLAGS_SPECIES_CUBONE,
+		.monFlags = MON_FLAGS_SPECIES_CUBONE,	
+		.weakSets = sWeakSets_SPECIES_CUBONE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MAROWAK] = 
 	{
@@ -43494,6 +47703,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MAROWAK,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MAROWAK),
 		.monFlags = MON_FLAGS_SPECIES_MAROWAK,
+		.weakSets = sWeakSets_SPECIES_MAROWAK,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_HITMONLEE] = 
 	{
@@ -43501,7 +47712,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_HITMONLEE,
 		.competitiveSets = sCompetitiveSets_SPECIES_HITMONLEE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_HITMONLEE),
-		.monFlags = MON_FLAGS_SPECIES_HITMONLEE,
+		.monFlags = MON_FLAGS_SPECIES_HITMONLEE,	
+		.weakSets = sWeakSets_SPECIES_HITMONLEE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_HITMONCHAN] = 
 	{
@@ -43509,7 +47722,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_HITMONCHAN,
 		.competitiveSets = sCompetitiveSets_SPECIES_HITMONCHAN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_HITMONCHAN),
-		.monFlags = MON_FLAGS_SPECIES_HITMONCHAN,
+		.monFlags = MON_FLAGS_SPECIES_HITMONCHAN,	
+		.weakSets = sWeakSets_SPECIES_HITMONCHAN,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_LICKITUNG] = 
 	{
@@ -43517,7 +47732,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_LICKITUNG,
 		.competitiveSets = sCompetitiveSets_SPECIES_LICKITUNG,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LICKITUNG),
-		.monFlags = MON_FLAGS_SPECIES_LICKITUNG,
+		.monFlags = MON_FLAGS_SPECIES_LICKITUNG,	
+		.weakSets = sWeakSets_SPECIES_LICKITUNG,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_KOFFING] = 
 	{
@@ -43525,7 +47742,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_KOFFING,
 		.competitiveSets = sCompetitiveSets_SPECIES_KOFFING,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_KOFFING),
-		.monFlags = MON_FLAGS_SPECIES_KOFFING,
+		.monFlags = MON_FLAGS_SPECIES_KOFFING,	
+		.weakSets = sWeakSets_SPECIES_KOFFING,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_WEEZING] = 
 	{
@@ -43541,7 +47760,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_RHYHORN,
 		.competitiveSets = sCompetitiveSets_SPECIES_RHYHORN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_RHYHORN),
-		.monFlags = MON_FLAGS_SPECIES_RHYHORN,
+		.monFlags = MON_FLAGS_SPECIES_RHYHORN,	
+		.weakSets = sWeakSets_SPECIES_RHYHORN,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_RHYDON] = 
 	{
@@ -43557,7 +47778,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_CHANSEY,
 		.competitiveSets = sCompetitiveSets_SPECIES_CHANSEY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CHANSEY),
-		.monFlags = MON_FLAGS_SPECIES_CHANSEY,
+		.monFlags = MON_FLAGS_SPECIES_CHANSEY,	
+		.weakSets = sWeakSets_SPECIES_CHANSEY,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_TANGELA] = 
 	{
@@ -43565,7 +47788,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_TANGELA,
 		.competitiveSets = sCompetitiveSets_SPECIES_TANGELA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_TANGELA),
-		.monFlags = MON_FLAGS_SPECIES_TANGELA,
+		.monFlags = MON_FLAGS_SPECIES_TANGELA,	
+		.weakSets = sWeakSets_SPECIES_TANGELA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_KANGASKHAN] = 
 	{
@@ -43574,6 +47799,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_KANGASKHAN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_KANGASKHAN),
 		.monFlags = MON_FLAGS_SPECIES_KANGASKHAN,
+		.weakSets = sWeakSets_SPECIES_KANGASKHAN,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_HORSEA] = 
 	{
@@ -43581,7 +47808,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_HORSEA,
 		.competitiveSets = sCompetitiveSets_SPECIES_HORSEA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_HORSEA),
-		.monFlags = MON_FLAGS_SPECIES_HORSEA,
+		.monFlags = MON_FLAGS_SPECIES_HORSEA,	
+		.weakSets = sWeakSets_SPECIES_HORSEA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SEADRA] = 
 	{
@@ -43590,6 +47819,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SEADRA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SEADRA),
 		.monFlags = MON_FLAGS_SPECIES_SEADRA,
+		.weakSets = sWeakSets_SPECIES_SEADRA,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_GOLDEEN] = 
 	{
@@ -43597,7 +47828,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_GOLDEEN,
 		.competitiveSets = sCompetitiveSets_SPECIES_GOLDEEN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GOLDEEN),
-		.monFlags = MON_FLAGS_SPECIES_GOLDEEN,
+		.monFlags = MON_FLAGS_SPECIES_GOLDEEN,	
+		.weakSets = sWeakSets_SPECIES_GOLDEEN,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_SEAKING] = 
 	{
@@ -43605,7 +47838,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_SEAKING,
 		.competitiveSets = sCompetitiveSets_SPECIES_SEAKING,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SEAKING),
-		.monFlags = MON_FLAGS_SPECIES_SEAKING,
+		.monFlags = MON_FLAGS_SPECIES_SEAKING,	
+		.weakSets = sWeakSets_SPECIES_SEAKING,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_STARYU] = 
 	{
@@ -43613,7 +47848,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_STARYU,
 		.competitiveSets = sCompetitiveSets_SPECIES_STARYU,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_STARYU),
-		.monFlags = MON_FLAGS_SPECIES_STARYU,
+		.monFlags = MON_FLAGS_SPECIES_STARYU,	
+		.weakSets = sWeakSets_SPECIES_STARYU,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_STARMIE] = 
 	{
@@ -43622,6 +47859,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_STARMIE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_STARMIE),
 		.monFlags = MON_FLAGS_SPECIES_STARMIE,
+		.weakSets = sWeakSets_SPECIES_STARMIE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MR_MIME] = 
 	{
@@ -43629,7 +47868,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_MR_MIME,
 		.competitiveSets = sCompetitiveSets_SPECIES_MR_MIME,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MR_MIME),
-		.monFlags = MON_FLAGS_SPECIES_MR_MIME,
+		.monFlags = MON_FLAGS_SPECIES_MR_MIME,	
+		.weakSets = sWeakSets_SPECIES_MR_MIME,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SCYTHER] = 
 	{
@@ -43637,7 +47878,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_SCYTHER,
 		.competitiveSets = sCompetitiveSets_SPECIES_SCYTHER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SCYTHER),
-		.monFlags = MON_FLAGS_SPECIES_SCYTHER,
+		.monFlags = MON_FLAGS_SPECIES_SCYTHER,	
+		.weakSets = sWeakSets_SPECIES_SCYTHER,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_JYNX] = 
 	{
@@ -43646,6 +47889,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_JYNX,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_JYNX),
 		.monFlags = MON_FLAGS_SPECIES_JYNX,
+		.weakSets = sWeakSets_SPECIES_JYNX,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_ELECTABUZZ] = 
 	{
@@ -43654,6 +47899,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ELECTABUZZ,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ELECTABUZZ),
 		.monFlags = MON_FLAGS_SPECIES_ELECTABUZZ,
+		.weakSets = sWeakSets_SPECIES_ELECTABUZZ,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MAGMAR] = 
 	{
@@ -43662,6 +47909,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MAGMAR,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MAGMAR),
 		.monFlags = MON_FLAGS_SPECIES_MAGMAR,
+		.weakSets = sWeakSets_SPECIES_MAGMAR,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_PINSIR] = 
 	{
@@ -43670,6 +47919,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PINSIR,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PINSIR),
 		.monFlags = MON_FLAGS_SPECIES_PINSIR,
+		.weakSets = sWeakSets_SPECIES_PINSIR,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_TAUROS] = 
 	{
@@ -43678,6 +47929,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_TAUROS,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_TAUROS),
 		.monFlags = MON_FLAGS_SPECIES_TAUROS,
+		.weakSets = sWeakSets_SPECIES_TAUROS,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MAGIKARP] = 
 	{
@@ -43693,7 +47946,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.tutorMoves = sTutorMoves_SPECIES_GYARADOS,
 		.competitiveSets = sCompetitiveSets_SPECIES_GYARADOS,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GYARADOS),
-		.monFlags = MON_FLAGS_SPECIES_GYARADOS,
+		.monFlags = MON_FLAGS_SPECIES_GYARADOS,	
+		.weakSets = sWeakSets_SPECIES_GYARADOS,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_LAPRAS] = 
 	{
@@ -43718,6 +47973,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_EEVEE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_EEVEE),
 		.monFlags = MON_FLAGS_SPECIES_EEVEE,
+		.weakSets = sWeakSets_SPECIES_EEVEE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_VAPOREON] = 
 	{
@@ -43726,6 +47983,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_VAPOREON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_VAPOREON),
 		.monFlags = MON_FLAGS_SPECIES_VAPOREON,
+		.weakSets = sWeakSets_SPECIES_VAPOREON,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_JOLTEON] = 
 	{
@@ -43734,6 +47993,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_JOLTEON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_JOLTEON),
 		.monFlags = MON_FLAGS_SPECIES_JOLTEON,
+		.weakSets = sWeakSets_SPECIES_JOLTEON,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_FLAREON] = 
 	{
@@ -43742,6 +48003,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_FLAREON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_FLAREON),
 		.monFlags = MON_FLAGS_SPECIES_FLAREON,
+		.weakSets = sWeakSets_SPECIES_FLAREON,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_PORYGON] = 
 	{
@@ -43750,6 +48013,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PORYGON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PORYGON),
 		.monFlags = MON_FLAGS_SPECIES_PORYGON,
+		.weakSets = sWeakSets_SPECIES_PORYGON,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_OMANYTE] = 
 	{
@@ -43758,6 +48023,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_OMANYTE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_OMANYTE),
 		.monFlags = MON_FLAGS_SPECIES_OMANYTE,
+		.weakSets = sWeakSets_SPECIES_OMANYTE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_OMASTAR] = 
 	{
@@ -43774,6 +48041,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_KABUTO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_KABUTO),
 		.monFlags = MON_FLAGS_SPECIES_KABUTO,
+		.weakSets = sWeakSets_SPECIES_KABUTO,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_KABUTOPS] = 
 	{
@@ -43830,6 +48099,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_DRATINI,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DRATINI),
 		.monFlags = MON_FLAGS_SPECIES_DRATINI,
+		.weakSets = sWeakSets_SPECIES_DRATINI,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_DRAGONAIR] = 
 	{
@@ -43838,6 +48109,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_DRAGONAIR,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DRAGONAIR),
 		.monFlags = MON_FLAGS_SPECIES_DRAGONAIR,
+		.weakSets = sWeakSets_SPECIES_DRAGONAIR,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_DRAGONITE] = 
 	{
@@ -43878,6 +48151,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_BAYLEEF,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_BAYLEEF),
 		.monFlags = MON_FLAGS_SPECIES_BAYLEEF,
+		.weakSets = sWeakSets_SPECIES_BAYLEEF,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MEGANIUM] = 
 	{
@@ -43902,6 +48177,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_QUILAVA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_QUILAVA),
 		.monFlags = MON_FLAGS_SPECIES_QUILAVA,
+		.weakSets = sWeakSets_SPECIES_QUILAVA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_TYPHLOSION] = 
 	{
@@ -43926,6 +48203,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CROCONAW,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CROCONAW),
 		.monFlags = MON_FLAGS_SPECIES_CROCONAW,
+		.weakSets = sWeakSets_SPECIES_CROCONAW,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_FERALIGATR] = 
 	{
@@ -43950,6 +48229,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_FURRET,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_FURRET),
 		.monFlags = MON_FLAGS_SPECIES_FURRET,
+		.weakSets = sWeakSets_SPECIES_FURRET,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_HOOTHOOT] = 
 	{
@@ -43966,6 +48247,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_NOCTOWL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NOCTOWL),
 		.monFlags = MON_FLAGS_SPECIES_NOCTOWL,
+		.weakSets = sWeakSets_SPECIES_NOCTOWL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_LEDYBA] = 
 	{
@@ -44014,6 +48297,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CHINCHOU,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CHINCHOU),
 		.monFlags = MON_FLAGS_SPECIES_CHINCHOU,
+		.weakSets = sWeakSets_SPECIES_CHINCHOU,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_LANTURN] = 
 	{
@@ -44022,6 +48307,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LANTURN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LANTURN),
 		.monFlags = MON_FLAGS_SPECIES_LANTURN,
+		.weakSets = sWeakSets_SPECIES_LANTURN,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_PICHU] = 
 	{
@@ -44062,6 +48349,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_TOGETIC,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_TOGETIC),
 		.monFlags = MON_FLAGS_SPECIES_TOGETIC,
+		.weakSets = sWeakSets_SPECIES_TOGETIC,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_NATU] = 
 	{
@@ -44078,6 +48367,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_XATU,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_XATU),
 		.monFlags = MON_FLAGS_SPECIES_XATU,
+		.weakSets = sWeakSets_SPECIES_XATU,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MAREEP] = 
 	{
@@ -44094,6 +48385,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_FLAAFFY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_FLAAFFY),
 		.monFlags = MON_FLAGS_SPECIES_FLAAFFY,
+		.weakSets = sWeakSets_SPECIES_FLAAFFY,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_AMPHAROS] = 
 	{
@@ -44102,6 +48395,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_AMPHAROS,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_AMPHAROS),
 		.monFlags = MON_FLAGS_SPECIES_AMPHAROS,
+		.weakSets = sWeakSets_SPECIES_AMPHAROS,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_BELLOSSOM] = 
 	{
@@ -44110,6 +48405,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_BELLOSSOM,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_BELLOSSOM),
 		.monFlags = MON_FLAGS_SPECIES_BELLOSSOM,
+		.weakSets = sWeakSets_SPECIES_BELLOSSOM,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MARILL] = 
 	{
@@ -44126,6 +48423,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_AZUMARILL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_AZUMARILL),
 		.monFlags = MON_FLAGS_SPECIES_AZUMARILL,
+		.weakSets = sWeakSets_SPECIES_AZUMARILL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SUDOWOODO] = 
 	{
@@ -44134,6 +48433,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SUDOWOODO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SUDOWOODO),
 		.monFlags = MON_FLAGS_SPECIES_SUDOWOODO,
+		.weakSets = sWeakSets_SPECIES_SUDOWOODO,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_POLITOED] = 
 	{
@@ -44142,6 +48443,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_POLITOED,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_POLITOED),
 		.monFlags = MON_FLAGS_SPECIES_POLITOED,
+		.weakSets = sWeakSets_SPECIES_POLITOED,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_HOPPIP] = 
 	{
@@ -44158,6 +48461,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SKIPLOOM,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SKIPLOOM),
 		.monFlags = MON_FLAGS_SPECIES_SKIPLOOM,
+		.weakSets = sWeakSets_SPECIES_SKIPLOOM,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_JUMPLUFF] = 
 	{
@@ -44166,6 +48471,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_JUMPLUFF,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_JUMPLUFF),
 		.monFlags = MON_FLAGS_SPECIES_JUMPLUFF,
+		.weakSets = sWeakSets_SPECIES_JUMPLUFF,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_AIPOM] = 
 	{
@@ -44174,6 +48481,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_AIPOM,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_AIPOM),
 		.monFlags = MON_FLAGS_SPECIES_AIPOM,
+		.weakSets = sWeakSets_SPECIES_AIPOM,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SUNKERN] = 
 	{
@@ -44190,6 +48499,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SUNFLORA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SUNFLORA),
 		.monFlags = MON_FLAGS_SPECIES_SUNFLORA,
+		.weakSets = sWeakSets_SPECIES_SUNFLORA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_YANMA] = 
 	{
@@ -44198,6 +48509,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_YANMA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_YANMA),
 		.monFlags = MON_FLAGS_SPECIES_YANMA,
+		.weakSets = sWeakSets_SPECIES_YANMA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_WOOPER] = 
 	{
@@ -44214,6 +48527,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_QUAGSIRE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_QUAGSIRE),
 		.monFlags = MON_FLAGS_SPECIES_QUAGSIRE,
+		.weakSets = sWeakSets_SPECIES_QUAGSIRE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ESPEON] = 
 	{
@@ -44222,6 +48537,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ESPEON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ESPEON),
 		.monFlags = MON_FLAGS_SPECIES_ESPEON,
+		.weakSets = sWeakSets_SPECIES_ESPEON,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_UMBREON] = 
 	{
@@ -44230,6 +48547,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_UMBREON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_UMBREON),
 		.monFlags = MON_FLAGS_SPECIES_UMBREON,
+		.weakSets = sWeakSets_SPECIES_UMBREON,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MURKROW] = 
 	{
@@ -44238,6 +48557,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MURKROW,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MURKROW),
 		.monFlags = MON_FLAGS_SPECIES_MURKROW,
+		.weakSets = sWeakSets_SPECIES_MURKROW,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SLOWKING] = 
 	{
@@ -44246,6 +48567,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SLOWKING,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SLOWKING),
 		.monFlags = MON_FLAGS_SPECIES_SLOWKING,
+		.weakSets = sWeakSets_SPECIES_SLOWKING,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_MISDREAVUS] = 
 	{
@@ -44254,6 +48577,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MISDREAVUS,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MISDREAVUS),
 		.monFlags = MON_FLAGS_SPECIES_MISDREAVUS,
+		.weakSets = sWeakSets_SPECIES_MISDREAVUS,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_UNOWN] = 
 	{
@@ -44270,6 +48595,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_WOBBUFFET,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_WOBBUFFET),
 		.monFlags = MON_FLAGS_SPECIES_WOBBUFFET,
+		.weakSets = sWeakSets_SPECIES_WOBBUFFET,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_GIRAFARIG] = 
 	{
@@ -44278,6 +48605,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_GIRAFARIG,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GIRAFARIG),
 		.monFlags = MON_FLAGS_SPECIES_GIRAFARIG,
+		.weakSets = sWeakSets_SPECIES_GIRAFARIG,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_PINECO] = 
 	{
@@ -44286,6 +48615,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PINECO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PINECO),
 		.monFlags = MON_FLAGS_SPECIES_PINECO,
+		.weakSets = sWeakSets_SPECIES_PINECO,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_FORRETRESS] = 
 	{
@@ -44294,6 +48625,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_FORRETRESS,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_FORRETRESS),
 		.monFlags = MON_FLAGS_SPECIES_FORRETRESS,
+		.weakSets = sWeakSets_SPECIES_FORRETRESS,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_DUNSPARCE] = 
 	{
@@ -44302,6 +48635,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_DUNSPARCE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DUNSPARCE),
 		.monFlags = MON_FLAGS_SPECIES_DUNSPARCE,
+		.weakSets = sWeakSets_SPECIES_DUNSPARCE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_GLIGAR] = 
 	{
@@ -44310,6 +48645,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_GLIGAR,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GLIGAR),
 		.monFlags = MON_FLAGS_SPECIES_GLIGAR,
+		.weakSets = sWeakSets_SPECIES_GLIGAR,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_STEELIX] = 
 	{
@@ -44318,6 +48655,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_STEELIX,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_STEELIX),
 		.monFlags = MON_FLAGS_SPECIES_STEELIX,
+		.weakSets = sWeakSets_SPECIES_STEELIX,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_SNUBBULL] = 
 	{
@@ -44326,6 +48665,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SNUBBULL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SNUBBULL),
 		.monFlags = MON_FLAGS_SPECIES_SNUBBULL,
+		.weakSets = sWeakSets_SPECIES_SNUBBULL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_GRANBULL] = 
 	{
@@ -44334,6 +48675,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_GRANBULL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GRANBULL),
 		.monFlags = MON_FLAGS_SPECIES_GRANBULL,
+		.weakSets = sWeakSets_SPECIES_GRANBULL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_QWILFISH] = 
 	{
@@ -44342,6 +48685,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_QWILFISH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_QWILFISH),
 		.monFlags = MON_FLAGS_SPECIES_QWILFISH,
+		.weakSets = sWeakSets_SPECIES_QWILFISH,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SCIZOR] = 
 	{
@@ -44358,6 +48703,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SHUCKLE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SHUCKLE),
 		.monFlags = MON_FLAGS_SPECIES_SHUCKLE,
+		.weakSets = sWeakSets_SPECIES_SHUCKLE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_HERACROSS] = 
 	{
@@ -44374,6 +48721,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SNEASEL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SNEASEL),
 		.monFlags = MON_FLAGS_SPECIES_SNEASEL,
+		.weakSets = sWeakSets_SPECIES_SNEASEL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_TEDDIURSA] = 
 	{
@@ -44382,6 +48731,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_TEDDIURSA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_TEDDIURSA),
 		.monFlags = MON_FLAGS_SPECIES_TEDDIURSA,
+		.weakSets = sWeakSets_SPECIES_TEDDIURSA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_URSARING] = 
 	{
@@ -44390,6 +48741,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_URSARING,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_URSARING),
 		.monFlags = MON_FLAGS_SPECIES_URSARING,
+		.weakSets = sWeakSets_SPECIES_URSARING,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_SLUGMA] = 
 	{
@@ -44406,6 +48759,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MAGCARGO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MAGCARGO),
 		.monFlags = MON_FLAGS_SPECIES_MAGCARGO,
+		.weakSets = sWeakSets_SPECIES_MAGCARGO,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SWINUB] = 
 	{
@@ -44414,6 +48769,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SWINUB,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SWINUB),
 		.monFlags = MON_FLAGS_SPECIES_SWINUB,
+		.weakSets = sWeakSets_SPECIES_SWINUB,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_PILOSWINE] = 
 	{
@@ -44422,6 +48779,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PILOSWINE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PILOSWINE),
 		.monFlags = MON_FLAGS_SPECIES_PILOSWINE,
+		.weakSets = sWeakSets_SPECIES_PILOSWINE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_CORSOLA] = 
 	{
@@ -44430,6 +48789,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CORSOLA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CORSOLA),
 		.monFlags = MON_FLAGS_SPECIES_CORSOLA,
+		.weakSets = sWeakSets_SPECIES_CORSOLA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_REMORAID] = 
 	{
@@ -44446,6 +48807,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_OCTILLERY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_OCTILLERY),
 		.monFlags = MON_FLAGS_SPECIES_OCTILLERY,
+		.weakSets = sWeakSets_SPECIES_OCTILLERY,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_DELIBIRD] = 
 	{
@@ -44455,7 +48818,7 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DELIBIRD),
 		.monFlags = MON_FLAGS_SPECIES_DELIBIRD,
 		.weakSets = sWeakSets_SPECIES_DELIBIRD,
-		.weakSetCount = 1, 
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MANTINE] = 
 	{
@@ -44464,6 +48827,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MANTINE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MANTINE),
 		.monFlags = MON_FLAGS_SPECIES_MANTINE,
+		.weakSets = sWeakSets_SPECIES_MANTINE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_SKARMORY] = 
 	{
@@ -44472,6 +48837,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SKARMORY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SKARMORY),
 		.monFlags = MON_FLAGS_SPECIES_SKARMORY,
+		.weakSets = sWeakSets_SPECIES_SKARMORY,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_HOUNDOUR] = 
 	{
@@ -44480,6 +48847,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_HOUNDOUR,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_HOUNDOUR),
 		.monFlags = MON_FLAGS_SPECIES_HOUNDOUR,
+		.weakSets = sWeakSets_SPECIES_HOUNDOUR,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_HOUNDOOM] = 
 	{
@@ -44488,6 +48857,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_HOUNDOOM,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_HOUNDOOM),
 		.monFlags = MON_FLAGS_SPECIES_HOUNDOOM,
+		.weakSets = sWeakSets_SPECIES_HOUNDOOM,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_KINGDRA] = 
 	{
@@ -44512,6 +48883,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_DONPHAN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DONPHAN),
 		.monFlags = MON_FLAGS_SPECIES_DONPHAN,
+		.weakSets = sWeakSets_SPECIES_DONPHAN,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_PORYGON2] = 
 	{
@@ -44528,6 +48901,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_STANTLER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_STANTLER),
 		.monFlags = MON_FLAGS_SPECIES_STANTLER,
+		.weakSets = sWeakSets_SPECIES_STANTLER,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SMEARGLE] = 
 	{
@@ -44552,6 +48927,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_HITMONTOP,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_HITMONTOP),
 		.monFlags = MON_FLAGS_SPECIES_HITMONTOP,
+		.weakSets = sWeakSets_SPECIES_HITMONTOP,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SMOOCHUM] = 
 	{
@@ -44560,6 +48937,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SMOOCHUM,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SMOOCHUM),
 		.monFlags = MON_FLAGS_SPECIES_SMOOCHUM,
+		.weakSets = sWeakSets_SPECIES_SMOOCHUM,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ELEKID] = 
 	{
@@ -44568,6 +48947,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ELEKID,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ELEKID),
 		.monFlags = MON_FLAGS_SPECIES_ELEKID,
+		.weakSets = sWeakSets_SPECIES_ELEKID,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MAGBY] = 
 	{
@@ -44576,6 +48957,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MAGBY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MAGBY),
 		.monFlags = MON_FLAGS_SPECIES_MAGBY,
+		.weakSets = sWeakSets_SPECIES_MAGBY,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MILTANK] = 
 	{
@@ -44584,6 +48967,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MILTANK,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MILTANK),
 		.monFlags = MON_FLAGS_SPECIES_MILTANK,
+		.weakSets = sWeakSets_SPECIES_MILTANK,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_BLISSEY] = 
 	{
@@ -44592,6 +48977,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_BLISSEY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_BLISSEY),
 		.monFlags = MON_FLAGS_SPECIES_BLISSEY,
+		.weakSets = sWeakSets_SPECIES_BLISSEY,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_RAIKOU] = 
 	{
@@ -44624,6 +49011,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LARVITAR,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LARVITAR),
 		.monFlags = MON_FLAGS_SPECIES_LARVITAR,
+		.weakSets = sWeakSets_SPECIES_LARVITAR,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_PUPITAR] = 
 	{
@@ -44632,6 +49021,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PUPITAR,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PUPITAR),
 		.monFlags = MON_FLAGS_SPECIES_PUPITAR,
+		.weakSets = sWeakSets_SPECIES_PUPITAR,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_TYRANITAR] = 
 	{
@@ -44680,6 +49071,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_GROVYLE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GROVYLE),
 		.monFlags = MON_FLAGS_SPECIES_GROVYLE,
+		.weakSets = sWeakSets_SPECIES_GROVYLE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SCEPTILE] = 
 	{
@@ -44704,6 +49097,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_COMBUSKEN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_COMBUSKEN),
 		.monFlags = MON_FLAGS_SPECIES_COMBUSKEN,
+		.weakSets = sWeakSets_SPECIES_COMBUSKEN,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_BLAZIKEN] = 
 	{
@@ -44728,6 +49123,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MARSHTOMP,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MARSHTOMP),
 		.monFlags = MON_FLAGS_SPECIES_MARSHTOMP,
+		.weakSets = sWeakSets_SPECIES_MARSHTOMP,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SWAMPERT] = 
 	{
@@ -44752,6 +49149,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MIGHTYENA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MIGHTYENA),
 		.monFlags = MON_FLAGS_SPECIES_MIGHTYENA,
+		.weakSets = sWeakSets_SPECIES_MIGHTYENA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ZIGZAGOON] = 
 	{
@@ -44768,6 +49167,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LINOONE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LINOONE),
 		.monFlags = MON_FLAGS_SPECIES_LINOONE,
+		.weakSets = sWeakSets_SPECIES_LINOONE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_WURMPLE] = 
 	{
@@ -44792,6 +49193,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_BEAUTIFLY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_BEAUTIFLY),
 		.monFlags = MON_FLAGS_SPECIES_BEAUTIFLY,
+		.weakSets = sWeakSets_SPECIES_BEAUTIFLY,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_CASCOON] = 
 	{
@@ -44808,6 +49211,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_DUSTOX,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DUSTOX),
 		.monFlags = MON_FLAGS_SPECIES_DUSTOX,
+		.weakSets = sWeakSets_SPECIES_DUSTOX,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_LOTAD] = 
 	{
@@ -44824,6 +49229,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LOMBRE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LOMBRE),
 		.monFlags = MON_FLAGS_SPECIES_LOMBRE,
+		.weakSets = sWeakSets_SPECIES_LOMBRE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_LUDICOLO] = 
 	{
@@ -44832,6 +49239,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LUDICOLO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LUDICOLO),
 		.monFlags = MON_FLAGS_SPECIES_LUDICOLO,
+		.weakSets = sWeakSets_SPECIES_LUDICOLO,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_SEEDOT] = 
 	{
@@ -44848,6 +49257,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_NUZLEAF,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NUZLEAF),
 		.monFlags = MON_FLAGS_SPECIES_NUZLEAF,
+		.weakSets = sWeakSets_SPECIES_NUZLEAF,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SHIFTRY] = 
 	{
@@ -44856,6 +49267,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SHIFTRY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SHIFTRY),
 		.monFlags = MON_FLAGS_SPECIES_SHIFTRY,
+		.weakSets = sWeakSets_SPECIES_SHIFTRY,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_NINCADA] = 
 	{
@@ -44864,6 +49277,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_NINCADA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NINCADA),
 		.monFlags = MON_FLAGS_SPECIES_NINCADA,
+		.weakSets = sWeakSets_SPECIES_NINCADA,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_NINJASK] = 
 	{
@@ -44872,6 +49287,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_NINJASK,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NINJASK),
 		.monFlags = MON_FLAGS_SPECIES_NINJASK,
+		.weakSets = sWeakSets_SPECIES_NINJASK,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SHEDINJA] = 
 	{
@@ -44888,6 +49305,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_TAILLOW,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_TAILLOW),
 		.monFlags = MON_FLAGS_SPECIES_TAILLOW,
+		.weakSets = sWeakSets_SPECIES_TAILLOW,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SWELLOW] = 
 	{
@@ -44896,6 +49315,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SWELLOW,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SWELLOW),
 		.monFlags = MON_FLAGS_SPECIES_SWELLOW,
+		.weakSets = sWeakSets_SPECIES_SWELLOW,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SHROOMISH] = 
 	{
@@ -44904,6 +49325,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SHROOMISH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SHROOMISH),
 		.monFlags = MON_FLAGS_SPECIES_SHROOMISH,
+		.weakSets = sWeakSets_SPECIES_SHROOMISH,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_BRELOOM] = 
 	{
@@ -44920,6 +49343,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SPINDA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SPINDA),
 		.monFlags = MON_FLAGS_SPECIES_SPINDA,
+		.weakSets = sWeakSets_SPECIES_SPINDA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_WINGULL] = 
 	{
@@ -44928,6 +49353,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_WINGULL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_WINGULL),
 		.monFlags = MON_FLAGS_SPECIES_WINGULL,
+		.weakSets = sWeakSets_SPECIES_WINGULL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_PELIPPER] = 
 	{
@@ -44936,6 +49363,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PELIPPER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PELIPPER),
 		.monFlags = MON_FLAGS_SPECIES_PELIPPER,
+		.weakSets = sWeakSets_SPECIES_PELIPPER,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SURSKIT] = 
 	{
@@ -44952,6 +49381,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MASQUERAIN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MASQUERAIN),
 		.monFlags = MON_FLAGS_SPECIES_MASQUERAIN,
+		.weakSets = sWeakSets_SPECIES_MASQUERAIN,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_WAILMER] = 
 	{
@@ -44960,6 +49391,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_WAILMER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_WAILMER),
 		.monFlags = MON_FLAGS_SPECIES_WAILMER,
+		.weakSets = sWeakSets_SPECIES_WAILMER,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_WAILORD] = 
 	{
@@ -44984,6 +49417,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_DELCATTY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DELCATTY),
 		.monFlags = MON_FLAGS_SPECIES_DELCATTY,
+		.weakSets = sWeakSets_SPECIES_DELCATTY,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_KECLEON] = 
 	{
@@ -44992,6 +49427,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_KECLEON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_KECLEON),
 		.monFlags = MON_FLAGS_SPECIES_KECLEON,
+		.weakSets = sWeakSets_SPECIES_KECLEON,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_BALTOY] = 
 	{
@@ -45000,6 +49437,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_BALTOY,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_BALTOY),
 		.monFlags = MON_FLAGS_SPECIES_BALTOY,
+		.weakSets = sWeakSets_SPECIES_BALTOY,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_CLAYDOL] = 
 	{
@@ -45016,6 +49455,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_NOSEPASS,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NOSEPASS),
 		.monFlags = MON_FLAGS_SPECIES_NOSEPASS,
+		.weakSets = sWeakSets_SPECIES_NOSEPASS,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_TORKOAL] = 
 	{
@@ -45032,6 +49473,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SABLEYE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SABLEYE),
 		.monFlags = MON_FLAGS_SPECIES_SABLEYE,
+		.weakSets = sWeakSets_SPECIES_SABLEYE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_BARBOACH] = 
 	{
@@ -45040,6 +49483,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_BARBOACH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_BARBOACH),
 		.monFlags = MON_FLAGS_SPECIES_BARBOACH,
+		.weakSets = sWeakSets_SPECIES_BARBOACH,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_WHISCASH] = 
 	{
@@ -45048,6 +49493,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_WHISCASH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_WHISCASH),
 		.monFlags = MON_FLAGS_SPECIES_WHISCASH,
+		.weakSets = sWeakSets_SPECIES_WHISCASH,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_LUVDISC] = 
 	{
@@ -45056,6 +49503,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LUVDISC,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LUVDISC),
 		.monFlags = MON_FLAGS_SPECIES_LUVDISC,
+		.weakSets = sWeakSets_SPECIES_LUVDISC,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_CORPHISH] = 
 	{
@@ -45064,6 +49513,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CORPHISH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CORPHISH),
 		.monFlags = MON_FLAGS_SPECIES_CORPHISH,
+		.weakSets = sWeakSets_SPECIES_CORPHISH,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_CRAWDAUNT] = 
 	{
@@ -45072,6 +49523,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CRAWDAUNT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CRAWDAUNT),
 		.monFlags = MON_FLAGS_SPECIES_CRAWDAUNT,
+		.weakSets = sWeakSets_SPECIES_CRAWDAUNT,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_FEEBAS] = 
 	{
@@ -45096,6 +49549,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CARVANHA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CARVANHA),
 		.monFlags = MON_FLAGS_SPECIES_CARVANHA,
+		.weakSets = sWeakSets_SPECIES_CARVANHA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SHARPEDO] = 
 	{
@@ -45104,6 +49559,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SHARPEDO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SHARPEDO),
 		.monFlags = MON_FLAGS_SPECIES_SHARPEDO,
+		.weakSets = sWeakSets_SPECIES_SHARPEDO,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_TRAPINCH] = 
 	{
@@ -45112,6 +49569,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_TRAPINCH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_TRAPINCH),
 		.monFlags = MON_FLAGS_SPECIES_TRAPINCH,
+		.weakSets = sWeakSets_SPECIES_TRAPINCH,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_VIBRAVA] = 
 	{
@@ -45120,6 +49579,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_VIBRAVA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_VIBRAVA),
 		.monFlags = MON_FLAGS_SPECIES_VIBRAVA,
+		.weakSets = sWeakSets_SPECIES_VIBRAVA,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_FLYGON] = 
 	{
@@ -45136,6 +49597,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MAKUHITA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MAKUHITA),
 		.monFlags = MON_FLAGS_SPECIES_MAKUHITA,
+		.weakSets = sWeakSets_SPECIES_MAKUHITA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_HARIYAMA] = 
 	{
@@ -45144,6 +49607,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_HARIYAMA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_HARIYAMA),
 		.monFlags = MON_FLAGS_SPECIES_HARIYAMA,
+		.weakSets = sWeakSets_SPECIES_HARIYAMA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ELECTRIKE] = 
 	{
@@ -45152,6 +49617,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ELECTRIKE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ELECTRIKE),
 		.monFlags = MON_FLAGS_SPECIES_ELECTRIKE,
+		.weakSets = sWeakSets_SPECIES_ELECTRIKE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MANECTRIC] = 
 	{
@@ -45160,6 +49627,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MANECTRIC,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MANECTRIC),
 		.monFlags = MON_FLAGS_SPECIES_MANECTRIC,
+		.weakSets = sWeakSets_SPECIES_MANECTRIC,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_NUMEL] = 
 	{
@@ -45168,6 +49637,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_NUMEL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_NUMEL),
 		.monFlags = MON_FLAGS_SPECIES_NUMEL,
+		.weakSets = sWeakSets_SPECIES_NUMEL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_CAMERUPT] = 
 	{
@@ -45176,7 +49647,9 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CAMERUPT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CAMERUPT),
 		.monFlags = MON_FLAGS_SPECIES_CAMERUPT,
-	},
+		.weakSets = sWeakSets_SPECIES_CAMERUPT,
+		.weakSetCount = 1,
+	},		
 	[SPECIES_SPHEAL] = 
 	{
 		.levelUpMoves = sLevelUpMoves_SPECIES_SPHEAL,
@@ -45184,6 +49657,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SPHEAL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SPHEAL),
 		.monFlags = MON_FLAGS_SPECIES_SPHEAL,
+		.weakSets = sWeakSets_SPECIES_SPHEAL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SEALEO] = 
 	{
@@ -45208,6 +49683,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CACNEA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CACNEA),
 		.monFlags = MON_FLAGS_SPECIES_CACNEA,
+		.weakSets = sWeakSets_SPECIES_CACNEA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_CACTURNE] = 
 	{
@@ -45216,6 +49693,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CACTURNE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CACTURNE),
 		.monFlags = MON_FLAGS_SPECIES_CACTURNE,
+		.weakSets = sWeakSets_SPECIES_CACTURNE,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_SNORUNT] = 
 	{
@@ -45224,6 +49703,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SNORUNT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SNORUNT),
 		.monFlags = MON_FLAGS_SPECIES_SNORUNT,
+		.weakSets = sWeakSets_SPECIES_SNORUNT,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_GLALIE] = 
 	{
@@ -45240,6 +49721,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LUNATONE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LUNATONE),
 		.monFlags = MON_FLAGS_SPECIES_LUNATONE,
+		.weakSets = sWeakSets_SPECIES_LUNATONE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SOLROCK] = 
 	{
@@ -45248,6 +49731,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SOLROCK,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SOLROCK),
 		.monFlags = MON_FLAGS_SPECIES_SOLROCK,
+		.weakSets = sWeakSets_SPECIES_SOLROCK,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_AZURILL] = 
 	{
@@ -45264,6 +49749,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SPOINK,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SPOINK),
 		.monFlags = MON_FLAGS_SPECIES_SPOINK,
+		.weakSets = sWeakSets_SPECIES_SPOINK,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_GRUMPIG] = 
 	{
@@ -45272,6 +49759,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_GRUMPIG,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GRUMPIG),
 		.monFlags = MON_FLAGS_SPECIES_GRUMPIG,
+		.weakSets = sWeakSets_SPECIES_GRUMPIG,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_PLUSLE] = 
 	{
@@ -45280,6 +49769,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_PLUSLE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_PLUSLE),
 		.monFlags = MON_FLAGS_SPECIES_PLUSLE,
+		.weakSets = sWeakSets_SPECIES_PLUSLE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MINUN] = 
 	{
@@ -45288,6 +49779,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MINUN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MINUN),
 		.monFlags = MON_FLAGS_SPECIES_MINUN,
+		.weakSets = sWeakSets_SPECIES_MINUN,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MAWILE] = 
 	{
@@ -45296,6 +49789,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MAWILE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MAWILE),
 		.monFlags = MON_FLAGS_SPECIES_MAWILE,
+		.weakSets = sWeakSets_SPECIES_MAWILE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MEDITITE] = 
 	{
@@ -45304,6 +49799,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_MEDITITE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_MEDITITE),
 		.monFlags = MON_FLAGS_SPECIES_MEDITITE,
+		.weakSets = sWeakSets_SPECIES_MEDITITE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_MEDICHAM] = 
 	{
@@ -45320,6 +49817,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SWABLU,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SWABLU),
 		.monFlags = MON_FLAGS_SPECIES_SWABLU,
+		.weakSets = sWeakSets_SPECIES_SWABLU,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ALTARIA] = 
 	{
@@ -45344,6 +49843,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_DUSKULL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_DUSKULL),
 		.monFlags = MON_FLAGS_SPECIES_DUSKULL,
+		.weakSets = sWeakSets_SPECIES_DUSKULL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_DUSCLOPS] = 
 	{
@@ -45360,6 +49861,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ROSELIA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ROSELIA),
 		.monFlags = MON_FLAGS_SPECIES_ROSELIA,
+		.weakSets = sWeakSets_SPECIES_ROSELIA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SLAKOTH] = 
 	{
@@ -45376,6 +49879,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_VIGOROTH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_VIGOROTH),
 		.monFlags = MON_FLAGS_SPECIES_VIGOROTH,
+		.weakSets = sWeakSets_SPECIES_VIGOROTH,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SLAKING] = 
 	{
@@ -45392,6 +49897,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_GULPIN,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GULPIN),
 		.monFlags = MON_FLAGS_SPECIES_GULPIN,
+		.weakSets = sWeakSets_SPECIES_GULPIN,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SWALOT] = 
 	{
@@ -45400,6 +49907,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SWALOT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SWALOT),
 		.monFlags = MON_FLAGS_SPECIES_SWALOT,
+		.weakSets = sWeakSets_SPECIES_SWALOT,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_TROPIUS] = 
 	{
@@ -45408,6 +49917,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_TROPIUS,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_TROPIUS),
 		.monFlags = MON_FLAGS_SPECIES_TROPIUS,
+		.weakSets = sWeakSets_SPECIES_TROPIUS,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_WHISMUR] = 
 	{
@@ -45424,6 +49935,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LOUDRED,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LOUDRED),
 		.monFlags = MON_FLAGS_SPECIES_LOUDRED,
+		.weakSets = sWeakSets_SPECIES_LOUDRED,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_EXPLOUD] = 
 	{
@@ -45432,6 +49945,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_EXPLOUD,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_EXPLOUD),
 		.monFlags = MON_FLAGS_SPECIES_EXPLOUD,
+		.weakSets = sWeakSets_SPECIES_EXPLOUD,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_CLAMPERL] = 
 	{
@@ -45440,6 +49955,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CLAMPERL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CLAMPERL),
 		.monFlags = MON_FLAGS_SPECIES_CLAMPERL,
+		.weakSets = sWeakSets_SPECIES_CLAMPERL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_HUNTAIL] = 
 	{
@@ -45464,6 +49981,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ABSOL,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ABSOL),
 		.monFlags = MON_FLAGS_SPECIES_ABSOL,
+		.weakSets = sWeakSets_SPECIES_ABSOL,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SHUPPET] = 
 	{
@@ -45472,6 +49991,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SHUPPET,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SHUPPET),
 		.monFlags = MON_FLAGS_SPECIES_SHUPPET,
+		.weakSets = sWeakSets_SPECIES_SHUPPET,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_BANETTE] = 
 	{
@@ -45488,6 +50009,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SEVIPER,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SEVIPER),
 		.monFlags = MON_FLAGS_SPECIES_SEVIPER,
+		.weakSets = sWeakSets_SPECIES_SEVIPER,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ZANGOOSE] = 
 	{
@@ -45496,6 +50019,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ZANGOOSE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ZANGOOSE),
 		.monFlags = MON_FLAGS_SPECIES_ZANGOOSE,
+		.weakSets = sWeakSets_SPECIES_ZANGOOSE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_RELICANTH] = 
 	{
@@ -45504,6 +50029,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_RELICANTH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_RELICANTH),
 		.monFlags = MON_FLAGS_SPECIES_RELICANTH,
+		.weakSets = sWeakSets_SPECIES_RELICANTH,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_ARON] = 
 	{
@@ -45520,6 +50047,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LAIRON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LAIRON),
 		.monFlags = MON_FLAGS_SPECIES_LAIRON,
+		.weakSets = sWeakSets_SPECIES_LAIRON,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_AGGRON] = 
 	{
@@ -45544,6 +50073,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_VOLBEAT,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_VOLBEAT),
 		.monFlags = MON_FLAGS_SPECIES_VOLBEAT,
+		.weakSets = sWeakSets_SPECIES_VOLBEAT,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ILLUMISE] = 
 	{
@@ -45552,6 +50083,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ILLUMISE,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ILLUMISE),
 		.monFlags = MON_FLAGS_SPECIES_ILLUMISE,
+		.weakSets = sWeakSets_SPECIES_ILLUMISE,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_LILEEP] = 
 	{
@@ -45560,6 +50093,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_LILEEP,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_LILEEP),
 		.monFlags = MON_FLAGS_SPECIES_LILEEP,
+		.weakSets = sWeakSets_SPECIES_LILEEP,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_CRADILY] = 
 	{
@@ -45576,6 +50111,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_ANORITH,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_ANORITH),
 		.monFlags = MON_FLAGS_SPECIES_ANORITH,
+		.weakSets = sWeakSets_SPECIES_ANORITH,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_ARMALDO] = 
 	{
@@ -45600,6 +50137,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_KIRLIA,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_KIRLIA),
 		.monFlags = MON_FLAGS_SPECIES_KIRLIA,
+		.weakSets = sWeakSets_SPECIES_KIRLIA,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_GARDEVOIR] = 
 	{
@@ -45608,6 +50147,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_GARDEVOIR,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_GARDEVOIR),
 		.monFlags = MON_FLAGS_SPECIES_GARDEVOIR,
+		.weakSets = sWeakSets_SPECIES_GARDEVOIR,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_BAGON] = 
 	{
@@ -45616,6 +50157,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_BAGON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_BAGON),
 		.monFlags = MON_FLAGS_SPECIES_BAGON,
+		.weakSets = sWeakSets_SPECIES_BAGON,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_SHELGON] = 
 	{
@@ -45624,6 +50167,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_SHELGON,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_SHELGON),
 		.monFlags = MON_FLAGS_SPECIES_SHELGON,
+		.weakSets = sWeakSets_SPECIES_SHELGON,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_SALAMENCE] = 
 	{
@@ -45640,6 +50185,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_BELDUM,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_BELDUM),
 		.monFlags = MON_FLAGS_SPECIES_BELDUM,
+		.weakSets = sWeakSets_SPECIES_BELDUM,
+		.weakSetCount = 2, 
 	},
 	[SPECIES_METANG] = 
 	{
@@ -45648,6 +50195,8 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_METANG,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_METANG),
 		.monFlags = MON_FLAGS_SPECIES_METANG,
+		.weakSets = sWeakSets_SPECIES_METANG,
+		.weakSetCount = 1, 
 	},
 	[SPECIES_METAGROSS] = 
 	{
@@ -45744,5 +50293,7 @@ struct RoguePokemonProfile const gRoguePokemonProfiles[NUM_SPECIES] =
 		.competitiveSets = sCompetitiveSets_SPECIES_CHIMECHO,
 		.competitiveSetCount = ARRAY_COUNT(sCompetitiveSets_SPECIES_CHIMECHO),
 		.monFlags = MON_FLAGS_SPECIES_CHIMECHO,
+		.weakSets = sWeakSets_SPECIES_CHIMECHO,
+		.weakSetCount = 2, 
 	},
 };

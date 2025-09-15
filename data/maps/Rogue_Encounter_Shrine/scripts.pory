@@ -11,13 +11,13 @@ script Rogue_Encounter_Shrine_Talk
 
     if(flag(FLAG_ACCEPTED_GIFT))
     {
-        msgbox(format("I hope that {STR_VAR_1} can be helpful to you!"))
+        msgbox(format("I hope it serves you well!"))
     }
     else
     {
-        msgbox(format("Why hello!\nWhat a treat to have visitors!"))
+        msgbox(format("Why hello!\nIt's a treat to have visitors!"))
 
-        message(format("You're on an Adventure I see.\nIf you'd like, I have some {STR_VAR_1} you may take?"))
+        message(format("You're on an Adventure, I see.\nWould you like some {STR_VAR_1}?"))
         setvar(VAR_TEMP_0, TRUE)
 
         while(var(VAR_TEMP_0) == TRUE)
@@ -37,12 +37,13 @@ script Rogue_Encounter_Shrine_Talk
 
                 case 1: // No
                 case MULTI_B_PRESSED:
-                    msgbox(format("I see…\nIf you change your mind, please do let me know."), MSGBOX_DEFAULT)
+                    msgbox(format("I see…\nThat's okay."), MSGBOX_DEFAULT)
 
                 case 2: // Info
-                    msgbox(format("{STR_VAR_1} is a special kind of Charm which can protect you in the event your entire party faints.\pIn that event, the {STR_VAR_1} will shine, reviving all of your Pokémon and teleporting you back to a safe location so that you may have a second chance.\pThe {STR_VAR_1} is however a very strong item.\pIn fact, it is so strong that I'm afraid, in order to carry it, you must take this {STR_VAR_2} which will reduce the maximum number of Pokémon you may carry in your party by one."), MSGBOX_DEFAULT)
+                    msgbox(format("{STR_VAR_1} is an item that\nprotects you from defeat.\pIt revives your entire party."), MSGBOX_DEFAULT)
+                    msgbox(format("However, it also reduces your\nmaximum party size by one."), MSGBOX_DEFAULT)
                     setvar(VAR_TEMP_0, TRUE)
-                    message(format("Would you like to take the {STR_VAR_1}?"))
+                    message(format("Would you like it?"))
             }
         }
     }
@@ -68,7 +69,7 @@ script Rogue_Encounter_Shrine_TalkAccept
 
         if(var(VAR_TEMP_1) >= VAR_TEMP_2)
         {
-            msgbox(format("You will have to release a Pokémon in order to take the required {STR_VAR_2}…"))
+            msgbox(format("You will have to release a Pokémon…"))
             //fadescreen(FADE_TO_BLACK)
             special(ChoosePartyMon)
             waitstate
@@ -85,7 +86,7 @@ script Rogue_Encounter_Shrine_TalkAccept
 
         if(var(VAR_0x8004) == PARTY_NOTHING_CHOSEN)
         {
-            msgbox(format("I see…\nIf you change your mind, please do let me know."))
+            msgbox(format("I see…\nThat's okay."))
         }
         else
         {
@@ -95,7 +96,7 @@ script Rogue_Encounter_Shrine_TalkAccept
 
             quest_trigger(QUEST_TRIGGER_MAP_SPECIFIC_EVENT)
 
-            msgbox(format("There you are!\nI hope it can be of use to you!"))
+            msgbox(format("I hope it serves you well!"))
             setflag(FLAG_ACCEPTED_GIFT)
         }
     }

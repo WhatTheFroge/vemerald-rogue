@@ -7,8 +7,8 @@ AUTO_GEN_TARGETS += $(ROGUEPORYSCRIPTSDIR)/Generated/*.pory
 $(DATA_SRC_SUBDIR)/rogue/battle_music.h: $(DATA_SRC_SUBDIR)/rogue/battle_music.json
 	$(CUSTOMJSON) battle_music_c $^ $@
 
-$(DATA_SRC_SUBDIR)/rogue/trainers.h: $(DATA_SRC_SUBDIR)/rogue/trainers.json $(DATA_SRC_SUBDIR)/rogue/trainers/*.json
-	$(CUSTOMJSON) trainers_c $(DATA_SRC_SUBDIR)/rogue/trainers.json $@
+# $(DATA_SRC_SUBDIR)/rogue/trainers.h: $(DATA_SRC_SUBDIR)/rogue/trainers.json $(DATA_SRC_SUBDIR)/rogue/trainers/*.json
+#	$(CUSTOMJSON) trainers_c $(DATA_SRC_SUBDIR)/rogue/trainers.json $@
 
 $(DATA_SRC_SUBDIR)/rogue/quests.h: $(DATA_SRC_SUBDIR)/rogue/quests.json $(DATA_SRC_SUBDIR)/rogue/quests/*.json
 	$(CUSTOMJSON) quests_c $(DATA_SRC_SUBDIR)/rogue/quests.json $@
