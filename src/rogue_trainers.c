@@ -3001,9 +3001,19 @@ static u16 SampleNextSpeciesInternal(struct TrainerPartyScratch* scratch)
 		//if (Rogue_GetCurrentDifficulty() < 4) // 15, 20, 25, 30, then wears off after 4th badge
 		//	RogueMonQuery_ContainsPresetFlags(QUERY_FUNC_INCLUDE, SET_WEAK);
 	
-        // Only give Shedinja if at E4 stage as it's just unfun to deal with otherwise
-        if(Rogue_GetCurrentDifficulty() < ROGUE_ELITE_START_DIFFICULTY)
+	
+		if (Rogue_IsKeyTrainer) 
+		{
             RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SHEDINJA);
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_DITTO);
+		}
+		
+        // Only give Shedinja if at E4 stage as it's just unfun to deal with otherwise
+        if(Rogue_GetCurrentDifficulty() < 3) // 0 - 15, 1 - 20, 2 - 25, 3 - 30
+		{
+            RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SHEDINJA);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, SPECIES_SMEARGLE);
+		}
 
 		//test weak set
 		//if (Rogue_GetCurrentDifficulty() == 0)

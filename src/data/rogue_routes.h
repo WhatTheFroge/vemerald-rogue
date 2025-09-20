@@ -20,26 +20,29 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
     // Hoenn
     //
 	
+	
+	
 	// Hoenn Route 104 Beach/Lake
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_FIELD0),
-        .wildTypeTable = { TYPE_POISON, TYPE_FIRE, TYPE_BUG }
+        .wildTypeTable = { TYPE_FIRE, TYPE_PSYCHIC, TYPE_ROCK }
     },
 	
 	// Hoenn Mt.Pyre route 123
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_FIELD1),
-        .wildTypeTable = { TYPE_POISON, TYPE_WATER, TYPE_FIRE }
+        .wildTypeTable = { TYPE_DARK, TYPE_GRASS, TYPE_BUG }
     },
+	
 	
 	// Petalburg Woods 
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .dropRarity = 1,
         .map = ROUTE_MAP(ROGUE_ROUTE_FOREST0),
-        .wildTypeTable = { TYPE_DARK, TYPE_BUG, TYPE_ELECTRIC }
+        .wildTypeTable = { TYPE_DRAGON, TYPE_ICE, TYPE_FIRE }
     },
 	
 	// Hoenn Victory Road 
@@ -48,63 +51,63 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
         .dropRarity = 1, 
 		//.dropRarity = 2,
         .map = ROUTE_MAP(ROGUE_ROUTE_CAVE0),
-        .wildTypeTable = { TYPE_ICE, TYPE_GRASS, TYPE_GROUND }
+        .wildTypeTable = { TYPE_NORMAL, TYPE_GHOST, TYPE_WATER }
     },
 	
 	// Hoenn Desert 
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_MOUNTAIN0),
-        .wildTypeTable = { TYPE_GROUND, TYPE_DRAGON, TYPE_PSYCHIC }
+        .wildTypeTable = { TYPE_ELECTRIC, TYPE_POISON, TYPE_PSYCHIC }
     },
 	
 	// Meteor Falls / Route 114  
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_MOUNTAIN1),
-        .wildTypeTable = { TYPE_PSYCHIC, TYPE_ICE, TYPE_NORMAL }
+        .wildTypeTable = { TYPE_BUG, TYPE_FIGHTING, TYPE_ICE }
     },
 	
 	// Jagged Pass
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_MOUNTAIN2),
-        .wildTypeTable = { TYPE_FLYING, TYPE_ROCK, TYPE_ICE }
+        .wildTypeTable = { TYPE_DARK, TYPE_GRASS, TYPE_NORMAL }
     },
 	
 	// Ashy Route  
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_MOUNTAIN3),
-        .wildTypeTable = { TYPE_POISON, TYPE_GRASS, TYPE_WATER }
+        .wildTypeTable = { TYPE_GHOST, TYPE_GROUND, TYPE_FLYING }
     },
 	
 	// Fortree / Weather Institute 
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_WATER_FRONT0),
-		.wildTypeTable = { TYPE_NORMAL, TYPE_GHOST, TYPE_BUG }
+		.wildTypeTable = { TYPE_ROCK, TYPE_GRASS, TYPE_ELECTRIC }
     },
 	
 	// Fortree / Kecleon Bridge 
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_WATER_FRONT1),
-        .wildTypeTable = { TYPE_POISON, TYPE_GRASS, TYPE_STEEL }
+        .wildTypeTable = { TYPE_DRAGON, TYPE_DARK, TYPE_STEEL, }
     },
 	
 	// Seaside Cycling Road 
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_URBAN0),
-		.wildTypeTable = { TYPE_PSYCHIC, TYPE_DARK, TYPE_ROCK }
+		.wildTypeTable = { TYPE_GROUND, TYPE_POISON, TYPE_FIRE }
     },
 	
 	// Verdanturf / Mauville 
     {
         .mapFlags = ROUTE_FLAG_HOENN,
         .map = ROUTE_MAP(ROGUE_ROUTE_URBAN1),
-        .wildTypeTable = { TYPE_FIRE, TYPE_ICE, TYPE_GRASS }
+        .wildTypeTable = { TYPE_WATER, TYPE_FLYING, TYPE_STEEL }
     },
 
     // Kanto
@@ -114,21 +117,22 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
     {
         .mapFlags = ROUTE_FLAG_KANTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_KANTO_FIELD0),
-        .wildTypeTable = { TYPE_PSYCHIC, TYPE_FIGHTING, TYPE_BUG }
+        .wildTypeTable = { TYPE_FIRE, TYPE_GHOST, TYPE_BUG }
     },
 	
 	// Power Plant / Rock Tunnel 
+	/*
     {
         .mapFlags = ROUTE_FLAG_KANTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_KANTO_MOUNTAIN0),
-        .wildTypeTable = { TYPE_DARK, TYPE_NORMAL, TYPE_FLYING }
     },
+	*/
 	
 	// Cerulean City 
     {
         .mapFlags = ROUTE_FLAG_KANTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_KANTO_URBAN0),
-        .wildTypeTable = { TYPE_DARK, TYPE_FIRE, TYPE_ELECTRIC }
+        .wildTypeTable = { TYPE_ICE, TYPE_FLYING, TYPE_PSYCHIC }
     },
 	
 	// Viridian Forest 
@@ -136,7 +140,7 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
         .mapFlags = ROUTE_FLAG_KANTO,
         .dropRarity = 1,
         .map = ROUTE_MAP(ROGUE_ROUTE_KANTO_FOREST0),
-        .wildTypeTable = { TYPE_WATER, TYPE_GHOST, TYPE_FLYING }
+        .wildTypeTable = { TYPE_ICE, TYPE_GROUND, TYPE_WATER }
     },
 	
 	// Mt. Moon 
@@ -145,14 +149,14 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
         .dropRarity = 1, 
 		//.dropRarity = 2,
         .map = ROUTE_MAP(ROGUE_ROUTE_KANTO_CAVE0),
-        .wildTypeTable = { TYPE_FLYING, TYPE_FIGHTING, TYPE_STEEL }
+        .wildTypeTable = { TYPE_DRAGON, TYPE_ELECTRIC, TYPE_ROCK }
     },
 	
 	// Vermillion City / Silence Bridge 
     {
         .mapFlags = ROUTE_FLAG_KANTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_KANTO_URBAN1),
-        .wildTypeTable = { TYPE_DRAGON, TYPE_STEEL, TYPE_ELECTRIC }
+        .wildTypeTable = { TYPE_FIGHTING, TYPE_NORMAL, TYPE_BUG }
     },
 
     // Johto
@@ -162,14 +166,14 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
     {
         .mapFlags = ROUTE_FLAG_JOHTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_JOHTO_FIELD0),
-        .wildTypeTable = { TYPE_FIGHTING, TYPE_POISON, TYPE_DARK }
+        .wildTypeTable = { TYPE_GRASS, TYPE_PSYCHIC, TYPE_STEEL }
     },
 	
 	// Cherrygrove / Route 30 
     {
         .mapFlags = ROUTE_FLAG_JOHTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_JOHTO_FIELD1),
-        .wildTypeTable = { TYPE_BUG, TYPE_GROUND, TYPE_STEEL }
+        .wildTypeTable = { TYPE_FLYING, TYPE_FIGHTING, TYPE_ELECTRIC }
     },
 	
 	// Ice Cave
@@ -178,28 +182,32 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
         .map = ROUTE_MAP(ROGUE_ROUTE_JOHTO_CAVE0),
         .dropRarity = 1, 
 		//.dropRarity = 2,
-        .wildTypeTable = { TYPE_BUG, TYPE_ELECTRIC, TYPE_ROCK }
+        .wildTypeTable = { TYPE_DARK, TYPE_WATER, TYPE_POISON }
     },
 	
 	// Lake of Rage 
     {
         .mapFlags = ROUTE_FLAG_JOHTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_JOHTO_WATER_FRONT0),
-        .wildTypeTable = { TYPE_NORMAL, TYPE_DRAGON, TYPE_POISON }
+        .wildTypeTable = { TYPE_ROCK, TYPE_STEEL, TYPE_NORMAL }
     },
 	
 	// Ecruteak-Olivine City Route; Moomoo Farm 
     {
         .mapFlags = ROUTE_FLAG_JOHTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_JOHTO_URBAN0),
-        .wildTypeTable = { TYPE_GRASS, TYPE_ROCK, TYPE_ELECTRIC }
+        .wildTypeTable = { TYPE_GRASS, TYPE_FIGHTING, TYPE_FIRE }
     },
 	
 	// Blackthorn Mountain Road 
     {
         .mapFlags = ROUTE_FLAG_JOHTO,
         .map = ROUTE_MAP(ROGUE_ROUTE_JOHTO_MOUNTAIN0),
-        .wildTypeTable = { TYPE_GHOST, TYPE_FIGHTING, TYPE_FIRE }
+        //.wildTypeTable = { TYPE_GHOST, TYPE_DRAGON, TYPE_PSYCHIC }
+		.wildTypeTable = { TYPE_DRAGON, TYPE_GHOST, TYPE_PSYCHIC  } 
+		// if Type Hint is Dragon, then go to the next Type Hint. 
+		// Therefore, Type_dragon should always be the first in the list. 
+
     },
 
     // Sinnoh
@@ -209,70 +217,71 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_205),
-        .wildTypeTable = { TYPE_GROUND, TYPE_GRASS, TYPE_WATER }
+        .wildTypeTable = { TYPE_POISON, TYPE_GROUND, TYPE_GRASS }
     },
 	
 	// Eterna Forest 
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_ETERNA_FOREST),
-        .wildTypeTable = { TYPE_POISON, TYPE_ICE, TYPE_ROCK }
+        .wildTypeTable = { TYPE_FLYING, TYPE_ICE, TYPE_ROCK }
     },
 	
 	// Sinnoh Cycling Road 
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_207),
-        .wildTypeTable = { TYPE_WATER, TYPE_DARK, TYPE_ICE }
+        .wildTypeTable = { TYPE_DARK, TYPE_STEEL, TYPE_ELECTRIC }
     },
 	
+	/*
 	// Veilstone Route; Tough rain route 
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_215),
-        .wildTypeTable = { TYPE_PSYCHIC, TYPE_WATER, TYPE_GROUND }
     },
+	*/
 	
 	// Wet marshy route 
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_212),
-        .wildTypeTable = { TYPE_PSYCHIC, TYPE_FIRE, TYPE_GHOST }
+        .wildTypeTable = { TYPE_GHOST, TYPE_FIGHTING, TYPE_ROCK }
     },
 	
 	// Snowpoint 
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_217),
-        .wildTypeTable = { TYPE_ROCK, TYPE_NORMAL, TYPE_FIGHTING }
+        .wildTypeTable = { TYPE_WATER, TYPE_PSYCHIC, TYPE_GROUND }
     },
 	
 	// Foggy route / Grandma Wilma 
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_210),
-        .wildTypeTable = { TYPE_NORMAL, TYPE_STEEL, TYPE_PSYCHIC }
+        .wildTypeTable = { TYPE_DRAGON, TYPE_BUG, TYPE_POISON, }
     },
 	
 	// Sinnoh route 1
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_201),
-        .wildTypeTable = { TYPE_FLYING, TYPE_NORMAL, TYPE_FIGHTING }
+        .wildTypeTable = { TYPE_STEEL, TYPE_ELECTRIC, TYPE_BUG }
     },
 	
 	// Veilstone-Lakefront Route; "Wildly Natural" 
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_214),
-        .wildTypeTable = { TYPE_GROUND, TYPE_BUG, TYPE_ROCK }
+        .wildTypeTable = { TYPE_NORMAL, TYPE_POISON, TYPE_WATER }
     },
 	
 	// Hearthome - Lost Tower 
     {
         .mapFlags = ROUTE_FLAG_SINNOH,
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_209),
-        .wildTypeTable = { TYPE_GHOST, TYPE_GROUND, TYPE_WATER }
+        .wildTypeTable = { TYPE_ICE, TYPE_DARK, TYPE_FLYING }
     },
 	
 	// Mt. Coronet Interior + Exterior
@@ -281,7 +290,7 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_MT_CORONET),
         .dropRarity = 1, 
 		//.dropRarity = 2,
-        .wildTypeTable = { TYPE_FLYING, TYPE_WATER, TYPE_ELECTRIC }
+        .wildTypeTable = { TYPE_GROUND, TYPE_FIGHTING, TYPE_FIRE }
     },
 	
 	// Iron Island 
@@ -290,7 +299,7 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_IRON_ISLAND),
         .dropRarity = 1, 
 		//.dropRarity = 2,
-        .wildTypeTable = { TYPE_NORMAL, TYPE_FLYING, TYPE_GRASS }
+        .wildTypeTable = { TYPE_DRAGON, TYPE_NORMAL, TYPE_GHOST }
     },
 };
 

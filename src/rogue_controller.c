@@ -8818,6 +8818,8 @@ static bool8 PoorSpecies1(u16 species)
         case SPECIES_SPINDA:
         case SPECIES_UNOWN:
         case SPECIES_LUVDISC:
+        case SPECIES_SKITTY:
+		case SPECIES_DELCATTY: 
             return TRUE;
         default:
             return FALSE;
@@ -8830,6 +8832,7 @@ static bool8 DualPoor1 (u16 species)
 	{
 		case SPECIES_DELIBIRD:
 		case SPECIES_FARFETCHD: 
+        case SPECIES_DITTO: 
 			return TRUE;
 		default: 
 			return FALSE; 
@@ -8840,14 +8843,15 @@ static bool8 PoorSpecies2(u16 species)
 {
     switch(species)
     {
-        case SPECIES_CASTFORM:
-        case SPECIES_DUNSPARCE:
+		case SPECIES_SUNKERN:
+		case SPECIES_SUNFLORA: 
+		
+        //case SPECIES_CASTFORM:
+        //case SPECIES_DUNSPARCE:
         case SPECIES_LICKITUNG:
-        case SPECIES_MAWILE:
+        //case SPECIES_MAWILE:
         case SPECIES_NOSEPASS:
         case SPECIES_SMEARGLE:
-        case SPECIES_SKITTY:
-		case SPECIES_DELCATTY: 
 		
 		/* // half? 
 		case SPECIES_PLUSLE:
@@ -8882,6 +8886,7 @@ static bool8 DualPoor2(u16 species)
 {
 	switch (species)
 	{
+		
 		// half? 
 		case SPECIES_PLUSLE:
         case SPECIES_MINUN:
@@ -8917,7 +8922,7 @@ static bool8 DualPoor2(u16 species)
 		case SPECIES_ROSELIA:
 		case SPECIES_YANMA:
 		case SPECIES_CORSOLA:
-		case SPECIES_SABLEYE:
+		//case SPECIES_SABLEYE:
 			return TRUE;
 		default:
 			return FALSE;
@@ -8928,6 +8933,10 @@ bool8 PoorSpecies3(u16 species) // Extended to include full families
 {	// species = GET_BASE_SPECIES_ID(species); 
 	switch (species)
 	{
+        case SPECIES_MAWILE:
+        case SPECIES_CASTFORM:
+        case SPECIES_DUNSPARCE:
+		
 		case SPECIES_POOCHYENA:
 		case SPECIES_MIGHTYENA:
 
@@ -8960,7 +8969,8 @@ static bool8 DualPoor3 (u16 species)
 {
 	switch(species)
 	{
-
+		case SPECIES_SABLEYE:
+		
 		case SPECIES_SURSKIT:
 		case SPECIES_MASQUERAIN:
 
