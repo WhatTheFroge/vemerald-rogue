@@ -362,13 +362,13 @@
 						{
                             "is_diversity_subset": true,
                             "max_samples": 1,
-							"exclude_types": [ "ELECTRIC", "STEEL" ]
+                            "include_types": [ "STEEL" ],
+							"exclude_types": [ "ELECTRIC" ] 
                         },
 						{
                             "is_diversity_subset": true,
                             "max_samples": 1,
-                            "include_types": [ "STEEL" ],
-							"exclude_types": [ "ELECTRIC" ] 
+							"exclude_types": [ "ELECTRIC", "STEEL" ]
                         },
 						{
                             "is_diversity_subset": true,
@@ -432,12 +432,12 @@
 						{
                             "is_diversity_subset": true,
                             "max_samples": 1,
-							"exclude_types": [ "ICE", "GROUND" ]
+                            "include_types": [ "ICE" ]
                         },
 						{
                             "is_diversity_subset": true,
                             "max_samples": 1,
-                            "include_types": [ "ICE" ]
+							"exclude_types": [ "ICE", "GROUND" ]
                         },
 						{
                             "is_diversity_subset": true,
@@ -500,13 +500,12 @@
 						{
                             "is_diversity_subset": true,
                             "max_samples": 1,
-							"exclude_types": [ "WATER", "DRAGON" ]
+                            "include_types": [ "DRAGON" ]
                         },
 						{
                             "is_diversity_subset": true,
                             "max_samples": 1,
-                            "include_types": [ "DRAGON" ],
-							"exclude_types": [ "FLYING" ]
+							"exclude_types": [ "WATER", "DRAGON" ]
                         },
                         {
                             "is_diversity_subset": true,

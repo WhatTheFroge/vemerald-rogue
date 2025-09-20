@@ -4384,9 +4384,11 @@ static void ChooseTeamEncountersForNewAdventure()
     gRogueRun.teamEncounterDifficulties[ADVPATH_TEAM_ENCOUNTER_PRE_LEGEND] = gRogueRun.legendaryDifficulties[ADVPATH_LEGEND_BOX];
 
     // Early can be anytime from badge 2 to badge 5 (provided there is no legend at that time)
+	// Altered to 2~3 because gym 4+ uses stronger movesets now 
     while(TRUE)
     {
-        gRogueRun.teamEncounterDifficulties[ADVPATH_TEAM_ENCOUNTER_EARLY] = 2 + RogueRandomRange(3, 0);
+        //gRogueRun.teamEncounterDifficulties[ADVPATH_TEAM_ENCOUNTER_EARLY] = 2 + RogueRandomRange(3, 0);
+		gRogueRun.teamEncounterDifficulties[ADVPATH_TEAM_ENCOUNTER_EARLY] = 2 + RogueRandomRange(1, 0);
 
         if(gRogueRun.teamEncounterDifficulties[ADVPATH_TEAM_ENCOUNTER_EARLY] == gRogueRun.legendaryDifficulties[ADVPATH_LEGEND_MINOR])
             continue;
@@ -8458,7 +8460,10 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
 		// attempt prevent trade evos too early (Gengar, Zam, Golem, Machamp); Link cables can still be found on routes.
 		// Kingdra & Pory2 are strong evos as well, but evolving those is OK as it's harder to find their item 
 		if (difficulty <= 4 && Rogue_IsRunActive())
+		{
 			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_LINK_CABLE);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_SHELL_BELL);
+		}
 
 #ifdef ROGUE_EXPANSION
         // Mints are in treat shop
@@ -8506,8 +8511,16 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
 		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_GREPA_BERRY);
 		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_HONDEW_BERRY);
 		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_KELPSY_BERRY);
+		
+		if (difficulty <= 4 && Rogue_IsRunActive())
+		{
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_SITRUS_BERRY);
+			RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_LUM_BERRY);
+		}
+		
+		// drop berry price from 1000 to 800 
 		if(Rogue_IsRunActive())
-            *minSalePrice = 1000;
+            *minSalePrice = 800;
         else
             *minSalePrice = 2500;
         applyRandomChance = TRUE;

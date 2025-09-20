@@ -1256,6 +1256,7 @@ u16 Rogue_GetPrice(u16 itemId)
             price = 0;
             break;
 
+		/*
 		// Normal berry price 1000 
 		case ITEM_LUM_BERRY:
 			price = 2000;
@@ -1272,7 +1273,7 @@ u16 Rogue_GetPrice(u16 itemId)
 		case ITEM_RAWST_BERRY:
 			price = 500;
 			break;
-			
+		*/	
 			
 		case ITEM_AMULET_COIN:
 			price = 8000;
@@ -1280,8 +1281,10 @@ u16 Rogue_GetPrice(u16 itemId)
 		case ITEM_CHOICE_BAND:
 			price = 4000;
 			break;
-			
-			
+		case ITEM_SHELL_BELL:
+			price = 3500; 
+			break; 
+					
 		case ITEM_CLEANSE_TAG:
 			price = 1000;
 			break;

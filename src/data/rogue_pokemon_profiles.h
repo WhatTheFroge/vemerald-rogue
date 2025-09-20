@@ -1356,9 +1356,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BLASTOIS
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_CATERPIE[] = 
 {
-	{ .move=MOVE_TACKLE, .level=1 },
-	{ .move=MOVE_STRING_SHOT, .level=1 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_TACKLE,        	.level = 1 },
+	{ .move = MOVE_STRING_SHOT,		.level = 1 },
+	{ .move = MOVE_NONE,			.level = 0 },
 };
 
 static u16 const sTutorMoves_SPECIES_CATERPIE[] = 
@@ -1378,8 +1378,8 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CATERPIE
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_METAPOD[] = 
 {
-	{ .move=MOVE_HARDEN, .level=1 },
-	{ .move=MOVE_NONE, .level=0 },
+	{ .move = MOVE_HARDEN,			.level = 1 },
+	{ .move = MOVE_NONE,			.level = 0 },
 };
 
 static u16 const sTutorMoves_SPECIES_METAPOD[] = 
@@ -1550,9 +1550,9 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BUTTERFR
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_WEEDLE[] = 
 {
-	{ .move=MOVE_POISON_STING, .level=1 },
-	{ .move=MOVE_STRING_SHOT, .level=1 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_POISON_STING,   	.level = 1 },
+	{ .move = MOVE_STRING_SHOT,		.level = 1 },
+	{ .move = MOVE_NONE,			.level = 0 },
 };
 
 static u16 const sTutorMoves_SPECIES_WEEDLE[] = 
@@ -1572,8 +1572,8 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WEEDLE[]
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_KAKUNA[] = 
 {
-	{ .move=MOVE_HARDEN, .level=1 },
-	{ .move=MOVE_NONE, .level=0 },
+	{ .move = MOVE_HARDEN,			.level = 1 },
+	{ .move = MOVE_NONE,			.level = 0 },
 };
 
 static u16 const sTutorMoves_SPECIES_KAKUNA[] = 
@@ -21613,22 +21613,26 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_BELLOSSO
 #define MON_FLAGS_SPECIES_MARILL (0)
 #endif
 
-static struct LevelUpMove const sLevelUpMoves_SPECIES_MARILL[] = 
+static const struct LevelUpMove sLevelUpMoves_SPECIES_MARILL[] =
 {
-	{ .move=MOVE_TACKLE, .level=1 },
-	{ .move=MOVE_DEFENSE_CURL, .level=3 },
-	{ .move=MOVE_TAIL_WHIP, .level=6 },
-	{ .move=MOVE_WATER_GUN, .level=10 },
-	{ .move=MOVE_ROLLOUT, .level=15 },
-	{ .move=MOVE_BUBBLE_BEAM, .level=21 },
-	{ .move=MOVE_DOUBLE_EDGE, .level=28 },
-	{ .move=MOVE_RAIN_DANCE, .level=36 },
-	{ .move=MOVE_HYDRO_PUMP, .level=45 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_TACKLE,      	.level = 1 },
+    { .move = MOVE_DEFENSE_CURL,	.level = 10 },
+    { .move = MOVE_TAIL_WHIP,   	.level = 10 },
+    { .move = MOVE_SLAM,        	.level = 13 },
+    { .move = MOVE_WATER_GUN,   	.level = 16 },
+    { .move = MOVE_ROLLOUT,     	.level = 19 },
+    { .move = MOVE_BUBBLE_BEAM, 	.level = 22 },
+    { .move = MOVE_DOUBLE_EDGE, 	.level = 25 },
+    { .move = MOVE_RAIN_DANCE,  	.level = 28 },
+    { .move = MOVE_HYDRO_PUMP,  	.level = 31 },
+    { .move = MOVE_NONE,       		.level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_MARILL[] = 
 {
+	MOVE_CHARM,
+	
 	MOVE_AMNESIA,
 	MOVE_ATTRACT,
 	MOVE_BELLY_DRUM,
@@ -21715,22 +21719,26 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MARILL[]
 #define MON_FLAGS_SPECIES_AZUMARILL (0 | MON_FLAGS_GEN3UU)
 #endif
 
-static struct LevelUpMove const sLevelUpMoves_SPECIES_AZUMARILL[] = 
+
+static const struct LevelUpMove sLevelUpMoves_SPECIES_AZUMARILL[] =
 {
-	{ .move=MOVE_TACKLE, .level=1 },
-	{ .move=MOVE_TAIL_WHIP, .level=1 },
-	{ .move=MOVE_WATER_GUN, .level=1 },
-	{ .move=MOVE_DEFENSE_CURL, .level=1 },
-	{ .move=MOVE_ROLLOUT, .level=15 },
-	{ .move=MOVE_BUBBLE_BEAM, .level=24 },
-	{ .move=MOVE_DOUBLE_EDGE, .level=34 },
-	{ .move=MOVE_RAIN_DANCE, .level=45 },
-	{ .move=MOVE_HYDRO_PUMP, .level=57 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_TACKLE,      	.level = 1 },
+    { .move = MOVE_DEFENSE_CURL,	.level = 10 },
+    { .move = MOVE_TAIL_WHIP,   	.level = 10 },
+    { .move = MOVE_SLAM,        	.level = 13 },
+    { .move = MOVE_WATER_GUN,   	.level = 16 },
+    { .move = MOVE_ROLLOUT,     	.level = 19 },
+    { .move = MOVE_BUBBLE_BEAM, 	.level = 22 },
+    { .move = MOVE_DOUBLE_EDGE, 	.level = 25 },
+    { .move = MOVE_RAIN_DANCE,  	.level = 28 },
+    { .move = MOVE_HYDRO_PUMP,  	.level = 31 },
+    { .move = MOVE_NONE,       		.level = 0 },
 };
 
 static u16 const sTutorMoves_SPECIES_AZUMARILL[] = 
 {
+	MOVE_CHARM,
+	
 	MOVE_ATTRACT,
 	MOVE_BLIZZARD,
 	MOVE_BODY_SLAM,
@@ -26994,14 +27002,14 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_OCTILLER
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_DELIBIRD[] = 
 {
-	{ .move=MOVE_PRESENT, .level=1 },
-	{ .move = MOVE_PECK, .level = 10 }, 
-	{ .move = MOVE_POWDER_SNOW, .level = 13 }, 
-	{ .move = MOVE_QUICK_ATTACK, .level = 16 }, 
-	{ .move = MOVE_ICY_WIND, .level = 19 }, 
-	{ .move = MOVE_AERIAL_ACE, .level = 22 }, 
-	{ .move = MOVE_BLIZZARD, .level = 25 },
-	{ .move=MOVE_NONE, .level=0 },
+	{ .move = MOVE_PRESENT,			.level=1 	},
+	{ .move = MOVE_PECK,			.level = 10 }, 
+	{ .move = MOVE_POWDER_SNOW, 	.level = 13 }, 
+	{ .move = MOVE_QUICK_ATTACK,	.level = 16 }, 
+	{ .move = MOVE_ICY_WIND,		.level = 19 }, 
+	{ .move = MOVE_AERIAL_ACE,		.level = 22 }, 
+	{ .move = MOVE_BLIZZARD,		.level = 25 },
+	{ .move = MOVE_NONE,			.level = 0 },
 };
 
 // Sing, Sweet Kiss, Charm, Encore, Agility, Safeguard 
@@ -27403,18 +27411,19 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SKARMORY
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_HOUNDOUR[] = 
 {
-	{ .move=MOVE_LEER, .level=1 },
-	{ .move=MOVE_EMBER, .level=1 },
-	{ .move=MOVE_HOWL, .level=7 },
-	{ .move=MOVE_SMOG, .level=13 },
-	{ .move=MOVE_ROAR, .level=19 },
-	{ .move=MOVE_BITE, .level=25 },
-	{ .move=MOVE_ODOR_SLEUTH, .level=31 },
-	{ .move=MOVE_FAINT_ATTACK, .level=37 },
-	{ .move=MOVE_FLAMETHROWER, .level=43 },
-	{ .move=MOVE_CRUNCH, .level=49 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_EMBER,         .level = 1 },
+    { .move = MOVE_LEER,          .level = 10 },
+    { .move = MOVE_HOWL,          .level = 10 },
+    { .move = MOVE_SMOG,          .level = 15 },
+    { .move = MOVE_ODOR_SLEUTH,   .level = 20 },
+    { .move = MOVE_BITE,          .level = 25 },
+    { .move = MOVE_ROAR,          .level = 30 },
+    { .move = MOVE_FAINT_ATTACK,  .level = 35 },
+    { .move = MOVE_FLAMETHROWER,  .level = 40 },
+    { .move = MOVE_CRUNCH,        .level = 45 },
+    { .move = MOVE_NONE,          .level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_HOUNDOUR[] = 
 {
@@ -27513,17 +27522,17 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_HOUNDOUR
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_HOUNDOOM[] = 
 {
-	{ .move=MOVE_LEER, .level=1 },
-	{ .move=MOVE_EMBER, .level=1 },
-	{ .move=MOVE_HOWL, .level=1 },
-	{ .move=MOVE_SMOG, .level=13 },
-	{ .move=MOVE_ROAR, .level=19 },
-	{ .move=MOVE_BITE, .level=27 },
-	{ .move=MOVE_ODOR_SLEUTH, .level=35 },
-	{ .move=MOVE_FAINT_ATTACK, .level=43 },
-	{ .move=MOVE_FLAMETHROWER, .level=51 },
-	{ .move=MOVE_CRUNCH, .level=59 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_EMBER,         .level = 1 },
+    { .move = MOVE_LEER,          .level = 10 },
+    { .move = MOVE_HOWL,          .level = 10 },
+    { .move = MOVE_SMOG,          .level = 15 },
+    { .move = MOVE_ODOR_SLEUTH,   .level = 20 },
+    { .move = MOVE_BITE,          .level = 25 },
+    { .move = MOVE_ROAR,          .level = 30 },
+    { .move = MOVE_FAINT_ATTACK,  .level = 35 },
+    { .move = MOVE_FLAMETHROWER,  .level = 40 },
+    { .move = MOVE_CRUNCH,        .level = 45 },
+    { .move = MOVE_NONE,          .level = 0 },
 };
 
 static u16 const sTutorMoves_SPECIES_HOUNDOOM[] = // Beat Up	Counter	Fire Spin	Pursuit	Rage	Reversal	Spite	Will-O
@@ -38927,15 +38936,20 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SOLROCK[
 #define MON_FLAGS_SPECIES_AZURILL (0)
 #endif
 
-static struct LevelUpMove const sLevelUpMoves_SPECIES_AZURILL[] = 
+
+static const struct LevelUpMove sLevelUpMoves_SPECIES_AZURILL[] =
 {
-	{ .move=MOVE_SPLASH, .level=1 },
-	{ .move=MOVE_CHARM, .level=3 },
-	{ .move=MOVE_TAIL_WHIP, .level=6 },
-	{ .move=MOVE_BUBBLE, .level=10 },
-	{ .move=MOVE_SLAM, .level=15 },
-	{ .move=MOVE_WATER_GUN, .level=21 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_SPLASH,      	.level = 1 },
+    { .move = MOVE_DEFENSE_CURL,	.level = 10 },
+    { .move = MOVE_TAIL_WHIP,   	.level = 10 },
+    { .move = MOVE_SLAM,        	.level = 13 },
+    { .move = MOVE_CHARM,		   	.level = 16 },
+    { .move = MOVE_ROLLOUT,     	.level = 19 },
+    { .move = MOVE_BUBBLE_BEAM, 	.level = 22 },
+    { .move = MOVE_DOUBLE_EDGE, 	.level = 25 },
+    { .move = MOVE_RAIN_DANCE,  	.level = 28 },
+    { .move = MOVE_HYDRO_PUMP,  	.level = 31 },
+    { .move = MOVE_NONE,       		.level = 0 },
 };
 
 static u16 const sTutorMoves_SPECIES_AZURILL[] = 
@@ -39719,22 +39733,24 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MAWILE[]
 #define MON_FLAGS_SPECIES_MEDITITE (0 | MON_FLAGS_GEN3ZU)
 #endif
 
-static struct LevelUpMove const sLevelUpMoves_SPECIES_MEDITITE[] = 
+static const struct LevelUpMove sLevelUpMoves_SPECIES_MEDITITE[] =
 {
-	{ .move=MOVE_BIDE, .level=1 },
-	{ .move=MOVE_MEDITATE, .level=4 },
-	{ .move=MOVE_CONFUSION, .level=9 },
-	{ .move=MOVE_DETECT, .level=12 },
-	{ .move=MOVE_HIDDEN_POWER, .level=17 },
-	{ .move=MOVE_SWAGGER, .level=20 },
-	{ .move=MOVE_MIND_READER, .level=25 },
-	{ .move=MOVE_CALM_MIND, .level=28 },
-	{ .move=MOVE_HI_JUMP_KICK, .level=33 },
-	{ .move=MOVE_PSYCH_UP, .level=36 },
-	{ .move=MOVE_REVERSAL, .level=41 },
-	{ .move=MOVE_RECOVER, .level=44 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_BIDE,         .level = 1 },
+    { .move = MOVE_MEDITATE,     .level = 1 },
+    { .move = MOVE_CONFUSION,    .level = 10 },
+    { .move = MOVE_DETECT,       .level = 13 },
+    { .move = MOVE_HIDDEN_POWER, .level = 17 },
+    { .move = MOVE_SWAGGER,      .level = 20 },
+    { .move = MOVE_KARATE_CHOP,  .level = 24 },
+    { .move = MOVE_MIND_READER,  .level = 27 },
+    { .move = MOVE_CALM_MIND,    .level = 31 },
+    { .move = MOVE_HI_JUMP_KICK, .level = 34 },
+    { .move = MOVE_PSYCH_UP,     .level = 38 },
+    { .move = MOVE_REVERSAL,     .level = 41 },
+    { .move = MOVE_RECOVER,      .level = 45 },
+    { .move = MOVE_NONE,         .level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_MEDITITE[] = 
 {
@@ -39846,25 +39862,27 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_MEDITITE
 #define MON_FLAGS_SPECIES_MEDICHAM (0 | MON_FLAGS_GEN3OU | MON_FLAGS_GEN31V1)
 #endif
 
-static struct LevelUpMove const sLevelUpMoves_SPECIES_MEDICHAM[] = 
+static const struct LevelUpMove sLevelUpMoves_SPECIES_MEDICHAM[] =
 {
-	{ .move=MOVE_FIRE_PUNCH, .level=1 },
-	{ .move=MOVE_ICE_PUNCH, .level=1 },
-	{ .move=MOVE_THUNDER_PUNCH, .level=1 },
-	{ .move=MOVE_BIDE, .level=1 },
-	{ .move=MOVE_MEDITATE, .level=4 },
-	{ .move=MOVE_CONFUSION, .level=9 },
-	{ .move=MOVE_DETECT, .level=12 },
-	{ .move=MOVE_HIDDEN_POWER, .level=17 },
-	{ .move=MOVE_SWAGGER, .level=20 },
-	{ .move=MOVE_MIND_READER, .level=25 },
-	{ .move=MOVE_CALM_MIND, .level=28 },
-	{ .move=MOVE_HI_JUMP_KICK, .level=33 },
-	{ .move=MOVE_PSYCH_UP, .level=36 },
-	{ .move=MOVE_REVERSAL, .level=47 },
-	{ .move=MOVE_RECOVER, .level=56 },
-	{ .move=MOVE_NONE, .level=0 },
+	{ .move = MOVE_FIRE_PUNCH,		.level = 1 },
+	{ .move = MOVE_ICE_PUNCH,		.level = 1 },
+	{ .move = MOVE_THUNDER_PUNCH,	.level = 1 },
+	{ .move = MOVE_BIDE,        	.level = 1 },
+    { .move = MOVE_MEDITATE,    	.level = 1 },
+    { .move = MOVE_CONFUSION,   	.level = 10 },
+    { .move = MOVE_DETECT,      	.level = 13 },
+    { .move = MOVE_HIDDEN_POWER,	.level = 17 },
+    { .move = MOVE_SWAGGER,      	.level = 20 },
+    { .move = MOVE_KARATE_CHOP,  	.level = 24 },
+    { .move = MOVE_MIND_READER,  	.level = 27 },
+    { .move = MOVE_CALM_MIND,    	.level = 31 },
+    { .move = MOVE_HI_JUMP_KICK, 	.level = 34 },
+    { .move = MOVE_PSYCH_UP,     	.level = 38 },
+    { .move = MOVE_REVERSAL,     	.level = 41 },
+    { .move = MOVE_RECOVER,      	.level = 45 },
+    { .move = MOVE_NONE,         	.level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_MEDICHAM[] = // Baton Pass	D-punch	Fake Out	Foresight	3x Punches
 {
@@ -40280,19 +40298,19 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_WYNAUT[]
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_DUSKULL[] = 
 {
-	{ .move=MOVE_LEER, .level=1 },
-	{ .move=MOVE_NIGHT_SHADE, .level=1 },
-	{ .move=MOVE_DISABLE, .level=5 },
-	{ .move=MOVE_FORESIGHT, .level=12 },
-	{ .move=MOVE_ASTONISH, .level=16 },
-	{ .move=MOVE_CONFUSE_RAY, .level=23 },
-	{ .move=MOVE_PURSUIT, .level=27 },
-	{ .move=MOVE_CURSE, .level=34 },
-	{ .move=MOVE_WILL_O_WISP, .level=38 },
-	{ .move=MOVE_MEAN_LOOK, .level=45 },
-	{ .move=MOVE_FUTURE_SIGHT, .level=49 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_ASTONISH,      .level = 1 },
+    { .move = MOVE_LEER,          .level = 10 },
+    { .move = MOVE_NIGHT_SHADE,   .level = 14 },
+    { .move = MOVE_DISABLE,       .level = 17 },
+    { .move = MOVE_CURSE,         .level = 21 },
+    { .move = MOVE_CONFUSE_RAY,   .level = 24 },
+    { .move = MOVE_PURSUIT,       .level = 28 },
+    { .move = MOVE_WILL_O_WISP,   .level = 35 },
+    { .move = MOVE_FUTURE_SIGHT,  .level = 38 },
+    { .move = MOVE_MEAN_LOOK,     .level = 42 },
+    { .move = MOVE_NONE,          .level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_DUSKULL[] = 
 {
@@ -40301,6 +40319,7 @@ static u16 const sTutorMoves_SPECIES_DUSKULL[] =
 	MOVE_BODY_SLAM,
 	MOVE_CALM_MIND,
 	MOVE_DESTINY_BOND,
+	MOVE_DISABLE, // FROM LEVELUP
 	MOVE_DOUBLE_EDGE,
 	// MOVE_DOUBLE_TEAM,
 	MOVE_DREAM_EATER,
@@ -40397,21 +40416,21 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_DUSKULL[
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_DUSCLOPS[] = 
 {
-	{ .move=MOVE_BIND, .level=1 },
-	{ .move=MOVE_LEER, .level=1 },
-	{ .move=MOVE_DISABLE, .level=1 },
-	{ .move=MOVE_NIGHT_SHADE, .level=1 },
-	{ .move=MOVE_FORESIGHT, .level=12 },
-	{ .move=MOVE_ASTONISH, .level=16 },
-	{ .move=MOVE_CONFUSE_RAY, .level=23 },
-	{ .move=MOVE_PURSUIT, .level=27 },
-	{ .move=MOVE_CURSE, .level=34 },
-	{ .move=MOVE_SHADOW_PUNCH, .level=37 },
-	{ .move=MOVE_WILL_O_WISP, .level=41 },
-	{ .move=MOVE_MEAN_LOOK, .level=51 },
-	{ .move=MOVE_FUTURE_SIGHT, .level=58 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_ASTONISH,      .level = 1 },
+    { .move = MOVE_LEER,          .level = 10 },
+    { .move = MOVE_NIGHT_SHADE,   .level = 14 },
+    { .move = MOVE_DISABLE,       .level = 17 },
+    { .move = MOVE_CURSE,         .level = 21 },
+    { .move = MOVE_CONFUSE_RAY,   .level = 24 },
+    { .move = MOVE_PURSUIT,       .level = 28 },
+    { .move = MOVE_WILL_O_WISP,   .level = 35 },
+    { .move = MOVE_BIND,   		  .level = 35 },
+    { .move = MOVE_SHADOW_PUNCH,  .level = 35 },
+    { .move = MOVE_FUTURE_SIGHT,  .level = 38 },
+    { .move = MOVE_MEAN_LOOK,     .level = 42 },
+    { .move = MOVE_NONE,          .level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_DUSCLOPS[] = // Dbond	Feint	Grudge	Imprison	Memento	Pain Split
 {
@@ -40421,6 +40440,7 @@ static u16 const sTutorMoves_SPECIES_DUSCLOPS[] = // Dbond	Feint	Grudge	Imprison
 	MOVE_CALM_MIND,
 	MOVE_COUNTER,	
 	MOVE_DESTINY_BOND,
+	MOVE_DISABLE, // FROM LEVELUP
 	MOVE_DOUBLE_EDGE,
 	// MOVE_DOUBLE_TEAM,
 	MOVE_DREAM_EATER,
@@ -40693,19 +40713,20 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ROSELIA[
 #define MON_FLAGS_SPECIES_SLAKOTH (0)
 #endif
 
-static struct LevelUpMove const sLevelUpMoves_SPECIES_SLAKOTH[] = 
+static const struct LevelUpMove sLevelUpMoves_SPECIES_SLAKOTH[] =
 {
-	{ .move=MOVE_SCRATCH, .level=1 },
-	{ .move=MOVE_YAWN, .level=1 },
-	{ .move=MOVE_ENCORE, .level=7 },
-	{ .move=MOVE_SLACK_OFF, .level=13 },
-	{ .move=MOVE_FAINT_ATTACK, .level=19 },
-	{ .move=MOVE_AMNESIA, .level=25 },
-	{ .move=MOVE_COVET, .level=31 },
-	{ .move=MOVE_COUNTER, .level=37 },
-	{ .move=MOVE_FLAIL, .level=43 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_SCRATCH,     .level = 1 },
+    { .move = MOVE_YAWN,        .level = 10 },
+    { .move = MOVE_ENCORE,      .level = 14 },
+    { .move = MOVE_SLACK_OFF,   .level = 18 },
+    { .move = MOVE_FAINT_ATTACK,.level = 22 },
+    { .move = MOVE_AMNESIA,     .level = 26 },
+    { .move = MOVE_COVET,       .level = 30 },
+    { .move = MOVE_FLAIL,       .level = 34 },
+    { .move = MOVE_COUNTER,     .level = 38 },
+    { .move = MOVE_NONE,        .level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_SLAKOTH[] = 
 {
@@ -40775,20 +40796,20 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SLAKOTH[
 #define MON_FLAGS_SPECIES_VIGOROTH (0 | MON_FLAGS_GEN3NU)
 #endif
 
-static struct LevelUpMove const sLevelUpMoves_SPECIES_VIGOROTH[] = 
+static const struct LevelUpMove sLevelUpMoves_SPECIES_VIGOROTH[] =
 {
-	{ .move=MOVE_SCRATCH, .level=1 },
-	{ .move=MOVE_FOCUS_ENERGY, .level=1 },
-	{ .move=MOVE_ENCORE, .level=1 },
-	{ .move=MOVE_UPROAR, .level=1 },
-	{ .move=MOVE_FURY_SWIPES, .level=19 },
-	{ .move=MOVE_ENDURE, .level=25 },
-	{ .move=MOVE_SLASH, .level=31 },
-	{ .move=MOVE_COUNTER, .level=37 },
-	{ .move=MOVE_FOCUS_PUNCH, .level=43 },
-	{ .move=MOVE_REVERSAL, .level=49 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_SCRATCH,      .level = 1 },
+    { .move = MOVE_FOCUS_ENERGY, .level = 10 },
+    { .move = MOVE_ENCORE,       .level = 14 },
+    { .move = MOVE_UPROAR,       .level = 18 },
+    { .move = MOVE_FURY_SWIPES,  .level = 22 },
+    { .move = MOVE_ENDURE,       .level = 26 },
+    { .move = MOVE_SLASH,        .level = 30 },
+    { .move = MOVE_REVERSAL,     .level = 34 },
+    { .move = MOVE_COUNTER,      .level = 38 },
+    { .move = MOVE_NONE,         .level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_VIGOROTH[] = // Body Slam	Crush Claw	Curse	Pursuit	Slash	Sleep Talk	Snore
 {
@@ -40909,19 +40930,20 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_VIGOROTH
 #define MON_FLAGS_SPECIES_SLAKING (0 | MON_FLAGS_GEN3UBERS | MON_FLAGS_GEN3OU | MON_FLAGS_GEN3DOUBLESOU)
 #endif
 
-static struct LevelUpMove const sLevelUpMoves_SPECIES_SLAKING[] = 
+
+static const struct LevelUpMove sLevelUpMoves_SPECIES_SLAKING[] =
 {
-	{ .move=MOVE_SCRATCH, .level=1 },
-	{ .move=MOVE_ENCORE, .level=1 },
-	{ .move=MOVE_YAWN, .level=1 },
-	{ .move=MOVE_SLACK_OFF, .level=1 },
-	{ .move=MOVE_FAINT_ATTACK, .level=19 },
-	{ .move=MOVE_AMNESIA, .level=25 },
-	{ .move=MOVE_COVET, .level=31 },
-	{ .move=MOVE_SWAGGER, .level=36 },
-	{ .move=MOVE_COUNTER, .level=37 },
-	{ .move=MOVE_FLAIL, .level=43 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_SCRATCH,     .level = 1 },
+    { .move = MOVE_YAWN,        .level = 10 },
+    { .move = MOVE_ENCORE,      .level = 14 },
+    { .move = MOVE_SLACK_OFF,   .level = 18 },
+    { .move = MOVE_FAINT_ATTACK,.level = 22 },
+    { .move = MOVE_AMNESIA,     .level = 26 },
+    { .move = MOVE_COVET,       .level = 30 },
+    { .move = MOVE_FLAIL,       .level = 34 },
+    { .move = MOVE_SWAGGER,     .level = 36 },
+    { .move = MOVE_COUNTER,     .level = 38 },
+    { .move = MOVE_NONE,        .level = 0 },
 };
 
 static u16 const sTutorMoves_SPECIES_SLAKING[] =  // Crush Claw	Curse	Pursuit	Slash	
@@ -42269,18 +42291,19 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_ABSOL[] 
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_SHUPPET[] = 
 {
-	{ .move=MOVE_KNOCK_OFF, .level=1 },
-	{ .move=MOVE_SCREECH, .level=8 },
-	{ .move=MOVE_NIGHT_SHADE, .level=13 },
-	{ .move=MOVE_CURSE, .level=20 },
-	{ .move=MOVE_SPITE, .level=25 },
-	{ .move=MOVE_WILL_O_WISP, .level=32 },
-	{ .move=MOVE_FAINT_ATTACK, .level=37 },
-	{ .move=MOVE_SHADOW_BALL, .level=44 },
-	{ .move=MOVE_SNATCH, .level=49 },
-	{ .move=MOVE_GRUDGE, .level=56 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_KNOCK_OFF,     .level = 1 },
+    { .move = MOVE_SCREECH,       .level = 10 },
+    { .move = MOVE_NIGHT_SHADE,   .level = 14 },
+    { .move = MOVE_CURSE,         .level = 17 },
+    { .move = MOVE_SPITE,         .level = 21 },
+    { .move = MOVE_WILL_O_WISP,   .level = 24 },
+    { .move = MOVE_FAINT_ATTACK,  .level = 28 },
+    { .move = MOVE_SHADOW_BALL,   .level = 31 },
+    { .move = MOVE_SNATCH,        .level = 35 },
+    { .move = MOVE_GRUDGE,        .level = 38 },
+    { .move = MOVE_NONE,          .level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_SHUPPET[] = 
 {
@@ -42388,18 +42411,19 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_SHUPPET[
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_BANETTE[] = 
 {
-	{ .move=MOVE_NIGHT_SHADE, .level=1 },
-	{ .move=MOVE_SCREECH, .level=1 },
-	{ .move=MOVE_CURSE, .level=1 },
-	{ .move=MOVE_KNOCK_OFF, .level=1 },
-	{ .move=MOVE_SPITE, .level=25 },
-	{ .move=MOVE_WILL_O_WISP, .level=32 },
-	{ .move=MOVE_FAINT_ATTACK, .level=39 },
-	{ .move=MOVE_SHADOW_BALL, .level=48 },
-	{ .move=MOVE_SNATCH, .level=55 },
-	{ .move=MOVE_GRUDGE, .level=64 },
-	{ .move=MOVE_NONE, .level=0 },
+    { .move = MOVE_KNOCK_OFF,     .level = 1 },
+    { .move = MOVE_SCREECH,       .level = 10 },
+    { .move = MOVE_NIGHT_SHADE,   .level = 14 },
+    { .move = MOVE_CURSE,         .level = 17 },
+    { .move = MOVE_SPITE,         .level = 21 },
+    { .move = MOVE_WILL_O_WISP,   .level = 24 },
+    { .move = MOVE_FAINT_ATTACK,  .level = 28 },
+    { .move = MOVE_SHADOW_BALL,   .level = 31 },
+    { .move = MOVE_SNATCH,        .level = 35 },
+    { .move = MOVE_GRUDGE,        .level = 38 },
+    { .move = MOVE_NONE,          .level = 0 },
 };
+
 
 static u16 const sTutorMoves_SPECIES_BANETTE[] = // Astonish	Dbond	Disable	Foresight	Imprison
 {
@@ -43326,11 +43350,11 @@ static struct LevelUpMove const sLevelUpMoves_SPECIES_CASTFORM[] =
     { .move = MOVE_WATER_GUN,       .level = 10 },
     { .move = MOVE_EMBER,           .level = 10 },
     { .move = MOVE_POWDER_SNOW,     .level = 10 },
-    { .move = MOVE_HEADBUTT,        .level = 15 },
-    { .move = MOVE_RAIN_DANCE,      .level = 20 },
-    { .move = MOVE_SUNNY_DAY,       .level = 20 },
-    { .move = MOVE_HAIL,            .level = 20 },
-    { .move = MOVE_WEATHER_BALL,    .level = 25 },
+    { .move = MOVE_RAIN_DANCE,      .level = 15 },
+    { .move = MOVE_SUNNY_DAY,       .level = 15 },
+    { .move = MOVE_HAIL,            .level = 15 },
+    { .move = MOVE_WEATHER_BALL,    .level = 20 },
+	{ .move = MOVE_HEADBUTT,	    .level = 25 },
     { .move = MOVE_THUNDER,         .level = 30 },
     { .move = MOVE_SOLAR_BEAM,      .level = 30 },
     { .move = MOVE_BLIZZARD,        .level = 30 },

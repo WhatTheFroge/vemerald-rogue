@@ -3496,7 +3496,7 @@ static bool8 SelectNextPreset(struct TrainerPartyScratch* scratch, u16 species, 
 	const struct RoguePokemonCompetitiveSet* setArray = gRoguePokemonProfiles[species].competitiveSets;
 	u16 presetCount = gRoguePokemonProfiles[species].competitiveSetCount;
 
-	if (Rogue_GetCurrentDifficulty() <= 4 && gRoguePokemonProfiles[species].weakSets != NULL)
+	if (Rogue_GetCurrentDifficulty() <= 3 && gRoguePokemonProfiles[species].weakSets != NULL)
 	{
 		setArray = gRoguePokemonProfiles[species].weakSets;
 		presetCount = gRoguePokemonProfiles[species].weakSetCount;
