@@ -10429,7 +10429,9 @@ static bool8 RogueRandomChanceTrainer()
     else
     {
         if(difficultyModifier == ADVPATH_SUBROOM_ROUTE_CALM)
-            chance = max(5, chance - 20); // Trainers are fewer
+			chance = 100;
+		
+        //    chance = max(5, chance - 20); // Trainers are fewer
         else
             chance = max(15, chance); // Trainers are harder on tough routes
     }

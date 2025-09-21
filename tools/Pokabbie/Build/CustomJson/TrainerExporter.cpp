@@ -494,48 +494,6 @@ void ExportTrainerData_Pory(std::ofstream& fileStream, std::string const& dataPa
 
 static TrainerStrings ExtractTrainerStrings(json const& trainers)
 {
-    TrainerStrings trainerStrings;
-
-    for (auto groupIt = trainers.begin(); groupIt != trainers.end(); ++groupIt)
-    {
-        for (auto trainer : groupIt.value())
-        {
-            if (trainer.contains("encounter_text"))
-            {
-                for (auto encounterText : trainer["encounter_text"])
-                {
-                    for (auto entryIt = encounterText.begin(); entryIt != encounterText.end(); ++entryIt)
-                    {
-                        std::string text = entryIt.value().get<std::string>();
-
-                        // 🔁 Apply string transforms HERE
-                        strutil::replace_all(text, "\n", "\\n");
-                        strutil::replace_all(text, "\t", " ");
-                        strutil::replace_all(text, "\"", "\\\"");
-                        strutil::replace_all(text, "...", c_Elipsies);
-
-                        // Skip empty strings entirely (optional)
-                        if (text.empty())
-                            continue;
-
-                        auto findIt = trainerStrings.textToIndex.find(text);
-                        if (findIt == trainerStrings.textToIndex.end())
-                        {
-                            trainerStrings.textToIndex[text] = trainerStrings.text.size();
-                            trainerStrings.text.push_back(text);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    return trainerStrings;
-}
-
-/*
-static TrainerStrings ExtractTrainerStrings(json const& trainers)
-{
 	TrainerStrings trainerStrings;
 
 	for (auto groupIt = trainers.begin(); groupIt != trainers.end(); ++groupIt)
@@ -566,7 +524,6 @@ static TrainerStrings ExtractTrainerStrings(json const& trainers)
 
 	return trainerStrings;
 }
-*/
 
 static void ExportTrainerStringsData_C(TrainerDataExport_C& exporter, json const& trainers)
 {
