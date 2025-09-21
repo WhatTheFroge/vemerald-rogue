@@ -1291,12 +1291,13 @@ u16 Rogue_ModifyItemPickupAmount(u16 itemId, u16 amount)
 			case ITEM_POTION:
 				amount = 4; 
 			
-			case ITEM_POKE_BALL:
+			/*case ITEM_POKE_BALL:
 				amount = 4; 
 			case ITEM_GREAT_BALL:
 			case ITEM_ULTRA_BALL:
 				amount = 2; 
-
+			*/
+			
 #ifdef ROGUE_EXPANSION
             case ITEM_ABILITY_CAPSULE:
             case ITEM_ABILITY_PATCH:
@@ -8507,6 +8508,7 @@ void Rogue_OpenMartQuery(u16 itemCategory, u16* minSalePrice)
     case ROGUE_SHOP_BERRIES:
         RogueItemQuery_IsStoredInPocket(QUERY_FUNC_INCLUDE, POCKET_BERRIES);
 		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_ORAN_BERRY);
+		
 		// by removing half the friendship berries from the pool, we're basically cutting the chance by 50% 
 		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_GREPA_BERRY);
 		RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_HONDEW_BERRY);
@@ -10429,9 +10431,8 @@ static bool8 RogueRandomChanceTrainer()
     else
     {
         if(difficultyModifier == ADVPATH_SUBROOM_ROUTE_CALM)
-			chance = 100;
-		
-        //    chance = max(5, chance - 20); // Trainers are fewer
+		//	chance = 100;
+		    chance = max(5, chance - 20); // Trainers are fewer
         else
             chance = max(15, chance); // Trainers are harder on tough routes
     }
@@ -10594,12 +10595,24 @@ static void RandomiseItemContent(u8 difficultyLevel)
         RogueItemQuery_IsStoredInPocket(QUERY_FUNC_EXCLUDE, POCKET_POKEBLOCK);
 
         RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_PREMIER_BALL);
+		
+		// drop less pokeballs so player has to buy them 
+        RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_NET_BALL);
+        RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_DIVE_BALL);
+        RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_NEST_BALL);
+        RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_REPEAT_BALL);
+        RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_TIMER_BALL);
+        RogueMiscQuery_EditElement(QUERY_FUNC_EXCLUDE, ITEM_LUXURY_BALL);
+										
 
 		// let diff == 0 get a bit higher prices so you can get some weak TMs 
 		if (difficultyLevel == 0)
 			RogueItemQuery_InPriceRange(QUERY_FUNC_INCLUDE, 50, 1000);
 		else 
+		{
 			RogueItemQuery_InPriceRange(QUERY_FUNC_INCLUDE, 50 + 100 * (difficultyLevel + dropRarity), 400 + 800 * (difficultyLevel + dropRarity));
+			RogueMiscQuery_EditElement(QUERY_FUNC_INCLUDE, ITEM_POKE_BALL);
+		}
 		// 1100 -> 1200: can allow 1200 price Moon Stone to be generated a little earlier 
 
         if(difficultyLevel <= 1)
@@ -10632,6 +10645,11 @@ static void RandomiseItemContent(u8 difficultyLevel)
             {
                 // Make unlikely to get this item again, but not impossible
                 itemId = RogueWeightQuery_SelectRandomFromWeightsWithUpdate(RogueRandom(), 1);
+								
+				// Safe fallback test? turn duplicate candies into nuggies 
+				if (itemId == ITEM_RARE_CANDY)
+					itemId = ITEM_NUGGET; 
+				
                 VarSet(VAR_ROGUE_ITEM_START + i, itemId);
             }
         }
