@@ -842,8 +842,8 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
 
 		// Catching contest
 		//if(RogueRandomChance(80, 0)) testvalue 
-		if((RogueRandomChance(33, 0) && GetPathGenerationDifficulty() < ROGUE_ELITE_START_DIFFICULTY)) 
-			validEncounterList[validEncounterCount++] = ADVPATH_ROOM_CATCHING_CONTEST;
+		//if((RogueRandomChance(33, 0) && GetPathGenerationDifficulty() < ROGUE_ELITE_START_DIFFICULTY)) 
+		//	validEncounterList[validEncounterCount++] = ADVPATH_ROOM_CATCHING_CONTEST;
 
 		// Mysterious Sign
 		if(Rogue_GetModeRules()->adventureGenerator != ADV_GENERATOR_GAUNTLET && GetPathGenerationDifficulty() < ROGUE_ELITE_START_DIFFICULTY && RogueRandomChance(40, 0))
@@ -854,7 +854,13 @@ static void GenerateRoomPlacements(struct AdvPathSettings* pathSettings)
 			validEncounterList[validEncounterCount++] = ADVPATH_ROOM_BATTLE_SIM;
 	}
 
-
+	if (GetPathGenerationDifficulty() >= 2)
+	// Lvl 25 because they can give some really good Pokemon, stone evos etc. 
+	{
+		if((RogueRandomChance(33, 0) && GetPathGenerationDifficulty() < ROGUE_ELITE_START_DIFFICULTY)) 
+			validEncounterList[validEncounterCount++] = ADVPATH_ROOM_CATCHING_CONTEST;
+	} 
+	
     {
         bool8 allowDarkDeal = (GetPathGenerationDifficulty() % 3 != 0);
         bool8 allowLab = (GetPathGenerationDifficulty() % 3 != 1);
@@ -1803,7 +1809,16 @@ bool8 RogueAdv_CanUseEscapeRope(void)
 
 u8 Rogue_GetTypeForHintForRoom(struct RogueAdvPathRoom const* room)
 {
-    return gRogueRouteTable.routes[room->roomParams.roomIdx].wildTypeTable[(room->coords.x + room->coords.y) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable)];
+    //return gRogueRouteTable.routes[room->roomParams.roomIdx].wildTypeTable[(room->coords.x + room->coords.y) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable)];
+    const u8* typeTable = gRogueRouteTable.routes[room->roomParams.roomIdx].wildTypeTable;
+    u8 idx = (room->coords.x + room->coords.y) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable);
+
+    if (typeTable[idx] == TYPE_DRAGON)
+        //idx = (idx + 1) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable);
+		idx = (idx + 1 + (Random() % 2)) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable);
+
+    return typeTable[idx];
+
 }
 
 static u16 SelectObjectGfxForRoom(struct RogueAdvPathRoom* room)

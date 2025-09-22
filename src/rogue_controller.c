@@ -9674,11 +9674,11 @@ static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void*
 	// test 1.2 - 1.4x; noticeable but not-too-large boost; 
 	// can't handle decimals; round instead of truncate (+0.5f) 
 	if((Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_KANTO)) && (SpeciesToGen(species) == 1))
-		weight = (u16)((float)weight * 1.25 + 0.5f);
+		weight = (u16)((float)weight * 1.35 + 0.5f);
 	else if((Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_JOHTO)) && (SpeciesToGen(species) == 2))
-		weight = (u16)((float)weight * 1.25 + 0.5f);
+		weight = (u16)((float)weight * 1.35 + 0.5f);
 	else if((Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_HOENN)) && (SpeciesToGen(species) == 3))
-		weight = (u16)((float)weight * 1.25 + 0.5f);
+		weight = (u16)((float)weight * 1.35 + 0.5f);
 	
 	return weight; 
 }

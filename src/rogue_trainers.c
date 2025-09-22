@@ -994,7 +994,7 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
 		
 			
 			
-            else{
+            else if (Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_JOHTO)){
 				switch (difficulty)
 				{
 					//
@@ -1013,6 +1013,8 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
 						break;
 						 */
 						 // 
+					
+					//if((Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_KANTO)) && (SpeciesToGen(species) == 1))
 					
 					case ROGUE_GYM_START_DIFFICULTY + 0:
 					case ROGUE_GYM_START_DIFFICULTY + 1:
