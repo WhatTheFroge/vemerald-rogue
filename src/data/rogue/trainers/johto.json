@@ -421,18 +421,13 @@
                     [
                         {
                             "is_diversity_subset": true,
-                            "max_samples": 1,
+                            "max_samples": 2,
                             "include_types": [ "ICE" ]
                         },
 						{
                             "is_diversity_subset": true,
                             "max_samples": 1,
                             "include_types": [ "GROUND" ]
-                        },
-						{
-                            "is_diversity_subset": true,
-                            "max_samples": 1,
-                            "include_types": [ "ICE" ]
                         },
 						{
                             "is_diversity_subset": true,

@@ -2114,7 +2114,9 @@ u8 AtkCanceller_UnableToUseMove(void)
         case CANCELLER_FROZEN: // check being frozen
             if (gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE)
             {
-                if (Random() % 5)
+                //if ((Random() % 10) < 3) // unfreeze 20 -> 30% 
+                if ((Random() % 10) < 7) // unfreeze 20 -> 30% 
+				//if (Random() % 5) // true if random modulus !=0 
                 {
                     if (gBattleMoves[gCurrentMove].effect != EFFECT_THAW_HIT) // unfreezing via a move effect happens in case 13
                     {
@@ -2127,7 +2129,7 @@ u8 AtkCanceller_UnableToUseMove(void)
                         break;
                     }
                 }
-                else // unfreeze
+                else // unfreeze if random modulus is 0, which makes if statement false 
                 {
                     gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_FREEZE;
                     BattleScriptPushCursor();

@@ -299,7 +299,7 @@ static const struct RogueRouteEncounter sRogueRouteTable[] = {
         .map = ROUTE_MAP(ROGUE_ROUTE_SINNOH_IRON_ISLAND),
         .dropRarity = 1, 
 		//.dropRarity = 2,
-        .wildTypeTable = { TYPE_DRAGON, TYPE_NORMAL, TYPE_GHOST }
+        .wildTypeTable = { TYPE_DRAGON, TYPE_GHOST, TYPE_NORMAL }
     },
 };
 

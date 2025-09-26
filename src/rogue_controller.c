@@ -3925,7 +3925,7 @@ static void BeginRogueRun(void)
 	if(gRogueRun.currentLevelOffset == 0)
     {
         // Apply default
-        gRogueRun.currentLevelOffset = 0; // assume STARTER_MON_LEVEL == 5 and first boss level is 10
+        gRogueRun.currentLevelOffset = 2; // assume STARTER_MON_LEVEL == 5 and first boss level is 10
     }
 
     // Apply some base seed for anything which needs to be randomly setup
@@ -4756,7 +4756,7 @@ static u16 WildDenEncounter_CalculateWeight(u16 index, u16 species, void* data)
 		return 1; 
 	
 	if (StarterSpecies(species))
-		return 6; // test dual 
+		return 5; // test dual 
 		//return 4; // testing value; real value 6 or 7 
 	if (DualStarter(species))
 		return 3; 
@@ -6517,6 +6517,7 @@ void Rogue_Battle_EndTrainerBattle(u16 trainerNum)
 						levelOffsetDelta = 2;
 					}
 
+					// Not using levelOffset no mo'? 
                     // Every trainer battle drops level cap slightly
                     if(gRogueRun.currentLevelOffset < levelOffsetDelta)
                         gRogueRun.currentLevelOffset = 0;
@@ -6626,11 +6627,13 @@ void Rogue_Battle_EndWildBattle(void)
             if(levelOffsetDelta == 0)
             {
                 // Apply default
-                levelOffsetDelta = 1;
+                levelOffsetDelta = 2;
             }
 
+			
             // Don't increase the level caps if we only caught the mon
-            if(!DidPlayerCatch(gBattleOutcome))
+            
+			if(!DidPlayerCatch(gBattleOutcome))
             {
                 // Every trainer battle drops level cap slightly
                 if(gRogueRun.currentLevelOffset < levelOffsetDelta)
@@ -6638,6 +6641,7 @@ void Rogue_Battle_EndWildBattle(void)
                 else
                     gRogueRun.currentLevelOffset -= levelOffsetDelta;
             }
+			
         }
 
         if(Rogue_IsBattleRoamerMon(wildSpecies))
@@ -9646,7 +9650,7 @@ static u16 RandomiseWildEncounters_CalculateWeight(u16 index, u16 species, void*
 		weight = 1; 
 	
 	if (StarterSpecies(species))
-		weight = 6; // test dual 
+		weight = 5.5; // test dual 
 		//weight = 4; // testing value; real value 6 or 7 
 	if (DualStarter(species))
 		weight = 3; 

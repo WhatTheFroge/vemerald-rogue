@@ -1814,8 +1814,10 @@ u8 Rogue_GetTypeForHintForRoom(struct RogueAdvPathRoom const* room)
     u8 idx = (room->coords.x + room->coords.y) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable);
 
     if (typeTable[idx] == TYPE_DRAGON)
-        //idx = (idx + 1) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable);
-		idx = (idx + 1 + (Random() % 2)) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable);
+        idx = (idx + 1) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable);
+		
+		// Random causes the Type hint to be different every time you talk to the route. 
+		//idx = (idx + 1 + (Random() % 2)) % ARRAY_COUNT(gRogueRouteTable.routes[0].wildTypeTable);
 
     return typeTable[idx];
 

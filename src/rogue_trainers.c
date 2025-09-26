@@ -994,7 +994,7 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
 		
 			
 			
-            else if (Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_JOHTO)){
+            else {
 				switch (difficulty)
 				{
 					//
@@ -1016,13 +1016,21 @@ static u16 Rogue_ChooseBossTrainerId(u16 difficulty, u16* historyBuffer, u16 his
 					
 					//if((Rogue_GetConfigToggle(CONFIG_TOGGLE_TRAINER_KANTO)) && (SpeciesToGen(species) == 1))
 					
+					// Gym 1 - Bugsy or Falkner only 
+				
 					case ROGUE_GYM_START_DIFFICULTY + 0:
 					case ROGUE_GYM_START_DIFFICULTY + 1:
 					case ROGUE_GYM_START_DIFFICULTY + 2:
+						filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
+						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_6;
+						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_8;
+						break;
 					case ROGUE_GYM_START_DIFFICULTY + 3:
 						filter.classFlagsInclude |= CLASS_FLAG_BOSS_ANY_GYM;
 						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_6;
 						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_8;
+						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_1;
+						filter.classFlagsExclude |= CLASS_FLAG_BOSS_GYM_2;
 						break;
 					case ROGUE_GYM_START_DIFFICULTY + 4:
 					case ROGUE_GYM_START_DIFFICULTY + 5:

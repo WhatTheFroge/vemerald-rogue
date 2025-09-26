@@ -11903,18 +11903,18 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_EXEGGUTO
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_CUBONE[] = 
 {
-    { .move = MOVE_HEADBUTT,       .level = 1  },
-    { .move = MOVE_GROWL,          .level = 10 },
-    { .move = MOVE_TAIL_WHIP,      .level = 10 },
-    { .move = MOVE_BONE_CLUB,      .level = 14 },
-    { .move = MOVE_FOCUS_ENERGY,   .level = 18 },
-    { .move = MOVE_BONEMERANG,     .level = 22 },
-    { .move = MOVE_RAGE,           .level = 26 },
-    { .move = MOVE_THRASH,         .level = 30 },
-    { .move = MOVE_BONE_RUSH,      .level = 34 },
-    { .move = MOVE_FALSE_SWIPE,    .level = 38 },
-    { .move = MOVE_DOUBLE_EDGE,    .level = 42 },
-    { .move = MOVE_NONE,           .level = 0  },
+    { .move = MOVE_RAGE,       		.level = 1  },
+    { .move = MOVE_GROWL,          	.level = 10 },
+    { .move = MOVE_TAIL_WHIP,      	.level = 10 },
+    { .move = MOVE_HEADBUTT,      	.level = 14 },
+    { .move = MOVE_BONE_CLUB,   	.level = 18 },
+    { .move = MOVE_FOCUS_ENERGY,    .level = 22 },
+    { .move = MOVE_BONE_RUSH,       .level = 26 },
+    { .move = MOVE_THRASH,          .level = 30 },
+    { .move = MOVE_FALSE_SWIPE,     .level = 34 },
+    { .move = MOVE_BONEMERANG,    	.level = 38 },
+    { .move = MOVE_DOUBLE_EDGE,     .level = 42 },
+    { .move = MOVE_NONE,            .level = 0  },
 };
 
 static u16 const sTutorMoves_SPECIES_CUBONE[] = // Ancient Power	Belly drum	Perish	Rock	Screech	Skull	Swords
@@ -12023,20 +12023,19 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_CUBONE[]
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_MAROWAK[] = 
 {
-    { .move = MOVE_HEADBUTT,       .level = 1  },
-    { .move = MOVE_GROWL,          .level = 10 },
-    { .move = MOVE_TAIL_WHIP,      .level = 10 },
-    { .move = MOVE_BONE_CLUB,      .level = 14 },
-    { .move = MOVE_FOCUS_ENERGY,   .level = 18 },
-    { .move = MOVE_BONEMERANG,     .level = 22 },
-    { .move = MOVE_RAGE,           .level = 26 },
-    { .move = MOVE_THRASH,         .level = 30 },
-    { .move = MOVE_BONE_RUSH,      .level = 34 },
-    { .move = MOVE_FALSE_SWIPE,    .level = 38 },
-    { .move = MOVE_DOUBLE_EDGE,    .level = 42 },
-    { .move = MOVE_NONE,           .level = 0  },
+    { .move = MOVE_RAGE,       		.level = 1  },
+    { .move = MOVE_GROWL,          	.level = 10 },
+    { .move = MOVE_TAIL_WHIP,      	.level = 10 },
+    { .move = MOVE_HEADBUTT,      	.level = 14 },
+    { .move = MOVE_BONE_CLUB,   	.level = 18 },
+    { .move = MOVE_FOCUS_ENERGY,    .level = 22 },
+    { .move = MOVE_BONE_RUSH,       .level = 26 },
+    { .move = MOVE_THRASH,          .level = 30 },
+    { .move = MOVE_FALSE_SWIPE,     .level = 34 },
+    { .move = MOVE_BONEMERANG,    	.level = 38 },
+    { .move = MOVE_DOUBLE_EDGE,     .level = 42 },
+    { .move = MOVE_NONE,            .level = 0  },
 };
-
 
 static u16 const sTutorMoves_SPECIES_MAROWAK[] = // Ancient Power	Belly drum	Perish	Rock	Screech	Skull	Swords
 {
@@ -16473,7 +16472,7 @@ static struct LevelUpMove const sLevelUpMoves_SPECIES_OMASTAR[] =
     { .move = MOVE_TICKLE,          .level = 34 },
     { .move = MOVE_ANCIENT_POWER,   .level = 38 },
     { .move = MOVE_HYDRO_PUMP,      .level = 42 },
-    { .move = MOVE_SPIKE_CANNON,      .level = 40 },
+    { .move = MOVE_SPIKE_CANNON,    .level = 35 },
     { .move = MOVE_NONE,            .level = 0  },
 };
 
@@ -16597,6 +16596,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_OMASTAR[
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_KABUTO[] = 
 {
+    { .move = MOVE_SCRATCH,	        .level = 1  },
     { .move = MOVE_HARDEN,          .level = 10 },
     { .move = MOVE_FURY_CUTTER,     .level = 14 },
     { .move = MOVE_ABSORB,          .level = 18 },
@@ -16714,6 +16714,7 @@ static struct RoguePokemonCompetitiveSet const sCompetitiveSets_SPECIES_KABUTO[]
 
 static struct LevelUpMove const sLevelUpMoves_SPECIES_KABUTOPS[] = 
 {
+    { .move = MOVE_SCRATCH,       	.level = 1  },
     { .move = MOVE_HARDEN,          .level = 10 },
     { .move = MOVE_FURY_CUTTER,     .level = 14 },
     { .move = MOVE_ABSORB,          .level = 18 },
@@ -16723,7 +16724,7 @@ static struct LevelUpMove const sLevelUpMoves_SPECIES_KABUTOPS[] =
     { .move = MOVE_METAL_SOUND,     .level = 34 },
     { .move = MOVE_ANCIENT_POWER,   .level = 38 },
     { .move = MOVE_GIGA_DRAIN,      .level = 42 },
-    { .move = MOVE_SLASH,           .level = 40 },
+    { .move = MOVE_SLASH,           .level = 35 },
     { .move = MOVE_NONE,            .level = 0  },
 };
 
